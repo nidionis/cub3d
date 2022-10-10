@@ -1,0 +1,61 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+${NAME}	fractol-/Makefile	/^${NAME}:$/;"	t
+%.o	fractol-/Makefile	/^%.o: %.c$/;"	t
+CC	fractol-/Makefile	/^CC = gcc$/;"	m
+CFLAGS	fractol-/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+DEBUG_NAME	fractol-/Makefile	/^DEBUG_NAME = a.out$/;"	m
+HEADERS	fractol-/Makefile	/^HEADERS = include$/;"	m
+INCLUDES	fractol-/Makefile	/^INCLUDES = -I \/usr\/local\/include -I.\/$(HEADERS)$/;"	m
+LIBFT_AR	fractol-/Makefile	/^LIBFT_AR = libft.a$/;"	m
+LIBFT_DIR	fractol-/Makefile	/^LIBFT_DIR = libft\/$/;"	m
+LIBS	fractol-/Makefile	/^LIBS = -L \/usr\/local\/lib -lmlx -framework OpenGL -framework AppKit -lz$/;"	m
+NAME	fractol-/Makefile	/^NAME = fractol$/;"	m
+OBJS	fractol-/Makefile	/^OBJS := ${SRCS:c=o}$/;"	m
+SRCS	fractol-/Makefile	/^SRCS = complex.c error_msg.c hooks.c init_fts.c julia.c main.c mandelbrot.c mouse_keypad.c pixel/;"	m
+all	fractol-/Makefile	/^all: ${NAME}$/;"	t
+apply_vec	fractol-/vectors.c	/^void	apply_vec(t_pix	*pt, t_pix vec)$/;"	f	typeref:typename:void
+carpette	fractol-/mandelbrot.c	/^void	carpette(t_img *img)$/;"	f	typeref:typename:void
+circle	fractol-/shapes.c	/^void	circle(t_img *img, int r, t_pix center, unsigned int color)$/;"	f	typeref:typename:void
+clean	fractol-/Makefile	/^clean:$/;"	t
+color_render	fractol-/pixels.c	/^unsigned int	color_render(unsigned int color_byte, t_img *img)$/;"	f	typeref:typename:unsigned int
+complex_square	fractol-/complex.c	/^t_pt	complex_square(t_pt complex_nb)$/;"	f	typeref:typename:t_pt
+convert_pix_to_pt	fractol-/complex.c	/^t_pt	convert_pix_to_pt(t_img *img, t_pix pix, t_pix center)$/;"	f	typeref:typename:t_pt
+convert_pt_to_pix	fractol-/complex.c	/^t_pix	convert_pt_to_pix(t_img *img, t_pt pt, t_pix center)$/;"	f	typeref:typename:t_pix
+debug	fractol-/Makefile	/^debug: debugfile$/;"	t
+debugfile	fractol-/Makefile	/^debugfile:$/;"	t
+error_msg	fractol-/error_msg.c	/^void	error_msg(char *msg)$/;"	f	typeref:typename:void
+fclean	fractol-/Makefile	/^fclean: clean$/;"	t
+foret_de_ifs	fractol-/hooks.c	/^static void	foret_de_ifs(t_img *img, int keystroke)$/;"	f	typeref:typename:void	file:
+get_offset	fractol-/pixels.c	/^unsigned int	get_offset(t_pix pix, t_img *img)$/;"	f	typeref:typename:unsigned int
+get_vector	fractol-/vectors.c	/^t_pix	get_vector(t_pix *from, t_pix *to)$/;"	f	typeref:typename:t_pix
+help_msg	fractol-/main.c	/^static void	help_msg(void)$/;"	f	typeref:typename:void	file:
+img_default_init	fractol-/init_fts.c	/^void	img_default_init(t_img	*img)$/;"	f	typeref:typename:void
+is_in_win	fractol-/shapes.c	/^int	is_in_win(unsigned int win_size[2], t_pix pix)$/;"	f	typeref:typename:int
+is_white	fractol-/mandelbrot.c	/^unsigned int	is_white(int n)$/;"	f	typeref:typename:unsigned int
+julia	fractol-/julia.c	/^void	julia(t_img *img)$/;"	f	typeref:typename:void
+julia_pix_color	fractol-/julia.c	/^static unsigned int	julia_pix_color(t_pt pt_parser, t_img *img)$/;"	f	typeref:typename:unsigned int	file:
+main	fractol-/main.c	/^int	main(int argc, char *argv[])$/;"	f	typeref:typename:int
+make_pix_pt	fractol-/init_fts.c	/^t_pix	make_pix_pt(int x, int y)$/;"	f	typeref:typename:t_pix
+manage_keystroke	fractol-/hooks.c	/^int	manage_keystroke(int keystroke, void *param)$/;"	f	typeref:typename:int
+manage_mouse	fractol-/hooks.c	/^int	manage_mouse(int button, int x, int y, void *param)$/;"	f	typeref:typename:int
+mandel_pix_color	fractol-/mandelbrot.c	/^static unsigned int	mandel_pix_color(t_pt pt_parser, t_img *img)$/;"	f	typeref:typename:unsigned int	file:
+mandelbrot	fractol-/mandelbrot.c	/^void	mandelbrot(t_img *img)$/;"	f	typeref:typename:void
+moving	fractol-/mouse_keypad.c	/^void	moving(t_img *img, void (*f)(), int keystroke)$/;"	f	typeref:typename:void
+orthonorm_rel	fractol-/fictif_orthonorm.c	/^void	orthonorm_rel(t_img *img)$/;"	f	typeref:typename:void
+pix_dst	fractol-/shapes.c	/^int	pix_dst(t_pix p1, t_pix p2)$/;"	f	typeref:typename:int
+put_pix	fractol-/pixels.c	/^void	put_pix(t_img *img, t_pix pix, int color)$/;"	f	typeref:typename:void
+re	fractol-/Makefile	/^re: fclean all$/;"	t
+recentrer	fractol-/mouse_keypad.c	/^void	recentrer(t_img *img, int x, int y)$/;"	f	typeref:typename:void
+rgb_conv	fractol-/pixels.c	/^unsigned int	rgb_conv(int R, int G, int B)$/;"	f	typeref:typename:unsigned int
+set_win_center	fractol-/init_fts.c	/^void	set_win_center(t_img *img)$/;"	f	typeref:typename:void
+test	fractol-/Makefile	/^test:$/;"	t
+vec_diff	fractol-/vectors.c	/^t_pix	vec_diff(t_pix v1, t_pix v2)$/;"	f	typeref:typename:t_pix
+vec_scale	fractol-/vectors.c	/^t_pix	vec_scale(t_pix vec, double scale)$/;"	f	typeref:typename:t_pix
+zoom_in	fractol-/mouse_keypad.c	/^t_img	*zoom_in(t_img *img, void (*f)(), int x, int y)$/;"	f	typeref:typename:t_img *
+zoom_out	fractol-/mouse_keypad.c	/^t_img	*zoom_out(t_img *img, void (*f)(), int x, int y)$/;"	f	typeref:typename:t_img *

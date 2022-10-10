@@ -6,7 +6,7 @@
 #    By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 12:25:59 by pwolff            #+#    #+#              #
-#    Updated: 2022/10/10 12:57:07 by supersko         ###   ########.fr        #
+#    Updated: 2022/10/10 14:52:22 by pwolff           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ RED			= \033[0;31m
 RST			= \033[0m
 END			= \e[0m
 
-SRC			= hello.c
+SRC		= srcs/hello.c
 
 NAME		= cub3D
 OBJ			= $(SRC:.c=.o)
-PROJECT_H	= includes/cub3d.h
+PROJECT_H	= include/cub3d.h
 CC			= gcc
 FLAGS		= -Wall -Wextra -Werror
 OBJS_DIR	= objs/
@@ -43,8 +43,7 @@ $(OBJS_DIR)%.o : %.c $(PROJECT_H)
 	printf	"\033[2K\r${BLU}[BUILD]${RST} '$<' $(END)"
 
 $(NAME): $(OBJECTS_PREFIXED) maker
-	$(CC) -o $(NAME) $(OBJECTS_PREFIXED) $(FLAGS) \
-	./$(MINILIBX)/libmlx.a ${MLXFLAGS}
+	$(CC) -o $(NAME) $(OBJECTS_PREFIXED) $(FLAGS) ./$(MINILIBX)/libmlx.a ${MLXFLAGS}
 	printf "\033[2K\r\033[0;32m[END]\033[0m $(NAME)$(END)\n"
 
 all: $(NAME)
