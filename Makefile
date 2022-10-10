@@ -1,32 +1,22 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/04 12:25:59 by pwolff            #+#    #+#              #
-#    Updated: 2022/10/10 14:52:22 by pwolff           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# New version 221004
-
 BLU			= \033[0;34m
 GRN			= \033[0;32m
 RED			= \033[0;31m
 RST			= \033[0m
 END			= \e[0m
 
-SRC		= srcs/hello.c
+SRCDIR   = src
+OBJDIR   = obj
+
+SOURCES  := $(wildcard $(SRCDIR)/*.c)
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 NAME		= cub3D
 OBJ			= $(SRC:.c=.o)
 PROJECT_H	= include/cub3d.h
 CC			= gcc
-FLAGS		= -Wall -Wextra -Werror
-OBJS_DIR	= objs/
-OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJ))
+LINKER   = gcc
+CFLAGS		= -Wall -Wextra -Werror
 
 ifeq ($(DESKTOP_SESSION), ubuntu)
 MINILIBX = mlx_linux
@@ -36,17 +26,14 @@ MINILIBX = minilibx_mac
 MLXFLAGS = -framework OpenGL -framework AppKit
 endif
 
-$(OBJS_DIR)%.o : %.c $(PROJECT_H)
-	mkdir -p $(OBJS_DIR)
-	mkdir -p $(OBJS_DIR)srcs
-	$(CC) $(FLAGS) -I/usr/include -I$(MINILIBX) -O3 -c $< -o $@
-	printf	"\033[2K\r${BLU}[BUILD]${RST} '$<' $(END)"
-
-$(NAME): $(OBJECTS_PREFIXED) maker
-	$(CC) -o $(NAME) $(OBJECTS_PREFIXED) $(FLAGS) ./$(MINILIBX)/libmlx.a ${MLXFLAGS}
-	printf "\033[2K\r\033[0;32m[END]\033[0m $(NAME)$(END)\n"
-
 all: $(NAME)
+
+$(NAME): $(OBJECTS) maker
+	$(CC) $(OBJECTS) $(CFLAGS) ./$(MINILIBX)/libmlx.a ${MLXFLAGS} -o $(NAME) 
+
+$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) -I/usr/include -I./include -I$(MINILIBX) -O3 -c $< -o $@
 
 test: all
 	./$(NAME) map.cub 
@@ -57,7 +44,7 @@ maker:
 
 clean:
 	@make clean -C ./$(MINILIBX)
-	@rm -rf $(OBJS_DIR)
+	@rm -rf $(OBJDIR)
 	@printf "\033[2K\r${GRN}[CLEAN]${RST} done$(END) \n"
 
 fclean: clean

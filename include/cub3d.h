@@ -61,7 +61,6 @@
 # include <math.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "../libft/libft.h"
 # include <X11/keysym.h>   // 
 # include <stdio.h> // test
 # include <time.h>
@@ -78,9 +77,6 @@ typedef struct s_pt
 	double	x;
 	double	y;
 }	t_pt;
-
-enum {
-};
 
 /*
 	bbp = bit_per_pixels
