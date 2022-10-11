@@ -70,6 +70,7 @@
 # define GREEN "\033[1;32m"
 
 # include <stdlib.h>
+# include "../libft/libft.h"
 # include <unistd.h>
 # include <math.h>
 # include <sys/stat.h>
@@ -121,14 +122,6 @@ unsigned int	get_offset(t_pix pix, t_img *data);
 void			put_pix(t_img *data, t_pix pix, int color);
 unsigned int	rgb_conv(int R, int G, int B);
 unsigned int	color_render(unsigned int color_byte, t_img *img);
-t_pix			convert_pt_to_pix(t_img *img, t_pt pt, t_pix center);
-t_pt			convert_pix_to_pt(t_img *img, t_pix pix, t_pix center);
-void			orthonorm(t_img *img);
-void			orthonorm_rel(t_img *img);
-void			circle(t_img *img, int r, t_pix center, unsigned int color);
-void			rectangle(t_img *img, int L, int H, t_pix origin);
-void			set_win_center(t_img *img);
-void			img_default_init(t_img	*img);
 
 /* vectors */
 t_pix			get_vector(t_pix *from, t_pix *to);
@@ -138,17 +131,8 @@ t_pix			vec_diff(t_pix v1, t_pix v2);
 t_pix			make_pix_pt(int x, int y);
 
 /* hooks */
-t_img			*zoom_in(t_img *img, void (*f)(), int x, int y);
-t_img			*zoom_out(t_img *img, void (*f)(), int x, int y);
 int				manage_keystroke(int keystroke, void *params);
 int				manage_mouse(int button, int x, int y, void *param);
-void			moving(t_img *img, void (*f)(), int keystroke);
-void			recentrer(t_img *img, int x, int y);
 
-/* fractales */
-t_pt			complex_square(t_pt complex_nb);
-void			mandelbrot(t_img *img);
-void			julia(t_img *img);
-void			carpette(t_img *img);
-
+char	*get_next_line(int fd);
 #endif

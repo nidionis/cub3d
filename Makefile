@@ -13,10 +13,12 @@ OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 NAME		= cub3D
 OBJ			= $(SRC:.c=.o)
-PROJECT_H	= include/cub3d.h
+LIBFT_DIR 	= libft
+PROJECT_H	= include/cub3d.h $(LIBFT_DIR)/libft.h
 CC			= gcc
-LINKER   = gcc
+LINKER   	= gcc
 CFLAGS		= -Wall -Wextra -Werror
+LIBFT 		= $(LIBFT_DIR)/libft.a
 
 ifeq ($(DESKTOP_SESSION), ubuntu)
 MINILIBX = mlx_linux
@@ -29,33 +31,25 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJECTS) maker
-	$(CC) $(OBJECTS) $(CFLAGS) ./$(MINILIBX)/libmlx.a ${MLXFLAGS} -o $(NAME) 
+	$(CC) $(OBJECTS) $(CFLAGS) $(LIBFT) ./$(MINILIBX)/libmlx.a ${MLXFLAGS} -o $(NAME) 
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -I/usr/include -I./include -I$(MINILIBX) -O3 -c $< -o $@
-
-test: all
-	./$(NAME) map.cub 
-	#valgrind ./$(NAME) map.cub 
+	$(CC) $(CFLAGS) -I/usr/include -I./include -I$(LIBFT_DIR) -I$(MINILIBX) -O3 -c $< -o $@
 
 maker:
 	make -C ./$(MINILIBX)
+	make -C ./$(LIBFT_DIR)
 
 clean:
 	@make clean -C ./$(MINILIBX)
 	@rm -rf $(OBJDIR)
-	@printf "\033[2K\r${GRN}[CLEAN]${RST} done$(END) \n"
 
 fclean: clean
 	@rm -rf $(NAME)
-	@printf "\033[2K\r${GRN}[FCLEAN]${RST} done$(END) \n"
+	@make -C $(LIBFT_DIR) fclean
+	@make -C $(MINILIBX) fclean
 
 re: fclean all 
-
-bonus: all
-	./$(NAME) map_star.cub 
-	#valgrind ./$(NAME) map.cub 
-
 
 .PHONY:		all clean fclean re maker test bonus
