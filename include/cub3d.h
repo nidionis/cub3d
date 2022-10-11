@@ -25,15 +25,28 @@
 #  define TOUCH_ESC 53
 
 # else   // LINUX
-#  define TOUCH_A 113  // Q
-#  define TOUCH_W 122  // Z
-#  define TOUCH_S 115  // S
-#  define TOUCH_D 100  // D
-#  define TOUCH_RIGHT 65363 
-#  define TOUCH_LEFT 65361 
-#  define TOUCH_UP 65362
-#  define TOUCH_DOWN 65364
-#  define TOUCH_ESC 65307
+#  define KEY_Q 113
+#  define KEY_A 97
+#  define KEY_Z 122
+#  define KEY_W 119
+#  define KEY_S 115
+#  define KEY_X 120
+#  define KEY_E 101
+#  define KEY_D 100
+#  define KEY_C 99
+#  define KEY_R 114
+#  define KEY_F 102
+#  define KEY_RIGHT 65363 
+#  define KEY_LEFT 65361 
+#  define KEY_UP 65362
+#  define KEY_DOWN 65364
+#  define KEY_ESC 65307
+#  define KEY_IN 61
+#  define KEY_OUT 45
+#  define EXPOSE_X 65293
+#  define ON_DESTROY 	17
+#  include "../mlx_linux/mlx.h"
+#  include "../mlx_linux/mlx_int.h"
 # endif
 
 # define CLIC 1
@@ -82,7 +95,7 @@ typedef struct s_pt
 	bbp = bit_per_pixels
 	scale (0: x, 1: y) = pixels per units
 */
-typedef struct s_img
+typedef struct s_imgg
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -99,7 +112,7 @@ typedef struct s_img
 	float			quality;
 	unsigned int	color_shift;
 	t_pt			julia_coef;
-}	t_img;
+}	t_imgg;
 
 void			error_msg(char *msg);
 
