@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractol.h>
+#include <cub3d.h>
 
 t_pix	get_vector(t_pix *from, t_pix *to)
 {

@@ -1,64 +1,64 @@
 #include "cub3d.h"
 
-char	**ft_append_tab(char **matrix, char *str)
+t_person	*default_person(void)
 {
-	int		tab_len;
-	char	**new_tab;
+	t_person	*pers;
 
-	if (!str)
-		return (matrix);
-	tab_len = 0;
-	if (matrix)
-		while (matrix[tab_len])
-			tab_len++;
-	new_tab = malloc((tab_len++ + 2) * sizeof(char *));
-	if (!new_tab)
-		return (NULL);
-	new_tab[tab_len--] = NULL;
-	new_tab[tab_len] = str;
-	while (tab_len--)
-		new_tab[tab_len] = matrix[tab_len];
-	free(matrix);
-	matrix = NULL;
-	return (new_tab);
+	pers = malloc(sizeof(t_person));
+	pers->pos.x = 22;
+	pers->pos.y = 12;
+	pers->dir.x = -1;
+	pers->dir.y = 0;
+	pers->plane.x = 0;
+	pers->plane.y = 0.66;
+	return (pers);
 }
 
-int	ft_matrixlen(char **matrix)
-{
-	int	len;
+/*
+DDA algo
+si |x2-x1| >= |y2-y1| alors
+  longueur := |x2-x1|
+sinon
+  longueur := |y2-y1|
+fin si
+dx := (x2-x1) / longueur
+dy := (y2-y1) / longueur
+x := x1 + 0.5
+y := y1 + 0.5
+i := 1
+tant que i ≤ longueur faire
+  setPixel (E (x), E (y))
+  x := x + dx
+  y := y + dy
+  i := i + 1
+fin tant que
 
-	len = 0;
-	if (matrix)
-	{
-		while (matrix[len])
-			len++;
+*/
+
+void	ray_parse(t_s *s)
+{
+	int			i;
+	t_pt		cam;
+	t_pt		rayDir;
+	t_person	*pers;
+//cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1
+	pers = s->p;
+	i = 0;
+	while (i < RAYCAST_QUALITY)
+    {
+      //calculate ray position and direction
+      cam.x = 2 * i / double(RAYCAST_QUALITY) - 1; //x-coordinate in camera space
+      rayDir.x = pers->dir.x + pers->plane.x * cam.x;
+      rayDir.y = pers->dir.x + pers->plane.y * cam.y;
+	  i++;
 	}
-	return (len);
-}
-
-void	print_tab(char **tab)
-{
-	while (*tab)
-		printf("%s", *tab++);
-}
-
-char	**default_map(char	*argv[])
-{
-	char	**map;
-	char	*line;
-	int		fd;
-
-	map = NULL;
-	fd = open(argv[1], O_RDONLY);
-	while ((line = get_next_line(fd)))
-		map = ft_append_tab(map, line);
-	return (map);
 }
 
 int	main(int argc, char *argv[])
 {
 	t_imgg	img;
 	char	**map;
+	t_s		*s;
 	(void)img;
 	(void)argv;
 
@@ -66,8 +66,9 @@ int	main(int argc, char *argv[])
 		error_msg("Needs a path to the map file only");
 	else
 	{
-		map = default_map(argv);
-		print_tab(map);
+		s = malloc(sizeof(t_s));
+		s->map = default_map(argv);
+		print_tab(s->map);
 		/*
 		img.mlx_ptr = mlx_init();
 		img_default_init(&img);

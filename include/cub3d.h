@@ -64,10 +64,14 @@
 # define SOUTH 'S'
 # define WEST 'W'
 # define EAST 'E'
+# define SCREEN_WIDTH 640
+# define SCREEN_HEIGHT 480
+# define RAYCAST_QUALITY 50
 
 //COLORS 
 # define RED "\033[1;31m"
 # define GREEN "\033[1;32m"
+
 
 # include <stdlib.h>
 # include "../libft/libft.h"
@@ -92,10 +96,13 @@ typedef struct s_pt
 	double	y;
 }	t_pt;
 
-/*
-	bbp = bit_per_pixels
-	scale (0: x, 1: y) = pixels per units
-*/
+typedef struct s_person
+{
+	t_pt	pos;
+	t_pt	dir;
+	t_pt	plane;
+}	t_person;
+
 typedef struct s_imgg
 {
 	void			*mlx_ptr;
@@ -103,30 +110,32 @@ typedef struct s_imgg
 	void			*img_ptr;
 	char			*addr;
 	int				bpp;
-	int				line_len;
-	int				endian;
 	unsigned int	size[2];
 	unsigned int	scale[2];
 	t_pix			center;
 	t_pix			win_center;
 	void			(*f)();
-	float			quality;
-	unsigned int	color_shift;
-	t_pt			julia_coef;
 }	t_imgg;
+
+typedef struct s_s
+{
+	t_imgg		*i;
+	t_person	*p;
+	char		**map;
+}	t_s;
 
 void			error_msg(char *msg);
 
 /* img */
-unsigned int	get_offset(t_pix pix, t_img *data);
-void			put_pix(t_img *data, t_pix pix, int color);
+unsigned int	get_offset(t_pix pix, t_imgg *data);
+void			put_pix(t_imgg *data, t_pix pix, int color);
 unsigned int	rgb_conv(int R, int G, int B);
-unsigned int	color_render(unsigned int color_byte, t_img *img);
+unsigned int	color_render(unsigned int color_byte, t_imgg *img);
 
 /* vectors */
 t_pix			get_vector(t_pix *from, t_pix *to);
 t_pix			vec_scale(t_pix vec, double scale);
-void			apply_vec(t_pix	*pt, t_pix vec);
+void			add_vec(t_pix	*pt, t_pix vec);
 t_pix			vec_diff(t_pix v1, t_pix v2);
 t_pix			make_pix_pt(int x, int y);
 
@@ -134,5 +143,12 @@ t_pix			make_pix_pt(int x, int y);
 int				manage_keystroke(int keystroke, void *params);
 int				manage_mouse(int button, int x, int y, void *param);
 
-char	*get_next_line(int fd);
+/* str */
+char			*get_next_line(int fd);
+
+/* matrix */
+char			**default_map(char	*argv[]);
+void			print_tab(char **tab);
+int				ft_matrixlen(char **matrix);
+char			**ft_append_tab(char **matrix, char *str);
 #endif
