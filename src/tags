@@ -1,0 +1,19 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+add_vec	vectors.c	/^void	add_vec(t_pix	*pt, t_pix vec)$/;"	f
+default_map	matrix.c	/^char	**default_map(char	*argv[])$/;"	f
+default_person	main.c	/^t_person	*default_person(void)$/;"	f
+ft_append_tab	matrix.c	/^char	**ft_append_tab(char **matrix, char *str)$/;"	f
+ft_matrixlen	matrix.c	/^int	ft_matrixlen(char **matrix)$/;"	f
+ft_realloc_cat	get_next_line.c	/^static char	*ft_realloc_cat(char *line, char c, int *len)$/;"	f	file:
+get_next_line	get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_vector	vectors.c	/^t_pix	get_vector(t_pix *from, t_pix *to)$/;"	f
+main	main.c	/^int	main(int argc, char *argv[])$/;"	f
+print_tab	matrix.c	/^void	print_tab(char **tab)$/;"	f
+ray_parse	main.c	/^void	ray_parse(t_s *s)$/;"	f
+vec_diff	vectors.c	/^t_pix	vec_diff(t_pix v1, t_pix v2)$/;"	f
+vec_scale	vectors.c	/^t_pix	vec_scale(t_pix vec, double scale)$/;"	f
