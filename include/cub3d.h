@@ -114,6 +114,7 @@ typedef struct s_imgg
 	unsigned int	size[2];
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
+	char			*texture_path[4];
 	//unsigned int	scale[2];
 	//t_pix			center;
 	//t_pix			win_center;
@@ -126,6 +127,8 @@ typedef struct s_s
 	t_person	*p;
 	char		**map;
 }	t_s;
+
+enum _identifiers { NO, SE, WE, EA, F, C };
 
 void			error_msg(char *msg);
 

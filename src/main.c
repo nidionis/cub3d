@@ -108,6 +108,6 @@ int	main(int argc, char *argv[])
 	mlx_mouse_hook(img.win_ptr, manage_expose, &img);
 	mlx_loop(img.mlx_ptr);
 	*/
-		ft_free_split(&map);
 	}
+	clean_exit(s);
 }

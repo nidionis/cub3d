@@ -23,9 +23,115 @@ unsigned int	rgb_conv(int R, int G, int B)
 		return ((unsigned int) R * 65536 + (unsigned int) G * 256 + B);
 }
 
+int	get_identifier(char *str)
+{
+	char	**identifiers;
+	int		identifier_len;
+	int		ret;
+	int		i;
+
+	ret = -1;
+	identifier_len = ft_strlen_char(str, ' ');
+	if (identifier_len > 2 || identifier_len < 1)
+		return (-1);
+	else if (identifier_len == 2)
+		identifiers = ft_split("NO,SE,WE,EA", ',');
+	else if (identifier_len == 1)
+		identifiers = ft_split("F,C", ',');
+	i = 0;
+	while (identifiers[i])
+	{
+		if (!ft_strncpm(identifiers[i], str, identifier_len))
+		{
+			ret = i;
+			break ;
+		}
+		i++;
+	}
+	ft_free_split(&identifiers);
+	if (ret != -1 && identifier_len == 1)
+		ret += 4;
+	return (ret);
+}
+
+void	wrong_color(char **color_strimed, char ***line_splitted)
+{
+	error_msg("[init_f_c_color] wrong color");
+	free(color_strimed);
+	ft_free_split(line_splitted);
+	return (-1);
+}
+
+int	init_f_c_color(s_t s, char *line)
+{
+	char	**line_splitted;
+	int		colors[3];
+	char	*color_strimed;
+	int		i;
+
+	line++;
+	i = 0;
+	line_splitted = ft_split(line, ',');
+	while (line_splitted[i])
+	{
+		color_strimed = ft_strstrim(line_splitted[i], " \t");
+		if (ft_strlen(color_strimed) > 3)
+		{
+			wrong_color(&color_strimed, &line_splitted);
+			return (-1);
+		}
+		color[i] = ft_atoi(line_splitted[i]);
+		if (color[i] > 255 && color[i] < 0)
+		{
+			wrong_color(&color_strimed, &line_splitted);
+			return (-1);
+		}
+		if (i > 3)
+		{
+			wrong_color(&color_strimed, &line_splitted);
+			return (-1);
+		}
+		free(color_strimed);
+		i++;
+	}
+	ft_free_split(&line_splitted);
+	return (1);
+}
+
 int	import_elemt(t_s *s, char *line)
 {
-	while (line
+	int		identifier;
+	char	**line_splitted;
+	int		i;
+
+	if (!line)
+		return (-1);
+	while (is_blank_char(*line))
+		line++;
+	identifier = get_identifier(line);
+	if (get_identifier(line) == -1)
+	{
+		error_msg("[import_elemt] wrong identifier");
+		return (-1);
+	}
+	else
+	{
+		if (identifier == F || identifier == C)
+		{
+			if (init_f_c_color(s, line) == -1)
+				return (-1);
+		}
+		else
+		{
+			line_splitted = ft_split(line, ' ');
+			if (ft_matrixlen(line_splitted) > 2)
+				error_msg("[import_elemt] WARNING: check .cub file");
+			i = 1;
+			while (&line_splitted[i] != NULL && line_splitted[i] == '\0')
+				i++;
+			s->i->texture_path[identifier] = ft_substr(line_splitted[i]);
+		}
+	}
 }
 
 int	parsing_loop(char *line, t_s *s, int *map_parse)
@@ -109,7 +215,7 @@ int	parse_file(char *fname, t_s	*s)
 		return (-1);
 	}
 	map_parse = 0;
-	set_default(s);
+	//set_default(s);
 	line = get_next_line(fd);
 	while (line)
 	{
