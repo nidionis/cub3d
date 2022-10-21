@@ -54,6 +54,21 @@ void	ray_parse(t_s *s)
 	}
 }
 
+void	clean_exit(t_s *s)
+{
+	if (s)
+	{
+		if (s->map)
+			ft_free_split(&s->map);
+		if (s->p)
+			free(s->p);
+		if (s->i)
+			free(s->i);
+		free(s);
+	}
+	exit(0);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_imgg	img;
@@ -67,8 +82,9 @@ int	main(int argc, char *argv[])
 	else
 	{
 		s = malloc(sizeof(t_s));
-		s->map = default_map(argv);
-		print_tab(s->map);
+		if (parse_file(argv[1], s) == -1)
+			clean_exit(s);
+		//s->map = default_map(argv);
 		/*
 		img.mlx_ptr = mlx_init();
 		img_default_init(&img);

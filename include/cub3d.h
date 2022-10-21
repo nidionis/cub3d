@@ -60,6 +60,7 @@
 //MACROS 
 # define WALL '1' 
 # define FLOOR '0'
+# define EMPTY ' '
 # define NORTH 'N'
 # define SOUTH 'S'
 # define WEST 'W'
@@ -111,9 +112,11 @@ typedef struct s_imgg
 	char			*addr;
 	int				bpp;
 	unsigned int	size[2];
-	unsigned int	scale[2];
-	t_pix			center;
-	t_pix			win_center;
+	unsigned int	ceiling_color;
+	unsigned int	floor_color;
+	//unsigned int	scale[2];
+	//t_pix			center;
+	//t_pix			win_center;
 	void			(*f)();
 }	t_imgg;
 

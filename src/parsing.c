@@ -50,6 +50,52 @@ void	set_default(t_s *s)
 	s->ceiling_color = rgb_conv(0, 255, 0);
 }
 
+static int is_available_mapcase(char c)
+{
+	if (s->map[x][y] == FLOOR || s->map[x][y] == WALL || s->map[x][y] == EMPTY)
+		return (1);
+	error_msg("[is_available_mapcase] map contains unavailable case.");
+	return (0);
+}
+
+static int	is_border(t_s *s, int x, int y, int matrix_len)
+{
+	if (s->map[y][x] == EMPTY)
+		return (0);
+	if (x == 0 || y == 0 || x == ft_strlen(s->map[y]) - 1 || y == matrix_len - 1)
+			return (1);
+	else if (s->map[y - 1][x] == EMPTY || s->map[y][x - 1] == EMPTY ||s->map[y + 1][x] == EMPTY || s->map[y][x + 1] == EMPTY)
+		return (1);
+	return (0);
+}
+
+int	check_map(t_s *s)
+{
+	int	x;
+	int	y;
+	int	matrix_len;
+
+	matrix_len = ft_matrixlen(s);
+	y = 0;
+	while (s->map[y])
+	{
+		x = 0;
+		while (s->map[y][x])
+		{
+			if (!is_available_mapcase(s->map[y][x]))
+				return (-1);
+			if (is_border(s, x, y, matrix_len) && s->map[y][x] != WALL)
+			{
+				error_msg("[check_map] map not surrounded by walls.");
+				return (-1);
+			}
+			y++;
+		}
+		x++;
+	}
+	return (1);
+}
+
 int	parse_file(char *fname, t_s	*s)
 {
 	int		fd;
@@ -57,13 +103,23 @@ int	parse_file(char *fname, t_s	*s)
 	char	*line;
 
 	fd = open(fname, O_RDONLY);
+	if (fd == -1)
+	{
+		error_msg("[parse_file] Error opening file (check file name)");
+		return (-1);
+	}
 	map_parse = 0;
 	set_default(s);
 	line = get_next_line(fd);
 	while (line)
 	{
 		parsing_loop(line, s, &map_parse);
+		if (map_parse == -1)
+			break ;
 		line = get_next_line(fd);
 	}
 	close(fd);
+	if (map_parse != -1)
+		map_parse = check_map(s);
+	return (map_parse);
 }
