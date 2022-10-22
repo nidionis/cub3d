@@ -128,7 +128,7 @@ typedef struct s_s
 	char		**map;
 }	t_s;
 
-enum _identifiers { NO, SE, WE, EA, F, C };
+enum _identifiers { NO, SO, WE, EA, F, C };
 
 void			error_msg(char *msg);
 
@@ -157,4 +157,5 @@ char			**default_map(char	*argv[]);
 void			print_tab(char **tab);
 int				ft_matrixlen(char **matrix);
 char			**ft_append_tab(char **matrix, char *str);
+int	parse_file(char *fname, t_s	*s);
 #endif

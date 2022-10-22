@@ -41,13 +41,14 @@ void	ray_parse(t_s *s)
 	t_pt		cam;
 	t_pt		rayDir;
 	t_person	*pers;
+	(void)rayDir;
 //cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1
 	pers = s->p;
 	i = 0;
 	while (i < RAYCAST_QUALITY)
     {
       //calculate ray position and direction
-      cam.x = 2 * i / double(RAYCAST_QUALITY) - 1; //x-coordinate in camera space
+      cam.x = (double)2 * i / (double)RAYCAST_QUALITY - 1; //x-coordinate in camera space
       rayDir.x = pers->dir.x + pers->plane.x * cam.x;
       rayDir.y = pers->dir.x + pers->plane.y * cam.y;
 	  i++;
@@ -72,18 +73,27 @@ void	clean_exit(t_s *s)
 int	main(int argc, char *argv[])
 {
 	t_imgg	img;
-	char	**map;
 	t_s		*s;
 	(void)img;
 	(void)argv;
 
+	s = NULL;
 	if (argc != 2)
+	{
 		error_msg("Needs a path to the map file only");
+		clean_exit(s);
+	}
 	else
 	{
 		s = malloc(sizeof(t_s));
+		if (!s)
+			return (-1);
 		if (parse_file(argv[1], s) == -1)
 			clean_exit(s);
+		printf("etxturepath NO: %s\n", s->i->texture_path[NO]);
+		printf("etxturepath SO: %s\n", s->i->texture_path[SO]);
+		printf("etxturepath EA: %s\n", s->i->texture_path[EA]);
+		printf("etxturepath WE: %s\n", s->i->texture_path[WE]);
 		//s->map = default_map(argv);
 		/*
 		img.mlx_ptr = mlx_init();
@@ -109,5 +119,6 @@ int	main(int argc, char *argv[])
 	mlx_loop(img.mlx_ptr);
 	*/
 	}
-	clean_exit(s);
+	if (s)
+		clean_exit(s);
 }
