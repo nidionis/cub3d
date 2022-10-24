@@ -20,7 +20,7 @@ LINKER   	= gcc
 CFLAGS		= -Wall -Wextra -Werror -g3
 LIBFT 		= $(LIBFT_DIR)/libft.a
 
-ifeq ($(DESKTOP_SESSION), Lubuntu)
+ifeq ($(DESKTOP_SESSION), ubuntu)
 MINILIBX = mlx_linux
 MLXFLAGS = -I /usr/X11/include -g -Lmlx_linux -lmlx_Linux -L /usr/lib -Imlx_linux -lmlx -lXext -lX11 -lm
 else

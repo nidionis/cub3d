@@ -130,7 +130,7 @@ int	import_elemt(t_s *s, char *line)
 	while (is_blank_char(*line))
 		line++;
 	identifier = get_identifier(line);
-	if (get_identifier(line) == -1)
+	if (identifier == -1)
 	{
 		error_msg("[import_elemt] wrong identifier");
 		return (-1);
@@ -148,7 +148,7 @@ int	import_elemt(t_s *s, char *line)
 			if (ft_matrixlen(line_splitted) > 2)
 				error_msg("[import_elemt] WARNING: check .cub file");
 			i = 1;
-			while (&line_splitted[i] != NULL && line_splitted[i] == '\0')
+			while (&line_splitted[i] != NULL && !ft_strncmp(line_splitted[i], "", 1))
 				i++;
 			s->i->texture_path[identifier] = ft_substr(line_splitted[i], 0, ft_strlen_char(line_splitted[i], ' '));
 		}
@@ -163,10 +163,9 @@ int	parsing_loop(char *line, t_s *s, int *map_parse)
 		if (!*map_parse)
 			*map_parse = import_elemt(s, line);
 		if (*map_parse == 1)
-			s->map = ft_append_tab(s->map, line);
+			s->map = ft_append_tab(s->map, ft_strtrim(line, "\n"));
 	}
-	if (*map_parse == 1)
-		free(line);
+	free(line);
 	if (*map_parse == -1)
 			return (-1);
 	return (1);
@@ -205,6 +204,8 @@ int	check_map(t_s *s)
 
 	matrix_len = ft_matrixlen(s->map);
 	y = 0;
+	if (!s || !s->map)
+		return (-1);
 	while (s->map[y])
 	{
 		x = 0;
@@ -230,21 +231,27 @@ int	parse_file(char *fname, t_s	*s)
 	int		map_parse;
 	char	*line;
 
+	map_parse = 0;
+	if (s)
+		s->map = NULL;
+	//set_default(s);
 	fd = open(fname, O_RDONLY);
 	if (fd == -1)
 	{
 		error_msg("[parse_file] Error opening file (check file name)");
 		return (-1);
 	}
-	map_parse = 0;
-	//set_default(s);
 	line = get_next_line(fd);
-	while (line)
+	printf("[parse_file] line: %s\n", line);
+	if (line)
 	{
-		parsing_loop(line, s, &map_parse);
-		if (map_parse == -1)
-			break ;
-		line = get_next_line(fd);
+		while (line)
+		{
+			parsing_loop(line, s, &map_parse);
+			if (map_parse == -1)
+				break ;
+			line = get_next_line(fd);
+		}
 	}
 	close(fd);
 	if (map_parse != -1)
