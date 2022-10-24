@@ -38,26 +38,30 @@ fin tant que
 void	ray_parse(t_s *s)
 {
 	int			i;
-	t_pt		cam;
+	int			camX;
 	t_pt		rayDir;
 	t_person	*pers;
+	(void)		rayDir;
 //cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1
 	pers = s->p;
 	i = 0;
 	while (i < RAYCAST_QUALITY)
     {
       //calculate ray position and direction
-      cam.x = 2 * i / double(RAYCAST_QUALITY) - 1; //x-coordinate in camera space
-      rayDir.x = pers->dir.x + pers->plane.x * cam.x;
-      rayDir.y = pers->dir.x + pers->plane.y * cam.y;
+      camX = 2 * i / RAYCAST_QUALITY - 1; //x-coordinate in camera space
+      rayDir.x = pers->dir.x + pers->plane.x * camX;
+      rayDir.y = pers->dir.y + pers->plane.y * camX;
 	  i++;
+	/*
+	 deltaDistX = abs(1 / rayDirX)
+	deltaDistY = abs(1 / rayDirY)
+	*/
 	}
 }
 
 int	main(int argc, char *argv[])
 {
 	t_imgg	img;
-	char	**map;
 	t_s		*s;
 	(void)img;
 	(void)argv;
@@ -92,6 +96,7 @@ int	main(int argc, char *argv[])
 	mlx_mouse_hook(img.win_ptr, manage_expose, &img);
 	mlx_loop(img.mlx_ptr);
 	*/
-		ft_free_split(&map);
+		ft_free_split(&s->map);
 	}
+	exit (0);
 }

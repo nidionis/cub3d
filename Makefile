@@ -17,7 +17,7 @@ LIBFT_DIR 	= libft
 PROJECT_H	= include/cub3d.h $(LIBFT_DIR)/libft.h
 CC			= gcc
 LINKER   	= gcc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g3
 LIBFT 		= $(LIBFT_DIR)/libft.a
 
 ifeq ($(DESKTOP_SESSION), ubuntu)
