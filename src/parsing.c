@@ -2,7 +2,7 @@
 
 int	is_blank_char(char c)
 {
-	if (c == ' ' || c == '\t')
+	if (c == ' ' || c == '\t' || c == '\n')
 		return (1);
 	else
 		return (0);
@@ -20,7 +20,7 @@ int	is_blank_line(char *line)
 
 unsigned int	rgb_conv(int R, int G, int B)
 {
-		return ((unsigned int) R * 65536 + (unsigned int) G * 256 + B);
+	return ((unsigned int) R * 65536 + (unsigned int) G * 256 + B);
 }
 
 int	is_map_line(char *str)
@@ -39,23 +39,17 @@ int	is_map_line(char *str)
 		return (1);
 }
 
-int	get_identifier(char *str)
+int	conv_id_param(t_s *s, int identifier_len, char *str)
 {
-	char	**identifiers;
-	int		identifier_len;
-	int		ret;
 	int		i;
+	int		ret;
+	char	**identifiers;
 
-	ret = -1;
-	identifier_len = ft_strlen_char(str, ' ');
-	if (is_map_line(str))
-		return (11);
-	if (identifier_len > 2 || identifier_len < 1)
-		return (-1);
-	else if (identifier_len == 2)
+	if (identifier_len == 2)
 		identifiers = ft_split("NO ,SE ,WE ,EA ", ',');
 	else if (identifier_len == 1)
-		identifiers = ft_split("F,C", ',');
+		identifiers = ft_split("F ,C ", ',');
+	ret = -1;
 	i = 0;
 	while (identifiers[i])
 	{
@@ -67,9 +61,23 @@ int	get_identifier(char *str)
 		i++;
 	}
 	ft_free_split(&identifiers);
-	if (ret != -1 && identifier_len == 1)
+	if (ret == -1)
+		exit_msg(s, "[conv_id_param] wrong param identifier\n", -1);
+	if (identifier_len == 1)
 		ret += 4;
 	return (ret);
+}
+
+int	get_identifier(t_s *s, char *str)
+{
+	int		identifier_len;
+
+	identifier_len = ft_strlen_char(str, ' ');
+	if (is_map_line(str))
+		return (11);
+	if (identifier_len > 2 || identifier_len < 1)
+		exit_msg(s, "[get_identifier] wrong parsing", -1);
+	return (conv_id_param(s, identifier_len, str));
 }
 
 void	wrong_color(char *color_strimed, char ***line_splitted)
@@ -126,13 +134,8 @@ int	import_elemt(t_s *s, char *line)
 		return (-1);
 	while (is_blank_char(*line))
 		line++;
-	identifier = get_identifier(line);
-	if (identifier == -1)
-	{
-		error_msg("[import_elemt] wrong identifier");
-		return (-1);
-	}
-	else if (identifier == 11)
+	identifier = get_identifier(s, line);
+	if (identifier == 11)
 		return (1);
 	else
 	{
@@ -157,7 +160,7 @@ int	import_elemt(t_s *s, char *line)
 
 int	parsing_loop(char *line, t_s *s, int *map_parse)
 {
-	if (!is_blank_line(line))
+	if (!is_blank_line(line) || *map_parse)
 	{
 		if (!*map_parse)
 			*map_parse = import_elemt(s, line);
@@ -176,7 +179,7 @@ void	set_default(t_s *s)
 	s->i->ceiling_color = rgb_conv(0, 255, 0);
 }
 
-static int is_available_mapcase(char c, int *is_pers)
+int is_available_mapcase(char c, int *is_pers)
 {
 	unsigned int	i;
 	unsigned int	available_mapcase;
@@ -201,7 +204,7 @@ static int is_available_mapcase(char c, int *is_pers)
 	return (available_mapcase);
 }
 
-static int	is_border(t_s *s, int x, int y, int matrix_len)
+int	is_border(t_s *s, int x, int y, int matrix_len)
 {
 	if (s->map[y][x] == EMPTY)
 		return (0);
@@ -225,7 +228,7 @@ int	check_map(t_s *s)
 	contains_pers = 0;
 	y = 0;
 	if (!s || !s->map)
-		return (-1);
+		exit_msg(s, "[check_map] map is empty", -1);
 	while (s->map[y])
 	{
 		x = 0;
@@ -245,6 +248,19 @@ int	check_map(t_s *s)
 	return (1);
 }
 
+int	file_extention_available(char *fname)
+{
+	char *p_ext;
+
+	if (fname)
+	{
+		p_ext = ft_strnstr(fname, ".cub", ft_strlen(fname));
+		if (ft_strlen_char(p_ext, ' ') == 4)
+			return (1);
+	}
+	return (0);
+}
+
 int	parse_file(char *fname, t_s	*s)
 {
 	int		fd;
@@ -258,7 +274,9 @@ int	parse_file(char *fname, t_s	*s)
 	s->i->texture_path[SO] = NULL;
 	s->i->texture_path[EA] = NULL;
 	s->i->texture_path[WE] = NULL;
-	//set_default(s);
+	set_default(s);
+	if (!file_extention_available(fname))
+		exit_msg(s, "[parse_file] only .cub extension", -1);
 	fd = open(fname, O_RDONLY);
 	if (fd == -1)
 	{
