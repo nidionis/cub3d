@@ -46,7 +46,7 @@ int	conv_id_param(t_s *s, int identifier_len, char *str)
 	char	**identifiers;
 
 	if (identifier_len == 2)
-		identifiers = ft_split("NO ,SE ,WE ,EA ", ',');
+		identifiers = ft_split("NO ,SO ,WE ,EA ", ',');
 	else if (identifier_len == 1)
 		identifiers = ft_split("F ,C ", ',');
 	ret = -1;
@@ -76,98 +76,92 @@ int	get_identifier(t_s *s, char *str)
 	if (is_map_line(str))
 		return (11);
 	if (identifier_len > 2 || identifier_len < 1)
-		exit_msg(s, "[get_identifier] wrong parsing", -1);
+		exit_msg(s, "[get_identifier] wrong param identifier", -1);
 	return (conv_id_param(s, identifier_len, str));
 }
 
-void	wrong_color(char *color_strimed, char ***line_splitted)
+void	wrong_color(t_s *s, char *color_strimed)
 {
-	error_msg("[init_f_c_color] wrong color");
 	free(color_strimed);
-	ft_free_split(line_splitted);
+	exit_msg(s, "[wrong_color]", -1);
 }
 
-int	init_f_c_color(t_s *s, char *line)
+unsigned int	init_f_c_color(t_s *s, char *line)
 {
-	char	**line_splitted;
 	int		colors[3];
 	char	*color_strimed;
 	int		i;
 	(void)s;
 
-	line++;
 	i = 0;
-	line_splitted = ft_split(line, ',');
-	while (line_splitted[i])
+	line++;
+	s->line_split = ft_split(line, ',');
+	if (ft_matrixlen(s->line_split) != 3)
+		wrong_color(s, NULL);
+	while (s->line_split[i])
 	{
-		color_strimed = ft_strtrim(line_splitted[i], " \t");
-		if (ft_strlen(color_strimed) > 3)
-		{
-			wrong_color(color_strimed, &line_splitted);
-			return (-1);
-		}
-		colors[i] = ft_atoi(line_splitted[i]);
-		if (colors[i] > 255 && colors[i] < 0)
-		{
-			wrong_color(color_strimed, &line_splitted);
-			return (-1);
-		}
-		if (i > 3)
-		{
-			wrong_color(color_strimed, &line_splitted);
-			return (-1);
-		}
+		color_strimed = ft_strtrim(s->line_split[i], " \t");
+		printf("[color[i] trimed = %s\n", color_strimed);
+		if (ft_strlen(color_strimed) > 3 || !ft_strlen(color_strimed))
+			wrong_color(s, color_strimed);
+		colors[i] = ft_atoi(s->line_split[i]);
+		printf("[color[i] = %d\n", colors[i]);
+		if (colors[i] > 255 || colors[i] < 0)
+			wrong_color(s, color_strimed);
 		free(color_strimed);
 		i++;
 	}
-	ft_free_split(&line_splitted);
-	return (1);
+	return (rgb_conv(colors[0], colors[1], colors[2]));
 }
 
-int	import_elemt(t_s *s, char *line)
+int	import_elemt(t_s *s)
 {
 	int		identifier;
-	char	**line_splitted;
 	int		i;
+	char *line;
 
+	line = s->line;
 	if (!line)
 		return (-1);
 	while (is_blank_char(*line))
 		line++;
 	identifier = get_identifier(s, line);
+	printf("[import], s->line: %s => id: %d\n", s->line, identifier);
 	if (identifier == 11)
 		return (1);
 	else
 	{
-		if (identifier == F || identifier == C)
-		{
-			if (init_f_c_color(s, line) == -1)
-				return (-1);
-		}
+		if (identifier == F)
+			s->i->floor_color = init_f_c_color(s, line);
+		else if (identifier == C)
+			s->i->ceiling_color = init_f_c_color(s, line);
 		else
 		{
-			line_splitted = ft_split(line, ' ');
-			if (ft_matrixlen(line_splitted) > 3)
-				error_msg("[import_elemt] WARNING: check .cub file");
+			s->line_split = ft_split(line, ' ');
+			if (ft_matrixlen(s->line_split) > 3)
+				error_msg("[import_elemt] WARNING: check .cub file (could be cleaner)");
 			i = 1;
-			while (line_splitted[i] != NULL && !ft_strncmp(line_splitted[i], "", 1))
+			while (s->line_split[i] != NULL && is_blank_line(s->line_split[i]))
 				i++;
-			s->i->texture_path[identifier] = ft_substr(line_splitted[i], 0, ft_strlen_char(line_splitted[i], ' '));
+			if (s->i->texture_path[identifier])
+				exit_msg(s, "param identifier must be unique", -1);
+			s->i->texture_path[identifier] = ft_substr(s->line_split[i], 0, ft_strlen_char(s->line_split[i], ' '));
 		}
 	}
+	ft_free_split(&s->line_split);
 	return (0);
 }
 
-int	parsing_loop(char *line, t_s *s, int *map_parse)
+int	parsing_loop(t_s *s, int *map_parse)
 {
-	if (!is_blank_line(line) || *map_parse)
+	if (!is_blank_line(s->line) || *map_parse)
 	{
 		if (!*map_parse)
-			*map_parse = import_elemt(s, line);
+			*map_parse = import_elemt(s);
 		if (*map_parse == 1)
-			s->map = ft_append_tab(s->map, ft_strtrim(line, "\n"));
+			s->map = ft_append_tab(s->map, ft_strtrim(s->line, "\n"));
 	}
-	free(line);
+	free(s->line);
 	if (*map_parse == -1)
 			return (-1);
 	return (1);
@@ -265,7 +259,6 @@ int	parse_file(char *fname, t_s	*s)
 {
 	int		fd;
 	int		map_parse;
-	char	*line;
 
 	map_parse = 0;
 	if (s)
@@ -283,15 +276,15 @@ int	parse_file(char *fname, t_s	*s)
 		error_msg("[parse_file] Error opening file (check file name)");
 		return (-1);
 	}
-	line = get_next_line(fd);
-	if (line)
+	s->line = get_next_line(fd);
+	if (s->line)
 	{
-		while (line)
+		while (s->line)
 		{
-			parsing_loop(line, s, &map_parse);
+			parsing_loop(s, &map_parse);
 			if (map_parse == -1)
 				break ;
-			line = get_next_line(fd);
+			s->line = get_next_line(fd);
 		}
 	}
 	close(fd);

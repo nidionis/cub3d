@@ -63,6 +63,10 @@ void	clean_exit(t_s *s, int exit_code)
 {
 	if (s)
 	{
+		if (s->line)
+			free(s->line);
+		if (s->line_split)
+			ft_free_split(&s->line_split);
 		if (s->map)
 			ft_free_split(&s->map);
 		if (s->p)
@@ -112,6 +116,8 @@ int	main(int argc, char *argv[])
 			printf("etxturepath EA: %s\n", s->i->texture_path[EA]);
 		if ( s->i->texture_path[WE])
 			printf("etxturepath WE: %s\n", s->i->texture_path[WE]);
+		printf("floor_color: %ui\n", s->i->floor_color);
+		printf("ceiling_color: %ui\n", s->i->ceiling_color);
 		//s->map = default_map(argv);
 		/*
 		img.mlx_ptr = mlx_init();

@@ -125,6 +125,8 @@ typedef struct s_imgg
 
 typedef struct s_s
 {
+	char		*line;
+	char		**line_split;
 	t_imgg		*i;
 	t_person	*p;
 	char		**map;
