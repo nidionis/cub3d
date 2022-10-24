@@ -38,7 +38,7 @@ fin tant que
 void	ray_parse(t_s *s)
 {
 	int			i;
-	t_pt		cam;
+	int			camX;
 	t_pt		rayDir;
 	t_person	*pers;
 	(void)rayDir;
@@ -48,10 +48,14 @@ void	ray_parse(t_s *s)
 	while (i < RAYCAST_QUALITY)
     {
       //calculate ray position and direction
-      cam.x = (double)2 * i / (double)RAYCAST_QUALITY - 1; //x-coordinate in camera space
-      rayDir.x = pers->dir.x + pers->plane.x * cam.x;
-      rayDir.y = pers->dir.x + pers->plane.y * cam.y;
+      camX = 2 * i / RAYCAST_QUALITY - 1; //x-coordinate in camera space
+      rayDir.x = pers->dir.x + pers->plane.x * camX;
+      rayDir.y = pers->dir.y + pers->plane.y * camX;
 	  i++;
+	/*
+	 deltaDistX = abs(1 / rayDirX)
+	deltaDistY = abs(1 / rayDirY)
+	*/
 	}
 }
 
@@ -118,7 +122,7 @@ int	main(int argc, char *argv[])
 	mlx_mouse_hook(img.win_ptr, manage_expose, &img);
 	mlx_loop(img.mlx_ptr);
 	*/
+		ft_free_split(&s->map);
 	}
-	if (s)
-		clean_exit(s);
+	exit (0);
 }

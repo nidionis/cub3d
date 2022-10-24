@@ -17,11 +17,14 @@ void	ft_free_split(char ***tab)
 	int	i;
 
 	i = 0;
-	while ((*tab)[i])
+	if (*tab)
 	{
-		free((*tab)[i]);
-		(*tab)[i] = NULL;
-		i++;
+		while ((*tab)[i])
+		{
+			free((*tab)[i]);
+			(*tab)[i] = NULL;
+			i++;
+		}
 	}
 	free(*tab);
 	*tab = NULL;
