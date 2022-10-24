@@ -58,13 +58,13 @@
 # define UP_ARROW 126
 
 //MACROS 
-# define WALL '1' 
-# define FLOOR '0'
-# define EMPTY ' '
-# define NORTH 'N'
-# define SOUTH 'S'
-# define WEST 'W'
-# define EAST 'E'
+# define WALL 49
+# define FLOOR 48
+# define EMPTY 32
+# define NORTH 78
+# define SOUTH 83
+# define WEST 87
+# define EAST 69
 # define SCREEN_WIDTH 640
 # define SCREEN_HEIGHT 480
 # define RAYCAST_QUALITY 50

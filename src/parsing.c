@@ -29,14 +29,14 @@ int	is_map_line(char *str)
 	{
 		while (*str)
 		{
-			if (!(*str == ' ' || ft_isdigit(*str)))
+			if (!(*str == ' ' || ft_isdigit(*str) || *str == '\n'))
 				return (0);
 			str++;
 		}
 		return (1);
 	}
 	else
-		return (0);
+		return (1);
 }
 
 int	get_identifier(char *str)
@@ -48,21 +48,18 @@ int	get_identifier(char *str)
 
 	ret = -1;
 	identifier_len = ft_strlen_char(str, ' ');
+	if (is_map_line(str))
+		return (11);
 	if (identifier_len > 2 || identifier_len < 1)
-	{
-		if (is_map_line(str))
-			return (1);
-		else
-			return (-1);
-	}
+		return (-1);
 	else if (identifier_len == 2)
-		identifiers = ft_split("NO,SE,WE,EA", ',');
+		identifiers = ft_split("NO ,SE ,WE ,EA ", ',');
 	else if (identifier_len == 1)
 		identifiers = ft_split("F,C", ',');
 	i = 0;
 	while (identifiers[i])
 	{
-		if (!ft_strncmp(identifiers[i], str, identifier_len))
+		if (!ft_strncmp(identifiers[i], str, identifier_len + 1))
 		{
 			ret = i;
 			break ;
@@ -135,6 +132,8 @@ int	import_elemt(t_s *s, char *line)
 		error_msg("[import_elemt] wrong identifier");
 		return (-1);
 	}
+	else if (identifier == 11)
+		return (1);
 	else
 	{
 		if (identifier == F || identifier == C)
@@ -145,10 +144,10 @@ int	import_elemt(t_s *s, char *line)
 		else
 		{
 			line_splitted = ft_split(line, ' ');
-			if (ft_matrixlen(line_splitted) > 2)
+			if (ft_matrixlen(line_splitted) > 3)
 				error_msg("[import_elemt] WARNING: check .cub file");
 			i = 1;
-			while (&line_splitted[i] != NULL && !ft_strncmp(line_splitted[i], "", 1))
+			while (line_splitted[i] != NULL && !ft_strncmp(line_splitted[i], "", 1))
 				i++;
 			s->i->texture_path[identifier] = ft_substr(line_splitted[i], 0, ft_strlen_char(line_splitted[i], ' '));
 		}
@@ -179,9 +178,12 @@ void	set_default(t_s *s)
 
 static int is_available_mapcase(char c)
 {
-	if (c == FLOOR || c == WALL || c == EMPTY)
+	if (!(c == WALL || c == FLOOR || c == EMPTY))
+	{
+		fprintf(stderr, "%c\n", c);
+		error_msg("[is_available_mapcase] map contains unavailable case.");
 		return (1);
-	error_msg("[is_available_mapcase] map contains unavailable case.");
+	}
 	return (0);
 }
 
@@ -218,9 +220,9 @@ int	check_map(t_s *s)
 				error_msg("[check_map] map not surrounded by walls.");
 				return (-1);
 			}
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
 	return (1);
 }
