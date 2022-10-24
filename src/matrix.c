@@ -39,7 +39,7 @@ int	ft_matrixlen(char **matrix)
 void	print_tab(char **tab)
 {
 	while (*tab)
-		printf("%s", *tab++);
+		printf("%s\n", *tab++);
 }
 
 char	**default_map(char	*argv[])

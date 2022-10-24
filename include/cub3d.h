@@ -65,6 +65,8 @@
 # define SOUTH 83
 # define WEST 87
 # define EAST 69
+/* for is_available_mapcase : keep directions at the end */
+# define MAPCASES "01 NSEW"
 # define SCREEN_WIDTH 640
 # define SCREEN_HEIGHT 480
 # define RAYCAST_QUALITY 50
@@ -158,4 +160,5 @@ void			print_tab(char **tab);
 int				ft_matrixlen(char **matrix);
 char			**ft_append_tab(char **matrix, char *str);
 int	parse_file(char *fname, t_s	*s);
+void	exit_msg(t_s *s, char *msg, int ret_exit);
 #endif

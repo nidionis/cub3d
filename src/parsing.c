@@ -176,15 +176,29 @@ void	set_default(t_s *s)
 	s->i->ceiling_color = rgb_conv(0, 255, 0);
 }
 
-static int is_available_mapcase(char c)
+static int is_available_mapcase(char c, int *is_pers)
 {
-	if (!(c == WALL || c == FLOOR || c == EMPTY))
+	unsigned int	i;
+	unsigned int	available_mapcase;
+	unsigned int	nb_mapcases;
+	char			*mapcases;
+
+	available_mapcase = 0;
+	mapcases = ft_strdup(MAPCASES);
+	i = 0;
+	nb_mapcases = ft_strlen(mapcases);
+	while (i < nb_mapcases)
 	{
-		fprintf(stderr, "%c\n", c);
-		error_msg("[is_available_mapcase] map contains unavailable case.");
-		return (1);
+		if (c == mapcases[i++])
+		{
+			available_mapcase = 1;
+			break ;
+		}
+		if (i >= nb_mapcases - 4)
+			*is_pers += 1;
 	}
-	return (0);
+	free(mapcases);
+	return (available_mapcase);
 }
 
 static int	is_border(t_s *s, int x, int y, int matrix_len)
@@ -195,6 +209,8 @@ static int	is_border(t_s *s, int x, int y, int matrix_len)
 			return (1);
 	else if (s->map[y - 1][x] == EMPTY || s->map[y][x - 1] == EMPTY ||s->map[y + 1][x] == EMPTY || s->map[y][x + 1] == EMPTY)
 		return (1);
+	else if (s->map[y - 1][x] == '\0' || s->map[y][x - 1] == '\0' ||s->map[y + 1][x] == '\0' || s->map[y][x + 1] == '\0')
+		return (1);
 	return (0);
 }
 
@@ -203,8 +219,10 @@ int	check_map(t_s *s)
 	int	x;
 	int	y;
 	int	matrix_len;
+	int	contains_pers;
 
 	matrix_len = ft_matrixlen(s->map);
+	contains_pers = 0;
 	y = 0;
 	if (!s || !s->map)
 		return (-1);
@@ -213,17 +231,17 @@ int	check_map(t_s *s)
 		x = 0;
 		while (s->map[y][x])
 		{
-			if (!is_available_mapcase(s->map[y][x]))
-				return (-1);
+			if (!is_available_mapcase(s->map[y][x], &contains_pers))
+				exit_msg(s, "[check_map] map contains unavailable char.", -10);
 			if (is_border(s, x, y, matrix_len) && s->map[y][x] != WALL)
-			{
-				error_msg("[check_map] map not surrounded by walls.");
-				return (-1);
-			}
+				exit_msg(s, "[check_map] map not surrounded by walls.", -11);
 			x++;
 		}
 		y++;
 	}
+	if (contains_pers != 1)
+		exit_msg(s, "[check_map] Map does not contains one hero only", -12);
+	printf("[is_available_mapcase] ok\n");
 	return (1);
 }
 
@@ -236,6 +254,10 @@ int	parse_file(char *fname, t_s	*s)
 	map_parse = 0;
 	if (s)
 		s->map = NULL;
+	s->i->texture_path[NO] = NULL;
+	s->i->texture_path[SO] = NULL;
+	s->i->texture_path[EA] = NULL;
+	s->i->texture_path[WE] = NULL;
 	//set_default(s);
 	fd = open(fname, O_RDONLY);
 	if (fd == -1)
@@ -244,7 +266,6 @@ int	parse_file(char *fname, t_s	*s)
 		return (-1);
 	}
 	line = get_next_line(fd);
-	printf("[parse_file] line: %s\n", line);
 	if (line)
 	{
 		while (line)

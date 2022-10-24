@@ -59,7 +59,7 @@ void	ray_parse(t_s *s)
 	}
 }
 
-void	clean_exit(t_s *s)
+void	clean_exit(t_s *s, int exit_code)
 {
 	if (s)
 	{
@@ -71,8 +71,15 @@ void	clean_exit(t_s *s)
 			free(s->i);
 		free(s);
 	}
-	exit(0);
+	exit(exit_code);
 }
+
+void	exit_msg(t_s *s, char *msg, int ret_exit)
+{
+	error_msg(msg);
+	clean_exit(s, ret_exit);
+}
+
 
 int	main(int argc, char *argv[])
 {
@@ -85,19 +92,26 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		error_msg("Needs a path to the map file only");
-		clean_exit(s);
+		clean_exit(s, -2);
 	}
 	else
 	{
 		s = malloc(sizeof(t_s));
 		if (!s)
-			return (-1);
+			clean_exit(s, -4);
+		s->i = malloc(sizeof(t_imgg));
+		if (!s->i)
+			clean_exit(s, -5);
 		if (parse_file(argv[1], s) == -1)
-			clean_exit(s);
-		printf("etxturepath NO: %s\n", s->i->texture_path[NO]);
-		printf("etxturepath SO: %s\n", s->i->texture_path[SO]);
-		printf("etxturepath EA: %s\n", s->i->texture_path[EA]);
-		printf("etxturepath WE: %s\n", s->i->texture_path[WE]);
+			clean_exit(s, -3);
+		if ( s->i->texture_path[NO])
+			printf("etxturepath NO: %s\n", s->i->texture_path[NO]);
+		if ( s->i->texture_path[SO])
+			printf("etxturepath SO: %s\n", s->i->texture_path[SO]);
+		if ( s->i->texture_path[EA])
+			printf("etxturepath EA: %s\n", s->i->texture_path[EA]);
+		if ( s->i->texture_path[WE])
+			printf("etxturepath WE: %s\n", s->i->texture_path[WE]);
 		//s->map = default_map(argv);
 		/*
 		img.mlx_ptr = mlx_init();
@@ -122,6 +136,7 @@ int	main(int argc, char *argv[])
 	mlx_mouse_hook(img.win_ptr, manage_expose, &img);
 	mlx_loop(img.mlx_ptr);
 	*/
+		print_tab(s->map);
 		ft_free_split(&s->map);
 	}
 	exit (0);
