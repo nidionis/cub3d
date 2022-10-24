@@ -25,12 +25,18 @@ unsigned int	rgb_conv(int R, int G, int B)
 
 int	is_map_line(char *str)
 {
-	while (*str)
+	if (str)
 	{
-		if (!(*str == ' ' || ft_isdigit(*str)))
-			return (0);
+		while (*str)
+		{
+			if (!(*str == ' ' || ft_isdigit(*str)))
+				return (0);
+			str++;
+		}
+		return (1);
 	}
-	return (1);
+	else
+		return (0);
 }
 
 int	get_identifier(char *str)
