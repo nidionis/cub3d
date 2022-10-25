@@ -97,26 +97,28 @@ int	is_border(t_s *s, int x, int y, int matrix_len)
 
 void	check_map_line(t_s *s, int y, int *nb_pers)
 {
-	int	x;
+	int		x;
+	int		map_len;
+	char	c;
 
+	map_len = ft_matrixlen(s->map);
 	x = 0;
-	while (s->map[y][x])
+	c = s->map[y][0];
+	while (c)
 	{
 		if (!is_available_mapcase(s, x, y, nb_pers))
 			exit_msg(s, "[check_map] map contains unavailable char.", -10);
-		if (is_border(s, x, y, ft_matrixlen(s->map)) && s->map[y][x] != WALL)
+		if (is_border(s, x, y, map_len) && c != WALL)
 			exit_msg(s, "[check_map] map not surrounded by walls.", -11);
-		x++;
+		c = s->map[y][++x];
 	}
 }
 
 int	check_map(t_s *s)
 {
 	int	y;
-	int	matrix_len;
 	int	nb_pers;
 
-	matrix_len = ft_matrixlen(s->map);
 	nb_pers = 0;
 	y = 0;
 	if (!s || !s->map)

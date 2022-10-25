@@ -169,4 +169,5 @@ int	is_blank_char(char c);
 int	is_map_line(char *str);
 int	check_map(t_s *s);
 unsigned int	init_f_c_color(t_s *s, char *line);
+void	print_pers(t_s *s);
 #endif

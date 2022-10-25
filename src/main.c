@@ -58,6 +58,20 @@ void	ray_parse(t_s *s)
 	}
 }
 
+t_s	*malloc_s(void)
+{
+	t_s	*s;
+
+	s = malloc(sizeof(t_s));
+	if (!s)
+		clean_exit(s, -4);
+	s->i = malloc(sizeof(t_imgg));
+	if (!s->i)
+		clean_exit(s, -5);
+	s->p = malloc(sizeof(t_person));
+	return (s);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_imgg	img;
@@ -73,13 +87,12 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		s = malloc(sizeof(t_s));
-		if (!s)
-			clean_exit(s, -4);
-		s->i = malloc(sizeof(t_imgg));
-		if (!s->i)
+		s = malloc_s();
+		if (!s->p)
 			clean_exit(s, -5);
 		parse_file(argv[1], s);
+		print_pers(s);
+		/*
 		img.mlx_ptr = mlx_init();
 		//img_default_init(&img);
 		img.win_ptr = mlx_new_window(img.mlx_ptr, \
@@ -91,14 +104,13 @@ int	main(int argc, char *argv[])
 			&(img.bpp), &(img.line_len), &(img.endian));
 		//img.f(&img);
 		//mlx_hook(img.win_ptr, ON_DESTROY, 0, clean_exit, &s);
-		/*
 		mlx_put_image_to_window(img.mlx_ptr, img.win_ptr, img.img_ptr, 0, 0);
 		mlx_key_hook(img.win_ptr, manage_keystroke, &img);
 		mlx_mouse_hook(img.win_ptr, manage_mouse, &img);
 		mlx_mouse_hook(img.win_ptr, manage_expose, &img);
-	*/
 		mlx_loop(img.mlx_ptr);
 		print_tab(s->map);
+	*/
 	}
 	clean_exit(s, 0);
 }
