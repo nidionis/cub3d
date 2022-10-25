@@ -6,106 +6,11 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 13:21:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:42:19 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-unsigned int	rgb_conv(int R, int G, int B)
-{
-	return ((unsigned int) R * 65536 + (unsigned int) G * 256 + B);
-}
-
-char	**get_identifiers_ls(int identifier_len)
-{
-	char	**identifiers;
-
-	identifiers = NULL;
-	if (identifier_len == 2)
-		identifiers = ft_split("NO ,SO ,WE ,EA ", ',');
-	else if (identifier_len == 1)
-		identifiers = ft_split("F ,C ", ',');
-	return (identifiers);
-}
-
-static int refresh_ret_if_is_param(char **identifiers, int *ret, int *i, char *str, int identifier_len)
-{
-	if (!ft_strncmp(identifiers[*i], str, identifier_len + 1))
-	{
-		*ret = *i;
-		return (1);
-	}
-	(*i)++;
-	return (0);
-}
-
-int	conv_id_param(t_s *s, int identifier_len, char *str)
-{
-	int		i;
-	int		ret;
-	char	**identifiers;
-
-	ret = -1;
-	i = 0;
-	identifiers = get_identifiers_ls(identifier_len);
-	if (identifiers)
-		while (identifiers[i])
-			if (refresh_ret_if_is_param(identifiers, &ret, &i, str, identifier_len))
-				break ;
-	ft_free_split(&identifiers);
-	if (ret == -1)
-		exit_msg(s, "[conv_id_param] wrong param identifier\n", -1);
-	if (identifier_len == 1)
-		ret += 4;
-	return (ret);
-}
-
-int	get_identifier(t_s *s, char *str)
-{
-	int		identifier_len;
-
-	identifier_len = ft_strlen_char(str, ' ');
-	if (is_map_line(str))
-		return (11);
-	if (identifier_len > 2 || identifier_len < 1)
-		exit_msg(s, "[get_identifier] wrong param identifier", -1);
-	return (conv_id_param(s, identifier_len, str));
-}
-
-void	wrong_color(t_s *s, char *color_strimed)
-{
-	free(color_strimed);
-	exit_msg(s, "[wrong_color]", -1);
-}
-
-unsigned int	init_f_c_color(t_s *s, char *line)
-{
-	int		colors[3];
-	char	*color_strimed;
-	int		i;
-	(void)s;
-
-	i = 0;
-	line++;
-	s->line_split = ft_split(line, ',');
-	if (ft_matrixlen(s->line_split) != 3)
-		wrong_color(s, NULL);
-	while (s->line_split[i])
-	{
-		color_strimed = ft_strtrim(s->line_split[i], " \t");
-		//printf("[color[i] trimed = %s\n", color_strimed);
-		if (ft_strlen(color_strimed) > 3 || !ft_strlen(color_strimed))
-			wrong_color(s, color_strimed);
-		colors[i] = ft_atoi(s->line_split[i]);
-		//printf("[color[i] = %d\n", colors[i]);
-		if (colors[i] > 255 || colors[i] < 0)
-			wrong_color(s, color_strimed);
-		free(color_strimed);
-		i++;
-	}
-	return (rgb_conv(colors[0], colors[1], colors[2]));
-}
 
 void	import_param(t_s *s, int identifier, char *line)
 {
@@ -119,20 +24,22 @@ void	import_param(t_s *s, int identifier, char *line)
 	{
 		s->line_split = ft_split(line, ' ');
 		if (ft_matrixlen(s->line_split) > 3)
-			error_msg("[import_params] WARNING: check .cub file (could be cleaner)");
+			error_msg("[import_params] WARNING: \
+					check .cub file (could be cleaner)");
 		i = 1;
 		while (s->line_split[i] != NULL && is_blank_line(s->line_split[i]))
 			i++;
 		if (s->i->texture_path[identifier])
 			exit_msg(s, "param identifier must be unique", -1);
-		s->i->texture_path[identifier] = ft_substr(s->line_split[i], 0, ft_strlen_char(s->line_split[i], ' '));
+		s->i->texture_path[identifier] = \
+		ft_substr(s->line_split[i], 0, ft_strlen_char(s->line_split[i], ' '));
 	}
 }
 
 int	import_params(t_s *s)
 {
 	int		identifier;
-	char *line;
+	char	*line;
 
 	line = s->line;
 	if (!line)
@@ -162,20 +69,7 @@ int	parsing_loop(t_s *s, int *map_parse)
 	return (1);
 }
 
-int	file_extention_available(char *fname)
-{
-	char *p_ext;
-
-	if (fname)
-	{
-		p_ext = ft_strnstr(fname, ".cub", ft_strlen(fname));
-		if (ft_strlen_char(p_ext, ' ') == 4)
-			return (1);
-	}
-	return (0);
-}
-
-void init_null(t_s *s, int *fd, char *fname, int *map_parse)
+void	init_null(t_s *s, int *fd, char *fname, int *map_parse)
 {
 	*map_parse = 0;
 	if (s)
@@ -215,4 +109,3 @@ int	parse_file(char *fname, t_s	*s)
 		map_parse = check_map(s);
 	return (map_parse);
 }
-
