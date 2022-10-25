@@ -47,7 +47,7 @@ void	check_map_line(t_s *s, int y, int *nb_pers)
 	{
 		if (!is_available_mapcase(s->map[y][x], nb_pers))
 			exit_msg(s, "[check_map] map contains unavailable char.", -10);
-		if (is_border(s, x, y, matrix_len) && s->map[y][x] != WALL)
+		if (is_border(s, x, y, ft_matrixlen(s->map)) && s->map[y][x] != WALL)
 			exit_msg(s, "[check_map] map not surrounded by walls.", -11);
 		x++;
 	}

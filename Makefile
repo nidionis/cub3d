@@ -31,7 +31,7 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJECTS) maker
-	$(CC) $(OBJECTS) $(CFLAGS) $(LIBFT) ./$(MINILIBX)/libmlx.a ${MLXFLAGS} -o $(NAME) 
+	$(CC) $(OBJECTS) $(CFLAGS) ${MLXFLAGS} $(LIBFT) ./$(MINILIBX)/libmlx.a -o $(NAME) 
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)

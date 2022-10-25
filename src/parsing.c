@@ -11,20 +11,24 @@ int	conv_id_param(t_s *s, int identifier_len, char *str)
 	int		ret;
 	char	**identifiers;
 
+	identifiers = NULL;
 	if (identifier_len == 2)
 		identifiers = ft_split("NO ,SO ,WE ,EA ", ',');
 	else if (identifier_len == 1)
 		identifiers = ft_split("F ,C ", ',');
 	ret = -1;
 	i = 0;
-	while (identifiers[i])
+	if (identifiers)
 	{
-		if (!ft_strncmp(identifiers[i], str, identifier_len + 1))
+		while (identifiers[i])
 		{
-			ret = i;
-			break ;
+			if (!ft_strncmp(identifiers[i], str, identifier_len + 1))
+			{
+				ret = i;
+				break ;
+			}
+			i++;
 		}
-		i++;
 	}
 	ft_free_split(&identifiers);
 	if (ret == -1)

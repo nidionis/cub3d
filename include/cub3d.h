@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/10 13:11:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:38:39 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #  define TOUCH_ESC 53
 
 # else   // LINUX
+#  include <X11/keysym.h>   // 
 #  define KEY_Q 113
 #  define KEY_A 97
 #  define KEY_Z 122
@@ -82,7 +83,6 @@
 # include <math.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include <X11/keysym.h>   // 
 # include <stdio.h> // test
 # include <time.h>
 # include <stdint.h>
@@ -136,31 +136,31 @@ enum _identifiers { NO, SO, WE, EA, F, C };
 
 void			error_msg(char *msg);
 
-/* img */
-unsigned int	get_offset(t_pix pix, t_imgg *data);
-void			put_pix(t_imgg *data, t_pix pix, int color);
-unsigned int	rgb_conv(int R, int G, int B);
-unsigned int	color_render(unsigned int color_byte, t_imgg *img);
-
-/* vectors */
-t_pix			get_vector(t_pix *from, t_pix *to);
-t_pix			vec_scale(t_pix vec, double scale);
-void			add_vec(t_pix	*pt, t_pix vec);
-t_pix			vec_diff(t_pix v1, t_pix v2);
-t_pix			make_pix_pt(int x, int y);
-
-/* hooks */
-int				manage_keystroke(int keystroke, void *params);
-int				manage_mouse(int button, int x, int y, void *param);
-
-/* str */
-char			*get_next_line(int fd);
-
-/* matrix */
-char			**default_map(char	*argv[]);
-void			print_tab(char **tab);
-int				ft_matrixlen(char **matrix);
-char			**ft_append_tab(char **matrix, char *str);
+char	**default_map(char	*argv[]);
+char	**ft_append_tab(char **matrix, char *str);
+char	*get_next_line(int fd);
+int func(void);
+int	conv_id_param(t_s *s, int identifier_len, char *str);
+int	file_extention_available(char *fname);
+int	ft_matrixlen(char **matrix);
+int	get_identifier(t_s *s, char *str);
+int	import_params(t_s *s);
 int	parse_file(char *fname, t_s	*s);
+int	parsing_loop(t_s *s, int *map_parse);
+t_person	*default_person(void);
+t_pix	get_vector(t_pix *from, t_pix *to);
+t_pix	vec_diff(t_pix v1, t_pix v2);
+t_pix	vec_scale(t_pix vec, double scale);
+void init_null(t_s *s, int *fd, char *fname, int *map_parse);
+void	add_vec(t_pix	*pt, t_pix vec);
+void	clean_exit(t_s *s, int exit_code);
 void	exit_msg(t_s *s, char *msg, int ret_exit);
+void	import_param(t_s *s, int identifier, char *line);
+void	print_tab(char **tab);
+void	ray_parse(t_s *s);
+void	wrong_color(t_s *s, char *color_strimed);
+int	is_blank_line(char *line);
+int	is_blank_char(char c);
+int	is_map_line(char *str);
+int	check_map(t_s *s);
 #endif
