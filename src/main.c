@@ -6,25 +6,11 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 17:44:36 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/25 20:47:42 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-t_person	*default_person(void)
-{
-	t_person	*pers;
-
-	pers = malloc(sizeof(t_person));
-	pers->pos.x = 22;
-	pers->pos.y = 12;
-	pers->dir.x = -1;
-	pers->dir.y = 0;
-	pers->plane.x = 0;
-	pers->plane.y = 0.66;
-	return (pers);
-}
 
 /*
 DDA algo
@@ -51,8 +37,8 @@ void	ray_parse(t_s *s)
 {
 	int			i;
 	int			x_cam;
-	t_pt		v_dir;
 	t_person	*pers;
+	t_pt		v_dir;
 
 	(void)v_dir;
 //cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1

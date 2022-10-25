@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 17:38:04 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/25 20:48:22 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@
 # define SOUTH 83
 # define WEST 87
 # define EAST 69
-/* for is_available_mapcase : keep directions at the end */
+/* for is_available_mapcase : keep directions at the end (see is_available_mapcase function) */
 # define MAPCASES "01 NSEW"
 # define SCREEN_WIDTH 640
 # define SCREEN_HEIGHT 480
@@ -97,13 +97,15 @@ typedef struct s_pix
 
 typedef struct s_pt
 {
-	double	x;
-	double	y;
+	int	x;
+	int	y;
 }	t_pt;
 
 typedef struct s_person
 {
-	t_pt	pos;
+
+	t_pt	pos_map;
+	t_pt	pos_box;
 	t_pt	dir;
 	t_pt	plane;
 }	t_person;

@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_msg.c                                        :+:      :+:    :+:   */
+/*   move_pers.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 13:09:34 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 18:45:08 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
+/*   Updated: 2022/10/25 20:07:13 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "cub3d.h"
 
-void	error_msg(char *msg)
+void	move_pers(t_s *s)
 {
-	int	len;
 
-	len = 0;
-	while (msg[len])
-		len++;
-	if (!msg)
-		write(2, "Error\n", 6);
-	else
-		write(2, msg, len);
 }

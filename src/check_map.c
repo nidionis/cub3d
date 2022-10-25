@@ -6,32 +6,74 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 12:54:55 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/25 20:48:37 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_available_mapcase(char c, int *is_pers)
+void	init_pers(t_s *s, int x, int y, int *is_pers)
+{
+	char			c;
+
+	c = s->map[y][x];
+	if (c == NORTH)
+	{
+		s->p->dir.x = 0;
+		s->p->dir.y = 1;
+	}
+	if (c == SOUTH)
+	{
+		s->p->dir.x = 0;
+		s->p->dir.y = -1;
+	}
+	if (c == EAST)
+	{
+		s->p->dir.x = -1;
+		s->p->dir.y = 0;
+	}
+	if (c == WEST)
+	{
+		s->p->dir.x = 1;
+		s->p->dir.y = 0;
+	}
+	s->p->pos_map.x = x;
+	s->p->pos_map.y = y;
+	//devine plnan
+	(*is_pers)++;
+}
+
+int	is_NSEW(int i, int nb_mapcases)
+{
+	if (i >= nb_mapcases - 4) //its one of the 4 last map_cases : "01 NSEW"
+		return (1);
+	else
+		return (0);
+}
+
+int	is_available_mapcase(t_s *s, int x, int y, int *is_pers)
 {
 	unsigned int	i;
 	unsigned int	available_mapcase;
 	unsigned int	nb_mapcases;
 	char			*mapcases;
+	char			c;
 
+	c = s->map[y][x];
 	available_mapcase = 0;
 	mapcases = ft_strdup(MAPCASES);
 	i = 0;
 	nb_mapcases = ft_strlen(mapcases);
 	while (i < nb_mapcases)
 	{
-		if (c == mapcases[i++])
+		if (c == mapcases[i])
 		{
+			if (is_NSEW(i, nb_mapcases))
+				init_pers(s, x, y, is_pers);
 			available_mapcase = 1;
 			break ;
 		}
-		if (i >= nb_mapcases - 4)
-			*is_pers += 1;
+		i++;
 	}
 	free(mapcases);
 	return (available_mapcase);
@@ -60,7 +102,7 @@ void	check_map_line(t_s *s, int y, int *nb_pers)
 	x = 0;
 	while (s->map[y][x])
 	{
-		if (!is_available_mapcase(s->map[y][x], nb_pers))
+		if (!is_available_mapcase(s, x, y, nb_pers))
 			exit_msg(s, "[check_map] map contains unavailable char.", -10);
 		if (is_border(s, x, y, ft_matrixlen(s->map)) && s->map[y][x] != WALL)
 			exit_msg(s, "[check_map] map not surrounded by walls.", -11);
