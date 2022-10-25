@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 13:47:48 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:13:16 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@
 # define SCREEN_WIDTH 640
 # define SCREEN_HEIGHT 480
 # define RAYCAST_QUALITY 50
+# define NB_TEXTURES 4
 
 //COLORS 
 # define RED "\033[1;31m"
@@ -116,7 +117,7 @@ typedef struct s_imgg
 	unsigned int	size[2];
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
-	char			*texture_path[4];
+	char			*texture_path[NB_TEXTURES];
 	//unsigned int	scale[2];
 	//t_pix			center;
 	//t_pix			win_center;
@@ -135,7 +136,6 @@ typedef struct s_s
 enum _identifiers { NO, SO, WE, EA, F, C };
 
 void			error_msg(char *msg);
-
 char	**default_map(char	*argv[]);
 char	**ft_append_tab(char **matrix, char *str);
 char	*get_next_line(int fd);

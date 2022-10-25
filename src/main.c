@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 13:07:39 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:15:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,31 +70,6 @@ void	ray_parse(t_s *s)
 	deltaDistY = abs(1 / rayDirY)
 	*/
 	}
-}
-
-void	clean_exit(t_s *s, int exit_code)
-{
-	if (s)
-	{
-		if (s->line)
-			free(s->line);
-		if (s->line_split)
-			ft_free_split(&s->line_split);
-		if (s->map)
-			ft_free_split(&s->map);
-		if (s->p)
-			free(s->p);
-		if (s->i)
-			free(s->i);
-		free(s);
-	}
-	exit(exit_code);
-}
-
-void	exit_msg(t_s *s, char *msg, int ret_exit)
-{
-	error_msg(msg);
-	clean_exit(s, ret_exit);
 }
 
 int	main(int argc, char *argv[])
