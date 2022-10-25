@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 14:13:16 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:38:04 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #  define TOUCH_UP 126
 #  define TOUCH_DOWN 125
 #  define TOUCH_ESC 53
+#  include "../minilibx_mac/mlx.h"
 
 # else   // LINUX
 #  include <X11/keysym.h>   // 
@@ -118,6 +119,8 @@ typedef struct s_imgg
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
 	char			*texture_path[NB_TEXTURES];
+	int				line_len;
+	int				endian;
 	//unsigned int	scale[2];
 	//t_pix			center;
 	//t_pix			win_center;
@@ -141,17 +144,17 @@ char	**ft_append_tab(char **matrix, char *str);
 char	*get_next_line(int fd);
 int func(void);
 int	conv_id_param(t_s *s, int identifier_len, char *str);
-int	file_extention_available(char *fname);
+void	file_extention_available(t_s *s, char *fname);
 int	ft_matrixlen(char **matrix);
 int	get_identifier(t_s *s, char *str);
 int	import_params(t_s *s);
-int	parse_file(char *fname, t_s	*s);
+void	parse_file(char *fname, t_s	*s);
 int	parsing_loop(t_s *s, int *map_parse);
 t_person	*default_person(void);
 t_pix	get_vector(t_pix *from, t_pix *to);
 t_pix	vec_diff(t_pix v1, t_pix v2);
 t_pix	vec_scale(t_pix vec, double scale);
-void init_null(t_s *s, int *fd, char *fname, int *map_parse);
+void init_null(t_s *s, int *map_parse);
 void	add_vec(t_pix	*pt, t_pix vec);
 void	clean_exit(t_s *s, int exit_code);
 void	exit_msg(t_s *s, char *msg, int ret_exit);

@@ -13,7 +13,7 @@ check_map	src/check_map.c	/^int	check_map(t_s *s)$/
 check_map_line	src/check_map.c	/^void	check_map_line(t_s *s, int y, int *nb_pers)$/
 circle	fractol_src/shapes.c	/^void	circle(t_imgg *img, int r, t_pix center, unsi/
 clean	minilibx-linux/configure	/^clean(){$/
-clean_exit	src/main.c	/^void	clean_exit(t_s *s, int exit_code)$/
+clean_exit	src/exit_ft.c	/^void	clean_exit(t_s *s, int exit_code)$/
 closeNotification	minilibx_mac/mlx_new_window.m	/^- (void) closeNotification:(NSNotification *)note$/
 color_render	fractol_src/pixels.c	/^unsigned int	color_render(unsigned int color_byte,/
 complex_square	fractol_src/complex.c	/^t_pt	complex_square(t_pt complex_nb)$/
@@ -27,7 +27,7 @@ display_log	minilibx_mac/mlx_shaders.c	/^void display_log(GLuint object, void (*
 do_loop_flush	minilibx_mac/mlx_init_loop.m	/^void do_loop_flush(CFRunLoopObserverRef observer, /
 do_loop_hook2	minilibx_mac/mlx_init_loop.m	/^void	do_loop_hook2(CFRunLoopTimerRef observer, voi/
 error_msg	fractol_src/error_msg.c	/^void	error_msg(char *msg)$/
-exit_msg	src/main.c	/^void	exit_msg(t_s *s, char *msg, int ret_exit)$/
+exit_msg	src/exit_ft.c	/^void	exit_msg(t_s *s, char *msg, int ret_exit)$/
 exposeNotification	minilibx_mac/mlx_new_window.m	/^- (void) exposeNotification:(NSNotification *)note/
 file_extention_available	src/parse_file_ft.c	/^int	file_extention_available(char *fname)$/
 flagsChanged	minilibx_mac/mlx_new_window.m	/^- (void) flagsChanged:(NSEvent *)theEvent$/

@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 14:15:36 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:44:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,34 +93,26 @@ int	main(int argc, char *argv[])
 		s->i = malloc(sizeof(t_imgg));
 		if (!s->i)
 			clean_exit(s, -5);
-		if (parse_file(argv[1], s) == -1)
-			clean_exit(s, -3);
-		//s->map = default_map(argv);
-		/*
+		parse_file(argv[1], s);
 		img.mlx_ptr = mlx_init();
-		img_default_init(&img);
-		if ((argv[1][0] == 'j' || argv[1][0] == 'J') && !argv[1][1])
-			img.f = julia;
-		else
-			img.f = mandelbrot;
-	}
-	img.win_ptr = mlx_new_window(img.mlx_ptr, \
-		img.size[0], img.size[1], "fractol");
-	set_win_center(&img);
-	img.img_ptr = mlx_new_image(img.mlx_ptr, \
-		img.size[0], img.size[1]);
-	img.addr = mlx_get_data_addr(img.img_ptr, \
-		&(img.bpp), &(img.line_len), &(img.endian));
-	img.f(&img);
-	mlx_put_image_to_window(img.mlx_ptr, img.win_ptr, img.img_ptr, 0, 0);
-	mlx_hook(img.win_ptr, ON_DESTROY, 0, quit, &img);
-	mlx_key_hook(img.win_ptr, manage_keystroke, &img);
-	mlx_mouse_hook(img.win_ptr, manage_mouse, &img);
-	mlx_mouse_hook(img.win_ptr, manage_expose, &img);
-	mlx_loop(img.mlx_ptr);
+		//img_default_init(&img);
+		img.win_ptr = mlx_new_window(img.mlx_ptr, \
+			img.size[0], img.size[1], "cub3d");
+		//set_win_center(&img);
+		img.img_ptr = mlx_new_image(img.mlx_ptr, \
+			img.size[0], img.size[1]);
+		img.addr = mlx_get_data_addr(img.img_ptr, \
+			&(img.bpp), &(img.line_len), &(img.endian));
+		//img.f(&img);
+		//mlx_hook(img.win_ptr, ON_DESTROY, 0, clean_exit, &s);
+		/*
+		mlx_put_image_to_window(img.mlx_ptr, img.win_ptr, img.img_ptr, 0, 0);
+		mlx_key_hook(img.win_ptr, manage_keystroke, &img);
+		mlx_mouse_hook(img.win_ptr, manage_mouse, &img);
+		mlx_mouse_hook(img.win_ptr, manage_expose, &img);
 	*/
+		mlx_loop(img.mlx_ptr);
 		print_tab(s->map);
-		ft_free_split(&s->map);
 	}
-	exit (0);
+	clean_exit(s, 0);
 }
