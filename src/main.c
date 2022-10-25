@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
+/*   Updated: 2022/10/25 13:07:39 by supersko         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 t_person	*default_person(void)
@@ -38,20 +50,21 @@ fin tant que
 void	ray_parse(t_s *s)
 {
 	int			i;
-	int			camX;
-	t_pt		rayDir;
+	int			x_cam;
+	t_pt		v_dir;
 	t_person	*pers;
-	(void)rayDir;
+
+	(void)v_dir;
 //cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1
 	pers = s->p;
 	i = 0;
 	while (i < RAYCAST_QUALITY)
-    {
-      //calculate ray position and direction
-      camX = 2 * i / RAYCAST_QUALITY - 1; //x-coordinate in camera space
-      rayDir.x = pers->dir.x + pers->plane.x * camX;
-      rayDir.y = pers->dir.y + pers->plane.y * camX;
-	  i++;
+	{
+		//calculate ray position and direction
+		x_cam = 2 * i / RAYCAST_QUALITY - 1; //x-coordinate in camera space
+		v_dir.x = pers->dir.x + pers->plane.x * x_cam;
+		v_dir.y = pers->dir.y + pers->plane.y * x_cam;
+		i++;
 	/*
 	 deltaDistX = abs(1 / rayDirX)
 	deltaDistY = abs(1 / rayDirY)
@@ -84,14 +97,13 @@ void	exit_msg(t_s *s, char *msg, int ret_exit)
 	clean_exit(s, ret_exit);
 }
 
-
 int	main(int argc, char *argv[])
 {
 	t_imgg	img;
 	t_s		*s;
+
 	(void)img;
 	(void)argv;
-
 	s = NULL;
 	if (argc != 2)
 	{
@@ -108,16 +120,6 @@ int	main(int argc, char *argv[])
 			clean_exit(s, -5);
 		if (parse_file(argv[1], s) == -1)
 			clean_exit(s, -3);
-		if ( s->i->texture_path[NO])
-			printf("etxturepath NO: %s\n", s->i->texture_path[NO]);
-		if ( s->i->texture_path[SO])
-			printf("etxturepath SO: %s\n", s->i->texture_path[SO]);
-		if ( s->i->texture_path[EA])
-			printf("etxturepath EA: %s\n", s->i->texture_path[EA]);
-		if ( s->i->texture_path[WE])
-			printf("etxturepath WE: %s\n", s->i->texture_path[WE]);
-		printf("floor_color: %ui\n", s->i->floor_color);
-		printf("ceiling_color: %ui\n", s->i->ceiling_color);
 		//s->map = default_map(argv);
 		/*
 		img.mlx_ptr = mlx_init();

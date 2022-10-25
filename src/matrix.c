@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   matrix.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
+/*   Updated: 2022/10/25 13:06:58 by supersko         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 char	**ft_append_tab(char **matrix, char *str)
@@ -53,7 +65,11 @@ char	**default_map(char	*argv[])
 		fd = open(argv[1], O_RDONLY);
 	else
 		fd = open("test.cub", O_RDONLY);
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
+	{
 		map = ft_append_tab(map, line);
+		line = get_next_line(fd);
+	}
 	return (map);
 }

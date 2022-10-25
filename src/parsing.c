@@ -1,8 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
+/*   Updated: 2022/10/25 13:21:05 by supersko         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 unsigned int	rgb_conv(int R, int G, int B)
 {
 	return ((unsigned int) R * 65536 + (unsigned int) G * 256 + B);
+}
+
+char	**get_identifiers_ls(int identifier_len)
+{
+	char	**identifiers;
+
+	identifiers = NULL;
+	if (identifier_len == 2)
+		identifiers = ft_split("NO ,SO ,WE ,EA ", ',');
+	else if (identifier_len == 1)
+		identifiers = ft_split("F ,C ", ',');
+	return (identifiers);
+}
+
+static int refresh_ret_if_is_param(char **identifiers, int *ret, int *i, char *str, int identifier_len)
+{
+	if (!ft_strncmp(identifiers[*i], str, identifier_len + 1))
+	{
+		*ret = *i;
+		return (1);
+	}
+	(*i)++;
+	return (0);
 }
 
 int	conv_id_param(t_s *s, int identifier_len, char *str)
@@ -11,25 +46,13 @@ int	conv_id_param(t_s *s, int identifier_len, char *str)
 	int		ret;
 	char	**identifiers;
 
-	identifiers = NULL;
-	if (identifier_len == 2)
-		identifiers = ft_split("NO ,SO ,WE ,EA ", ',');
-	else if (identifier_len == 1)
-		identifiers = ft_split("F ,C ", ',');
 	ret = -1;
 	i = 0;
+	identifiers = get_identifiers_ls(identifier_len);
 	if (identifiers)
-	{
 		while (identifiers[i])
-		{
-			if (!ft_strncmp(identifiers[i], str, identifier_len + 1))
-			{
-				ret = i;
+			if (refresh_ret_if_is_param(identifiers, &ret, &i, str, identifier_len))
 				break ;
-			}
-			i++;
-		}
-	}
 	ft_free_split(&identifiers);
 	if (ret == -1)
 		exit_msg(s, "[conv_id_param] wrong param identifier\n", -1);
