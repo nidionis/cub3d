@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:11:38 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:47:21 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ void	ray_parse( t_data *data)
 {
 	int			i;
 	int			x_cam;
-	t_person	*pers;
-	t_pt		v_dir;
+	t_player	*player;
+	t_vector		v_dir;
 
 	(void)v_dir;
 //cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1
-	pers = data->p;
+	player = data->player;
 	i = 0;
 	while (i < RAYCAST_QUALITY)
 	{
 		//calculate ray position and direction
 		x_cam = 2 * i / RAYCAST_QUALITY - 1; //x-coordinate in camera space
-		v_dir.x = pers->dir.x + pers->plane.x * x_cam;
-		v_dir.y = pers->dir.y + pers->plane.y * x_cam;
+		v_dir.x = player->dir.x + player->plane.x * x_cam;
+		v_dir.y = player->dir.y + player->plane.y * x_cam;
 		i++;
 	/*
 	 deltaDistX = abs(1 / rayDirX)
@@ -64,17 +64,17 @@ void	ray_parse( t_data *data)
 
 	 data = malloc(sizeof( t_data));
 	if (! data)
-		clean_exit( data, -4);
-	data->i = malloc(sizeof(t_imgg));
+		clean_exit(data, -4);
+	data->i = malloc(sizeof(t_image));
 	if (!data->i)
-		clean_exit( data, -5);
-	data->p = malloc(sizeof(t_person));
-	return ( data);
+		clean_exit(data, -5);
+	data->player = malloc(sizeof(t_player));
+	return (data);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_imgg	img;
+	t_image	img;
 	 t_data		* data;
 
 	(void)img;
@@ -83,15 +83,15 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		error_msg("Needs a path to the map file only");
-		clean_exit( data, -2);
+		clean_exit(data, -2);
 	}
 	else
 	{
 		 data = malloc_s();
-		if (!data->p)
-			clean_exit( data, -5);
+		if (!data->player)
+			clean_exit(data, -5);
 		parse_file(argv[1],  data);
-		print_s( data);
+		print_data(data);
 		/*
 		img.mlx_ptr = mlx_init();
 		//img_default_init(&img);
@@ -112,5 +112,5 @@ int	main(int argc, char *argv[])
 		print_tab(data->map);
 	*/
 	}
-	clean_exit( data, 0);
+	clean_exit(data, 0);
 }

@@ -6,13 +6,13 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/31 18:35:32 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:24:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void	img_default_init(t_imgg	*img)
+void	img_default_init(t_image	*img)
 {
 	img->bpp = sizeof(int);
 	img->endian = 0;
@@ -29,7 +29,7 @@ void	img_default_init(t_imgg	*img)
 	img->julia_coef.y = 0.008;
 }
 
-void	set_win_center(t_imgg *img)
+void	set_win_center(t_image *img)
 {
 	(img->win_center).x = img->size[0] / 2;
 	(img->win_center).y = img->size[1] / 2;

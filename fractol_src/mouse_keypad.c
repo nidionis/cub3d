@@ -6,13 +6,13 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/31 17:16:58 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:28:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-t_imgg	*zoom_in(t_imgg *img, void (*f)(), int x, int y)
+t_image	*zoom_in(t_image *img, void (*f)(), int x, int y)
 {
 	double	ratio;
 	t_pix	mouse_pix;
@@ -28,7 +28,7 @@ t_imgg	*zoom_in(t_imgg *img, void (*f)(), int x, int y)
 	return (img);
 }
 
-t_imgg	*zoom_out(t_imgg *img, void (*f)(), int x, int y)
+t_image	*zoom_out(t_image *img, void (*f)(), int x, int y)
 {
 	double	ratio;
 	t_pix	mouse_pix;
@@ -46,7 +46,7 @@ t_imgg	*zoom_out(t_imgg *img, void (*f)(), int x, int y)
 	return (img);
 }
 
-void	moving(t_imgg *img, void (*f)(), int keystroke)
+void	moving(t_image *img, void (*f)(), int keystroke)
 {
 	int	step_size;
 
@@ -62,14 +62,14 @@ void	moving(t_imgg *img, void (*f)(), int keystroke)
 	f(img);
 }
 
-void	recentrer(t_imgg *img, int x, int y)
+void	recentrer(t_image *img, int x, int y)
 {
 	t_pix	pix_clic;
-	t_pix	vec;
+	t_pix	vector;
 
 	pix_clic = make_pix_pt(x, y);
-	vec.x = (img->win_center).x - pix_clic.x;
-	vec.y = (img->win_center).y - pix_clic.y;
-	apply_vec(&(img->center), vec);
+	vector.x = (img->win_center).x - pix_clic.x;
+	vector.y = (img->win_center).y - pix_clic.y;
+	apply_vec(&(img->center), vector);
 	(img->f)(img);
 }

@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:09:41 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:47:21 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	clean_exit( t_data *data, int exit_code)
 {
 	int	i;
 
-	if ( data)
+	if (data)
 	{
 		if (data->line)
 			free(data->line);
@@ -24,8 +24,8 @@ void	clean_exit( t_data *data, int exit_code)
 			ft_free_split(&data->line_split);
 		if (data->map)
 			ft_free_split(&data->map);
-		if (data->p)
-			free(data->p);
+		if (data->player)
+			free(data->player);
 		if (data->i)
 		{
 			i = 0;
@@ -37,7 +37,7 @@ void	clean_exit( t_data *data, int exit_code)
 			}
 			free(data->i);
 		}
-		free( data);
+		free(data);
 	}
 	exit(exit_code);
 }
@@ -45,5 +45,5 @@ void	clean_exit( t_data *data, int exit_code)
 void	exit_msg( t_data *data, char *msg, int ret_exit)
 {
 	error_msg(msg);
-	clean_exit( data, ret_exit);
+	clean_exit(data, ret_exit);
 }

@@ -56,5 +56,5 @@ ft_toupper	ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
 ft_wd_count	ft_wd_count.c	/^int	ft_wd_count(char *str, char sep)$/;"	f
 is_trimable	ft_strtrim.c	/^static int	is_trimable(char c, char *trimset)$/;"	f	file:
 make_str	ft_itoa.c	/^static void	make_str(int *n, char *n_str, int i)$/;"	f	file:
-make_tab	ft_split.c	/^static char	**make_tab(char **ret, char const *data, char c, unsigned int nb_wd)$/;"	f	file:
+make_tab	ft_split.c	/^static char	**make_tab(char **returned, char const *data, char c, unsigned int nb_wd)$/;"	f	file:
 my_loc	ft_itoa.c	/^static char	*my_loc(int len)$/;"	f	file:

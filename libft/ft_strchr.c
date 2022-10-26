@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:51:11 by supersko          #+#    #+#             */
-/*   Updated: 2022/03/11 20:28:33 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:48:59 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ char	*ft_strchr(const char *s0, int c)
 // MAIN
 int test_strchr(char *str, char c)
 {
-	unsigned int ret;
+	unsigned int returned;
 	}
 
-	ret = strchr(str, c) - ft_strchr(str, c);
-	if (ret)
+	returned = strchr(str, c) - ft_strchr(str, c);
+	if (returned)
 	{
 		printf("[bug] at str: %s, c: %c\n", str, c);
 		return (1);

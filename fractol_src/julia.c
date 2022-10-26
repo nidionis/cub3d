@@ -6,16 +6,16 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/31 18:01:08 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:32:46 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-static unsigned int	julia_pix_color(t_pt pt_parser, t_imgg *img)
+static unsigned int	julia_pix_color(t_vector pt_parser, t_image *img)
 {
 	int		n;
-	t_pt	zn;
+	t_vector	zn;
 	double	tmp;
 
 	zn.x = pt_parser.x;
@@ -32,10 +32,10 @@ static unsigned int	julia_pix_color(t_pt pt_parser, t_imgg *img)
 	return (0);
 }
 
-void	julia(t_imgg *img)
+void	julia(t_image *img)
 {
 	t_pix	parser;
-	t_pt	pt_parser;
+	t_vector	pt_parser;
 
 	parser.x = 0;
 	parser.y = 0;

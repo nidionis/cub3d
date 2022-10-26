@@ -6,13 +6,13 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/31 18:51:07 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:24:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-static void	foret_de_ifs(t_imgg *img, int keystroke)
+static void	foret_de_ifs(t_image *img, int keystroke)
 {
 	if (keystroke == KEY_Q)
 	{
@@ -44,10 +44,10 @@ static void	foret_de_ifs(t_imgg *img, int keystroke)
 
 int	manage_keystroke(int keystroke, void *param)
 {
-	t_imgg	*img;
+	t_image	*img;
 
 printf("keystroke %d\n", keystroke);	
-	img = (t_imgg *)param;
+	img = (t_image *)param;
 	if (keystroke == KEY_ESC)
 	{
 		mlx_destroy_window(img->mlx_ptr, img->win_ptr);
@@ -70,9 +70,9 @@ printf("keystroke %d\n", keystroke);
 
 int	manage_mouse(int button, int x, int y, void *param)
 {
-	t_imgg	*img;
+	t_image	*img;
 
-	img = (t_imgg *)param;
+	img = (t_image *)param;
 	if (button == ON_MOUSEUP)
 		zoom_in(img, img->f, x, y);
 	if (button == ON_MOUSEDOWN)
@@ -87,10 +87,10 @@ int	manage_mouse(int button, int x, int y, void *param)
 
 int	manage_expose(int keystroke, void *param)
 {
-	t_imgg	*img;
+	t_image	*img;
 
 printf("keystroke %d\n", keystroke);	
-	img = (t_imgg *)param;
+	img = (t_image *)param;
 	if (keystroke == EXPOSE_X)
 	{
 		mlx_destroy_window(img->mlx_ptr, img->win_ptr);
@@ -99,7 +99,7 @@ printf("keystroke %d\n", keystroke);
 	return (keystroke);
 }
 
-int	quit(t_imgg *img)
+int	quit(t_image *img)
 {
 	exit(0);
 }

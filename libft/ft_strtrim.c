@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 14:33:46 by supersko          #+#    #+#             */
-/*   Updated: 2022/03/11 15:15:31 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:48:59 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	unsigned int	start;
 	unsigned int	end;
-	char			*ret;
+	char			*returned;
 	char			*new_str;
 
 	if (!s1)
@@ -42,14 +42,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 	new_str = malloc(sizeof(char) * ++end + 1);
 	if (!new_str)
 		return (NULL);
-	ret = new_str;
+	returned = new_str;
 	while (start <= end && end && *s1)
 	{
 		*new_str++ = *s1++;
 		end--;
 	}
 	*new_str = '\0';
-	return (ret);
+	return (returned);
 }
 
 /*

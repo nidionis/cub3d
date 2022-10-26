@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/07 16:31:11 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:48:59 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 static char	*ft_realloc_cat(char *line, char c, int *len)
 {
-	char	*ret;
+	char	*returned;
 	int		i;
 
 	i = 0;
-	ret = (char *) malloc(*len + 2);
-	if (!ret)
+	returned = (char *) malloc(*len + 2);
+	if (!returned)
 		return (NULL);
 	while (i < *len && line)
 	{
-		ret[i] = line[i];
+		returned[i] = line[i];
 		i++;
 	}
-	ret[*len] = c;
-	ret[++(*len)] = '\0';
+	returned[*len] = c;
+	returned[++(*len)] = '\0';
 	if (line)
 		free(line);
-	return (ret);
+	return (returned);
 }
 
 char	*get_next_line(int fd)

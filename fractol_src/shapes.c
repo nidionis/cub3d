@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/31 15:05:27 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:24:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	is_in_win(unsigned int win_size[2], t_pix pix)
 	return (1);
 }
 
-void	circle(t_imgg *img, int r, t_pix center, unsigned int color)
+void	circle(t_image *img, int r, t_pix center, unsigned int color)
 {
 	t_pix	parser;
 	t_pix	parser_init;

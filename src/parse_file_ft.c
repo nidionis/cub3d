@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:09:41 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:48:59 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ char	**get_identifiers_ls(int identifier_len)
 }
 
 static int	refresh_ret_if_is_param(char **identifiers, \
-		int *ret, int *i, char *str)
+		int *returned, int *i, char *str)
 {
 	if (!ft_strncmp(identifiers[*i], str, ft_strlen(identifiers[*i])))
 	{
-		*ret = *i;
+		*returned = *i;
 		return (1);
 	}
 	(*i)++;
@@ -39,22 +39,22 @@ static int	refresh_ret_if_is_param(char **identifiers, \
 int	conv_id_param( t_data *data, int identifier_len, char *str)
 {
 	int		i;
-	int		ret;
+	int		returned;
 	char	**identifiers;
 
-	ret = -1;
+	returned = -1;
 	i = 0;
 	identifiers = get_identifiers_ls(identifier_len);
 	if (identifiers)
 		while (identifiers[i])
-			if (refresh_ret_if_is_param(identifiers, &ret, &i, str))
+			if (refresh_ret_if_is_param(identifiers, &returned, &i, str))
 				break ;
 	ft_free_split(&identifiers);
-	if (ret == -1)
-		exit_msg( data, "[conv_id_param] wrong param identifier\n", -1);
+	if (returned == -1)
+		exit_msg(data, "[conv_id_param] wrong param identifier\n", -1);
 	if (identifier_len == 1)
-		ret += 4;
-	return (ret);
+		returned += 4;
+	return (returned);
 }
 
 int	get_identifier( t_data *data, char *str)
@@ -65,6 +65,6 @@ int	get_identifier( t_data *data, char *str)
 	if (is_map_line(str))
 		return (11);
 	if (identifier_len > 2 || identifier_len < 1)
-		exit_msg( data, "[get_identifier] wrong param identifier", -1);
-	return (conv_id_param( data, identifier_len, str));
+		exit_msg(data, "[get_identifier] wrong param identifier", -1);
+	return (conv_id_param(data, identifier_len, str));
 }

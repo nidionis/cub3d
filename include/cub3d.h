@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:09:41 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:46:25 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,28 +90,28 @@
 # include <time.h>
 # include <stdint.h>
 
-typedef struct s_pix
+typedef struct s_point
 {
 	int	x;
 	int	y;
-}	t_pix;
+}	t_point;
 
-typedef struct s_pt
+typedef struct s_vector
 {
 	int	x;
 	int	y;
-}	t_pt;
+}	t_vector;
 
-typedef struct s_person
+typedef struct s_player
 {
 
-	t_pt	pos_map;
-	t_pt	pos_box;
-	t_pt	dir;
-	t_pt	plane;
-}	t_person;
+	t_vector	pos_map;
+	t_vector	pos_box;
+	t_vector	dir;
+	t_vector	plane;
+}	t_player;
 
-typedef struct s_imgg
+typedef struct s_image
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -125,17 +125,17 @@ typedef struct s_imgg
 	int				line_len;
 	int				endian;
 	//unsigned int	scale[2];
-	//t_pix			center;
-	//t_pix			win_center;
+	//t_point			center;
+	//t_point			win_center;
 	void			(*f)();
-}	t_imgg;
+}	t_image;
 
 typedef struct s_data
 {
 	char		*line;
 	char		**line_split;
-	t_imgg		*i;
-	t_person	*p;
+	t_image		*i;
+	t_player	*player;
 	char		**map;
 }	t_data;
 
@@ -155,12 +155,12 @@ int	get_identifier( t_data *data, char *str);
 int	import_params( t_data *data);
 void	parse_file(char *fname, t_data	* data);
 int	parsing_loop( t_data *data, int *map_parse);
-t_person	*default_person(void);
-t_pix	get_vector(t_pix *from, t_pix *to);
-t_pix	vec_diff(t_pix v1, t_pix v2);
-t_pix	vec_scale(t_pix vec, double scale);
+t_player	*default_player(void);
+t_point	get_vector(t_point *from, t_point *to);
+t_point	vec_diff(t_point v1, t_point v2);
+t_point	vec_scale(t_point vector, double scale);
 void init_null( t_data *data, int *map_parse);
-void	add_vec(t_pix	*pt, t_pix vec);
+void	add_vec(t_point	*pt, t_point vector);
 void	clean_exit( t_data *data, int exit_code);
 void	exit_msg( t_data *data, char *msg, int ret_exit);
 void	import_param( t_data *data, int identifier, char *line);
@@ -175,6 +175,6 @@ unsigned int	init_f_c_color( t_data * data, char *line);
 void	print_pers( t_data *data);
 void	print_params( t_data *data);
 void	print_map( t_data *data);
-void	print_s( t_data *data);
+void	print_data( t_data *data);
 #endif
 

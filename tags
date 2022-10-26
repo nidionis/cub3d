@@ -4,22 +4,22 @@ Mmain	fractol_src/main.c	/^int	main(int argc, char *argv[])$/
 Window	minilibx-linux/README.md	/^This is the MinilibX, a simple X-Window (X11R6) pr/
 X	minilibx_mac/mlx_new_window.h	/^- (void) pixelPutColor: (int)color X:(int)x Y:(int/
 add_img_to_ctx	minilibx_mac/mlx_new_image.m	/^mlx_img_ctx_t	*add_img_to_ctx(mlx_img_list_t *img,/
-add_vec	fractol_src/vectors.c	/^void	add_vec(t_pix	*pt, t_pix vec)$/
+add_vec	fractol_src/vectors.c	/^void	add_vec(t_pix	*pt, t_pix vector)$/
 c_to_i	libft/ft_atoi.c	/^static long int	c_to_i(char c)$/
-carpette	fractol_src/mandelbrot.c	/^void	carpette(t_imgg *img)$/
+carpette	fractol_src/mandelbrot.c	/^void	carpette(t_image *img)$/
 carry_negative	libft/ft_itoa.c	/^static char	*carry_negative(int *n, char *n_strn, /
 check_map	src/check_map.c	/^int	check_map( t_data *data)$/
 check_map_line	src/check_map.c	/^void	check_map_line( t_data * data, int y, int *nb_pers)$/
 check_update_box_pos	src/move_pers.c	/^int	check_update_box_pos( t_data *data)$/
-circle	fractol_src/shapes.c	/^void	circle(t_imgg *img, int r, t_pix center, unsi/
+circle	fractol_src/shapes.c	/^void	circle(t_image *img, int r, t_pix center, unsi/
 clean	minilibx-linux/configure	/^clean(){$/
 clean_exit	src/exit_ft.c	/^void	clean_exit( t_data * data, int exit_code)$/
 closeNotification	minilibx_mac/mlx_new_window.m	/^- (void) closeNotification:(NSNotification *)note$/
 color_render	fractol_src/pixels.c	/^unsigned int	color_render(unsigned int color_byte,/
-complex_square	fractol_src/complex.c	/^t_pt	complex_square(t_pt complex_nb)$/
+complex_square	fractol_src/complex.c	/^t_vector	complex_square(t_vector complex_nb)$/
 conv_id_param	src/parse_file_ft.c	/^int	conv_id_param( t_data * data, int identifier_len, char/
-convert_pix_to_pt	fractol_src/complex.c	/^t_pt	convert_pix_to_pt(t_imgg *img, t_pix pix, t_p/
-convert_pt_to_pix	fractol_src/complex.c	/^t_pix	convert_pt_to_pix(t_imgg *img, t_pt pt, t_pi/
+convert_pix_to_pt	fractol_src/complex.c	/^t_vector	convert_pix_to_pt(t_image *img, t_pix pix, t_p/
+convert_pt_to_pix	fractol_src/complex.c	/^t_pix	convert_pt_to_pix(t_image *img, t_vector pt, t_pi/
 default_map	src/matrix.c	/^char	**default_map(char	*argv[])$/
 deminiaturizeNotification	minilibx_mac/mlx_new_window.m	/^- (void) deminiaturizeNotification:(NSNotification/
 display_log	minilibx_mac/mlx_shaders.c	/^void display_log(GLuint object, void (*param_func)/
@@ -31,10 +31,10 @@ e_pers_dir	include/cub3d.h	/^enum e_pers_dir { FORWARD, BACKWARD, RIGHT, LEFT, /
 error_msg	fractol_src/error_msg.c	/^void	error_msg(char *msg)$/
 exit_msg	src/exit_ft.c	/^void	exit_msg( t_data * data, char *msg, int ret_exit)$/
 exposeNotification	minilibx_mac/mlx_new_window.m	/^- (void) exposeNotification:(NSNotification *)note/
-f_is_box_crossed	src/move_pers.c	/^static int	f_is_box_crossed(t_person *p)$/
+f_is_box_crossed	src/move_pers.c	/^static int	f_is_box_crossed(t_player *player)$/
 file_extention_available	src/parse_file_ft.c	/^void	file_extention_available( t_data * data, char *fname)/
 flagsChanged	minilibx_mac/mlx_new_window.m	/^- (void) flagsChanged:(NSEvent *)theEvent$/
-foret_de_ifs	fractol_src/hooks.c	/^static void	foret_de_ifs(t_imgg *img, int keystrok/
+foret_de_ifs	fractol_src/hooks.c	/^static void	foret_de_ifs(t_image *img, int keystrok/
 ft_append_tab	src/matrix.c	/^char	**ft_append_tab(char **matrix, char *str)$/
 ft_atoi	libft/ft_atoi.c	/^int	ft_atoi(const char *str0)$/
 ft_atoi_err	libft/ft_atoi_err.c	/^int	ft_atoi_err(char *str)$/
@@ -84,13 +84,13 @@ get_identifier	src/parse_file_ft.c	/^int	get_identifier( t_data * data, char *st
 get_identifiers_ls	src/parse_file_ft.c	/^char	**get_identifiers_ls(int identifier_len)$/
 get_mouse_button	minilibx_mac/mlx_new_window.m	/^int get_mouse_button(NSEventType eventtype)$/
 get_next_line	src/get_next_line.c	/^char	*get_next_line(int fd)$/
-get_offset	fractol_src/pixels.c	/^unsigned int	get_offset(t_pix pix, t_imgg *img)$/
+get_offset	fractol_src/pixels.c	/^unsigned int	get_offset(t_pix pix, t_image *img)$/
 get_vector	fractol_src/vectors.c	/^t_pix	get_vector(t_pix *from, t_pix *to)$/
 get_xlib_include_path	minilibx-linux/configure	/^get_xlib_include_path(){$/
 glsl_info_t	minilibx_mac/mlx_int.h	/^} glsl_info_t;$/
 help_msg	fractol_src/main.c	/^static void	help_msg(void)$/
 ifeq	minilibx-linux/Makefile.gen	/^ifeq ($(UNAME),FreeBSD)$/
-img_default_init	fractol_src/init_fts.c	/^void	img_default_init(t_imgg	*img)$/
+img_default_init	fractol_src/init_fts.c	/^void	img_default_init(t_image	*img)$/
 import_param	src/parsing.c	/^void	import_param( t_data * data, int identifier, char *li/
 import_params	src/parsing.c	/^int	import_params( t_data *data)$/
 import_texture_path	src/parsing.c	/^void	import_texture_path( t_data * data, int identifier, c/
@@ -98,7 +98,7 @@ initWithContentRect	minilibx_mac/mlx_new_window.h	/^- (NSWindowEvent *) initWith
 init_f_c_color	src/parse_file_colors.c	/^unsigned int	init_f_c_color( t_data * data, char *line)$/
 init_fd	src/parsing.c	/^void	init_fd( t_data * data, int *fd, char *fname)$/
 init_null	src/parsing.c	/^void	init_null( t_data * data, int *map_parse)$/
-init_pers	src/check_map.c	/^void	init_pers( t_data * data, int x, int y, int *is_pers)/
+init_player	src/check_map.c	/^void	init_player( t_data * data, int x, int y, int *is_player)/
 int	minilibx_mac/mlx_int.h	/^typedef int (*func_t)();$/
 is_NSEW	src/check_map.c	/^int	is_NSEW(int i, int nb_mapcases)$/
 is_available_mapcase	src/check_map.c	/^int	is_available_mapcase( t_data * data, int x, int y, int/
@@ -109,8 +109,8 @@ is_in_win	fractol_src/shapes.c	/^int	is_in_win(unsigned int win_size[2], t_pix p
 is_map_line	src/str_ft.c	/^int	is_map_line(char *str)$/
 is_trimable	libft/ft_strtrim.c	/^static int	is_trimable(char c, char *trimset)$/
 is_white	fractol_src/mandelbrot.c	/^unsigned int	is_white(int n)$/
-julia	fractol_src/julia.c	/^void	julia(t_imgg *img)$/
-julia_pix_color	fractol_src/julia.c	/^static unsigned int	julia_pix_color(t_pt pt_parser/
+julia	fractol_src/julia.c	/^void	julia(t_image *img)$/
+julia_pix_color	fractol_src/julia.c	/^static unsigned int	julia_pix_color(t_vector pt_parser/
 keyDown	minilibx_mac/mlx_new_window.m	/^- (void) keyDown:(NSEvent *)theEvent$/
 keyUp	minilibx_mac/mlx_new_window.m	/^- (void) keyUp:(NSEvent *)theEvent$/
 log_error	minilibx-linux/configure	/^log_error(){$/
@@ -118,13 +118,13 @@ log_info	minilibx-linux/configure	/^log_info(){$/
 logging	minilibx-linux/configure	/^logging(){$/
 make_pix_pt	fractol_src/init_fts.c	/^t_pix	make_pix_pt(int x, int y)$/
 make_str	libft/ft_itoa.c	/^static void	make_str(int *n, char *n_str, int i)$/
-make_tab	libft/ft_split.c	/^static char	**make_tab(char **ret, char const * data, /
+make_tab	libft/ft_split.c	/^static char	**make_tab(char **returned, char const * data, /
 malloc_s	src/main.c	/^ t_data	*malloc_s(void)$/
 manage_expose	fractol_src/hooks.c	/^int	manage_expose(int keystroke, void *param)$/
 manage_keystroke	fractol_src/hooks.c	/^int	manage_keystroke(int keystroke, void *param)$/
-manage_mouse	fractol_src/hooks.c	/^int	manage_mouse(int button, int x, int y, void *p/
-mandel_pix_color	fractol_src/mandelbrot.c	/^static unsigned int	mandel_pix_color(t_pt pt_parse/
-mandelbrot	fractol_src/mandelbrot.c	/^void	mandelbrot(t_imgg *img)$/
+manage_mouse	fractol_src/hooks.c	/^int	manage_mouse(int button, int x, int y, void *player/
+mandel_pix_color	fractol_src/mandelbrot.c	/^static unsigned int	mandel_pix_color(t_vector pt_parse/
+mandelbrot	fractol_src/mandelbrot.c	/^void	mandelbrot(t_image *img)$/
 mipng_crc	minilibx_mac/mlx_png.c	/^int	mipng_crc(unsigned char *ptr, int len)$/
 mipng_data	minilibx_mac/mlx_png.c	/^int	mipng_data(mlx_img_list_t *img, unsigned char /
 mipng_defilter_average	minilibx_mac/mlx_png.c	/^unsigned char mipng_defilter_average(unsigned char/
@@ -221,9 +221,9 @@ mouseDragged	minilibx_mac/mlx_new_window.m	/^- (void) mouseDragged:(NSEvent *)th
 mouseMoved	minilibx_mac/mlx_new_window.m	/^- (void) mouseMoved:(NSEvent *)theEvent$/
 mouseUp	minilibx_mac/mlx_new_window.m	/^- (void) mouseUp:(NSEvent *)theEvent$/
 move_pers	src/move_pers.c	/^void	move_pers( t_data * data, int dir)$/
-moving	fractol_src/mouse_keypad.c	/^void	moving(t_imgg *img, void (*f)(), int keystrok/
+moving	fractol_src/mouse_keypad.c	/^void	moving(t_image *img, void (*f)(), int keystrok/
 my_loc	libft/ft_itoa.c	/^static char	*my_loc(int len)$/
-orthonorm_rel	fractol_src/fictif_orthonorm.c	/^void	orthonorm_rel(t_imgg *img)$/
+orthonorm_rel	fractol_src/fictif_orthonorm.c	/^void	orthonorm_rel(t_image *img)$/
 otherMouseDown	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseDown:(NSEvent *)theEvent$/
 otherMouseDragged	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseDragged:(NSEvent *)theEvent$/
 otherMouseUp	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseUp:(NSEvent *)theEvent$/
@@ -235,12 +235,12 @@ png_info_t	minilibx_mac/mlx_png.c	/^} png_info_t;$/
 print_map	src/debug_ft.c	/^void	print_map( t_data *data)$/
 print_params	src/debug_ft.c	/^void	print_params( t_data *data)$/
 print_pers	src/debug_ft.c	/^void	print_pers( t_data *data)$/
-print_s	src/debug_ft.c	/^void	print_s( t_data *data)$/
+print_data	src/debug_ft.c	/^void	print_data( t_data *data)$/
 print_tab	src/matrix.c	/^void	print_tab(char **tab)$/
-put_pix	fractol_src/pixels.c	/^void	put_pix(t_imgg *img, t_pix pix, int color)$/
-quit	fractol_src/hooks.c	/^int	quit(t_imgg *img)$/
+put_pix	fractol_src/pixels.c	/^void	put_pix(t_image *img, t_pix pix, int color)$/
+quit	fractol_src/hooks.c	/^int	quit(t_image *img)$/
 ray_parse	src/main.c	/^void	ray_parse( t_data *data)$/
-recentrer	fractol_src/mouse_keypad.c	/^void	recentrer(t_imgg *img, int x, int y)$/
+recentrer	fractol_src/mouse_keypad.c	/^void	recentrer(t_image *img, int x, int y)$/
 refresh_ret_if_is_param	src/parse_file_ft.c	/^static int	refresh_ret_if_is_param(char **identifi/
 rgb_conv	fractol_src/pixels.c	/^unsigned int	rgb_conv(int R, int G, int B)$/
 rightMouseDown	minilibx_mac/mlx_new_window.m	/^- (void) rightMouseDown:(NSEvent *)theEvent$/
@@ -249,25 +249,25 @@ rightMouseUp	minilibx_mac/mlx_new_window.m	/^- (void) rightMouseUp:(NSEvent *)th
 scrollWheel	minilibx_mac/mlx_new_window.m	/^- (void) scrollWheel:(NSEvent *)theEvent$/
 setEvent	minilibx_mac/mlx_new_window.m	/^- (void) setEvent:(int)event andFunc:(func_t)func /
 setKeyRepeat	minilibx_mac/mlx_new_window.m	/^- (void) setKeyRepeat:(int)mode$/
-set_win_center	fractol_src/init_fts.c	/^void	set_win_center(t_imgg *img)$/
+set_win_center	fractol_src/init_fts.c	/^void	set_win_center(t_image *img)$/
 shm_att_pb	minilibx-linux/mlx_new_image.c	/^int	shm_att_pb(Display *d,XErrorEvent *ev)$/
 show_help	minilibx-linux/configure	/^show_help(){$/
 strlcpy_is_not_posix	minilibx-linux/mlx_xpm.c	/^unsigned int	strlcpy_is_not_posix(char *dest, char/
 t_event_list	minilibx-linux/mlx_int.h	/^}				t_event_list;$/
 t_img	minilibx-linux/mlx_int.h	/^}				t_img;$/
-t_imgg	include/cub3d.h	/^}	t_imgg;$/
-t_person	include/cub3d.h	/^}	t_person;$/
+t_image	include/cub3d.h	/^}	t_image;$/
+t_player	include/cub3d.h	/^}	t_player;$/
 t_pix	include/cub3d.h	/^}	t_pix;$/
-t_pt	include/cub3d.h	/^}	t_pt;$/
+t_vector	include/cub3d.h	/^}	t_vector;$/
  t_data	include/cub3d.h	/^}	 t_data;$/
 t_win_list	minilibx-linux/mlx_int.h	/^}				t_win_list;$/
 t_xpm_col	minilibx-linux/mlx_int.h	/^}				t_xpm_col;$/
 t_xvar	minilibx-linux/mlx_int.h	/^}				t_xvar;$/
-translate_pt	src/vector_ft.c	/^void	translate_pt(t_pt vector, t_pt *pt)$/
+translate_pt	src/vector_ft.c	/^void	translate_pt(t_vector vector, t_vector *pt)$/
 vec_diff	fractol_src/vectors.c	/^t_pix	vec_diff(t_pix v1, t_pix v2)$/
-vec_scale	fractol_src/vectors.c	/^t_pix	vec_scale(t_pix vec, double scale)$/
+vec_scale	fractol_src/vectors.c	/^t_pix	vec_scale(t_pix vector, double scale)$/
 while	minilibx-linux/rgb2c.pl	/^while (<RGB>)$/
 win_count	minilibx-linux/mlx_loop.c	/^static int	win_count(t_xvar *xvar)$/
 wrong_color	src/parse_file_colors.c	/^void	wrong_color( t_data * data, char *color_strimed)$/
-zoom_in	fractol_src/mouse_keypad.c	/^t_imgg	*zoom_in(t_imgg *img, void (*f)(), int x, i/
-zoom_out	fractol_src/mouse_keypad.c	/^t_imgg	*zoom_out(t_imgg *img, void (*f)(), int x, /
+zoom_in	fractol_src/mouse_keypad.c	/^t_image	*zoom_in(t_image *img, void (*f)(), int x, i/
+zoom_out	fractol_src/mouse_keypad.c	/^t_image	*zoom_out(t_image *img, void (*f)(), int x, /

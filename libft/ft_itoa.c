@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 19:17:07 by supersko          #+#    #+#             */
-/*   Updated: 2022/03/21 16:08:29 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:48:59 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ static int	ft_intlen(int n)
 
 static char	*my_loc(int len)
 {
-	char	*ret;
+	char	*returned;
 
-	ret = (char *) malloc(sizeof(char) * (len + 1));
-	if (!ret)
+	returned = (char *) malloc(sizeof(char) * (len + 1));
+	if (!returned)
 		return (NULL);
-	ret[len] = '\0';
-	return (ret);
+	returned[len] = '\0';
+	return (returned);
 }
 
 static void	make_str(int *n, char *n_str, int i)
@@ -64,22 +64,22 @@ static char	*carry_negative(int *n, char *n_strn, int *len)
 char	*ft_itoa(int n)
 {
 	int		len;
-	char	*ret;
+	char	*returned;
 	char	*num;
 
 	len = ft_intlen(n);
-	ret = my_loc(len);
-	if (!ret)
+	returned = my_loc(len);
+	if (!returned)
 		return (NULL);
-	num = ret;
+	num = returned;
 	if (n == -2147483648)
 	{
-		ft_strlcpy(ret, "-2147483648", 12);
-		return (ret);
+		ft_strlcpy(returned, "-2147483648", 12);
+		return (returned);
 	}
 	num = carry_negative(&n, num, &len);
 	make_str(&n, num, len);
-	return (ret);
+	return (returned);
 }
 
 /*

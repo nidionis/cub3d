@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:09:41 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:47:21 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	print_pers( t_data *data)
 {
-	fprintf(stderr, "[Pers]	pos_map: [%5d,%5d]\n", data->p->pos_map.x, data->p->pos_map.y);
-	fprintf(stderr, "[Pers]	pos_box: [%5d,%5d]\n", data->p->pos_box.x, data->p->pos_box.y);
-	fprintf(stderr, "[Pers]	dir: 	 [%5d,%5d]\n", data->p->dir.x, data->p->dir.y);
-	fprintf(stderr, "[Pers]	plane: 	 [%5d,%5d]\n", data->p->plane.x, data->p->plane.y);
+	fprintf(stderr, "[Pers]	pos_map: [%5d,%5d]\n", data->player->pos_map.x, data->player->pos_map.y);
+	fprintf(stderr, "[Pers]	pos_box: [%5d,%5d]\n", data->player->pos_box.x, data->player->pos_box.y);
+	fprintf(stderr, "[Pers]	dir: 	 [%5d,%5d]\n", data->player->dir.x, data->player->dir.y);
+	fprintf(stderr, "[Pers]	plane: 	 [%5d,%5d]\n", data->player->plane.x, data->player->plane.y);
 }
 
 void	print_params( t_data *data)
@@ -35,10 +35,10 @@ void	print_map( t_data *data)
 	print_tab(data->map);
 }
 
-void	print_s( t_data *data)
+void	print_data( t_data *data)
 {
-	print_pers( data);
-	print_params( data);
-	print_map( data);
+	print_pers(data);
+	print_params(data);
+	print_map(data);
 }
 

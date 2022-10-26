@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:51:11 by supersko          #+#    #+#             */
-/*   Updated: 2022/03/11 18:22:54 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:48:59 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t			len_s1;
 	unsigned int	ii;
-	char			*ret;
+	char			*returned;
 
 	if (!s1)
 		return (NULL);
 	ii = 0;
 	len_s1 = ft_strlen((char *) s1);
-	ret = (char *) malloc(sizeof(char) * (ft_strlen((char *) s2) + len_s1 + 1));
-	if (!ret)
+	returned = (char *) malloc(sizeof(char) * (ft_strlen((char *) s2) + len_s1 + 1));
+	if (!returned)
 		return (NULL);
 	ii = 0;
 	while (ii < len_s1)
 	{
-		ret[ii] = s1[ii];
+		returned[ii] = s1[ii];
 		ii++;
 	}
 	while (s2[ii - len_s1])
 	{
-		ret[ii] = s2[ii - len_s1];
+		returned[ii] = s2[ii - len_s1];
 		ii++;
 	}
-	ret[ii] = '\0';
-	return (ret);
+	returned[ii] = '\0';
+	return (returned);
 }
 
 /*

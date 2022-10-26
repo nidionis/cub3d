@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/31 18:39:01 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:24:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	help_msg(void)
 
 int	main(int argc, char *argv[])
 {
-	t_imgg	img;
+	t_image	img;
 
 	if (argc <= 1 || argc > 2)
 		help_msg();

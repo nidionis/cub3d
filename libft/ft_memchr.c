@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:51:11 by supersko          #+#    #+#             */
-/*   Updated: 2022/03/11 19:47:40 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:48:59 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void	*ft_memchr(const void *str0, int c, size_t n)
 // MAIN
 int test_memchr(char *str, char c)
 {
-	unsigned int	ret;
+	unsigned int	returned;
 	int				ii;
 
 	ii = 0;
 	while (ii < 5)
 	{
-		ret = memchr(str, c, ii) - ft_memchr(str, c, ii);
-		if (ret)
+		returned = memchr(str, c, ii) - ft_memchr(str, c, ii);
+		if (returned)
 		{
 			printf("[bug] at str: %s, c: %c, n = %d\n", str, c, ii);
 			return (1);
