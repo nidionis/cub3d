@@ -18,8 +18,8 @@ void	print_player(t_data *data, int fd)
 		error_msg("[print_player] warning: wrong fd]");
 	dprintf(fd, "[Pers]	pos_map: 	[%5d,%5d]\n", data->player->pos_map.x, data->player->pos_map.y);
 	dprintf(fd, "[Pers]	pos_box: 	[%5d,%5d]\n", data->player->pos_box.x, data->player->pos_box.y);
-	dprintf(fd, "[Pers]	direction:	[%5d,%5d]\n", data->player->direction.x, data->player->direction.y);
-	dprintf(fd, "[Pers]	plane:		[%5d,%5d]\n", data->player->plane.x, data->player->plane.y);
+	dprintf(fd, "[Pers]	direction:	[%5f,%5f]\n", data->player->direction.x, data->player->direction.y);
+	dprintf(fd, "[Pers]	plane:		[%5f,%5f]\n", data->player->plane.x, data->player->plane.y);
 }
 
 void	print_params(t_data *data, int fd)

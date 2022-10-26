@@ -92,6 +92,18 @@ int	main(int argc, char *argv[])
 			clean_exit(data, -5);
 		parse_file(argv[1],  data);
 		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		move_player(data, FORWARD);
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		move_player(data, FORWARD);
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		move_player(data, FORWARD);
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		move_player(data, FORWARD);
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		move_player(data, FORWARD);
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		move_player(data, FORWARD);
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
 	}
 	clean_exit(data, 0);
 }

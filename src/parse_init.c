@@ -49,31 +49,35 @@ void	file_extention_available(t_data *data, char *fname)
 
 void	init_player(t_data *data, int x, int y, int *is_player)
 {
-	char			c;
+	char	c;
+	double	vector_scaled;
 
+	vector_scaled = POINTS_PER_BOX / STEPS_PER_BOX;
 	c = data->map[y][x];
 	if (c == NORTH)
 	{
 		data->player->direction.x = 0;
-		data->player->direction.y = 1;
+		data->player->direction.y = -1 * vector_scaled;
 	}
 	if (c == SOUTH)
 	{
 		data->player->direction.x = 0;
-		data->player->direction.y = -1;
+		data->player->direction.y = vector_scaled;
 	}
 	if (c == EAST)
 	{
-		data->player->direction.x = -1;
+		data->player->direction.x = vector_scaled;
 		data->player->direction.y = 0;
 	}
 	if (c == WEST)
 	{
-		data->player->direction.x = 1;
+		data->player->direction.x = -1 * vector_scaled;
 		data->player->direction.y = 0;
 	}
 	data->player->pos_map.x = x;
 	data->player->pos_map.y = y;
+	data->player->pos_box.x = POINTS_PER_BOX / 2;
+	data->player->pos_box.y = POINTS_PER_BOX / 2;
 	//devine plnan
 	(*is_player)++;
 }

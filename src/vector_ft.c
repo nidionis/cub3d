@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:32:46 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 19:35:53 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	add_vec(t_point	*pt, t_point vector)
 	pt->y += vector.y;
 }
 
-void	translate_pt(t_vector vector, t_vector *pt)
+void	translate_pt(t_vector vector, t_point *pt)
 {
 	pt->x += vector.x;
 	pt->y += vector.y;

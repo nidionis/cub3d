@@ -73,7 +73,8 @@
 # define SCREEN_HEIGHT 480
 # define RAYCAST_QUALITY 50
 # define NB_TEXTURES 4
-# define STEPS_PER_BOX 100
+# define POINTS_PER_BOX 1000
+# define STEPS_PER_BOX 3
 /* file deleted with make clean */
 # define DEBUG_LOG_FILENAME "debug_file"
 
@@ -94,8 +95,8 @@
 
 typedef struct s_vector
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_vector;
 
 typedef struct s_point
@@ -107,10 +108,10 @@ typedef struct s_point
 typedef struct s_player
 {
 
-	t_point	pos_map;
-	t_point	pos_box;
-	t_point direction;
-	t_point	plane;
+	t_point		pos_map;
+	t_point		pos_box;
+	t_vector	direction;
+	t_vector	plane;
 }	t_player;
 
 typedef struct s_image
@@ -144,7 +145,7 @@ typedef struct s_data
 enum log_type { DATA, PARAM, PLAYER, MAP };
 enum e_identifiers { NO, SO, WE, EA, F, C };
 enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
-enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION};
+enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };
 
 void			error_msg(char *msg);
 char	**default_map(char	*argv[]);
@@ -181,5 +182,11 @@ void	print_s(t_data *data, int fd);
 void	redir_debug_file_logs(t_data *data, char *fname, int log_type);
 void	init_player(t_data *data, int x, int y, int *is_player);
 void	init_fd(t_data *data, int *fd, char *fname);
+
+
+int	check_wall(t_data *data, int crossover_direction);
+int	check_update_box_pos(t_data *data);
+void	move_player(t_data *data, int direction);
+void	translate_pt(t_vector vector, t_point *pt);
 #endif
 
