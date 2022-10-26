@@ -6,22 +6,22 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 20:07:13 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:15:06 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	f_is_box_crossed(t_p *p)
+static int	f_is_box_crossed(t_person *p)
 {
 	int	dir;
 
 	dir = 0;
-	if (p->pos_box.y > STEP_PER_BOX)
+	if (p->pos_box.y > STEPS_PER_BOX)
 		dir += N;
 	if (p->pos_box.y < 0)
 		dir += S;
-	if (p->pos_box.x > STEP_PER_BOX)
+	if (p->pos_box.x > STEPS_PER_BOX)
 		dir += E;
 	if (p->pos_box.x < 0)
 		dir += W;
@@ -39,6 +39,7 @@ int	check_update_box_pos(t_s *s)
 		//check_wall
 		//
 	}
+	return (0);
 }
 
 void	move_pers(t_s *s, int dir)
@@ -47,9 +48,10 @@ void	move_pers(t_s *s, int dir)
 
 	if (dir == FORWARD)
 	{
-		apply
+		//apply
 	}
  	(void)s;
+ 	(void)p;
  	return ;
  }
  

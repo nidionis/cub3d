@@ -3,7 +3,6 @@ Mconfigure	minilibx-linux/configure	/^main(){$/
 Mmain	fractol_src/main.c	/^int	main(int argc, char *argv[])$/
 Window	minilibx-linux/README.md	/^This is the MinilibX, a simple X-Window (X11R6) pr/
 X	minilibx_mac/mlx_new_window.h	/^- (void) pixelPutColor: (int)color X:(int)x Y:(int/
-_identifiers	include/cub3d.h	/^enum _identifiers { NO, SO, WE, EA, F, C };$/
 add_img_to_ctx	minilibx_mac/mlx_new_image.m	/^mlx_img_ctx_t	*add_img_to_ctx(mlx_img_list_t *img,/
 add_vec	fractol_src/vectors.c	/^void	add_vec(t_pix	*pt, t_pix vec)$/
 c_to_i	libft/ft_atoi.c	/^static long int	c_to_i(char c)$/
@@ -11,6 +10,7 @@ carpette	fractol_src/mandelbrot.c	/^void	carpette(t_imgg *img)$/
 carry_negative	libft/ft_itoa.c	/^static char	*carry_negative(int *n, char *n_strn, /
 check_map	src/check_map.c	/^int	check_map(t_s *s)$/
 check_map_line	src/check_map.c	/^void	check_map_line(t_s *s, int y, int *nb_pers)$/
+check_update_box_pos	src/move_pers.c	/^int	check_update_box_pos(t_s *s)$/
 circle	fractol_src/shapes.c	/^void	circle(t_imgg *img, int r, t_pix center, unsi/
 clean	minilibx-linux/configure	/^clean(){$/
 clean_exit	src/exit_ft.c	/^void	clean_exit(t_s *s, int exit_code)$/
@@ -21,15 +21,18 @@ conv_id_param	src/parse_file_ft.c	/^int	conv_id_param(t_s *s, int identifier_len
 convert_pix_to_pt	fractol_src/complex.c	/^t_pt	convert_pix_to_pt(t_imgg *img, t_pix pix, t_p/
 convert_pt_to_pix	fractol_src/complex.c	/^t_pix	convert_pt_to_pix(t_imgg *img, t_pt pt, t_pi/
 default_map	src/matrix.c	/^char	**default_map(char	*argv[])$/
-default_person	src/main.c	/^t_person	*default_person(void)$/
 deminiaturizeNotification	minilibx_mac/mlx_new_window.m	/^- (void) deminiaturizeNotification:(NSNotification/
 display_log	minilibx_mac/mlx_shaders.c	/^void display_log(GLuint object, void (*param_func)/
 do_loop_flush	minilibx_mac/mlx_init_loop.m	/^void do_loop_flush(CFRunLoopObserverRef observer, /
 do_loop_hook2	minilibx_mac/mlx_init_loop.m	/^void	do_loop_hook2(CFRunLoopTimerRef observer, voi/
+e_dir	include/cub3d.h	/^enum e_dir { N, S, W, E, NW, SW, SE, NE, NB_CARDIN/
+e_identifiers	include/cub3d.h	/^enum e_identifiers { NO, SO, WE, EA, F, C };$/
+e_pers_dir	include/cub3d.h	/^enum e_pers_dir { FORWARD, BACKWARD, RIGHT, LEFT, /
 error_msg	fractol_src/error_msg.c	/^void	error_msg(char *msg)$/
 exit_msg	src/exit_ft.c	/^void	exit_msg(t_s *s, char *msg, int ret_exit)$/
 exposeNotification	minilibx_mac/mlx_new_window.m	/^- (void) exposeNotification:(NSNotification *)note/
-file_extention_available	src/parse_file_ft.c	/^int	file_extention_available(char *fname)$/
+f_is_box_crossed	src/move_pers.c	/^static int	f_is_box_crossed(t_person *p)$/
+file_extention_available	src/parse_file_ft.c	/^void	file_extention_available(t_s *s, char *fname)/
 flagsChanged	minilibx_mac/mlx_new_window.m	/^- (void) flagsChanged:(NSEvent *)theEvent$/
 foret_de_ifs	fractol_src/hooks.c	/^static void	foret_de_ifs(t_imgg *img, int keystrok/
 ft_append_tab	src/matrix.c	/^char	**ft_append_tab(char **matrix, char *str)$/
@@ -90,11 +93,15 @@ ifeq	minilibx-linux/Makefile.gen	/^ifeq ($(UNAME),FreeBSD)$/
 img_default_init	fractol_src/init_fts.c	/^void	img_default_init(t_imgg	*img)$/
 import_param	src/parsing.c	/^void	import_param(t_s *s, int identifier, char *li/
 import_params	src/parsing.c	/^int	import_params(t_s *s)$/
+import_texture_path	src/parsing.c	/^void	import_texture_path(t_s *s, int identifier, c/
 initWithContentRect	minilibx_mac/mlx_new_window.h	/^- (NSWindowEvent *) initWithContentRect:(NSRect)re/
 init_f_c_color	src/parse_file_colors.c	/^unsigned int	init_f_c_color(t_s *s, char *line)$/
-init_null	src/parsing.c	/^void	init_null(t_s *s, int *fd, char *fname, int */
+init_fd	src/parsing.c	/^void	init_fd(t_s *s, int *fd, char *fname)$/
+init_null	src/parsing.c	/^void	init_null(t_s *s, int *map_parse)$/
+init_pers	src/check_map.c	/^void	init_pers(t_s *s, int x, int y, int *is_pers)/
 int	minilibx_mac/mlx_int.h	/^typedef int (*func_t)();$/
-is_available_mapcase	src/check_map.c	/^int	is_available_mapcase(char c, int *is_pers)$/
+is_NSEW	src/check_map.c	/^int	is_NSEW(int i, int nb_mapcases)$/
+is_available_mapcase	src/check_map.c	/^int	is_available_mapcase(t_s *s, int x, int y, int/
 is_blank_char	src/str_ft.c	/^int	is_blank_char(char c)$/
 is_blank_line	src/str_ft.c	/^int	is_blank_line(char *line)$/
 is_border	src/check_map.c	/^int	is_border(t_s *s, int x, int y, int matrix_len/
@@ -112,6 +119,7 @@ logging	minilibx-linux/configure	/^logging(){$/
 make_pix_pt	fractol_src/init_fts.c	/^t_pix	make_pix_pt(int x, int y)$/
 make_str	libft/ft_itoa.c	/^static void	make_str(int *n, char *n_str, int i)$/
 make_tab	libft/ft_split.c	/^static char	**make_tab(char **ret, char const *s, /
+malloc_s	src/main.c	/^t_s	*malloc_s(void)$/
 manage_expose	fractol_src/hooks.c	/^int	manage_expose(int keystroke, void *param)$/
 manage_keystroke	fractol_src/hooks.c	/^int	manage_keystroke(int keystroke, void *param)$/
 manage_mouse	fractol_src/hooks.c	/^int	manage_mouse(int button, int x, int y, void *p/
@@ -212,6 +220,7 @@ mouseDown	minilibx_mac/mlx_new_window.m	/^- (void) mouseDown:(NSEvent *)theEvent
 mouseDragged	minilibx_mac/mlx_new_window.m	/^- (void) mouseDragged:(NSEvent *)theEvent$/
 mouseMoved	minilibx_mac/mlx_new_window.m	/^- (void) mouseMoved:(NSEvent *)theEvent$/
 mouseUp	minilibx_mac/mlx_new_window.m	/^- (void) mouseUp:(NSEvent *)theEvent$/
+move_pers	src/move_pers.c	/^void	move_pers(t_s *s, int dir)$/
 moving	fractol_src/mouse_keypad.c	/^void	moving(t_imgg *img, void (*f)(), int keystrok/
 my_loc	libft/ft_itoa.c	/^static char	*my_loc(int len)$/
 orthonorm_rel	fractol_src/fictif_orthonorm.c	/^void	orthonorm_rel(t_imgg *img)$/
@@ -219,10 +228,14 @@ otherMouseDown	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseDown:(NSEvent 
 otherMouseDragged	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseDragged:(NSEvent *)theEvent$/
 otherMouseUp	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseUp:(NSEvent *)theEvent$/
 parse_args	minilibx-linux/configure	/^parse_args(){$/
-parse_file	src/parsing.c	/^int	parse_file(char *fname, t_s	*s)$/
+parse_file	src/parsing.c	/^void	parse_file(char *fname, t_s	*s)$/
 parsing_loop	src/parsing.c	/^int	parsing_loop(t_s *s, int *map_parse)$/
 pix_dst	fractol_src/shapes.c	/^int	pix_dst(t_pix p1, t_pix p2)$/
 png_info_t	minilibx_mac/mlx_png.c	/^} png_info_t;$/
+print_map	src/debug_ft.c	/^void	print_map(t_s *s)$/
+print_params	src/debug_ft.c	/^void	print_params(t_s *s)$/
+print_pers	src/debug_ft.c	/^void	print_pers(t_s *s)$/
+print_s	src/debug_ft.c	/^void	print_s(t_s *s)$/
 print_tab	src/matrix.c	/^void	print_tab(char **tab)$/
 put_pix	fractol_src/pixels.c	/^void	put_pix(t_imgg *img, t_pix pix, int color)$/
 quit	fractol_src/hooks.c	/^int	quit(t_imgg *img)$/
@@ -250,6 +263,7 @@ t_s	include/cub3d.h	/^}	t_s;$/
 t_win_list	minilibx-linux/mlx_int.h	/^}				t_win_list;$/
 t_xpm_col	minilibx-linux/mlx_int.h	/^}				t_xpm_col;$/
 t_xvar	minilibx-linux/mlx_int.h	/^}				t_xvar;$/
+translate_pt	src/vector_ft.c	/^void	translate_pt(t_pt vector, t_pt *pt)$/
 vec_diff	fractol_src/vectors.c	/^t_pix	vec_diff(t_pix v1, t_pix v2)$/
 vec_scale	fractol_src/vectors.c	/^t_pix	vec_scale(t_pix vec, double scale)$/
 while	minilibx-linux/rgb2c.pl	/^while (<RGB>)$/

@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 20:47:42 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:18:11 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	main(int argc, char *argv[])
 		if (!s->p)
 			clean_exit(s, -5);
 		parse_file(argv[1], s);
-		print_pers(s);
+		print_s(s);
 		/*
 		img.mlx_ptr = mlx_init();
 		//img_default_init(&img);

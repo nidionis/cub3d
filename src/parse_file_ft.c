@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 14:47:25 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:22:33 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,4 @@ int	get_identifier(t_s *s, char *str)
 	if (identifier_len > 2 || identifier_len < 1)
 		exit_msg(s, "[get_identifier] wrong param identifier", -1);
 	return (conv_id_param(s, identifier_len, str));
-}
-
-void	file_extention_available(t_s *s, char *fname)
-{
-	char	*p_ext;
-
-	if (fname)
-	{
-		p_ext = ft_strnstr(fname, ".cub", ft_strlen(fname));
-		if (ft_strlen_char(p_ext, ' ') == 4)
-			return ;
-	}
-	exit_msg(s, "[file_extention_available] only .cub extension", -1);
 }

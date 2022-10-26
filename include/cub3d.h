@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 20:48:22 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:18:29 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,4 +173,8 @@ int	is_map_line(char *str);
 int	check_map(t_s *s);
 unsigned int	init_f_c_color(t_s *s, char *line);
 void	print_pers(t_s *s);
+void	print_params(t_s *s);
+void	print_map(t_s *s);
+void	print_s(t_s *s);
 #endif
+

@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 13:06:58 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:19:55 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_matrixlen(char **matrix)
 void	print_tab(char **tab)
 {
 	while (*tab)
-		printf("%s\n", *tab++);
+		fprintf(stderr, "%s\n", *tab++);
 }
 
 char	**default_map(char	*argv[])

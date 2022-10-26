@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 17:39:44 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:25:58 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	import_texture_path(t_s *s, int identifier, char *line)
 		i++;
 	if (s->i->texture_path[identifier])
 		exit_msg(s, "param identifier must be unique", -1);
-	s->i->texture_path[identifier] = \
-	ft_substr(s->line_split[i], 0, ft_strlen_char(s->line_split[i], ' '));
+	s->i->texture_path[identifier] = ft_strtrim(s->line_split[i], " \n\t");
 }
 
 void	import_param(t_s *s, int identifier, char *line)
@@ -92,6 +91,19 @@ void	init_fd(t_s *s, int *fd, char *fname)
 	*fd = open(fname, O_RDONLY);
 	if (*fd == -1)
 		exit_msg(s, "[init_fd] Error opening file (check file name)", -1);
+}
+
+void	file_extention_available(t_s *s, char *fname)
+{
+	char	*p_ext;
+
+	if (fname)
+	{
+		p_ext = ft_strnstr(fname, ".cub", ft_strlen(fname));
+		if (ft_strlen_char(p_ext, ' ') == 4)
+			return ;
+	}
+	exit_msg(s, "[file_extention_available] only .cub extension", -1);
 }
 
 void	parse_file(char *fname, t_s	*s)
