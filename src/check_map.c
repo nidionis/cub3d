@@ -6,13 +6,13 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:47:21 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:53:14 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_player( t_data *data, int x, int y, int *is_player)
+void	init_player(t_data *data, int x, int y, int *is_player)
 {
 	char			c;
 
@@ -51,7 +51,7 @@ int	is_NSEW(int i, int nb_mapcases)
 		return (0);
 }
 
-int	is_available_mapcase( t_data *data, int x, int y, int *is_player)
+int	is_available_mapcase(t_data *data, int x, int y, int *is_player)
 {
 	unsigned int	i;
 	unsigned int	available_mapcase;
@@ -80,7 +80,7 @@ int	is_available_mapcase( t_data *data, int x, int y, int *is_player)
 }
 
 /* returns TRUE if it has an empty neighourg box */
-int	is_border( t_data *data, int x, int y, int matrix_len)
+int	is_border(t_data *data, int x, int y, int matrix_len)
 {
 	int		last_index_in_line;
 	char	**map;
@@ -101,7 +101,7 @@ int	is_border( t_data *data, int x, int y, int matrix_len)
 	return (0);
 }
 
-void	check_map_line( t_data *data, int y, int *nb_pers)
+void	check_map_line(t_data *data, int y, int *nb_pers)
 {
 	int		x;
 	int		map_len;
@@ -120,7 +120,7 @@ void	check_map_line( t_data *data, int y, int *nb_pers)
 	}
 }
 
-int	check_map( t_data *data)
+int	check_map(t_data *data)
 {
 	int	y;
 	int	nb_pers;

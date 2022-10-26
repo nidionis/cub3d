@@ -6,13 +6,13 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:24:41 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:50:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-int	pix_dst(t_pix p1, t_pix p2)
+int	pix_dst(t_point p1, t_point p2)
 {
 	int	dst;
 
@@ -21,7 +21,7 @@ int	pix_dst(t_pix p1, t_pix p2)
 	return (dst);
 }
 
-int	is_in_win(unsigned int win_size[2], t_pix pix)
+int	is_in_win(unsigned int win_size[2], t_point pix)
 {
 	if (pix.x > (int)win_size[0] || pix.x < 0 \
 		|| pix.y < 0 || pix.y > (int)win_size[1])
@@ -31,10 +31,10 @@ int	is_in_win(unsigned int win_size[2], t_pix pix)
 	return (1);
 }
 
-void	circle(t_image *img, int r, t_pix center, unsigned int color)
+void	circle(t_image *img, int r, t_point center, unsigned int color)
 {
-	t_pix	parser;
-	t_pix	parser_init;
+	t_point	parser;
+	t_point	parser_init;
 
 	parser.x = center.x - r;
 	parser.y = center.y - r;
@@ -47,7 +47,7 @@ void	circle(t_image *img, int r, t_pix center, unsigned int color)
 			(parser.y)++;
 		}
 		if (is_in_win(img->size, parser) && pix_dst(center, parser) < r)
-			put_pix(img, parser, color);
+			put_point(img, parser, color);
 		(parser.x)++;
 	}
 }

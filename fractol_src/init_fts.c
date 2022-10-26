@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:24:41 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:50:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	set_win_center(t_image *img)
 	(img->win_center).y = img->size[1] / 2;
 }
 
-t_pix	make_pix_pt(int x, int y)
+t_point	make_pix_pt(int x, int y)
 {
-	t_pix	pix_pt;
+	t_point	pix_pt;
 
 	pix_pt.x = x;
 	pix_pt.y = y;

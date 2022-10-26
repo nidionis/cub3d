@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:47:21 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:48:19 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,41 +32,41 @@ tant que i ≤ longueur faire
 fin tant que
 
 */
-
-void	ray_parse( t_data *data)
-{
-	int			i;
-	int			x_cam;
-	t_player	*player;
-	t_vector		v_dir;
-
-	(void)v_dir;
-//cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1
-	player = data->player;
-	i = 0;
-	while (i < RAYCAST_QUALITY)
-	{
-		//calculate ray position and direction
-		x_cam = 2 * i / RAYCAST_QUALITY - 1; //x-coordinate in camera space
-		v_dir.x = player->dir.x + player->plane.x * x_cam;
-		v_dir.y = player->dir.y + player->plane.y * x_cam;
-		i++;
-	/*
-	 deltaDistX = abs(1 / rayDirX)
-	deltaDistY = abs(1 / rayDirY)
-	*/
-	}
-}
+//
+//void	ray_parse(t_data *data)
+//{
+//	int			i;
+//	int			x_cam;
+//	t_player	*player;
+//	t_vector		v_dir;
+//
+//	(void)v_dir;
+////cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1
+//	player = data->player;
+//	i = 0;
+//	while (i < RAYCAST_QUALITY)
+//	{
+//		//calculate ray position and direction
+//		x_cam = 2 * i / RAYCAST_QUALITY - 1; //x-coordinate in camera space
+//		v_dir.x = player->dir.x + player->plane.x * x_cam;
+//		v_dir.y = player->dir.y + player->plane.y * x_cam;
+//		i++;
+//	/*
+//	 deltaDistX = abs(1 / rayDirX)
+//	deltaDistY = abs(1 / rayDirY)
+//	*/
+//	}
+//}
 
  t_data	*malloc_s(void)
 {
 	 t_data	* data;
 
-	 data = malloc(sizeof( t_data));
+	 data = malloc(sizeof(t_data));
 	if (! data)
 		clean_exit(data, -4);
-	data->i = malloc(sizeof(t_image));
-	if (!data->i)
+	data->image = malloc(sizeof(t_image));
+	if (!data->image)
 		clean_exit(data, -5);
 	data->player = malloc(sizeof(t_player));
 	return (data);
@@ -75,7 +75,7 @@ void	ray_parse( t_data *data)
 int	main(int argc, char *argv[])
 {
 	t_image	img;
-	 t_data		* data;
+	t_data		* data;
 
 	(void)img;
 	(void)argv;
@@ -91,7 +91,7 @@ int	main(int argc, char *argv[])
 		if (!data->player)
 			clean_exit(data, -5);
 		parse_file(argv[1],  data);
-		print_data(data);
+		redir_debug_file_logs(data, "debug_file");
 		/*
 		img.mlx_ptr = mlx_init();
 		//img_default_init(&img);
@@ -109,7 +109,7 @@ int	main(int argc, char *argv[])
 		mlx_mouse_hook(img.win_ptr, manage_mouse, &img);
 		mlx_mouse_hook(img.win_ptr, manage_expose, &img);
 		mlx_loop(img.mlx_ptr);
-		print_tab(data->map);
+		print_map(data->map);
 	*/
 	}
 	clean_exit(data, 0);

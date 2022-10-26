@@ -6,13 +6,13 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:47:21 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:10:30 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	clean_exit( t_data *data, int exit_code)
+void	clean_exit(t_data *data, int exit_code)
 {
 	int	i;
 
@@ -26,23 +26,23 @@ void	clean_exit( t_data *data, int exit_code)
 			ft_free_split(&data->map);
 		if (data->player)
 			free(data->player);
-		if (data->i)
+		if (data->image)
 		{
 			i = 0;
 			while (i < NB_TEXTURES)
 			{
-				if (data->i->texture_path[i])
-					free(data->i->texture_path[i]);
+				if (data->image->texture_path[i])
+					free(data->image->texture_path[i]);
 				i++;
 			}
-			free(data->i);
+			free(data->image);
 		}
 		free(data);
 	}
 	exit(exit_code);
 }
 
-void	exit_msg( t_data *data, char *msg, int ret_exit)
+void	exit_msg(t_data *data, char *msg, int ret_exit)
 {
 	error_msg(msg);
 	clean_exit(data, ret_exit);

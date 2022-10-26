@@ -6,18 +6,18 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:24:41 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:50:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-unsigned int	get_offset(t_pix pix, t_image *img)
+unsigned int	get_offset(t_point pix, t_image *img)
 {
 	return (pix.y * img->line_len + pix.x * (img->bpp / 8));
 }
 
-void	put_pix(t_image *img, t_pix pix, int color)
+void	put_point(t_image *img, t_point pix, int color)
 {
 	void	*dst;
 

@@ -5,7 +5,7 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 add_vec	vectors.c	/^void	add_vec(t_point	*pt, t_point vector)$/;"	f
-check_map	parsing.c	/^int	check_map( t_data *data)$/;"	f
+check_map	parsing.c	/^int	check_map(t_data *data)$/;"	f
 default_map	matrix.c	/^char	**default_map(char	*argv[])$/;"	f
 default_player	main.c	/^t_player	*default_player(void)$/;"	f
 ft_append_tab	matrix.c	/^char	**ft_append_tab(char **matrix, char *str)$/;"	f
@@ -13,17 +13,17 @@ ft_matrixlen	matrix.c	/^int	ft_matrixlen(char **matrix)$/;"	f
 ft_realloc_cat	get_next_line.c	/^static char	*ft_realloc_cat(char *line, char c, int *len)$/;"	f	file:
 get_next_line	get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
 get_vector	vectors.c	/^t_point	get_vector(t_point *from, t_point *to)$/;"	f
-import_elemt	parsing.c	/^int	import_elemt( t_data *data, char *line)$/;"	f
+import_elemt	parsing.c	/^int	import_elemt(t_data *data, char *line)$/;"	f
 is_available_mapcase	parsing.c	/^static int is_available_mapcase(char c)$/;"	f	file:
 is_blank_char	parsing.c	/^int	is_blank_char(char c)$/;"	f
 is_blank_line	parsing.c	/^int	is_blank_line(char *line)$/;"	f
-is_border	parsing.c	/^static int	is_border( t_data *data, int x, int y, int matrix_len)$/;"	f	file:
+is_border	parsing.c	/^static int	is_border(t_data *data, int x, int y, int matrix_len)$/;"	f	file:
 main	main.c	/^int	main(int argc, char *argv[])$/;"	f
 parse_file	parsing.c	/^int	parse_file(char *fname, t_data	* data)$/;"	f
 parsing_loop	parsing.c	/^int	parsing_loop(char *line, t_data *data, int *map_parse)$/;"	f
-print_tab	matrix.c	/^void	print_tab(char **tab)$/;"	f
-ray_parse	main.c	/^void	ray_parse( t_data *data)$/;"	f
+print_map	matrix.c	/^void	print_map(char **tab)$/;"	f
+ray_parse	main.c	/^void	ray_parse(t_data *data)$/;"	f
 rgb_conv	parsing.c	/^unsigned int	rgb_conv(int R, int G, int B)$/;"	f
-set_default	parsing.c	/^void	set_default( t_data *data)$/;"	f
+set_default	parsing.c	/^void	set_default(t_data *data)$/;"	f
 vec_diff	vectors.c	/^t_point	vec_diff(t_point v1, t_point v2)$/;"	f
 vec_scale	vectors.c	/^t_point	vec_scale(t_point vector, double scale)$/;"	f

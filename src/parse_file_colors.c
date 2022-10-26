@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:47:21 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:53:14 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ unsigned int	rgb_conv(int R, int G, int B)
 	return ((unsigned int) R * 65536 + (unsigned int) G * 256 + B);
 }
 
-unsigned int	init_f_c_color( t_data *data, char *line)
+unsigned int	init_f_c_color(t_data *data, char *line)
 {
 	int		colors[3];
 	char	*color_strimed;
@@ -44,7 +44,7 @@ unsigned int	init_f_c_color( t_data *data, char *line)
 	}
 	return (rgb_conv(colors[0], colors[1], colors[2]));
 }
-void	wrong_color( t_data *data, char *color_strimed)
+void	wrong_color(t_data *data, char *color_strimed)
 {
 	free(color_strimed);
 	exit_msg(data, "[wrong_color]", -1);

@@ -6,13 +6,13 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:47:21 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:10:30 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	import_texture_path( t_data *data, int identifier, char *line)
+void	import_texture_path(t_data *data, int identifier, char *line)
 {
 	int	i;
 
@@ -23,22 +23,22 @@ void	import_texture_path( t_data *data, int identifier, char *line)
 	i = 1;
 	while (data->line_split[i] != NULL && is_blank_line(data->line_split[i]))
 		i++;
-	if (data->i->texture_path[identifier])
+	if (data->image->texture_path[identifier])
 		exit_msg(data, "param identifier must be unique", -1);
-	data->i->texture_path[identifier] = ft_strtrim(data->line_split[i], " \n\t");
+	data->image->texture_path[identifier] = ft_strtrim(data->line_split[i], " \n\t");
 }
 
-void	import_param( t_data *data, int identifier, char *line)
+void	import_param(t_data *data, int identifier, char *line)
 {
 	if (identifier == F)
-		data->i->floor_color = init_f_c_color(data, line);
+		data->image->floor_color = init_f_c_color(data, line);
 	else if (identifier == C)
-		data->i->ceiling_color = init_f_c_color(data, line);
+		data->image->ceiling_color = init_f_c_color(data, line);
 	else
 		import_texture_path(data, identifier, line);
 }
 
-int	import_params( t_data *data)
+int	import_params(t_data *data)
 {
 	int		identifier;
 	char	*line;
@@ -58,7 +58,7 @@ int	import_params( t_data *data)
 	return (0);
 }
 
-int	parsing_loop( t_data *data, int *map_parse)
+int	parsing_loop(t_data *data, int *map_parse)
 {
 	if (!is_blank_line(data->line) || *map_parse)
 	{
@@ -71,7 +71,7 @@ int	parsing_loop( t_data *data, int *map_parse)
 	return (1);
 }
 
-void	init_null( t_data *data, int *map_parse)
+void	init_null(t_data *data, int *map_parse)
 {
 	int	i;
 
@@ -80,12 +80,12 @@ void	init_null( t_data *data, int *map_parse)
 		data->map = NULL;
 	i = 0;
 	while (i < NB_TEXTURES)
-		data->i->texture_path[i++] = NULL;
-	data->i->floor_color = 10;
-	data->i->ceiling_color = 10000;
+		data->image->texture_path[i++] = NULL;
+	data->image->floor_color = 10;
+	data->image->ceiling_color = 10000;
 }
 
-void	init_fd( t_data *data, int *fd, char *fname)
+void	init_fd(t_data *data, int *fd, char *fname)
 {
 	file_extention_available(data, fname);
 	*fd = open(fname, O_RDONLY);
@@ -93,7 +93,7 @@ void	init_fd( t_data *data, int *fd, char *fname)
 		exit_msg(data, "[init_fd] Error opening file (check file name)", -1);
 }
 
-void	file_extention_available( t_data *data, char *fname)
+void	file_extention_available(t_data *data, char *fname)
 {
 	char	*p_ext;
 

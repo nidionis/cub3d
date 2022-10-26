@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:32:46 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:50:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ static unsigned int	mandel_pix_color(t_vector pt_parser, t_image *img)
 
 void	mandelbrot(t_image *img)
 {
-	t_pix	parser;
+	t_point	parser;
 	t_vector	pt_parser;
 
 	parser.x = 0;
 	parser.y = 0;
 	while (parser.y < (int)img->size[1] && parser.x < (int)img->size[0])
 	{
-		pt_parser = convert_pix_to_pt(img, parser, img->center);
-		put_pix(img, parser, mandel_pix_color(pt_parser, img));
+		pt_parser = convert_point_to_pt(img, parser, img->center);
+		put_point(img, parser, mandel_pix_color(pt_parser, img));
 		(parser.x)++;
 		if (parser.x == (int)img->size[0])
 		{
@@ -66,16 +66,16 @@ unsigned int	is_white(int n)
 
 void	carpette(t_image *img)
 {
-	t_pix	parser;
+	t_point	parser;
 
 	parser.x = 0;
 	parser.y = 0;
 	while (parser.y < (int)img->size[1] && (int)img->size[0] > parser.x)
 	{
 		if (!(is_white(parser.x) || is_white(parser.y)))
-			put_pix(img, parser, color_render(255, img));
+			put_point(img, parser, color_render(255, img));
 		else
-			put_pix(img, parser, 0);
+			put_point(img, parser, 0);
 		(parser.x)++;
 		if (parser.x == (int)img->size[0])
 		{

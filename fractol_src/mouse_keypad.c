@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:28:41 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:50:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 t_image	*zoom_in(t_image *img, void (*f)(), int x, int y)
 {
 	double	ratio;
-	t_pix	mouse_pix;
-	t_pix	mouse_to_center;
+	t_point	mouse_pix;
+	t_point	mouse_to_center;
 
 	ratio = 1.1;
 	mouse_pix = make_pix_pt(x, y);
@@ -31,9 +31,9 @@ t_image	*zoom_in(t_image *img, void (*f)(), int x, int y)
 t_image	*zoom_out(t_image *img, void (*f)(), int x, int y)
 {
 	double	ratio;
-	t_pix	mouse_pix;
-	t_pix	mouse_to_center;
-	t_pix	mouse_to_cent_scaled;
+	t_point	mouse_pix;
+	t_point	mouse_to_center;
+	t_point	mouse_to_cent_scaled;
 
 	ratio = 1.1;
 	mouse_pix = make_pix_pt(x, y);
@@ -64,8 +64,8 @@ void	moving(t_image *img, void (*f)(), int keystroke)
 
 void	recentrer(t_image *img, int x, int y)
 {
-	t_pix	pix_clic;
-	t_pix	vector;
+	t_point	pix_clic;
+	t_point	vector;
 
 	pix_clic = make_pix_pt(x, y);
 	vector.x = (img->win_center).x - pix_clic.x;

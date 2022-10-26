@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:48:59 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:53:14 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	refresh_ret_if_is_param(char **identifiers, \
 	return (0);
 }
 
-int	conv_id_param( t_data *data, int identifier_len, char *str)
+int	conv_id_param(t_data *data, int identifier_len, char *str)
 {
 	int		i;
 	int		returned;
@@ -57,7 +57,7 @@ int	conv_id_param( t_data *data, int identifier_len, char *str)
 	return (returned);
 }
 
-int	get_identifier( t_data *data, char *str)
+int	get_identifier(t_data *data, char *str)
 {
 	int		identifier_len;
 

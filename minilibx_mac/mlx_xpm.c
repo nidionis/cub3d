@@ -109,7 +109,7 @@ int	mlx_int_get_text_rgb(char *name, char *end)
 }
 
 
-void	mlx_int_xpm_set_pixel(mlx_img_list_t *img, char *data, int opp, int col, int x)
+void	mlx_int_xpm_set_pointel(mlx_img_list_t *img, char *data, int opp, int col, int x)
 {
   /*
   int	dec;
@@ -248,7 +248,7 @@ void	*mlx_int_parse_xpm(mlx_ptr_t *xvar,void *info,int info_size,char *(*f)())
 	  //	  else
 	  if (col==-1)
 	    col = 0xFF000000;
-	  mlx_int_xpm_set_pixel(img, data, opp, col, x);
+	  mlx_int_xpm_set_pointel(img, data, opp, col, x);
 	  x ++;
 	}
       //      data += img->size_line;

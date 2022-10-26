@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:21:39 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:53:14 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	f_is_box_crossed(t_player *player)
 }
 
 /* return 1 if same, 2 if changed boxes, 0 if hit a wall) */
-int	check_update_box_pos( t_data *data)
+int	check_update_box_pos(t_data *data)
 {
 	int	has_cross_over;
 
@@ -42,7 +42,7 @@ int	check_update_box_pos( t_data *data)
 	return (0);
 }
 
-void	move_pers( t_data *data, int dir)
+void	move_pers(t_data *data, int dir)
 {
 	t_player	*player;
 

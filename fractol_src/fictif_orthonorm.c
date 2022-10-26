@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:32:46 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:50:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	orthonorm_rel(t_image *img)
 {
-	t_pix	parser;
+	t_point	parser;
 	t_vector	pt_parser;
 
 	parser.x = 0;
@@ -26,11 +26,11 @@ void	orthonorm_rel(t_image *img)
 			parser.x = 0;
 			(parser.y)++;
 		}
-		pt_parser = convert_pix_to_pt(img, parser, img->center);
+		pt_parser = convert_point_to_pt(img, parser, img->center);
 		if ((int)pt_parser.x == pt_parser.x || (int)pt_parser.y == pt_parser.y)
-			put_pix(img, parser, rgb_conv(100, 255, 0));
+			put_point(img, parser, rgb_conv(100, 255, 0));
 		else if (parser.y < (int)img->size[1])
-			put_pix(img, parser, 0);
+			put_point(img, parser, 0);
 		(parser.x)++;
 	}
 	circle(img, 5, img->center, rgb_conv(255, 0, 0));
