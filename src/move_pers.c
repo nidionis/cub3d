@@ -12,6 +12,81 @@
 
 #include "cub3d.h"
 
+/*
+The algo check if the final position is over than the box size (or under 0 if going to the NORTH or WEST)
+It refreshs the positions values in the map
+
+In theses examples, player's step brings her to *
+case 0:
+ ____ ___ 
+|    |    |
+|WALL|    |
+|    |*   |
+L____|____|
+|    |    |
+|    |p   | player : box_position = { 0, 1 }
+|    |    |			 map_position = { 1, 1 }
+L____|____|
+
+No wall:
+	Box_position with UNITS_PER_BOX difference is applyed
+
+ex : player.box_position.y become -1
+=>  new box position is :
+		player.box_position.y = -1 + (UNITS_PER_BOX - 1)
+Only y overflowed on a negative way
+(or increase if going to south or east)
+We can guess wich direction we must carry if there is a wall
+Map_position.y decrease (or increase)
+We apply the same concept for east-west axe
+
+case 1:
+ ____ ____
+|WALL|    |
+|    |    |
+|    |*   |
+L____|____|
+|  p |$   |
+|    |    |
+|    |    |
+L____|____|
+
+When the next box (NSEW) is a wall, the values
+payers.box_position[x] (or y) are set to 0 (or UNITS_PER_BOX - 1)
+player arrive at $
+
+case 3:
+ ____ ____
+|    |WALL|
+|    |    |
+|*   |    |
+L____|____|
+|$   |    |
+|    |p   |
+|    |    |
+L____|____|
+In this case, p want to reach *
+North is a wall, so var is set to 0
+Player arrive at $
+
+can solve to $ because the box is adjacent
+
+case 4:
+ ____ ____
+|WALL|    |
+|    |    |
+|   *|$   |
+L____|____|
+|    |    |
+|    |p   |
+|    |    |
+L____|____|
+In this case, p want to reach *
+Player is not blocked buy walls north or west
+The destination is still a wall
+Find the closest adjacent box and arrive at $
+*/
+
 static int	f_is_box_crossed(t_player *player)
 {
 	int	direction;
@@ -41,7 +116,7 @@ int	north_crossing(t_data *data)
 	}
 	else
 	{
-		pos_box->y += (int)POINTS_PER_BOX;
+		pos_box->y += (int)POINTS_PER_BOX - 1;
 		(pos_map->y)--;
 		return (0);
 	}
@@ -59,6 +134,7 @@ int	check_wall(t_data *data, int crossover_direction)
 	fprintf(stderr, "check_wall: hit_wall = %d\n", hit_a_wall);
 	return (hit_a_wall);
 }
+
 /* return 1 if same, 2 if changed boxes, 0 if hit a wall) */
 int	check_update_box_pos(t_data *data)
 {
