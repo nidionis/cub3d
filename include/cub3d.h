@@ -73,6 +73,7 @@
 # define SCREEN_HEIGHT 480
 # define RAYCAST_QUALITY 50
 # define NB_TEXTURES 4
+# define STEPS_PER_BOX 100
 
 //COLORS 
 # define RED "\033[1;31m"
@@ -138,7 +139,9 @@ typedef struct s_s
 	char		**map;
 }	t_s;
 
-enum _identifiers { NO, SO, WE, EA, F, C };
+enum e_identifiers { NO, SO, WE, EA, F, C };
+enum e_dir { N, S, W, E, NW, SW, SE, NE, NB_CARDINAL};
+enum e_pers_dir { FORWARD, BACKWARD, RIGHT, LEFT, NB_DIR };
 
 void			error_msg(char *msg);
 char	**default_map(char	*argv[]);
