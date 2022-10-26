@@ -12,36 +12,6 @@
 
 #include "cub3d.h"
 
-void	init_player(t_data *data, int x, int y, int *is_player)
-{
-	char			c;
-
-	c = data->map[y][x];
-	if (c == NORTH)
-	{
-		data->player->direction.x = 0;
-		data->player->direction.y = 1;
-	}
-	if (c == SOUTH)
-	{
-		data->player->direction.x = 0;
-		data->player->direction.y = -1;
-	}
-	if (c == EAST)
-	{
-		data->player->direction.x = -1;
-		data->player->direction.y = 0;
-	}
-	if (c == WEST)
-	{
-		data->player->direction.x = 1;
-		data->player->direction.y = 0;
-	}
-	data->player->pos_map.x = x;
-	data->player->pos_map.y = y;
-	//devine plnan
-	(*is_player)++;
-}
 
 int	is_NSEW(int i, int nb_mapcases)
 {

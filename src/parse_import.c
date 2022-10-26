@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parse_import.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 16:10:30 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 18:17:51 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,41 +69,6 @@ int	parsing_loop(t_data *data, int *map_parse)
 	}
 	free(data->line);
 	return (1);
-}
-
-void	init_null(t_data *data, int *map_parse)
-{
-	int	i;
-
-	*map_parse = 0;
-	if (data)
-		data->map = NULL;
-	i = 0;
-	while (i < NB_TEXTURES)
-		data->image->texture_path[i++] = NULL;
-	data->image->floor_color = 10;
-	data->image->ceiling_color = 10000;
-}
-
-void	init_fd(t_data *data, int *fd, char *fname)
-{
-	file_extention_available(data, fname);
-	*fd = open(fname, O_RDONLY);
-	if (*fd == -1)
-		exit_msg(data, "[init_fd] Error opening file (check file name)", -1);
-}
-
-void	file_extention_available(t_data *data, char *fname)
-{
-	char	*p_ext;
-
-	if (fname)
-	{
-		p_ext = ft_strnstr(fname, ".cub", ft_strlen(fname));
-		if (ft_strlen_char(p_ext, ' ') == 4)
-			return ;
-	}
-	exit_msg(data, "[file_extention_available] only .cub extension", -1);
 }
 
 void	parse_file(char *fname, t_data	* data)

@@ -179,5 +179,7 @@ void	print_params(t_data *data, int fd);
 void	print_map(t_data *data, int fd);
 void	print_s(t_data *data, int fd);
 void	redir_debug_file_logs(t_data *data, char *fname, int log_type);
+void	init_player(t_data *data, int x, int y, int *is_player);
+void	init_fd(t_data *data, int *fd, char *fname);
 #endif
 
