@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file_colors.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 13:39:40 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:09:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,36 @@ unsigned int	rgb_conv(int R, int G, int B)
 	return ((unsigned int) R * 65536 + (unsigned int) G * 256 + B);
 }
 
-unsigned int	init_f_c_color(t_s *s, char *line)
+unsigned int	init_f_c_color( t_data *data, char *line)
 {
 	int		colors[3];
 	char	*color_strimed;
 	int		i;
 
-	(void)s;
+	(void) data;
 	i = 0;
 	line++;
-	s->line_split = ft_split(line, ',');
-	if (ft_matrixlen(s->line_split) != 3)
-		wrong_color(s, NULL);
-	while (s->line_split[i])
+	data->line_split = ft_split(line, ',');
+	if (ft_matrixlen(data->line_split) != 3)
+		wrong_color( data, NULL);
+	while (data->line_split[i])
 	{
-		color_strimed = ft_strtrim(s->line_split[i], " \t");
+		color_strimed = ft_strtrim(data->line_split[i], " \t");
 		//printf("[color[i] trimed = %s\n", color_strimed);
 		if (ft_strlen(color_strimed) > 3 || !ft_strlen(color_strimed))
-			wrong_color(s, color_strimed);
-		colors[i] = ft_atoi(s->line_split[i]);
+			wrong_color( data, color_strimed);
+		colors[i] = ft_atoi(data->line_split[i]);
 		//printf("[color[i] = %d\n", colors[i]);
 		if (colors[i] > 255 || colors[i] < 0)
-			wrong_color(s, color_strimed);
+			wrong_color( data, color_strimed);
 		free(color_strimed);
 		i++;
 	}
 	return (rgb_conv(colors[0], colors[1], colors[2]));
 }
-void	wrong_color(t_s *s, char *color_strimed)
+void	wrong_color( t_data *data, char *color_strimed)
 {
 	free(color_strimed);
-	exit_msg(s, "[wrong_color]", -1);
+	exit_msg( data, "[wrong_color]", -1);
 }
 

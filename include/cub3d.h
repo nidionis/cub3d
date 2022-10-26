@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 12:18:29 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:09:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,14 +130,14 @@ typedef struct s_imgg
 	void			(*f)();
 }	t_imgg;
 
-typedef struct s_s
+typedef struct s_data
 {
 	char		*line;
 	char		**line_split;
 	t_imgg		*i;
 	t_person	*p;
 	char		**map;
-}	t_s;
+}	t_data;
 
 enum e_identifiers { NO, SO, WE, EA, F, C };
 enum e_dir { N, S, W, E, NW, SW, SE, NE, NB_CARDINAL};
@@ -148,33 +148,33 @@ char	**default_map(char	*argv[]);
 char	**ft_append_tab(char **matrix, char *str);
 char	*get_next_line(int fd);
 int func(void);
-int	conv_id_param(t_s *s, int identifier_len, char *str);
-void	file_extention_available(t_s *s, char *fname);
+int	conv_id_param( t_data *data, int identifier_len, char *str);
+void	file_extention_available( t_data *data, char *fname);
 int	ft_matrixlen(char **matrix);
-int	get_identifier(t_s *s, char *str);
-int	import_params(t_s *s);
-void	parse_file(char *fname, t_s	*s);
-int	parsing_loop(t_s *s, int *map_parse);
+int	get_identifier( t_data *data, char *str);
+int	import_params( t_data *data);
+void	parse_file(char *fname, t_data	* data);
+int	parsing_loop( t_data *data, int *map_parse);
 t_person	*default_person(void);
 t_pix	get_vector(t_pix *from, t_pix *to);
 t_pix	vec_diff(t_pix v1, t_pix v2);
 t_pix	vec_scale(t_pix vec, double scale);
-void init_null(t_s *s, int *map_parse);
+void init_null( t_data *data, int *map_parse);
 void	add_vec(t_pix	*pt, t_pix vec);
-void	clean_exit(t_s *s, int exit_code);
-void	exit_msg(t_s *s, char *msg, int ret_exit);
-void	import_param(t_s *s, int identifier, char *line);
+void	clean_exit( t_data *data, int exit_code);
+void	exit_msg( t_data *data, char *msg, int ret_exit);
+void	import_param( t_data *data, int identifier, char *line);
 void	print_tab(char **tab);
-void	ray_parse(t_s *s);
-void	wrong_color(t_s *s, char *color_strimed);
+void	ray_parse( t_data *data);
+void	wrong_color( t_data *data, char *color_strimed);
 int	is_blank_line(char *line);
 int	is_blank_char(char c);
 int	is_map_line(char *str);
-int	check_map(t_s *s);
-unsigned int	init_f_c_color(t_s *s, char *line);
-void	print_pers(t_s *s);
-void	print_params(t_s *s);
-void	print_map(t_s *s);
-void	print_s(t_s *s);
+int	check_map( t_data *data);
+unsigned int	init_f_c_color( t_data * data, char *line);
+void	print_pers( t_data *data);
+void	print_params( t_data *data);
+void	print_map( t_data *data);
+void	print_s( t_data *data);
 #endif
 

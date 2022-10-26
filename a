@@ -1,0 +1,22 @@
+[Pers]	pos_map: [    1,    6]
+[Pers]	pos_box: [    0,-268435456]
+[Pers]	dir: 	 [    0,    1]
+[Pers]	plane: 	 [860969825,32767]
+[img]	ceiling_color: [10000]
+[img]	floor_color: [65280]
+[img]	texture NO: [./treuc]
+[img]	texture SO: [./d]
+[img]	texture EA: [(null)]
+[img]	texture WE: [(null)]
+1111111
+ 1000101
+1001001
+1111111
+
+1111111
+1N10111
+ 1111
+
+
+
+

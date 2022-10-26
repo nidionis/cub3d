@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 12:18:11 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:11:38 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ fin tant que
 
 */
 
-void	ray_parse(t_s *s)
+void	ray_parse( t_data *data)
 {
 	int			i;
 	int			x_cam;
@@ -42,7 +42,7 @@ void	ray_parse(t_s *s)
 
 	(void)v_dir;
 //cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1
-	pers = s->p;
+	pers = data->p;
 	i = 0;
 	while (i < RAYCAST_QUALITY)
 	{
@@ -58,40 +58,40 @@ void	ray_parse(t_s *s)
 	}
 }
 
-t_s	*malloc_s(void)
+ t_data	*malloc_s(void)
 {
-	t_s	*s;
+	 t_data	* data;
 
-	s = malloc(sizeof(t_s));
-	if (!s)
-		clean_exit(s, -4);
-	s->i = malloc(sizeof(t_imgg));
-	if (!s->i)
-		clean_exit(s, -5);
-	s->p = malloc(sizeof(t_person));
-	return (s);
+	 data = malloc(sizeof( t_data));
+	if (! data)
+		clean_exit( data, -4);
+	data->i = malloc(sizeof(t_imgg));
+	if (!data->i)
+		clean_exit( data, -5);
+	data->p = malloc(sizeof(t_person));
+	return ( data);
 }
 
 int	main(int argc, char *argv[])
 {
 	t_imgg	img;
-	t_s		*s;
+	 t_data		* data;
 
 	(void)img;
 	(void)argv;
-	s = NULL;
+	 data = NULL;
 	if (argc != 2)
 	{
 		error_msg("Needs a path to the map file only");
-		clean_exit(s, -2);
+		clean_exit( data, -2);
 	}
 	else
 	{
-		s = malloc_s();
-		if (!s->p)
-			clean_exit(s, -5);
-		parse_file(argv[1], s);
-		print_s(s);
+		 data = malloc_s();
+		if (!data->p)
+			clean_exit( data, -5);
+		parse_file(argv[1],  data);
+		print_s( data);
 		/*
 		img.mlx_ptr = mlx_init();
 		//img_default_init(&img);
@@ -103,14 +103,14 @@ int	main(int argc, char *argv[])
 		img.addr = mlx_get_data_addr(img.img_ptr, \
 			&(img.bpp), &(img.line_len), &(img.endian));
 		//img.f(&img);
-		//mlx_hook(img.win_ptr, ON_DESTROY, 0, clean_exit, &s);
+		//mlx_hook(img.win_ptr, ON_DESTROY, 0, clean_exit, & data);
 		mlx_put_image_to_window(img.mlx_ptr, img.win_ptr, img.img_ptr, 0, 0);
 		mlx_key_hook(img.win_ptr, manage_keystroke, &img);
 		mlx_mouse_hook(img.win_ptr, manage_mouse, &img);
 		mlx_mouse_hook(img.win_ptr, manage_expose, &img);
 		mlx_loop(img.mlx_ptr);
-		print_tab(s->map);
+		print_tab(data->map);
 	*/
 	}
-	clean_exit(s, 0);
+	clean_exit( data, 0);
 }

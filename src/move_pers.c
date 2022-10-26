@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_pers.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 12:15:06 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:09:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static int	f_is_box_crossed(t_person *p)
 }
 
 /* return 1 if same, 2 if changed boxes, 0 if hit a wall) */
-int	check_update_box_pos(t_s *s)
+int	check_update_box_pos( t_data *data)
 {
 	int	has_cross_over;
 
-	has_cross_over = f_is_box_crossed(s->p);
+	has_cross_over = f_is_box_crossed(data->p);
 	if (has_cross_over)
 	{
 		//check_wall
@@ -42,7 +42,7 @@ int	check_update_box_pos(t_s *s)
 	return (0);
 }
 
-void	move_pers(t_s *s, int dir)
+void	move_pers( t_data *data, int dir)
 {
 	t_person	*p;
 
@@ -50,7 +50,7 @@ void	move_pers(t_s *s, int dir)
 	{
 		//apply
 	}
- 	(void)s;
+ 	(void) data;
  	(void)p;
  	return ;
  }

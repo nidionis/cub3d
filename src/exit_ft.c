@@ -3,47 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   exit_ft.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 14:12:11 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:09:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	clean_exit(t_s *s, int exit_code)
+void	clean_exit( t_data *data, int exit_code)
 {
 	int	i;
 
-	if (s)
+	if ( data)
 	{
-		if (s->line)
-			free(s->line);
-		if (s->line_split)
-			ft_free_split(&s->line_split);
-		if (s->map)
-			ft_free_split(&s->map);
-		if (s->p)
-			free(s->p);
-		if (s->i)
+		if (data->line)
+			free(data->line);
+		if (data->line_split)
+			ft_free_split(&data->line_split);
+		if (data->map)
+			ft_free_split(&data->map);
+		if (data->p)
+			free(data->p);
+		if (data->i)
 		{
 			i = 0;
 			while (i < NB_TEXTURES)
 			{
-				if (s->i->texture_path[i])
-					free(s->i->texture_path[i]);
+				if (data->i->texture_path[i])
+					free(data->i->texture_path[i]);
 				i++;
 			}
-			free(s->i);
+			free(data->i);
 		}
-		free(s);
+		free( data);
 	}
 	exit(exit_code);
 }
 
-void	exit_msg(t_s *s, char *msg, int ret_exit)
+void	exit_msg( t_data *data, char *msg, int ret_exit)
 {
 	error_msg(msg);
-	clean_exit(s, ret_exit);
+	clean_exit( data, ret_exit);
 }

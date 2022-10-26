@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file_ft.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 12:22:33 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:09:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	refresh_ret_if_is_param(char **identifiers, \
 	return (0);
 }
 
-int	conv_id_param(t_s *s, int identifier_len, char *str)
+int	conv_id_param( t_data *data, int identifier_len, char *str)
 {
 	int		i;
 	int		ret;
@@ -51,13 +51,13 @@ int	conv_id_param(t_s *s, int identifier_len, char *str)
 				break ;
 	ft_free_split(&identifiers);
 	if (ret == -1)
-		exit_msg(s, "[conv_id_param] wrong param identifier\n", -1);
+		exit_msg( data, "[conv_id_param] wrong param identifier\n", -1);
 	if (identifier_len == 1)
 		ret += 4;
 	return (ret);
 }
 
-int	get_identifier(t_s *s, char *str)
+int	get_identifier( t_data *data, char *str)
 {
 	int		identifier_len;
 
@@ -65,6 +65,6 @@ int	get_identifier(t_s *s, char *str)
 	if (is_map_line(str))
 		return (11);
 	if (identifier_len > 2 || identifier_len < 1)
-		exit_msg(s, "[get_identifier] wrong param identifier", -1);
-	return (conv_id_param(s, identifier_len, str));
+		exit_msg( data, "[get_identifier] wrong param identifier", -1);
+	return (conv_id_param( data, identifier_len, str));
 }

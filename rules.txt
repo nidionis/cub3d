@@ -28,7 +28,7 @@ par une ou plusieurs lignes vides.
 ◦ La description de la carte sera toujours en dernier dans le fichier, le reste des
 éléments peut être dans n’importe quel ordre.
 ◦ Sauf pour la map elle-même, les informations de chaque élément peuvent être
-séparées par un ou plusieurs espace(s).
+séparées par un ou plusieurs espace( data).
 ◦ La carte doit être parsée en accord avec ce qui est présenté dans le fichier. Les
 espaces sont une partie valable de la carte, c’est à vous de les gérer correcte-
 ment. Vous devez pouvoir parser n’importe quelle sorte de carte, tant qu’elle

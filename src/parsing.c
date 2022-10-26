@@ -3,97 +3,97 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 12:25:58 by supersko         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:09:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	import_texture_path(t_s *s, int identifier, char *line)
+void	import_texture_path( t_data *data, int identifier, char *line)
 {
 	int	i;
 
-	s->line_split = ft_split(line, ' ');
-	if (ft_matrixlen(s->line_split) > 3)
+	data->line_split = ft_split(line, ' ');
+	if (ft_matrixlen(data->line_split) > 3)
 		error_msg("[import_params] WARNING: \
 				check .cub file (could be cleaner)");
 	i = 1;
-	while (s->line_split[i] != NULL && is_blank_line(s->line_split[i]))
+	while (data->line_split[i] != NULL && is_blank_line(data->line_split[i]))
 		i++;
-	if (s->i->texture_path[identifier])
-		exit_msg(s, "param identifier must be unique", -1);
-	s->i->texture_path[identifier] = ft_strtrim(s->line_split[i], " \n\t");
+	if (data->i->texture_path[identifier])
+		exit_msg( data, "param identifier must be unique", -1);
+	data->i->texture_path[identifier] = ft_strtrim(data->line_split[i], " \n\t");
 }
 
-void	import_param(t_s *s, int identifier, char *line)
+void	import_param( t_data *data, int identifier, char *line)
 {
 	if (identifier == F)
-		s->i->floor_color = init_f_c_color(s, line);
+		data->i->floor_color = init_f_c_color( data, line);
 	else if (identifier == C)
-		s->i->ceiling_color = init_f_c_color(s, line);
+		data->i->ceiling_color = init_f_c_color( data, line);
 	else
-		import_texture_path(s, identifier, line);
+		import_texture_path( data, identifier, line);
 }
 
-int	import_params(t_s *s)
+int	import_params( t_data *data)
 {
 	int		identifier;
 	char	*line;
 
-	line = s->line;
+	line = data->line;
 	if (!line)
 		return (-1);
 	while (is_blank_char(*line))
 		line++;
-	identifier = get_identifier(s, line);
-	//printf("[import], s->line: %s => id: %d\n", s->line, identifier);
+	identifier = get_identifier( data, line);
+	//printf("[import], data->line: %s => id: %d\n", data->line, identifier);
 	if (identifier == 11) // copying map matrix
 		return (1);
 	else
-		import_param(s, identifier, line);
-	ft_free_split(&s->line_split);
+		import_param( data, identifier, line);
+	ft_free_split(&data->line_split);
 	return (0);
 }
 
-int	parsing_loop(t_s *s, int *map_parse)
+int	parsing_loop( t_data *data, int *map_parse)
 {
-	if (!is_blank_line(s->line) || *map_parse)
+	if (!is_blank_line(data->line) || *map_parse)
 	{
 		if (!*map_parse)
-			*map_parse = import_params(s);
+			*map_parse = import_params( data);
 		if (*map_parse == 1)
-			s->map = ft_append_tab(s->map, ft_strtrim(s->line, "\n"));
+			data->map = ft_append_tab(data->map, ft_strtrim(data->line, "\n"));
 	}
-	free(s->line);
+	free(data->line);
 	return (1);
 }
 
-void	init_null(t_s *s, int *map_parse)
+void	init_null( t_data *data, int *map_parse)
 {
 	int	i;
 
 	*map_parse = 0;
-	if (s)
-		s->map = NULL;
+	if ( data)
+		data->map = NULL;
 	i = 0;
 	while (i < NB_TEXTURES)
-		s->i->texture_path[i++] = NULL;
-	s->i->floor_color = 10;
-	s->i->ceiling_color = 10000;
+		data->i->texture_path[i++] = NULL;
+	data->i->floor_color = 10;
+	data->i->ceiling_color = 10000;
 }
 
-void	init_fd(t_s *s, int *fd, char *fname)
+void	init_fd( t_data *data, int *fd, char *fname)
 {
-	file_extention_available(s, fname);
+	file_extention_available( data, fname);
 	*fd = open(fname, O_RDONLY);
 	if (*fd == -1)
-		exit_msg(s, "[init_fd] Error opening file (check file name)", -1);
+		exit_msg( data, "[init_fd] Error opening file (check file name)", -1);
 }
 
-void	file_extention_available(t_s *s, char *fname)
+void	file_extention_available( t_data *data, char *fname)
 {
 	char	*p_ext;
 
@@ -103,30 +103,30 @@ void	file_extention_available(t_s *s, char *fname)
 		if (ft_strlen_char(p_ext, ' ') == 4)
 			return ;
 	}
-	exit_msg(s, "[file_extention_available] only .cub extension", -1);
+	exit_msg( data, "[file_extention_available] only .cub extension", -1);
 }
 
-void	parse_file(char *fname, t_s	*s)
+void	parse_file(char *fname, t_data	* data)
 {
 	int		fd;
 	int		map_parse;
 
-	init_null(s, &map_parse);
-	init_fd(s, &fd, fname);
-	s->line = get_next_line(fd);
-	if (s->line)
+	init_null( data, &map_parse);
+	init_fd( data, &fd, fname);
+	data->line = get_next_line(fd);
+	if (data->line)
 	{
-		while (s->line)
+		while (data->line)
 		{
-			parsing_loop(s, &map_parse);
+			parsing_loop( data, &map_parse);
 			if (map_parse == -1)
 				break ;
-			s->line = get_next_line(fd);
+			data->line = get_next_line(fd);
 		}
 	}
 	close(fd);
 	if (map_parse != -1)
-		map_parse = check_map(s);
+		map_parse = check_map( data);
 	if (map_parse == -1)
-		exit_msg(s, "[parse_file] pb loading map", -1);
+		exit_msg( data, "[parse_file] pb loading map", -1);
 }
