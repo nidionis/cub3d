@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 16:48:19 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
+/*   Updated: 2022/10/26 17:33:57 by suplayerko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ fin tant que
 //	int			i;
 //	int			x_cam;
 //	t_player	*player;
-//	t_vector		v_dir;
+//	t_vector		vdirection
 //
-//	(void)v_dir;
+//	(void)vdirection
 ////cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1
 //	player = data->player;
 //	i = 0;
@@ -48,8 +48,8 @@ fin tant que
 //	{
 //		//calculate ray position and direction
 //		x_cam = 2 * i / RAYCAST_QUALITY - 1; //x-coordinate in camera space
-//		v_dir.x = player->dir.x + player->plane.x * x_cam;
-//		v_dir.y = player->dir.y + player->plane.y * x_cam;
+//		vdirectionx = player-directionx + player->plane.x * x_cam;
+//		vdirectiony = player-directiony + player->plane.y * x_cam;
 //		i++;
 //	/*
 //	 deltaDistX = abs(1 / rayDirX)
@@ -58,7 +58,7 @@ fin tant que
 //	}
 //}
 
- t_data	*malloc_s(void)
+ t_data	*malloc_data(void)
 {
 	 t_data	* data;
 
@@ -87,30 +87,11 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		 data = malloc_s();
+		 data = malloc_data();
 		if (!data->player)
 			clean_exit(data, -5);
 		parse_file(argv[1],  data);
-		redir_debug_file_logs(data, "debug_file");
-		/*
-		img.mlx_ptr = mlx_init();
-		//img_default_init(&img);
-		img.win_ptr = mlx_new_window(img.mlx_ptr, \
-			img.size[0], img.size[1], "cub3d");
-		//set_win_center(&img);
-		img.img_ptr = mlx_new_image(img.mlx_ptr, \
-			img.size[0], img.size[1]);
-		img.addr = mlx_get_data_addr(img.img_ptr, \
-			&(img.bpp), &(img.line_len), &(img.endian));
-		//img.f(&img);
-		//mlx_hook(img.win_ptr, ON_DESTROY, 0, clean_exit, & data);
-		mlx_put_image_to_window(img.mlx_ptr, img.win_ptr, img.img_ptr, 0, 0);
-		mlx_key_hook(img.win_ptr, manage_keystroke, &img);
-		mlx_mouse_hook(img.win_ptr, manage_mouse, &img);
-		mlx_mouse_hook(img.win_ptr, manage_expose, &img);
-		mlx_loop(img.mlx_ptr);
-		print_map(data->map);
-	*/
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
 	}
 	clean_exit(data, 0);
 }

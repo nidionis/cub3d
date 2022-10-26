@@ -6,6 +6,7 @@ END			= \e[0m
 
 SRCDIR   = src
 OBJDIR   = obj
+DEBUG_LOG_FILE = debug_file
 
 SOURCES  := $(wildcard $(SRCDIR)/*.c)
 INCLUDES := $(wildcard $(SRCDIR)/*.h)
@@ -43,8 +44,10 @@ maker:
 	make -C ./$(LIBFT_DIR)
 
 clean:
-	@make clean -C ./$(MINILIBX)
+	@make -C ./$(MINILIBX) clean
+	@make -C $(LIBFT_DIR) fclean
 	@rm -rf $(OBJDIR)
+	@rm -rf $(DEBUG_LOG_FILE)
 
 fclean: clean
 	@rm -rf $(NAME)

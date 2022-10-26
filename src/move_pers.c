@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_pers.c                                        :+:      :+:    :+:   */
+/*   move_player.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:53:14 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
+/*   Updated: 2022/10/26 17:37:25 by suplayerko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 static int	f_is_box_crossed(t_player *player)
 {
-	int	dir;
+	int	direction;
 
-	dir = 0;
+	direction= 0;
 	if (player->pos_box.y > STEPS_PER_BOX)
-		dir += N;
+		direction += N;
 	if (player->pos_box.y < 0)
-		dir += S;
+		direction += S;
 	if (player->pos_box.x > STEPS_PER_BOX)
-		dir += E;
+		direction += E;
 	if (player->pos_box.x < 0)
-		dir += W;
-	return (dir);
+		direction += W;
+	return (direction);
 }
 
 /* return 1 if same, 2 if changed boxes, 0 if hit a wall) */
@@ -42,12 +42,13 @@ int	check_update_box_pos(t_data *data)
 	return (0);
 }
 
-void	move_pers(t_data *data, int dir)
+void	move_player(t_data *data, int direction)
 {
 	t_player	*player;
 
-	if (dir == FORWARD)
+	if (direction == FORWARD)
 	{
+		return ;
 		//apply
 	}
  	(void) data;

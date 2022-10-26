@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 15:53:14 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
+/*   Updated: 2022/10/26 17:51:25 by suplayerko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@ void	init_player(t_data *data, int x, int y, int *is_player)
 	c = data->map[y][x];
 	if (c == NORTH)
 	{
-		data->player->dir.x = 0;
-		data->player->dir.y = 1;
+		data->player->direction.x = 0;
+		data->player->direction.y = 1;
 	}
 	if (c == SOUTH)
 	{
-		data->player->dir.x = 0;
-		data->player->dir.y = -1;
+		data->player->direction.x = 0;
+		data->player->direction.y = -1;
 	}
 	if (c == EAST)
 	{
-		data->player->dir.x = -1;
-		data->player->dir.y = 0;
+		data->player->direction.x = -1;
+		data->player->direction.y = 0;
 	}
 	if (c == WEST)
 	{
-		data->player->dir.x = 1;
-		data->player->dir.y = 0;
+		data->player->direction.x = 1;
+		data->player->direction.y = 0;
 	}
 	data->player->pos_map.x = x;
 	data->player->pos_map.y = y;
@@ -101,7 +101,7 @@ int	is_border(t_data *data, int x, int y, int matrix_len)
 	return (0);
 }
 
-void	check_map_line(t_data *data, int y, int *nb_pers)
+void	check_map_line(t_data *data, int y, int *nb_player)
 {
 	int		x;
 	int		map_len;
@@ -112,7 +112,7 @@ void	check_map_line(t_data *data, int y, int *nb_pers)
 	c = data->map[y][0];
 	while (c)
 	{
-		if (!is_available_mapcase(data, x, y, nb_pers))
+		if (!is_available_mapcase(data, x, y, nb_player))
 			exit_msg(data, "[check_map] map contains unavailable char.", -10);
 		if (is_border(data, x, y, map_len) && c != WALL)
 			exit_msg(data, "[check_map] map not surrounded by walls.", -11);
@@ -123,15 +123,15 @@ void	check_map_line(t_data *data, int y, int *nb_pers)
 int	check_map(t_data *data)
 {
 	int	y;
-	int	nb_pers;
+	int	nb_player;
 
-	nb_pers = 0;
+	nb_player = 0;
 	y = 0;
 	if (!data || !data->map)
 		exit_msg(data, "[check_map] map is empty", -1);
 	while (data->map[y])
-		check_map_line(data, y++, &nb_pers);
-	if (nb_pers != 1)
+		check_map_line(data, y++, &nb_player);
+	if (nb_player != 1)
 		exit_msg(data, "[check_map] \
 				Map does not contains one hero only", -12);
 	return (1);

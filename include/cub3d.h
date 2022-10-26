@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 18:19:05 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 16:24:06by supersko         ###   ########.fr       */
+/*   Created: 2022/05/26 18:19:05 by suplayerko          #+#    #+#             */
+/*   Updated: 2022/10/26 16:24:06by suplayerko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@
 # define RAYCAST_QUALITY 50
 # define NB_TEXTURES 4
 # define STEPS_PER_BOX 100
+/* file deleted with make clean */
+# define DEBUG_LOG_FILENAME "debug_file"
 
 //COLORS 
 # define RED "\033[1;31m"
@@ -102,16 +104,16 @@ typedef struct s_point
 	int	y;
 }	t_point;
 
-typedef struct s_person
+typedef struct s_player
 {
 
 	t_point	pos_map;
 	t_point	pos_box;
-	t_point	dir;
+	t_point direction;
 	t_point	plane;
-}	t_person;
+}	t_player;
 
-typedef struct s_imgg
+typedef struct s_image
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -128,20 +130,21 @@ typedef struct s_imgg
 	//t_point			center;
 	//t_point			win_center;
 	void			(*f)();
-}	t_imgg;
+}	t_image;
 
 typedef struct s_data
 {
 	char		*line;
 	char		**line_split;
-	t_imgg		*image;
-	t_person	*player;
+	t_image		*image;
+	t_player	*player;
 	char		**map;
 }	t_data;
 
+enum log_type { DATA, PARAM, PLAYER, MAP };
 enum e_identifiers { NO, SO, WE, EA, F, C };
-enum e_dir { N, S, W, E, NW, SW, SE, NE, NB_CARDINAL};
-enum e_pers_dir { FORWARD, BACKWARD, RIGHT, LEFT, NB_DIR };
+enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
+enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION};
 
 void			error_msg(char *msg);
 char	**default_map(char	*argv[]);
@@ -155,7 +158,7 @@ int	get_identifier(t_data *data, char *str);
 int	import_params(t_data *data);
 void	parse_file(char *fname, t_data	*s);
 int	parsing_loop(t_data *data, int *map_parse);
-t_person	*default_person(void);
+t_player	*default_player(void);
 t_point	get_vector(t_point *from, t_point *to);
 t_point	vec_diff(t_point v1, t_point v2);
 t_point	vec_scale(t_point vec, double scale);
@@ -171,10 +174,10 @@ int	is_blank_char(char c);
 int	is_map_line(char *str);
 int	check_map(t_data *data);
 unsigned int	init_f_c_color(t_data *s, char *line);
-void	print_pers(t_data *data, int fd);
+void	print_player(t_data *data, int fd);
 void	print_params(t_data *data, int fd);
 void	print_map(t_data *data, int fd);
 void	print_s(t_data *data, int fd);
-void	redir_debug_file_logs(t_data *data, char *fname);
+void	redir_debug_file_logs(t_data *data, char *fname, int log_type);
 #endif
 
