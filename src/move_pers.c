@@ -91,11 +91,11 @@ static int	f_is_box_crossed(t_player *player)
 	direction= 0;
 	if (player->pos_box.y < 0)
 		direction += N;
-	if (player->pos_box.y >= POINTS_PER_BOX)
+	if (player->pos_box.y >= UNITS_PER_BOX)
 		direction += S;
 	if (player->pos_box.x < 0)
 		direction += E;
-	if (player->pos_box.x >= POINTS_PER_BOX)
+	if (player->pos_box.x >= UNITS_PER_BOX)
 		direction += W;
 	return (direction);
 }
@@ -111,7 +111,7 @@ int	check_wall(t_data *data, int crossover_direction)
 		hit_wall += south_crossing(data);
 	if (crossover_direction == E || crossover_direction == SE || crossover_direction == NE)
 		hit_wall += east_crossing(data);
-	if (crossover_direction == W || crossover_direction == Nw || crossover_direction == SW)
+	if (crossover_direction == W || crossover_direction == NW || crossover_direction == SW)
 		hit_wall += west_crossing(data);
 	if (!hit_wall)
 	{
@@ -137,21 +137,21 @@ int	check_update_box_pos(t_data *data)
 	return (hit_wall);
 }
 
-int	move_player(t_data *data, int direction)
+int	move_player(t_data *data, int move)
 {
 	int			hit_wall;
 	t_player	*p;
-	t_vector	*direction;
+	t_vector	scaled_direction;
 
 	p = data->player;
-	scaled_direction = vec_scale(p->scaled_direction, (double)(POINTS_PER_BOX / STEPS_PER_BOX));
+	scaled_direction = vec_scale(p->direction, (double)(UNITS_PER_BOX / STEPS_PER_BOX));
 	//if (scaled_direction == FORWARD)
-	if (scaled_direction == BACKWARD)
-		rotate_vector(scaled_direction, degree_to_radian(180);
-	else if (scaled_direction == RIGHT)
-		rotate_vector(scaled_direction, degree_to_radian(90);
-	else if (scaled_direction == LEFT)
-		rotate_vector(scaled_direction, degree_to_radian(-90);
+	if (move == BACKWARD)
+		rotate_vector(&scaled_direction, degree_to_radian(180));
+	else if (move == RIGHT)
+		rotate_vector(&scaled_direction, degree_to_radian(90));
+	else if (move == LEFT)
+		rotate_vector(&scaled_direction, degree_to_radian(-90));
 	translate_pt(scaled_direction, &p->pos_box);
 	hit_wall = check_update_box_pos(data);
  	return (hit_wall);

@@ -22,8 +22,8 @@ CFLAGS		= -Wall -Wextra -Werror -g3
 LIBFT 		= $(LIBFT_DIR)/libft.a
 
 ifeq ($(DESKTOP_SESSION), ubuntu)
-MINILIBX = mlx_linux
-MLXFLAGS = -I /usr/X11/include -g -Lmlx_linux -lmlx_Linux -L /usr/lib -Imlx_linux -lmlx -lXext -lX11 -lm
+MINILIBX = minilibx_linux
+MLXFLAGS = -I /usr/X11/include -g -Lminilibx_linux -L /usr/lib -Iminilibx_linux -lmlx -lXext -lX11 -lm
 else
 MINILIBX = minilibx_mac
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
@@ -52,7 +52,7 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@make -C $(LIBFT_DIR) fclean
-	@make -C $(MINILIBX) fclean
+	@make -C $(MINILIBX) clean # because no rules fclean
 
 re: fclean all 
 

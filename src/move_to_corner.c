@@ -68,10 +68,10 @@ int	check_closest_box(t_player *player)
 	corner_NW = make_point(0, UNITS_PER_BOX - 1);
 	corner_SW = make_point(UNITS_PER_BOX - 1, UNITS_PER_BOX - 1);
 	corner_SE = make_point(UNITS_PER_BOX - 1, 0);
-	wall_distance[NORTH] = abs(distance_point_to_vector(player->pos_box, corner_NE, corner_NW));
-	wall_distance[SOUTH] = abs(distance_point_to_vector(player->pos_box, corner_SE, corner_SW));
-	wall_distance[EAST] = abs(distance_point_to_vector(player->pos_box, corner_NE, corner_SE));
-	wall_distance[WEST] = abs(distance_point_to_vector(player->pos_box, corner_NW, corner_SW));
+	wall_distance[NORTH] = fabs(distance_point_to_vector(player->pos_box, corner_NE, corner_NW));
+	wall_distance[SOUTH] = fabs(distance_point_to_vector(player->pos_box, corner_SE, corner_SW));
+	wall_distance[EAST] = fabs(distance_point_to_vector(player->pos_box, corner_NE, corner_SE));
+	wall_distance[WEST] = fabs(distance_point_to_vector(player->pos_box, corner_NW, corner_SW));
 	return (get_smallest_index(wall_distance));
 }
 

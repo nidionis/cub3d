@@ -55,27 +55,27 @@ void	init_player(t_data *data, int x, int y, int *is_player)
 	if (c == NORTH_CHAR)
 	{
 		data->player->direction.x = 0;
-		data->player->direction.y = -1 * vector_scaled;
+		data->player->direction.y = -1;
 	}
 	if (c == SOUTH_CHAR)
 	{
 		data->player->direction.x = 0;
-		data->player->direction.y = vector_scaled;
+		data->player->direction.y = 1;
 	}
 	if (c == EAST_CHAR)
 	{
-		data->player->direction.x = vector_scaled;
+		data->player->direction.x = 1;
 		data->player->direction.y = 0;
 	}
 	if (c == WEST_CHAR)
 	{
-		data->player->direction.x = -1 * vector_scaled;
+		data->player->direction.x = -1;
 		data->player->direction.y = 0;
 	}
 	data->player->pos_map.x = x;
 	data->player->pos_map.y = y;
-	data->player->pos_box.x = POINTS_PER_BOX / 2;
-	data->player->pos_box.y = POINTS_PER_BOX / 2;
+	data->player->pos_box.x = UNITS_PER_BOX / 2;
+	data->player->pos_box.y = UNITS_PER_BOX / 2;
 	//devine plnan
 	(*is_player)++;
 }

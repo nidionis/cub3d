@@ -12,6 +12,15 @@
 
 #include <cub3d.h>
 
+t_point	make_point(int x, int y)
+{
+	t_point	p;
+
+	p.x = x;
+	p.y = y;
+	return (p);
+}
+
 t_point	get_vector(t_point *from, t_point *to)
 {
 	t_point	vector;
@@ -21,10 +30,10 @@ t_point	get_vector(t_point *from, t_point *to)
 	return (vector);
 }
 
-t_point	vec_scale(t_point vector, double scale)
+t_vector	vec_scale(t_vector vector, double scale)
 {
-	vector.x = (int)(scale * (double)vector.x);
-	vector.y = (int)(scale * (double)vector.y);
+	vector.x = (scale * vector.x);
+	vector.y = (scale * vector.y);
 	return (vector);
 }
 
@@ -50,8 +59,8 @@ double	degree_to_radian(double degree_angle)
 
 void	rotate_vector(t_vector *vector, double radian_angle)
 {
-	vector.x = vector->x * cos(radian_angle) - vector->y * sin(radian_angle);
-	vector.y = vector->y * cos(radian_angle) + vector->x * sin(radian_angle);
+	vector->x = vector->x * cos(radian_angle) - vector->y * sin(radian_angle);
+	vector->y = vector->y * cos(radian_angle) + vector->x * sin(radian_angle);
 }
 
 /* https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line */
