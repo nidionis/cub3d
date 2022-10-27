@@ -53,3 +53,16 @@ void	rotate_vector(t_vector *vector, double radian_angle)
 	vector.x = vector->x * cos(radian_angle) - vector->y * sin(radian_angle);
 	vector.y = vector->y * cos(radian_angle) + vector->x * sin(radian_angle);
 }
+
+/* https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line */
+double	distance_point_to_vector(t_point point, t_point v_p1, t_point v_p2)
+{
+	double	distance;
+	double	calc1;
+	double	calc2;
+
+	calc1 = abs((v_p2.x - v_p1.x) * (v_p1.y - point.y) - (v_p1.x - point.x) * (v_p2.y - v_p1.y));
+	calc2 = sqrt(pow(v_p2.x - v_p1.x, 2) + pow(v_p2.y - v_p1.y, 2));
+	distance = calc1 / calc2;
+	return (distance);
+}
