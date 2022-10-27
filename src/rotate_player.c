@@ -18,7 +18,7 @@ void	rotate_player(t_player *player, int move)
 
 	radian_angle = (double)DEFAULT_ROTATION_ANGLE;
 	if (move == RIGHT)
-		radian_angle += -1.0;
+		radian_angle *= -1.00000;
 	else if (move != LEFT)
 		error_msg("[rotate_player] wrong instruction");
 	rotate_vector(&player->direction, radian_angle);

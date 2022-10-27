@@ -74,11 +74,11 @@
 # define RAYCAST_QUALITY 50
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 1000
-# define STEPS_PER_BOX 3
+# define STEPS_PER_BOX 8
 /* file deleted with make clean */
 # define DEBUG_LOG_FILENAME "debug_file"
 # define PI 3.141592654
-# define DEFAULT_ROTATION_ANGLE 3.141592654 / 12.0
+# define DEFAULT_ROTATION_ANGLE 3.141592654 / 6.0
 
 //COLORS 
 # define RED "\033[1;31m"
@@ -198,5 +198,7 @@ int	west_crossing(t_data *data);
 void	rotate_vector(t_vector *vector, double radian_angle);
 double	degree_to_radian(double degree_angle);
 int	corner_crossing(t_data *data);
+void	redir_debug_file_msg(char *fname, char *msg);
+void	rotate_player(t_player *player, int move);
 #endif
 

@@ -53,6 +53,16 @@ void	print_data(t_data *data, int fd)
 	print_map(data, fd);
 }
 
+void	redir_debug_file_msg(char *fname, char *msg)
+{
+	int fd = open(fname, O_WRONLY | O_APPEND | O_CREAT, 0000666);
+	if (fd < 0)
+		error_msg("[redir_debug] warning: cannot open file]");
+	dprintf(fd, "[message] %s\n", msg);
+	close(fd);
+
+}
+
 void	redir_debug_file_logs(t_data *data, char *fname, int log_type)
 {
 	int fd = open(fname, O_WRONLY | O_APPEND | O_CREAT, 0000666);

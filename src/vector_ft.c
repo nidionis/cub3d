@@ -53,7 +53,7 @@ double	degree_to_radian(double degree_angle)
 {
 	double	rad_angle;
 
-	rad_angle = (double)PI * degree_angle / 180.0;
+	rad_angle = (double)PI * degree_angle / (double)180.0;
 	return (rad_angle);
 }
 
