@@ -55,7 +55,7 @@ When the next box (NSEW) is a wall, the values
 payers.box_position[x] (or y) are set to 0 (or UNITS_PER_BOX - 1)
 player arrive at $
 
-case 3:
+case 2:
  ____ ____
 |    |WALL|
 |    |    |
@@ -71,7 +71,7 @@ Player arrive at $
 
 can solve to $ because the box is adjacent
 
-case 4:
+case 3:
  ____ ____
 |WALL|    |
 |    |    |
@@ -86,6 +86,23 @@ Player is not blocked buy walls north or west
 The destination is still a wall
 Find the closest adjacent box and arrive at $
 */
+
+/* see case: 3 */
+int	corner_crossing(t_data *data, int crossover_direction)
+{
+	t_player	*p;
+	t_point		mp;
+	char		**map;
+
+	p = data->player;
+	mp.x = p->pos_map.x;
+	mp.y = p->pos_map.y;
+	map = data->map;
+	if (crossover_direction == NE)
+	{
+		if (map[mp.y - 1][mp.x - 1] == WALL)
+			solve_
+}
 
 static int	f_is_box_crossed(t_player *player)
 {
@@ -103,33 +120,23 @@ static int	f_is_box_crossed(t_player *player)
 	return (direction);
 }
 
-int	north_crossing(t_data *data)
-{
-	char	**map = data->map;
-	t_point	*pos_map = &data->player->pos_map;
-	t_point	*pos_box = &data->player->pos_box;
-
-	if (map[pos_map->y - 1][pos_map->x] == WALL)
-	{
-		pos_box->y = 0;
-		return (1);
-	}
-	else
-	{
-		pos_box->y += (int)POINTS_PER_BOX - 1;
-		(pos_map->y)--;
-		return (0);
-	}
-}
-
 int	check_wall(t_data *data, int crossover_direction)
 {
 	int		hit_a_wall;
 
 	hit_a_wall = 0;
 	if (crossover_direction == N || crossover_direction == NE || crossover_direction == NW)
-	{
 		hit_a_wall += north_crossing(data);
+	if (crossover_direction == S || crossover_direction == SE || crossover_direction == SW)
+		hit_a_wall += south_crossing(data);
+	if (crossover_direction == E || crossover_direction == SE || crossover_direction == NE)
+		hit_a_wall += east_crossing(data);
+	if (crossover_direction == W || crossover_direction == Nw || crossover_direction == SW)
+		hit_a_wall += west_crossing(data);
+	if (!hit_a_wall)
+	{
+		if (crossover_direction == NE ||crossover_direction == SW || crossover_direction == NW || crossover_direction == SE)
+			hit_a_wall = corner_crossing(data, crossover_direction);
 	}
 	fprintf(stderr, "check_wall: hit_wall = %d\n", hit_a_wall);
 	return (hit_a_wall);
@@ -145,22 +152,26 @@ int	check_update_box_pos(t_data *data)
 	has_cross_over = f_is_box_crossed(data->player);
 	fprintf(stderr, "check_update_box_pos: has_cross_over = %d\n", has_cross_over);
 	if (has_cross_over)
-	{
 		hit_wall += check_wall(data, has_cross_over);
-	}
 	return (hit_wall);
 }
 
-void	move_player(t_data *data, int direction)
+int	move_player(t_data *data, int direction)
 {
+	int			hit_wall;
 	t_player	*p;
+	t_vector	*direction;
 
 	p = data->player;
-	if (direction == FORWARD)
-	{
-		translate_pt(p->direction, &p->pos_box);
-	}
-	check_update_box_pos(data);
- 	return ;
+	direction = p->direction;
+	//if (direction == FORWARD)
+	if (direction == BACKWARD)
+		rotate_vector(direction, degree_to_radian(180);
+	else if (direction == RIGHT)
+		rotate_vector(direction, degree_to_radian(90);
+	else if (direction == LEFT)
+		rotate_vector(direction, degree_to_radian(-90);
+	translate_pt(direction, &p->pos_box);
+	hit_wall = check_update_box_pos(data);
+ 	return (hit_wall);
  }
- 

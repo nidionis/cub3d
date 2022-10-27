@@ -77,6 +77,7 @@
 # define STEPS_PER_BOX 3
 /* file deleted with make clean */
 # define DEBUG_LOG_FILENAME "debug_file"
+# define PI 3.141592654
 
 //COLORS 
 # define RED "\033[1;31m"
@@ -107,7 +108,6 @@ typedef struct s_point
 
 typedef struct s_player
 {
-
 	t_point		pos_map;
 	t_point		pos_box;
 	t_vector	direction;
