@@ -27,6 +27,8 @@
 
 # else   // LINUX
 #  include <X11/keysym.h>   // 
+#  include "../minilibx_linux/mlx.h"
+#  include "../minilibx_linux/mlx_int.h"
 #  define KEY_Q 113
 #  define KEY_A 97
 #  define KEY_Z 122
@@ -47,8 +49,6 @@
 #  define KEY_OUT 45
 #  define EXPOSE_X 65293
 #  define ON_DESTROY 	17
-#  include "../mlx_linux/mlx.h"
-#  include "../mlx_linux/mlx_int.h"
 # endif
 
 # define CLIC 1
@@ -63,17 +63,17 @@
 # define WALL 49
 # define FLOOR 48
 # define EMPTY 32
-# define NORTH 78
-# define SOUTH 83
-# define WEST 87
-# define EAST 69
+# define NORTH_CHAR 78
+# define SOUTH_CHAR 83
+# define WEST_CHAR 87
+# define EAST_CHAR 69
 /* for is_available_mapcase : keep directions at the end (see is_available_mapcase function) */
 # define MAPCASES "01 NSEW"
 # define SCREEN_WIDTH 640
 # define SCREEN_HEIGHT 480
 # define RAYCAST_QUALITY 50
 # define NB_TEXTURES 4
-# define POINTS_PER_BOX 1000
+# define UNITS_PER_BOX 1000
 # define STEPS_PER_BOX 3
 /* file deleted with make clean */
 # define DEBUG_LOG_FILENAME "debug_file"
@@ -82,7 +82,6 @@
 //COLORS 
 # define RED "\033[1;31m"
 # define GREEN "\033[1;32m"
-
 
 # include <stdlib.h>
 # include "../libft/libft.h"
@@ -145,6 +144,7 @@ typedef struct s_data
 enum log_type { DATA, PARAM, PLAYER, MAP };
 enum e_identifiers { NO, SO, WE, EA, F, C };
 enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
+enum e_cardinal { NORTH, SOUTH, EAST, WEST };
 enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };
 
 void			error_msg(char *msg);
@@ -161,8 +161,8 @@ void	parse_file(char *fname, t_data	*s);
 int	parsing_loop(t_data *data, int *map_parse);
 t_player	*default_player(void);
 t_point	get_vector(t_point *from, t_point *to);
-t_point	vec_diff(t_point v1, t_point v2);
-t_point	vec_scale(t_point vec, double scale);
+t_vector	vec_diff(t_vector v1, t_point v2);
+t_vector	vec_scale(t_vector vec, double scale);
 void init_null(t_data *data, int *map_parse);
 void	add_vec(t_point	*pt, t_point vec);
 void	clean_exit(t_data *data, int exit_code);
@@ -186,7 +186,16 @@ void	init_fd(t_data *data, int *fd, char *fname);
 
 int	check_wall(t_data *data, int crossover_direction);
 int	check_update_box_pos(t_data *data);
-void	move_player(t_data *data, int direction);
+int	move_player(t_data *data, int direction);
 void	translate_pt(t_vector vector, t_point *pt);
+double	distance_point_to_vector(t_point point, t_point v_p1, t_point v_p2);
+t_point	make_point(int x, int y);
+int	north_crossing(t_data *data);
+int	south_crossing(t_data *data);
+int	east_crossing(t_data *data);
+int	west_crossing(t_data *data);
+void	rotate_vector(t_vector *vector, double radian_angle);
+double	degree_to_radian(double degree_angle);
+int	corner_crossing(t_data *data);
 #endif
 
