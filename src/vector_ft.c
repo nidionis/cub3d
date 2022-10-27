@@ -45,8 +45,8 @@ void	add_vec(t_point	*pt, t_point vector)
 
 void	translate_pt(t_vector vector, t_point *pt)
 {
-	pt->x += vector.x;
-	pt->y += vector.y;
+	pt->x += (int)vector.x;
+	pt->y += (int)vector.y;
 }
 
 double	degree_to_radian(double degree_angle)

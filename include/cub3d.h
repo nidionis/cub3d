@@ -78,6 +78,7 @@
 /* file deleted with make clean */
 # define DEBUG_LOG_FILENAME "debug_file"
 # define PI 3.141592654
+# define DEFAULT_ROTATION_ANGLE 3.141592654 / 12.0
 
 //COLORS 
 # define RED "\033[1;31m"
