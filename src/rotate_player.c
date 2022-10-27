@@ -12,14 +12,23 @@
 
 #include "cub3d.h"
 
+/*
+------> x
+|
+|   /!\ le sens du cercle trigo est inverse aussi
+|
+\/
+y
+*/
+
 void	rotate_player(t_player *player, int move)
 {
 	double	radian_angle;
 
 	radian_angle = (double)DEFAULT_ROTATION_ANGLE;
-	if (move == RIGHT)
+	if (move == LEFT)
 		radian_angle *= -1.00000;
-	else if (move != LEFT)
+	else if (move != RIGHT)
 		error_msg("[rotate_player] wrong instruction");
 	rotate_vector(&player->direction, radian_angle);
 }

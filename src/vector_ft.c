@@ -12,6 +12,26 @@
 
 #include <cub3d.h>
 
+// C++ program to find modulo of floating
+// point numbers.
+
+double float_modulo(double a, double b)
+{
+	double mod;
+
+	if (a < 0)
+		mod = -a;
+	else
+		mod = a;
+	if (b < 0)
+		b = -b;
+	while (mod >= b)
+		mod = mod - b;
+	if (a < 0)
+		return -mod;
+	return mod;
+}
+
 t_point	make_point(int x, int y)
 {
 	t_point	p;
@@ -53,14 +73,21 @@ double	degree_to_radian(double degree_angle)
 {
 	double	rad_angle;
 
-	rad_angle = (double)PI * degree_angle / (double)180.0;
+	/*
+	if (degree_angle < 0 || degree_angle > 360)
+		degree_angle = float_modulo(degree_angle, 360);
+		*/
+	rad_angle = ((double)PI * degree_angle / (double)180.0) ;
 	return (rad_angle);
 }
 
 void	rotate_vector(t_vector *vector, double radian_angle)
 {
+	t_vector vector_cpy;
+
+	vector_cpy = *vector;
 	vector->x = vector->x * cos(radian_angle) - vector->y * sin(radian_angle);
-	vector->y = vector->y * cos(radian_angle) + vector->x * sin(radian_angle);
+	vector->y = vector->y * cos(radian_angle) + vector_cpy.x * sin(radian_angle);
 }
 
 /* https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line */

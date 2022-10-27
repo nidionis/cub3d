@@ -145,13 +145,15 @@ int	move_player(t_data *data, int move)
 
 	p = data->player;
 	scaled_direction = vec_scale(p->direction, (double)(UNITS_PER_BOX / STEPS_PER_BOX));
-	//if (scaled_direction == FORWARD)
 	if (move == BACKWARD)
 		rotate_vector(&scaled_direction, degree_to_radian(180));
 	else if (move == RIGHT)
-		rotate_vector(&scaled_direction, degree_to_radian(90));
-	else if (move == LEFT)
 		rotate_vector(&scaled_direction, degree_to_radian(-90));
+	else if (move == LEFT)
+		rotate_vector(&scaled_direction, degree_to_radian(90));
+	else if (move != FORWARD)
+		error_msg("[move_player] wrong move instruction");
+	fprintf(stderr, "[move_player] scale_dir (%5lf,%5lf)\n", scaled_direction.x, scaled_direction.y);
 	translate_pt(scaled_direction, &p->pos_box);
 	hit_wall = check_update_box_pos(data);
  	return (hit_wall);

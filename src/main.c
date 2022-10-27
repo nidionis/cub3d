@@ -91,16 +91,24 @@ int	main(int argc, char *argv[])
 		if (!data->player)
 			clean_exit(data, -5);
 		parse_file(argv[1],  data);
-		if (move_player(data, LEFT))
-			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-		if (move_player(data, LEFT))
-			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-		if (move_player(data, LEFT))
-			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+
 		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
 		rotate_player(data->player, LEFT);
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		rotate_player(data->player, LEFT);
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		rotate_player(data->player, LEFT);
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		rotate_player(data->player, LEFT);
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
 		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
 		if (move_player(data, LEFT))
 			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
