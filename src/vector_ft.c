@@ -21,15 +21,6 @@ t_point	get_vector(t_point *from, t_point *to)
 	return (vector);
 }
 
-t_point	vec_diff(t_point v1, t_point v2)
-{
-	t_point	diff_vec;
-
-	diff_vec.x = v1.x - v2.x;
-	diff_vec.y = v1.y - v2.y;
-	return (diff_vec);
-}
-
 t_point	vec_scale(t_point vector, double scale)
 {
 	vector.x = (int)(scale * (double)vector.x);
@@ -47,4 +38,18 @@ void	translate_pt(t_vector vector, t_point *pt)
 {
 	pt->x += vector.x;
 	pt->y += vector.y;
+}
+
+double	degree_to_radian(double degree_angle)
+{
+	double	rad_angle;
+
+	rad_angle = (double)PI * degree_angle / 180.0;
+	return (rad_angle);
+}
+
+void	rotate_vector(t_vector *vector, double radian_angle)
+{
+	vector.x = vector->x * cos(radian_angle) - vector->y * sin(radian_angle);
+	vector.y = vector->y * cos(radian_angle) + vector->x * sin(radian_angle);
 }
