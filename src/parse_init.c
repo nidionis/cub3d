@@ -50,26 +50,24 @@ void	file_extention_available(t_data *data, char *fname)
 void	init_player(t_data *data, int x, int y, int *is_player)
 {
 	char	c;
-	double	vector_scaled;
 
-	vector_scaled = POINTS_PER_BOX / STEPS_PER_BOX;
 	c = data->map[y][x];
-	if (c == NORTH)
+	if (c == NORTH_CHAR)
 	{
 		data->player->direction.x = 0;
 		data->player->direction.y = -1 * vector_scaled;
 	}
-	if (c == SOUTH)
+	if (c == SOUTH_CHAR)
 	{
 		data->player->direction.x = 0;
 		data->player->direction.y = vector_scaled;
 	}
-	if (c == EAST)
+	if (c == EAST_CHAR)
 	{
 		data->player->direction.x = vector_scaled;
 		data->player->direction.y = 0;
 	}
-	if (c == WEST)
+	if (c == WEST_CHAR)
 	{
 		data->player->direction.x = -1 * vector_scaled;
 		data->player->direction.y = 0;
