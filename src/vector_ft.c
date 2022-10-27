@@ -81,10 +81,20 @@ double	degree_to_radian(double degree_angle)
 	return (rad_angle);
 }
 
+/*
+------> x
+|
+|   /!\ le sens du cercle trigo est inverse aussi
+|
+\/
+y
+*/
+
 void	rotate_vector(t_vector *vector, double radian_angle)
 {
 	t_vector vector_cpy;
 
+	radian_angle *= -1.0;
 	vector_cpy = *vector;
 	vector->x = vector->x * cos(radian_angle) - vector->y * sin(radian_angle);
 	vector->y = vector->y * cos(radian_angle) + vector_cpy.x * sin(radian_angle);
