@@ -13,7 +13,7 @@
 #include "cub3d.h"
 
 /*
-The algo check if the final position is over than the box size (or under 0 if going to the NORTH or WEST)
+The algo check if the final position is overjump than the box size (or under 0 if going to the NORTH or WEST)
 It refreshs the positions values in the map
 
 In theses examples, player's step brings her to *
@@ -30,13 +30,11 @@ L____|____|
 
 No wall:
 	Box_position with UNITS_PER_BOX difference is applyed
+	Map_position is updated
 
 ex : player.box_position.y become -1
 =>  new box position is :
 		player.box_position.y = -1 + (UNITS_PER_BOX - 1)
-Only y overflowed on a negative way
-(or increase if going to south or east)
-We can guess wich direction we must carry if there is a wall
 Map_position.y decrease (or increase)
 We apply the same concept for east-west axe
 
@@ -67,9 +65,8 @@ L____|____|
 L____|____|
 In this case, p want to reach *
 North is a wall, so var is set to 0
+map_case {1, 0} is not a wall, pers can jump out there
 Player arrive at $
-
-can solve to $ because the box is adjacent
 
 case 3:
  ____ ____
