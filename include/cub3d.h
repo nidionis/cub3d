@@ -133,6 +133,13 @@ typedef struct s_image
 	void			(*f)();
 }	t_image;
 
+typedef struct	s_rax
+{
+	t_vector	side_dist;
+	t_vector	delta_dist;
+	double		len;
+}
+
 typedef struct s_data
 {
 	char		*line;

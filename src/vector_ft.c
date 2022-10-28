@@ -82,10 +82,10 @@ double	degree_to_radian(double degree_angle)
 }
 
 /*
-------> x
-|
-|   /!\ le sens du cercle trigo est inverse aussi
-|
+  ------> x
+ |
+ |   /!\ le sens du cercle trigo est inverse aussi
+ |
 \/
 y
 */
