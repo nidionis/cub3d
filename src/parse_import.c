@@ -71,6 +71,25 @@ int	parsing_loop(t_data *data, int *map_parse)
 	return (1);
 }
 
+void	check_param_not_missing(t_data *data)
+{
+	int	i;
+
+	if (data)
+		data->map = NULL;
+	i = 0;
+	while (i < NB_TEXTURES)
+	{
+		if (data->image->texture_path[i++] == NULL)
+			exit_msg(data, "[check_param_not_missing] texture missing", -1);
+	}
+	if (data->image->floor_color == (unsigned int)-1)
+		exit_msg(data, "[check_param_not_missing] floor_color missing", -1);
+	if (data->image->ceiling_color == (unsigned int)-1)
+		exit_msg(data, "[check_param_not_missing] ceiling_color missing", -1);
+}
+
+
 void	parse_file(char *fname, t_data	*data)
 {
 	int		fd;
@@ -90,8 +109,8 @@ void	parse_file(char *fname, t_data	*data)
 		}
 	}
 	close(fd);
-	if (map_parse != -1)
-		map_parse = check_map(data);
+	check_param_not_missing(data);
 	if (map_parse == -1)
 		exit_msg(data, "[parse_file] pb loading map", -1);
+	map_parse = check_map(data);
 }

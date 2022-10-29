@@ -22,8 +22,8 @@ void	init_null(t_data *data, int *map_parse)
 	i = 0;
 	while (i < NB_TEXTURES)
 		data->image->texture_path[i++] = NULL;
-	data->image->floor_color = 10;
-	data->image->ceiling_color = 10000;
+	data->image->floor_color = -1;
+	data->image->ceiling_color = -1;
 }
 
 void	init_fd(t_data *data, int *fd, char *fname)

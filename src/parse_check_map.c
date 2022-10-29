@@ -92,15 +92,15 @@ void	check_map_line(t_data *data, int y, int *nb_player)
 	map_len = ft_matrixlen(data->map);
 	x = 0;
 	c = data->map[y][0];
+	if (is_blank_line(data->map[y]))
+		exit_msg(data, "[check_map] map contains blank lines", -10);
+
 	while (c)
 	{
 		if (!is_mapcase(data, c))
 			exit_msg(data, "[check_map] map contains unavailable char.", -10);
-		else
-		{
-			if (is_NSEW(c))
-				init_player(data, x, y, nb_player);
-		}
+		if (is_NSEW(c))
+			init_player(data, x, y, nb_player);
 		if (is_border(data, x, y, map_len) && c != WALL)
 			exit_msg(data, "[check_map] map not surrounded by walls.", -11);
 		c = data->map[y][++x];

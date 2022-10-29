@@ -27,6 +27,8 @@ char	**get_identifiers_ls(int identifier_len)
 static int	refresh_ret_if_is_param(char **identifiers, \
 		int *returned, int *i, char *str)
 {
+	while (is_blank_char(*str))
+		str++;
 	if (!ft_strncmp(identifiers[*i], str, ft_strlen(identifiers[*i])))
 	{
 		*returned = *i;

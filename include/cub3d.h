@@ -68,7 +68,7 @@
 # define WEST_CHAR 87
 # define EAST_CHAR 69
 /* for is_available_mapcase : keep directions at the end (see is_available_mapcase function) */
-# define MAPCASES "01 NSEW"
+# define MAPCASES "01 "
 /* MAPCASE to consider as a wall */
 # define IS_BLOCK "1 "
 # define SCREEN_WIDTH 640
@@ -215,4 +215,5 @@ void	rotate_player(t_player *player, int move);
 int	is_available_mapcase(t_data *data, int x, int y, int *is_player);
 int	is_block(t_data *data, char c);
 int	is_mapcase(t_data *data, char c);
+int	is_NSEW(char c);
 #endif
