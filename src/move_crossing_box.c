@@ -22,7 +22,7 @@ int	north_crossing(t_data *data)
 	map = data->map;
 	t_point	*pos_map = &data->player->pos_map;
 	t_point	*pos_box = &data->player->pos_box;
-	if (map[pos_map->y - 1][pos_map->x] == WALL)
+	if (is_block(data, map[pos_map->y - 1][pos_map->x]) != -1)
 	{
 		pos_box->y = 0;
 		return (1);
@@ -42,7 +42,7 @@ int	south_crossing(t_data *data)
 	map = data->map;
 	t_point	*pos_map = &data->player->pos_map;
 	t_point	*pos_box = &data->player->pos_box;
-	if (map[pos_map->y + 1][pos_map->x] == WALL)
+	if (is_block(data, map[pos_map->y + 1][pos_map->x]) != -1)
 	{
 		pos_box->y = (int)UNITS_PER_BOX - 1;
 		return (1);
@@ -62,7 +62,7 @@ int	east_crossing(t_data *data)
 	map = data->map;
 	t_point	*pos_map = &data->player->pos_map;
 	t_point	*pos_box = &data->player->pos_box;
-	if (map[pos_map->y][pos_map->x - 1] == WALL)
+	if (is_block(data, map[pos_map->y][pos_map->x - 1]) != -1)
 	{
 		pos_box->x = 0;
 		return (1);
@@ -82,7 +82,7 @@ int	west_crossing(t_data *data)
 	map = data->map;
 	t_point	*pos_map = &data->player->pos_map;
 	t_point	*pos_box = &data->player->pos_box;
-	if (map[pos_map->y][pos_map->x + 1] == WALL)
+	if (is_block(data, map[pos_map->y][pos_map->x + 1]) != -1)
 	{
 		pos_box->x = (int)UNITS_PER_BOX - 1;
 		return (1);

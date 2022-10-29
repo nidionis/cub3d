@@ -12,13 +12,13 @@
 
 #include <cub3d.h>
 
-int	is_map_line(char *str)
+int	is_map_line(t_data *data, char *str)
 {
 	if (str)
 	{
 		while (*str)
 		{
-			if (!(*str == ' ' || ft_isdigit(*str) || *str == '\n'))
+			if (!(is_mapcase(data, *str) || *str == '\n'))
 				return (0);
 			str++;
 		}

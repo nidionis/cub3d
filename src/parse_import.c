@@ -71,7 +71,7 @@ int	parsing_loop(t_data *data, int *map_parse)
 	return (1);
 }
 
-void	parse_file(char *fname, t_data	* data)
+void	parse_file(char *fname, t_data	*data)
 {
 	int		fd;
 	int		map_parse;

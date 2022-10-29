@@ -12,6 +12,23 @@
 
 #include "cub3d.h"
 
+int	is_block(t_data *data, char c)
+{
+	int		i;
+	char	*blocks;
+
+	blocks = data->blocks;
+	printf("%s\n", blocks);
+	i = 0;
+	while (blocks[i])
+	{
+		if (c == blocks[i])
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
 void	slide_closest_box(t_player *p, int closest_box)
 {
 	if (closest_box == NORTH)
@@ -75,6 +92,35 @@ int	check_closest_box(t_player *player)
 	return (get_smallest_index(wall_distance));
 }
 
+char	get_next_case(char **map, t_point map_point, int direction)
+{
+	if (direction == NORTH)
+	{
+		if (map_point.y == 0)
+			return (-1);
+		map_point.y -= 1;
+	}
+	else if (direction == SOUTH)
+	{
+		if (map_point.y == (int)ft_strlen(map[map_point.y]) - 1)
+			return (-1);
+		map_point.y += 1;
+	}
+	else if (direction == EAST)
+	{
+		if (map_point.x == 0)
+			return (-1);
+		map_point.x -= 1;
+	}
+	else if (direction == NORTH)
+	{
+		if (map_point.x == ft_matrixlen(map) - 1)
+			return (-1);
+		map_point.x += 1;
+	}
+	return (map[map_point.y][map_point.x]);
+}
+
 /* see case: 3 */
 int	corner_crossing(t_data *data)
 {
@@ -89,10 +135,12 @@ int	corner_crossing(t_data *data)
 	mp.y = p->pos_map.y;
 	map = data->map;
 	hit_wall = 0;
-	if (map[mp.y][mp.x] == WALL)
+	printf("%c\n", is_block(data, map[mp.y][mp.x]));
+	if (is_block(data, map[mp.y][mp.x]) != -1)
 	{
 		closest_box = check_closest_box(p);
-		slide_closest_box(p, closest_box);
+		if (get_next_case(map, mp, closest_box) != -1)
+			slide_closest_box(p, closest_box);
 		hit_wall = 1;
 	}
 	return (hit_wall);

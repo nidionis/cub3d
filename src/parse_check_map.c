@@ -13,14 +13,29 @@
 #include "cub3d.h"
 
 
-int	is_NSEW(int i, int nb_mapcases)
+int	is_NSEW(char c)
 {
-	if (i >= nb_mapcases - 4) //its one of the 4 last map_cases : "01 NSEW"
+	if (c == 'N' || c =='S' || c == 'E' || c == 'W')
 		return (1);
 	else
 		return (0);
 }
 
+int	is_mapcase(t_data *data, char c)
+{
+	char	*map_cases;
+
+	map_cases = data->map_cases;
+	while (*map_cases)
+	{
+		if (*map_cases == c)
+			return (1);
+		map_cases++;
+	}
+	return (0);
+}
+
+/*
 int	is_available_mapcase(t_data *data, int x, int y, int *is_player)
 {
 	unsigned int	i;
@@ -31,23 +46,20 @@ int	is_available_mapcase(t_data *data, int x, int y, int *is_player)
 
 	c = data->map[y][x];
 	available_mapcase = 0;
-	mapcases = ft_strdup(MAPCASES);
 	i = 0;
 	nb_mapcases = ft_strlen(mapcases);
 	while (i < nb_mapcases)
 	{
 		if (c == mapcases[i])
 		{
-			if (is_NSEW(i, nb_mapcases))
-				init_player(data, x, y, is_player);
 			available_mapcase = 1;
 			break ;
 		}
 		i++;
 	}
-	free(mapcases);
 	return (available_mapcase);
 }
+*/
 
 /* returns TRUE if it has an empty neighourg box */
 int	is_border(t_data *data, int x, int y, int matrix_len)
@@ -82,8 +94,13 @@ void	check_map_line(t_data *data, int y, int *nb_player)
 	c = data->map[y][0];
 	while (c)
 	{
-		if (!is_available_mapcase(data, x, y, nb_player))
+		if (!is_mapcase(data, c))
 			exit_msg(data, "[check_map] map contains unavailable char.", -10);
+		else
+		{
+			if (is_NSEW(c))
+				init_player(data, x, y, nb_player);
+		}
 		if (is_border(data, x, y, map_len) && c != WALL)
 			exit_msg(data, "[check_map] map not surrounded by walls.", -11);
 		c = data->map[y][++x];

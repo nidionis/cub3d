@@ -60,15 +60,24 @@ fin tant que
 
  t_data	*malloc_data(void)
 {
-	 t_data	* data;
+	t_data	*data;
 
-	 data = malloc(sizeof(t_data));
-	if (! data)
+	data = malloc(sizeof(t_data));
+	if (!data)
 		clean_exit(data, -4);
 	data->image = malloc(sizeof(t_image));
 	if (!data->image)
-		clean_exit(data, -5);
+		clean_exit(data, -6);
 	data->player = malloc(sizeof(t_player));
+	if (!data->player)
+		clean_exit(data, -7);
+	data->blocks = ft_strdup(IS_BLOCK);
+	if (!data->blocks)
+		clean_exit(data, -8);
+	data->map_cases = ft_strdup(MAPCASES);
+	fprintf(stderr, "%s\n", data->map_cases);
+	if (!data->map_cases)
+		clean_exit(data, -9);
 	return (data);
 }
 
@@ -88,8 +97,6 @@ int	main(int argc, char *argv[])
 	else
 	{
 		data = malloc_data();
-		if (!data->player)
-			clean_exit(data, -5);
 		parse_file(argv[1],  data);
 
 		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
@@ -134,5 +141,125 @@ int	main(int argc, char *argv[])
 		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
 		if (move_player(data, LEFT))
 			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		if (move_player(data, LEFT))
+			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
 	}
 }

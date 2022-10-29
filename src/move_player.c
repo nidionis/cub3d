@@ -131,9 +131,7 @@ int	check_update_box_pos(t_data *data)
 	hit_wall = 0;
 	has_cross_over = f_is_box_crossed(data->player);
 	if (has_cross_over)
-	{
 		hit_wall += check_wall(data, has_cross_over);
-	}
 	return (hit_wall);
 }
 
@@ -153,7 +151,7 @@ int	move_player(t_data *data, int move)
 		rotate_vector(&scaled_direction, degree_to_radian(90));
 	else if (move != FORWARD)
 		error_msg("[move_player] wrong move instruction");
-	fprintf(stderr, "[move_player] scale_dir (%5lf,%5lf)\n", scaled_direction.x, scaled_direction.y);
+//	fprintf(stderr, "[move_player] scale_dir (%5lf,%5lf)\n", scaled_direction.x, scaled_direction.y);
 	translate_pt(scaled_direction, &p->pos_box);
 	hit_wall = check_update_box_pos(data);
  	return (hit_wall);

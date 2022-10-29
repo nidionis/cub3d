@@ -69,6 +69,8 @@
 # define EAST_CHAR 69
 /* for is_available_mapcase : keep directions at the end (see is_available_mapcase function) */
 # define MAPCASES "01 NSEW"
+/* MAPCASE to consider as a wall */
+# define IS_BLOCK "1 "
 # define SCREEN_WIDTH 640
 # define SCREEN_HEIGHT 480
 # define RAYCAST_QUALITY 50
@@ -138,12 +140,14 @@ typedef struct	s_rax
 	t_vector	side_dist;
 	t_vector	delta_dist;
 	double		len;
-}
+}	t_ray;
 
 typedef struct s_data
 {
 	char		*line;
 	char		**line_split;
+	char		*blocks;
+	char		*map_cases;
 	t_image		*image;
 	t_player	*player;
 	char		**map;
@@ -180,7 +184,7 @@ void	ray_parse(t_data *data);
 void	wrong_color(t_data *data, char *color_strimed);
 int	is_blank_line(char *line);
 int	is_blank_char(char c);
-int	is_map_line(char *str);
+int	is_map_line(t_data *data, char *str);
 int	check_map(t_data *data);
 unsigned int	init_f_c_color(t_data *s, char *line);
 void	print_player(t_data *data, int fd);
@@ -205,7 +209,10 @@ int	west_crossing(t_data *data);
 void	rotate_vector(t_vector *vector, double radian_angle);
 double	degree_to_radian(double degree_angle);
 int	corner_crossing(t_data *data);
+int	is_block(t_data *data, char c);
 void	redir_debug_file_msg(char *fname, char *msg);
 void	rotate_player(t_player *player, int move);
+int	is_available_mapcase(t_data *data, int x, int y, int *is_player);
+int	is_block(t_data *data, char c);
+int	is_mapcase(t_data *data, char c);
 #endif
-

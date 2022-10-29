@@ -26,6 +26,10 @@ void	clean_exit(t_data *data, int exit_code)
 			ft_free_split(&data->map);
 		if (data->player)
 			free(data->player);
+		if (data->blocks)
+			free(data->blocks);
+		if (data->map_cases)
+			free(data->map_cases);
 		if (data->image)
 		{
 			i = 0;
