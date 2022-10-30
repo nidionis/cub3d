@@ -21,12 +21,19 @@ char	**ft_append_tab(char **matrix, char *str)
 		return (matrix);
 	tab_len = 0;
 	if (matrix)
+	{
 		while (matrix[tab_len])
 			tab_len++;
-	new_tab = malloc((tab_len++ + 2) * sizeof(char *));
+	}
+	new_tab = malloc((tab_len + 2) * sizeof(char *));
+	tab_len += 1;
 	if (!new_tab)
-		return (NULL);
-	new_tab[tab_len--] = NULL;
+	{
+		error_msg("[ft_append_tab] did not malloc");
+		exit(-1);
+	}
+	new_tab[tab_len] = NULL;
+	tab_len -= 1;
 	new_tab[tab_len] = str;
 	while (tab_len--)
 		new_tab[tab_len] = matrix[tab_len];
@@ -46,24 +53,4 @@ int	ft_matrixlen(char **matrix)
 			len++;
 	}
 	return (len);
-}
-
-char	**default_map(char	*argv[])
-{
-	char	**map;
-	char	*line;
-	int		fd;
-
-	map = NULL;
-	if (argv[1])
-		fd = open(argv[1], O_RDONLY);
-	else
-		fd = open("test.cub", O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
-	{
-		map = ft_append_tab(map, line);
-		line = get_next_line(fd);
-	}
-	return (map);
 }

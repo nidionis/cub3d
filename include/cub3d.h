@@ -77,6 +77,10 @@
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 1000
 # define STEPS_PER_BOX 8
+/* in radient 66 = 1.15*/
+# define CAM_ANGLE 1.15
+/* num of ray_parse for a pic */
+# define CAM_QUALITY 1000
 /* file deleted with make clean */
 # define DEBUG_LOG_FILENAME "debug_file"
 # define PI 3.141592654
@@ -113,7 +117,6 @@ typedef struct s_player
 	t_point		pos_map;
 	t_point		pos_box;
 	t_vector	direction;
-	t_vector	plane;
 }	t_player;
 
 typedef struct s_image
@@ -135,12 +138,15 @@ typedef struct s_image
 	void			(*f)();
 }	t_image;
 
-typedef struct	s_rax
+/* note: origin plane is a POINT using t_vector structure*/
+typedef struct	s_cam
 {
 	t_vector	side_dist;
 	t_vector	delta_dist;
+	t_vector	origin_plane;
+	t_vector	plane_dir;
 	double		len;
-}	t_ray;
+}	t_cam;
 
 typedef struct s_data
 {
@@ -150,10 +156,11 @@ typedef struct s_data
 	char		*map_cases;
 	t_image		*image;
 	t_player	*player;
+	t_cam		cam;
 	char		**map;
 }	t_data;
 
-enum log_type { DATA, PARAM, PLAYER, MAP };
+enum log_type { DATA, PARAM, CAM, PLAYER, MAP };
 enum e_identifiers { NO, SO, WE, EA, F, C };
 enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
 enum e_cardinal { NORTH, SOUTH, EAST, WEST };
@@ -216,4 +223,5 @@ int	is_available_mapcase(t_data *data, int x, int y, int *is_player);
 int	is_block(t_data *data, char c);
 int	is_mapcase(t_data *data, char c);
 int	is_NSEW(char c);
+void	init_cam_vector(t_data *data);
 #endif

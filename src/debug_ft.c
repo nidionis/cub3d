@@ -19,7 +19,14 @@ void	print_player(t_data *data, int fd)
 	dprintf(fd, "[Pers]	pos_map: 	[%5d,%5d]\n", data->player->pos_map.x, data->player->pos_map.y);
 	dprintf(fd, "[Pers]	pos_box: 	[%5d,%5d]\n", data->player->pos_box.x, data->player->pos_box.y);
 	dprintf(fd, "[Pers]	direction:	[%5f,%5f]\n", data->player->direction.x, data->player->direction.y);
-	dprintf(fd, "[Pers]	plane:		[%5f,%5f]\n", data->player->plane.x, data->player->plane.y);
+}
+
+void	print_cam(t_data *data, int fd)
+{
+	if (fd < 0)
+		error_msg("[print_params] warning: wrong fd]");
+	dprintf(fd, "[cam]	origin_plane:	[%lf, %lf]\n", data->cam.origin_plane.x, data->cam.origin_plane.y);
+	dprintf(fd, "[cam]	plane_dir:[%lf, %lf]\n", data->cam.plane_dir.x, data->cam.plane_dir.y);
 }
 
 void	print_params(t_data *data, int fd)
@@ -76,6 +83,8 @@ void	redir_debug_file_logs(t_data *data, char *fname, int log_type)
 		print_player(data, fd);
 	if (log_type == MAP)
 		print_map(data, fd);
+	if (log_type == CAM)
+		print_cam(data, fd);
 	dprintf(fd, "\t====================================\n");
 	close(fd);
 
