@@ -64,9 +64,12 @@ int	get_identifier(t_data *data, char *str)
 	int		identifier_len;
 
 	identifier_len = ft_strlen_char(str, ' ');
+	if ((int)ft_strlen_char(str, '\t') < identifier_len)
+		identifier_len = ft_strlen_char(str, ' ');
 	if (is_map_line(data, str))
 		return (11);
-	if (identifier_len > 3 || identifier_len < 2)
+	//fprintf(stderr, "%s, len: %d\n", str, identifier_len);
+	if (identifier_len > 2 || identifier_len < 1)
 		exit_msg(data, "[get_identifier] wrong param identifier", -1);
 	return (conv_id_param(data, identifier_len, str));
 }

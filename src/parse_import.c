@@ -60,13 +60,14 @@ int	import_params(t_data *data)
 
 int	parsing_loop(t_data *data, int *map_parse)
 {
-	if (!is_blank_line(data->line) || *map_parse)
+	if (!is_blank_line(data->line))
 	{
 		if (!*map_parse)
 			*map_parse = import_params(data);
-		if (*map_parse == 1)
-			data->map = ft_append_tab(data->map, ft_strtrim(data->line, "\n"));
+		//fprintf(stderr, "[parsing_loop] import_param returned %d]n", *map_parse);
 	}
+	if (*map_parse == 1)
+		data->map = ft_append_tab(data->map, ft_strtrim(data->line, "\n"));
 	free(data->line);
 	return (1);
 }
@@ -75,8 +76,6 @@ void	check_param_not_missing(t_data *data)
 {
 	int	i;
 
-	if (data)
-		data->map = NULL;
 	i = 0;
 	while (i < NB_TEXTURES)
 	{

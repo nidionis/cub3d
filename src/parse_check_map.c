@@ -97,7 +97,7 @@ void	check_map_line(t_data *data, int y, int *nb_player)
 
 	while (c)
 	{
-		if (!is_mapcase(data, c))
+		if (!(is_mapcase(data, c) || is_NSEW(c)))
 			exit_msg(data, "[check_map] map contains unavailable char.", -10);
 		if (is_NSEW(c))
 			init_player(data, x, y, nb_player);
@@ -114,7 +114,7 @@ int	check_map(t_data *data)
 
 	nb_player = 0;
 	y = 0;
-	if (!data || !data->map)
+	if (!data->map)
 		exit_msg(data, "[check_map] map is empty", -1);
 	while (data->map[y])
 		check_map_line(data, y++, &nb_player);

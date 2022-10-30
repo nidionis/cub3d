@@ -20,7 +20,7 @@ int	is_map_line(t_data *data, char *str)
 			return (0);
 		while (*str != '\n'&& *str != '\0')
 		{
-			if (!is_mapcase(data, *str) || !is_NSEW(*str))
+			if (!(is_mapcase(data, *str) || is_NSEW(*str)))
 				return (0);
 			str++;
 		}
