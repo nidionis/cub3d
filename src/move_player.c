@@ -13,7 +13,7 @@
 #include "cub3d.h"
 
 /*
-The algo check if the final position is overjump than the box size (or under 0 if going to the NORTH or WEST)
+The algo check if the final position overjump the size (or under 0 if going to the NORTH or WEST)
 It refreshs the positions values in the map
 
 In theses examples, player's step brings her to *

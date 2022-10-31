@@ -49,7 +49,6 @@ int	import_params(t_data *data)
 	while (is_blank_char(*line))
 		line++;
 	identifier = get_identifier(data, line);
-	//printf("[import], data->line: %s => id: %d\n", data->line, identifier);
 	if (identifier == 11) // copying map matrix
 		return (1);
 	else
@@ -64,7 +63,6 @@ int	parsing_loop(t_data *data, int *map_parse)
 	{
 		if (!*map_parse)
 			*map_parse = import_params(data);
-		//fprintf(stderr, "[parsing_loop] import_param returned %d]n", *map_parse);
 	}
 	if (*map_parse == 1)
 		data->map = ft_append_tab(data->map, ft_strtrim(data->line, "\n"));

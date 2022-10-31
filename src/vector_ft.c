@@ -12,26 +12,6 @@
 
 #include <cub3d.h>
 
-// C++ program to find modulo of floating
-// point numbers.
-
-double float_modulo(double a, double b)
-{
-	double mod;
-
-	if (a < 0)
-		mod = -a;
-	else
-		mod = a;
-	if (b < 0)
-		b = -b;
-	while (mod >= b)
-		mod = mod - b;
-	if (a < 0)
-		return -mod;
-	return mod;
-}
-
 t_point	make_point(int x, int y)
 {
 	t_point	p;
@@ -41,26 +21,11 @@ t_point	make_point(int x, int y)
 	return (p);
 }
 
-t_point	get_vector(t_point *from, t_point *to)
-{
-	t_point	vector;
-
-	vector.x = to->x - from->x;
-	vector.y = -1 * (to->y - from->y);
-	return (vector);
-}
-
 t_vector	vec_scale(t_vector vector, double scale)
 {
 	vector.x = (scale * vector.x);
 	vector.y = (scale * vector.y);
 	return (vector);
-}
-
-void	add_vec(t_point	*pt, t_point vector)
-{
-	pt->x += vector.x;
-	pt->y += vector.y;
 }
 
 void	translate_pt(t_vector vector, t_point *pt)
