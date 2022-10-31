@@ -71,8 +71,8 @@
 # define MAPCASES "01 "
 /* MAPCASE to consider as a wall */
 # define IS_BLOCK "1 "
-# define SCREEN_WIDTH 640
-# define SCREEN_HEIGHT 480
+# define SCREEN_WIDTH 1280
+# define SCREEN_HEIGHT 720
 # define RAYCAST_QUALITY 50
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 1000
@@ -148,6 +148,16 @@ typedef struct	s_cam
 	double		len;
 }	t_cam;
 
+//struct for window
+
+typedef struct s_window
+{
+	void	*mlx;
+	void	*init;
+	int		width;
+	int		height;
+}	t_window;
+
 typedef struct s_data
 {
 	char		*line;
@@ -157,6 +167,7 @@ typedef struct s_data
 	t_image		*image;
 	t_player	*player;
 	t_cam		cam;
+	t_window	*window;
 	char		**map;
 }	t_data;
 
@@ -224,4 +235,8 @@ int	is_block(t_data *data, char c);
 int	is_mapcase(t_data *data, char c);
 int	is_NSEW(char c);
 void	init_cam_vector(t_data *data);
+
+//duarte functions
+int	window_init(t_window *window);
+void	render_map_2d(t_data *data);
 #endif
