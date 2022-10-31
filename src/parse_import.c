@@ -86,8 +86,7 @@ void	check_param_not_missing(t_data *data)
 		exit_msg(data, "[check_param_not_missing] ceiling_color missing", -1);
 }
 
-
-void	parse_file(char *fname, t_data	*data)
+void	parse_file(char *fname, t_data *data)
 {
 	int		fd;
 	int		map_parse;
@@ -101,6 +100,7 @@ void	parse_file(char *fname, t_data	*data)
 		{
 			parsing_loop(data, &map_parse);
 			if (map_parse == -1)
+
 				break ;
 			data->line = get_next_line(fd);
 		}

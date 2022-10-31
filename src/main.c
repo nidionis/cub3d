@@ -37,15 +37,14 @@
 
 void	test_function(t_data *data)
 {
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, CAM);
-	init_cam_vector(data);
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, CAM);
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+	t_point	absolute_position;
+
+	absolute_position = get_player_absolute_position(data->player);
+	fprintf(stderr, "absolute_position: [%d, %d]\n", absolute_position.x, absolute_position.y);
 	if (move_player(data, LEFT))
 		redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
-	init_cam_vector(data);
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, CAM);
+	absolute_position = get_player_absolute_position(data->player);
+	fprintf(stderr, "after move left: [%d, %d]\n", absolute_position.x, absolute_position.y);
 }
 
 int	main(int argc, char *argv[])

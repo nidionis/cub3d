@@ -235,6 +235,7 @@ int	is_block(t_data *data, char c);
 int	is_mapcase(t_data *data, char c);
 int	is_NSEW(char c);
 void	init_cam_vector(t_data *data);
+t_point	get_player_absolute_position(t_player *player);
 
 //duarte functions
 int	window_init(t_window *window);
