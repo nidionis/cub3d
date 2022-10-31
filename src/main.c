@@ -81,14 +81,40 @@ fin tant que
 	return (data);
 }
 
+void	log_file_stuff(t_data *data)
+{
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, CAM);
+	init_cam_vector(data);
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, CAM);
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+	rotate_player(data->player, LEFT);
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+	rotate_player(data->player, LEFT);
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+	rotate_player(data->player, LEFT);
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+	rotate_player(data->player, LEFT);
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+	if (move_player(data, LEFT))
+		redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+	if (move_player(data, LEFT))
+		redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+	if (move_player(data, LEFT))
+		redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+	if (move_player(data, LEFT))
+		redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+}
+
 int	main(int argc, char *argv[])
 {
-	t_image	img;
-	t_data		* data;
+	t_image		img;
+	t_data		*data;
 
 	(void)img;
-	(void)argv;
-	 data = NULL;
+	data = NULL;
 	if (argc != 2)
 	{
 		error_msg("Needs a path to the map file only");
@@ -98,29 +124,9 @@ int	main(int argc, char *argv[])
 	{
 		data = malloc_data();
 		parse_file(argv[1],  data);
-
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, CAM);
-	init_cam_vector(data);		
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, CAM);
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-		rotate_player(data->player, LEFT);
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-		rotate_player(data->player, LEFT);
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-		rotate_player(data->player, LEFT);
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-		rotate_player(data->player, LEFT);
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-		if (move_player(data, LEFT))
-			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-		if (move_player(data, LEFT))
-			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-		if (move_player(data, LEFT))
-			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-		if (move_player(data, LEFT))
-			redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
+		log_file_stuff(data);
+		data->window = malloc(sizeof(t_window));
+		window_init(data->window);
+		render_map_2d(data);
 	}
 }
