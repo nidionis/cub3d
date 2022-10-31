@@ -34,6 +34,7 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS) maker
 	$(CC) $(OBJECTS) $(CFLAGS) ${MLXFLAGS} $(LIBFT) ./$(MINILIBX)/libmlx.a -o $(NAME) 
+	@rm -rf $(DEBUG_LOG_FILE)
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)

@@ -53,4 +53,3 @@ void	init_cam_vector(t_data *data)
 	set_plane_dir(data, plan_size);
 	set_plane_origin(data);
 }
-
