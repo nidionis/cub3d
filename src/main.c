@@ -37,7 +37,6 @@
 
 void	test_function(t_data *data)
 {
-	clean_useless_empty_splace(data->map);
 	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, MAP);
 }
 

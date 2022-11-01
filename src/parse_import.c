@@ -109,5 +109,6 @@ void	parse_file(char *fname, t_data *data)
 	check_param_not_missing(data);
 	if (map_parse == -1)
 		exit_msg(data, "[parse_file] pb loading map", -1);
+	format_map(data);
 	map_parse = check_map(data);
 }

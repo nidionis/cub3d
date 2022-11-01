@@ -237,6 +237,8 @@ int	is_NSEW(char c);
 void	init_cam_vector(t_data *data);
 t_point	get_player_absolute_position(t_player *player);
 void	clean_useless_empty_splace(char	**map);
+void	rectangle_map(t_data *data, char **map);
+void	format_map(t_data *data);
 
 //duarte functions
 int	window_init(t_window *window);

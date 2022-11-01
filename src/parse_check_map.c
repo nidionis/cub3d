@@ -107,49 +107,6 @@ void	check_map_line(t_data *data, int y, int *nb_player)
 	}
 }
 
-void	shift_line_left(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] && line[i + 1])
-	{
-		line[i] = line[i + 1];
-		i++;
-	}
-	line[i] = line[i + 1];
-}
-
-void	delete_first_column(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		shift_line_left(map[i++]);
-}
-
-int	is_first_column_empty(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		if (!is_blank_char(map[i][0]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-/* delete an a column of EMPTY at left side of map */
-void	clean_useless_empty_splace(char	**map)
-{
-	while (is_first_column_empty(map))
-		delete_first_column(map);
-}
-
 int	check_map(t_data *data)
 {
 	int	y;
@@ -164,5 +121,6 @@ int	check_map(t_data *data)
 	if (nb_player != 1)
 		exit_msg(data, "[check_map] \
 				Map does not contains one hero only", -12);
+	format_map(data);
 	return (1);
 }
