@@ -145,7 +145,6 @@ WEST	include/cub3d.h	/^enum e_cardinal { NORTH, SOUTH, EAST, WEST };$/;"	e	enum:
 WEST_CHAR	include/cub3d.h	68;"	d
 X_ShmAttach	minilibx_linux/mlx_new_image.c	20;"	d	file:
 Z_CHUNK	minilibx_mac/mlx_png.c	22;"	d	file:
-add_vec	src/vector_ft.c	/^void	add_vec(t_point	*pt, t_point vector)$/;"	f
 addr	include/cub3d.h	/^	char			*addr;$/;"	m	struct:s_image
 appid	minilibx_mac/mlx_int.h	/^  void			*appid;$/;"	m	struct:mlx_ptr_s
 blocks	include/cub3d.h	/^	char		*blocks;$/;"	m	struct:s_data
@@ -164,8 +163,8 @@ check_map	src/parse_check_map.c	/^int	check_map(t_data *data)$/;"	f
 check_map_line	src/parse_check_map.c	/^void	check_map_line(t_data *data, int y, int *nb_player)$/;"	f
 check_param_not_missing	src/parse_import.c	/^void	check_param_not_missing(t_data *data)$/;"	f
 check_update_box_pos	src/move_player.c	/^int	check_update_box_pos(t_data *data)$/;"	f
-check_wall	src/move_player.c	/^int	check_wall(t_data *data, int crossover_direction)$/;"	f
 clean_exit	src/exit_ft.c	/^void	clean_exit(t_data *data, int exit_code)$/;"	f
+clean_useless_empty_splace	src/parse_check_map.c	/^void	clean_useless_empty_splace(char	**map)$/;"	f
 cmap	minilibx_linux/mlx_int.h	/^	Colormap	cmap;$/;"	m	struct:s_xvar
 col	minilibx_linux/mlx_int.h	/^	int		col;$/;"	m	struct:s_xpm_col
 col	minilibx_mac/mlx_xpm.c	/^  int           col;$/;"	m	struct:s_xpm_col	file:
@@ -178,6 +177,7 @@ crc_table	minilibx_mac/mlx_png.c	/^unsigned long crc_table[256] = { 0, 0x7707309
 data	minilibx_linux/mlx_int.h	/^	char			*data;$/;"	m	struct:s_img
 decrgb	minilibx_linux/mlx_int.h	/^	int			decrgb[6];$/;"	m	struct:s_xvar
 degree_to_radian	src/vector_ft.c	/^double	degree_to_radian(double degree_angle)$/;"	f
+delete_first_column	src/parse_check_map.c	/^void	delete_first_column(char **map)$/;"	f
 delta_dist	include/cub3d.h	/^	t_vector	delta_dist;$/;"	m	struct:s_cam
 depth	minilibx_linux/mlx_int.h	/^	int			depth;$/;"	m	struct:s_xvar
 depth	minilibx_mac/mlx_png.c	/^  int		depth;$/;"	m	struct:png_info_s	file:
@@ -186,6 +186,7 @@ display	minilibx_linux/mlx_int.h	/^	Display		*display;$/;"	m	struct:s_xvar
 display_log	minilibx_mac/mlx_shaders.c	/^void display_log(GLuint object, void (*param_func)(), void (*getlog_func)())$/;"	f
 distance_point_to_vector	src/vector_ft.c	/^double	distance_point_to_vector(t_point point, t_point v_p1, t_point v_p2)$/;"	f
 do_flush	minilibx_linux/mlx_int.h	/^	int			do_flush;$/;"	m	struct:s_xvar
+draw_cube	src/gg_window_init.c	/^void	draw_cube(t_window *window, int size, int pos_x, int pos_y)$/;"	f
 e_cardinal	include/cub3d.h	/^enum e_cardinal { NORTH, SOUTH, EAST, WEST };$/;"	g
 e_direction	include/cub3d.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };$/;"	g
 e_identifiers	include/cub3d.h	/^enum e_identifiers { NO, SO, WE, EA, F, C };$/;"	g
@@ -200,7 +201,6 @@ expose_param	minilibx_linux/mlx_int.h	/^	void				*expose_param;$/;"	m	struct:s_w
 f	include/cub3d.h	/^	void			(*f)();$/;"	m	struct:s_image
 f_is_box_crossed	src/move_player.c	/^static int	f_is_box_crossed(t_player *player)$/;"	f	file:
 file_extention_available	src/parse_init.c	/^void	file_extention_available(t_data *data, char *fname)$/;"	f
-float_modulo	src/vector_ft.c	/^double float_modulo(double a, double b)$/;"	f
 floor_color	include/cub3d.h	/^	unsigned int	floor_color;$/;"	m	struct:s_image
 font	minilibx_mac/mlx_int.h	/^  mlx_img_list_t	*font;$/;"	m	struct:mlx_ptr_s
 font_atlas	minilibx_mac/font.c	/^} font_atlas = {$/;"	v	typeref:struct:__anon1	file:
@@ -261,10 +261,11 @@ get_identifier	src/parse_params.c	/^int	get_identifier(t_data *data, char *str)$
 get_identifiers_ls	src/parse_params.c	/^char	**get_identifiers_ls(int identifier_len)$/;"	f
 get_next_case	src/move_to_corner.c	/^char	get_next_case(char **map, t_point map_point, int direction)$/;"	f
 get_next_line	src/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_player_absolute_position	src/map_ft.c	/^t_point	get_player_absolute_position(t_player *player)$/;"	f
 get_smallest_index	src/move_to_corner.c	/^int	get_smallest_index(double wall_distance[4])$/;"	f
-get_vector	src/vector_ft.c	/^t_point	get_vector(t_point *from, t_point *to)$/;"	f
 glsl_info_s	minilibx_mac/mlx_int.h	/^typedef struct	glsl_info_s$/;"	s
 glsl_info_t	minilibx_mac/mlx_int.h	/^} glsl_info_t;$/;"	t	typeref:struct:glsl_info_s
+height	include/cub3d.h	/^	int		height;$/;"	m	struct:s_window
 height	minilibx_linux/mlx_int.h	/^	int				height;$/;"	m	struct:s_img
 height	minilibx_mac/font.c	/^  unsigned int 	 height;$/;"	m	struct:__anon1	file:
 height	minilibx_mac/mlx_int.h	/^  int			height;$/;"	m	struct:mlx_img_list_s
@@ -283,6 +284,7 @@ img_ptr	include/cub3d.h	/^	void			*img_ptr;$/;"	m	struct:s_image
 import_param	src/parse_import.c	/^void	import_param(t_data *data, int identifier, char *line)$/;"	f
 import_params	src/parse_import.c	/^int	import_params(t_data *data)$/;"	f
 import_texture_path	src/parse_import.c	/^void	import_texture_path(t_data *data, int identifier, char *line)$/;"	f
+init	include/cub3d.h	/^	void	*init;$/;"	m	struct:s_window
 init_cam_vector	src/rayparsing.c	/^void	init_cam_vector(t_data *data)$/;"	f
 init_f_c_color	src/parse_file_colors.c	/^unsigned int	init_f_c_color(t_data *data, char *line)$/;"	f
 init_fd	src/parse_init.c	/^void	init_fd(t_data *data, int *fd, char *fname)$/;"	f
@@ -294,6 +296,7 @@ is_blank_char	src/str_ft.c	/^int	is_blank_char(char c)$/;"	f
 is_blank_line	src/str_ft.c	/^int	is_blank_line(char *line)$/;"	f
 is_block	src/move_to_corner.c	/^int	is_block(t_data *data, char c)$/;"	f
 is_border	src/parse_check_map.c	/^int	is_border(t_data *data, int x, int y, int matrix_len)$/;"	f
+is_first_column_empty	src/parse_check_map.c	/^int	is_first_column_empty(char **map)$/;"	f
 is_map_line	src/str_ft.c	/^int	is_map_line(t_data *data, char *str)$/;"	f
 is_mapcase	src/parse_check_map.c	/^int	is_mapcase(t_data *data, char c)$/;"	f
 is_trimable	libft/ft_strtrim.c	/^static int	is_trimable(char c, char *trimset)$/;"	f	file:
@@ -348,6 +351,7 @@ mipng_is_type	minilibx_mac/mlx_png.c	/^int	mipng_is_type(unsigned char *ptr, cha
 mipng_magic	minilibx_mac/mlx_png.c	/^int	mipng_magic(unsigned char *ptr, int size)$/;"	f
 mipng_structure	minilibx_mac/mlx_png.c	/^int	mipng_structure(unsigned char *ptr, int size, unsigned char **hdr, unsigned char **dat)$/;"	f
 mipng_verif_hdr	minilibx_mac/mlx_png.c	/^int	mipng_verif_hdr(unsigned char *hdr, png_info_t *pi)$/;"	f
+mlx	include/cub3d.h	/^	void	*mlx;$/;"	m	struct:s_window
 mlx_X_error	minilibx_linux/mlx_new_image.c	/^int	mlx_X_error;$/;"	v
 mlx_clear_window	minilibx_linux/mlx_clear_window.c	/^int		mlx_clear_window(t_xvar *xvar,t_win_list *win)$/;"	f
 mlx_col_name	minilibx_linux/mlx_rgb.c	/^struct s_col_name mlx_col_name[] =$/;"	v	typeref:struct:s_col_name
@@ -460,7 +464,7 @@ next	minilibx_mac/mlx_int.h	/^  struct mlx_win_list_s	*next;$/;"	m	struct:mlx_wi
 north_crossing	src/move_crossing_box.c	/^int	north_crossing(t_data *data)$/;"	f
 origin_plane	include/cub3d.h	/^	t_vector	origin_plane;$/;"	m	struct:s_cam
 param	minilibx_linux/mlx_int.h	/^	void	*param;$/;"	m	struct:s_event_list
-parse_file	src/parse_import.c	/^void	parse_file(char *fname, t_data	*data)$/;"	f
+parse_file	src/parse_import.c	/^void	parse_file(char *fname, t_data *data)$/;"	f
 parsing_loop	src/parse_import.c	/^int	parsing_loop(t_data *data, int *map_parse)$/;"	f
 pix	minilibx_linux/mlx_int.h	/^	Pixmap			pix;$/;"	m	struct:s_img
 pixel_data	minilibx_mac/font.c	/^  unsigned char	 pixel_data[1140 * 20 * 4 + 1];$/;"	m	struct:__anon1	file:
@@ -484,6 +488,7 @@ pshm_format	minilibx_linux/mlx_int.h	/^	int			pshm_format;$/;"	m	struct:s_xvar
 redir_debug_file_logs	src/debug_ft.c	/^void	redir_debug_file_logs(t_data *data, char *fname, int log_type)$/;"	f
 redir_debug_file_msg	src/debug_ft.c	/^void	redir_debug_file_msg(char *fname, char *msg)$/;"	f
 refresh_ret_if_is_param	src/parse_params.c	/^static int	refresh_ret_if_is_param(char **identifiers, \\$/;"	f	file:
+render_map_2d	src/gg_window_init.c	/^void	render_map_2d(t_data *data)$/;"	f
 rgb_conv	src/parse_file_colors.c	/^unsigned int	rgb_conv(int R, int G, int B)$/;"	f
 root	minilibx_linux/mlx_int.h	/^	Window		root;$/;"	m	struct:s_xvar
 rotate_player	src/rotate_player.c	/^void	rotate_player(t_player *player, int move)$/;"	f
@@ -499,6 +504,7 @@ s_player	include/cub3d.h	/^typedef struct s_player$/;"	s
 s_point	include/cub3d.h	/^typedef struct s_point$/;"	s
 s_vector	include/cub3d.h	/^typedef struct s_vector$/;"	s
 s_win_list	minilibx_linux/mlx_int.h	/^typedef struct	s_win_list$/;"	s
+s_window	include/cub3d.h	/^typedef struct s_window$/;"	s
 s_xpm_col	minilibx_linux/mlx_int.h	/^typedef	struct	s_xpm_col$/;"	s
 s_xpm_col	minilibx_mac/mlx_xpm.c	/^typedef struct  s_xpm_col$/;"	s	file:
 s_xvar	minilibx_linux/mlx_int.h	/^typedef struct	s_xvar$/;"	s
@@ -506,6 +512,7 @@ saved_mode	minilibx_linux/mlx_ext_randr.c	/^RRMode	saved_mode = 0;$/;"	v
 screen	minilibx_linux/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar
 set_plane_dir	src/rayparsing.c	/^void	set_plane_dir(t_data *data, double plan_size)$/;"	f
 set_plane_origin	src/rayparsing.c	/^void	set_plane_origin(t_data *data)$/;"	f
+shift_line_left	src/parse_check_map.c	/^void	shift_line_left(char *line)$/;"	f
 shm	minilibx_linux/mlx_int.h	/^	XShmSegmentInfo	shm;$/;"	m	struct:s_img
 shm_att_pb	minilibx_linux/mlx_new_image.c	/^int	shm_att_pb(Display *d,XErrorEvent *ev)$/;"	f
 side_dist	include/cub3d.h	/^	t_vector	side_dist;$/;"	m	struct:s_cam
@@ -523,19 +530,23 @@ t_player	include/cub3d.h	/^}	t_player;$/;"	t	typeref:struct:s_player
 t_point	include/cub3d.h	/^}	t_point;$/;"	t	typeref:struct:s_point
 t_vector	include/cub3d.h	/^}	t_vector;$/;"	t	typeref:struct:s_vector
 t_win_list	minilibx_linux/mlx_int.h	/^}				t_win_list;$/;"	t	typeref:struct:s_win_list
+t_window	include/cub3d.h	/^}	t_window;$/;"	t	typeref:struct:s_window
 t_xpm_col	minilibx_linux/mlx_int.h	/^}				t_xpm_col;$/;"	t	typeref:struct:s_xpm_col
 t_xpm_col	minilibx_mac/mlx_xpm.c	/^} t_xpm_col;$/;"	t	typeref:struct:s_xpm_col	file:
 t_xvar	minilibx_linux/mlx_int.h	/^}				t_xvar;$/;"	t	typeref:struct:s_xvar
+test_function	src/main.c	/^void	test_function(t_data *data)$/;"	f
 texture	minilibx_mac/mlx_int.h	/^  GLuint		texture;$/;"	m	struct:mlx_img_ctx_s
 texture_path	include/cub3d.h	/^	char			*texture_path[NB_TEXTURES];$/;"	m	struct:s_image
 translate_pt	src/vector_ft.c	/^void	translate_pt(t_vector vector, t_point *pt)$/;"	f
 type	minilibx_linux/mlx_int.h	/^	int				type;$/;"	m	struct:s_img
+update_pos_if_wall	src/move_player.c	/^int	update_pos_if_wall(t_data *data, int crossover_direction)$/;"	f
 use_xshm	minilibx_linux/mlx_int.h	/^	int			use_xshm;$/;"	m	struct:s_xvar
 vbuffer	minilibx_mac/mlx_int.h	/^  GLuint		vbuffer;$/;"	m	struct:mlx_img_ctx_s
 vec_scale	src/vector_ft.c	/^t_vector	vec_scale(t_vector vector, double scale)$/;"	f
 vertexes	minilibx_mac/mlx_int.h	/^  GLfloat		vertexes[8];$/;"	m	struct:mlx_img_list_s
 visual	minilibx_linux/mlx_int.h	/^	Visual		*visual;$/;"	m	struct:s_xvar
 west_crossing	src/move_crossing_box.c	/^int	west_crossing(t_data *data)$/;"	f
+width	include/cub3d.h	/^	int		width;$/;"	m	struct:s_window
 width	minilibx_linux/mlx_int.h	/^	int				width;$/;"	m	struct:s_img
 width	minilibx_mac/font.c	/^  unsigned int 	 width;$/;"	m	struct:__anon1	file:
 width	minilibx_mac/mlx_int.h	/^  int			width;$/;"	m	struct:mlx_img_list_s
@@ -544,7 +555,9 @@ win_count	minilibx_linux/mlx_loop.c	/^static int	win_count(t_xvar *xvar)$/;"	f	f
 win_list	minilibx_linux/mlx_int.h	/^	t_win_list	*win_list;$/;"	m	struct:s_xvar
 win_list	minilibx_mac/mlx_int.h	/^  mlx_win_list_t	*win_list;$/;"	m	struct:mlx_ptr_s
 win_ptr	include/cub3d.h	/^	void			*win_ptr;$/;"	m	struct:s_image
+window	include/cub3d.h	/^	t_window	*window;$/;"	m	struct:s_data
 window	minilibx_linux/mlx_int.h	/^	Window				window;$/;"	m	struct:s_win_list
+window_init	src/gg_window_init.c	/^int	window_init(t_window *window)$/;"	f
 winid	minilibx_mac/mlx_int.h	/^  void			*winid;$/;"	m	struct:mlx_win_list_s
 wm_delete_window	minilibx_linux/mlx_int.h	/^	Atom		wm_delete_window;$/;"	m	struct:s_xvar
 wm_protocols	minilibx_linux/mlx_int.h	/^	Atom		wm_protocols;$/;"	m	struct:s_xvar

@@ -37,14 +37,7 @@
 
 void	test_function(t_data *data)
 {
-	t_point	absolute_position;
-
-	absolute_position = get_player_absolute_position(data->player);
-	fprintf(stderr, "absolute_position: [%d, %d]\n", absolute_position.x, absolute_position.y);
-	if (move_player(data, LEFT))
-		redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
-	absolute_position = get_player_absolute_position(data->player);
-	fprintf(stderr, "after move left: [%d, %d]\n", absolute_position.x, absolute_position.y);
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, MAP);
 }
 
 int	main(int argc, char *argv[])
@@ -63,9 +56,10 @@ int	main(int argc, char *argv[])
 	{
 		data = malloc_data();
 		parse_file(argv[1],  data);
+	clean_useless_empty_splace(data->map);
 		test_function(data);
-		data->window = malloc(sizeof(t_window));
-		window_init(data->window);
-		render_map_2d(data);
+		//data->window = malloc(sizeof(t_window));
+		//window_init(data->window);
+		//render_map_2d(data);
 	}
 }

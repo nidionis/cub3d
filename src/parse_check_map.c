@@ -107,24 +107,33 @@ void	check_map_line(t_data *data, int y, int *nb_player)
 	}
 }
 
-void	delete_first_column(map)
+void	shift_line_left(char *line)
 {
 	int	i;
 
-	while (map[i])
+	i = 0;
+	while (line[i] && line[i + 1])
 	{
-		if (map[i][0] != EMPTY)
-			return (0);
+		line[i] = line[i + 1];
 		i++;
 	}
-	return (1);
+	line[i] = line[i + 1];
 }
 
-int	is_first_column_empty(map)
+void	delete_first_column(char **map)
 {
 	int	i;
-	int	j;
 
+	i = 0;
+	while (map[i])
+		shift_line_left(map[i++]);
+}
+
+int	is_first_column_empty(char **map)
+{
+	int	i;
+
+	i = 0;
 	while (map[i])
 	{
 		if (map[i][0] != EMPTY)
@@ -137,11 +146,7 @@ int	is_first_column_empty(map)
 /* delete an a column of EMPTY at left side of map */
 void	clean_useless_empty_splace(char	**map)
 {
-	int i;
-
-	i = 0;
 	while (is_first_column_empty(map))
-	{
 		delete_first_column(map);
 }
 
