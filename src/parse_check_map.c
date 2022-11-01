@@ -136,7 +136,7 @@ int	is_first_column_empty(char **map)
 	i = 0;
 	while (map[i])
 	{
-		if (map[i][0] != EMPTY)
+		if (!is_blank_char(map[i][0]))
 			return (0);
 		i++;
 	}

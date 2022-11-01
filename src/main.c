@@ -37,6 +37,7 @@
 
 void	test_function(t_data *data)
 {
+	clean_useless_empty_splace(data->map);
 	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, MAP);
 }
 
@@ -56,7 +57,6 @@ int	main(int argc, char *argv[])
 	{
 		data = malloc_data();
 		parse_file(argv[1],  data);
-	clean_useless_empty_splace(data->map);
 		test_function(data);
 		//data->window = malloc(sizeof(t_window));
 		//window_init(data->window);
