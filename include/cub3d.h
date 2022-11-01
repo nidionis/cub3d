@@ -144,8 +144,9 @@ typedef struct	s_cam
 	t_vector	side_dist;
 	t_vector	delta_dist;
 	t_vector	origin_plane;
+	t_vector	ray_direction;
 	t_vector	plane_dir;
-	double		len;
+	t_vector	arRay[CAM_QUALITY];
 }	t_cam;
 
 //struct for window
@@ -166,7 +167,7 @@ typedef struct s_data
 	char		*map_cases;
 	t_image		*image;
 	t_player	*player;
-	t_cam		cam;
+	t_cam		*cam;
 	t_window	*window;
 	char		**map;
 }	t_data;
@@ -240,6 +241,7 @@ void	clean_useless_empty_splace(char	**map);
 void	rectangle_map(t_data *data, char **map);
 void	format_map(t_data *data);
 unsigned int	rgb_conv(int R, int G, int B);
+void	translate_vector_as_pt(t_vector vector, t_vector *pt);
 
 //duarte functions
 int	window_init(t_window *window);

@@ -17,8 +17,7 @@ void	init_null(t_data *data, int *map_parse)
 	int	i;
 
 	*map_parse = 0;
-	if (data)
-		data->map = NULL;
+	data->map = NULL;
 	i = 0;
 	while (i < NB_TEXTURES)
 		data->image->texture_path[i++] = NULL;

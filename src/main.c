@@ -18,20 +18,22 @@
 
 	data = malloc(sizeof(t_data));
 	if (!data)
-		clean_exit(data, -4);
+		clean_exit(data, -1);
 	data->image = malloc(sizeof(t_image));
 	if (!data->image)
-		clean_exit(data, -6);
+		clean_exit(data, -1);
 	data->player = malloc(sizeof(t_player));
 	if (!data->player)
-		clean_exit(data, -7);
+		clean_exit(data, -1);
 	data->blocks = ft_strdup(IS_BLOCK);
 	if (!data->blocks)
-		clean_exit(data, -8);
+		clean_exit(data, -1);
 	data->map_cases = ft_strdup(MAPCASES);
-	fprintf(stderr, "%s\n", data->map_cases);
 	if (!data->map_cases)
-		clean_exit(data, -9);
+		clean_exit(data, -1);
+	data->cam = malloc(sizeof(t_cam));
+	if (!data->cam)
+		clean_exit(data, -1);
 	return (data);
 }
 
@@ -67,4 +69,5 @@ int	main(int argc, char *argv[])
 		window_init(data->window);
 		render_map_2d(data);
 	}
+	clean_exit(data, 0);
 }

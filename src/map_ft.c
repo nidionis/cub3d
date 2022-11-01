@@ -20,3 +20,20 @@ t_point	get_player_absolute_position(t_player *player)
 	abs_pos.y = player->pos_map.y * (int)STEPS_PER_BOX + player->pos_box.y;
 	return (abs_pos);
 }
+
+t_point	get_map_position_from_absolute_UNIT_PER_BOX_position(t_point absolute_pos)
+{
+	t_point	map_pos;
+
+	map_pos.x = absolute_pos.x / (int)UNITS_PER_BOX;
+	map_pos.y = absolute_pos.y / (int)UNITS_PER_BOX;
+	return (map_pos);
+}
+
+char	get_map_case_from_absolute_UNIT_PER_BOX_position(t_point absolute_pos, char **map)
+{
+	t_point	map_pos;
+
+	map_pos = get_map_position_from_absolute_UNIT_PER_BOX_position(absolute_pos);
+	return (map[map_pos.x][map_pos.y]);
+}

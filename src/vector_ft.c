@@ -34,6 +34,12 @@ void	translate_pt(t_vector vector, t_point *pt)
 	pt->y += (int)vector.y;
 }
 
+void	translate_vector_as_pt(t_vector vector, t_vector *pt)
+{
+	pt->x += vector.x;
+	pt->y += vector.y;
+}
+
 double	degree_to_radian(double degree_angle)
 {
 	double	rad_angle;
