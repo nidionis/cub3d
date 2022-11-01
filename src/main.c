@@ -56,9 +56,15 @@ int	main(int argc, char *argv[])
 	{
 		data = malloc_data();
 		parse_file(argv[1],  data);
-		test_function(data);
-		//data->window = malloc(sizeof(t_window));
-		//window_init(data->window);
-		//render_map_2d(data);
+		// map_width = ft_strlen(/*any line of the map*/);_
+		// map_height = ft_matrixlen(data->map);
+		// (in map_ft.c):
+		// get_player_absolute_position(data->player);
+		/*
+		Pour le ray casting, I expect to returns an array of size CAM_QUALITY, each index containing the distance to the camera plane
+		*/
+		data->window = malloc(sizeof(t_window));
+		window_init(data->window);
+		render_map_2d(data);
 	}
 }
