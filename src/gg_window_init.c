@@ -23,7 +23,7 @@ void	draw_cube(t_window *window, int size, int pos_x, int pos_y)
 	{
 		while (x < pos_x + (size / 2))
 		{
-			mlx_pixel_put(window->mlx, window->init, x, y, 0xFFFFFF);
+			mlx_pixel_put(window->mlx, window->init, x, y, rgb_conv(255, 255, 255));
 			x++;
 		}
 		x = pos_x - (size / 2);
