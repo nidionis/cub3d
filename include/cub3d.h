@@ -116,9 +116,11 @@ typedef struct s_player
 {
 	t_point		pos_map;
 	t_point		pos_box;
+	t_vector	pos;
 	t_vector	direction;
 }	t_player;
 
+/*
 typedef struct s_image
 {
 	void			*mlx_ptr;
@@ -137,6 +139,13 @@ typedef struct s_image
 	//t_point			win_center;
 	void			(*f)();
 }	t_image;
+*/
+
+typedef struct	s_ray
+{
+	double		len;
+	t_vector	hit_point;
+}	t_ray;
 
 /* note: origin plane is a POINT using t_vector structure*/
 typedef struct	s_cam
@@ -146,11 +155,10 @@ typedef struct	s_cam
 	t_vector	origin_plane;
 	t_vector	ray_direction;
 	t_vector	plane_dir;
-	t_vector	arRay[CAM_QUALITY];
+	t_ray		arRay[CAM_QUALITY];
 }	t_cam;
 
 //struct for window
-
 typedef struct s_window
 {
 	void	*mlx;

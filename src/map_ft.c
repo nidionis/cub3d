@@ -12,15 +12,6 @@
 
 #include "cub3d.h"
 
-t_point	get_player_absolute_position(t_player *player)
-{
-	t_point	abs_pos;
-
-	abs_pos.x = player->pos_map.x * (int)STEPS_PER_BOX + player->pos_box.x;
-	abs_pos.y = player->pos_map.y * (int)STEPS_PER_BOX + player->pos_box.y;
-	return (abs_pos);
-}
-
 t_point	get_map_position_from_absolute_UNIT_PER_BOX_position(t_point absolute_pos)
 {
 	t_point	map_pos;

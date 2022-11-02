@@ -75,6 +75,8 @@ void	init_player(t_data *data, int x, int y, int *is_player)
 	data->player->pos_map.y = y;
 	data->player->pos_box.x = UNITS_PER_BOX / 2;
 	data->player->pos_box.y = UNITS_PER_BOX / 2;
+	update_pos_in_step(data->player);
+	update_pos_in_pix(data->player);
 	//devine plnan
 	(*is_player)++;
 }

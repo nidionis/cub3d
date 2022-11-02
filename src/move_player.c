@@ -155,5 +155,7 @@ int	move_player(t_data *data, int move)
 //	fprintf(stderr, "[move_player] scale_dir (%5lf,%5lf)\n", scaled_direction.x, scaled_direction.y);
 	translate_pt(scaled_direction, &p->pos_box);
 	hit_wall = check_update_box_pos(data);
+	update_pos_in_step(p);
+	update_pos_in_pix(p);
  	return (hit_wall);
  }
