@@ -12,15 +12,6 @@
 
 #include "cub3d.h"
 
-t_point	pix_pos_in_box(t_point pos_box)
-{
-	t_point	pos_in_pix;
-
-	pos_in_pix.x = (((double)pos_box.x / (double)STEPS_PER_BOX) * (double)UNITS_PER_BOX);
-	pos_in_pix.y = (((double)pos_box.y / (double)STEPS_PER_BOX) * (double)UNITS_PER_BOX);
-	return (pos_in_pix);
-}
-
 t_point	update_pos_in_step(t_player *player)
 {
 	t_point	pos_in_step;
@@ -31,6 +22,15 @@ t_point	update_pos_in_step(t_player *player)
 	if (pos_in_step.x < 0 || pos_in_step.y < 0)
 		error_msg("[update_pos_in_step] pos_in_step probably overflow");
 	return (pos_in_step);
+}
+
+static t_point	pix_pos_in_box(t_point pos_box)
+{
+	t_point	pos_in_pix;
+
+	pos_in_pix.x = (((double)pos_box.x / (double)STEPS_PER_BOX) * (double)UNITS_PER_BOX);
+	pos_in_pix.y = (((double)pos_box.y / (double)STEPS_PER_BOX) * (double)UNITS_PER_BOX);
+	return (pos_in_pix);
 }
 
 t_point	update_pos_in_pix(t_player *player)

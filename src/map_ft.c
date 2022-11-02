@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-t_point	get_map_position_from_absolute_UNIT_PER_BOX_position(t_point absolute_pos)
+t_point	pix_pos_to_map_pos(t_point absolute_pos)
 {
 	t_point	map_pos;
 
@@ -21,10 +21,10 @@ t_point	get_map_position_from_absolute_UNIT_PER_BOX_position(t_point absolute_po
 	return (map_pos);
 }
 
-char	get_map_case_from_absolute_UNIT_PER_BOX_position(t_point absolute_pos, char **map)
+char	pix_pos_to_map_case(t_point absolute_pos, char **map)
 {
 	t_point	map_pos;
 
-	map_pos = get_map_position_from_absolute_UNIT_PER_BOX_position(absolute_pos);
+	map_pos = pix_pos_to_map_pos(absolute_pos);
 	return (map[map_pos.x][map_pos.y]);
 }

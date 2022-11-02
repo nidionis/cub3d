@@ -22,7 +22,7 @@ void	shift_line_left(char *line)
 		line[i] = line[i + 1];
 		i++;
 	}
-	line[i] = line[i + 1];
+	line[i] = '0';
 }
 
 void	delete_first_column(char **map)
@@ -111,6 +111,8 @@ void	format_map(t_data *data)
 {
 	char	**map;
 
+	if (data->map == NULL)
+		exit_msg(data, "[format_map] map disapear (existed in check_param_missing", -1);
 	map = data->map;
 	clean_useless_empty_splace(map);
 	rectangle_map(data, map);

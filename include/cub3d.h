@@ -116,30 +116,19 @@ typedef struct s_player
 {
 	t_point		pos_map;
 	t_point		pos_box;
-	t_vector	pos;
+	/* absolute positions */
+	t_point		pos_in_step;
+	t_point		pos_in_pix;
 	t_vector	direction;
 }	t_player;
 
-/*
 typedef struct s_image
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*img_ptr;
-	char			*addr;
-	int				bpp;
-	unsigned int	size[2];
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
 	char			*texture_path[NB_TEXTURES];
 	int				line_len;
-	int				endian;
-	//unsigned int	scale[2];
-	//t_point			center;
-	//t_point			win_center;
-	void			(*f)();
 }	t_image;
-*/
 
 typedef struct	s_ray
 {
@@ -250,6 +239,8 @@ void	rectangle_map(t_data *data, char **map);
 void	format_map(t_data *data);
 unsigned int	rgb_conv(int R, int G, int B);
 void	translate_vector_as_pt(t_vector vector, t_vector *pt);
+t_point	update_pos_in_pix(t_player *player);
+t_point	update_pos_in_step(t_player *player);
 
 //duarte functions
 int	window_init(t_window *window);

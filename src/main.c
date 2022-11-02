@@ -39,7 +39,9 @@
 
 void	test_function(t_data *data)
 {
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, MAP);
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+	move_player(data, LEFT);
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
 }
 
 int	main(int argc, char *argv[])
@@ -62,8 +64,8 @@ int	main(int argc, char *argv[])
 		// map_height = ft_matrixlen(data->map);
 		// (in map_ft.c):
 		data->window = malloc(sizeof(t_window));
-		window_init(data->window);
-		render_map_2d(data);
+		//window_init(data->window);
+		//render_map_2d(data);
 	}
 	clean_exit(data, 0);
 }

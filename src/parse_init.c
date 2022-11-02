@@ -19,8 +19,13 @@ void	init_null(t_data *data, int *map_parse)
 	*map_parse = 0;
 	data->map = NULL;
 	i = 0;
-	while (i < NB_TEXTURES)
-		data->image->texture_path[i++] = NULL;
+	while (i < (int)NB_TEXTURES)
+	{
+		data->image->texture_path[i] = NULL;
+		fprintf(stderr, "i:%d, %s\n", i, data->image->texture_path[i]);
+		i++;
+
+	}
 	data->image->floor_color = -1;
 	data->image->ceiling_color = -1;
 }
