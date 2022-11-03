@@ -124,7 +124,7 @@ int	main(int argc, char *argv[])
 	{
 		data = malloc_data();
 		parse_file(argv[1],  data);
-		log_file_stuff(data);
+		// log_file_stuff(data);
 		data->window = malloc(sizeof(t_window));
 		data->player = malloc(sizeof(t_player));
 		player_init(data->map, data->player);

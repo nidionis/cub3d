@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_window_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/02 21:32:46 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:37:33 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,15 @@ void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)
     }
 }
 
+void	draw_player(t_data *data)
+{
+	t_player *player;
+
+	player = data->player;
+	draw_cube(data->window, 5, player->pos_box.y, player->pos_box.x, 0xF00F0F);
+
+}
+
 void	draw_mini_map(t_data *data)
 {
 	t_point	*pos;
@@ -119,38 +128,31 @@ void	draw_mini_map(t_data *data)
 					(WALL_SIZE / 2) + j, pos->x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xF00F0F);
 			else
 				draw_cube(data->window, WALL_SIZE, pos->y * WALL_SIZE + \
-					(WALL_SIZE / 2) + j, pos->x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xfFff00);
+					(WALL_SIZE / 2) + j, pos->x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xf0ff00);
 			i++;
 			pos->x++;
 		}
 		j++;
 		i = 0;
-		// i = 0;
 		pos->x = 0;
 		pos->y++;
 	}
+	draw_player(data);
 	free(pos);
 }
 
-void	draw_player(t_data *data)
-{
-	t_player *player;
 
-	player = data->player;
-	draw_cube(data->window, 5, player->pos_box.y, player->pos_box.x, 0xF00F0F);
-
-}
 
 int	ray_cast(t_data *data)
 {
 	t_point end;
 	
-	draw_cube(data->window, 1200,0, 0, 0xf0ff00);
+	// draw_cube(data->window, 1200,0, 0, 0xf0ff00);
 	end.x = data->player->pos_box.x + data->player->direction.x * 20;//dx
 	end.y = data->player->pos_box.y + data->player->direction.y * 20;// dy
-	draw_mini_map(data);
 	draw_player(data);
-	draw_line(data, &data->player->pos_box, &end, 0xf0ff00);
+	draw_line(data, &data->player->pos_box, &end, 0xfffff0);
+	mlx_clear_window(data->window->mlx, data->window->init);
 	return (0);
 }
 

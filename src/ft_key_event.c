@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_event.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:57:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/02 18:33:22 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:40:47 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,44 +29,44 @@ int	key_event(int key, t_data *data)
 	t_player *player;
 
 	player = data->player;
-	if (key == KEY_W)
+	if (key == TOUCH_W)
 	{
 		printf("player move up\n");
 		player->pos_box.x += player->direction.x * 2;
 		player->pos_box.y += player->direction.y * 2;
 	}
-    else if (key == KEY_S)
+    else if (key == TOUCH_S)
 	{
 		printf("player move down\n");
 		player->pos_box.x -= player->direction.x * 2;
 		player->pos_box.y -= player->direction.y * 2;
 	}
-    else if (key == KEY_A)
+    else if (key == TOUCH_A)
 	{
 		printf("nono\n");
 	}
-    else if (key == KEY_D)
+    else if (key == TOUCH_D)
 	{
 		printf("nono\n");
 	}
-    else if (key == KEY_RIGHT)
+    else if (key == TOUCH_RIGHT)
     {
 		printf("player move left\n");
 		player->angle -= 5;
 		player->angle = fix_ang(player->angle);
-		player->direction.x = cos(degree_to_radian(player->angle)) * 5;
-		player->direction.y = -sin(degree_to_radian(player->angle)) * 5;
+		player->direction.x = cos(degree_to_radian(player->angle)) * 2;
+		player->direction.y = -sin(degree_to_radian(player->angle)) * 2;
     }
-	else if (key ==KEY_LEFT)
+	else if (key ==TOUCH_LEFT)
     {
 		printf("player move right\n");
 		player->angle += 5;
 		player->angle = fix_ang(player->angle);
-		player->direction.x = cos(degree_to_radian(player->angle)) * 5;
-		player->direction.y = -sin(degree_to_radian(player->angle)) * 5;
+		player->direction.x = cos(degree_to_radian(player->angle)) * 2;
+		player->direction.y = -sin(degree_to_radian(player->angle)) * 2;
 		
     }
-    mlx_clear_window(data->window->mlx, data->window->init);
+    // mlx_clear_window(data->window->mlx, data->window->init);
 	return (0);
 }
 
