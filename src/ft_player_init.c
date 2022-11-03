@@ -25,10 +25,12 @@ int	player_init(char **map, t_player *player)
 			if (map[pos.y][pos.x] == 'N')
 			{
 				player->angle = 90;
+				/* maybe MAP_WALL_SIZE ? */
 				player->pos_box.x = pos.x * WALL_SIZE + (WALL_SIZE / 2);
 				player->pos_box.y = pos.y * WALL_SIZE + (WALL_SIZE / 2);
 				player->pos_map.x = pos.x;
 				player->pos_map.y = pos.y;
+				/* /!\ direction already exists as a vector and already set */
 				player->direction.x = cos(player->angle) * 5;
 				player->direction.y = sin(player->angle) * 5;
 				return (0);

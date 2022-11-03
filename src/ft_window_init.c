@@ -101,56 +101,59 @@ void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)
 
 void	draw_mini_map(t_data *data)
 {
-	t_point	*pos;
+	t_point	pos;
 	int i;
 	int j;
 
 	j = 0;
 	i = 0;
-	pos = malloc(sizeof(t_point));
-	pos->x = 0;
-	pos->y = 0;
-	while (data->map[pos->y])
-	{
-		while (data->map[pos->y][pos->x])
+	pos.x = 0;
+	pos.y = 0;
+	while (data->map[pos.y])	{
+		while (data->map[pos.y][pos.x])
 		{
-			if (data->map[pos->y][pos->x] == '1')
-				draw_cube(data->window, WALL_SIZE, pos->y * WALL_SIZE + \
-					(WALL_SIZE / 2) + j, pos->x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xF00F0F);
+			if (data->map[pos.y][pos.x] == '1')
+				draw_cube(data->window, WALL_SIZE, pos.y * WALL_SIZE + \
+					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, rgb_conv(50, 100, 50));
 			else
-				draw_cube(data->window, WALL_SIZE, pos->y * WALL_SIZE + \
-					(WALL_SIZE / 2) + j, pos->x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xfFff00);
+				draw_cube(data->window, WALL_SIZE, pos.y * WALL_SIZE + \
+					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, rgb_conv(50, 10, 200));
 			i++;
-			pos->x++;
+			pos.x++;
 		}
 		j++;
 		i = 0;
 		// i = 0;
-		pos->x = 0;
-		pos->y++;
+		pos.x = 0;
+		pos.y++;
 	}
-	free(pos);
 }
 
 void	draw_player(t_data *data)
 {
+	/* player struct changed :
+		you can use absolute positions (in pizel or steps) if you merge
+		*/
 	t_player *player;
 
 	player = data->player;
-	draw_cube(data->window, 5, player->pos_box.y, player->pos_box.x, 0xF00F0F);
+	/* '5' is hard coded */
+	draw_cube(data->window, 5, player->pos_box.y, player->pos_box.x, rgb_conv(255, 155, 255));
 
 }
 
+/* draw_ray */
 int	ray_cast(t_data *data)
 {
 	t_point end;
 	
-	draw_cube(data->window, 1200,0, 0, 0xf0ff00);
-	end.x = data->player->pos_box.x + data->player->direction.x * 20;//dx
-	end.y = data->player->pos_box.y + data->player->direction.y * 20;// dy
+	/* maybe map_border ? */
+	draw_cube(data->window, 1200,0, 0, rgb_conv(250, 0, 0));
+	end.x = data->player->pos_box.x + data->player->direction.x * PLAYER_MAP_ARROW;//dx
+	end.y = data->player->pos_box.y + data->player->direction.y * PLAYER_MAP_ARROW;// dy
 	draw_mini_map(data);
 	draw_player(data);
-	draw_line(data, &data->player->pos_box, &end, 0xf0ff00);
+	draw_line(data, &data->player->pos_box, &end, rgb_conv(20, 0, 250));
 	return (0);
 }
 

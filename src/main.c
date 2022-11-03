@@ -124,10 +124,9 @@ int	main(int argc, char *argv[])
 	{
 		data = malloc_data();
 		parse_file(argv[1],  data);
-		log_file_stuff(data);
 		data->window = malloc(sizeof(t_window));
 		data->player = malloc(sizeof(t_player));
-		player_init(data->map, data->player);
+		//player_init(data->map, data->player);
 		window_init(data->window);
 		mlx_hook(data->window->init, 2, 1L << 0, &key_event, data);
 		mlx_loop_hook(data->window->mlx, render_map_2d, data);
