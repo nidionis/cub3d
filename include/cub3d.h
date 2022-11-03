@@ -77,6 +77,7 @@
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 1000
 # define STEPS_PER_BOX 8
+# define WALL_SIZE 100
 /* in radient 66 = 1.15*/
 # define CAM_ANGLE 1.15
 /* num of ray_parse for a pic */
@@ -117,6 +118,7 @@ typedef struct s_player
 	t_point		pos_map;
 	t_point		pos_box;
 	t_vector	direction;
+	int			angle;
 }	t_player;
 
 typedef struct s_image
@@ -157,6 +159,11 @@ typedef struct s_window
 	int		width;
 	int		height;
 }	t_window;
+
+// typedef struct s_raycasting
+// {
+
+// }	t_ray_casting;
 
 typedef struct s_data
 {
@@ -238,5 +245,9 @@ void	init_cam_vector(t_data *data);
 
 //duarte functions
 int	window_init(t_window *window);
-void	render_map_2d(t_data *data);
+int	render_map_2d(t_data *data);
+int	player_init(char **map, t_player *player);
+int	key_event(int key, t_data *data);
+int exit_game(t_data *data);
+void	draw_line(t_data *data, t_point	*start, t_point	*end, int color);
 #endif
