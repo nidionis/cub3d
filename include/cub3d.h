@@ -62,7 +62,9 @@
 //MACROS 
 # define WALL 49
 # define FLOOR 48
-# define EMPTY 32
+/* EMPTY must be ' ', for the function format_map lets call lane the '0' */
+# define LANE 32
+# define EMPTY ' '
 # define NORTH_CHAR 78
 # define SOUTH_CHAR 83
 # define WEST_CHAR 87
@@ -118,28 +120,26 @@ typedef struct s_player
 {
 	t_point		pos_map;
 	t_point		pos_box;
+	/* absolute positions */
+	t_point		pos_in_step;
+	t_point		pos_in_pix;
 	t_vector	direction;
 	int			angle;
 }	t_player;
 
 typedef struct s_image
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*img_ptr;
-	char			*addr;
-	int				bpp;
-	unsigned int	size[2];
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
 	char			*texture_path[NB_TEXTURES];
 	int				line_len;
-	int				endian;
-	//unsigned int	scale[2];
-	//t_point			center;
-	//t_point			win_center;
-	void			(*f)();
 }	t_image;
+
+typedef struct	s_ray
+{
+	double		len;
+	t_vector	hit_point;
+}	t_ray;
 
 /* note: origin plane is a POINT using t_vector structure*/
 typedef struct	s_cam
@@ -147,12 +147,12 @@ typedef struct	s_cam
 	t_vector	side_dist;
 	t_vector	delta_dist;
 	t_vector	origin_plane;
+	t_vector	ray_direction;
 	t_vector	plane_dir;
-	double		len;
+	t_ray		arRay[CAM_QUALITY];
 }	t_cam;
 
 //struct for window
-
 typedef struct s_window
 {
 	void	*mlx;
@@ -174,7 +174,7 @@ typedef struct s_data
 	char		*map_cases;
 	t_image		*image;
 	t_player	*player;
-	t_cam		cam;
+	t_cam		*cam;
 	t_window	*window;
 	char		**map;
 }	t_data;
@@ -243,6 +243,14 @@ int	is_block(t_data *data, char c);
 int	is_mapcase(t_data *data, char c);
 int	is_NSEW(char c);
 void	init_cam_vector(t_data *data);
+t_point	get_player_absolute_position(t_player *player);
+void	clean_useless_empty_splace(char	**map);
+void	rectangle_map(t_data *data, char **map);
+void	format_map(t_data *data);
+unsigned int	rgb_conv(int R, int G, int B);
+void	translate_vector_as_pt(t_vector vector, t_vector *pt);
+t_point	update_pos_in_pix(t_player *player);
+t_point	update_pos_in_step(t_player *player);
 
 //duarte functions
 int	window_init(t_window *window);

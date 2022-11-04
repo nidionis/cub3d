@@ -24,11 +24,13 @@ int fix_ang(int a)
 	return a;
 }
 
+/* player_struct modified */
 int	key_event(int key, t_data *data)
 {
 	t_player *player;
 
 	player = data->player;
+	(void)player;
 	if (key == KEY_W)
 	{
 		printf("player move up\n");
@@ -68,5 +70,6 @@ int exit_game(t_data *data)
     //free
     (void)data;
     clean_exit(data, 0);
+	return (0);
 }
 

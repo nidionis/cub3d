@@ -19,11 +19,9 @@ int	north_crossing(t_data *data)
 {
 	char	**map;
 	t_point	pos_map;
-	t_point	pos_box;
 
 	map = data->map;
 	pos_map = data->player->pos_map;
-	pos_box = data->player->pos_box;
 	if (is_block(data, map[pos_map.y - 1][pos_map.x]) != -1)
 	{
 		data->player->pos_box.y = 0;
@@ -41,11 +39,9 @@ int	south_crossing(t_data *data)
 {
 	char	**map;
 	t_point	pos_map;
-	t_point	pos_box;
 
 	map = data->map;
 	pos_map = data->player->pos_map;
-	pos_box = data->player->pos_box;
 	if (is_block(data, map[pos_map.y + 1][pos_map.x]) != -1)
 	{
 		data->player->pos_box.y = (int)UNITS_PER_BOX - 1;
@@ -63,11 +59,9 @@ int	east_crossing(t_data *data)
 {
 	char	**map;
 	t_point	pos_map;
-	t_point	pos_box;
 
 	map = data->map;
 	pos_map = data->player->pos_map;
-	pos_box = data->player->pos_box;
 	if (is_block(data, map[pos_map.y][pos_map.x - 1]) != -1)
 	{
 		data->player->pos_box.x = 0;
@@ -85,11 +79,9 @@ int	west_crossing(t_data *data)
 {
 	char	**map;
 	t_point	pos_map;
-	t_point	pos_box;
 
 	map = data->map;
-	data->player->pos_map;
-	data->player->pos_box;
+	pos_map = data->player->pos_map;
 	if (is_block(data, map[pos_map.y][pos_map.x + 1]) != -1)
 	{
 		data->player->pos_box.x = (int)UNITS_PER_BOX - 1;

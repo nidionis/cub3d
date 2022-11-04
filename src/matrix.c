@@ -20,7 +20,7 @@ char	**ft_append_tab(char **matrix, char *str)
 	if (!str)
 		return (matrix);
 	tab_len = 0;
-	if (matrix)
+	if (matrix && *matrix)
 	{
 		while (matrix[tab_len])
 			tab_len++;

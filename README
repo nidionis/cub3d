@@ -1,0 +1,15 @@
+data must contains all malloced pointers, and clean_exit must free all of them
+
+Parsing:
+	- parse_file inits params
+	- loop with get_next_line
+	- imports/set paarams if line not empty
+	- append to data->map when it it meet the first map_linecheck (when map_parse = 1)
+	- che
+	- check if map is availaible :
+		(if is_border, must be a WALL)
+		contains char in MAPCASE and N, S, E, W
+
+
+	
+

@@ -44,6 +44,7 @@ unsigned int	init_f_c_color(t_data *data, char *line)
 	}
 	return (rgb_conv(colors[0], colors[1], colors[2]));
 }
+
 void	wrong_color(t_data *data, char *color_strimed)
 {
 	free(color_strimed);

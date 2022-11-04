@@ -19,14 +19,16 @@ void	print_player(t_data *data, int fd)
 	dprintf(fd, "[Pers]	pos_map: 	[%5d,%5d]\n", data->player->pos_map.x, data->player->pos_map.y);
 	dprintf(fd, "[Pers]	pos_box: 	[%5d,%5d]\n", data->player->pos_box.x, data->player->pos_box.y);
 	dprintf(fd, "[Pers]	direction:	[%5f,%5f]\n", data->player->direction.x, data->player->direction.y);
+	dprintf(fd, "[Pers]	pos_in_pix:	[%5d,%5d]\n", data->player->pos_in_pix.x, data->player->pos_in_pix.y);
+	dprintf(fd, "[Pers]	pos_in_step:	[%5d,%5d]\n", data->player->pos_in_step.x, data->player->pos_in_step.y);
 }
 
 void	print_cam(t_data *data, int fd)
 {
 	if (fd < 0)
 		error_msg("[print_params] warning: wrong fd]");
-	dprintf(fd, "[cam]	origin_plane:	[%lf, %lf]\n", data->cam.origin_plane.x, data->cam.origin_plane.y);
-	dprintf(fd, "[cam]	plane_dir:[%lf, %lf]\n", data->cam.plane_dir.x, data->cam.plane_dir.y);
+	dprintf(fd, "[cam]	origin_plane:	[%lf, %lf]\n", data->cam->origin_plane.x, data->cam->origin_plane.y);
+	dprintf(fd, "[cam]	plane_dir:[%lf, %lf]\n", data->cam->plane_dir.x, data->cam->plane_dir.y);
 }
 
 void	print_params(t_data *data, int fd)

@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
+/*   Updated: 2022/10/26 17:33:57 by suplayerko         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3d.h"
+
+t_point	pix_pos_to_map_pos(t_point absolute_pos)
+{
+	t_point	map_pos;
+
+	map_pos.x = absolute_pos.x / (int)UNITS_PER_BOX;
+	map_pos.y = absolute_pos.y / (int)UNITS_PER_BOX;
+	return (map_pos);
+}
+
+char	pix_pos_to_map_case(t_point absolute_pos, char **map)
+{
+	t_point	map_pos;
+
+	map_pos = pix_pos_to_map_pos(absolute_pos);
+	return (map[map_pos.x][map_pos.y]);
+}

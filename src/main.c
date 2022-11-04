@@ -12,100 +12,36 @@
 
 #include "cub3d.h"
 
-/*
-DDA algo
-si |x2-x1| >= |y2-y1| alors
-  longueur := |x2-x1|
-sinon
-  longueur := |y2-y1|
-fin si
-dx := (x2-x1) / longueur
-dy := (y2-y1) / longueur
-x := x1 + 0.5
-y := y1 + 0.5
-i := 1
-tant que i ≤ longueur faire
-  setPixel (E (x), E (y))
-  x := x + dx
-  y := y + dy
-  i := i + 1
-fin tant que
-
-*/
-//
-//void	ray_parse(t_data *data)
-//{
-//	int			i;
-//	int			x_cam;
-//	t_player	*player;
-//	t_vector		vdirection
-//
-//	(void)vdirection
-////cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1
-//	player = data->player;
-//	i = 0;
-//	while (i < RAYCAST_QUALITY)
-//	{
-//		//calculate ray position and direction
-//		x_cam = 2 * i / RAYCAST_QUALITY - 1; //x-coordinate in camera space
-//		vdirectionx = player-directionx + player->plane.x * x_cam;
-//		vdirectiony = player-directiony + player->plane.y * x_cam;
-//		i++;
-//	/*
-//	 deltaDistX = abs(1 / rayDirX)
-//	deltaDistY = abs(1 / rayDirY)
-//	*/
-//	}
-//}
-
  t_data	*malloc_data(void)
 {
 	t_data	*data;
 
 	data = malloc(sizeof(t_data));
 	if (!data)
-		clean_exit(data, -4);
+		clean_exit(data, -1);
 	data->image = malloc(sizeof(t_image));
 	if (!data->image)
-		clean_exit(data, -6);
+		clean_exit(data, -1);
 	data->player = malloc(sizeof(t_player));
 	if (!data->player)
-		clean_exit(data, -7);
+		clean_exit(data, -1);
 	data->blocks = ft_strdup(IS_BLOCK);
 	if (!data->blocks)
-		clean_exit(data, -8);
+		clean_exit(data, -1);
 	data->map_cases = ft_strdup(MAPCASES);
-	fprintf(stderr, "%s\n", data->map_cases);
 	if (!data->map_cases)
-		clean_exit(data, -9);
+		clean_exit(data, -1);
+	data->cam = malloc(sizeof(t_cam));
+	if (!data->cam)
+		clean_exit(data, -1);
 	return (data);
 }
 
-void	log_file_stuff(t_data *data)
+void	test_function(t_data *data)
 {
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, CAM);
-	init_cam_vector(data);
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, CAM);
 	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-	rotate_player(data->player, LEFT);
+	move_player(data, LEFT);
 	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-	rotate_player(data->player, LEFT);
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-	rotate_player(data->player, LEFT);
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-	rotate_player(data->player, LEFT);
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-	if (move_player(data, LEFT))
-		redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-	if (move_player(data, LEFT))
-		redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-	if (move_player(data, LEFT))
-		redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-	if (move_player(data, LEFT))
-		redir_debug_file_msg(DEBUG_LOG_FILENAME, "\tWALLX");
 }
 
 int	main(int argc, char *argv[])
@@ -125,12 +61,14 @@ int	main(int argc, char *argv[])
 		data = malloc_data();
 		parse_file(argv[1],  data);
 		data->window = malloc(sizeof(t_window));
-		data->player = malloc(sizeof(t_player));
-		//player_init(data->map, data->player);
+		//data->player = malloc(sizeof(t_player));
+		////player_init(data->map, data->player);
 		window_init(data->window);
+		/* I dont understand 2, 1L << 0, */
 		mlx_hook(data->window->init, 2, 1L << 0, &key_event, data);
 		mlx_loop_hook(data->window->mlx, render_map_2d, data);
 		mlx_hook(data->window->init, 17, 1L << 17, &exit_game, data);
 		mlx_loop(data->window->mlx);
 	}
+	clean_exit(data, 0);
 }
