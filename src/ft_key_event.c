@@ -29,27 +29,27 @@ int	key_event(int key, t_data *data)
 	t_player *player;
 
 	player = data->player;
-	if (key == TOUCH_W)
+	if (key == KEY_W)
 	{
 		printf("player move up\n");
 		player->pos_box.x += player->direction.x * 2;
 		player->pos_box.y += player->direction.y * 2;
 	}
-    else if (key == TOUCH_S)
+    else if (key == KEY_S)
 	{
 		printf("player move down\n");
 		player->pos_box.x -= player->direction.x * 2;
 		player->pos_box.y -= player->direction.y * 2;
 	}
-    else if (key == TOUCH_A)
+    else if (key == KEY_A)
 	{
 		printf("nono\n");
 	}
-    else if (key == TOUCH_D)
+    else if (key == KEY_D)
 	{
 		printf("nono\n");
 	}
-    else if (key == TOUCH_RIGHT)
+    else if (key == KEY_RIGHT)
     {
 		printf("player move left\n");
 		player->angle -= 5;
@@ -57,7 +57,7 @@ int	key_event(int key, t_data *data)
 		player->direction.x = cos(degree_to_radian(player->angle)) * 2;
 		player->direction.y = -sin(degree_to_radian(player->angle)) * 2;
     }
-	else if (key ==TOUCH_LEFT)
+	else if (key ==KEY_LEFT)
     {
 		printf("player move right\n");
 		player->angle += 5;
@@ -66,7 +66,7 @@ int	key_event(int key, t_data *data)
 		player->direction.y = -sin(degree_to_radian(player->angle)) * 2;
 		
     }
-    // mlx_clear_window(data->window->mlx, data->window->init);
+    mlx_clear_window(data->window->mlx, data->window->init);
 	return (0);
 }
 
