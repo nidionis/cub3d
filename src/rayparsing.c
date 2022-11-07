@@ -1,87 +1,91 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug_ft.c                                         :+:      :+:    :+:   */
+/*   rayparsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/10/26 17:47:02 by suplayerko         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:47:31 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/*
-initialise le plan de la camera tel que:
-	- perpendiculaire a la direction
-	- le triangle dorme avec le personnage fasse 66 degres
-	- le vecteur direction coupe ce pla en sa moitie
-
-	Le plan est defini par:
-		- L'origine du plan camera
-		- le vecteur a appliquer pour avoir le point suivant
-
-	pi / 2 = 1,570796327;
-*/
-
-void	set_plane_dir(t_data *data, double plan_size)
-{
-	t_vector	plane_dir_unit;
-
-	plane_dir_unit = data->player->direction;
-	rotate_vector(&plane_dir_unit, (double)PI / 2.0);
-	plane_dir_unit = vec_scale(plane_dir_unit, plan_size / (double)CAM_QUALITY);
-	data->cam->plane_dir = plane_dir_unit;
-}
-
-void	set_plane_origin(t_data *data)
-{
-	t_vector	origin_plane;
-
-	origin_plane = data->player->direction;
-	rotate_vector(&origin_plane, (double)CAM_ANGLE / -2.0);
-	origin_plane = vec_scale(origin_plane, 0.5);
-	data->cam->origin_plane = origin_plane;
-}
-
 void	set_delta_distance(t_data *data)
 {
-	t_cam *cam;
+	t_cam 	*ray;
+	double	direction_len;
 	
-	cam = data->cam;
-	cam->delta_dist.x = 1.0 / cam->ray_direction.x;
-	cam->delta_dist.y = 1.0 / cam->ray_direction.y;
+	ray = data->cam->beam;
+	direction_len = vec_len(ray->direction);
+	ray->len = direction_len;
+	ray->delta_dist.x = direction_len / ray->direction.x;
+	ray->delta_dist.y = direction_len / ray->direction.y;
+	ray->vector_deltaX = vec_scale(ray->direction, ray->delta_dist.x / direction_len);
+	ray->vector_deltaY = vec_scale(ray->direction, ray->delta_dist.y / direction_len);
 }
 
-/* not sure of the calcul, but set the distance to the next_case */
+/*
+  not sure of the calcul, but set the distance to the next_case 
+ 	delta_dist MUST BE UPDATED
+	*/
 void	set_side_distance(t_data *data)
 {
-	t_cam *cam;
-	t_player *player;
+	t_cam		*ray;
+	t_player	*player;
 	
-	cam = data->cam;
+	ray = data->cam;
 	player = data->player;
-	cam->side_dist.x = cam->delta_dist.x * (UNITS_PER_BOX - player->pos_box.x) / (double)UNITS_PER_BOX;
-	cam->side_dist.y = cam->delta_dist.y * (UNITS_PER_BOX - player->pos_box.y) / (double)UNITS_PER_BOX;
+	ray->side_dist.x = ray->delta_dist.x * (UNITS_PER_BOX - player->pos_box.x) / (double)UNITS_PER_BOX;
+	ray->side_dist.y = ray->delta_dist.y * (UNITS_PER_BOX - player->pos_box.y) / (double)UNITS_PER_BOX;
+	ray->vector_sideX = vec_scale(ray->direction, ray->side_dist.x / direction_len);
+	ray->vector_sideY = vec_scale(ray->direction, ray->side_dist.y / direction_len);
 }
 
-void	init_cam_vector(t_data *data)
+/*
+	return absulute point (in UNIT_PER_BOX) hitting the wall
+	delta_distance must be set before side distance
+*/
+t_ray	beam(t_data *data)
 {
-	double		plan_size;
+	t_vector	ray_position[2]; // x and y
+	double		len[2];
+	t_ray		ray;
+	int			wall_hit;
 
-	plan_size = tan((double)CAM_ANGLE / 2.0);
-	set_plane_dir(data, plan_size);
-	set_plane_origin(data);
-	data->cam->ray_direction = data->cam->origin_plane;
-}
-
-/* return absulute point (in UNIT_PER_BOX) hitting the wall
-t_vector	beam(t_data *data)
-{
+	wall_hit = 0;
+	ray = data->cam->beam;
+	ray_position[_x] = data->player->pos_in_pix;
+	ray_position[_y] = data->player->pos_in_pix;
+	set_delta_distance(data);
+	set_side_distance(data);
+	translate_vector_as_pt(ray->vector_sideX, &ray_position[_x]);
+	len[_x] = ray->side_distances.x;
+	if (pix_pos_to_map_case(ray_position[_x]) == WALL);
+	{
+		ray->len = len[_x];
+		if (ray->direction.y > 0)
+			ray->side = NORTH;
+		else
+			ray->side = SOUTH;
+		wall_hit = 1;
+	}
+	translate_vector_as_pt(ray->vector_sideY, &ray_position[_y]);
+	len[_y] = ray->side_distances.y;
+	if (!wall_hit && pix_pos_to_map_case(ray_position[_y]) == WALL);
+	{
+		ray->len = len[_y];
+		if (ray->direction.x < 0)
+			ray->side = EAST;
+		else
+			ray->side = WEST;
+		wall_hit = 1;
+	}
+	while (!wall_hit)
+		wall_hit = beam_steps;
 	return (0);
 }
-*/
 
 void	set_arRay(t_data *data)
 {
@@ -89,13 +93,12 @@ void	set_arRay(t_data *data)
 	int		i_ray;
 
 	init_cam_vector(data);
-	cam = data->cam;
+	cam = data->cam->beam;
 	i_ray = 0;
 	while (i_ray < CAM_QUALITY)
 	{
 		//cam->arRay[i_ray] = beam(data);
-		translate_vector_as_pt(cam->plane_dir, &cam->ray_direction);
-
+		translate_vector_as_pt(cam->plane_dir, &cam->beam->direction);
 		i_ray++;
 	}
 }

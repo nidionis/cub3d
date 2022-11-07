@@ -1,4 +1,5 @@
 Mmain	src/main.c	/^int	main(int argc, char *argv[])$/
+beam	src/rayparsing.c	/^t_ray	beam(t_data *data)$/
 check_closest_box	src/move_to_corner.c	/^int	check_closest_box(t_player *player)$/
 check_map	src/parse_check_map.c	/^int	check_map(t_data *data)$/
 check_map_line	src/parse_check_map.c	/^void	check_map_line(t_data *data, int y, int *nb_p/
@@ -16,10 +17,6 @@ draw_cube	src/ft_window_init.c	/^void	draw_cube(t_window *window, int size, int 
 draw_line	src/ft_window_init.c	/^void	draw_line(t_data *data, t_point	*start, t_poi/
 draw_mini_map	src/ft_window_init.c	/^void	draw_mini_map(t_data *data)$/
 draw_player	src/ft_window_init.c	/^void	draw_player(t_data *data)$/
-e_cardinal	include/cub3d.h	/^enum e_cardinal { NORTH, SOUTH, EAST, WEST };$/
-e_direction	include/cub3d.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW/
-e_identifiers	include/cub3d.h	/^enum e_identifiers { NO, SO, WE, EA, F, C };$/
-e_player_directio	include/cub3d.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT,/
 east_crossing	src/move_crossing_box.c	/^int	east_crossing(t_data *data)$/
 exit_game	src/ft_key_event.c	/^int exit_game(t_data *data)$/
 exit_msg	src/exit_ft.c	/^void	exit_msg(t_data *data, char *msg, int ret_exi/
@@ -39,7 +36,7 @@ get_smallest_index	src/move_to_corner.c	/^int	get_smallest_index(double wall_dis
 import_param	src/parse_import.c	/^void	import_param(t_data *data, int identifier, ch/
 import_params	src/parse_import.c	/^int	import_params(t_data *data)$/
 import_texture_path	src/parse_import.c	/^void	import_texture_path(t_data *data, int identif/
-init_cam_vector	src/rayparsing.c	/^void	init_cam_vector(t_data *data)$/
+init_cam_vector	src/camera.c	/^void	init_cam_vector(t_data *data)$/
 init_f_c_color	src/parse_file_colors.c	/^unsigned int	init_f_c_color(t_data *data, char *li/
 init_fd	src/parse_init.c	/^void	init_fd(t_data *data, int *fd, char *fname)$/
 init_null	src/parse_init.c	/^void	init_null(t_data *data, int *map_parse)$/
@@ -53,7 +50,6 @@ is_first_column_empty	src/parse_format_map.c	/^int	is_first_column_empty(char **
 is_map_line	src/str_ft.c	/^int	is_map_line(t_data *data, char *str)$/
 is_mapcase	src/parse_check_map.c	/^int	is_mapcase(t_data *data, char c)$/
 key_event	src/ft_key_event.c	/^int	key_event(int key, t_data *data)$/
-log_type	include/cub3d.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/
 make_point	src/vector_ft.c	/^t_point	make_point(int x, int y)$/
 malloc_data	src/main.c	/^ t_data	*malloc_data(void)$/
 move_player	src/move_player.c	/^int	move_player(t_data *data, int move)$/
@@ -76,30 +72,23 @@ redir_debug_file_msg	src/debug_ft.c	/^void	redir_debug_file_msg(char *fname, cha
 refresh_ret_if_is_param	src/parse_params.c	/^static int	refresh_ret_if_is_param(char **identifi/
 render_map_2d	src/ft_window_init.c	/^int	render_map_2d(t_data *data)$/
 rgb_conv	src/parse_file_colors.c	/^unsigned int	rgb_conv(int R, int G, int B)$/
+rotate_player	src/rotate_player.c	/^void   rotate_player(t_player *player, int move)$/
 rotate_vector	src/vector_ft.c	/^void	rotate_vector(t_vector *vector, double radian/
 set_arRay	src/rayparsing.c	/^void	set_arRay(t_data *data)$/
 set_delta_distance	src/rayparsing.c	/^void	set_delta_distance(t_data *data)$/
-set_plane_dir	src/rayparsing.c	/^void	set_plane_dir(t_data *data, double plan_size)/
-set_plane_origin	src/rayparsing.c	/^void	set_plane_origin(t_data *data)$/
+set_plane_dir	src/camera.c	/^void	set_plane_dir(t_data *data, double plan_size)/
+set_plane_origin	src/camera.c	/^void	set_plane_origin(t_data *data)$/
 set_side_distance	src/rayparsing.c	/^void	set_side_distance(t_data *data)$/
 shift_line_left	src/parse_format_map.c	/^void	shift_line_left(char *line)$/
 slide_closest_box	src/move_to_corner.c	/^void	slide_closest_box(t_player *p, int closest_bo/
 south_crossing	src/move_crossing_box.c	/^int	south_crossing(t_data *data)$/
-t_cam	include/cub3d.h	/^}	t_cam;$/
-t_data	include/cub3d.h	/^}	t_data;$/
-t_image	include/cub3d.h	/^}	t_image;$/
-t_player	include/cub3d.h	/^}	t_player;$/
-t_point	include/cub3d.h	/^}	t_point;$/
-t_ray	include/cub3d.h	/^}	t_ray;$/
-t_ray_casting	include/cub3d.h	/^\/\/ }	t_ray_casting;$/
-t_vector	include/cub3d.h	/^}	t_vector;$/
-t_window	include/cub3d.h	/^}	t_window;$/
 test_function	src/main.c	/^void	test_function(t_data *data)$/
 translate_pt	src/vector_ft.c	/^void	translate_pt(t_vector vector, t_point *pt)$/
 translate_vector_as_pt	src/vector_ft.c	/^void	translate_vector_as_pt(t_vector vector, t_vec/
 update_pos_if_wall	src/move_player.c	/^int	update_pos_if_wall(t_data *data, int crossover/
 update_pos_in_pix	src/pos_update.c	/^t_point	update_pos_in_pix(t_player *player)$/
 update_pos_in_step	src/pos_update.c	/^t_point	update_pos_in_step(t_player *player)$/
+vec_len	src/vector_ft.c	/^double	vec_len(t_vector vector)$/
 vec_scale	src/vector_ft.c	/^t_vector	vec_scale(t_vector vector, double scale)$/
 west_crossing	src/move_crossing_box.c	/^int	west_crossing(t_data *data)$/
 window_init	src/ft_window_init.c	/^int	window_init(t_window *window)$/

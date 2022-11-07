@@ -6,12 +6,19 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 19:35:53 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:31:07 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+double	vec_len(t_vector vector)
+{
+	double	len;
+
+	len = sqrt(vector.x * vector.x + vector.y * vector.y);
+	return (len);
+}
 t_point	make_point(int x, int y)
 {
 	t_point	p;

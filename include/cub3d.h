@@ -6,7 +6,7 @@
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/07 15:21:30 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:18:21 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@
 # define PI 3.141592654
 # define DEFAULT_ROTATION_ANGLE (3.141592654 / 12.000)
 # define PLAYER_MAP_ARROW 20
+# define ORIGIN_PLANE_SCALE 1.0
 
 //COLORS 
 # define RED "\033[1;31m"
@@ -147,17 +148,24 @@ typedef struct s_image
 typedef struct	s_ray
 {
 	double		len;
+	int			side;
+	t_vector	direction;
+	t_vector	side_distances;
+	t_vector	delta_distances;
+	t_vector	vector_sideX;
+	t_vector	vector_sideY;
+	t_vector	vector_deltaX;
+	t_vector	vector_deltaY;
 	t_vector	hit_point;
 }	t_ray;
 
 /* note: origin plane is a POINT using t_vector structure*/
 typedef struct	s_cam
 {
-	t_vector	side_dist;
-	t_vector	delta_dist;
 	t_vector	origin_plane;
-	t_vector	ray_direction;
 	t_vector	plane_dir;
+	t_vector	plane_size;
+	t_ray		beam;
 	t_ray		arRay[CAM_QUALITY];
 }	t_cam;
 
@@ -188,6 +196,7 @@ typedef struct s_data
 	char		**map;
 }	t_data;
 
+enum x_or_y { _x, _y };
 enum log_type { DATA, PARAM, CAM, PLAYER, MAP };
 enum e_identifiers { NO, SO, WE, EA, F, C };
 enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
@@ -260,6 +269,8 @@ unsigned int	rgb_conv(int R, int G, int B);
 void	translate_vector_as_pt(t_vector vector, t_vector *pt);
 t_point	update_pos_in_pix(t_player *player);
 t_point	update_pos_in_step(t_player *player);
+void	init_cam_vector(t_data *data);
+double	vec_len(t_vector vector);
 
 //duarte functions
 int	window_init(t_window *window);
