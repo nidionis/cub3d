@@ -6,7 +6,7 @@
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/10/26 16:24:06by suplayerko         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:21:30 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,24 @@
 # define CUB3D_H
 
 # ifdef __APPLE__
-#  define TOUCH_A 0
-#  define TOUCH_W 13
-#  define TOUCH_S 1
-#  define TOUCH_D 2
-#  define TOUCH_RIGHT 124
-#  define TOUCH_LEFT 123
-#  define TOUCH_UP 126
-#  define TOUCH_DOWN 125
-#  define TOUCH_ESC 53
+#  define KEY_Q 12
+#  define KEY_A 0
+#  define KEY_Z 6
+#  define KEY_W 13
+#  define KEY_S 1
+#  define KEY_X 7
+#  define KEY_E 14
+#  define KEY_D 2
+#  define KEY_C 8
+#  define KEY_R 15
+#  define KEY_F 3
+#  define KEY_RIGHT 124 
+#  define KEY_LEFT 123 
+#  define KEY_UP 126
+#  define KEY_DOWN 125
+#  define KEY_ESC 53
+#  define KEY_IN 69
+#  define KEY_OUT 78
 #  include "../minilibx_mac/mlx.h"
 
 # else   // LINUX
