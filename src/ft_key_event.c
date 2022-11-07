@@ -6,22 +6,23 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:57:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/02 18:33:22 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:17:30 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 int fix_ang(int a)
-{ if(a>359)
+{
+	if(a > 359)
 	{
-		a-=360;
+		a -= 360;
 	}
-	if(a<0)
+	if(a < 0)
 	{
-		a+=360;
+		a += 360;
 	}
-	return a;
+	return (a);
 }
 
 /* player_struct modified */
@@ -29,6 +30,7 @@ int	key_event(int key, t_data *data)
 {
 	t_player *player;
 
+	fprintf(stderr, "[key_event] %d pressed\n", key);
 	player = data->player;
 	(void)player;
 	if (key == KEY_W)
