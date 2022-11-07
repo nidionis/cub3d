@@ -139,6 +139,10 @@ typedef struct	s_ray
 {
 	double		len;
 	t_vector	hit_point;
+	t_vector	vect_to_sideX;
+	t_vector	vect_to_sideY;
+	t_vector	vect_to_distance_X;
+	t_vector	vect_to_distance_Y;
 }	t_ray;
 
 /* note: origin plane is a POINT using t_vector structure*/
@@ -251,6 +255,8 @@ unsigned int	rgb_conv(int R, int G, int B);
 void	translate_vector_as_pt(t_vector vector, t_vector *pt);
 t_point	update_pos_in_pix(t_player *player);
 t_point	update_pos_in_step(t_player *player);
+void	init_cam_vector(t_data *data);
+void	set_camera(data);
 
 //duarte functions
 int	window_init(t_window *window);
