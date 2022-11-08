@@ -6,32 +6,19 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 19:35:53 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:31:07 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-// C++ program to find modulo of floating
-// point numbers.
-
-double float_modulo(double a, double b)
+double	vec_len(t_vector vector)
 {
-	double mod;
+	double	len;
 
-	if (a < 0)
-		mod = -a;
-	else
-		mod = a;
-	if (b < 0)
-		b = -b;
-	while (mod >= b)
-		mod = mod - b;
-	if (a < 0)
-		return -mod;
-	return mod;
+	len = sqrt(vector.x * vector.x + vector.y * vector.y);
+	return (len);
 }
-
 t_point	make_point(int x, int y)
 {
 	t_point	p;
@@ -41,15 +28,6 @@ t_point	make_point(int x, int y)
 	return (p);
 }
 
-t_point	get_vector(t_point *from, t_point *to)
-{
-	t_point	vector;
-
-	vector.x = to->x - from->x;
-	vector.y = -1 * (to->y - from->y);
-	return (vector);
-}
-
 t_vector	vec_scale(t_vector vector, double scale)
 {
 	vector.x = (scale * vector.x);
@@ -57,16 +35,16 @@ t_vector	vec_scale(t_vector vector, double scale)
 	return (vector);
 }
 
-void	add_vec(t_point	*pt, t_point vector)
-{
-	pt->x += vector.x;
-	pt->y += vector.y;
-}
-
 void	translate_pt(t_vector vector, t_point *pt)
 {
 	pt->x += (int)vector.x;
 	pt->y += (int)vector.y;
+}
+
+void	translate_vector_as_pt(t_vector vector, t_vector *pt)
+{
+	pt->x += vector.x;
+	pt->y += vector.y;
 }
 
 double	degree_to_radian(double degree_angle)
@@ -111,4 +89,33 @@ double	distance_point_to_vector(t_point point, t_point v_p1, t_point v_p2)
 	calc2 = sqrt(pow(v_p2.x - v_p1.x, 2) + pow(v_p2.y - v_p1.y, 2));
 	distance = calc1 / calc2;
 	return (distance);
+}
+
+t_vector	convert_pt_to_vec(t_point p)
+{
+	t_vector	v;
+
+	v.x = (double)p.x;
+	v.y = (double)p.y;
+	return (v);
+}
+
+double	vector_dot_product(t_vector v1, t_vector v2)
+{
+	double	dot_product;
+
+	dot_product = v1.x * v2.x + v1.y + v2.y;
+	return (dot_product);
+}
+
+/* https://www.cuemath.com/geometry/angle-between-vectors/ */
+/* sin(a) = |v1 * v2| / (|v1| * |v2|)
+				|->cross product
+*/
+double	vectors_angle_cos(t_vector v1, t_vector v2)
+{
+	double	angle;
+
+	angle = fabs(vector_dot_product(v1, v2)) / (vec_len(v1) * vec_len(v2));
+	return (angle);
 }

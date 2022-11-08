@@ -17,11 +17,15 @@ void	init_null(t_data *data, int *map_parse)
 	int	i;
 
 	*map_parse = 0;
-	if (data)
-		data->map = NULL;
+	data->map = NULL;
 	i = 0;
-	while (i < NB_TEXTURES)
-		data->image->texture_path[i++] = NULL;
+	while (i < (int)NB_TEXTURES)
+	{
+		data->image->texture_path[i] = NULL;
+		fprintf(stderr, "i:%d, %s\n", i, data->image->texture_path[i]);
+		i++;
+
+	}
 	data->image->floor_color = -1;
 	data->image->ceiling_color = -1;
 }
@@ -76,6 +80,8 @@ void	init_player(t_data *data, int x, int y, int *is_player)
 	data->player->pos_map.y = y;
 	data->player->pos_box.x = UNITS_PER_BOX / 2;
 	data->player->pos_box.y = UNITS_PER_BOX / 2;
+	update_pos_in_step(data->player);
+	update_pos_in_pix(data->player);
 	//devine plnan
 	(*is_player)++;
 }

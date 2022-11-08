@@ -121,5 +121,6 @@ int	check_map(t_data *data)
 	if (nb_player != 1)
 		exit_msg(data, "[check_map] \
 				Map does not contains one hero only", -12);
+	format_map(data);
 	return (1);
 }

@@ -49,7 +49,6 @@ int	import_params(t_data *data)
 	while (is_blank_char(*line))
 		line++;
 	identifier = get_identifier(data, line);
-	//printf("[import], data->line: %s => id: %d\n", data->line, identifier);
 	if (identifier == 11) // copying map matrix
 		return (1);
 	else
@@ -64,11 +63,11 @@ int	parsing_loop(t_data *data, int *map_parse)
 	{
 		if (!*map_parse)
 			*map_parse = import_params(data);
-		//fprintf(stderr, "[parsing_loop] import_param returned %d]n", *map_parse);
 	}
 	if (*map_parse == 1)
 		data->map = ft_append_tab(data->map, ft_strtrim(data->line, "\n"));
 	free(data->line);
+	data->line = NULL;
 	return (1);
 }
 
@@ -86,16 +85,18 @@ void	check_param_not_missing(t_data *data)
 		exit_msg(data, "[check_param_not_missing] floor_color missing", -1);
 	if (data->image->ceiling_color == (unsigned int)-1)
 		exit_msg(data, "[check_param_not_missing] ceiling_color missing", -1);
+	if (data->map == NULL)
+		exit_msg(data, "[check_param_not_missing] map is missing", -1);
 }
 
-
-void	parse_file(char *fname, t_data	*data)
+void	parse_file(char *fname, t_data *data)
 {
 	int		fd;
 	int		map_parse;
 
 	init_null(data, &map_parse);
 	init_fd(data, &fd, fname);
+	fprintf(stderr, "%s\n", data->image->texture_path[0]);
 	data->line = get_next_line(fd);
 	if (data->line)
 	{
@@ -103,6 +104,7 @@ void	parse_file(char *fname, t_data	*data)
 		{
 			parsing_loop(data, &map_parse);
 			if (map_parse == -1)
+
 				break ;
 			data->line = get_next_line(fd);
 		}
@@ -111,5 +113,6 @@ void	parse_file(char *fname, t_data	*data)
 	check_param_not_missing(data);
 	if (map_parse == -1)
 		exit_msg(data, "[parse_file] pb loading map", -1);
+	format_map(data);
 	map_parse = check_map(data);
 }

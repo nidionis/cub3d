@@ -12,6 +12,34 @@
 
 #include "../include/cub3d.h"
 
+/*
+Algo :
+	scale wall to map size (and keep walls as square)
+	whe should use "pos_in_step (or pos_in_pix) to get the absolute value of the player
+	[if I didn't mess my functions] the side len of a wall considering pos_in_step is equal to STEP_PER_BOX
+	example:
+	STEP_PER_BOX = 3,
+	player.pos_in_step.x = 4
+	player.pos_in_step.y = 3
+	 ___ ___
+	|   |   |
+	|   |   |
+	|___|___|
+	|   | p |
+	|   |   |
+	|___|___|
+We could use UNIT_PER_BOX scale too
+(I reckon UNIT_PER_BOX for pix points)
+if UNITS_PER_BOX = 1000,
+	player.pos_in_pix.x = 1000 + 1000 / 3 = 1333
+	player.pos_in_pix.y = 1000 + 0 / 3    = 1000
+
+	general rule:
+	pos_box_in_pix = (pos_box / STEP_PER_BOX) * UNIT_PER_BOX
+	pos_in_pix = (pos_map * UNITS_PER_BOX) + pos_box_in_pix
+
+functions are in pos_update.c
+*/
 void	draw_cube(t_window *window, int size, int pos_y, int pos_x, int color)
 {
 	int	y;
@@ -110,39 +138,37 @@ void	draw_player(t_data *data)
 
 void	draw_mini_map(t_data *data)
 {
-	t_point	*pos;
+	t_point	pos;
 	int i;
 	int j;
 
 	j = 0;
 	i = 0;
-	pos = malloc(sizeof(t_point));
-	pos->x = 0;
-	pos->y = 0;
-	while (data->map[pos->y])
-	{
-		while (data->map[pos->y][pos->x])
+	pos.x = 0;
+	pos.y = 0;
+	while (data->map[pos.y])	{
+		while (data->map[pos.y][pos.x])
 		{
-			if (data->map[pos->y][pos->x] == '1')
-				draw_cube(data->window, WALL_SIZE, pos->y * WALL_SIZE + \
-					(WALL_SIZE / 2) + j, pos->x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xF00F0F);
-			// else
-			// 	draw_cube(data->window, WALL_SIZE, pos->y * WALL_SIZE + \
-			// 		(WALL_SIZE / 2) + j, pos->x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xf0ff00);
+			if (data->map[pos.y][pos.x] == '1')
+				draw_cube(data->window, WALL_SIZE, pos.y * WALL_SIZE + \
+					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xF00F0F);
+			else
+				draw_cube(data->window, WALL_SIZE, pos.y * WALL_SIZE + \
+					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xf0ff00);
 			i++;
-			pos->x++;
+			pos.x++;
 		}
 		j++;
 		i = 0;
-		pos->x = 0;
-		pos->y++;
+		pos.x = 0;
+		pos.y++;
 	}
 	draw_player(data);
-	free(pos);
 }
 
 
 
+/* draw_ray */
 int	ray_cast(t_data *data)
 {
 	t_point end;

@@ -6,7 +6,7 @@
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/10/26 16:24:06by suplayerko         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:18:21 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,24 @@
 # define CUB3D_H
 
 # ifdef __APPLE__
-#  define TOUCH_A 0
-#  define TOUCH_W 13
-#  define TOUCH_S 1
-#  define TOUCH_D 2
-#  define TOUCH_RIGHT 124
-#  define TOUCH_LEFT 123
-#  define TOUCH_UP 126
-#  define TOUCH_DOWN 125
-#  define TOUCH_ESC 53
+#  define KEY_Q 12
+#  define KEY_A 0
+#  define KEY_Z 6
+#  define KEY_W 13
+#  define KEY_S 1
+#  define KEY_X 7
+#  define KEY_E 14
+#  define KEY_D 2
+#  define KEY_C 8
+#  define KEY_R 15
+#  define KEY_F 3
+#  define KEY_RIGHT 124 
+#  define KEY_LEFT 123 
+#  define KEY_UP 126
+#  define KEY_DOWN 125
+#  define KEY_ESC 53
+#  define KEY_IN 69
+#  define KEY_OUT 78
 #  include "../minilibx_mac/mlx.h"
 
 # else   // LINUX
@@ -62,7 +71,9 @@
 //MACROS 
 # define WALL 49
 # define FLOOR 48
-# define EMPTY 32
+/* EMPTY must be ' ', for the function format_map lets call lane the '0' */
+# define LANE 32
+# define EMPTY ' '
 # define NORTH_CHAR 78
 # define SOUTH_CHAR 83
 # define WEST_CHAR 87
@@ -86,6 +97,8 @@
 # define DEBUG_LOG_FILENAME "debug_file"
 # define PI 3.141592654
 # define DEFAULT_ROTATION_ANGLE (3.141592654 / 12.000)
+# define PLAYER_MAP_ARROW 20
+# define ORIGIN_PLANE_SCALE 1.0
 
 //COLORS 
 # define RED "\033[1;31m"
@@ -117,41 +130,49 @@ typedef struct s_player
 {
 	t_point		pos_map;
 	t_point		pos_box;
+	/* absolute positions */
+	t_point		pos_in_step;
+	t_point		pos_in_pix;
 	t_vector	direction;
 	int			angle;
 }	t_player;
 
 typedef struct s_image
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*img_ptr;
-	char			*addr;
-	int				bpp;
-	unsigned int	size[2];
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
 	char			*texture_path[NB_TEXTURES];
 	int				line_len;
-	int				endian;
-	//unsigned int	scale[2];
-	//t_point			center;
-	//t_point			win_center;
-	void			(*f)();
 }	t_image;
+
+typedef struct	s_ray
+{
+	double		len;
+	double		dist_from_plan;
+	int			side;
+	t_vector	direction;
+	t_point		hit_point;
+	double		direction_len;
+
+	t_vector	side_distances;
+	t_vector	delta_distances;
+	t_vector	vector_sideX;
+	t_vector	vector_sideY;
+	t_vector	vector_deltaX;
+	t_vector	vector_deltaY;
+}	t_ray;
 
 /* note: origin plane is a POINT using t_vector structure*/
 typedef struct	s_cam
 {
-	t_vector	side_dist;
-	t_vector	delta_dist;
 	t_vector	origin_plane;
 	t_vector	plane_dir;
-	double		len;
+	double		plane_size;
+	t_ray		beam;
+	t_ray		arRay[CAM_QUALITY];
 }	t_cam;
 
 //struct for window
-
 typedef struct s_window
 {
 	void	*mlx;
@@ -173,11 +194,12 @@ typedef struct s_data
 	char		*map_cases;
 	t_image		*image;
 	t_player	*player;
-	t_cam		cam;
+	t_cam		*cam;
 	t_window	*window;
 	char		**map;
 }	t_data;
 
+enum x_or_y { _x, _y };
 enum log_type { DATA, PARAM, CAM, PLAYER, MAP };
 enum e_identifiers { NO, SO, WE, EA, F, C };
 enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
@@ -242,6 +264,22 @@ int	is_block(t_data *data, char c);
 int	is_mapcase(t_data *data, char c);
 int	is_NSEW(char c);
 void	init_cam_vector(t_data *data);
+t_point	get_player_absolute_position(t_player *player);
+void	clean_useless_empty_splace(char	**map);
+void	rectangle_map(t_data *data, char **map);
+void	format_map(t_data *data);
+unsigned int	rgb_conv(int R, int G, int B);
+void	translate_vector_as_pt(t_vector vector, t_vector *pt);
+t_point	update_pos_in_pix(t_player *player);
+t_point	update_pos_in_step(t_player *player);
+void	init_cam_vector(t_data *data);
+void	set_camera(t_data *data);
+double	vec_len(t_vector vector);
+t_vector	convert_pt_to_vec(t_point p);
+void	set_delta_distance(t_data *data);
+void	set_side_distance(t_data *data);
+char	pix_pos_to_map_case(t_point absolute_pos, char **map);
+double	vectors_angle_cos(t_vector v1, t_vector v2);
 
 //duarte functions
 int	window_init(t_window *window);

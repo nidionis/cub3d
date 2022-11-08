@@ -10,44 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 int fix_ang(int a)
-{ if(a>359)
+{
+	if(a > 359)
 	{
-		a-=360;
+		a -= 360;
 	}
-	if(a<0)
+	if(a < 0)
 	{
-		a+=360;
+		a += 360;
 	}
-	return a;
+	return (a);
 }
 
+/* player_struct modified */
 int	key_event(int key, t_data *data)
 {
 	t_player *player;
 
+	fprintf(stderr, "[key_event] %d pressed\n", key);
 	player = data->player;
+	(void)player;
 	if (key == KEY_W)
 	{
 		printf("player move up\n");
-		player->pos_box.x += player->direction.x * 2;
-		player->pos_box.y += player->direction.y * 2;
+		move_player(data, FORWARD);
 	}
     else if (key == KEY_S)
 	{
 		printf("player move down\n");
-		player->pos_box.x -= player->direction.x * 2;
-		player->pos_box.y -= player->direction.y * 2;
+		move_player(data, BACKWARD);
 	}
     else if (key == KEY_A)
 	{
-		printf("nono\n");
+		move_player(data, LEFT);
+		printf("player move left\n");
 	}
     else if (key == KEY_D)
 	{
-		printf("nono\n");
+		move_player(data, RIGHT);
+		printf("player move right\n");
 	}
     else if (key == KEY_RIGHT)
     {
@@ -74,6 +78,7 @@ int exit_game(t_data *data)
 {
     //free
     (void)data;
-    exit(0);
+    clean_exit(data, 0);
+	return (0);
 }
 

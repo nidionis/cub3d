@@ -13,7 +13,7 @@
 #include "cub3d.h"
 
 /*
-The algo check if the final position is overjump than the box size (or under 0 if going to the NORTH or WEST)
+The algo check if the final position overjump the size (or under 0 if going to the NORTH or WEST)
 It refreshs the positions values in the map
 
 In theses examples, player's step brings her to *
@@ -84,6 +84,7 @@ The destination is still a wall
 Find the closest adjacent box and arrive at $
 */
 
+/* check if it steps out of a box */
 static int	f_is_box_crossed(t_player *player)
 {
 	int	direction;
@@ -100,7 +101,7 @@ static int	f_is_box_crossed(t_player *player)
 	return (direction);
 }
 
-int	check_wall(t_data *data, int crossover_direction)
+int	update_pos_if_wall(t_data *data, int crossover_direction)
 {
 	int		hit_wall;
 
@@ -118,7 +119,7 @@ int	check_wall(t_data *data, int crossover_direction)
 		if (crossover_direction == NE ||crossover_direction == SW || crossover_direction == NW || crossover_direction == SE)
 			hit_wall = corner_crossing(data);
 	}
-	fprintf(stderr, "check_wall: hit_wall = %d\n", hit_wall);
+	fprintf(stderr, "update_pos_if_wall: hit_wall = %d\n", hit_wall);
 	return (hit_wall);
 }
 
@@ -131,7 +132,7 @@ int	check_update_box_pos(t_data *data)
 	hit_wall = 0;
 	has_cross_over = f_is_box_crossed(data->player);
 	if (has_cross_over)
-		hit_wall += check_wall(data, has_cross_over);
+		hit_wall += update_pos_if_wall(data, has_cross_over);
 	return (hit_wall);
 }
 
@@ -154,5 +155,7 @@ int	move_player(t_data *data, int move)
 //	fprintf(stderr, "[move_player] scale_dir (%5lf,%5lf)\n", scaled_direction.x, scaled_direction.y);
 	translate_pt(scaled_direction, &p->pos_box);
 	hit_wall = check_update_box_pos(data);
+	update_pos_in_step(p);
+	update_pos_in_pix(p);
  	return (hit_wall);
  }
