@@ -163,7 +163,7 @@ appid	minilibx_mac/mlx_int.h	/^  void			*appid;$/;"	m	struct:mlx_ptr_s	typeref:t
 arRay	include/cub3d.h	/^	t_ray		arRay[CAM_QUALITY];$/;"	m	struct:s_cam	typeref:typename:t_ray[]
 beam	include/cub3d.h	/^	t_ray		*beam;$/;"	m	struct:s_cam	typeref:typename:t_ray *
 beam	src/rayparsing.c	/^t_ray	beam(t_data *data)$/;"	f	typeref:typename:t_ray
-beam_step	src/rayparsing.c	/^int	beam_step(t_data *data, t_point (*ray_position)[2], double (*len)[2])$/;"	f	typeref:typename:int
+beam_step	src/rayparsing.c	/^int	beam_step(t_data *data, t_point ray_position[2], double len[2])$/;"	f	typeref:typename:int
 blocks	include/cub3d.h	/^	char		*blocks;$/;"	m	struct:s_data	typeref:typename:char *
 bpp	minilibx_linux/mlx_int.h	/^	int				bpp;$/;"	m	struct:s_img	typeref:typename:int
 bpp	minilibx_mac/mlx_png.c	/^  int		bpp;$/;"	m	struct:png_info_s	typeref:typename:int	file:
@@ -249,7 +249,7 @@ f_is_box_crossed	src/move_player.c	/^static int	f_is_box_crossed(t_player *playe
 fclean	libft/Makefile	/^fclean: clean$/;"	t
 fclean	minilibx_mac/Makefile	/^fclean:$/;"	t
 file_extention_available	src/parse_init.c	/^void	file_extention_available(t_data *data, char *fname)$/;"	f	typeref:typename:void
-first_step	src/rayparsing.c	/^int	first_step(t_data *data, t_point (*ray_position)[2], double (*len)[2])$/;"	f	typeref:typename:int
+first_step	src/rayparsing.c	/^int	first_step(t_data *data, t_point ray_position[2], double len[2])$/;"	f	typeref:typename:int
 fix_ang	src/ft_key_event.c	/^int fix_ang(int a)$/;"	f	typeref:typename:int
 flagsChanged:	minilibx_mac/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
 floor_color	include/cub3d.h	/^	unsigned int	floor_color;$/;"	m	struct:s_image	typeref:typename:unsigned int
@@ -573,7 +573,6 @@ param	minilibx_linux/mlx_int.h	/^	void	*param;$/;"	m	struct:s_event_list	typeref
 parse_file	src/parse_import.c	/^void	parse_file(char *fname, t_data *data)$/;"	f	typeref:typename:void
 parsing_loop	src/parse_import.c	/^int	parsing_loop(t_data *data, int *map_parse)$/;"	f	typeref:typename:int
 pix	minilibx_linux/mlx_int.h	/^	Pixmap			pix;$/;"	m	struct:s_img	typeref:typename:Pixmap
-pix_pos_in_box	src/pos_update.c	/^static t_point	pix_pos_in_box(t_point pos_box)$/;"	f	typeref:typename:t_point	file:
 pix_pos_to_map_case	src/map_ft.c	/^char	pix_pos_to_map_case(t_point absolute_pos, char **map)$/;"	f	typeref:typename:char
 pix_pos_to_map_pos	src/map_ft.c	/^t_point	pix_pos_to_map_pos(t_point absolute_pos)$/;"	f	typeref:typename:t_point
 pixelPutColor:X:Y:	minilibx_mac/mlx_new_window.h	/^- (void) pixelPutColor: (int)color X:(int)x Y:(int)y;$/;"	m	interface:MlxWin
@@ -651,7 +650,7 @@ setKeyRepeat:	minilibx_mac/mlx_new_window.h	/^- (void) setKeyRepeat:(int)mode;$/
 setKeyRepeat:	minilibx_mac/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
 setKeyRepeat:	minilibx_mac/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
 set_arRay	src/rayparsing.c	/^void	set_arRay(t_data *data)$/;"	f	typeref:typename:void
-set_beam	src/rayparsing.c	/^void	set_beam(t_data *data, t_point (*ray_position)[2])$/;"	f	typeref:typename:void
+set_beam	src/rayparsing.c	/^void	set_beam(t_data *data, t_point ray_position[2])$/;"	f	typeref:typename:void
 set_delta_distance	src/rayparsing.c	/^void	set_delta_distance(t_data *data)$/;"	f	typeref:typename:void
 set_plane_dir	src/camera_ft.c	/^void	set_plane_dir(t_data *data, double plane_size)$/;"	f	typeref:typename:void
 set_plane_origin	src/camera_ft.c	/^void	set_plane_origin(t_data *data)$/;"	f	typeref:typename:void
@@ -688,7 +687,7 @@ test	libft/Makefile	/^test: ctags$/;"	t
 test_function	src/main.c	/^void	test_function(t_data *data)$/;"	f	typeref:typename:void
 texture	minilibx_mac/mlx_int.h	/^  GLuint		texture;$/;"	m	struct:mlx_img_ctx_s	typeref:typename:GLuint
 texture_path	include/cub3d.h	/^	char			*texture_path[NB_TEXTURES];$/;"	m	struct:s_image	typeref:typename:char * []
-translate_pt	src/vector_ft.c	/^void	translate_pt(t_vector vector, t_point *pt)$/;"	f	typeref:typename:void
+translate_pt	src/vector_ft.c	/^t_point	translate_pt(t_vector vector, t_point *pt)$/;"	f	typeref:typename:t_point
 translate_vector_as_pt	src/vector_ft.c	/^void	translate_vector_as_pt(t_vector vector, t_vector *pt)$/;"	f	typeref:typename:void
 type	minilibx_linux/mlx_int.h	/^	int				type;$/;"	m	struct:s_img	typeref:typename:int
 update_pos_if_wall	src/move_player.c	/^int	update_pos_if_wall(t_data *data, int crossover_direction)$/;"	f	typeref:typename:int
@@ -703,7 +702,7 @@ vector_deltaY	include/cub3d.h	/^	t_vector	vector_deltaY;$/;"	m	struct:s_ray	type
 vector_dot_product	src/vector_ft.c	/^double	vector_dot_product(t_vector v1, t_vector v2)$/;"	f	typeref:typename:double
 vector_sideX	include/cub3d.h	/^	t_vector	vector_sideX;$/;"	m	struct:s_ray	typeref:typename:t_vector
 vector_sideY	include/cub3d.h	/^	t_vector	vector_sideY;$/;"	m	struct:s_ray	typeref:typename:t_vector
-vectors_angle_cos	src/vector_ft.c	/^double	vectors_angle_cos(t_vector v1, t_vector v2)$/;"	f	typeref:typename:double
+vectors_angle_sin	src/vector_ft.c	/^double	vectors_angle_sin(t_vector v1, t_vector v2)$/;"	f	typeref:typename:double
 vertexes	minilibx_mac/mlx_int.h	/^  GLfloat		vertexes[8];$/;"	m	struct:mlx_img_list_s	typeref:typename:GLfloat[8]
 visual	minilibx_linux/mlx_int.h	/^	Visual		*visual;$/;"	m	struct:s_xvar	typeref:typename:Visual *
 void	minilibx_mac/mlx_new_window.h	/^  void		*(event_param[MAX_EVENT]);$/;"	E	interface:NSWindowEvent

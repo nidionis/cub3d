@@ -95,11 +95,10 @@ void	raysult(t_data *data, t_point ray_position[2], double len[2], int side_hit)
 {
 	t_cam		*cam;
 	t_ray		*ray;
-	t_vector	player_dir;
+	t_vector	cam_dir;
 
 	cam = data->cam;
 	ray = cam->beam;
-	player_dir = data->player->direction;
 	ray->len = len[side_hit];
 	if (side_hit == _x)
 	{
@@ -116,7 +115,8 @@ void	raysult(t_data *data, t_point ray_position[2], double len[2], int side_hit)
 			ray->side = WEST;
 	}
 	ray->hit_point = ray_position[side_hit];
-	ray->dist_from_plan = vectors_angle_cos(ray->direction, player_dir) * ray->len;
+	cam_dir = data->cam->plane_dir;
+	ray->dist_from_plan = vectors_angle_sin(ray->direction, cam_dir) * ray->len;
 }
 
 /*

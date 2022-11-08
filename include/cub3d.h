@@ -281,7 +281,7 @@ t_vector	convert_pt_to_vec(t_point p);
 void	set_delta_distance(t_data *data);
 void	set_side_distance(t_data *data);
 char	pix_pos_to_map_case(t_point absolute_pos, char **map);
-double	vectors_angle_cos(t_vector v1, t_vector v2);
+double	vectors_angle_sin(t_vector v1, t_vector v2);
 void	draw_wall_line(t_data *data, int i);
 int	ray_cast(t_data *data);
 void	set_arRay(t_data *data);
