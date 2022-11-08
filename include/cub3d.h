@@ -248,7 +248,7 @@ void	init_fd(t_data *data, int *fd, char *fname);
 int	check_wall(t_data *data, int crossover_direction);
 int	check_update_box_pos(t_data *data);
 int	move_player(t_data *data, int direction);
-void	translate_pt(t_vector vector, t_point *pt);
+t_point	translate_pt(t_vector vector, t_point *pt);
 double	distance_point_to_vector(t_point point, t_point v_p1, t_point v_p2);
 t_point	make_point(int x, int y);
 int	north_crossing(t_data *data);

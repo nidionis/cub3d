@@ -39,10 +39,11 @@ t_vector	vec_scale(t_vector vector, double scale)
 	return (vector);
 }
 
-void	translate_pt(t_vector vector, t_point *pt)
+t_point	translate_pt(t_vector vector, t_point *pt)
 {
 	pt->x += (int)vector.x;
 	pt->y += (int)vector.y;
+	return (*pt);
 }
 
 void	translate_vector_as_pt(t_vector vector, t_vector *pt)
