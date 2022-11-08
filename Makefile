@@ -18,8 +18,7 @@ LIBFT_DIR 	= libft
 PROJECT_H	= include/cub3d.h $(LIBFT_DIR)/libft.h
 CC			= gcc
 LINKER   	= gcc
-CFLAGS		= 
-#-Wall -Wextra -Werror -g3
+CFLAGS		= -Wall -Wextra -Werror -g3
 LIBFT 		= $(LIBFT_DIR)/libft.a
 
 ifeq ($(DESKTOP_SESSION), ubuntu)
@@ -39,7 +38,7 @@ $(NAME): $(OBJECTS) maker
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -I/usr/include -I./include -I$(LIBFT_DIR) -I$(MINILIBX) -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -I/usr/include -I./include -I$(LIBFT_DIR) -I$(MINILIBX) -O0 -c $< -o $@
 
 maker:
 	make -C ./$(MINILIBX)

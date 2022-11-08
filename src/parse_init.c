@@ -22,7 +22,7 @@ void	init_null(t_data *data, int *map_parse)
 	while (i < (int)NB_TEXTURES)
 	{
 		data->image->texture_path[i] = NULL;
-		fprintf(stderr, "i:%d, %s\n", i, data->image->texture_path[i]);
+		//fprintf(stderr, "i:%d, %s\n", i, data->image->texture_path[i]);
 		i++;
 
 	}

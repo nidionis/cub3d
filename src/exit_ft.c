@@ -30,7 +30,9 @@ void	clean_exit(t_data *data, int exit_code)
 			free(data->blocks);
 		if (data->map_cases)
 			free(data->map_cases);
-		if (data->cam)
+		if (data->cam->beam)
+			free(data->cam->beam);
+		if (data->cam->beam)
 			free(data->cam);
 		if (data->image)
 		{

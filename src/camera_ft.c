@@ -35,39 +35,6 @@ void	set_plane_dir(t_data *data, double plane_size)
 	data->cam->plane_dir = plane_dir_unit;
 }
 
-void	set_delta_distance(t_data *data)
-{
-	t_ray 	ray;
-	t_cam	*cam;
-	
-	cam = data->cam;
-	cam->beam.direction_len = vec_len(ray.direction);
-	ray = cam->beam;
-	cam->beam.delta_distances.x = ray.direction_len / ray.direction.x;
-	cam->beam.delta_distances.y = ray.direction_len / ray.direction.y;
-	cam->beam.vector_deltaX = vec_scale(ray.direction, ray.delta_distances.x / ray.direction_len);
-	cam->beam.vector_deltaY = vec_scale(ray.direction, ray.delta_distances.y / ray.direction_len);
-}
-
-/*
-  not sure of the calcul, but set the distance to the next_case 
- 	delta_dist MUST BE UPDATED
-	*/
-void	set_side_distance(t_data *data)
-{
-	t_cam		*cam;
-	t_ray		ray;
-	t_player	*player;
-	
-	cam = data->cam;
-	ray = cam->beam;
-	player = data->player;
-	cam->beam.side_distances.x = ray.delta_distances.x * (UNITS_PER_BOX - player->pos_box.x) / (double)UNITS_PER_BOX;
-	cam->beam.side_distances.y = ray.delta_distances.y * (UNITS_PER_BOX - player->pos_box.y) / (double)UNITS_PER_BOX;
-	cam->beam.vector_sideX = vec_scale(ray.direction, ray.side_distances.x / ray.direction_len);
-	cam->beam.vector_sideY = vec_scale(ray.direction, ray.side_distances.y / ray.direction_len);
-}
-
 void	set_plane_origin(t_data *data)
 {
 	t_vector	origin_plane;

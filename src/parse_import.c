@@ -96,7 +96,7 @@ void	parse_file(char *fname, t_data *data)
 
 	init_null(data, &map_parse);
 	init_fd(data, &fd, fname);
-	fprintf(stderr, "%s\n", data->image->texture_path[0]);
+	//fprintf(stderr, "%s\n", data->image->texture_path[0]);
 	data->line = get_next_line(fd);
 	if (data->line)
 	{

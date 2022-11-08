@@ -91,3 +91,33 @@ void	redir_debug_file_logs(t_data *data, char *fname, int log_type)
 	close(fd);
 
 }
+
+void	draw_wall_line(t_data *data, int i)
+{
+	t_point	start;
+	t_point	end;
+	t_ray	ray;
+	int		line_size;
+	int		color;
+	
+	ray = data->cam->arRay[i];
+	start.x = i;
+	end.x = i;
+	if (ray.dist_from_plan != 0)
+		line_size = (int)SCREEN_HEIGHT / ray.dist_from_plan;
+	else
+		line_size = (int)SCREEN_HEIGHT;
+	start.y = (int)SCREEN_HEIGHT / 2 - line_size / 2;
+	end.y = (int)SCREEN_HEIGHT / 2 + line_size / 2;
+
+	if (ray.side == NORTH)
+		color = rgb_conv(0, 0, 255);
+	if (ray.side == SOUTH)
+		color = rgb_conv(255, 0, 255);
+	if (ray.side == EAST)
+		color = rgb_conv(0, 255, 0);
+	else
+		color = rgb_conv(255, 255, 0);
+	draw_line(data, &start, &end, color);
+}
+

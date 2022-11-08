@@ -15,8 +15,12 @@
 double	vec_len(t_vector vector)
 {
 	double	len;
+	double	x_square;
+	double	y_square;
 
-	len = sqrt(vector.x * vector.x + vector.y * vector.y);
+	x_square = vector.x * vector.x;
+	y_square = vector.y * vector.y;
+	len = sqrt(x_square + y_square);
 	return (len);
 }
 t_point	make_point(int x, int y)

@@ -161,7 +161,7 @@ all	minilibx_mac/Makefile	/^all: $(NOM)$/;"	t
 angle	include/cub3d.h	/^	int			angle;$/;"	m	struct:s_player	typeref:typename:int
 appid	minilibx_mac/mlx_int.h	/^  void			*appid;$/;"	m	struct:mlx_ptr_s	typeref:typename:void *
 arRay	include/cub3d.h	/^	t_ray		arRay[CAM_QUALITY];$/;"	m	struct:s_cam	typeref:typename:t_ray[]
-beam	include/cub3d.h	/^	t_ray		beam;$/;"	m	struct:s_cam	typeref:typename:t_ray
+beam	include/cub3d.h	/^	t_ray		*beam;$/;"	m	struct:s_cam	typeref:typename:t_ray *
 beam	src/rayparsing.c	/^t_ray	beam(t_data *data)$/;"	f	typeref:typename:t_ray
 beam_step	src/rayparsing.c	/^int	beam_step(t_data *data, t_point (*ray_position)[2], double (*len)[2])$/;"	f	typeref:typename:int
 blocks	include/cub3d.h	/^	char		*blocks;$/;"	m	struct:s_data	typeref:typename:char *
@@ -230,6 +230,7 @@ draw_cube	src/ft_window_init.c	/^void	draw_cube(t_window *window, int size, int 
 draw_line	src/ft_window_init.c	/^void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)$/;"	f	typeref:typename:void
 draw_mini_map	src/ft_window_init.c	/^void	draw_mini_map(t_data *data)$/;"	f	typeref:typename:void
 draw_player	src/ft_window_init.c	/^void	draw_player(t_data *data)$/;"	f	typeref:typename:void
+draw_wall_line	src/debug_ft.c	/^void	draw_wall_line(t_data *data, int i)$/;"	f	typeref:typename:void
 e_cardinal	include/cub3d.h	/^enum e_cardinal { NORTH, SOUTH, EAST, WEST };$/;"	g
 e_direction	include/cub3d.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };$/;"	g
 e_identifiers	include/cub3d.h	/^enum e_identifiers { NO, SO, WE, EA, F, C };$/;"	g
@@ -650,11 +651,11 @@ setKeyRepeat:	minilibx_mac/mlx_new_window.h	/^- (void) setKeyRepeat:(int)mode;$/
 setKeyRepeat:	minilibx_mac/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
 setKeyRepeat:	minilibx_mac/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
 set_arRay	src/rayparsing.c	/^void	set_arRay(t_data *data)$/;"	f	typeref:typename:void
-set_beam	src/rayparsing.c	/^void	set_beam(t_data *data, t_point (*ray_position)[2], double (*len)[2])$/;"	f	typeref:typename:void
-set_delta_distance	src/camera_ft.c	/^void	set_delta_distance(t_data *data)$/;"	f	typeref:typename:void
+set_beam	src/rayparsing.c	/^void	set_beam(t_data *data, t_point (*ray_position)[2])$/;"	f	typeref:typename:void
+set_delta_distance	src/rayparsing.c	/^void	set_delta_distance(t_data *data)$/;"	f	typeref:typename:void
 set_plane_dir	src/camera_ft.c	/^void	set_plane_dir(t_data *data, double plane_size)$/;"	f	typeref:typename:void
 set_plane_origin	src/camera_ft.c	/^void	set_plane_origin(t_data *data)$/;"	f	typeref:typename:void
-set_side_distance	src/camera_ft.c	/^void	set_side_distance(t_data *data)$/;"	f	typeref:typename:void
+set_side_distance	src/rayparsing.c	/^void	set_side_distance(t_data *data)$/;"	f	typeref:typename:void
 shift_line_left	src/parse_format_map.c	/^void	shift_line_left(char *line)$/;"	f	typeref:typename:void
 shm	minilibx_linux/mlx_int.h	/^	XShmSegmentInfo	shm;$/;"	m	struct:s_img	typeref:typename:XShmSegmentInfo
 shm_att_pb	minilibx_linux/mlx_new_image.c	/^int	shm_att_pb(Display *d,XErrorEvent *ev)$/;"	f	typeref:typename:int

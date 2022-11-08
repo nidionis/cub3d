@@ -34,6 +34,9 @@
 	data->cam = malloc(sizeof(t_cam));
 	if (!data->cam)
 		clean_exit(data, -1);
+	data->cam->beam = malloc(sizeof(t_ray));
+	if (!data->cam->beam)
+		clean_exit(data, -1);
 	return (data);
 }
 
@@ -66,7 +69,7 @@ int	main(int argc, char *argv[])
 		window_init(data->window);
 		/* I dont understand 2, 1L << 0, */
 		mlx_hook(data->window->init, 2, 1L << 0, &key_event, data);
-		mlx_loop_hook(data->window->mlx, render_map_2d, data);
+		mlx_loop_hook(data->window->mlx, &ray_cast, data);
 		mlx_hook(data->window->init, 17, 1L << 17, &exit_game, data);
 		mlx_loop(data->window->mlx);
 	}

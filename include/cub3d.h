@@ -168,7 +168,7 @@ typedef struct	s_cam
 	t_vector	origin_plane;
 	t_vector	plane_dir;
 	double		plane_size;
-	t_ray		beam;
+	t_ray		*beam;
 	t_ray		arRay[CAM_QUALITY];
 }	t_cam;
 
@@ -280,6 +280,9 @@ void	set_delta_distance(t_data *data);
 void	set_side_distance(t_data *data);
 char	pix_pos_to_map_case(t_point absolute_pos, char **map);
 double	vectors_angle_cos(t_vector v1, t_vector v2);
+void	draw_wall_line(t_data *data, int i);
+int	ray_cast(t_data *data);
+void	set_arRay(t_data *data);
 
 //duarte functions
 int	window_init(t_window *window);

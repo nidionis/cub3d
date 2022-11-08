@@ -173,6 +173,21 @@ void	draw_player(t_data *data)
 /* draw_ray */
 int	ray_cast(t_data *data)
 {
+	int	i;
+
+	i = 0;
+	set_arRay(data);
+	while (i < CAM_QUALITY)
+	{
+		draw_wall_line(data, i);
+		i++;
+	}
+	return (0);
+}
+
+
+int	render_map_2d(t_data *data)
+{
 	t_point end;
 	
 	/* maybe map_border ? */
@@ -182,13 +197,6 @@ int	ray_cast(t_data *data)
 	draw_mini_map(data);
 	draw_player(data);
 	draw_line(data, &data->player->pos_box, &end, rgb_conv(20, 0, 250));
-	return (0);
-}
-
-
-int	render_map_2d(t_data *data)
-{
-	ray_cast(data);
 	return (0);
 }
 
