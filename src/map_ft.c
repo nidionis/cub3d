@@ -24,7 +24,9 @@ t_point	pix_pos_to_map_pos(t_point absolute_pos)
 char	pix_pos_to_map_case(t_point absolute_pos, char **map)
 {
 	t_point	map_pos;
+	char	c;
 
 	map_pos = pix_pos_to_map_pos(absolute_pos);
-	return (map[map_pos.x][map_pos.y]);
+	c = map[map_pos.x][map_pos.y];
+	return (c);
 }

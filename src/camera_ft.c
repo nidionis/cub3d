@@ -52,6 +52,6 @@ void	init_cam_vector(t_data *data)
 	plane_size = tan((double)CAM_ANGLE / 2.0) * (double)ORIGIN_PLANE_SCALE * 2.0;
 	set_plane_origin(data);
 	set_plane_dir(data, plane_size);
-	data->cam->beam.direction = data->cam->origin_plane;
+	data->cam->beam->direction = data->cam->origin_plane;
 	data->cam->plane_size = plane_size;
 }

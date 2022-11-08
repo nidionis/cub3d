@@ -14,16 +14,16 @@
 
 void	set_delta_distance(t_data *data)
 {
-	t_ray 	ray;
+	t_ray 	*ray;
 	t_cam	*cam;
 	
 	cam = data->cam;
-	cam->beam.direction_len = vec_len(cam->beam.direction);
 	ray = cam->beam;
-	cam->beam.delta_distances.x = ray.direction_len / fabs(ray.direction.x);
-	cam->beam.delta_distances.y = ray.direction_len / fabs(ray.direction.y);
-	cam->beam.vector_deltaX = vec_scale(ray.direction, ray.delta_distances.x / ray.direction_len);
-	cam->beam.vector_deltaY = vec_scale(ray.direction, ray.delta_distances.y / ray.direction_len);
+	ray->direction_len = vec_len(ray->direction);
+	ray->delta_distances.x = ray->direction_len / fabs(ray->direction.x);
+	ray->delta_distances.y = ray->direction_len / fabs(ray->direction.y);
+	ray->vector_deltaX = vec_scale(ray->direction, ray->delta_distances.x / ray->direction_len);
+	ray->vector_deltaY = vec_scale(ray->direction, ray->delta_distances.y / ray->direction_len);
 }
 
 /*
@@ -33,16 +33,16 @@ void	set_delta_distance(t_data *data)
 void	set_side_distance(t_data *data)
 {
 	t_cam		*cam;
-	t_ray		ray;
+	t_ray		*ray;
 	t_player	*player;
 	
 	cam = data->cam;
 	ray = cam->beam;
 	player = data->player;
-	cam->beam.side_distances.x = ray.delta_distances.x * (UNITS_PER_BOX - player->pos_box.x) / (double)UNITS_PER_BOX;
-	cam->beam.side_distances.y = ray.delta_distances.y * (UNITS_PER_BOX - player->pos_box.y) / (double)UNITS_PER_BOX;
-	cam->beam.vector_sideX = vec_scale(ray.direction, ray.side_distances.x / ray.direction_len);
-	cam->beam.vector_sideY = vec_scale(ray.direction, ray.side_distances.y / ray.direction_len);
+	ray->side_distances.x = ray->delta_distances.x * (UNITS_PER_BOX - player->pos_box.x) / (double)UNITS_PER_BOX;
+	ray->side_distances.y = ray->delta_distances.y * (UNITS_PER_BOX - player->pos_box.y) / (double)UNITS_PER_BOX;
+	ray->vector_sideX = vec_scale(ray->direction, ray->side_distances.x / ray->direction_len);
+	ray->vector_sideY = vec_scale(ray->direction, ray->side_distances.y / ray->direction_len);
 }
 
 void	set_beam(t_data *data, t_point (*ray_position)[2])
@@ -55,15 +55,15 @@ void	set_beam(t_data *data, t_point (*ray_position)[2])
 
 int	first_step(t_data *data, t_point (*ray_position)[2], double (*len)[2])
 {
-	t_ray	ray;
+	t_ray	*ray;
 
 	ray = data->cam->beam;
-	(*len)[_x] = data->cam->beam.side_distances.x;
-	(*len)[_y] = data->cam->beam.side_distances.y;
-	translate_pt(ray.vector_sideX, ray_position[_x]);
+	(*len)[_x] = ray->side_distances.x;
+	(*len)[_y] = ray->side_distances.y;
+	translate_pt(ray->vector_sideX, ray_position[_x]);
 	if (pix_pos_to_map_case((*ray_position)[_x], data->map) == WALL)
 		return (_x);
-	translate_pt(ray.vector_sideY, ray_position[_y]);
+	translate_pt(ray->vector_sideY, ray_position[_y]);
 	if (pix_pos_to_map_case((*ray_position)[_y], data->map) == WALL)
 		return (_y);
 	return (-1);
@@ -71,20 +71,20 @@ int	first_step(t_data *data, t_point (*ray_position)[2], double (*len)[2])
 
 int	beam_step(t_data *data, t_point (*ray_position)[2], double (*len)[2])
 {
-	t_ray	ray;
+	t_ray	*ray;
 
 	ray = data->cam->beam;
 	if ((*len)[_x] < (*len)[_y])
 	{
-		translate_pt(ray.vector_deltaX, ray_position[_x]);
-		(*len)[_x] += ray.delta_distances.x;
+		translate_pt(ray->vector_deltaX, ray_position[_x]);
+		(*len)[_x] += ray->delta_distances.x;
 		if (pix_pos_to_map_case((*ray_position)[_x], data->map) == WALL)
 			return (_x);
 	}
 	else
 	{
-		translate_pt(ray.vector_deltaY, ray_position[_y]);
-		(*len)[_y] += ray.delta_distances.y;
+		translate_pt(ray->vector_deltaY, ray_position[_y]);
+		(*len)[_y] += ray->delta_distances.y;
 		if (pix_pos_to_map_case((*ray_position)[_y], data->map) == WALL)
 			return (_y);
 	}
@@ -94,29 +94,29 @@ int	beam_step(t_data *data, t_point (*ray_position)[2], double (*len)[2])
 void	raysult(t_data *data, t_point ray_position[2], double len[2], int side_hit)
 {
 	t_cam		*cam;
-	t_ray		ray;
+	t_ray		*ray;
 	t_vector	player_dir;
 
 	cam = data->cam;
 	ray = cam->beam;
 	player_dir = data->player->direction;
-	cam->beam.len = len[side_hit];
+	ray->len = len[side_hit];
 	if (side_hit == _x)
 	{
-		if (ray.direction.y > 0)
-			cam->beam.side = NORTH;
+		if (ray->direction.y > 0)
+			ray->side = NORTH;
 		else
-			cam->beam.side = SOUTH;
+			ray->side = SOUTH;
 	}
 	else
 	{
-		if (ray.direction.x < 0)
-			cam->beam.side = EAST;
+		if (ray->direction.x < 0)
+			ray->side = EAST;
 		else
-			cam->beam.side = WEST;
+			ray->side = WEST;
 	}
-	cam->beam.hit_point = ray_position[side_hit];
-	cam->beam.dist_from_plan = vectors_angle_cos(ray.direction, player_dir) * cam->beam.len;
+	ray->hit_point = ray_position[side_hit];
+	ray->dist_from_plan = vectors_angle_cos(ray->direction, player_dir) * ray->len;
 }
 
 /*
@@ -136,12 +136,12 @@ t_ray	beam(t_data *data)
 	while (wall_hit == -1)
 		wall_hit = beam_step(data, &ray_position, &len);
 	raysult(data, ray_position, len, wall_hit);
-	return (cam->beam);
+	return (*(cam->beam));
 }
 
 void	set_arRay(t_data *data)
 {
-	t_ray	ray;
+	t_ray	*ray;
 	t_cam	*cam;
 	int		i_ray;
 
@@ -152,7 +152,7 @@ void	set_arRay(t_data *data)
 	while (i_ray < CAM_QUALITY)
 	{
 		cam->arRay[i_ray] = beam(data);
-		translate_vector_as_pt(cam->plane_dir, &ray.direction);
+		translate_vector_as_pt(cam->plane_dir, &ray->direction);
 		i_ray++;
 	}
 }

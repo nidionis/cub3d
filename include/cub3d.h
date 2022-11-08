@@ -87,7 +87,7 @@
 # define RAYCAST_QUALITY 50
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 1000
-# define STEPS_PER_BOX 8
+# define STEPS_PER_BOX 10
 # define WALL_SIZE 100
 /* in radient 66 = 1.15*/
 # define CAM_ANGLE 1.15
@@ -128,7 +128,9 @@ typedef struct s_point
 
 typedef struct s_player
 {
+	/* in square */
 	t_point		pos_map;
+	/* in pix or UNITS_PER_BOX*/
 	t_point		pos_box;
 	/* absolute positions */
 	t_point		pos_in_step;
