@@ -99,3 +99,23 @@ t_vector	convert_pt_to_vec(t_point p)
 	v.y = (double)p.y;
 	return (v);
 }
+
+double	vector_dot_product(t_vector v1, t_vector v2)
+{
+	double	dot_product;
+
+	dot_product = v1.x * v2.x + v1.y + v2.y;
+	return (dot_product);
+}
+
+/* https://www.cuemath.com/geometry/angle-between-vectors/ */
+/* sin(a) = |v1 * v2| / (|v1| * |v2|)
+				|->cross product
+*/
+double	vectors_angle_cos(t_vector v1, t_vector v2)
+{
+	double	angle;
+
+	angle = fabs(vector_dot_product(v1, v2)) / (vec_len(v1) * vec_len(v2));
+	return (angle);
+}

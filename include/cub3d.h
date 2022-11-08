@@ -148,9 +148,10 @@ typedef struct s_image
 typedef struct	s_ray
 {
 	double		len;
+	double		dist_from_plan;
 	int			side;
 	t_vector	direction;
-	t_vector	hit_point;
+	t_point		hit_point;
 	double		direction_len;
 
 	t_vector	side_distances;
@@ -272,9 +273,13 @@ void	translate_vector_as_pt(t_vector vector, t_vector *pt);
 t_point	update_pos_in_pix(t_player *player);
 t_point	update_pos_in_step(t_player *player);
 void	init_cam_vector(t_data *data);
-void	set_camera(data);
+void	set_camera(t_data *data);
 double	vec_len(t_vector vector);
 t_vector	convert_pt_to_vec(t_point p);
+void	set_delta_distance(t_data *data);
+void	set_side_distance(t_data *data);
+char	pix_pos_to_map_case(t_point absolute_pos, char **map);
+double	vectors_angle_cos(t_vector v1, t_vector v2);
 
 //duarte functions
 int	window_init(t_window *window);
