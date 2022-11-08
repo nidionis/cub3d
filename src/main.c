@@ -67,7 +67,6 @@ int	main(int argc, char *argv[])
 		//data->player = malloc(sizeof(t_player));
 		////player_init(data->map, data->player);
 		window_init(data->window);
-		/* I dont understand 2, 1L << 0, */
 		mlx_hook(data->window->init, 2, 1L << 0, &key_event, data);
 		mlx_loop_hook(data->window->mlx, &ray_cast, data);
 		mlx_hook(data->window->init, 17, 1L << 17, &exit_game, data);

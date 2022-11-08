@@ -60,10 +60,10 @@ int	first_step(t_data *data, t_point ray_position[2], double len[2])
 	ray = data->cam->beam;
 	len[_x] = ray->side_distances.x;
 	len[_y] = ray->side_distances.y;
-	if (pix_pos_to_map_case(ray_position[_x], data->map) == WALL)
 	ray_position[_x] = translate_pt(ray->vector_sideX, &ray_position[_x]);
+	if (pix_pos_to_map_case(ray_position[_x], data->map) == WALL)
 		return (_x);
-	ray_position[_x] = translate_pt(ray->vector_sideY, &ray_position[_y]);
+	ray_position[_y] = translate_pt(ray->vector_sideY, &ray_position[_y]);
 	if (pix_pos_to_map_case(ray_position[_y], data->map) == WALL)
 		return (_y);
 	return (-1);
@@ -83,7 +83,7 @@ int	beam_step(t_data *data, t_point ray_position[2], double len[2])
 	}
 	else
 	{
-		ray_position[_x] = translate_pt(ray->vector_deltaY, &ray_position[_y]);
+		ray_position[_y] = translate_pt(ray->vector_deltaY, &ray_position[_y]);
 		len[_y] += ray->delta_distances.y;
 		if (pix_pos_to_map_case(ray_position[_y], data->map) == WALL)
 			return (_y);
