@@ -37,3 +37,12 @@ char	pix_pos_to_map_case(t_point absolute_pos, char **map)
 		c = map[map_pos.x][map_pos.y];
 	return (c);
 }
+
+int	still_in_map(t_data  *data, t_point pt)
+{
+	if (pt.x < 0 || pt.x >= data->map_size_in_units[_x])
+		return (0);
+	if (pt.y < 0 || pt.y >= data->map_size_in_units[_y])
+		return (0);
+	return (1);
+}

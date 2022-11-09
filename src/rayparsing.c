@@ -56,25 +56,25 @@ void	set_beam(t_data *data, t_point ray_position[2])
 int	first_step(t_data *data, t_point ray_position[2], double len[2])
 {
 	t_ray	*ray;
+	char	next_cases[2];
+	int		closest;
 
 	ray = data->cam->beam;
+	closest = _y;
 	len[_x] = ray->side_distances.x;
 	len[_y] = ray->side_distances.y;
+	if (len[_x] > 0 && len[_x] < len [_y])
+		closest = _x;
 	translate_pt(ray->vector_sideX, &ray_position[_x]);
-	if (pix_pos_to_map_case(ray_position[_x], data->map) == WALL)
-		return (_x);
 	translate_pt(ray->vector_sideY, &ray_position[_y]);
-	if (pix_pos_to_map_case(ray_position[_y], data->map) == WALL)
-		return (_y);
+	next_cases[closest] = pix_pos_to_map_case(ray_position[closest], data->map);
+	if (next_cases[closest] == WALL)
+		return (closest);
+	if (still_in_map(data, ray_position[!closest]))
+		next_cases[!closest] = pix_pos_to_map_case(ray_position[!closest], data->map);
+	if (next_cases[!closest] == WALL)
+		return (!closest);
 	return (-1);
-}
-int	still_in_map(t_data  *data, t_point pt)
-{
-	if (pt.x < 0 || pt.x >= data->map_size_in_units[_x])
-		return (0);
-	if (pt.y < 0 || pt.y >= data->map_size_in_units[_y])
-		return (0);
-	return (1);
 }
 
 int	beam_step(t_data *data, t_point ray_position[2], double len[2])

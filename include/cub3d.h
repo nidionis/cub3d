@@ -286,6 +286,7 @@ double	vectors_angle_sin(t_vector v1, t_vector v2);
 void	draw_wall_line(t_data *data, int i);
 int	ray_cast(t_data *data);
 void	set_arRay(t_data *data);
+int	still_in_map(t_data  *data, t_point pt);
 
 //duarte functions
 int	window_init(t_window *window);
