@@ -41,8 +41,14 @@ t_vector	vec_scale(t_vector vector, double scale)
 
 t_point	translate_pt(t_vector vector, t_point *pt)
 {
-	pt->x += (int)(vector.x + 0.5);
-	pt->y += (int)(vector.y + 0.5);
+	if (vector.x > 0)
+		pt->x += (int)(vector.x + 0.5);
+	else
+		pt->x += (int)(vector.x - 0.5);
+	if (vector.y < 0)
+		pt->y += (int)(vector.y + 0.5);
+	else
+		pt->y += (int)(vector.y - 0.5);
 	return (*pt);
 }
 
