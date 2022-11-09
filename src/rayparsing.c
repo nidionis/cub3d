@@ -134,7 +134,14 @@ t_ray	beam(t_data *data)
 	set_beam(data, ray_position);
 	wall_hit = first_step(data, ray_position, len);
 	while (wall_hit == -1)
+	{
+		if (ray_position[0].x < 0 || ray_position[0].y < 0 || ray_position[1].x < 0 || ray_position[1].y < 0)
+		{
+			fprintf(stderr, "[beam] ray overflow\n");
+			break;
+		}
 		wall_hit = beam_step(data, ray_position, len);
+	}
 	raysult(data, ray_position, len, wall_hit);
 	return (*(cam->beam));
 }

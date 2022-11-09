@@ -30,7 +30,7 @@ void	set_plane_dir(t_data *data, double plane_size)
 	t_vector	plane_dir_unit;
 
 	plane_dir_unit = data->player->direction;
-	rotate_vector(&plane_dir_unit, (double)PI / 4.0);
+	rotate_vector(&plane_dir_unit, (double)PI / -4.0);
 	plane_dir_unit = vec_scale(plane_dir_unit, plane_size / (double)CAM_QUALITY);
 	data->cam->plane_dir = plane_dir_unit;
 }
