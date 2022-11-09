@@ -155,11 +155,11 @@ t_ray	beam(t_data *data)
 	cam = data->cam;
 	set_beam(data, ray_position);
 	wall_hit = first_step(data, ray_position, len);
-	while (wall_hit == -1)
-	{
-		wall_hit = beam_step(data, ray_position, len);
-	}
-	if (wall_hit != -2)
+	//while (wall_hit == -1)
+	//{
+	//	wall_hit = beam_step(data, ray_position, len);
+	//}
+	//if (wall_hit != -2)
 		raysult(data, ray_position, len, wall_hit);
 	return (*(cam->beam));
 }
