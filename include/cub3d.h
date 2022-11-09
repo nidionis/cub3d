@@ -88,7 +88,7 @@
 # define UNITS_PER_BOX 50
 # define STEPS_PER_BOX 10
 /* should be eaual to windows width*/
-# define CAM_QUALITY 50
+# define CAM_QUALITY 1000
 /* in radient 66 = 1.15*/
 /* num of ray_parse for a pic */
 # define CAM_ANGLE 1.15
@@ -199,6 +199,7 @@ typedef struct s_data
 	t_cam		*cam;
 	t_window	*window;
 	char		**map;
+	int			map_size_in_units[2];
 }	t_data;
 
 enum x_or_y { _x, _y };
