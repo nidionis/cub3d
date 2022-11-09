@@ -67,11 +67,11 @@ int	first_step(t_data *data, t_point ray_position[2], double len[2])
 		closest = _x;
 	translate_pt(ray->vector_sideX, &ray_position[_x]);
 	translate_pt(ray->vector_sideY, &ray_position[_y]);
-	next_cases[closest] = pix_pos_to_map_case(ray_position[closest], data->map);
+	next_cases[closest] = pix_pos_to_map_case(data, ray_position[closest]);
 	if (next_cases[closest] == WALL)
 		return (closest);
 	if (still_in_map(data, ray_position[!closest]))
-		next_cases[!closest] = pix_pos_to_map_case(ray_position[!closest], data->map);
+		next_cases[!closest] = pix_pos_to_map_case(data, ray_position[!closest]);
 	if (next_cases[!closest] == WALL)
 		return (!closest);
 	return (-1);
@@ -88,7 +88,7 @@ int	beam_step(t_data *data, t_point ray_position[2], double len[2])
 		len[_x] += ray->delta_distances.x;
 		if (still_in_map(data, ray_position[_x]))
 		{
-			if (pix_pos_to_map_case(ray_position[_x], data->map) == WALL)
+			if (pix_pos_to_map_case(data, ray_position[_x]) == WALL)
 				return (_x);
 		} else if (!still_in_map(data, ray_position[_y]))
 		{
@@ -102,7 +102,7 @@ int	beam_step(t_data *data, t_point ray_position[2], double len[2])
 		len[_y] += ray->delta_distances.y;
 		if (still_in_map(data, ray_position[_y]))
 		{
-			if (pix_pos_to_map_case(ray_position[_y], data->map) == WALL)
+			if (pix_pos_to_map_case(data, ray_position[_y]) == WALL)
 				return (_y);
 		} else if (!still_in_map(data, ray_position[_x]))
 		{

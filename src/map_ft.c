@@ -25,16 +25,20 @@ t_point	pix_pos_to_map_pos(t_point absolute_pos)
 	return (map_pos);
 }
 
-char	pix_pos_to_map_case(t_point absolute_pos, char **map)
+char	pix_pos_to_map_case(t_data *data, t_point absolute_pos)
 {
 	t_point	map_pos;
 	char	c;
+	char	**map;
 
+	map = data->map;
 	map_pos = pix_pos_to_map_pos(absolute_pos);
-	if (absolute_pos.x < 0 || absolute_pos.y < 0)
-		c = -1;
-	else
+	if (still_in_map(data, absolute_pos))
 		c = map[map_pos.x][map_pos.y];
+	else
+	{
+		fprintf(stderr, "[pix_pos_to_map_case] outside of the map\n");
+	}
 	return (c);
 }
 
