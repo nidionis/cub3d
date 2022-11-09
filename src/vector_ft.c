@@ -45,7 +45,7 @@ t_point	translate_pt(t_vector vector, t_point *pt)
 		pt->x += (int)(vector.x + 0.5);
 	else
 		pt->x += (int)(vector.x - 0.5);
-	if (vector.y < 0)
+	if (vector.y > 0)
 		pt->y += (int)(vector.y + 0.5);
 	else
 		pt->y += (int)(vector.y - 0.5);
