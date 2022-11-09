@@ -177,6 +177,7 @@ int	ray_cast(t_data *data)
 
 	i = 0;
 	set_arRay(data);
+	draw_cube(data->window, SCREEN_WIDTH, 0, 0, 0);
 	while (i < CAM_QUALITY)
 	{
 		draw_wall_line(data, i);

@@ -116,4 +116,6 @@ void	format_map(t_data *data)
 	map = data->map;
 	clean_useless_empty_splace(map);
 	rectangle_map(data, map);
+	data->map_size_in_units[_x] = ft_strlen(map[0]);
+	data->map_size_in_units[_y] = ft_matrixlen(map);
 }

@@ -68,6 +68,14 @@ int	first_step(t_data *data, t_point ray_position[2], double len[2])
 		return (_y);
 	return (-1);
 }
+int	still_in_map(t_data  *data, t_point pt)
+{
+	if (pt.x < 0 || pt.x >= data->map_size_in_units[_x])
+		return (0);
+	if (pt.y < 0 || pt.y >= data->map_size_in_units[_y])
+		return (0);
+	return (1);
+}
 
 int	beam_step(t_data *data, t_point ray_position[2], double len[2])
 {
@@ -78,15 +86,29 @@ int	beam_step(t_data *data, t_point ray_position[2], double len[2])
 	{
 		translate_pt(ray->vector_deltaX, &ray_position[_x]);
 		len[_x] += ray->delta_distances.x;
-		if (pix_pos_to_map_case(ray_position[_x], data->map) == WALL)
-			return (_x);
+		if (still_in_map(data, ray_position[_x]))
+		{
+			if (pix_pos_to_map_case(ray_position[_x], data->map) == WALL)
+				return (_x);
+		} else if (!still_in_map(data, ray_position[_y]))
+		{
+			fprintf(stderr, "[beam] ray_lost\n");
+			return (-2);
+		}
 	}
 	else
 	{
 		translate_pt(ray->vector_deltaY, &ray_position[_y]);
 		len[_y] += ray->delta_distances.y;
-		if (pix_pos_to_map_case(ray_position[_y], data->map) == WALL)
-			return (_y);
+		if (still_in_map(data, ray_position[_y]))
+		{
+			if (pix_pos_to_map_case(ray_position[_y], data->map) == WALL)
+				return (_y);
+		} else if (!still_in_map(data, ray_position[_x]))
+		{
+			fprintf(stderr, "[beam] ray_lost\n");
+			return (-2);
+		}
 	}
 	return (-1);
 }
@@ -135,14 +157,10 @@ t_ray	beam(t_data *data)
 	wall_hit = first_step(data, ray_position, len);
 	while (wall_hit == -1)
 	{
-		if (ray_position[0].x < 0 || ray_position[0].y < 0 || ray_position[1].x < 0 || ray_position[1].y < 0)
-		{
-			fprintf(stderr, "[beam] ray overflow\n");
-			break;
-		}
 		wall_hit = beam_step(data, ray_position, len);
 	}
-	raysult(data, ray_position, len, wall_hit);
+	if (wall_hit != -2)
+		raysult(data, ray_position, len, wall_hit);
 	return (*(cam->beam));
 }
 
