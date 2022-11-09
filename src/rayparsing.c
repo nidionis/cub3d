@@ -20,8 +20,8 @@ void	set_delta_distance(t_data *data)
 	cam = data->cam;
 	ray = cam->beam;
 	ray->direction_len = vec_len(ray->direction);
-	ray->delta_distances.x = ray->direction_len / fabs(ray->direction.x);
-	ray->delta_distances.y = ray->direction_len / fabs(ray->direction.y);
+	ray->delta_distances.x = ray->direction_len / ray->direction.x;
+	ray->delta_distances.y = ray->direction_len / ray->direction.y;
 	ray->vector_deltaX = vec_scale(ray->direction, ray->delta_distances.x / ray->direction_len);
 	ray->vector_deltaY = vec_scale(ray->direction, ray->delta_distances.y / ray->direction_len);
 }
@@ -39,8 +39,8 @@ void	set_side_distance(t_data *data)
 	cam = data->cam;
 	ray = cam->beam;
 	player = data->player;
-	ray->side_distances.x = ray->delta_distances.x * (UNITS_PER_BOX - player->pos_box.x) / (double)UNITS_PER_BOX;
-	ray->side_distances.y = ray->delta_distances.y * (UNITS_PER_BOX - player->pos_box.y) / (double)UNITS_PER_BOX;
+	ray->side_distances.x = ray->delta_distances.x * (double)(UNITS_PER_BOX - player->pos_box.x) / (double)UNITS_PER_BOX;
+	ray->side_distances.y = ray->delta_distances.y * (double)(UNITS_PER_BOX - player->pos_box.y) / (double)UNITS_PER_BOX;
 	ray->vector_sideX = vec_scale(ray->direction, ray->side_distances.x / ray->direction_len);
 	ray->vector_sideY = vec_scale(ray->direction, ray->side_distances.y / ray->direction_len);
 }
@@ -60,10 +60,10 @@ int	first_step(t_data *data, t_point ray_position[2], double len[2])
 	ray = data->cam->beam;
 	len[_x] = ray->side_distances.x;
 	len[_y] = ray->side_distances.y;
-	ray_position[_x] = translate_pt(ray->vector_sideX, &ray_position[_x]);
+	translate_pt(ray->vector_sideX, &ray_position[_x]);
 	if (pix_pos_to_map_case(ray_position[_x], data->map) == WALL)
 		return (_x);
-	ray_position[_y] = translate_pt(ray->vector_sideY, &ray_position[_y]);
+	translate_pt(ray->vector_sideY, &ray_position[_y]);
 	if (pix_pos_to_map_case(ray_position[_y], data->map) == WALL)
 		return (_y);
 	return (-1);
@@ -76,14 +76,14 @@ int	beam_step(t_data *data, t_point ray_position[2], double len[2])
 	ray = data->cam->beam;
 	if (len[_x] < len[_y])
 	{
-		ray_position[_x] = translate_pt(ray->vector_deltaX, &ray_position[_x]);
+		translate_pt(ray->vector_deltaX, &ray_position[_x]);
 		len[_x] += ray->delta_distances.x;
 		if (pix_pos_to_map_case(ray_position[_x], data->map) == WALL)
 			return (_x);
 	}
 	else
 	{
-		ray_position[_y] = translate_pt(ray->vector_deltaY, &ray_position[_y]);
+		translate_pt(ray->vector_deltaY, &ray_position[_y]);
 		len[_y] += ray->delta_distances.y;
 		if (pix_pos_to_map_case(ray_position[_y], data->map) == WALL)
 			return (_y);

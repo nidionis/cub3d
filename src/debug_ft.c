@@ -99,25 +99,34 @@ void	draw_wall_line(t_data *data, int i)
 	t_ray	ray;
 	int		line_size;
 	int		color;
+	int		line_width = SCREEN_WIDTH / CAM_QUALITY;
+	int		loop;
 	
 	ray = data->cam->arRay[i];
-	start.x = i;
-	end.x = i;
-	if (ray.dist_from_plan != 0)
-		line_size = (int)SCREEN_HEIGHT / ray.dist_from_plan;
-	else
-		line_size = (int)SCREEN_HEIGHT;
+	start.x = i * line_width;
+	end.x = i * line_width;
+	line_size = (int)SCREEN_HEIGHT / ray.dist_from_plan;
 	start.y = (int)SCREEN_HEIGHT / 2 - line_size / 2;
 	end.y = (int)SCREEN_HEIGHT / 2 + line_size / 2;
 
 	if (ray.side == NORTH)
 		color = rgb_conv(0, 0, 255);
-	if (ray.side == SOUTH)
-		color = rgb_conv(255, 0, 255);
-	if (ray.side == EAST)
+	else if (ray.side == SOUTH)
+		color = rgb_conv(255, 255, 255);
+	else if (ray.side == EAST)
 		color = rgb_conv(0, 255, 0);
+	else if (ray.side == WEST)
+		color = rgb_conv(255, 0, 0);
 	else
-		color = rgb_conv(255, 255, 0);
-	draw_line(data, &start, &end, color);
+		color = rgb_conv(20, 20, 20);
+	loop = 0;
+	while (loop < line_width)
+	{
+		draw_line(data, &start, &end, color);
+		start.x++;
+		end.x++;
+		loop++;
+	}
+	
 }
 

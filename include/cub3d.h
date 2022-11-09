@@ -82,23 +82,23 @@
 # define MAPCASES "01 "
 /* MAPCASE to consider as a wall */
 # define IS_BLOCK "1 "
+# define NB_TEXTURES 4
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 720
-# define RAYCAST_QUALITY 50
-# define NB_TEXTURES 4
-# define UNITS_PER_BOX 1000
+# define UNITS_PER_BOX 50
 # define STEPS_PER_BOX 10
-# define WALL_SIZE 100
+/* should be eaual to windows width*/
+# define CAM_QUALITY 50
 /* in radient 66 = 1.15*/
-# define CAM_ANGLE 1.15
 /* num of ray_parse for a pic */
-# define CAM_QUALITY 1000
+# define CAM_ANGLE 1.15
+# define ORIGIN_PLANE_SCALE 1.0
+# define WALL_SIZE 100
 /* file deleted with make clean */
 # define DEBUG_LOG_FILENAME "debug_file"
 # define PI 3.141592654
 # define DEFAULT_ROTATION_ANGLE (3.141592654 / 12.000)
 # define PLAYER_MAP_ARROW 20
-# define ORIGIN_PLANE_SCALE 1.0
 
 //COLORS 
 # define RED "\033[1;31m"
