@@ -124,14 +124,21 @@ double	vector_dot_product(t_vector v1, t_vector v2)
 	return (dot_product);
 }
 
-/* https://www.cuemath.com/geometry/angle-between-vectors/ */
-/* sin(a) = |v1 * v2| / (|v1| * |v2|)
-				|->cross product
+/* line defined by :
+line[0] = origin_point
+line[1] = any_other_point
 */
-double	vectors_angle_sin(t_vector v1, t_vector v2)
+double	distance_line_to_point(t_vector line[2], t_point p)
 {
-	double	sin_angle;
+	double		dist;
+	double		numerateur;
+	double		denoninateur;
+	t_vector	p_cpy;
 
-	sin_angle = fabs(vector_dot_product(v1, v2)) / (vec_len(v1) * vec_len(v2));
-	return (sin_angle);
+	p_cpy.x = (double)p.x;
+	p_cpy.y = (double)p.y;
+	numerateur = fabs((line[1].x - line[0].x) * (line[0].y - p_cpy.y) - (line[0].x - p_cpy.x) * (line[1].y - line[0].y));
+	denoninateur = sqrt(pow((line[1].x - line[0].x), 2) + pow((line[1].y - line[0].y), 2));
+	dist = numerateur / denoninateur;
+	return (dist);
 }

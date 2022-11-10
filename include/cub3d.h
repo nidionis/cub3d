@@ -88,7 +88,7 @@
 /* should be eaual to windows width*/
 # define CAM_QUALITY 1280
 # define NB_TEXTURES 4
-# define UNITS_PER_BOX 10000
+# define UNITS_PER_BOX 100
 # define STEPS_PER_BOX 20
 # define WALL_SIZE 30
 /* in radient 66 = 1.15*/
@@ -283,11 +283,11 @@ t_vector	convert_pt_to_vec(t_point p);
 void	set_delta_distance(t_data *data);
 void	set_side_distance(t_data *data);
 char	pix_pos_to_map_case(t_data *data, t_point absolute_pos);
-double	vectors_angle_sin(t_vector v1, t_vector v2);
 void	draw_wall_line(t_data *data, int i);
 int	ray_cast(t_data *data);
 void	set_arRay(t_data *data);
 int	still_in_map(t_data  *data, t_point pt);
+double	distance_line_to_point(t_vector line[2], t_point p);
 
 //duarte functions
 int	window_init(t_window *window);

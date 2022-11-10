@@ -123,11 +123,25 @@ int	beam_step(t_data *data, t_point ray_position[2], double len[2])
 	return (-1);
 }
 
+void set_dist_from_plan(t_data *data)
+{
+	t_vector	cam_dir;
+	t_vector	v_pos;
+	t_vector	line[2];
+
+	cam_dir = data->cam->plane_dir;
+	v_pos.x = (double)data->player->pos_in_pix.x;
+	v_pos.y = (double)data->player->pos_in_pix.y;
+	line[0] = v_pos;
+	translate_vector_as_pt(cam_dir, &v_pos);
+	line[1] = v_pos;
+	data->cam->beam->dist_from_plan = distance_line_to_point(line, 	data->cam->beam->hit_point);
+}
+
 void	raysult(t_data *data, t_point ray_position[2], double len[2], int side_hit)
 {
 	t_cam		*cam;
 	t_ray		*ray;
-	t_vector	cam_dir;
 
 	cam = data->cam;
 	ray = cam->beam;
@@ -147,8 +161,7 @@ void	raysult(t_data *data, t_point ray_position[2], double len[2], int side_hit)
 			ray->side = EAST;
 	}
 	ray->hit_point = ray_position[side_hit];
-	cam_dir = data->cam->plane_dir;
-	ray->dist_from_plan = vectors_angle_sin(cam_dir, ray->direction) * ray->len;
+	set_dist_from_plan(data);
 }
 
 /*

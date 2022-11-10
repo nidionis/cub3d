@@ -147,9 +147,9 @@ int	move_player(t_data *data, int move)
 	if (move == BACKWARD)
 		rotate_vector(&scaled_direction, degree_to_radian(180));
 	else if (move == RIGHT)
-		rotate_vector(&scaled_direction, degree_to_radian(-90));
-	else if (move == LEFT)
 		rotate_vector(&scaled_direction, degree_to_radian(90));
+	else if (move == LEFT)
+		rotate_vector(&scaled_direction, degree_to_radian(-90));
 	else if (move != FORWARD)
 		error_msg("[move_player] wrong move instruction");
 //	fprintf(stderr, "[move_player] scale_dir (%5lf,%5lf)\n", scaled_direction.x, scaled_direction.y);

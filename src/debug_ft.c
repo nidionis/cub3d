@@ -107,7 +107,7 @@ void	draw_wall_line(t_data *data, int i)
 	good_ratio = (double)SCREEN_HEIGHT * (double)UNITS_PER_BOX;
 	start.x = i * line_width;
 	end.x = i * line_width;
-	line_height = good_ratio / ray.len;
+	line_height = good_ratio / ray.dist_from_plan;
 	if (line_height > SCREEN_HEIGHT)
 		line_height = (int)SCREEN_HEIGHT;
 	start.y = (int)SCREEN_HEIGHT / 2 - line_height / 2;
