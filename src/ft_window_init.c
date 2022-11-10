@@ -127,6 +127,21 @@ void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)
     }
 }
 
+t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position)
+{
+	t_point		pos_for_map;
+	double		u;
+	double		wall_size;
+	(void)data;
+	
+	u = (double)UNITS_PER_BOX;
+	wall_size = (double)WALL_SIZE;
+	pos_for_map.x = wall_size * (((double)absolute_position.x / u));
+	pos_for_map.y = wall_size * (((double)absolute_position.y / u));
+	return (pos_for_map);
+}
+
+/*
 t_point	get_minimap_position(t_data *data, t_player *player)
 {
 	t_point		pos_for_map;
@@ -146,6 +161,7 @@ t_point	get_minimap_position(t_data *data, t_player *player)
 	pos_for_map.y = wall_size * (player->pos_map.y) + (int)(wall_size * minimap_pos_in_box[_y]);
 	return (pos_for_map);
 }
+*/
 
 void	draw_vision_field(t_data *data, t_point minimap_position)
 {
@@ -158,8 +174,7 @@ void	draw_vision_field(t_data *data, t_point minimap_position)
 	(void)nb_ray;
 	while (i < CAM_QUALITY)
 	{
-			end.x = minimap_position.x + data->cam->arRay[i].direction.x * 10;//dx
-			end.y = minimap_position.y + data->cam->arRay[i].direction.y * 10;// dy
+			end = units_pos_to_minimap_pos(data, data->cam->arRay[i].hit_point);//dx
 			draw_line(data, &minimap_position, &end, rgb_conv(100, 100, 100));
 		i++;
 	}
@@ -174,7 +189,7 @@ void	draw_player(t_data *data)
 	t_point		minimap_position;
 
 	player = data->player;
-	minimap_position = get_minimap_position(data, player);
+	minimap_position = units_pos_to_minimap_pos(data, player->pos_in_pix);
 	draw_cube(data->window, 5, minimap_position.y, minimap_position.x, 0x0F0F0F);
     draw_vision_field(data, minimap_position);
 }

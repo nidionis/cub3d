@@ -105,7 +105,10 @@ void	draw_wall_line(t_data *data, int i)
 	ray = data->cam->arRay[i];
 	start.x = i * line_width;
 	end.x = i * line_width;
-	line_size = (int)SCREEN_HEIGHT / ray.dist_from_plan;
+	if (ray.dist_from_plan < 1)
+		line_size = (int)SCREEN_HEIGHT;
+	else
+		line_size = (int)SCREEN_HEIGHT / ray.dist_from_plan;
 	start.y = (int)SCREEN_HEIGHT / 2 - line_size / 2;
 	end.y = (int)SCREEN_HEIGHT / 2 + line_size / 2;
 

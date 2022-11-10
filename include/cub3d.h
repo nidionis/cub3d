@@ -87,15 +87,14 @@
 # define SCREEN_HEIGHT 720
 /* should be eaual to windows width*/
 # define CAM_QUALITY 1280
-# define RAYCAST_QUALITY 50
 # define NB_TEXTURES 4
-# define UNITS_PER_BOX 1000
+# define UNITS_PER_BOX 10000
 # define STEPS_PER_BOX 8
 # define WALL_SIZE 30
 /* in radient 66 = 1.15*/
 /* num of ray_parse for a pic */
 # define CAM_ANGLE 1.15
-# define ORIGIN_PLANE_SCALE 1.0
+# define ORIGIN_PLANE_SCALE 3.0
 /* file deleted with make clean */
 # define DEBUG_LOG_FILENAME "debug_file"
 # define PI 3.141592654
