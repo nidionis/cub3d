@@ -56,19 +56,12 @@ int	key_event(int key, t_data *data)
     else if (key == KEY_RIGHT)
     {
 		printf("player move left\n");
-		player->angle -= 5;
-		player->angle = fix_ang(player->angle);
-		player->direction.x = cos(degree_to_radian(player->angle)) * 2;
-		player->direction.y = -sin(degree_to_radian(player->angle)) * 2;
+		rotate_player(data->player, RIGHT);
     }
 	else if (key ==KEY_LEFT)
     {
 		printf("player move right\n");
-		player->angle += 5;
-		player->angle = fix_ang(player->angle);
-		player->direction.x = cos(degree_to_radian(player->angle)) * 2;
-		player->direction.y = -sin(degree_to_radian(player->angle)) * 2;
-		
+		rotate_player(data->player, LEFT);
     }
     mlx_clear_window(data->window->mlx, data->window->init);
 	return (0);
