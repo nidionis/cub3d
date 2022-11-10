@@ -88,7 +88,7 @@
 # define UNITS_PER_BOX 50
 # define STEPS_PER_BOX 10
 /* should be eaual to windows width*/
-# define CAM_QUALITY 10
+# define CAM_QUALITY 1280
 /* in radient 66 = 1.15*/
 /* num of ray_parse for a pic */
 # define CAM_ANGLE 1.15
