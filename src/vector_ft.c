@@ -81,12 +81,17 @@ y
 
 void	rotate_vector(t_vector *vector, double radian_angle)
 {
-	t_vector vector_cpy;
+	t_vector 	vector_cpy;
+	double		two_pi;
 
-	radian_angle *= -1.0;
+	two_pi = 2.0 * (double)PI;
+	while (radian_angle < 0)
+		radian_angle += two_pi;
+	while (radian_angle > two_pi)
+		radian_angle -= two_pi;
 	vector_cpy = *vector;
-	vector->x = vector->x * cos(radian_angle) - vector->y * sin(radian_angle);
-	vector->y = vector->y * cos(radian_angle) + vector_cpy.x * sin(radian_angle);
+	vector->x = vector_cpy.x * cos(radian_angle) - vector_cpy.y * sin(radian_angle);
+	vector->y = vector_cpy.y * cos(radian_angle) + vector_cpy.x * sin(radian_angle);
 }
 
 /* https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line */

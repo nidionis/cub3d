@@ -22,8 +22,8 @@ void	set_delta_distance(t_data *data)
 	ray = cam->beam;
 	u = (double)UNITS_PER_BOX;
 	ray->direction_len = vec_len(ray->direction);
-	ray->delta_distances.x = ray->direction_len * u / ray->direction.x;
-	ray->delta_distances.y = ray->direction_len * u / ray->direction.y;
+	ray->delta_distances.x = ray->direction_len * u / fabs(ray->direction.x);
+	ray->delta_distances.y = ray->direction_len * u / fabs(ray->direction.y);
 	ray->vector_deltaX = vec_scale(ray->direction, ray->delta_distances.x / ray->direction_len);
 	ray->vector_deltaY = vec_scale(ray->direction, ray->delta_distances.y / ray->direction_len);
 }
