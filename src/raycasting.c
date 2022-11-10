@@ -44,13 +44,13 @@ void	set_side_distance(t_data *data)
 	player = data->player;
 	u = (double)UNITS_PER_BOX;
 	if (ray->direction.x > 0)
-		ray->side_distances.x = ray->delta_distances.x * (double)(u - player->pos_box.x) / u;
+		ray->side_distances.x = ray->delta_distances.x * ((double)(u - player->pos_box.x) / u);
 	else
-		ray->side_distances.x = ray->delta_distances.x * (double)(1 + player->pos_box.x) / u;
+		ray->side_distances.x = ray->delta_distances.x * ((double)(1 + player->pos_box.x) / u);
 	if (ray->direction.y > 0)
-		ray->side_distances.y = ray->delta_distances.y * (double)(u - player->pos_box.y) / u;
+		ray->side_distances.y = ray->delta_distances.y * ((double)(u - player->pos_box.y) / u);
 	else
-		ray->side_distances.y = ray->delta_distances.y * (double)(1 + player->pos_box.y) / u;
+		ray->side_distances.y = ray->delta_distances.y * ((double)(1 + player->pos_box.y) / u);
 	ray->vector_sideX = vec_scale(ray->direction, ray->side_distances.x / ray->direction_len);
 	ray->vector_sideY = vec_scale(ray->direction, ray->side_distances.y / ray->direction_len);
 }
@@ -132,23 +132,23 @@ void	raysult(t_data *data, t_point ray_position[2], double len[2], int side_hit)
 	cam = data->cam;
 	ray = cam->beam;
 	ray->len = len[side_hit];
-	if (side_hit == _x)
+	if (side_hit == _y)
 	{
 		if (ray->direction.y > 0)
-			ray->side = NORTH;
-		else
 			ray->side = SOUTH;
+		else
+			ray->side = NORTH;
 	}
 	else
 	{
 		if (ray->direction.x < 0)
-			ray->side = EAST;
-		else
 			ray->side = WEST;
+		else
+			ray->side = EAST;
 	}
 	ray->hit_point = ray_position[side_hit];
 	cam_dir = data->cam->plane_dir;
-	ray->dist_from_plan = vectors_angle_sin(ray->direction, cam_dir) * ray->len;
+	ray->dist_from_plan = vectors_angle_sin(cam_dir, ray->direction) * ray->len;
 }
 
 /*
@@ -165,11 +165,11 @@ t_ray	beam(t_data *data)
 	cam = data->cam;
 	set_beam(data, ray_position);
 	wall_hit = first_step(data, ray_position, len);
-	//while (wall_hit == -1)
-	//{
-	//	wall_hit = beam_step(data, ray_position, len);
-	//}
-	//if (wall_hit != -2)
+	while (wall_hit == -1)
+	{
+		wall_hit = beam_step(data, ray_position, len);
+	}
+	if (wall_hit != -2)
 		raysult(data, ray_position, len, wall_hit);
 	return (*(cam->beam));
 }

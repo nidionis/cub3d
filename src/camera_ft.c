@@ -35,7 +35,7 @@ void	set_plane_dir(t_data *data, double plane_size)
 	cam_quality = (double)CAM_QUALITY;
 	scale = plane_size / cam_quality;
 	nonante_deg = (double)PI;
-	nonante_deg /= (double)-2.0;
+	nonante_deg /= (double)2.0;
 	plane_dir_unit = data->player->direction;
 	plane_dir_unit = vec_scale(plane_dir_unit, scale);
 	rotate_vector(&plane_dir_unit, nonante_deg);
@@ -47,7 +47,7 @@ void	set_plane_origin(t_data *data)
 	t_vector	origin_plane;
 
 	origin_plane = vec_scale(data->player->direction, (double)ORIGIN_PLANE_SCALE);
-	rotate_vector(&origin_plane, (double)CAM_ANGLE / (double)2.0);
+	rotate_vector(&origin_plane, (double)CAM_ANGLE / (double)-2.0);
 	data->cam->origin_plane = origin_plane;
 }
 
