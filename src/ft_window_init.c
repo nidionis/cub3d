@@ -127,12 +127,38 @@ void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)
     }
 }
 
+t_point	get_minimap_position(t_data *data, t_player *player)
+{
+	t_point		pos_for_map;
+	double		u;
+	double		minimap_pos_in_box[2];
+	int			wall_size;
+	
+	u = (double)UNITS_PER_BOX;
+	wall_size = (double)WALL_SIZE;
+	minimap_pos_in_box[_x] = (double)player->pos_box.x;
+	minimap_pos_in_box[_y] = (double)player->pos_box.y;
+	minimap_pos_in_box[_x] /= u;
+	minimap_pos_in_box[_y] /= u;
+	// put in the wright box
+	pos_for_map.x = wall_size * (player->pos_map.x) + (int)(wall_size * minimap_pos_in_box[_x]);
+	pos_for_map.y = wall_size * (player->pos_map.y) + (int)(wall_size * minimap_pos_in_box[_y]);
+	return (pos_for_map);
+}
+
+
 void	draw_player(t_data *data)
 {
 	t_player *player;
+	t_point		minimap_position;
+	t_point		end;
 
 	player = data->player;
-	draw_cube(data->window, 5, player->pos_box.y, player->pos_box.x, 0xF00F0F);
+	minimap_position = get_minimap_position(data, player);
+	draw_cube(data->window, 5, minimap_position.y, minimap_position.x, 0x0F0F0F);
+	end.x = minimap_position.x + data->player->direction.x * 20;//dx
+	end.y = minimap_position.y + data->player->direction.y * 20;// dy
+	draw_line(data, &minimap_position, &end, 0xfffff0);
 
 }
 
@@ -163,25 +189,18 @@ void	draw_mini_map(t_data *data)
 		pos.x = 0;
 		pos.y++;
 	}
-	draw_player(data);
+	//draw_player(data);
 }
-
-
 
 /* draw_ray */
 int	ray_cast(t_data *data)
 {
 	t_point end;
-	
 	draw_mini_map(data);
-	end.x = data->player->pos_box.x + data->player->direction.x * 20;//dx
-	end.y = data->player->pos_box.y + data->player->direction.y * 20;// dy
 	draw_player(data);
-	draw_line(data, &data->player->pos_box, &end, 0xfffff0);
 	// mlx_clear_window(data->window->mlx, data->window->init);
 	return (0);
 }
-
 
 int	render_map_2d(t_data *data)
 {
