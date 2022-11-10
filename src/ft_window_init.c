@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_window_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/02 21:32:46 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:37:33 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,58 @@ void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)
     }
 }
 
+t_point	get_minimap_position(t_data *data, t_player *player)
+{
+	t_point		pos_for_map;
+	double		u;
+	double		minimap_pos_in_box[2];
+	int			wall_size;
+	(void)data;
+	
+	u = (double)UNITS_PER_BOX;
+	wall_size = (double)WALL_SIZE;
+	minimap_pos_in_box[_x] = (double)player->pos_box.x;
+	minimap_pos_in_box[_y] = (double)player->pos_box.y;
+	minimap_pos_in_box[_x] /= u;
+	minimap_pos_in_box[_y] /= u;
+	// put in the wright box
+	pos_for_map.x = wall_size * (player->pos_map.x) + (int)(wall_size * minimap_pos_in_box[_x]);
+	pos_for_map.y = wall_size * (player->pos_map.y) + (int)(wall_size * minimap_pos_in_box[_y]);
+	return (pos_for_map);
+}
+
+void	draw_vision_field(t_data *data, t_point minimap_position)
+{
+	t_point		end;
+	int			i;
+	int			nb_ray;
+
+	i = 0;
+	nb_ray = 5;
+	(void)nb_ray;
+	while (i < CAM_QUALITY)
+	{
+			end.x = minimap_position.x + data->cam->arRay[i].direction.x * 10;//dx
+			end.y = minimap_position.y + data->cam->arRay[i].direction.y * 10;// dy
+			draw_line(data, &minimap_position, &end, rgb_conv(100, 100, 100));
+		i++;
+	}
+		end.x = minimap_position.x + data->player->direction.x * 15;//dx
+		end.y = minimap_position.y + data->player->direction.y * 15;// dy
+		draw_line(data, &minimap_position, &end, rgb_conv(100, 100, 100));
+}
+
+void	draw_player(t_data *data)
+{
+	t_player *player;
+	t_point		minimap_position;
+
+	player = data->player;
+	minimap_position = get_minimap_position(data, player);
+	draw_cube(data->window, 5, minimap_position.y, minimap_position.x, 0x0F0F0F);
+    draw_vision_field(data, minimap_position);
+}
+
 void	draw_mini_map(t_data *data)
 {
 	t_point	pos;
@@ -142,32 +194,19 @@ void	draw_mini_map(t_data *data)
 		{
 			if (data->map[pos.y][pos.x] == '1')
 				draw_cube(data->window, WALL_SIZE, pos.y * WALL_SIZE + \
-					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, rgb_conv(50, 100, 50));
+					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xF00F0F);
 			else
 				draw_cube(data->window, WALL_SIZE, pos.y * WALL_SIZE + \
-					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, rgb_conv(50, 10, 200));
+					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xf0ff00);
 			i++;
 			pos.x++;
 		}
 		j++;
 		i = 0;
-		// i = 0;
 		pos.x = 0;
 		pos.y++;
 	}
-}
-
-void	draw_player(t_data *data)
-{
-	/* player struct changed :
-		you can use absolute positions (in pizel or steps) if you merge
-		*/
-	t_player *player;
-
-	player = data->player;
-	/* '5' is hard coded */
-	draw_cube(data->window, 5, player->pos_box.y, player->pos_box.x, rgb_conv(255, 155, 255));
-
+	//draw_player(data);
 }
 
 /* draw_ray */
@@ -183,21 +222,16 @@ int	ray_cast(t_data *data)
 		draw_wall_line(data, i);
 		i++;
 	}
+	render_map_2d(data);
 	return (0);
 }
 
-
 int	render_map_2d(t_data *data)
 {
-	t_point end;
-	
-	/* maybe map_border ? */
-	draw_cube(data->window, 1200,0, 0, rgb_conv(250, 0, 0));
-	end.x = data->player->pos_box.x + data->player->direction.x * PLAYER_MAP_ARROW;//dx
-	end.y = data->player->pos_box.y + data->player->direction.y * PLAYER_MAP_ARROW;// dy
+	(void)data;
 	draw_mini_map(data);
 	draw_player(data);
-	draw_line(data, &data->player->pos_box, &end, rgb_conv(20, 0, 250));
+	// mlx_clear_window(data->window->mlx, data->window->init);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_event.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:57:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/07 15:17:30 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:40:47 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,20 @@ int	key_event(int key, t_data *data)
 	}
     else if (key == KEY_RIGHT)
     {
-		printf("player rotate right\n");
-		rotate_player(data->player, RIGHT);
+		printf("player move left\n");
+		player->angle -= 5;
+		player->angle = fix_ang(player->angle);
+		player->direction.x = cos(degree_to_radian(player->angle)) * 2;
+		player->direction.y = -sin(degree_to_radian(player->angle)) * 2;
     }
 	else if (key ==KEY_LEFT)
     {
-		printf("player rotate left\n");
-		rotate_player(data->player, LEFT);
+		printf("player move right\n");
+		player->angle += 5;
+		player->angle = fix_ang(player->angle);
+		player->direction.x = cos(degree_to_radian(player->angle)) * 2;
+		player->direction.y = -sin(degree_to_radian(player->angle)) * 2;
+		
     }
     mlx_clear_window(data->window->mlx, data->window->init);
 	return (0);
