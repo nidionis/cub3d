@@ -22,8 +22,14 @@ void	set_delta_distance(t_data *data)
 	ray = cam->beam;
 	u = (double)UNITS_PER_BOX;
 	ray->direction_len = vec_len(ray->direction);
-	ray->delta_distances.x = ray->direction_len * u / fabs(ray->direction.x);
-	ray->delta_distances.y = ray->direction_len * u / fabs(ray->direction.y);
+	if (ray->direction.x)
+		ray->delta_distances.x = ray->direction_len * u / fabs(ray->direction.x);
+	else
+		ray->delta_distances.x = 2147483647;
+	if (ray->direction.y)
+		ray->delta_distances.y = ray->direction_len * u / fabs(ray->direction.y);
+	else
+		ray->delta_distances.y = 2147483647;
 	ray->vector_deltaX = vec_scale(ray->direction, ray->delta_distances.x / ray->direction_len);
 	ray->vector_deltaY = vec_scale(ray->direction, ray->delta_distances.y / ray->direction_len);
 }
@@ -92,7 +98,7 @@ int	beam_step(t_data *data, t_point ray_position[2], double len[2])
 	t_ray	*ray;
 
 	ray = data->cam->beam;
-	if (len[_x] < len[_y])
+	if (len[_x] < len[_y] && len[_x] > 0)
 	{
 		translate_pt(ray->vector_deltaX, &ray_position[_x]);
 		len[_x] += ray->delta_distances.x;
@@ -100,13 +106,11 @@ int	beam_step(t_data *data, t_point ray_position[2], double len[2])
 		{
 			if (pix_pos_to_map_case(data, ray_position[_x]) == WALL)
 				return (_x);
-		} else if (!still_in_map(data, ray_position[_y]))
-		{
-			fprintf(stderr, "[beam] ray_lost\n");
-			return (-2);
 		}
+		else
+			return (-2);
 	}
-	else
+	else if (len[_y] > 0)
 	{
 		translate_pt(ray->vector_deltaY, &ray_position[_y]);
 		len[_y] += ray->delta_distances.y;
@@ -114,11 +118,21 @@ int	beam_step(t_data *data, t_point ray_position[2], double len[2])
 		{
 			if (pix_pos_to_map_case(data, ray_position[_y]) == WALL)
 				return (_y);
-		} else if (!still_in_map(data, ray_position[_x]))
-		{
-			fprintf(stderr, "[beam] ray_lost\n");
-			return (-2);
 		}
+		else
+			return (-3);
+	}
+	else
+	{
+		translate_pt(ray->vector_deltaX, &ray_position[_x]);
+		len[_x] += ray->delta_distances.x;
+		if (still_in_map(data, ray_position[_x]))
+		{
+			if (pix_pos_to_map_case(data, ray_position[_x]) == WALL)
+				return (_x);
+		}
+		else
+			return (-2);
 	}
 	return (-1);
 }
@@ -180,6 +194,10 @@ t_ray	beam(t_data *data)
 	wall_hit = first_step(data, ray_position, len);
 	while (wall_hit == -1)
 	{
+		if (wall_hit == -2)
+			len[_x] = -1;
+		else if (wall_hit == -3)
+			len[_y] = -1;
 		wall_hit = beam_step(data, ray_position, len);
 	}
 	if (wall_hit != -2)
