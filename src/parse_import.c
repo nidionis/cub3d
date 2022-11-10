@@ -104,7 +104,6 @@ void	parse_file(char *fname, t_data *data)
 		{
 			parsing_loop(data, &map_parse);
 			if (map_parse == -1)
-
 				break ;
 			data->line = get_next_line(fd);
 		}

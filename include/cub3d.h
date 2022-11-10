@@ -89,12 +89,12 @@
 # define CAM_QUALITY 1280
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 10000
-# define STEPS_PER_BOX 8
+# define STEPS_PER_BOX 20
 # define WALL_SIZE 30
 /* in radient 66 = 1.15*/
 /* num of ray_parse for a pic */
 # define CAM_ANGLE 1.15
-# define ORIGIN_PLANE_SCALE 3.0
+# define ORIGIN_PLANE_SCALE 1.0
 /* file deleted with make clean */
 # define DEBUG_LOG_FILENAME "debug_file"
 # define PI 3.141592654
