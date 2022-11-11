@@ -188,9 +188,6 @@ void	draw_mini_map(t_data *data)
 			if (data->map[pos.y][pos.x] == '1')
 				draw_cube(data->window, WALL_SIZE, pos.y * WALL_SIZE + \
 					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xF00F0F);
-			else
-				draw_cube(data->window, WALL_SIZE, pos.y * WALL_SIZE + \
-					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xf0ff00);
 			i++;
 			pos.x++;
 		}
