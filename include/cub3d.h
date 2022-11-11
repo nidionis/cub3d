@@ -288,6 +288,8 @@ int	ray_cast(t_data *data);
 void	set_arRay(t_data *data);
 int	still_in_map(t_data  *data, t_point pt);
 double	distance_line_to_point(t_vector line[2], t_point p);
+void	set_delta_distance(t_data *data);
+void	set_side_distance(t_data *data);
 
 //duarte functions
 int	window_init(t_window *window);
