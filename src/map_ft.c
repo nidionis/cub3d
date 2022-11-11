@@ -36,9 +36,7 @@ char	pix_pos_to_map_case(t_data *data, t_point absolute_pos)
 	if (still_in_map(data, absolute_pos))
 		c = map[map_pos.y][map_pos.x];
 	else
-	{
-		fprintf(stderr, "[pix_pos_to_map_case] outside of the map\n");
-	}
+		c = -1;
 	return (c);
 }
 
