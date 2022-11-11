@@ -83,13 +83,13 @@
 /* MAPCASE to consider as a wall */
 # define IS_BLOCK "1 "
 # define NB_TEXTURES 4
-# define SCREEN_WIDTH 1280
+# define SCREEN_WIDTH 2000
 # define SCREEN_HEIGHT 720
 /* should be eaual to windows width*/
-# define CAM_QUALITY 1280
+# define CAM_QUALITY 20
 # define NB_TEXTURES 4
-# define UNITS_PER_BOX 10000
-# define STEPS_PER_BOX 8
+# define UNITS_PER_BOX 100000
+# define STEPS_PER_BOX 21
 # define WALL_SIZE 30
 /* in radient 66 = 1.15*/
 /* num of ray_parse for a pic */
@@ -98,7 +98,7 @@
 /* file deleted with make clean */
 # define DEBUG_LOG_FILENAME "debug_file"
 # define PI 3.141592654
-# define DEFAULT_ROTATION_ANGLE (3.141592654 / 12.000)
+# define DEFAULT_ROTATION_ANGLE (3.141592654 / 48.000)
 # define PLAYER_MAP_ARROW 20
 
 //COLORS 
