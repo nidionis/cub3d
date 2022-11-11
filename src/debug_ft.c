@@ -113,12 +113,11 @@ void	draw_wall_line(t_data *data, int i)
 	floor_end.y = SCREEN_HEIGHT - 1;
 	ceiling_start.x = i * line_width;
 	ceiling_start.y = 0;
-	line_height = good_ratio / ray.len;
+	line_height = good_ratio / ray.dist_from_plan;
 	if (line_height > SCREEN_HEIGHT)
 		line_height = (int)SCREEN_HEIGHT;
 	start.y = (int)SCREEN_HEIGHT / 2 - line_height / 2;
 	end.y = (int)SCREEN_HEIGHT / 2 + line_height / 2;
-
 	if (ray.side == NORTH)
 		color = rgb_conv(0, 0, 255);
 	else if (ray.side == SOUTH)
@@ -141,6 +140,5 @@ void	draw_wall_line(t_data *data, int i)
 		ceiling_start.x++;
 		loop++;
 	}
-	
 }
 

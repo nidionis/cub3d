@@ -22,16 +22,14 @@ void	set_delta_distance(t_data *data)
 	ray = cam->beam;
 	u = (double)UNITS_PER_BOX;
 	ray->direction_len = vec_len(ray->direction);
-	if (fabs(ray->direction.x) < 0.000000001)
-		ray->delta_distances.x = ray->direction_len * u / fabs(ray->direction.x);
+	if (fabs(ray->direction.x) > 0.000000001)
+		ray->delta_distances[_x] = ray->direction_len * u / fabs(ray->direction.x);
 	else
-		ray->delta_distances.x = 1000000000;
-	if (fabs(ray->direction.y) < 0.000000001)
-		ray->delta_distances.y = ray->direction_len * u / fabs(ray->direction.y);
+		ray->delta_distances[_x] = 1000000000;
+	if (fabs(ray->direction.y) > 0.000000001)
+		ray->delta_distances[_y] = ray->direction_len * u / fabs(ray->direction.y);
 	else
-		ray->delta_distances.y = 2147483647;
-	ray->vector_deltaX = vec_scale(ray->direction, ray->delta_distances.x / ray->direction_len);
-	ray->vector_deltaY = vec_scale(ray->direction, ray->delta_distances.y / ray->direction_len);
+		ray->delta_distances[_y] = 2147483647;
 }
 
 void	set_side_distance(t_data *data)
@@ -46,13 +44,11 @@ void	set_side_distance(t_data *data)
 	player = data->player;
 	u = (double)UNITS_PER_BOX;
 	if (ray->direction.x > 0)
-		ray->side_distances.x = ray->delta_distances.x * ((double)(u - player->pos_box.x) / u);
+		ray->side_distances[_x] = ray->delta_distances[_x] * ((double)(u - player->pos_box.x) / u);
 	else
-		ray->side_distances.x = ray->delta_distances.x * ((double)(1 + player->pos_box.x) / u);
+		ray->side_distances[_x] = ray->delta_distances[_x] * ((double)(1 + player->pos_box.x) / u);
 	if (ray->direction.y > 0)
-		ray->side_distances.y = ray->delta_distances.y * ((double)(u - player->pos_box.y) / u);
+		ray->side_distances[_y] = ray->delta_distances[_y] * ((double)(u - player->pos_box.y) / u);
 	else
-		ray->side_distances.y = ray->delta_distances.y * ((double)(1 + player->pos_box.y) / u);
-	ray->vector_sideX = vec_scale(ray->direction, ray->side_distances.x / ray->direction_len);
-	ray->vector_sideY = vec_scale(ray->direction, ray->side_distances.y / ray->direction_len);
+		ray->side_distances[_y] = ray->delta_distances[_y] * ((double)(1 + player->pos_box.y) / u);
 }

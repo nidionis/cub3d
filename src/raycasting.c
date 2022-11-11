@@ -12,129 +12,10 @@
 
 #include "cub3d.h"
 
-void	set_delta_distance(t_data *data)
+void	set_beam(t_data *data)
 {
-	t_ray 	*ray;
-	t_cam	*cam;
-	double	u;
-	
-	cam = data->cam;
-	ray = cam->beam;
-	u = (double)UNITS_PER_BOX;
-	ray->direction_len = vec_len(ray->direction);
-	if (ray->direction.x)
-		ray->delta_distances.x = ray->direction_len * u / fabs(ray->direction.x);
-	else
-		ray->delta_distances.x = 2147483647;
-	if (ray->direction.y)
-		ray->delta_distances.y = ray->direction_len * u / fabs(ray->direction.y);
-	else
-		ray->delta_distances.y = 2147483647;
-	ray->vector_deltaX = vec_scale(ray->direction, ray->delta_distances.x / ray->direction_len);
-	ray->vector_deltaY = vec_scale(ray->direction, ray->delta_distances.y / ray->direction_len);
-}
-
-/*
-  not sure of the calcul, but set the distance to the next_case 
- 	delta_dist MUST BE UPDATED
-	*/
-void	set_side_distance(t_data *data)
-{
-	t_cam		*cam;
-	t_ray		*ray;
-	t_player	*player;
-	double		u;
-	
-	cam = data->cam;
-	ray = cam->beam;
-	player = data->player;
-	u = (double)UNITS_PER_BOX;
-	if (ray->direction.x > 0)
-		ray->side_distances.x = ray->delta_distances.x * ((double)(u - player->pos_box.x) / u);
-	else
-		ray->side_distances.x = ray->delta_distances.x * ((double)(1 + player->pos_box.x) / u);
-	if (ray->direction.y > 0)
-		ray->side_distances.y = ray->delta_distances.y * ((double)(u - player->pos_box.y) / u);
-	else
-		ray->side_distances.y = ray->delta_distances.y * ((double)(1 + player->pos_box.y) / u);
-	ray->vector_sideX = vec_scale(ray->direction, ray->side_distances.x / ray->direction_len);
-	ray->vector_sideY = vec_scale(ray->direction, ray->side_distances.y / ray->direction_len);
-}
-
-void	set_beam(t_data *data, t_point ray_position[2])
-{
-	ray_position[_x] = data->player->pos_in_pix;
-	ray_position[_y] = data->player->pos_in_pix;
 	set_delta_distance(data);
 	set_side_distance(data);
-}
-
-int	first_step(t_data *data, t_point ray_position[2], double len[2])
-{
-	t_ray	*ray;
-	char	next_cases[2];
-	int		closest;
-
-	ray = data->cam->beam;
-	closest = _y;
-	len[_x] = ray->side_distances.x;
-	len[_y] = ray->side_distances.y;
-	if (len[_x] > 0 && len[_x] < len [_y])
-		closest = _x;
-	translate_pt(ray->vector_sideX, &ray_position[_x]);
-	translate_pt(ray->vector_sideY, &ray_position[_y]);
-	next_cases[closest] = pix_pos_to_map_case(data, ray_position[closest]);
-	if (next_cases[closest] == WALL)
-		return (closest);
-	if (still_in_map(data, ray_position[!closest]))
-		next_cases[!closest] = pix_pos_to_map_case(data, ray_position[!closest]);
-	if (next_cases[!closest] == WALL)
-		return (!closest);
-	return (-1);
-}
-
-int	beam_step(t_data *data, t_point ray_position[2], double len[2])
-{
-	t_ray	*ray;
-
-	ray = data->cam->beam;
-	if (len[_x] < len[_y] && len[_x] > 0)
-	{
-		translate_pt(ray->vector_deltaX, &ray_position[_x]);
-		len[_x] += ray->delta_distances.x;
-		if (still_in_map(data, ray_position[_x]))
-		{
-			if (pix_pos_to_map_case(data, ray_position[_x]) == WALL)
-				return (_x);
-		}
-		else
-			return (-2);
-	}
-	else if (len[_y] > 0)
-	{
-		translate_pt(ray->vector_deltaY, &ray_position[_y]);
-		len[_y] += ray->delta_distances.y;
-		if (still_in_map(data, ray_position[_y]))
-		{
-			if (pix_pos_to_map_case(data, ray_position[_y]) == WALL)
-				return (_y);
-		}
-		else
-			return (-3);
-	}
-	else
-	{
-		translate_pt(ray->vector_deltaX, &ray_position[_x]);
-		len[_x] += ray->delta_distances.x;
-		if (still_in_map(data, ray_position[_x]))
-		{
-			if (pix_pos_to_map_case(data, ray_position[_x]) == WALL)
-				return (_x);
-		}
-		else
-			return (-2);
-	}
-	return (-1);
 }
 
 void set_dist_from_plan(t_data *data)
@@ -152,15 +33,47 @@ void set_dist_from_plan(t_data *data)
 	data->cam->beam->dist_from_plan = distance_line_to_point(line, 	data->cam->beam->hit_point);
 }
 
-void	raysult(t_data *data, t_point ray_position[2], double len[2], int side_hit)
+int	len_overflow(int len)
+{
+	if (len < 0 || len > 2000000000)
+		return (1);
+	return (0);
+}
+
+t_ray	next_wall_dir(t_data *data, int dir)
 {
 	t_cam		*cam;
-	t_ray		*ray;
+	t_ray		ray;
+	t_vector	vect;
 
 	cam = data->cam;
-	ray = cam->beam;
-	ray->len = len[side_hit];
-	if (side_hit == _y)
+	ray = *(cam->beam);
+	ray.len = ray.side_distances[dir];
+	while (!len_overflow(ray.len))
+	{
+		vect = vec_scale(ray.direction, ray.len / ray.direction_len);
+		ray.hit_point = translate_pt(vect, data->player->pos_in_pix);
+		if (still_in_map(data, ray.hit_point))
+		{
+			if (pix_pos_to_map_case(data, ray.hit_point) == WALL)
+				break ;
+		}
+		else
+		{
+			ray.len = 2147483647;
+			break ;
+		}
+		ray.len += ray.delta_distances[dir];
+	}
+	return (ray);
+}
+
+void	set_side_hit(t_data *data, int index_closest)
+{
+	t_ray	*ray;
+	
+	ray = data->cam->beam;
+	if (index_closest == _y)
 	{
 		if (ray->direction.y > 0)
 			ray->side = SOUTH;
@@ -169,40 +82,33 @@ void	raysult(t_data *data, t_point ray_position[2], double len[2], int side_hit)
 	}
 	else
 	{
-		if (ray->direction.x < 0)
-			ray->side = WEST;
-		else
+		if (ray->direction.x > 0)
 			ray->side = EAST;
+		else
+			ray->side = WEST;
 	}
-	ray->hit_point = ray_position[side_hit];
-	set_dist_from_plan(data);
 }
 
 /*
 	return absulute point (in UNIT_PER_BOX) hitting the wall
 	delta_distance must be set before side distance
 */
-t_ray	beam(t_data *data)
+void	beam(t_data *data)
 {
-	t_point		ray_position[2]; // x and y
-	double		len[2];
-	t_cam		*cam;
-	int			wall_hit;
+	t_cam	*cam;
+	t_ray	rays[2];
+	int		index_closest;
 
 	cam = data->cam;
-	set_beam(data, ray_position);
-	wall_hit = first_step(data, ray_position, len);
-	while (wall_hit == -1)
-	{
-		if (wall_hit == -2)
-			len[_x] = -1;
-		else if (wall_hit == -3)
-			len[_y] = -1;
-		wall_hit = beam_step(data, ray_position, len);
-	}
-	if (wall_hit != -2)
-		raysult(data, ray_position, len, wall_hit);
-	return (*(cam->beam));
+	set_beam(data);
+	rays[_x] = next_wall_dir(data, _x);
+	rays[_y] = next_wall_dir(data, _y);
+	index_closest = _x;
+	if (rays[_x].len > rays[_y].len)
+		index_closest = _y;
+	*(cam->beam) = rays[index_closest];
+	set_side_hit(data, index_closest);
+	set_dist_from_plan(data);
 }
 
 void	set_arRay(t_data *data)
@@ -217,7 +123,8 @@ void	set_arRay(t_data *data)
 	i_ray = 0;
 	while (i_ray < CAM_QUALITY)
 	{
-		cam->arRay[i_ray] = beam(data);
+		beam(data);
+		cam->arRay[i_ray] = *ray;
 		translate_vector_as_pt(cam->plane_dir, &ray->direction);
 		i_ray++;
 	}

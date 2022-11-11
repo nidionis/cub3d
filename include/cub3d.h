@@ -88,8 +88,8 @@
 /* should be eaual to windows width*/
 # define CAM_QUALITY 1280
 # define NB_TEXTURES 4
-# define UNITS_PER_BOX 100
-# define STEPS_PER_BOX 20
+# define UNITS_PER_BOX 10000
+# define STEPS_PER_BOX 8
 # define WALL_SIZE 30
 /* in radient 66 = 1.15*/
 /* num of ray_parse for a pic */
@@ -157,12 +157,12 @@ typedef struct	s_ray
 	t_point		hit_point;
 	double		direction_len;
 
-	t_vector	side_distances;
-	t_vector	delta_distances;
-	t_vector	vector_sideX;
-	t_vector	vector_sideY;
-	t_vector	vector_deltaX;
-	t_vector	vector_deltaY;
+	double		side_distances[2];
+	double		delta_distances[2];
+	//t_vector	vector_sideX;
+	//t_vector	vector_sideY;
+	//t_vector	vector_deltaX;
+	//t_vector	vector_deltaY;
 }	t_ray;
 
 /* note: origin plane is a POINT using t_vector structure*/
@@ -250,7 +250,7 @@ void	init_fd(t_data *data, int *fd, char *fname);
 int	check_wall(t_data *data, int crossover_direction);
 int	check_update_box_pos(t_data *data);
 int	move_player(t_data *data, int direction);
-t_point	translate_pt(t_vector vector, t_point *pt);
+t_point	translate_pt_inplace(t_vector vector, t_point *pt);
 double	distance_point_to_vector(t_point point, t_point v_p1, t_point v_p2);
 t_point	make_point(int x, int y);
 int	north_crossing(t_data *data);
@@ -290,6 +290,7 @@ int	still_in_map(t_data  *data, t_point pt);
 double	distance_line_to_point(t_vector line[2], t_point p);
 void	set_delta_distance(t_data *data);
 void	set_side_distance(t_data *data);
+t_point	translate_pt(t_vector vector, t_point pt);
 
 //duarte functions
 int	window_init(t_window *window);

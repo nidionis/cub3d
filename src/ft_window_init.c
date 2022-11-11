@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_window_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/03 14:37:33 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/11 13:01:05 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,28 +141,6 @@ t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position)
 	return (pos_for_map);
 }
 
-/*
-t_point	get_minimap_position(t_data *data, t_player *player)
-{
-	t_point		pos_for_map;
-	double		u;
-	double		minimap_pos_in_box[2];
-	int			wall_size;
-	(void)data;
-	
-	u = (double)UNITS_PER_BOX;
-	wall_size = (double)WALL_SIZE;
-	minimap_pos_in_box[_x] = (double)player->pos_box.x;
-	minimap_pos_in_box[_y] = (double)player->pos_box.y;
-	minimap_pos_in_box[_x] /= u;
-	minimap_pos_in_box[_y] /= u;
-	// put in the wright box
-	pos_for_map.x = wall_size * (player->pos_map.x) + (int)(wall_size * minimap_pos_in_box[_x]);
-	pos_for_map.y = wall_size * (player->pos_map.y) + (int)(wall_size * minimap_pos_in_box[_y]);
-	return (pos_for_map);
-}
-*/
-
 void	draw_vision_field(t_data *data, t_point minimap_position)
 {
 	t_point		end;
@@ -231,7 +209,6 @@ int	ray_cast(t_data *data)
 
 	i = 0;
 	set_arRay(data);
-	draw_cube(data->window, SCREEN_WIDTH, 0, 0, 0);
 	while (i < CAM_QUALITY)
 	{
 		draw_wall_line(data, i);

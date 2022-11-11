@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/11/07 17:31:07 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/11 14:49:33 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,20 @@ t_vector	vec_scale(t_vector vector, double scale)
 	return (vector);
 }
 
-t_point	translate_pt(t_vector vector, t_point *pt)
+t_point	translate_pt(t_vector vector, t_point pt)
+{
+	if (vector.x > 0)
+		pt.x += (int)(vector.x + 0.50001);
+	else
+		pt.x += (int)(vector.x - 0.50001);
+	if (vector.y > 0)
+		pt.y += (int)(vector.y + 0.50001);
+	else
+		pt.y += (int)(vector.y - 0.50001);
+	return (pt);
+}
+
+t_point	translate_pt_inplace(t_vector vector, t_point *pt)
 {
 	if (vector.x > 0)
 		pt->x += (int)(vector.x + 0.50001);
