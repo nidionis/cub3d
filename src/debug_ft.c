@@ -95,6 +95,8 @@ void	redir_debug_file_logs(t_data *data, char *fname, int log_type)
 void	draw_wall_line(t_data *data, int i)
 {
 	t_point	start;
+	t_point	ceiling_start;
+	t_point	floor_end;
 	t_point	end;
 	t_ray	ray;
 	int		line_height;
@@ -107,7 +109,11 @@ void	draw_wall_line(t_data *data, int i)
 	good_ratio = (double)SCREEN_HEIGHT * (double)UNITS_PER_BOX;
 	start.x = i * line_width;
 	end.x = i * line_width;
-	line_height = good_ratio / ray.dist_from_plan;
+	floor_end.x = i * line_width;
+	floor_end.y = SCREEN_HEIGHT - 1;
+	ceiling_start.x = i * line_width;
+	ceiling_start.y = 0;
+	line_height = good_ratio / ray.len;
 	if (line_height > SCREEN_HEIGHT)
 		line_height = (int)SCREEN_HEIGHT;
 	start.y = (int)SCREEN_HEIGHT / 2 - line_height / 2;
@@ -126,9 +132,13 @@ void	draw_wall_line(t_data *data, int i)
 	loop = 0;
 	while (loop < line_width)
 	{
+		draw_line(data, &ceiling_start, &start, data->image->ceiling_color);
 		draw_line(data, &start, &end, color);
+		draw_line(data, &end, &floor_end, data->image->floor_color);
 		start.x++;
 		end.x++;
+		floor_end.x++;
+		ceiling_start.x++;
 		loop++;
 	}
 	
