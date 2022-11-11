@@ -22,11 +22,11 @@ void	set_delta_distance(t_data *data)
 	ray = cam->beam;
 	u = (double)UNITS_PER_BOX;
 	ray->direction_len = vec_len(ray->direction);
-	if (ray->direction.x)
+	if (fabs(ray->direction.x) < 0.000000001)
 		ray->delta_distances.x = ray->direction_len * u / fabs(ray->direction.x);
 	else
-		ray->delta_distances.x = 2147483647;
-	if (ray->direction.y)
+		ray->delta_distances.x = 1000000000;
+	if (fabs(ray->direction.y) < 0.000000001)
 		ray->delta_distances.y = ray->direction_len * u / fabs(ray->direction.y);
 	else
 		ray->delta_distances.y = 2147483647;
