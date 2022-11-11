@@ -148,21 +148,21 @@ typedef struct s_image
 	int				line_len;
 }	t_image;
 
-typedef struct	s_ray
+typedef struct	s_raysponse
 {
 	double		len;
 	double		dist_from_plan;
 	int			side;
-	t_vector	direction;
 	t_point		hit_point;
-	double		direction_len;
+	struct s_raysponse	*next;
+}	t_raysponse;
 
+typedef struct	s_ray
+{
+	t_vector	direction;
+	double		direction_len;
 	double		side_distances[2];
 	double		delta_distances[2];
-	//t_vector	vector_sideX;
-	//t_vector	vector_sideY;
-	//t_vector	vector_deltaX;
-	//t_vector	vector_deltaY;
 }	t_ray;
 
 /* note: origin plane is a POINT using t_vector structure*/
@@ -172,7 +172,7 @@ typedef struct	s_cam
 	t_vector	plane_dir;
 	double		plane_size;
 	t_ray		*beam;
-	t_ray		arRay[CAM_QUALITY];
+	t_raysponse	*ls_beam;
 }	t_cam;
 
 //struct for window
@@ -291,6 +291,10 @@ double	distance_line_to_point(t_vector line[2], t_point p);
 void	set_delta_distance(t_data *data);
 void	set_side_distance(t_data *data);
 t_point	translate_pt(t_vector vector, t_point pt);
+t_raysponse	*ft_lstnew(void *content);
+void	ft_lstadd_back(t_raysponse **lst, t_raysponse *new);
+t_raysponse	*ft_lstlast(t_raysponse *lst);
+void	ft_lstclear(t_raysponse **lst);
 
 //duarte functions
 int	window_init(t_window *window);
