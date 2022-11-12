@@ -140,20 +140,34 @@ typedef struct s_player
 	int			angle;
 }	t_player;
 
+typedef struct	s_sprite_ls
+{
+	//texture
+	t_point	pos;
+
+	struct s_sprite_ls	*next;
+}	t_sprite_ls;
+
 typedef struct s_image
 {
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
 	char			*texture_path[NB_TEXTURES];
 	int				line_len;
+	t_sprite_ls		*sprite_ls;
+	int				sprite_half_size;
 }	t_image;
 
 typedef struct	s_obstacle
 {
+	char				type;
 	double				len;
+	// if type is IS_BLOCK
 	t_point				hit_point;
 	int					side;
-	char				type;
+	// if type is SPRITE
+	double				sprite_hit; //distance from sprite_point to ray
+	t_sprite_ls			*sprite_pointer;
 	struct s_obstacle	*next;
 }	t_obstacle;
 
@@ -218,6 +232,7 @@ enum e_identifiers { NO, SO, WE, EA, F, C };
 enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
 enum e_cardinal { NORTH, SOUTH, EAST, WEST };
 enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };
+enum e_sprite {SPRITE = -1};
 
 void			error_msg(char *msg);
 char	**default_map(char	*argv[]);
@@ -305,6 +320,7 @@ t_obstacle	*ft_lstlast(t_obstacle *lst);
 t_obstacle	*ft_lstnew(t_rayturned content, char c);
 void	ft_lstadd_back(t_obstacle **lst, t_obstacle *new_);
 void	ft_lstadd_front(t_obstacle **lst, t_obstacle *new_);
+double	distance_points(t_point p1, t_point p2);
 
 //duarte functions
 int	window_init(t_window *window);

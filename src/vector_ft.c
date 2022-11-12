@@ -155,3 +155,11 @@ double	distance_line_to_point(t_vector line[2], t_point p)
 	dist = numerateur / denoninateur;
 	return (dist);
 }
+
+double	distance_points(t_point p1, t_point p2)
+{
+	double	dist;
+
+	dist = sqrt(pow((p1.x - p2.x), 2) + pow((p1.y - p2.y), 2));
+	return (dist);
+}
