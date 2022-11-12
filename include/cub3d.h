@@ -79,16 +79,16 @@
 # define WEST_CHAR 87
 # define EAST_CHAR 69
 /* for is_available_mapcase : keep directions at the end (see is_available_mapcase function) */
-# define MAPCASES "01 "
+# define MAPCASES "0123 "
 /* MAPCASE to consider as a wall */
-# define IS_BLOCK "1 "
+# define IS_BLOCK "123 "
 # define NB_TEXTURES 4
-# define SCREEN_WIDTH 2000
+# define SCREEN_WIDTH 1200
 # define SCREEN_HEIGHT 720
 /* should be eaual to windows width*/
-# define CAM_QUALITY 2000
+# define CAM_QUALITY 1200
 # define NB_TEXTURES 4
-# define UNITS_PER_BOX 100000
+# define UNITS_PER_BOX 1000
 # define STEPS_PER_BOX 21
 # define WALL_SIZE 30
 /* in radient 66 = 1.15*/
@@ -148,12 +148,22 @@ typedef struct s_image
 	int				line_len;
 }	t_image;
 
+typedef struct	s_obstacle
+{
+	double				len;
+	t_point				hit_point;
+	int					side;
+	char				type;
+	struct s_obstacle	*next;
+}	t_obstacle;
+
 typedef struct	s_rayturned
 {
 	double		len;
 	double		dist_from_plan;
 	int			side;
 	t_point		hit_point;
+	t_obstacle	*obstacles_ls;
 }	t_rayturned;
 
 typedef struct	s_ray
@@ -285,11 +295,16 @@ char	pix_pos_to_map_case(t_data *data, t_point absolute_pos);
 void	draw_wall_line(t_data *data, int i);
 int	ray_cast(t_data *data);
 void	set_arRay(t_data *data);
-int	still_in_map(t_data  *data, t_point pt);
+int	still_in_map(t_data *data, t_point pt);
 double	distance_line_to_point(t_vector line[2], t_point p);
 void	set_delta_distance(t_data *data);
 void	set_side_distance(t_data *data);
 t_point	translate_pt(t_vector vector, t_point pt);
+void	ft_lstclear(t_obstacle **lst);
+t_obstacle	*ft_lstlast(t_obstacle *lst);
+t_obstacle	*ft_lstnew(t_rayturned content, char c);
+void	ft_lstadd_back(t_obstacle **lst, t_obstacle *new_);
+void	ft_lstadd_front(t_obstacle **lst, t_obstacle *new_);
 
 //duarte functions
 int	window_init(t_window *window);
@@ -300,3 +315,4 @@ int exit_game(t_data *data);
 void	draw_line(t_data *data, t_point	*start, t_point	*end, int color);
 void	draw_mini_map(t_data *data);
 #endif
+

@@ -18,7 +18,6 @@ int	is_block(t_data *data, char c)
 	char	*blocks;
 
 	blocks = data->blocks;
-	printf("%s\n", blocks);
 	i = 0;
 	while (blocks[i])
 	{

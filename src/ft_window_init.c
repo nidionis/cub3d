@@ -209,6 +209,8 @@ int	ray_cast(t_data *data)
 	while (i < CAM_QUALITY)
 	{
 		draw_wall_line(data, i);
+		//draw_obstacle(data, i);
+		ft_lstclear(&data->cam->arRay[i].obstacles_ls);
 		i++;
 	}
 	render_map_2d(data);

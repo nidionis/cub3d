@@ -98,7 +98,7 @@ void	draw_wall_line(t_data *data, int i)
 	t_point	ceiling_start;
 	t_point	floor_end;
 	t_point	end;
-	t_ray	ray;
+	t_rayturned	ray;
 	int		line_height;
 	int		color;
 	int		line_width = SCREEN_WIDTH / CAM_QUALITY;
@@ -142,3 +142,36 @@ void	draw_wall_line(t_data *data, int i)
 	}
 }
 
+/*
+void	draw_obstacle(t_data *data, int i)
+{
+	t_point	start;
+	t_point	end;
+	t_rayturned	ray;
+	int		line_height;
+	int		color;
+	int		line_width = SCREEN_WIDTH / CAM_QUALITY;
+	int		loop;
+	double	good_ratio;
+	t_obstacle	*obstacle_ls;
+	
+	ray = data->cam->arRay[i];
+	good_ratio = (double)SCREEN_HEIGHT * (double)UNITS_PER_BOX;
+	start.x = i * line_width;
+	end.x = i * line_width;
+	line_height = good_ratio / ray.dist_from_plan;
+	if (line_height > SCREEN_HEIGHT / 2)
+		line_height = (int)SCREEN_HEIGHT / 2;
+	start.y = (int)SCREEN_HEIGHT / 2 - line_height / 2;
+	end.y = (int)SCREEN_HEIGHT / 2 + line_height / 2;
+	color = rgb_conv(60, 90, 10);
+	loop = 0;
+	while (loop < line_width)
+	{
+		draw_line(data, &start, &end, color);
+		start.x++;
+		end.x++;
+		loop++;
+	}
+}
+*/

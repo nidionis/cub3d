@@ -12,10 +12,11 @@
 
 #include "cub3d.h"
 
-void	set_beam(t_data *data)
+void	set_beam(t_data *data, t_obstacle **obstacles_ls)
 {
 	set_delta_distance(data);
 	set_side_distance(data);
+	*obstacles_ls = NULL;
 }
 
 void set_dist_from_plan(t_data *data, t_rayturned *rayturned)
@@ -33,6 +34,27 @@ void set_dist_from_plan(t_data *data, t_rayturned *rayturned)
 	rayturned->dist_from_plan = distance_line_to_point(line, rayturned->hit_point);
 }
 
+int	get_side_hit(t_data *data, int index_closest)
+{
+	t_ray	*ray;
+	
+	ray = data->cam->beam;
+	if (index_closest == _y)
+	{
+		if (ray->direction.y > 0)
+			return (SOUTH);
+		else
+			return (NORTH);
+	}
+	else
+	{
+		if (ray->direction.x > 0)
+			return (EAST);
+		else
+			return (WEST);
+	}
+}
+
 int	len_overflow(int len)
 {
 	if (len < 0 || len > 2000000000)
@@ -40,12 +62,14 @@ int	len_overflow(int len)
 	return (0);
 }
 
-t_rayturned	next_wall_dir(t_data *data, int dir)
+t_rayturned	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 {
 	t_cam			*cam;
 	t_ray			ray;
 	t_vector		vect;
 	t_rayturned		rayturned;
+	t_obstacle		*obstacle;
+	char			map_case;
 
 	cam = data->cam;
 	ray = *(cam->beam);
@@ -56,8 +80,17 @@ t_rayturned	next_wall_dir(t_data *data, int dir)
 		rayturned.hit_point = translate_pt(vect, data->player->pos_in_pix);
 		if (still_in_map(data, rayturned.hit_point))
 		{
-			if (pix_pos_to_map_case(data, rayturned.hit_point) == WALL)
+			map_case =  pix_pos_to_map_case(data, rayturned.hit_point);
+			if (map_case == WALL)
 				break ;
+			else if (is_block(data, map_case) != -1)
+			{
+				obstacle = ft_lstnew(rayturned, map_case);
+				if (!obstacle)
+					clean_exit(data, -1);
+				obstacle->side = get_side_hit(data, dir);
+				ft_lstadd_front(obstacles_ls, obstacle);
+			}
 		}
 		else
 		{
@@ -69,44 +102,21 @@ t_rayturned	next_wall_dir(t_data *data, int dir)
 	return (rayturned);
 }
 
-void	set_side_hit(t_data *data, t_rayturned *rayturned, int index_closest)
-{
-	t_ray	*ray;
-	
-	ray = data->cam->beam;
-	if (index_closest == _y)
-	{
-		if (ray->direction.y > 0)
-			rayturned->side = SOUTH;
-		else
-			rayturned->side = NORTH;
-	}
-	else
-	{
-		if (ray->direction.x > 0)
-			rayturned->side = EAST;
-		else
-			rayturned->side = WEST;
-	}
-}
-
-/*
-	return absulute point (in UNIT_PER_BOX) hitting the wall
-	delta_distance must be set before side distance
-*/
 void	beam(t_data *data, t_rayturned *rayturned)
 {
 	t_rayturned	rays[2];
 	int			index_closest;
+	t_obstacle	*obstacles_ls;
 
-	set_beam(data);
-	rays[_x] = next_wall_dir(data, _x);
-	rays[_y] = next_wall_dir(data, _y);
+	set_beam(data, &obstacles_ls);
+	rays[_x] = next_wall_dir(data, _x, &obstacles_ls);
+	rays[_y] = next_wall_dir(data, _y, &obstacles_ls);
 	index_closest = _x;
 	if (rays[_x].len > rays[_y].len)
 		index_closest = _y;
 	*rayturned = rays[index_closest];
-	set_side_hit(data, rayturned, index_closest);
+	rayturned->side = get_side_hit(data, index_closest);
+	rayturned->obstacles_ls = obstacles_ls;
 	set_dist_from_plan(data, rayturned);
 }
 

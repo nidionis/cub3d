@@ -12,9 +12,9 @@
 
 #include "cub3d.h"
 
-void	ft_lstclear(t_raysponse **lst)
+void	ft_lstclear(t_obstacle **lst)
 {
-	t_raysponse	*next_item;
+	t_obstacle	*next_item;
 
 	if (lst)
 	{
@@ -27,7 +27,7 @@ void	ft_lstclear(t_raysponse **lst)
 	}
 }
 
-t_raysponse	*ft_lstlast(t_raysponse *lst)
+t_obstacle	*ft_lstlast(t_obstacle *lst)
 {
 	if (!lst)
 		return (0);
@@ -39,28 +39,42 @@ t_raysponse	*ft_lstlast(t_raysponse *lst)
 }
 
 
-t_raysponse	*ft_lstnew(void *content)
+t_obstacle	*ft_lstnew(t_rayturned content, char type)
 {
-	t_raysponse	*new;
+	t_obstacle	*new_;
 
-	new = (t_raysponse *) malloc(sizeof(t_raysponse));
-	if (!new)
+	new_ = (t_obstacle *) malloc(sizeof(t_obstacle));
+	if (!new_)
 		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	new_->len = content.len;
+	new_->hit_point = content.hit_point;
+	new_->type = type;
+	new_->next = NULL;
+	return (new_);
 }
 
-void	ft_lstadd_back(t_raysponse **lst, t_raysponse *new)
+void	ft_lstadd_back(t_obstacle **lst, t_obstacle *new_)
 {
-	t_raysponse	*buff;
+	t_obstacle	*buff;
 
-	if (new)
+	if (new_)
 	{
 		buff = ft_lstlast(*lst);
 		if (!buff)
-			*lst = new;
+			*lst = new_;
 		else
-			buff->next = new;
+			buff->next = new_;
+	}
+}
+
+void	ft_lstadd_front(t_obstacle **lst, t_obstacle *new_)
+{
+	t_obstacle	*buff;
+
+	if (lst && new_)
+	{
+		buff = *lst;
+		*lst = new_;
+		new_->next = buff;
 	}
 }
