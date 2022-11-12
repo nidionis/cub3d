@@ -15,9 +15,13 @@
 t_point	update_pos_in_step(t_player *player)
 {
 	t_point	pos_in_step;
+	int		s_p_b;
+	int		u;
 
-	pos_in_step.x = player->pos_map.x * (int)STEPS_PER_BOX + player->pos_box.x * (int)STEPS_PER_BOX / (int)UNITS_PER_BOX;
-	pos_in_step.y = player->pos_map.y * (int)STEPS_PER_BOX + player->pos_box.y * (int)STEPS_PER_BOX / (int)UNITS_PER_BOX;
+	s_p_b = (int)STEPS_PER_BOX;
+	u = (int)UNITS_PER_BOX;
+	pos_in_step.x = player->pos_map.x * s_p_b + player->pos_box.x * s_p_b / u;
+	pos_in_step.y = player->pos_map.y * s_p_b + player->pos_box.y * s_p_b / u;
 	player->pos_in_step = pos_in_step;
 	if (pos_in_step.x < 0 || pos_in_step.y < 0)
 		error_msg("[update_pos_in_step] pos_in_step probably overflow");
@@ -27,9 +31,11 @@ t_point	update_pos_in_step(t_player *player)
 t_point	update_pos_in_pix(t_player *player)
 {
 	t_point	pos_in_pix;
+	int		u;
 
-	pos_in_pix.x = player->pos_map.x * (int)UNITS_PER_BOX + player->pos_box.x;
-	pos_in_pix.y = player->pos_map.y * (int)UNITS_PER_BOX + player->pos_box.y;
+	u = (int)UNITS_PER_BOX;
+	pos_in_pix.x = player->pos_map.x * u + player->pos_box.x;
+	pos_in_pix.y = player->pos_map.y * u + player->pos_box.y;
 	if (pos_in_pix.x < 0 || pos_in_pix.y < 0)
 		error_msg("[update_pos_in_step] pos_in_step probably overflow");
 	player->pos_in_pix = pos_in_pix;

@@ -86,7 +86,7 @@
 # define SCREEN_WIDTH 2000
 # define SCREEN_HEIGHT 720
 /* should be eaual to windows width*/
-# define CAM_QUALITY 20
+# define CAM_QUALITY 2000
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 100000
 # define STEPS_PER_BOX 21
@@ -148,14 +148,13 @@ typedef struct s_image
 	int				line_len;
 }	t_image;
 
-typedef struct	s_raysponse
+typedef struct	s_rayturned
 {
 	double		len;
 	double		dist_from_plan;
 	int			side;
 	t_point		hit_point;
-	struct s_raysponse	*next;
-}	t_raysponse;
+}	t_rayturned;
 
 typedef struct	s_ray
 {
@@ -172,7 +171,7 @@ typedef struct	s_cam
 	t_vector	plane_dir;
 	double		plane_size;
 	t_ray		*beam;
-	t_raysponse	*ls_beam;
+	t_rayturned	arRay[CAM_QUALITY];
 }	t_cam;
 
 //struct for window
@@ -291,10 +290,6 @@ double	distance_line_to_point(t_vector line[2], t_point p);
 void	set_delta_distance(t_data *data);
 void	set_side_distance(t_data *data);
 t_point	translate_pt(t_vector vector, t_point pt);
-t_raysponse	*ft_lstnew(void *content);
-void	ft_lstadd_back(t_raysponse **lst, t_raysponse *new);
-t_raysponse	*ft_lstlast(t_raysponse *lst);
-void	ft_lstclear(t_raysponse **lst);
 
 //duarte functions
 int	window_init(t_window *window);
