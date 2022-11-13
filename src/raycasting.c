@@ -6,7 +6,7 @@
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/13 15:40:28 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/13 16:14:47 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,47 @@ t_obstacle	*add_obstacle(t_data *data, t_rayturned r, char m_case, t_obstacle **
 	}
 	ft_lstadd_front(ls, obstacle);
 	return (obstacle);
+}
+
+t_obstacle	*insert_sort_obstacle(t_obstacle **ls, t_obstacle *new_itm)
+{
+	t_obstacle	*tmp;
+	t_obstacle	*last_tmp;
+
+	last_tmp = NULL;
+	if (!*ls)
+		*ls = new_itm;
+	else if (new_itm)
+	{
+		tmp = *ls;
+		while (tmp && new_itm->len < tmp->len)
+		{
+			last_tmp = tmp;
+			tmp = tmp->next;
+		}
+		new_itm->next = tmp;
+		if (last_tmp)
+			last_tmp->next = new_itm;
+		else
+			*ls = new_itm;
+	}
+	return (*ls);
+}
+
+t_obstacle	*sort_obstacles(t_obstacle **ls)
+{
+	t_obstacle	*min_len;
+	t_obstacle	*new_list;
+	t_obstacle	*tmp;
+	double		min_value;
+
+	if (ls && *ls)
+	{
+		tmp = *ls;
+		min_value = tmp->len;
+		min_len = tmp;
+		while (tmp)
+	}
 }
 
 t_rayturned	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
