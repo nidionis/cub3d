@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   list_ft.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:31:49 by supersko          #+#    #+#             */
-/*   Updated: 2022/03/11 20:40:51 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/13 12:54:24 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ t_obstacle	*ft_lstlast(t_obstacle *lst)
 	}
 	return (lst);
 }
-
 
 t_obstacle	*ft_lstnew(t_rayturned content, char type)
 {

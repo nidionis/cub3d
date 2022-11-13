@@ -6,7 +6,7 @@
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/07 19:18:21 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:12:18 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,6 +321,9 @@ t_obstacle	*ft_lstnew(t_rayturned content, char c);
 void	ft_lstadd_back(t_obstacle **lst, t_obstacle *new_);
 void	ft_lstadd_front(t_obstacle **lst, t_obstacle *new_);
 double	distance_points(t_point p1, t_point p2);
+t_obstacle	*add_sprites(t_data *data, t_rayturned *rayturned, t_obstacle **obstacles_ls);
+t_obstacle	*add_obstacle(t_data *data, t_rayturned r, char m_case, t_obstacle **ls);
+void	convert_pos_and_dir_to_line(t_point pos, t_vector vec, t_vector line[2]);
 
 //duarte functions
 int	window_init(t_window *window);

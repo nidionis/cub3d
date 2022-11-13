@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rayparsing.c                                       :+:      :+:    :+:   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/07 19:47:31 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:40:28 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,17 @@ t_obstacle	*add_obstacle(t_data *data, t_rayturned r, char m_case, t_obstacle **
 	obstacle = ft_lstnew(r, m_case);
 	if (!obstacle)
 		clean_exit(data, -1);
+	if (m_case == SPRITE)
+	{
+		obstacle->side = -1;
+		obstacle->hit_point.x = -1;
+		obstacle->hit_point.y = -1;
+	}
+	else
+	{
+		obstacle->sprite_hit = -1;
+		obstacle->sprite_pointer = NULL;
+	}
 	ft_lstadd_front(ls, obstacle);
 	return (obstacle);
 }
@@ -109,41 +120,15 @@ t_rayturned	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 	return (rayturned);
 }
 
-
-t_obstacle	*append_sprites(t_data *data, t_rayturned *rayturned, t_obstacle **obstacles_ls)
+void	convert_pos_and_dir_to_line(t_point pos, t_vector vec, t_vector line[2])
 {
-	t_vector	ray_dir;
 	t_vector	v_pos;
-	t_vector	line[2];
-	double		sprite_dist;
-	t_sprite_ls *sprite;
-	double		len;
-	t_obstacle	*obstacle;
 
-	ray_dir = data->cam->beam->direction;
-	v_pos.x = (double)data->player->pos_in_pix.x;
-	v_pos.y = (double)data->player->pos_in_pix.y;
+	v_pos.x = (double)pos.x;
+	v_pos.y = (double)pos.y;
 	line[0] = v_pos;
-	translate_vector_as_pt(ray_dir, &v_pos);
+	translate_vector_as_pt(vec, &v_pos);
 	line[1] = v_pos;
-	sprite = data->image->sprite_ls;
-	while (sprite)
-	{
-		len = distance_points(data->player->pos_in_pix, sprite->pos);
-		if (len < rayturned->len)
-		{
-			sprite_dist = distance_line_to_point(line, sprite->pos);
-			if ((int)sprite_dist < data->image->sprite_half_size)
-			{
-				obstacle = add_obstacle(data, *rayturned, SPRITE, obstacles_ls);
-				obstacle->len = len;
-				obstacle->sprite_hit = sprite_dist;
-				obstacle->sprite_pointer = sprite;
-			}
-		}
-		sprite = sprite->next;
-	}
-	return (*obstacles_ls);
 }
 
 void	beam(t_data *data, t_rayturned *rayturned)
@@ -161,7 +146,7 @@ void	beam(t_data *data, t_rayturned *rayturned)
 	*rayturned = rays[index_closest];
 	rayturned->side = get_side_hit(data, index_closest);
 	rayturned->dist_from_plan = get_dist_from_plan(data, rayturned);
-	append_sprites(data, rayturned, &obstacles_ls);
+	add_sprites(data, rayturned, &obstacles_ls);
 	rayturned->obstacles_ls = obstacles_ls;
 }
 

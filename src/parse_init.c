@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/10/26 17:33:57 by suplayerko         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:22:00 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ void	init_null(t_data *data, int *map_parse)
 	while (i < (int)NB_TEXTURES)
 	{
 		data->image->texture_path[i] = NULL;
-		//fprintf(stderr, "i:%d, %s\n", i, data->image->texture_path[i]);
 		i++;
-
 	}
 	data->image->floor_color = -1;
 	data->image->ceiling_color = -1;
+	data->image->sprite_ls = NULL;
 }
 
 void	init_fd(t_data *data, int *fd, char *fname)
