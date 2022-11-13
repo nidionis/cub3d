@@ -38,7 +38,7 @@ t_obstacle	*ft_lstlast(t_obstacle *lst)
 	return (lst);
 }
 
-t_obstacle	*ft_lstnew(t_rayturned content, char type)
+t_obstacle	*ft_lstnew(t_rayponse content, char type)
 {
 	t_obstacle	*new_;
 

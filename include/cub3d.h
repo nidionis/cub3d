@@ -6,7 +6,7 @@
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/13 15:12:18 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/13 17:21:11 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,13 +140,13 @@ typedef struct s_player
 	int			angle;
 }	t_player;
 
-typedef struct	s_sprite_ls
+typedef struct	s_sprite
 {
 	//texture
 	t_point	pos;
 
 	struct s_sprite_ls	*next;
-}	t_sprite_ls;
+}	t_sprite;
 
 typedef struct s_image
 {
@@ -154,7 +154,7 @@ typedef struct s_image
 	unsigned int	floor_color;
 	char			*texture_path[NB_TEXTURES];
 	int				line_len;
-	t_sprite_ls		*sprite_ls;
+	t_sprite		*sprite_ls;
 	int				sprite_half_size;
 }	t_image;
 
@@ -167,18 +167,18 @@ typedef struct	s_obstacle
 	int					side;
 	// if type is SPRITE
 	double				sprite_hit; //distance from sprite_point to ray
-	t_sprite_ls			*sprite_pointer;
+	t_sprite			*sprite_pointer;
 	struct s_obstacle	*next;
 }	t_obstacle;
 
-typedef struct	s_rayturned
+typedef struct	s_rayponse
 {
 	double		len;
 	double		dist_from_plan;
 	int			side;
 	t_point		hit_point;
 	t_obstacle	*obstacles_ls;
-}	t_rayturned;
+}	t_rayponse;
 
 typedef struct	s_ray
 {
@@ -195,7 +195,7 @@ typedef struct	s_cam
 	t_vector	plane_dir;
 	double		plane_size;
 	t_ray		*beam;
-	t_rayturned	arRay[CAM_QUALITY];
+	t_rayponse	arRay[CAM_QUALITY];
 }	t_cam;
 
 //struct for window
@@ -206,11 +206,6 @@ typedef struct s_window
 	int		width;
 	int		height;
 }	t_window;
-
-// typedef struct s_raycasting
-// {
-
-// }	t_ray_casting;
 
 typedef struct s_data
 {
@@ -317,14 +312,21 @@ void	set_side_distance(t_data *data);
 t_point	translate_pt(t_vector vector, t_point pt);
 void	ft_lstclear(t_obstacle **lst);
 t_obstacle	*ft_lstlast(t_obstacle *lst);
-t_obstacle	*ft_lstnew(t_rayturned content, char c);
+t_obstacle	*ft_lstnew(t_rayponse content, char c);
 void	ft_lstadd_back(t_obstacle **lst, t_obstacle *new_);
 void	ft_lstadd_front(t_obstacle **lst, t_obstacle *new_);
 double	distance_points(t_point p1, t_point p2);
-t_obstacle	*add_sprites(t_data *data, t_rayturned *rayturned, t_obstacle **obstacles_ls);
-t_obstacle	*add_obstacle(t_data *data, t_rayturned r, char m_case, t_obstacle **ls);
+t_obstacle	*add_sprites(t_data *data, t_rayponse *rayturned, t_obstacle **obstacles_ls);
+t_obstacle	*add_obstacle(t_data *data, t_rayponse r, char m_case, t_obstacle **ls);
 void	convert_pos_and_dir_to_line(t_point pos, t_vector vec, t_vector line[2]);
+t_obstacle	*add_obstacle(t_data *data, t_rayponse r, char m_case, t_obstacle **ls);
+t_obstacle	*sort_obstacles(t_obstacle **ls);
 
+t_obstacle	*add_sprites_to_obstacles_ls(t_data *data, t_rayponse *rayponse, t_obstacle **obstacles_ls);
+int	get_side_hit(t_data *data, int index_closest);
+int	len_overflow(int len);
+void	set_beam(t_data *data, t_obstacle **obstacles_ls);
+double get_dist_from_plan(t_data *data, t_rayponse *rayponse);
 //duarte functions
 int	window_init(t_window *window);
 int	render_map_2d(t_data *data);
