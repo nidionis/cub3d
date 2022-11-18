@@ -6,7 +6,7 @@
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/13 16:14:47 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/13 17:28:39 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	beam(t_data *data, t_rayponse *rayponse)
 	if (rays[_x].len > rays[_y].len)
 		index_closest = _y;
 	*rayponse = rays[index_closest];
+	rayponse->side = get_side_hit(data, index_closest);
 	rayponse->side = get_side_hit(data, index_closest);
 	rayponse->dist_from_plan = get_dist_from_plan(data, rayponse);
 	add_sprites_to_obstacles_ls(data, rayponse, &obstacles_ls);

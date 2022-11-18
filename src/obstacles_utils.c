@@ -63,6 +63,7 @@ t_obstacle	*sort_obstacles(t_obstacle **ls)
 {
 	t_obstacle	*new_list;
 	t_obstacle	*tmp;
+	t_obstacle	*next_tmp;
 
 	new_list = NULL;
 	tmp = *ls;
@@ -70,8 +71,9 @@ t_obstacle	*sort_obstacles(t_obstacle **ls)
 	{
 		while (tmp)
 		{
+			next_tmp = tmp->next;
 			insert_sort_obstacle(&new_list, tmp);
-			tmp = tmp->next;
+			tmp = next_tmp;
 		}
 	}
 	*ls = new_list;

@@ -77,3 +77,21 @@ void	ft_lstadd_front(t_obstacle **lst, t_obstacle *new_)
 		new_->next = buff;
 	}
 }
+
+int	ft_lstlen(t_obstacle *lst)
+{
+	int	i;
+
+	i = 0;
+	if (lst)
+	{
+		while (lst)
+		{
+			lst = lst->next;
+			i++;
+		}
+	}
+	else
+		i = -1;
+	return (i);
+}

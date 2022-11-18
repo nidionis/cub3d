@@ -4,10 +4,10 @@ Mmain	src/main.c	/^int	main(int argc, char *argv[])$/
 Window	minilibx_linux/README.md	/^This is the MinilibX, a simple X-Window (X11R6) pr/
 X	minilibx_mac/mlx_new_window.h	/^- (void) pixelPutColor: (int)color X:(int)x Y:(int/
 add_img_to_ctx	minilibx_mac/mlx_new_image.m	/^mlx_img_ctx_t	*add_img_to_ctx(mlx_img_list_t *img,/
-add_obstacle	src/raycasting.c	/^t_obstacle	*add_obstacle(t_data *data, t_rayturned/
-add_sprite	src/sprites.c	/^t_obstacle	*add_sprite(t_data *data, t_sprite_ls */
-add_sprites	src/sprites.c	/^t_obstacle	*add_sprites(t_data *data, t_rayturned /
-beam	src/raycasting.c	/^void	beam(t_data *data, t_rayturned *rayturned)$/
+add_obstacle	src/obstacles_utils.c	/^t_obstacle	*add_obstacle(t_data *data, t_rayponse /
+add_sprite	src/obstacles_sprites.c	/^t_obstacle	*add_sprite(t_data *data, t_sprite *spr/
+add_sprites_to_obstacles_ls	src/obstacles_sprites.c	/^t_obstacle	*add_sprites_to_obstacles_ls(t_data *da/
+beam	src/raycasting.c	/^void	beam(t_data *data, t_rayponse *rayponse)$/
 c_to_i	libft/ft_atoi.c	/^static long int	c_to_i(char c)$/
 carry_negative	libft/ft_itoa.c	/^static char	*carry_negative(int *n, char *n_strn, /
 check_closest_box	src/move_to_corner.c	/^int	check_closest_box(t_player *player)$/
@@ -21,7 +21,7 @@ clean_useless_empty_splace	src/parse_format_map.c	/^void	clean_useless_empty_spl
 closeNotification	minilibx_mac/mlx_new_window.m	/^- (void) closeNotification:(NSNotification *)note$/
 complete_line_to_width	src/parse_format_map.c	/^void	complete_line_to_width(t_data *data, char **l/
 conv_id_param	src/parse_params.c	/^int	conv_id_param(t_data *data, int identifier_len/
-convert_pos_and_dir_to_line	src/raycasting.c	/^void	convert_pos_and_dir_to_line(t_point pos, t_ve/
+convert_pos_and_dir_to_line	src/obstacles_utils.c	/^void	convert_pos_and_dir_to_line(t_point pos, t_ve/
 convert_pt_to_vec	src/vector_ft.c	/^t_vector	convert_pt_to_vec(t_point p)$/
 corner_crossing	src/move_to_corner.c	/^int	corner_crossing(t_data *data)$/
 degree_to_radian	src/vector_ft.c	/^double	degree_to_radian(double degree_angle)$/
@@ -73,7 +73,8 @@ ft_lstadd_back	src/list_ft.c	/^void	ft_lstadd_back(t_obstacle **lst, t_obstacle 
 ft_lstadd_front	src/list_ft.c	/^void	ft_lstadd_front(t_obstacle **lst, t_obstacle /
 ft_lstclear	src/list_ft.c	/^void	ft_lstclear(t_obstacle **lst)$/
 ft_lstlast	src/list_ft.c	/^t_obstacle	*ft_lstlast(t_obstacle *lst)$/
-ft_lstnew	src/list_ft.c	/^t_obstacle	*ft_lstnew(t_rayturned content, char ty/
+ft_lstlen	src/list_ft.c	/^int	ft_lstlen(t_obstacle *lst)$/
+ft_lstnew	src/list_ft.c	/^t_obstacle	*ft_lstnew(t_rayponse content, char typ/
 ft_matrixlen	src/matrix.c	/^int	ft_matrixlen(char **matrix)$/
 ft_memchr	libft/ft_memchr.c	/^void	*ft_memchr(const void *str0, int c, size_t n)/
 ft_memcmp	libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size/
@@ -104,14 +105,14 @@ ft_substr	libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start,
 ft_tolower	libft/ft_tolower.c	/^int	ft_tolower(int c)$/
 ft_toupper	libft/ft_toupper.c	/^int	ft_toupper(int c)$/
 ft_wd_count	libft/ft_wd_count.c	/^int	ft_wd_count(char *str, char sep)$/
-get_dist_from_plan	src/raycasting.c	/^double get_dist_from_plan(t_data *data, t_rayturne/
+get_dist_from_plan	src/raycasting_utils.c	/^double get_dist_from_plan(t_data *data, t_rayponse/
 get_identifier	src/parse_params.c	/^int	get_identifier(t_data *data, char *str)$/
 get_identifiers_ls	src/parse_params.c	/^char	**get_identifiers_ls(int identifier_len)$/
 get_map_width	src/parse_format_map.c	/^int	get_map_width(char **map)$/
 get_mouse_button	minilibx_mac/mlx_new_window.m	/^int get_mouse_button(NSEventType eventtype)$/
 get_next_case	src/move_to_corner.c	/^char	get_next_case(char **map, t_point map_point, /
 get_next_line	src/get_next_line.c	/^char	*get_next_line(int fd)$/
-get_side_hit	src/raycasting.c	/^int	get_side_hit(t_data *data, int index_closest)$/
+get_side_hit	src/raycasting_utils.c	/^int	get_side_hit(t_data *data, int index_closest)$/
 get_smallest_index	src/move_to_corner.c	/^int	get_smallest_index(double wall_distance[4])$/
 get_xlib_include_path	minilibx_linux/configure	/^get_xlib_include_path(){$/
 glsl_info_t	minilibx_mac/mlx_int.h	/^} glsl_info_t;$/
@@ -125,6 +126,7 @@ init_f_c_color	src/parse_file_colors.c	/^unsigned int	init_f_c_color(t_data *dat
 init_fd	src/parse_init.c	/^void	init_fd(t_data *data, int *fd, char *fname)$/
 init_null	src/parse_init.c	/^void	init_null(t_data *data, int *map_parse)$/
 init_player	src/parse_init.c	/^void	init_player(t_data *data, int x, int y, int */
+insert_sort_obstacle	src/obstacles_utils.c	/^t_obstacle	*insert_sort_obstacle(t_obstacle **ls, /
 int	minilibx_mac/mlx_int.h	/^typedef int (*func_t)();$/
 is_NSEW	src/parse_check_map.c	/^int	is_NSEW(char c)$/
 is_blank_char	src/str_ft.c	/^int	is_blank_char(char c)$/
@@ -138,7 +140,7 @@ is_trimable	libft/ft_strtrim.c	/^static int	is_trimable(char c, char *trimset)$/
 keyDown	minilibx_mac/mlx_new_window.m	/^- (void) keyDown:(NSEvent *)theEvent$/
 keyUp	minilibx_mac/mlx_new_window.m	/^- (void) keyUp:(NSEvent *)theEvent$/
 key_event	src/ft_key_event.c	/^int	key_event(int key, t_data *data)$/
-len_overflow	src/raycasting.c	/^int	len_overflow(int len)$/
+len_overflow	src/raycasting_utils.c	/^int	len_overflow(int len)$/
 log_error	minilibx_linux/configure	/^log_error(){$/
 log_info	minilibx_linux/configure	/^log_info(){$/
 log_type	include/cub3d.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/
@@ -244,9 +246,9 @@ mouseMoved	minilibx_mac/mlx_new_window.m	/^- (void) mouseMoved:(NSEvent *)theEve
 mouseUp	minilibx_mac/mlx_new_window.m	/^- (void) mouseUp:(NSEvent *)theEvent$/
 move_player	src/move_player.c	/^int	move_player(t_data *data, int move)$/
 my_loc	libft/ft_itoa.c	/^static char	*my_loc(int len)$/
-next_wall_dir	src/raycasting.c	/^t_rayturned	next_wall_dir(t_data *data, int dir, t/
+next_wall_dir	src/raycasting.c	/^t_rayponse	next_wall_dir(t_data *data, int dir, t_/
 north_crossing	src/move_crossing_box.c	/^int	north_crossing(t_data *data)$/
-not_behind	src/sprites.c	/^int	not_behind(t_point origin, t_vector origin_dir/
+not_behind	src/obstacles_sprites.c	/^int	not_behind(t_point origin, t_vector origin_dir/
 otherMouseDown	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseDown:(NSEvent *)theEvent$/
 otherMouseDragged	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseDragged:(NSEvent *)theEvent$/
 otherMouseUp	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseUp:(NSEvent *)theEvent$/
@@ -263,7 +265,7 @@ print_map	src/debug_ft.c	/^void	print_map(t_data *data, int fd)$/
 print_params	src/debug_ft.c	/^void	print_params(t_data *data, int fd)$/
 print_player	src/debug_ft.c	/^void	print_player(t_data *data, int fd)$/
 ray_cast	src/ft_window_init.c	/^int	ray_cast(t_data *data)$/
-ray_cross_sprite	src/sprites.c	/^double	ray_cross_sprite(t_data *data, t_sprite_ls /
+ray_cross_sprite	src/obstacles_sprites.c	/^double	ray_cross_sprite(t_data *data, t_sprite *sp/
 rectangle_map	src/parse_format_map.c	/^void	rectangle_map(t_data *data, char **map)$/
 redir_debug_file_logs	src/debug_ft.c	/^void	redir_debug_file_logs(t_data *data, char *fna/
 redir_debug_file_msg	src/debug_ft.c	/^void	redir_debug_file_msg(char *fname, char *msg)$/
@@ -279,7 +281,7 @@ scrollWheel	minilibx_mac/mlx_new_window.m	/^- (void) scrollWheel:(NSEvent *)theE
 setEvent	minilibx_mac/mlx_new_window.m	/^- (void) setEvent:(int)event andFunc:(func_t)func /
 setKeyRepeat	minilibx_mac/mlx_new_window.m	/^- (void) setKeyRepeat:(int)mode$/
 set_arRay	src/raycasting.c	/^void	set_arRay(t_data *data)$/
-set_beam	src/raycasting.c	/^void	set_beam(t_data *data, t_obstacle **obstacles/
+set_beam	src/raycasting_utils.c	/^void	set_beam(t_data *data, t_obstacle **obstacles/
 set_delta_distance	src/ray_set_distances.c	/^void	set_delta_distance(t_data *data)$/
 set_plane_dir	src/camera_ft.c	/^void	set_plane_dir(t_data *data, double plane_size/
 set_plane_origin	src/camera_ft.c	/^void	set_plane_origin(t_data *data)$/
@@ -288,6 +290,7 @@ shift_line_left	src/parse_format_map.c	/^void	shift_line_left(char *line)$/
 shm_att_pb	minilibx_linux/mlx_new_image.c	/^int	shm_att_pb(Display *d,XErrorEvent *ev)$/
 show_help	minilibx_linux/configure	/^show_help(){$/
 slide_closest_box	src/move_to_corner.c	/^void	slide_closest_box(t_player *p, int closest_bo/
+sort_obstacles	src/obstacles_utils.c	/^t_obstacle	*sort_obstacles(t_obstacle **ls)$/
 south_crossing	src/move_crossing_box.c	/^int	south_crossing(t_data *data)$/
 still_in_map	src/map_ft.c	/^int	still_in_map(t_data  *data, t_point pt)$/
 strlcpy_is_not_posix	minilibx_linux/mlx_xpm.c	/^unsigned int	strlcpy_is_not_posix(char *dest, char/
@@ -300,9 +303,8 @@ t_obstacle	include/cub3d.h	/^}	t_obstacle;$/
 t_player	include/cub3d.h	/^}	t_player;$/
 t_point	include/cub3d.h	/^}	t_point;$/
 t_ray	include/cub3d.h	/^}	t_ray;$/
-t_ray_casting	include/cub3d.h	/^\/\/ }	t_ray_casting;$/
-t_rayturned	include/cub3d.h	/^}	t_rayturned;$/
-t_sprite_ls	include/cub3d.h	/^}	t_sprite_ls;$/
+t_rayponse	include/cub3d.h	/^}	t_rayponse;$/
+t_sprite	include/cub3d.h	/^}	t_sprite;$/
 t_vector	include/cub3d.h	/^}	t_vector;$/
 t_win_list	minilibx_linux/mlx_int.h	/^}				t_win_list;$/
 t_window	include/cub3d.h	/^}	t_window;$/
