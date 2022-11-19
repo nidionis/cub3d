@@ -79,9 +79,9 @@
 # define WEST_CHAR 87
 # define EAST_CHAR 69
 /* for is_available_mapcase : keep directions at the end (see is_available_mapcase function) */
-# define MAPCASES "0123 "
+# define MAPCASES "01 "
 /* MAPCASE to consider as a wall */
-# define IS_BLOCK "123 "
+# define IS_BLOCK "1 "
 # define NB_TEXTURES 4
 # define SCREEN_WIDTH 1200
 # define SCREEN_HEIGHT 720
@@ -153,6 +153,7 @@ typedef struct s_image
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
 	char			*texture_path[NB_TEXTURES];
+	//char			*minimap_texture[NB_MINIMAP_TEXTURES]
 	int				line_len;
 	t_sprite		*sprite_ls;
 	int				sprite_half_size;
