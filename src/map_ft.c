@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_ft.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/10/26 17:33:57 by suplayerko         ###   ########.fr       */
+/*   Updated: 2022/11/19 18:48:33 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	pix_pos_to_map_case(t_data *data, t_point absolute_pos)
 	return (c);
 }
 
-int	still_in_map(t_data  *data, t_point pt)
+int	still_in_map(t_data *data, t_point pt)
 {
 	if (pt.x < 0 || pt.x >= data->map_size_in_units[_x])
 		return (0);
@@ -48,3 +48,4 @@ int	still_in_map(t_data  *data, t_point pt)
 		return (0);
 	return (1);
 }
+

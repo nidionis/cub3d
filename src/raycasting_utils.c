@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/13 16:14:47 by supersko         ###   ########.fr       */
+/*   Created: 2022/11/19 17:24:39 by supersko          #+#    #+#             */
+/*   Updated: 2022/11/19 17:24:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_beam(t_data *data, t_obstacle **obstacles_ls)
 	*obstacles_ls = NULL;
 }
 
-double get_dist_from_plan(t_data *data, t_rayponse *rayponse)
+double	get_dist_from_plan(t_data *data, t_rayponse *rayponse)
 {
 	t_vector	cam_dir;
 	t_vector	v_pos;
@@ -37,7 +37,7 @@ double get_dist_from_plan(t_data *data, t_rayponse *rayponse)
 int	get_side_hit(t_data *data, int index_closest)
 {
 	t_ray	*ray;
-	
+
 	ray = data->cam->beam;
 	if (index_closest == _y)
 	{
@@ -61,3 +61,4 @@ int	len_overflow(int len)
 		return (1);
 	return (0);
 }
+

@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   parse_check_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/10/26 17:51:25 by suplayerko         ###   ########.fr       */
+/*   Updated: 2022/11/19 17:48:55 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
 int	is_NSEW(char c)
 {
-	if (c == 'N' || c =='S' || c == 'E' || c == 'W')
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (1);
 	else
 		return (0);
@@ -94,7 +93,6 @@ void	check_map_line(t_data *data, int y, int *nb_player)
 	c = data->map[y][0];
 	if (is_blank_line(data->map[y]))
 		exit_msg(data, "[check_map] map contains blank lines", -10);
-
 	while (c)
 	{
 		if (!(is_mapcase(data, c) || is_NSEW(c)))

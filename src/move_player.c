@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_player.c                                        :+:      :+:    :+:   */
+/*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/10/26 17:37:25 by suplayerko         ###   ########.fr       */
+/*   Updated: 2022/11/19 18:54:34 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static int	f_is_box_crossed(t_player *player)
 {
 	int	direction;
 
-	direction= 0;
+	direction = 0;
 	if (player->pos_box.y < 0)
 		direction += N;
 	if (player->pos_box.y >= UNITS_PER_BOX)
@@ -116,7 +116,7 @@ int	update_pos_if_wall(t_data *data, int crossover_direction)
 		hit_wall += west_crossing(data);
 	if (!hit_wall)
 	{
-		if (crossover_direction == NE ||crossover_direction == SW || crossover_direction == NW || crossover_direction == SE)
+		if (crossover_direction == NE || crossover_direction == SW || crossover_direction == NW || crossover_direction == SE)
 			hit_wall = corner_crossing(data);
 	}
 	fprintf(stderr, "update_pos_if_wall: hit_wall = %d\n", hit_wall);
@@ -157,5 +157,5 @@ int	move_player(t_data *data, int move)
 	hit_wall = check_update_box_pos(data);
 	update_pos_in_step(p);
 	update_pos_in_pix(p);
- 	return (hit_wall);
+	return (hit_wall);
  }

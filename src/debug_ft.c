@@ -98,7 +98,7 @@ void	draw_wall_line(t_data *data, int i)
 	t_point	ceiling_start;
 	t_point	floor_end;
 	t_point	end;
-	t_rayturned	ray;
+	t_rayponse	ray;
 	int		line_height;
 	int		color;
 	int		line_width = SCREEN_WIDTH / CAM_QUALITY;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   parse_format_map.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/10/26 17:51:25 by suplayerko         ###   ########.fr       */
+/*   Updated: 2022/11/19 17:46:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ void	complete_line_to_width(t_data *data, char **line, int len)
 
 void	rectangle_map(t_data *data, char **map)
 {
-	int 	map_width;
-	int		i;
+	int	map_width;
+	int	i;
 
 	i = 0;
 	map_width = get_map_width(map);

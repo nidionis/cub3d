@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 19:31:49 by supersko          #+#    #+#             */
-/*   Updated: 2022/11/13 12:54:24 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/19 18:47:42 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,3 +95,4 @@ int	ft_lstlen(t_obstacle *lst)
 		i = -1;
 	return (i);
 }
+

@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/11/11 14:49:33 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/19 17:19:23 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ double	vec_len(t_vector vector)
 	len = sqrt(x_square + y_square);
 	return (len);
 }
+
 t_point	make_point(int x, int y)
 {
 	t_point	p;
@@ -79,7 +80,7 @@ double	degree_to_radian(double degree_angle)
 	if (degree_angle < 0 || degree_angle > 360)
 		degree_angle = float_modulo(degree_angle, 360);
 		*/
-	rad_angle = ((double)PI * degree_angle / (double)180.0) ;
+	rad_angle = ((double)PI * degree_angle / (double)180.0);
 	return (rad_angle);
 }
 
@@ -94,7 +95,7 @@ y
 
 void	rotate_vector(t_vector *vector, double radian_angle)
 {
-	t_vector 	vector_cpy;
+	t_vector	vector_cpy;
 	double		two_pi;
 
 	two_pi = 2.0 * (double)PI;
@@ -103,8 +104,10 @@ void	rotate_vector(t_vector *vector, double radian_angle)
 	while (radian_angle > two_pi)
 		radian_angle -= two_pi;
 	vector_cpy = *vector;
-	vector->x = vector_cpy.x * cos(radian_angle) - vector_cpy.y * sin(radian_angle);
-	vector->y = vector_cpy.y * cos(radian_angle) + vector_cpy.x * sin(radian_angle);
+	vector->x = vector_cpy.x * cos(radian_angle) - \
+				vector_cpy.y * sin(radian_angle);
+	vector->y = vector_cpy.y * cos(radian_angle) + \
+				vector_cpy.x * sin(radian_angle);
 }
 
 /* https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line */
@@ -114,7 +117,8 @@ double	distance_point_to_vector(t_point point, t_point v_p1, t_point v_p2)
 	double	calc1;
 	double	calc2;
 
-	calc1 = abs((v_p2.x - v_p1.x) * (v_p1.y - point.y) - (v_p1.x - point.x) * (v_p2.y - v_p1.y));
+	calc1 = abs((v_p2.x - v_p1.x) * (v_p1.y - point.y) - \
+			(v_p1.x - point.x) * (v_p2.y - v_p1.y));
 	calc2 = sqrt(pow(v_p2.x - v_p1.x, 2) + pow(v_p2.y - v_p1.y, 2));
 	distance = calc1 / calc2;
 	return (distance);
@@ -150,8 +154,10 @@ double	distance_line_to_point(t_vector line[2], t_point p)
 
 	p_cpy.x = (double)p.x;
 	p_cpy.y = (double)p.y;
-	numerateur = fabs((line[1].x - line[0].x) * (line[0].y - p_cpy.y) - (line[0].x - p_cpy.x) * (line[1].y - line[0].y));
-	denoninateur = sqrt(pow((line[1].x - line[0].x), 2) + pow((line[1].y - line[0].y), 2));
+	numerateur = fabs((line[1].x - line[0].x) * (line[0].y - p_cpy.y) \
+			- (line[0].x - p_cpy.x) * (line[1].y - line[0].y));
+	denoninateur = sqrt(pow((line[1].x - line[0].x), 2) + \
+			pow((line[1].y - line[0].y), 2));
 	dist = numerateur / denoninateur;
 	return (dist);
 }

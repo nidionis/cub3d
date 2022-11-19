@@ -145,7 +145,7 @@ typedef struct	s_sprite
 	//texture
 	t_point	pos;
 
-	struct s_sprite_ls	*next;
+	struct s_sprite	*next;
 }	t_sprite;
 
 typedef struct s_image

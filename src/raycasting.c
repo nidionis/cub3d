@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/13 17:28:39 by supersko         ###   ########.fr       */
+/*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
+/*   Updated: 2022/11/19 17:26:35 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 	t_rayponse		rayponse;
 	char			map_case;
 
+	(void)obstacles_ls;
 	cam = data->cam;
 	ray = *(cam->beam);
 	rayponse.len = ray.side_distances[dir];
@@ -32,11 +33,11 @@ t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 			map_case =  pix_pos_to_map_case(data, rayponse.hit_point);
 			if (map_case == WALL)
 				break ;
-			else if (is_block(data, map_case) != -1)
-			{
-				add_obstacle(data, rayponse, map_case, obstacles_ls);
-				(*obstacles_ls)->side = get_side_hit(data, dir);
-			}
+			//else if (is_block(data, map_case) != -1)
+			//{
+			//	add_obstacle(data, rayponse, map_case, obstacles_ls);
+			//	(*obstacles_ls)->side = get_side_hit(data, dir);
+			//}
 		}
 		else
 		{
@@ -64,7 +65,7 @@ void	beam(t_data *data, t_rayponse *rayponse)
 	rayponse->side = get_side_hit(data, index_closest);
 	rayponse->side = get_side_hit(data, index_closest);
 	rayponse->dist_from_plan = get_dist_from_plan(data, rayponse);
-	add_sprites_to_obstacles_ls(data, rayponse, &obstacles_ls);
+	//add_sprites_to_obstacles_ls(data, rayponse, &obstacles_ls);
 	rayponse->obstacles_ls = sort_obstacles(&obstacles_ls);
 }
 
