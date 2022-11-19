@@ -26,6 +26,19 @@ void	clean_exit(t_data *data, int exit_code)
 			ft_free_split(&data->map);
 		if (data->player)
 			free(data->player);
+		if (data->blocks)
+			free(data->blocks);
+		if (data->map_cases)
+			free(data->map_cases);
+		if (data->cam)
+		{
+			if (data->cam->beam)
+				free(data->cam->beam);
+			i = 0;
+			while (i < CAM_QUALITY)
+				ft_lstclear(&data->cam->arRay[i++].obstacles_ls);
+			free(data->cam);
+		}
 		if (data->image)
 		{
 			i = 0;

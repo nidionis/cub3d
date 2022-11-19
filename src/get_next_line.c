@@ -18,7 +18,7 @@ static char	*ft_realloc_cat(char *line, char c, int *len)
 	int		i;
 
 	i = 0;
-	returned = (char *) malloc(*len + 2);
+	returned = malloc(*len + 2);
 	if (!returned)
 		return (NULL);
 	while (i < *len && line)

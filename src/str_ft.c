@@ -6,26 +6,28 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/25 13:43:09 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/19 17:20:39 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	is_map_line(char *str)
+int	is_map_line(t_data *data, char *str)
 {
 	if (str)
 	{
-		while (*str)
+		if (is_blank_line(str))
+			return (0);
+		while (*str != '\n' && *str != '\0')
 		{
-			if (!(*str == ' ' || ft_isdigit(*str) || *str == '\n'))
+			if (!(is_mapcase(data, *str) || is_NSEW(*str)))
 				return (0);
 			str++;
 		}
 		return (1);
 	}
 	else
-		return (1);
+		return (-1);
 }
 
 int	is_blank_char(char c)

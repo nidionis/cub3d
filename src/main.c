@@ -12,74 +12,48 @@
 
 #include "cub3d.h"
 
-/*
-DDA algo
-si |x2-x1| >= |y2-y1| alors
-  longueur := |x2-x1|
-sinon
-  longueur := |y2-y1|
-fin si
-dx := (x2-x1) / longueur
-dy := (y2-y1) / longueur
-x := x1 + 0.5
-y := y1 + 0.5
-i := 1
-tant que i ≤ longueur faire
-  setPixel (E (x), E (y))
-  x := x + dx
-  y := y + dy
-  i := i + 1
-fin tant que
-
-*/
-//
-//void	ray_parse(t_data *data)
-//{
-//	int			i;
-//	int			x_cam;
-//	t_player	*player;
-//	t_vector		vdirection
-//
-//	(void)vdirection
-////cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1
-//	player = data->player;
-//	i = 0;
-//	while (i < RAYCAST_QUALITY)
-//	{
-//		//calculate ray position and direction
-//		x_cam = 2 * i / RAYCAST_QUALITY - 1; //x-coordinate in camera space
-//		vdirectionx = player-directionx + player->plane.x * x_cam;
-//		vdirectiony = player-directiony + player->plane.y * x_cam;
-//		i++;
-//	/*
-//	 deltaDistX = abs(1 / rayDirX)
-//	deltaDistY = abs(1 / rayDirY)
-//	*/
-//	}
-//}
-
  t_data	*malloc_data(void)
 {
-	 t_data	* data;
+	t_data	*data;
 
-	 data = malloc(sizeof(t_data));
-	if (! data)
-		clean_exit(data, -4);
+	data = malloc(sizeof(t_data));
+	if (!data)
+		clean_exit(data, -1);
 	data->image = malloc(sizeof(t_image));
 	if (!data->image)
-		clean_exit(data, -5);
+		clean_exit(data, -1);
 	data->player = malloc(sizeof(t_player));
+	if (!data->player)
+		clean_exit(data, -1);
+	data->blocks = ft_strdup(IS_BLOCK);
+	if (!data->blocks)
+		clean_exit(data, -1);
+	data->map_cases = ft_strdup(MAPCASES);
+	if (!data->map_cases)
+		clean_exit(data, -1);
+	data->cam = malloc(sizeof(t_cam));
+	if (!data->cam)
+		clean_exit(data, -1);
+	data->cam->beam = malloc(sizeof(t_ray));
+	if (!data->cam->beam)
+		clean_exit(data, -1);
 	return (data);
+}
+
+void	test_function(t_data *data)
+{
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+	move_player(data, LEFT);
+	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_image	img;
-	t_data		* data;
+	t_image		img;
+	t_data		*data;
 
 	(void)img;
-	(void)argv;
-	 data = NULL;
+	data = NULL;
 	if (argc != 2)
 	{
 		error_msg("Needs a path to the map file only");
@@ -87,11 +61,16 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		 data = malloc_data();
-		if (!data->player)
-			clean_exit(data, -5);
+		data = malloc_data();
 		parse_file(argv[1],  data);
-		redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
+		data->window = malloc(sizeof(t_window));
+		//data->player = malloc(sizeof(t_player));
+		////player_init(data->map, data->player);
+		window_init(data->window);
+		mlx_hook(data->window->init, 2, 1L << 0, &key_event, data);
+		mlx_loop_hook(data->window->mlx, &ray_cast, data);
+		mlx_hook(data->window->init, 17, 1L << 17, &exit_game, data);
+		mlx_loop(data->window->mlx);
 	}
 	clean_exit(data, 0);
 }

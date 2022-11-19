@@ -1,0 +1,1 @@
+eparate file for var globbal

@@ -22,8 +22,8 @@ CFLAGS		= -Wall -Wextra -Werror -g3
 LIBFT 		= $(LIBFT_DIR)/libft.a
 
 ifeq ($(DESKTOP_SESSION), ubuntu)
-MINILIBX = mlx_linux
-MLXFLAGS = -I /usr/X11/include -g -Lmlx_linux -lmlx_Linux -L /usr/lib -Imlx_linux -lmlx -lXext -lX11 -lm
+MINILIBX = minilibx_linux
+MLXFLAGS = -I /usr/X11/include -g -Lminilibx_linux -L /usr/lib -Iminilibx_linux -lmlx -lXext -lX11 -lm
 else
 MINILIBX = minilibx_mac
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
@@ -34,10 +34,11 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS) maker
 	$(CC) $(OBJECTS) $(CFLAGS) ${MLXFLAGS} $(LIBFT) ./$(MINILIBX)/libmlx.a -o $(NAME) 
+	@rm -rf $(DEBUG_LOG_FILE)
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -I/usr/include -I./include -I$(LIBFT_DIR) -I$(MINILIBX) -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -I/usr/include -I./include -I$(LIBFT_DIR) -I$(MINILIBX) -O0 -c $< -o $@
 
 maker:
 	make -C ./$(MINILIBX)
@@ -52,7 +53,7 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@make -C $(LIBFT_DIR) fclean
-	@make -C $(MINILIBX) fclean
+	@make -C $(MINILIBX) clean # because no rules fclean
 
 re: fclean all 
 

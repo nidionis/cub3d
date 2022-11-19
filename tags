@@ -1,44 +1,63 @@
-Copyright	minilibx-linux/LICENSE	/^Copyright (c) 2021, Ecole 42$/
-Mconfigure	minilibx-linux/configure	/^main(){$/
-Mmain	fractol_src/main.c	/^int	main(int argc, char *argv[])$/
-Window	minilibx-linux/README.md	/^This is the MinilibX, a simple X-Window (X11R6) pr/
+Copyright	minilibx_linux/LICENSE	/^Copyright (c) 2021, Ecole 42$/
+Mconfigure	minilibx_linux/configure	/^main(){$/
+Mmain	src/main.c	/^int	main(int argc, char *argv[])$/
+Window	minilibx_linux/README.md	/^This is the MinilibX, a simple X-Window (X11R6) pr/
 X	minilibx_mac/mlx_new_window.h	/^- (void) pixelPutColor: (int)color X:(int)x Y:(int/
 add_img_to_ctx	minilibx_mac/mlx_new_image.m	/^mlx_img_ctx_t	*add_img_to_ctx(mlx_img_list_t *img,/
-add_vec	fractol_src/vectors.c	/^void	add_vec(t_point	*pt, t_point vector)$/
+add_obstacle	src/obstacles_utils.c	/^t_obstacle	*add_obstacle(t_data *data, t_rayponse /
+add_sprite	src/obstacles_sprites.c	/^t_obstacle	*add_sprite(t_data *data, t_sprite *spr/
+add_sprites_to_obstacles_ls	src/obstacles_sprites.c	/^t_obstacle	*add_sprites_to_obstacles_ls(t_data *da/
+beam	src/raycasting.c	/^void	beam(t_data *data, t_rayponse *rayponse)$/
 c_to_i	libft/ft_atoi.c	/^static long int	c_to_i(char c)$/
-carpette	fractol_src/mandelbrot.c	/^void	carpette(t_image *img)$/
 carry_negative	libft/ft_itoa.c	/^static char	*carry_negative(int *n, char *n_strn, /
-check_map	src/check_map.c	/^int	check_map(t_data *data)$/
-check_map_line	src/check_map.c	/^void	check_map_line(t_data * data, int y, int *nb_pers)$/
-check_update_box_pos	src/move_pers.c	/^int	check_update_box_pos(t_data *data)$/
-circle	fractol_src/shapes.c	/^void	circle(t_image *img, int r, t_point center, unsi/
-clean	minilibx-linux/configure	/^clean(){$/
-clean_exit	src/exit_ft.c	/^void	clean_exit(t_data * data, int exit_code)$/
+check_closest_box	src/move_to_corner.c	/^int	check_closest_box(t_player *player)$/
+check_map	src/parse_check_map.c	/^int	check_map(t_data *data)$/
+check_map_line	src/parse_check_map.c	/^void	check_map_line(t_data *data, int y, int *nb_p/
+check_param_not_missing	src/parse_import.c	/^void	check_param_not_missing(t_data *data)$/
+check_update_box_pos	src/move_player.c	/^int	check_update_box_pos(t_data *data)$/
+clean	minilibx_linux/configure	/^clean(){$/
+clean_exit	src/exit_ft.c	/^void	clean_exit(t_data *data, int exit_code)$/
+clean_useless_empty_splace	src/parse_format_map.c	/^void	clean_useless_empty_splace(char	**map)$/
 closeNotification	minilibx_mac/mlx_new_window.m	/^- (void) closeNotification:(NSNotification *)note$/
-color_render	fractol_src/pixels.c	/^unsigned int	color_render(unsigned int color_byte,/
-complex_square	fractol_src/complex.c	/^t_vector	complex_square(t_vector complex_nb)$/
-conv_id_param	src/parse_file_ft.c	/^int	conv_id_param(t_data * data, int identifier_len, char/
-convert_point_to_pt	fractol_src/complex.c	/^t_vector	convert_point_to_pt(t_image *img, t_point pix, t_p/
-convert_point_to_pix	fractol_src/complex.c	/^t_point	convert_point_to_pix(t_image *img, t_vector pt, t_pi/
-default_map	src/matrix.c	/^char	**default_map(char	*argv[])$/
+complete_line_to_width	src/parse_format_map.c	/^void	complete_line_to_width(t_data *data, char **l/
+conv_id_param	src/parse_params.c	/^int	conv_id_param(t_data *data, int identifier_len/
+convert_pos_and_dir_to_line	src/obstacles_utils.c	/^void	convert_pos_and_dir_to_line(t_point pos, t_ve/
+convert_pt_to_vec	src/vector_ft.c	/^t_vector	convert_pt_to_vec(t_point p)$/
+corner_crossing	src/move_to_corner.c	/^int	corner_crossing(t_data *data)$/
+degree_to_radian	src/vector_ft.c	/^double	degree_to_radian(double degree_angle)$/
+delete_first_column	src/parse_format_map.c	/^void	delete_first_column(char **map)$/
 deminiaturizeNotification	minilibx_mac/mlx_new_window.m	/^- (void) deminiaturizeNotification:(NSNotification/
 display_log	minilibx_mac/mlx_shaders.c	/^void display_log(GLuint object, void (*param_func)/
+distance_line_to_point	src/vector_ft.c	/^double	distance_line_to_point(t_vector line[2], t_/
+distance_point_to_vector	src/vector_ft.c	/^double	distance_point_to_vector(t_point point, t_p/
+distance_points	src/vector_ft.c	/^double	distance_points(t_point p1, t_point p2)$/
 do_loop_flush	minilibx_mac/mlx_init_loop.m	/^void do_loop_flush(CFRunLoopObserverRef observer, /
 do_loop_hook2	minilibx_mac/mlx_init_loop.m	/^void	do_loop_hook2(CFRunLoopTimerRef observer, voi/
-edirectioninclude/cub3d.h	/^enum e_direction{ N, S, W, E, NW, SW, SE, NE, NB_CARDIN/
+draw_cube	src/ft_window_init.c	/^void	draw_cube(t_window *window, int size, int pos/
+draw_line	src/ft_window_init.c	/^void	draw_line(t_data *data, t_point	*start, t_poi/
+draw_mini_map	src/ft_window_init.c	/^void	draw_mini_map(t_data *data)$/
+draw_player	src/ft_window_init.c	/^void	draw_player(t_data *data)$/
+draw_vision_field	src/ft_window_init.c	/^void	draw_vision_field(t_data *data, t_point minim/
+draw_wall_line	src/debug_ft.c	/^void	draw_wall_line(t_data *data, int i)$/
+e_cardinal	include/cub3d.h	/^enum e_cardinal { NORTH, SOUTH, EAST, WEST };$/
+e_direction	include/cub3d.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW/
 e_identifiers	include/cub3d.h	/^enum e_identifiers { NO, SO, WE, EA, F, C };$/
-e_persdirectioninclude/cub3d.h	/^enum e_pers_direction{ FORWARD, BACKWARD, RIGHT, LEFT, /
-error_msg	fractol_src/error_msg.c	/^void	error_msg(char *msg)$/
-exit_msg	src/exit_ft.c	/^void	exit_msg(t_data * data, char *msg, int ret_exit)$/
+e_player_directio	include/cub3d.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT,/
+e_sprite	include/cub3d.h	/^enum e_sprite {SPRITE = -1};$/
+east_crossing	src/move_crossing_box.c	/^int	east_crossing(t_data *data)$/
+error_msg	libft/error_msg.c	/^void	error_msg(char *msg)$/
+exit_game	src/ft_key_event.c	/^int exit_game(t_data *data)$/
+exit_msg	src/exit_ft.c	/^void	exit_msg(t_data *data, char *msg, int ret_exi/
 exposeNotification	minilibx_mac/mlx_new_window.m	/^- (void) exposeNotification:(NSNotification *)note/
-f_is_box_crossed	src/move_pers.c	/^static int	f_is_box_crossed(t_player *player)$/
-file_extention_available	src/parse_file_ft.c	/^void	file_extention_available(t_data * data, char *fname)/
+f_is_box_crossed	src/move_player.c	/^static int	f_is_box_crossed(t_player *player)$/
+file_extention_available	src/parse_init.c	/^void	file_extention_available(t_data *data, char */
+fix_ang	src/ft_key_event.c	/^int fix_ang(int a)$/
 flagsChanged	minilibx_mac/mlx_new_window.m	/^- (void) flagsChanged:(NSEvent *)theEvent$/
-foret_de_ifs	fractol_src/hooks.c	/^static void	foret_de_ifs(t_image *img, int keystrok/
+format_map	src/parse_format_map.c	/^void	format_map(t_data *data)$/
 ft_append_tab	src/matrix.c	/^char	**ft_append_tab(char **matrix, char *str)$/
 ft_atoi	libft/ft_atoi.c	/^int	ft_atoi(const char *str0)$/
 ft_atoi_err	libft/ft_atoi_err.c	/^int	ft_atoi_err(char *str)$/
-ft_bzero	libft/ft_bzero.c	/^void	*ft_bzero(void * data, size_t n)$/
+ft_bzero	libft/ft_bzero.c	/^void	*ft_bzero(void *s, size_t n)$/
 ft_calloc	libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/
 ft_free_split	libft/ft_free_split.c	/^void	ft_free_split(char ***tab)$/
 ft_get_next_wd	libft/ft_get_next_wd.c	/^char	*ft_get_next_wd(char *sentence, char sep)$/
@@ -50,6 +69,12 @@ ft_isdigit	libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/
 ft_isprint	libft/ft_isprint.c	/^int	ft_isprint(int c)$/
 ft_isspace	libft/ft_atoi.c	/^static int	ft_isspace(const char c)$/
 ft_itoa	libft/ft_itoa.c	/^char	*ft_itoa(int n)$/
+ft_lstadd_back	src/list_ft.c	/^void	ft_lstadd_back(t_obstacle **lst, t_obstacle */
+ft_lstadd_front	src/list_ft.c	/^void	ft_lstadd_front(t_obstacle **lst, t_obstacle /
+ft_lstclear	src/list_ft.c	/^void	ft_lstclear(t_obstacle **lst)$/
+ft_lstlast	src/list_ft.c	/^t_obstacle	*ft_lstlast(t_obstacle *lst)$/
+ft_lstlen	src/list_ft.c	/^int	ft_lstlen(t_obstacle *lst)$/
+ft_lstnew	src/list_ft.c	/^t_obstacle	*ft_lstnew(t_rayponse content, char typ/
 ft_matrixlen	src/matrix.c	/^int	ft_matrixlen(char **matrix)$/
 ft_memchr	libft/ft_memchr.c	/^void	*ft_memchr(const void *str0, int c, size_t n)/
 ft_memcmp	libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size/
@@ -57,74 +82,73 @@ ft_memcpy	libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, unsign
 ft_memmove	libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_/
 ft_memset	libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/
 ft_putchar_fd	libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/
-ft_putendl_fd	libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char * data, int fd)$/
+ft_putendl_fd	libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/
 ft_putnbr_fd	libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/
-ft_putstr_fd	libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char * data, int fd)$/
+ft_putstr_fd	libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/
 ft_realloc_cat	src/get_next_line.c	/^static char	*ft_realloc_cat(char *line, char c, in/
-ft_split	libft/ft_split.c	/^char	**ft_split(char const * data, char c)$/
+ft_split	libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/
 ft_strchr	libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int c)$/
 ft_strdup	libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/
-ft_striteri	libft/ft_striteri.c	/^void	ft_striteri(char * data, void (*f)(unsigned int, /
+ft_striteri	libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, /
 ft_strjoin	libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/
 ft_strlcat	libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size/
 ft_strlcpy	libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size/
 ft_strlen	libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/
 ft_strlen_char	libft/ft_strlen_char.c	/^size_t	ft_strlen_char(char *str, char sep)$/
-ft_strmapi	libft/ft_strmapi.c	/^char	*ft_strmapi(char const * data, char (*f)(unsigned/
+ft_strmapi	libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned/
 ft_strncmp	libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, siz/
-ft_strnlen	libft/ft_strlcat.c	/^static unsigned int	ft_strnlen(char * data, size_t max/
+ft_strnlen	libft/ft_strlcat.c	/^static unsigned int	ft_strnlen(char *s, size_t max/
 ft_strnstr	libft/ft_strnstr.c	/^char	*ft_strnstr(const char *str, const char *ndl,/
-ft_strrchr	libft/ft_strrchr.c	/^char	*ft_strrchr(char * data, int c)$/
+ft_strrchr	libft/ft_strrchr.c	/^char	*ft_strrchr(char *s, int c)$/
 ft_strtrim	libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/
-ft_substr	libft/ft_substr.c	/^char	*ft_substr(char const * data, unsigned int start,/
+ft_substr	libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start,/
 ft_tolower	libft/ft_tolower.c	/^int	ft_tolower(int c)$/
 ft_toupper	libft/ft_toupper.c	/^int	ft_toupper(int c)$/
 ft_wd_count	libft/ft_wd_count.c	/^int	ft_wd_count(char *str, char sep)$/
-get_identifier	src/parse_file_ft.c	/^int	get_identifier(t_data * data, char *str)$/
-get_identifiers_ls	src/parse_file_ft.c	/^char	**get_identifiers_ls(int identifier_len)$/
+get_dist_from_plan	src/raycasting_utils.c	/^double get_dist_from_plan(t_data *data, t_rayponse/
+get_identifier	src/parse_params.c	/^int	get_identifier(t_data *data, char *str)$/
+get_identifiers_ls	src/parse_params.c	/^char	**get_identifiers_ls(int identifier_len)$/
+get_map_width	src/parse_format_map.c	/^int	get_map_width(char **map)$/
 get_mouse_button	minilibx_mac/mlx_new_window.m	/^int get_mouse_button(NSEventType eventtype)$/
+get_next_case	src/move_to_corner.c	/^char	get_next_case(char **map, t_point map_point, /
 get_next_line	src/get_next_line.c	/^char	*get_next_line(int fd)$/
-get_offset	fractol_src/pixels.c	/^unsigned int	get_offset(t_point pix, t_image *img)$/
-get_vector	fractol_src/vectors.c	/^t_point	get_vector(t_point *from, t_point *to)$/
-get_xlib_include_path	minilibx-linux/configure	/^get_xlib_include_path(){$/
+get_side_hit	src/raycasting_utils.c	/^int	get_side_hit(t_data *data, int index_closest)$/
+get_smallest_index	src/move_to_corner.c	/^int	get_smallest_index(double wall_distance[4])$/
+get_xlib_include_path	minilibx_linux/configure	/^get_xlib_include_path(){$/
 glsl_info_t	minilibx_mac/mlx_int.h	/^} glsl_info_t;$/
-help_msg	fractol_src/main.c	/^static void	help_msg(void)$/
-ifeq	minilibx-linux/Makefile.gen	/^ifeq ($(UNAME),FreeBSD)$/
-img_default_init	fractol_src/init_fts.c	/^void	img_default_init(t_image	*img)$/
-import_param	src/parsing.c	/^void	import_param(t_data * data, int identifier, char *li/
-import_params	src/parsing.c	/^int	import_params(t_data *data)$/
-import_texture_path	src/parsing.c	/^void	import_texture_path(t_data * data, int identifier, c/
+ifeq	minilibx_linux/Makefile	/^ifeq ($(UNAME),FreeBSD)$/
+import_param	src/parse_import.c	/^void	import_param(t_data *data, int identifier, ch/
+import_params	src/parse_import.c	/^int	import_params(t_data *data)$/
+import_texture_path	src/parse_import.c	/^void	import_texture_path(t_data *data, int identif/
 initWithContentRect	minilibx_mac/mlx_new_window.h	/^- (NSWindowEvent *) initWithContentRect:(NSRect)re/
-init_f_c_color	src/parse_file_colors.c	/^unsigned int	init_f_c_color(t_data * data, char *line)$/
-init_fd	src/parsing.c	/^void	init_fd(t_data * data, int *fd, char *fname)$/
-init_null	src/parsing.c	/^void	init_null(t_data * data, int *map_parse)$/
-init_player	src/check_map.c	/^void	init_player(t_data * data, int x, int y, int *is_player)/
+init_cam_vector	src/camera_ft.c	/^void	init_cam_vector(t_data *data)$/
+init_f_c_color	src/parse_file_colors.c	/^unsigned int	init_f_c_color(t_data *data, char *li/
+init_fd	src/parse_init.c	/^void	init_fd(t_data *data, int *fd, char *fname)$/
+init_null	src/parse_init.c	/^void	init_null(t_data *data, int *map_parse)$/
+init_player	src/parse_init.c	/^void	init_player(t_data *data, int x, int y, int */
+insert_sort_obstacle	src/obstacles_utils.c	/^t_obstacle	*insert_sort_obstacle(t_obstacle **ls, /
 int	minilibx_mac/mlx_int.h	/^typedef int (*func_t)();$/
-is_NSEW	src/check_map.c	/^int	is_NSEW(int i, int nb_mapcases)$/
-is_available_mapcase	src/check_map.c	/^int	is_available_mapcase(t_data * data, int x, int y, int/
+is_NSEW	src/parse_check_map.c	/^int	is_NSEW(char c)$/
 is_blank_char	src/str_ft.c	/^int	is_blank_char(char c)$/
 is_blank_line	src/str_ft.c	/^int	is_blank_line(char *line)$/
-is_border	src/check_map.c	/^int	is_border(t_data * data, int x, int y, int matrix_len/
-is_in_win	fractol_src/shapes.c	/^int	is_in_win(unsigned int win_size[2], t_point pix)/
-is_map_line	src/str_ft.c	/^int	is_map_line(char *str)$/
+is_block	src/move_to_corner.c	/^int	is_block(t_data *data, char c)$/
+is_border	src/parse_check_map.c	/^int	is_border(t_data *data, int x, int y, int matr/
+is_first_column_empty	src/parse_format_map.c	/^int	is_first_column_empty(char **map)$/
+is_map_line	src/str_ft.c	/^int	is_map_line(t_data *data, char *str)$/
+is_mapcase	src/parse_check_map.c	/^int	is_mapcase(t_data *data, char c)$/
 is_trimable	libft/ft_strtrim.c	/^static int	is_trimable(char c, char *trimset)$/
-is_white	fractol_src/mandelbrot.c	/^unsigned int	is_white(int n)$/
-julia	fractol_src/julia.c	/^void	julia(t_image *img)$/
-julia_pix_color	fractol_src/julia.c	/^static unsigned int	julia_pix_color(t_vector pt_parser/
 keyDown	minilibx_mac/mlx_new_window.m	/^- (void) keyDown:(NSEvent *)theEvent$/
 keyUp	minilibx_mac/mlx_new_window.m	/^- (void) keyUp:(NSEvent *)theEvent$/
-log_error	minilibx-linux/configure	/^log_error(){$/
-log_info	minilibx-linux/configure	/^log_info(){$/
-logging	minilibx-linux/configure	/^logging(){$/
-make_pix_pt	fractol_src/init_fts.c	/^t_point	make_pix_pt(int x, int y)$/
+key_event	src/ft_key_event.c	/^int	key_event(int key, t_data *data)$/
+len_overflow	src/raycasting_utils.c	/^int	len_overflow(int len)$/
+log_error	minilibx_linux/configure	/^log_error(){$/
+log_info	minilibx_linux/configure	/^log_info(){$/
+log_type	include/cub3d.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/
+logging	minilibx_linux/configure	/^logging(){$/
+make_point	src/vector_ft.c	/^t_point	make_point(int x, int y)$/
 make_str	libft/ft_itoa.c	/^static void	make_str(int *n, char *n_str, int i)$/
-make_tab	libft/ft_split.c	/^static char	**make_tab(char **returned, char const * data, /
+make_tab	libft/ft_split.c	/^static char	**make_tab(char **returned, char const/
 malloc_data	src/main.c	/^ t_data	*malloc_data(void)$/
-manage_expose	fractol_src/hooks.c	/^int	manage_expose(int keystroke, void *param)$/
-manage_keystroke	fractol_src/hooks.c	/^int	manage_keystroke(int keystroke, void *param)$/
-manage_mouse	fractol_src/hooks.c	/^int	manage_mouse(int button, int x, int y, void *player/
-mandel_pix_color	fractol_src/mandelbrot.c	/^static unsigned int	mandel_pix_color(t_vector pt_parse/
-mandelbrot	fractol_src/mandelbrot.c	/^void	mandelbrot(t_image *img)$/
 mipng_crc	minilibx_mac/mlx_png.c	/^int	mipng_crc(unsigned char *ptr, int len)$/
 mipng_data	minilibx_mac/mlx_png.c	/^int	mipng_data(mlx_img_list_t *img, unsigned char /
 mipng_defilter_average	minilibx_mac/mlx_png.c	/^unsigned char mipng_defilter_average(unsigned char/
@@ -137,137 +161,169 @@ mipng_is_type	minilibx_mac/mlx_png.c	/^int	mipng_is_type(unsigned char *ptr, cha
 mipng_magic	minilibx_mac/mlx_png.c	/^int	mipng_magic(unsigned char *ptr, int size)$/
 mipng_structure	minilibx_mac/mlx_png.c	/^int	mipng_structure(unsigned char *ptr, int size, /
 mipng_verif_hdr	minilibx_mac/mlx_png.c	/^int	mipng_verif_hdr(unsigned char *hdr, png_info_t/
-mlx_clear_window	minilibx-linux/mlx_clear_window.c	/^int		mlx_clear_window(t_xvar *xvar,t_win_list *win/
-mlx_destroy_display	minilibx-linux/mlx_destroy_display.c	/^int	mlx_destroy_display(t_xvar *xvar)$/
-mlx_destroy_image	minilibx-linux/mlx_destroy_image.c	/^int	mlx_destroy_image(t_xvar *xvar, t_img *img)$/
-mlx_destroy_window	minilibx-linux/mlx_destroy_window.c	/^int	mlx_destroy_window(t_xvar *xvar,t_win_list *wi/
-mlx_do_key_autorepeatoff	minilibx-linux/mlx_hook.c	/^int	mlx_do_key_autorepeatoff(t_xvar *xvar)$/
-mlx_do_key_autorepeaton	minilibx-linux/mlx_hook.c	/^int	mlx_do_key_autorepeaton(t_xvar *xvar)$/
-mlx_do_sync	minilibx-linux/mlx_hook.c	/^int	mlx_do_sync(t_xvar *xvar)$/
-mlx_expose_hook	minilibx-linux/mlx_expose_hook.c	/^int		mlx_expose_hook(t_win_list *win,int (*funct)(/
-mlx_ext_fullscreen	minilibx-linux/mlx_ext_randr.c	/^int			mlx_ext_fullscreen(t_xvar *xvar, t_win_list /
-mlx_flush_event	minilibx-linux/mlx_flush_event.c	/^int	mlx_flush_event(t_xvar *xvar)$/
-mlx_get_color_value	minilibx-linux/mlx_get_color_value.c	/^int             mlx_get_color_value(t_xvar *xvar,i/
-mlx_get_data_addr	minilibx-linux/mlx_get_data_addr.c	/^char	*mlx_get_data_addr(t_img *img,int *bits_per_p/
-mlx_get_screen_size	minilibx-linux/mlx_screen_size.c	/^int		mlx_get_screen_size(void *mlx_ptr, int *sizex/
+mlx_clear_window	minilibx_linux/mlx_clear_window.c	/^int		mlx_clear_window(t_xvar *xvar,t_win_list *win/
+mlx_destroy_display	minilibx_linux/mlx_destroy_display.c	/^int	mlx_destroy_display(t_xvar *xvar)$/
+mlx_destroy_image	minilibx_linux/mlx_destroy_image.c	/^int	mlx_destroy_image(t_xvar *xvar, t_img *img)$/
+mlx_destroy_window	minilibx_linux/mlx_destroy_window.c	/^int	mlx_destroy_window(t_xvar *xvar,t_win_list *wi/
+mlx_do_key_autorepeatoff	minilibx_linux/mlx_hook.c	/^int	mlx_do_key_autorepeatoff(t_xvar *xvar)$/
+mlx_do_key_autorepeaton	minilibx_linux/mlx_hook.c	/^int	mlx_do_key_autorepeaton(t_xvar *xvar)$/
+mlx_do_sync	minilibx_linux/mlx_hook.c	/^int	mlx_do_sync(t_xvar *xvar)$/
+mlx_expose_hook	minilibx_linux/mlx_expose_hook.c	/^int		mlx_expose_hook(t_win_list *win,int (*funct)(/
+mlx_ext_fullscreen	minilibx_linux/mlx_ext_randr.c	/^int			mlx_ext_fullscreen(t_xvar *xvar, t_win_list /
+mlx_flush_event	minilibx_linux/mlx_flush_event.c	/^int	mlx_flush_event(t_xvar *xvar)$/
+mlx_get_color_value	minilibx_linux/mlx_get_color_value.c	/^int             mlx_get_color_value(t_xvar *xvar,i/
+mlx_get_data_addr	minilibx_linux/mlx_get_data_addr.c	/^char	*mlx_get_data_addr(t_img *img,int *bits_per_p/
+mlx_get_screen_size	minilibx_linux/mlx_screen_size.c	/^int		mlx_get_screen_size(void *mlx_ptr, int *sizex/
 mlx_gl_draw_font	minilibx_mac/mlx_new_window.m	/^- (void) mlx_gl_draw_font:(mlx_img_list_t *)img an/
 mlx_gl_draw_img	minilibx_mac/mlx_new_window.m	/^- (void) mlx_gl_draw_img:(mlx_img_list_t *)img and/
-mlx_hook	minilibx-linux/mlx_hook.c	/^int	mlx_hook(t_win_list *win, int x_event, int x_m/
+mlx_hook	minilibx_linux/mlx_hook.c	/^int	mlx_hook(t_win_list *win, int x_event, int x_m/
 mlx_img_ctx_t	minilibx_mac/mlx_int.h	/^} mlx_img_ctx_t;$/
 mlx_img_list_t	minilibx_mac/mlx_int.h	/^} mlx_img_list_t;$/
-mlx_init	minilibx-linux/mlx_init.c	/^void	*mlx_init()$/
-mlx_int_anti_resize_win	minilibx-linux/mlx_int_anti_resize_win.c	/^int	mlx_int_anti_resize_win(t_xvar *xvar,Window wi/
-mlx_int_deal_shm	minilibx-linux/mlx_init.c	/^int		mlx_int_deal_shm(t_xvar *xvar)$/
-mlx_int_do_nothing	minilibx-linux/mlx_int_do_nothing.c	/^int	mlx_int_do_nothing(void *param)$/
-mlx_int_egal_img	minilibx-linux/mlx_lib_xpm.c	/^int	mlx_int_egal_img(XImage *img1,XImage *img2)$/
-mlx_int_file_get_rid_comment	minilibx-linux/mlx_xpm.c	/^int	mlx_int_file_get_rid_comment(char *ptr, int si/
-mlx_int_get_col_name	minilibx-linux/mlx_xpm.c	/^int	mlx_int_get_col_name(char *str,int size)$/
-mlx_int_get_good_color	minilibx-linux/mlx_get_color_value.c	/^int		mlx_int_get_good_color(t_xvar *xvar,int color/
-mlx_int_get_line	minilibx-linux/mlx_xpm.c	/^char	*mlx_int_get_line(char *ptr,int *pos,int size/
-mlx_int_get_text_rgb	minilibx-linux/mlx_xpm.c	/^int	mlx_int_get_text_rgb(char *name, char *end)$/
-mlx_int_get_visual	minilibx-linux/mlx_int_get_visual.c	/^int		mlx_int_get_visual(t_xvar *xvar)$/
+mlx_init	minilibx_linux/mlx_init.c	/^void	*mlx_init()$/
+mlx_int_anti_resize_win	minilibx_linux/mlx_int_anti_resize_win.c	/^int	mlx_int_anti_resize_win(t_xvar *xvar,Window wi/
+mlx_int_deal_shm	minilibx_linux/mlx_init.c	/^int		mlx_int_deal_shm(t_xvar *xvar)$/
+mlx_int_do_nothing	minilibx_linux/mlx_int_do_nothing.c	/^int	mlx_int_do_nothing(void *param)$/
+mlx_int_egal_img	minilibx_linux/mlx_lib_xpm.c	/^int	mlx_int_egal_img(XImage *img1,XImage *img2)$/
+mlx_int_file_get_rid_comment	minilibx_linux/mlx_xpm.c	/^int	mlx_int_file_get_rid_comment(char *ptr, int si/
+mlx_int_get_col_name	minilibx_linux/mlx_xpm.c	/^int	mlx_int_get_col_name(char *str,int size)$/
+mlx_int_get_good_color	minilibx_linux/mlx_get_color_value.c	/^int		mlx_int_get_good_color(t_xvar *xvar,int color/
+mlx_int_get_line	minilibx_linux/mlx_xpm.c	/^char	*mlx_int_get_line(char *ptr,int *pos,int size/
+mlx_int_get_text_rgb	minilibx_linux/mlx_xpm.c	/^int	mlx_int_get_text_rgb(char *name, char *end)$/
+mlx_int_get_visual	minilibx_linux/mlx_int_get_visual.c	/^int		mlx_int_get_visual(t_xvar *xvar)$/
 mlx_int_loop_once	minilibx_mac/mlx_init_loop.m	/^void	mlx_int_loop_once()$/
-mlx_int_new_image	minilibx-linux/mlx_new_image.c	/^void	*mlx_int_new_image(t_xvar *xvar,int width, in/
-mlx_int_new_xshm_image	minilibx-linux/mlx_new_image.c	/^void	*mlx_int_new_xshm_image(t_xvar *xvar,int widt/
-mlx_int_param_ButtonPress	minilibx-linux/mlx_int_param_event.c	/^int	mlx_int_param_ButtonPress(t_xvar *xvar, XEvent/
-mlx_int_param_ButtonRelease	minilibx-linux/mlx_int_param_event.c	/^int	mlx_int_param_ButtonRelease(t_xvar *xvar, XEve/
-mlx_int_param_Expose	minilibx-linux/mlx_int_param_event.c	/^int	mlx_int_param_Expose(t_xvar *xvar, XEvent *ev,/
-mlx_int_param_KeyPress	minilibx-linux/mlx_int_param_event.c	/^int	mlx_int_param_KeyPress(t_xvar *xvar, XEvent *e/
-mlx_int_param_KeyRelease	minilibx-linux/mlx_int_param_event.c	/^int	mlx_int_param_KeyRelease(t_xvar *xvar, XEvent /
-mlx_int_param_MotionNotify	minilibx-linux/mlx_int_param_event.c	/^int	mlx_int_param_MotionNotify(t_xvar *xvar, XEven/
-mlx_int_param_generic	minilibx-linux/mlx_int_param_event.c	/^int	mlx_int_param_generic(t_xvar *xvar, XEvent *ev/
-mlx_int_param_undef	minilibx-linux/mlx_int_param_event.c	/^int	mlx_int_param_undef()$/
+mlx_int_new_image	minilibx_linux/mlx_new_image.c	/^void	*mlx_int_new_image(t_xvar *xvar,int width, in/
+mlx_int_new_xshm_image	minilibx_linux/mlx_new_image.c	/^void	*mlx_int_new_xshm_image(t_xvar *xvar,int widt/
+mlx_int_param_ButtonPress	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_ButtonPress(t_xvar *xvar, XEvent/
+mlx_int_param_ButtonRelease	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_ButtonRelease(t_xvar *xvar, XEve/
+mlx_int_param_Expose	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_Expose(t_xvar *xvar, XEvent *ev,/
+mlx_int_param_KeyPress	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_KeyPress(t_xvar *xvar, XEvent *e/
+mlx_int_param_KeyRelease	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_KeyRelease(t_xvar *xvar, XEvent /
+mlx_int_param_MotionNotify	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_MotionNotify(t_xvar *xvar, XEven/
+mlx_int_param_generic	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_generic(t_xvar *xvar, XEvent *ev/
+mlx_int_param_undef	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_undef()$/
 mlx_int_parse_png	minilibx_mac/mlx_png.c	/^mlx_img_list_t	*mlx_int_parse_png(mlx_ptr_t *xvar,/
-mlx_int_parse_xpm	minilibx-linux/mlx_xpm.c	/^void	*mlx_int_parse_xpm(t_xvar *xvar,void *info,in/
-mlx_int_rgb_conversion	minilibx-linux/mlx_init.c	/^int		mlx_int_rgb_conversion(t_xvar *xvar)$/
-mlx_int_set_win_event_mask	minilibx-linux/mlx_int_set_win_event_mask.c	/^int	mlx_int_set_win_event_mask(t_xvar *xvar)$/
-mlx_int_static_line	minilibx-linux/mlx_xpm.c	/^char	*mlx_int_static_line(char **xpm_data,int *pos/
-mlx_int_str_str	minilibx-linux/mlx_int_str_to_wordtab.c	/^int	mlx_int_str_str(char *str,char *find,int len)$/
-mlx_int_str_str_cote	minilibx-linux/mlx_int_str_to_wordtab.c	/^int	mlx_int_str_str_cote(char *str,char *find,int /
-mlx_int_str_to_wordtab	minilibx-linux/mlx_int_str_to_wordtab.c	/^char	**mlx_int_str_to_wordtab(char *str)$/
-mlx_int_wait_first_expose	minilibx-linux/mlx_int_wait_first_expose.c	/^int	mlx_int_wait_first_expose(t_xvar *xvar,Window /
-mlx_int_xpm_f_image	minilibx-linux/mlx_lib_xpm.c	/^void		*mlx_int_xpm_f_image(t_xvar *xvar,int *width/
-mlx_int_xpm_set_pointel	minilibx-linux/mlx_xpm.c	/^int	mlx_int_xpm_set_pointel(t_img *img, char *data, /
-mlx_key_hook	minilibx-linux/mlx_key_hook.c	/^int		mlx_key_hook(t_win_list *win,int (*funct)(),v/
-mlx_loop	minilibx-linux/mlx_loop.c	/^int			mlx_loop(t_xvar *xvar)$/
-mlx_loop_end	minilibx-linux/mlx_loop.c	/^int			mlx_loop_end(t_xvar *xvar)$/
-mlx_loop_hook	minilibx-linux/mlx_loop_hook.c	/^int	mlx_loop_hook(t_xvar *xvar,int (*funct)(),void/
-mlx_mouse_get_pos	minilibx-linux/mlx_mouse.c	/^int		mlx_mouse_get_pos(t_xvar *xvar, t_win_list *w/
-mlx_mouse_hide	minilibx-linux/mlx_mouse.c	/^int		mlx_mouse_hide(t_xvar *xvar, t_win_list *win)/
-mlx_mouse_hook	minilibx-linux/mlx_mouse_hook.c	/^int		mlx_mouse_hook(t_win_list *win,int (*funct)()/
-mlx_mouse_move	minilibx-linux/mlx_mouse.c	/^int		mlx_mouse_move(t_xvar *xvar, t_win_list *win,/
-mlx_mouse_show	minilibx-linux/mlx_mouse.c	/^int		mlx_mouse_show(t_xvar *xvar, t_win_list *win)/
-mlx_new_image	minilibx-linux/mlx_new_image.c	/^void	*mlx_new_image(t_xvar *xvar,int width, int he/
-mlx_new_image2	minilibx-linux/mlx_new_image.c	/^void	*mlx_new_image2(t_xvar *xvar,int width, int h/
+mlx_int_parse_xpm	minilibx_linux/mlx_xpm.c	/^void	*mlx_int_parse_xpm(t_xvar *xvar,void *info,in/
+mlx_int_rgb_conversion	minilibx_linux/mlx_init.c	/^int		mlx_int_rgb_conversion(t_xvar *xvar)$/
+mlx_int_set_win_event_mask	minilibx_linux/mlx_int_set_win_event_mask.c	/^int	mlx_int_set_win_event_mask(t_xvar *xvar)$/
+mlx_int_static_line	minilibx_linux/mlx_xpm.c	/^char	*mlx_int_static_line(char **xpm_data,int *pos/
+mlx_int_str_str	minilibx_linux/mlx_int_str_to_wordtab.c	/^int	mlx_int_str_str(char *str,char *find,int len)$/
+mlx_int_str_str_cote	minilibx_linux/mlx_int_str_to_wordtab.c	/^int	mlx_int_str_str_cote(char *str,char *find,int /
+mlx_int_str_to_wordtab	minilibx_linux/mlx_int_str_to_wordtab.c	/^char	**mlx_int_str_to_wordtab(char *str)$/
+mlx_int_wait_first_expose	minilibx_linux/mlx_int_wait_first_expose.c	/^int	mlx_int_wait_first_expose(t_xvar *xvar,Window /
+mlx_int_xpm_f_image	minilibx_linux/mlx_lib_xpm.c	/^void		*mlx_int_xpm_f_image(t_xvar *xvar,int *width/
+mlx_int_xpm_set_pointel	minilibx_linux/mlx_xpm.c	/^int	mlx_int_xpm_set_pointel(t_img *img, char *data/
+mlx_key_hook	minilibx_linux/mlx_key_hook.c	/^int		mlx_key_hook(t_win_list *win,int (*funct)(),v/
+mlx_loop	minilibx_linux/mlx_loop.c	/^int			mlx_loop(t_xvar *xvar)$/
+mlx_loop_end	minilibx_linux/mlx_loop.c	/^int			mlx_loop_end(t_xvar *xvar)$/
+mlx_loop_hook	minilibx_linux/mlx_loop_hook.c	/^int	mlx_loop_hook(t_xvar *xvar,int (*funct)(),void/
+mlx_mouse_get_pos	minilibx_linux/mlx_mouse.c	/^int		mlx_mouse_get_pos(t_xvar *xvar, t_win_list *w/
+mlx_mouse_hide	minilibx_linux/mlx_mouse.c	/^int		mlx_mouse_hide(t_xvar *xvar, t_win_list *win)/
+mlx_mouse_hook	minilibx_linux/mlx_mouse_hook.c	/^int		mlx_mouse_hook(t_win_list *win,int (*funct)()/
+mlx_mouse_move	minilibx_linux/mlx_mouse.c	/^int		mlx_mouse_move(t_xvar *xvar, t_win_list *win,/
+mlx_mouse_show	minilibx_linux/mlx_mouse.c	/^int		mlx_mouse_show(t_xvar *xvar, t_win_list *win)/
+mlx_new_image	minilibx_linux/mlx_new_image.c	/^void	*mlx_new_image(t_xvar *xvar,int width, int he/
+mlx_new_image2	minilibx_linux/mlx_new_image.c	/^void	*mlx_new_image2(t_xvar *xvar,int width, int h/
 mlx_new_opengl_window	minilibx_mac/mlx_opengl.m	/^void	*mlx_new_opengl_window(mlx_ptr_t *mlx_ptr, in/
-mlx_new_window	minilibx-linux/mlx_new_window.c	/^void	*mlx_new_window(t_xvar *xvar,int size_x,int  data/
+mlx_new_window	minilibx_linux/mlx_new_window.c	/^void	*mlx_new_window(t_xvar *xvar,int size_x,int s/
 mlx_opengl_swap_buffers	minilibx_mac/mlx_opengl.m	/^int	mlx_opengl_swap_buffers(mlx_win_list_t *win_pt/
 mlx_opengl_window_set_context	minilibx_mac/mlx_opengl.m	/^int	mlx_opengl_window_set_context(mlx_win_list_t */
-mlx_pixel_put	minilibx-linux/mlx_pixel_put.c	/^int		mlx_pixel_put(t_xvar *xvar,t_win_list *win,$/
+mlx_pixel_put	minilibx_linux/mlx_pixel_put.c	/^int		mlx_pixel_put(t_xvar *xvar,t_win_list *win,$/
 mlx_png_file_to_image	minilibx_mac/mlx_png.c	/^void	*mlx_png_file_to_image(mlx_ptr_t *xvar, char /
 mlx_ptr_t	minilibx_mac/mlx_int.h	/^} mlx_ptr_t;$/
-mlx_put_image_to_window	minilibx-linux/mlx_put_image_to_window.c	/^int	mlx_put_image_to_window(t_xvar *xvar,t_win_lis/
-mlx_set_font	minilibx-linux/mlx_set_font.c	/^void	mlx_set_font(t_xvar *xvar, t_win_list *win, c/
+mlx_put_image_to_window	minilibx_linux/mlx_put_image_to_window.c	/^int	mlx_put_image_to_window(t_xvar *xvar,t_win_lis/
+mlx_set_font	minilibx_linux/mlx_set_font.c	/^void	mlx_set_font(t_xvar *xvar, t_win_list *win, c/
 mlx_shaders	minilibx_mac/mlx_shaders.c	/^int mlx_shaders(glsl_info_t *glsl)$/
 mlx_shaders_font	minilibx_mac/mlx_shaders.c	/^int mlx_shaders_font(glsl_info_t *glsl)$/
 mlx_shaders_image	minilibx_mac/mlx_shaders.c	/^int mlx_shaders_image(glsl_info_t *glsl)$/
 mlx_shaders_pixel	minilibx_mac/mlx_shaders.c	/^int mlx_shaders_pixel(glsl_info_t *glsl)$/
-mlx_string_put	minilibx-linux/mlx_string_put.c	/^int		mlx_string_put(t_xvar *xvar,t_win_list *win,$/
+mlx_string_put	minilibx_linux/mlx_string_put.c	/^int		mlx_string_put(t_xvar *xvar,t_win_list *win,$/
 mlx_win_list_t	minilibx_mac/mlx_int.h	/^} mlx_win_list_t;$/
-mlx_xpm_file_to_image	minilibx-linux/mlx_lib_xpm.c	/^void	*mlx_xpm_file_to_image(t_xvar *xvar,char *fil/
-mlx_xpm_to_image	minilibx-linux/mlx_lib_xpm.c	/^void	*mlx_xpm_to_image(t_xvar *xvar,char **data,in/
+mlx_xpm_file_to_image	minilibx_linux/mlx_lib_xpm.c	/^void	*mlx_xpm_file_to_image(t_xvar *xvar,char *fil/
+mlx_xpm_to_image	minilibx_linux/mlx_lib_xpm.c	/^void	*mlx_xpm_to_image(t_xvar *xvar,char **data,in/
 mouseDown	minilibx_mac/mlx_new_window.m	/^- (void) mouseDown:(NSEvent *)theEvent$/
 mouseDragged	minilibx_mac/mlx_new_window.m	/^- (void) mouseDragged:(NSEvent *)theEvent$/
 mouseMoved	minilibx_mac/mlx_new_window.m	/^- (void) mouseMoved:(NSEvent *)theEvent$/
 mouseUp	minilibx_mac/mlx_new_window.m	/^- (void) mouseUp:(NSEvent *)theEvent$/
-move_pers	src/move_pers.c	/^void	move_pers(t_data * data, intdirection$/
-moving	fractol_src/mouse_keypad.c	/^void	moving(t_image *img, void (*f)(), int keystrok/
+move_player	src/move_player.c	/^int	move_player(t_data *data, int move)$/
 my_loc	libft/ft_itoa.c	/^static char	*my_loc(int len)$/
-orthonorm_rel	fractol_src/fictif_orthonorm.c	/^void	orthonorm_rel(t_image *img)$/
+next_wall_dir	src/raycasting.c	/^t_rayponse	next_wall_dir(t_data *data, int dir, t_/
+north_crossing	src/move_crossing_box.c	/^int	north_crossing(t_data *data)$/
+not_behind	src/obstacles_sprites.c	/^int	not_behind(t_point origin, t_vector origin_dir/
 otherMouseDown	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseDown:(NSEvent *)theEvent$/
 otherMouseDragged	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseDragged:(NSEvent *)theEvent$/
 otherMouseUp	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseUp:(NSEvent *)theEvent$/
-parse_args	minilibx-linux/configure	/^parse_args(){$/
-parse_file	src/parsing.c	/^void	parse_file(char *fname, t_data	* data)$/
-parsing_loop	src/parsing.c	/^int	parsing_loop(t_data * data, int *map_parse)$/
-pix_dst	fractol_src/shapes.c	/^int	pix_dst(t_point p1, t_point p2)$/
+parse_args	minilibx_linux/configure	/^parse_args(){$/
+parse_file	src/parse_import.c	/^void	parse_file(char *fname, t_data *data)$/
+parsing_loop	src/parse_import.c	/^int	parsing_loop(t_data *data, int *map_parse)$/
+pix_pos_to_map_case	src/map_ft.c	/^char	pix_pos_to_map_case(t_data *data, t_point abs/
+pix_pos_to_map_pos	src/map_ft.c	/^t_point	pix_pos_to_map_pos(t_point absolute_pos)$/
+player_init	src/ft_player_init.c	/^int	player_init(char **map, t_player *player)$/
 png_info_t	minilibx_mac/mlx_png.c	/^} png_info_t;$/
-print_map	src/debug_ft.c	/^void	print_map(t_data *data)$/
-print_params	src/debug_ft.c	/^void	print_params(t_data *data)$/
-print_pers	src/debug_ft.c	/^void	print_pers(t_data *data)$/
-print_data	src/debug_ft.c	/^void	print_data(t_data *data)$/
-print_map	src/matrix.c	/^void	print_map(char **tab)$/
-put_point	fractol_src/pixels.c	/^void	put_point(t_image *img, t_point pix, int color)$/
-quit	fractol_src/hooks.c	/^int	quit(t_image *img)$/
-ray_parse	src/main.c	/^void	ray_parse(t_data *data)$/
-recentrer	fractol_src/mouse_keypad.c	/^void	recentrer(t_image *img, int x, int y)$/
-refresh_ret_if_is_param	src/parse_file_ft.c	/^static int	refresh_ret_if_is_param(char **identifi/
-rgb_conv	fractol_src/pixels.c	/^unsigned int	rgb_conv(int R, int G, int B)$/
+print_cam	src/debug_ft.c	/^void	print_cam(t_data *data, int fd)$/
+print_data	src/debug_ft.c	/^void	print_data(t_data *data, int fd)$/
+print_map	src/debug_ft.c	/^void	print_map(t_data *data, int fd)$/
+print_params	src/debug_ft.c	/^void	print_params(t_data *data, int fd)$/
+print_player	src/debug_ft.c	/^void	print_player(t_data *data, int fd)$/
+ray_cast	src/ft_window_init.c	/^int	ray_cast(t_data *data)$/
+ray_cross_sprite	src/obstacles_sprites.c	/^double	ray_cross_sprite(t_data *data, t_sprite *sp/
+rectangle_map	src/parse_format_map.c	/^void	rectangle_map(t_data *data, char **map)$/
+redir_debug_file_logs	src/debug_ft.c	/^void	redir_debug_file_logs(t_data *data, char *fna/
+redir_debug_file_msg	src/debug_ft.c	/^void	redir_debug_file_msg(char *fname, char *msg)$/
+refresh_ret_if_is_param	src/parse_params.c	/^static int	refresh_ret_if_is_param(char **identifi/
+render_map_2d	src/ft_window_init.c	/^int	render_map_2d(t_data *data)$/
+rgb_conv	src/parse_file_colors.c	/^unsigned int	rgb_conv(int R, int G, int B)$/
 rightMouseDown	minilibx_mac/mlx_new_window.m	/^- (void) rightMouseDown:(NSEvent *)theEvent$/
 rightMouseDragged	minilibx_mac/mlx_new_window.m	/^- (void) rightMouseDragged:(NSEvent *)theEvent$/
 rightMouseUp	minilibx_mac/mlx_new_window.m	/^- (void) rightMouseUp:(NSEvent *)theEvent$/
+rotate_player	src/rotate_player.c	/^void   rotate_player(t_player *player, int move)$/
+rotate_vector	src/vector_ft.c	/^void	rotate_vector(t_vector *vector, double radian/
 scrollWheel	minilibx_mac/mlx_new_window.m	/^- (void) scrollWheel:(NSEvent *)theEvent$/
 setEvent	minilibx_mac/mlx_new_window.m	/^- (void) setEvent:(int)event andFunc:(func_t)func /
 setKeyRepeat	minilibx_mac/mlx_new_window.m	/^- (void) setKeyRepeat:(int)mode$/
-set_win_center	fractol_src/init_fts.c	/^void	set_win_center(t_image *img)$/
-shm_att_pb	minilibx-linux/mlx_new_image.c	/^int	shm_att_pb(Display *d,XErrorEvent *ev)$/
-show_help	minilibx-linux/configure	/^show_help(){$/
-strlcpy_is_not_posix	minilibx-linux/mlx_xpm.c	/^unsigned int	strlcpy_is_not_posix(char *dest, char/
-t_event_list	minilibx-linux/mlx_int.h	/^}				t_event_list;$/
-t_img	minilibx-linux/mlx_int.h	/^}				t_img;$/
+set_arRay	src/raycasting.c	/^void	set_arRay(t_data *data)$/
+set_beam	src/raycasting_utils.c	/^void	set_beam(t_data *data, t_obstacle **obstacles/
+set_delta_distance	src/ray_set_distances.c	/^void	set_delta_distance(t_data *data)$/
+set_plane_dir	src/camera_ft.c	/^void	set_plane_dir(t_data *data, double plane_size/
+set_plane_origin	src/camera_ft.c	/^void	set_plane_origin(t_data *data)$/
+set_side_distance	src/ray_set_distances.c	/^void	set_side_distance(t_data *data)$/
+shift_line_left	src/parse_format_map.c	/^void	shift_line_left(char *line)$/
+shm_att_pb	minilibx_linux/mlx_new_image.c	/^int	shm_att_pb(Display *d,XErrorEvent *ev)$/
+show_help	minilibx_linux/configure	/^show_help(){$/
+slide_closest_box	src/move_to_corner.c	/^void	slide_closest_box(t_player *p, int closest_bo/
+sort_obstacles	src/obstacles_utils.c	/^t_obstacle	*sort_obstacles(t_obstacle **ls)$/
+south_crossing	src/move_crossing_box.c	/^int	south_crossing(t_data *data)$/
+still_in_map	src/map_ft.c	/^int	still_in_map(t_data  *data, t_point pt)$/
+strlcpy_is_not_posix	minilibx_linux/mlx_xpm.c	/^unsigned int	strlcpy_is_not_posix(char *dest, char/
+t_cam	include/cub3d.h	/^}	t_cam;$/
+t_data	include/cub3d.h	/^}	t_data;$/
+t_event_list	minilibx_linux/mlx_int.h	/^}				t_event_list;$/
 t_image	include/cub3d.h	/^}	t_image;$/
+t_img	minilibx_linux/mlx_int.h	/^}				t_img;$/
+t_obstacle	include/cub3d.h	/^}	t_obstacle;$/
 t_player	include/cub3d.h	/^}	t_player;$/
 t_point	include/cub3d.h	/^}	t_point;$/
+t_ray	include/cub3d.h	/^}	t_ray;$/
+t_rayponse	include/cub3d.h	/^}	t_rayponse;$/
+t_sprite	include/cub3d.h	/^}	t_sprite;$/
 t_vector	include/cub3d.h	/^}	t_vector;$/
- t_data	include/cub3d.h	/^}	 t_data;$/
-t_win_list	minilibx-linux/mlx_int.h	/^}				t_win_list;$/
-t_xpm_col	minilibx-linux/mlx_int.h	/^}				t_xpm_col;$/
-t_xvar	minilibx-linux/mlx_int.h	/^}				t_xvar;$/
-translate_pt	src/vector_ft.c	/^void	translate_pt(t_vector vector, t_vector *pt)$/
-vec_diff	fractol_src/vectors.c	/^t_point	vec_diff(t_point v1, t_point v2)$/
-vec_scale	fractol_src/vectors.c	/^t_point	vec_scale(t_point vector, double scale)$/
-while	minilibx-linux/rgb2c.pl	/^while (<RGB>)$/
-win_count	minilibx-linux/mlx_loop.c	/^static int	win_count(t_xvar *xvar)$/
-wrong_color	src/parse_file_colors.c	/^void	wrong_color(t_data * data, char *color_strimed)$/
-zoom_in	fractol_src/mouse_keypad.c	/^t_image	*zoom_in(t_image *img, void (*f)(), int x, i/
-zoom_out	fractol_src/mouse_keypad.c	/^t_image	*zoom_out(t_image *img, void (*f)(), int x, /
+t_win_list	minilibx_linux/mlx_int.h	/^}				t_win_list;$/
+t_window	include/cub3d.h	/^}	t_window;$/
+t_xpm_col	minilibx_linux/mlx_int.h	/^}				t_xpm_col;$/
+t_xvar	minilibx_linux/mlx_int.h	/^}				t_xvar;$/
+test_function	src/main.c	/^void	test_function(t_data *data)$/
+translate_pt	src/vector_ft.c	/^t_point	translate_pt(t_vector vector, t_point pt)$/
+translate_pt_inplace	src/vector_ft.c	/^t_point	translate_pt_inplace(t_vector vector, t_po/
+translate_vector_as_pt	src/vector_ft.c	/^void	translate_vector_as_pt(t_vector vector, t_vec/
+units_pos_to_minimap_pos	src/ft_window_init.c	/^t_point	units_pos_to_minimap_pos(t_data *data, t_p/
+update_pos_if_wall	src/move_player.c	/^int	update_pos_if_wall(t_data *data, int crossover/
+update_pos_in_pix	src/pos_update.c	/^t_point	update_pos_in_pix(t_player *player)$/
+update_pos_in_step	src/pos_update.c	/^t_point	update_pos_in_step(t_player *player)$/
+vec_len	src/vector_ft.c	/^double	vec_len(t_vector vector)$/
+vec_scale	src/vector_ft.c	/^t_vector	vec_scale(t_vector vector, double scale)$/
+vector_dot_product	src/vector_ft.c	/^double	vector_dot_product(t_vector v1, t_vector v2/
+west_crossing	src/move_crossing_box.c	/^int	west_crossing(t_data *data)$/
+while	minilibx_linux/rgb2c.pl	/^while (<RGB>)$/
+win_count	minilibx_linux/mlx_loop.c	/^static int	win_count(t_xvar *xvar)$/
+window_init	src/ft_window_init.c	/^int	window_init(t_window *window)$/
+wrong_color	src/parse_file_colors.c	/^void	wrong_color(t_data *data, char *color_strimed/
+x_or_y	include/cub3d.h	/^enum x_or_y { _x, _y };$/
