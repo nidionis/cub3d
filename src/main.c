@@ -64,13 +64,8 @@ int	main(int argc, char *argv[])
 		data = malloc_data();
 		parse_file(argv[1],  data);
 		data->window = malloc(sizeof(t_window));
-		//data->player = malloc(sizeof(t_player));
-		////player_init(data->map, data->player);
 		window_init(data->window);
-		mlx_hook(data->window->init, 2, 1L << 0, &key_event, data);
-		mlx_loop_hook(data->window->mlx, &ray_cast, data);
-		mlx_hook(data->window->init, 17, 1L << 17, &exit_game, data);
-		mlx_loop(data->window->mlx);
+		cub3d_render(data);
 	}
 	clean_exit(data, 0);
 }

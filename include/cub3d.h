@@ -90,7 +90,7 @@
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 1000
 # define STEPS_PER_BOX 21
-# define WALL_SIZE 30
+# define WALL_SIZE 20
 /* in radient 66 = 1.15*/
 /* num of ray_parse for a pic */
 # define CAM_ANGLE 1.15
@@ -329,13 +329,20 @@ int	get_side_hit(t_data *data, int index_closest);
 int	len_overflow(int len);
 void	set_beam(t_data *data, t_obstacle **obstacles_ls);
 double get_dist_from_plan(t_data *data, t_rayponse *rayponse);
+t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position);
 //duarte functions
 int	window_init(t_window *window);
 int	render_map_2d(t_data *data);
 int	player_init(char **map, t_player *player);
 int	key_event(int key, t_data *data);
 int exit_game(t_data *data);
+int	graphics_render(t_data *data);
+int	cub3d_render(t_data *data);
+
+//___________________draw functions_______________
 void	draw_line(t_data *data, t_point	*start, t_point	*end, int color);
 void	draw_mini_map(t_data *data);
+void	draw_player(t_data *data);
+void	draw_vision_field(t_data *data, t_point minimap_position);
 #endif
 
