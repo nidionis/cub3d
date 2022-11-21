@@ -21,8 +21,4 @@ clean:
 	rm -f $(NOM) $(OBJ) *~
 	rm -f mlx_app
 
-fclean:
-		rm -f $(NOM) $(OBJ) *~
-		rm -f mlx_app
-		
 re: clean all

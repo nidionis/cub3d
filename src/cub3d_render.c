@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/21 12:15:19 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/21 14:46:12 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	graphics_render(t_data *data)
 
 	i = 0;
 	set_arRay(data);
-	render_map_2d(data);
 	while (i < CAM_QUALITY)
 	{
 		draw_wall_line(data, i);
@@ -42,14 +41,15 @@ int	graphics_render(t_data *data)
 		ft_lstclear(&data->cam->arRay[i].obstacles_ls);
 		i++;
 	}
-	
+	render_map_2d(data);
+	draw_player(data);
 	return (0);
 }
 
 int	cub3d_render(t_data *data)
 {
-	mlx_hook(data->window->init, 2, 1L << 0, &key_event, data);
-	mlx_loop_hook(data->window->mlx, &graphics_render, data);
+	mlx_hook(data->window->init, 2, 1L << 0, key_event, data);
+	mlx_loop_hook(data->window->mlx, graphics_render, data);
 	mlx_hook(data->window->init, 17, 1L << 17, &exit_game, data);
 	mlx_loop(data->window->mlx);
 	return (0);

@@ -208,6 +208,15 @@ typedef struct s_window
 	int		height;
 }	t_window;
 
+typedef struct s_img
+{
+	void *img;
+	char *adress;
+	int	a;
+	int b;
+	int c;
+}	t_img;
+
 typedef struct s_data
 {
 	char		*line;
@@ -220,6 +229,7 @@ typedef struct s_data
 	t_window	*window;
 	char		**map;
 	int			map_size_in_units[2];
+	t_img		*img;
 }	t_data;
 
 enum x_or_y { _x, _y };

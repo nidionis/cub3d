@@ -51,7 +51,7 @@ int	main(int argc, char *argv[])
 {
 	t_image		img;
 	t_data		*data;
-
+	(void)argv;
 	(void)img;
 	data = NULL;
 	if (argc != 2)
@@ -65,7 +65,12 @@ int	main(int argc, char *argv[])
 		parse_file(argv[1],  data);
 		data->window = malloc(sizeof(t_window));
 		window_init(data->window);
-		cub3d_render(data);
+		data->img = malloc(sizeof(t_img));
+		data->img->img = mlx_new_image(data->window->mlx, 500, 500);
+		data->img->adress = mlx_get_data_addr(data->img->img,&data->img->a, &data->img->b, &data->img->c);
+		mlx_pixel_put(data->window->mlx, data->img->img, 0, 0, 0xFF0F0F);
+		mlx_put_image_to_window(data->window->mlx, data->window->init, data->img->img, 0, 0);
+		// cub3d_render(data);
+		clean_exit(data, 0);
 	}
-	clean_exit(data, 0);
 }
