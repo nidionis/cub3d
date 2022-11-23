@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/21 14:46:12 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/23 11:02:35 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int	graphics_render(t_data *data)
 
 int	cub3d_render(t_data *data)
 {
-	mlx_hook(data->window->init, 2, 1L << 0, key_event, data);
+	mlx_hook(data->window->init, 2, 1L << 0, key_event2, data);
+	mlx_hook(data->window->init, 3, 1L << 1, key_event, data);
 	mlx_loop_hook(data->window->mlx, graphics_render, data);
 	mlx_hook(data->window->init, 17, 1L << 17, &exit_game, data);
 	mlx_loop(data->window->mlx);

@@ -92,6 +92,25 @@ void	redir_debug_file_logs(t_data *data, char *fname, int log_type)
 
 }
 
+// void	texture_info(t_data *data, int x)
+// {
+// 	display->texxwall = (int)(display->wallx *
+// 	(double)(display->widthtext[display->textnum]));
+// 	if (display->spritecounted > 0)
+// 		display->zbuffer[x] = display->perwalldist;
+// 	if (display->side == 0 && display->d.x > 0)
+// 		display->texxwall = display->widthtext[display->textnum]
+// 		- display->texxwall - 1;
+// 	if (display->side == 1 && display->d.y < 0)
+// 		display->texxwall = display->widthtext[display->textnum]
+// 		- display->texxwall - 1;
+// 	display->stepdraw = 1.0 * display->heighttext[display->textnum]
+// 	/ display->lineheight;
+// 	display->texpos = (display->startline - display->r2
+// 	/ 2 + display->lineheight / 2) * display->stepdraw;
+// }
+
+
 void	draw_wall_line(t_data *data, int i)
 {
 	t_point	start;
@@ -119,9 +138,9 @@ void	draw_wall_line(t_data *data, int i)
 	start.y = (int)SCREEN_HEIGHT / 2 - line_height / 2;
 	end.y = (int)SCREEN_HEIGHT / 2 + line_height / 2;
 	if (ray.side == NORTH)
-		color = rgb_conv(0, 0, 255);
+		color = rgb_conv(100, 0, 255);
 	else if (ray.side == SOUTH)
-		color = rgb_conv(255, 255, 255);
+		color = rgb_conv(100, 255, 255);
 	else if (ray.side == EAST)
 		color = rgb_conv(0, 255, 0);
 	else if (ray.side == WEST)

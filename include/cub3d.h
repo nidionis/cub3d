@@ -86,7 +86,7 @@
 # define SCREEN_WIDTH 1200
 # define SCREEN_HEIGHT 720
 /* should be eaual to windows width*/
-# define CAM_QUALITY 1200
+# define CAM_QUALITY 2000
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 1000
 # define STEPS_PER_BOX 21
@@ -208,14 +208,24 @@ typedef struct s_window
 	int		height;
 }	t_window;
 
-typedef struct s_img
+typedef struct s_img_data
 {
 	void *img;
 	char *adress;
-	int	a;
-	int b;
-	int c;
-}	t_img;
+	int	bpp;
+	int line_len;
+	int endian;
+}	t_img_data;
+
+typedef struct s_key_status
+{
+	unsigned int	w;
+	unsigned int	s;
+	unsigned int	a;
+	unsigned int	d;
+	unsigned int	left;
+	unsigned int	right;
+}	t_key_status;
 
 typedef struct s_data
 {
@@ -229,7 +239,9 @@ typedef struct s_data
 	t_window	*window;
 	char		**map;
 	int			map_size_in_units[2];
-	t_img		*img;
+	t_img_data *textures;
+	t_img_data		*img;
+	t_key_status	*key_status;
 }	t_data;
 
 enum x_or_y { _x, _y };
@@ -341,7 +353,7 @@ void	set_beam(t_data *data, t_obstacle **obstacles_ls);
 double get_dist_from_plan(t_data *data, t_rayponse *rayponse);
 t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position);
 //duarte functions
-int	window_init(t_window *window);
+int	window_init(t_data *data);
 int	render_map_2d(t_data *data);
 int	player_init(char **map, t_player *player);
 int	key_event(int key, t_data *data);
@@ -354,5 +366,9 @@ void	draw_line(t_data *data, t_point	*start, t_point	*end, int color);
 void	draw_mini_map(t_data *data);
 void	draw_player(t_data *data);
 void	draw_vision_field(t_data *data, t_point minimap_position);
+void    my_mlx_pixel_put(t_img_data *img, int x, int y, int color);
+void	init_key_status(t_data *data);
+int	key_event2(int key, t_data *data);
+
 #endif
 

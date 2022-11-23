@@ -64,13 +64,9 @@ int	main(int argc, char *argv[])
 		data = malloc_data();
 		parse_file(argv[1],  data);
 		data->window = malloc(sizeof(t_window));
-		window_init(data->window);
-		data->img = malloc(sizeof(t_img));
-		data->img->img = mlx_new_image(data->window->mlx, 500, 500);
-		data->img->adress = mlx_get_data_addr(data->img->img,&data->img->a, &data->img->b, &data->img->c);
-		mlx_pixel_put(data->window->mlx, data->img->img, 0, 0, 0xFF0F0F);
-		mlx_put_image_to_window(data->window->mlx, data->window->init, data->img->img, 0, 0);
-		// cub3d_render(data);
+		init_key_status(data);
+		window_init(data);
+		cub3d_render(data);
 		clean_exit(data, 0);
 	}
 }
