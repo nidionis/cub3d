@@ -32,7 +32,7 @@
 #  define KEY_ESC 53
 #  define KEY_IN 69
 #  define KEY_OUT 78
-#  include "../minilibx_mac/mlx.h"
+#  include "../mlx/mlx.h"
 
 # else   // LINUX
 #  include <X11/keysym.h>   // 

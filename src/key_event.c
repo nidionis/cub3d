@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:57:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/23 11:47:31 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:51:09 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,13 @@ void	init_key_status(t_data *data)
 int	key_event2(int key, t_data *data)
 {
 	if (key == KEY_W)
-	{
 		data->key_status->w = 1;
-	}
     else if (key == KEY_S)
-	{
 		data->key_status->s = 1;
-	}
     else if (key == KEY_A)
-	{
 		data->key_status->a = 1;
-	}
     else if (key == KEY_D)
-	{
 		data->key_status->d = 1;
-	}
     else if (key == KEY_RIGHT)
     {
 		data->key_status->right = 1;

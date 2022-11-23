@@ -25,8 +25,8 @@ ifeq ($(DESKTOP_SESSION), ubuntu)
 MINILIBX = minilibx_linux
 MLXFLAGS = -I /usr/X11/include -g -Lminilibx_linux -L /usr/lib -Iminilibx_linux -lmlx -lXext -lX11 -lm
 else
-MINILIBX = minilibx_mac
-MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
+MINILIBX = mlx
+MLXFLAGS = -framework OpenGL -framework AppKit
 PROJECT_H += $(MINILIBX)/mlx_new_window.h $(MINILIBX)/mlx.h $(MINILIBX)/mlx_int.h $(MINILIBX)/mlx_new_window.h $(MINILIBX)/mlx_opengl.h $(MINILIBX)/mlx_png.h
 endif
 

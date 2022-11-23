@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/23 11:02:35 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:01:31 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int	graphics_render(t_data *data)
 	int	i;
 
 	i = 0;
-	set_arRay(data);
-	while (i < CAM_QUALITY)
-	{
-		draw_wall_line(data, i);
-		//draw_obstacle(data, i);
-		ft_lstclear(&data->cam->arRay[i].obstacles_ls);
-		i++;
-	}
+	// set_arRay(data);
+	// while (i < CAM_QUALITY)
+	// {
+	// 	draw_wall_line(data, i);
+	// 	//draw_obstacle(data, i);
+	// 	ft_lstclear(&data->cam->arRay[i].obstacles_ls);
+	// 	i++;
+	// }
 	render_map_2d(data);
 	draw_player(data);
 	return (0);

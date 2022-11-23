@@ -47,6 +47,33 @@ void	test_function(t_data *data)
 	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
 }
 
+void load_player(t_data *data)
+{
+	int i = 0;
+	int j = 0;
+
+	while (data->map[i])
+	{
+		while (data->map[i][j])
+		{
+			if (data->map[i][j] == 'E')
+			{
+				data->player->direction.x = 1;
+				data->player->direction.y = 0;
+				data->player->pos_map.x = j;
+				data->player->pos_map.y = i;
+			data->player->pos_box.x = UNITS_PER_BOX / 2;
+			data->player->pos_box.y = UNITS_PER_BOX / 2;
+			data->player->pos_in_step = update_pos_in_step(data->player);
+			data->player->pos_in_pix = update_pos_in_pix(data->player);
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	t_image		img;
@@ -64,6 +91,7 @@ int	main(int argc, char *argv[])
 		data = malloc_data();
 		parse_file(argv[1],  data);
 		data->window = malloc(sizeof(t_window));
+		load_player(data);
 		init_key_status(data);
 		window_init(data);
 		cub3d_render(data);

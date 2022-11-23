@@ -32,11 +32,11 @@ void	init_null(t_data *data, int *map_parse)
 void	init_fd(t_data *data, int *fd, char *fname)
 {
 	file_extention_available(data, fname);
-	*fd = open(fname, O_RDONLY);
-	if (*fd == -1)
+	(*fd) = open(fname, O_RDONLY);
+	if ((*fd) == -1)
 		exit_msg(data, "[init_fd] Error opening file (check file name or chmod)", -1);
 }
-
+//verify file
 void	file_extention_available(t_data *data, char *fname)
 {
 	char	*p_ext;

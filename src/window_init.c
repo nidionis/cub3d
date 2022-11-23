@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/23 09:55:27 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:45:51 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	window_init(t_data *data)
 	load_textures(data);
 	data->img->img = mlx_new_image(window->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	window->init = mlx_new_window(window->mlx, \
-		SCREEN_WIDTH, SCREEN_HEIGHT, "test");
+		SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3d");
 	data->img->adress = mlx_get_data_addr(data->img->img,&data->img->bpp, &data->img->line_len, &data->img->endian);
 	mlx_put_image_to_window(window->mlx, window->init, data->img->img,0, 0);
 	return (0);

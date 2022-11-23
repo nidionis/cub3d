@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_import.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 18:17:51 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/23 16:14:02 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,9 @@ void	parse_file(char *fname, t_data *data)
 		}
 	}
 	close(fd);
-	check_param_not_missing(data);
-	if (map_parse == -1)
-		exit_msg(data, "[parse_file] pb loading map", -1);
-	format_map(data);
-	map_parse = check_map(data);
+	// check_param_not_missing(data);
+	// if (map_parse == -1)
+	// 	exit_msg(data, "[parse_file] pb loading map", -1);
+	// format_map(data);
+	// map_parse = check_map(data);
 }
