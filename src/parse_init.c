@@ -12,6 +12,7 @@
 
 #include "cub3d.h"
 
+//init map, textures, sprites as null and ceiling/floor as -1
 void	init_null(t_data *data, int *map_parse)
 {
 	int	i;
@@ -29,6 +30,8 @@ void	init_null(t_data *data, int *map_parse)
 	data->image->sprite_ls = NULL;
 }
 
+
+//open file
 void	init_fd(t_data *data, int *fd, char *fname)
 {
 	file_extention_available(data, fname);
@@ -36,7 +39,8 @@ void	init_fd(t_data *data, int *fd, char *fname)
 	if ((*fd) == -1)
 		exit_msg(data, "[init_fd] Error opening file (check file name or chmod)", -1);
 }
-//verify file
+
+//verify extension file
 void	file_extention_available(t_data *data, char *fname)
 {
 	char	*p_ext;

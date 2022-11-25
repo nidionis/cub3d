@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_import.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/11/23 16:14:02 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:38:17 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void	parse_file(char *fname, t_data *data)
 
 	init_null(data, &map_parse);
 	init_fd(data, &fd, fname);
-	//fprintf(stderr, "%s\n", data->image->texture_path[0]);
 	data->line = get_next_line(fd);
 	if (data->line)
 	{
@@ -109,9 +108,9 @@ void	parse_file(char *fname, t_data *data)
 		}
 	}
 	close(fd);
-	// check_param_not_missing(data);
-	// if (map_parse == -1)
-	// 	exit_msg(data, "[parse_file] pb loading map", -1);
-	// format_map(data);
-	// map_parse = check_map(data);
+	check_param_not_missing(data);
+	if (map_parse == -1)
+		exit_msg(data, "[parse_file] pb loading map", -1);
+	format_map(data);
+	map_parse = check_map(data);
 }

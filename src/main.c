@@ -62,10 +62,14 @@ void load_player(t_data *data)
 				data->player->direction.y = 0;
 				data->player->pos_map.x = j;
 				data->player->pos_map.y = i;
-			data->player->pos_box.x = UNITS_PER_BOX / 2;
-			data->player->pos_box.y = UNITS_PER_BOX / 2;
-			data->player->pos_in_step = update_pos_in_step(data->player);
-			data->player->pos_in_pix = update_pos_in_pix(data->player);
+				data->player->pos_box.x = UNITS_PER_BOX / 2;
+				data->player->pos_box.y = UNITS_PER_BOX / 2;
+				data->player->pos_in_step = update_pos_in_step(data->player);
+				data->player->pos_in_pix = update_pos_in_pix(data->player);
+				data->player->speed = 1;
+				data->player->rotate_speed = 1;
+				data->player->map_pos.x = j;
+				data->player->map_pos.y = i;
 			}
 			j++;
 		}

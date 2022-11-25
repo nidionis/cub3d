@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
-/*   Updated: 2022/11/23 16:24:25 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/25 11:08:18 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 	}
 	return (rayponse);
 }
+
+
 
 void	beam(t_data *data, t_rayponse *rayponse)
 {

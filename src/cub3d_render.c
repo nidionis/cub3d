@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/23 18:01:31 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/25 11:20:13 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,66 @@ int	render_map_2d(t_data *data)
 	return (0);
 }
 
+int move(t_data *data, int	i)
+{
+	t_player *player;
+	double 		tmpx;
+	double 		tmpy;
+
+	player = data->player;
+	tmpx = player->map_pos.x + player->speed * cos(player->angle) * i;
+	 if (data->map[(int)floor(player->map_pos.x)][(int)floor(tmpx)] == '0')
+	 {
+		player->map_pos.x = tmpx;
+		printf("a");
+	 }
+	tmpy = player->map_pos.y + player->speed * sin(player->angle) * i;
+	 if (data->map[(int)floor(tmpy)][(int)floor(player->map_pos.x)] == '0')
+	 {
+		player->map_pos.y = tmpy;
+	 }
+	 return (0);
+}
+
+int	update(t_data *data)
+{
+	t_player *player;
+
+	player = data->player;
+	if (data->key_status->d)
+	{
+
+	}
+	if (data->key_status->a)
+	{
+		printf("%f____%f\n",floor(player->map_pos.y), floor(player->map_pos.x));
+		printf("%d\n", player->angle);
+	}
+	if (data->key_status->s)
+	{
+		printf("move down");
+		move(data, 1);
+	}
+	if (data->key_status->w)
+	{
+		move(data,1);
+	}
+	if (data->key_status->left)
+	{
+		player->angle += player->rotate_speed;
+	}
+	if (data->key_status->right)
+	{
+		player->angle -= (int)player->rotate_speed;
+	}
+	return (0);
+}
+
 int	graphics_render(t_data *data)
 {
-	int	i;
+	// int	i;
 
-	i = 0;
+	// i = 0;
 	// set_arRay(data);
 	// while (i < CAM_QUALITY)
 	// {
@@ -41,8 +96,8 @@ int	graphics_render(t_data *data)
 	// 	ft_lstclear(&data->cam->arRay[i].obstacles_ls);
 	// 	i++;
 	// }
+	update(data);
 	render_map_2d(data);
-	draw_player(data);
 	return (0);
 }
 

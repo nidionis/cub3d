@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:03:28 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/21 10:46:45 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/25 11:17:37 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,10 @@ void	draw_cube(t_window *window, int size, int pos_y, int pos_x, int color)
 void	draw_player(t_data *data)
 {
 	t_player	*player;
-	t_point		minimap_position;
 
 	player = data->player;
-	minimap_position = units_pos_to_minimap_pos(data, player->pos_in_pix);
-	draw_cube(data->window, 5, minimap_position.y, \
-		minimap_position.x, 0xFF0F0F);
-	draw_vision_field(data, minimap_position);
+	draw_cube(data->window, 5,(int)floor(player->map_pos.y) * 20, (int)floor(player->map_pos.x) * 20, 0xFF0F0F);
+	// draw_vision_field(data, minimap_position);
 }
 
 void	draw_mini_map(t_data *data)
