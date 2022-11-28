@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_set_distances.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:40:25 by supersko          #+#    #+#             */
-/*   Updated: 2022/11/19 17:42:44 by supersko         ###   ########.fr       */
+/*   Updated: 2022/11/28 12:40:15 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

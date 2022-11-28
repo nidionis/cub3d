@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/23 15:45:51 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/28 17:35:13 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ if UNITS_PER_BOX = 1000,
 
 functions are in pos_update.c
 */
-
+// void	load_textures(t_data *data)
+// {
+// 	data->textures[0].img = mlx_xpm_file_to_image(data->window->mlx, "assets/test.xpm",64, 64);
+// 	data->textures[0].adress = mlx_get_data_addr(data->textures[0].img, &data->textures[0].bpp, &data->textures[0].line_len,&data->textures[0].endian);
+// }
 
 t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position)
 {
@@ -56,24 +60,6 @@ t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position)
 	return (pos_for_map);
 }
 
-void	load_textures(t_data *data)
-{
-	t_window *window;
-
-	int width;
-	int height;
-
-	width = 20;
-	height = 20;
-	window = data->window;
-	data->textures = malloc(sizeof(t_img_data));
-	data->textures->img = mlx_xpm_file_to_image(window->mlx, \
-	"assets/wall.xpm", &width, &height);
-	data->textures->adress = mlx_get_data_addr(data->textures->img, \
-	&data->textures->bpp, &data->textures->line_len, &data->textures->endian);
-}
-
-/* draw_ray */
 int	window_init(t_data *data)
 {
 	t_window *window;
@@ -85,7 +71,7 @@ int	window_init(t_data *data)
 	data->img->img = mlx_new_image(window->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	window->init = mlx_new_window(window->mlx, \
 		SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3d");
+	data->img->line_len = data->img->line_len >> 2;
 	data->img->adress = mlx_get_data_addr(data->img->img,&data->img->bpp, &data->img->line_len, &data->img->endian);
-	mlx_put_image_to_window(window->mlx, window->init, data->img->img,0, 0);
 	return (0);
 }

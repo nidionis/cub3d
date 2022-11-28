@@ -70,13 +70,13 @@
 /* MAPCASE to consider as a wall */
 # define IS_BLOCK "1 "
 # define NB_TEXTURES 4
-# define SCREEN_WIDTH 1200
-# define SCREEN_HEIGHT 720
+# define SCREEN_WIDTH 1900
+# define SCREEN_HEIGHT 1080
 /* should be eaual to windows width*/
-# define CAM_QUALITY 2000
+# define CAM_QUALITY 1900
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 1000
-# define STEPS_PER_BOX 21
+# define STEPS_PER_BOX 30
 # define WALL_SIZE 20
 /* in radient 66 = 1.15*/
 /* num of ray_parse for a pic */

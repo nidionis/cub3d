@@ -12,6 +12,94 @@
 
 #include "cub3d.h"
 
+int		get_color_tex(t_data *data, t_point pos)
+{
+	t_img_data *tex;
+
+	tex = data->textures;
+	if (pos.x >= 0 && pos.x < 20
+		&& pos.y >= 0 && pos.y < 20)
+	{
+		return (*(int*)(tex->img
+			+ (4 * 20 * (int)pos.y)
+			+ (4 * (int)pos.x)));
+	}
+	return (0x0);
+}
+
+void	draw_textures(t_data *data, t_point	*start, t_point	*end, t_point color)
+{
+	int	x, y, dx, dy, dx1, dy1, px, py, xe, ye, i;
+	
+    dx = end->x - start->x;
+    dy = end->y - start->y;
+    dx1 = abs(dx);
+    dy1 = abs(dy);
+    px = 2 * dy1 - dx1;
+    py = 2 * dx1 - dy1;
+    if (dy1 <= dx1) {
+        if (dx >= 0)
+		{
+            x = start->x; y = start->y; xe = end->x;
+        }
+		else
+		{
+            x = end->x; y = end->y; xe = start->x;
+        }
+		my_mlx_pixel_put(data->img, x, y, get_color_tex(data,color));
+        for (i = 0; x < xe; i++)
+		{
+        	x = x + 1;
+        	if (px < 0)
+			{
+        	    px = px + 2 * dy1;
+        	}
+			else
+			{
+        	    if ((dx < 0 && dy < 0) || (dx > 0 && dy > 0)) {
+        	        y = y + 1;
+        	    } else {
+        	        y = y - 1;
+        	    }
+        	    px = px + 2 * (dy1 - dx1);
+        	}
+        	my_mlx_pixel_put(data->img, x, y, get_color_tex(data,color));
+			color.x++;
+			color.y++;
+        }
+	}
+		else
+		{
+        	if (dy >= 0)
+			{
+        	    x = start->x; y = start->y; ye =end-> y;
+        	}
+			else
+			{
+        	    x = end->x; y = end->y; ye = start->y;
+        	}
+			my_mlx_pixel_put(data->img, x, y, get_color_tex(data,color));
+        	for (i = 0; y < ye; i++)
+			{
+        	    y = y + 1;
+        	    if (py <= 0) {
+        	        py = py + 2 * dx1;
+        	    } else {
+        	        if ((dx < 0 && dy<0) || (dx > 0 && dy > 0)) {
+        	            x = x + 1;
+        	        } else {
+        	            x = x - 1;
+        	        }
+        	        py = py + 2 * (dx1 - dy1);
+        	    }
+        	   my_mlx_pixel_put(data->img, x, y, get_color_tex(data,color));
+			   color.y++;
+			   color.x++;
+        	}
+    }
+}
+
+
 void	print_player(t_data *data, int fd)
 {
 	if (fd < 0)
@@ -117,13 +205,16 @@ void	draw_wall_line(t_data *data, int i)
 	t_point	ceiling_start;
 	t_point	floor_end;
 	t_point	end;
+	t_point colors;
 	t_rayponse	ray;
+	colors.x = 0;
+	colors.y = 0;
 	int		line_height;
 	int		color;
 	int		line_width = SCREEN_WIDTH / CAM_QUALITY;
 	int		loop;
 	double	good_ratio;
-	
+	(void)color;
 	ray = data->cam->arRay[i];
 	good_ratio = (double)SCREEN_HEIGHT * (double)UNITS_PER_BOX;
 	start.x = i * line_width;
@@ -150,8 +241,10 @@ void	draw_wall_line(t_data *data, int i)
 	loop = 0;
 	while (loop < line_width)
 	{
+		(void)colors;
 		draw_line(data, &ceiling_start, &start, data->image->ceiling_color);
-		draw_line(data, &start, &end, color);
+		// draw_line(data, &start, &end, color);
+		draw_textures(data, &start, &end, colors);
 		draw_line(data, &end, &floor_end, data->image->floor_color);
 		start.x++;
 		end.x++;

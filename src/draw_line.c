@@ -6,11 +6,19 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:06:18 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/20 15:21:31 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/28 09:45:32 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void            my_mlx_pixel_put(t_img_data *img, int x, int y, int color)
+{
+  char    *dst;
+
+  dst = img->adress + (y * img->line_len + x * (img->bpp / 8));
+  *(unsigned int*)dst = color;
+}
 
 void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)
 {
@@ -31,7 +39,7 @@ void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)
 		{
             x = end->x; y = end->y; xe = start->x;
         }
-		mlx_pixel_put(data->window->mlx, data->window->init, x, y, color);
+		my_mlx_pixel_put(data->img, x, y, color);
         for (i = 0; x < xe; i++)
 		{
         	x = x + 1;
@@ -48,7 +56,7 @@ void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)
         	    }
         	    px = px + 2 * (dy1 - dx1);
         	}
-        	mlx_pixel_put(data->window->mlx, data->window->init, x, y, color);
+        	my_mlx_pixel_put(data->img, x, y, color);
         }
 	}
 		else
@@ -61,7 +69,7 @@ void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)
 			{
         	    x = end->x; y = end->y; ye = start->y;
         	}
-			mlx_pixel_put(data->window->mlx, data->window->init, x, y, color);
+			my_mlx_pixel_put(data->img, x, y, color);
         	for (i = 0; y < ye; i++)
 			{
         	    y = y + 1;
@@ -75,7 +83,7 @@ void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)
         	        }
         	        py = py + 2 * (dx1 - dy1);
         	    }
-        	    mlx_pixel_put(data->window->mlx, data->window->init, x, y, color);
+        	   my_mlx_pixel_put(data->img, x, y, color);
         	}
     }
 }

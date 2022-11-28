@@ -6,13 +6,13 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:03:28 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/25 11:17:37 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/28 10:46:04 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	draw_cube(t_window *window, int size, int pos_y, int pos_x, int color)
+void	draw_cube(t_data *data, int size, int pos_y, int pos_x, int color)
 {
 	int	y;
 	int	x;
@@ -23,7 +23,7 @@ void	draw_cube(t_window *window, int size, int pos_y, int pos_x, int color)
 	{
 		while (x < pos_x + (size / 2))
 		{
-			mlx_pixel_put(window->mlx, window->init, x, y, color);
+			my_mlx_pixel_put(data->img, x, y, color);
 			x++;
 		}
 		x = pos_x - (size / 2);
@@ -34,10 +34,12 @@ void	draw_cube(t_window *window, int size, int pos_y, int pos_x, int color)
 void	draw_player(t_data *data)
 {
 	t_player	*player;
-
+	t_point		minimap_position;
+	
 	player = data->player;
-	draw_cube(data->window, 5,(int)floor(player->map_pos.y) * 20, (int)floor(player->map_pos.x) * 20, 0xFF0F0F);
-	// draw_vision_field(data, minimap_position);
+	minimap_position = units_pos_to_minimap_pos(data, player->pos_in_pix);
+	draw_cube(data, 5, minimap_position.y, minimap_position.x, 0xFF0F0F);
+	draw_vision_field(data, minimap_position);
 }
 
 void	draw_mini_map(t_data *data)
@@ -55,13 +57,17 @@ void	draw_mini_map(t_data *data)
 		while (data->map[pos.y][pos.x])
 		{
 			if (data->map[pos.y][pos.x] == '1')
-				mlx_put_image_to_window(data->window->mlx, data->window->init, \
-					data->image->texture_path[0], pos.x * WALL_SIZE + i, \
-					pos.y * WALL_SIZE + j);
+				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
+					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, 0xF0F00F);
+				// mlx_put_image_to_window(data->window->mlx, data->window->init, 
+				// 	data->image->texture_path[0], pos.x * WALL_SIZE + i, 
+				// 	pos.y * WALL_SIZE + j);
 			else
-				mlx_put_image_to_window(data->window->mlx, data->window->init, \
-					data->image->texture_path[1], pos.x * WALL_SIZE + i, \
-					pos.y * WALL_SIZE + j);
+				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
+					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, 0x0FFF0F);
+				// mlx_put_image_to_window(data->window->mlx, data->window->init, 
+				// 	data->image->texture_path[1], pos.x * WALL_SIZE + i, 
+				// 	pos.y * WALL_SIZE + j);
 			i++;
 			pos.x++;
 		}

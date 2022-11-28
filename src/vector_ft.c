@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2022/11/23 12:05:57 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/28 12:41:11 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ t_point	translate_pt(t_vector vector, t_point pt)
 t_point	translate_pt_inplace(t_vector vector, t_point *pt)
 {
 	if (vector.x > 0)
-		pt->x += (int)(vector.x + 0.50001) * 0.1;
+		pt->x += (int)(vector.x + 0.50001);
 	else
-		pt->x += (int)(vector.x - 0.50001) * 0.1;
+		pt->x += (int)(vector.x - 0.50001);
 	if (vector.y > 0)
-		pt->y += (int)(vector.y + 0.50001) * 0.1;
+		pt->y += (int)(vector.y + 0.50001);
 	else
-		pt->y += (int)(vector.y - 0.50001) * 0.1;
+		pt->y += (int)(vector.y - 0.50001);
 	return (*pt);
 }
 

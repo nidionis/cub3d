@@ -9,6 +9,8 @@ OBJDIR   = obj
 DEBUG_LOG_FILE = debug_file
 
 SOURCES  := $(wildcard $(SRCDIR)/*.c)
+# SOURCES  := srcs/camera_ft.c srcs/cub3d_render.c srcs/debug_ft srcs/draw_functions.c srcs/draw_line.c srcs/exit_ft. \
+# srcs/ft_player_init.c
 INCLUDES := $(wildcard $(SRCDIR)/*.h)
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 

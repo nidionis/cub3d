@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
-/*   Updated: 2022/11/25 11:08:18 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/11/28 12:39:37 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,6 @@ void	beam(t_data *data, t_rayponse *rayponse)
 	int			index_closest;
 	t_obstacle	*obstacles_ls;
 
-	if (data->key_status->w == 1)
-		move_player(data, FORWARD);
-	if (data->key_status->s == 1)
-		move_player(data, BACKWARD);
-	if (data->key_status->a == 1)
-		move_player(data, LEFT);
-	if (data->key_status->d == 1)
-		move_player(data, RIGHT);
-	if (data->key_status->left == 1)
-		rotate_player(data->player, LEFT);
-	if (data->key_status->right == 1)
-		rotate_player(data->player, RIGHT);
 	set_beam(data, &obstacles_ls);
 	rays[_x] = next_wall_dir(data, _x, &obstacles_ls);
 	rays[_y] = next_wall_dir(data, _y, &obstacles_ls);
