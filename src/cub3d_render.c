@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/28 15:15:50 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/01 09:17:38 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ int move(t_data *data, int	i)
 
 int	graphics_render(t_data *data)
 {
-	(void)data;
+	
 	int	i;
-
 	i = 0;
+	
 	set_arRay(data);
 	while (i < CAM_QUALITY)
-	{
+	{	
 		draw_wall_line(data, i);
 		ft_lstclear(&data->cam->arRay[i].obstacles_ls);
 		i++;
@@ -108,9 +108,8 @@ int	graphics_render(t_data *data)
 		rotate_player(data->player, LEFT);
 	if (data->key_status->right == 1)
 		rotate_player(data->player, RIGHT);
-	render_map_2d(data);
+	// render_map_2d(data);
 	mlx_put_image_to_window(data->window->mlx, data->window->init,data->img->img, 0, 0);
-	// update(data);
 	return (0);
 }
 

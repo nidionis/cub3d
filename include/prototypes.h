@@ -118,3 +118,4 @@ int     key_press(int key, t_data *data);
 int     key_realese(int key, t_data *data);
 void	load_textures(t_data *data);
 void	draw_cube(t_data *data, int size, int pos_y, int pos_x, int color);
+void init_menu(t_data *data);

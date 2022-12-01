@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/28 17:35:13 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/01 08:49:25 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int	window_init(t_data *data)
 	window->init = mlx_new_window(window->mlx, \
 		SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3d");
 	data->img->line_len = data->img->line_len >> 2;
-	data->img->adress = mlx_get_data_addr(data->img->img,&data->img->bpp, &data->img->line_len, &data->img->endian);
+	data->img->address = (int*)mlx_get_data_addr(data->img->img,&data->img->bpp, &data->img->line_len, &data->img->endian);
 	return (0);
 }

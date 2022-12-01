@@ -13,6 +13,6 @@ void	load_textures(t_data *data)
 	data->textures = malloc(sizeof(t_img_data));
 	data->textures->img = mlx_xpm_file_to_image(window->mlx, \
 	"assets/wall.xpm", &width, &height);
-	data->textures->adress = mlx_get_data_addr(data->textures->img, \
+	data->textures->address = (int *)mlx_get_data_addr(data->textures->img, \
 	&data->textures->bpp, &data->textures->line_len, &data->textures->endian);
 }

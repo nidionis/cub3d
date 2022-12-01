@@ -243,8 +243,7 @@ void	draw_wall_line(t_data *data, int i)
 	{
 		(void)colors;
 		draw_line(data, &ceiling_start, &start, data->image->ceiling_color);
-		// draw_line(data, &start, &end, color);
-		draw_textures(data, &start, &end, colors);
+		draw_line(data, &start, &end, color);
 		draw_line(data, &end, &floor_end, data->image->floor_color);
 		start.x++;
 		end.x++;

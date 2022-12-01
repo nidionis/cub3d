@@ -99,10 +99,12 @@ typedef struct s_window
 typedef struct s_img_data
 {
 	void *img;
-	char *adress;
+	int *address;
 	int	bpp;
 	int line_len;
 	int endian;
+	int width;
+	int height;
 }	t_img_data;
 
 typedef struct s_key_status
@@ -114,6 +116,16 @@ typedef struct s_key_status
 	unsigned int	left;
 	unsigned int	right;
 }	t_key_status;
+
+typedef struct s_menu
+{
+	unsigned int start;
+	unsigned int options;
+	unsigned int quit;
+	unsigned int on;
+	unsigned int off;
+	t_img_data		*background;
+} t_menu;
 
 typedef struct s_data
 {
@@ -130,6 +142,7 @@ typedef struct s_data
 	t_img_data *textures;
 	t_img_data		*img;
 	t_key_status	*key_status;
+	t_menu			*menu;
 }	t_data;
 
 enum x_or_y { _x, _y };

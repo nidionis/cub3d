@@ -98,6 +98,7 @@ int	main(int argc, char *argv[])
 		// load_player(data);
 		init_key_status(data);
 		window_init(data);
+		init_menu(data);
 		cub3d_render(data);
 		clean_exit(data, 0);
 	}
