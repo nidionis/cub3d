@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window_init.c                                      :+:      :+:    :+:   */
+/*   load_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/01 08:49:25 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/01 17:40:25 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position)
 	return (pos_for_map);
 }
 
-int	window_init(t_data *data)
+int	load_window(t_data *data)
 {
 	t_window *window;
 
@@ -73,5 +73,6 @@ int	window_init(t_data *data)
 		SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3d");
 	data->img->line_len = data->img->line_len >> 2;
 	data->img->address = (int*)mlx_get_data_addr(data->img->img,&data->img->bpp, &data->img->line_len, &data->img->endian);
+	load_menu(data);
 	return (0);
 }

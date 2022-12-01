@@ -100,7 +100,7 @@ void	set_beam(t_data *data, t_obstacle **obstacles_ls);
 double get_dist_from_plan(t_data *data, t_rayponse *rayponse);
 t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position);
 //duarte functions
-int	window_init(t_data *data);
+int	load_window(t_data *data);
 int	render_map_2d(t_data *data);
 int	player_init(char **map, t_player *player);
 int exit_game(t_data *data);
@@ -118,4 +118,5 @@ int     key_press(int key, t_data *data);
 int     key_realese(int key, t_data *data);
 void	load_textures(t_data *data);
 void	draw_cube(t_data *data, int size, int pos_y, int pos_x, int color);
-void init_menu(t_data *data);
+void	load_menu(t_data *data);
+int		load_images(t_data *data, t_img_data *image, char *path);

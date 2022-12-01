@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:06:18 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/28 09:45:32 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/01 16:40:34 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void            my_mlx_pixel_put(t_img_data *img, int x, int y, int color)
 {
-  char    *dst;
+  int    *dst;
 
-  dst = img->adress + (y * img->line_len + x * (img->bpp / 8));
+  dst = img->address + (y * SCREEN_WIDTH + x);
   *(unsigned int*)dst = color;
 }
 

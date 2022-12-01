@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/01 09:17:38 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:39:44 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,29 +87,38 @@ int	graphics_render(t_data *data)
 {
 	
 	int	i;
-	i = 0;
 	
-	set_arRay(data);
-	while (i < CAM_QUALITY)
-	{	
-		draw_wall_line(data, i);
-		ft_lstclear(&data->cam->arRay[i].obstacles_ls);
-		i++;
+	i = 0;
+	if (data->menu->start == 1 && data->menu->on == 1)
+	{
+		set_arRay(data);
+		while (i < CAM_QUALITY)
+		{	
+			draw_wall_line(data, i);
+			ft_lstclear(&data->cam->arRay[i].obstacles_ls);
+			i++;
+		}
+		if (data->key_status->w == 1)
+			move_player(data, FORWARD);
+		if (data->key_status->s == 1)
+			move_player(data, BACKWARD);
+		if (data->key_status->a == 1)
+			move_player(data, LEFT);
+		if (data->key_status->d == 1)
+			move_player(data, RIGHT);
+		if (data->key_status->left == 1)
+			rotate_player(data->player, LEFT);
+		if (data->key_status->right == 1)
+			rotate_player(data->player, RIGHT);
+		// render_map_2d(data);
+		mlx_put_image_to_window(data->window->mlx, data->window->init,data->img->img, 0, 0);
 	}
-	if (data->key_status->w == 1)
-		move_player(data, FORWARD);
-	if (data->key_status->s == 1)
-		move_player(data, BACKWARD);
-	if (data->key_status->a == 1)
-		move_player(data, LEFT);
-	if (data->key_status->d == 1)
-		move_player(data, RIGHT);
-	if (data->key_status->left == 1)
-		rotate_player(data->player, LEFT);
-	if (data->key_status->right == 1)
-		rotate_player(data->player, RIGHT);
-	// render_map_2d(data);
-	mlx_put_image_to_window(data->window->mlx, data->window->init,data->img->img, 0, 0);
+	else
+	{
+		mlx_put_image_to_window(data->window->mlx, data->window->init,data->menu->background[0]->img, 0, 0);
+		mlx_put_image_to_window(data->window->mlx, data->window->init,data->menu->background[1]->img, 600, 50);
+	}
+	
 	return (0);
 }
 
