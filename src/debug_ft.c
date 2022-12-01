@@ -12,6 +12,71 @@
 
 #include "cub3d.h"
 
+int	get_texture_pix(t_texture *t, t_point pix)
+{
+	int addr;
+	int color;
+
+	addr = pix.y * t->size[_x] + pix.x * (t->img.bpp / 8);
+	color = (int)((void)t->img[addr]);
+	return (color);
+}
+
+void	draw_texture(t_data *data, t_point start, t_point end, int line_height, t_rayponse *ray)
+{
+	double		ratio[2];
+	t_point		text_pix;
+	int		color;
+	t_texture	t;
+
+	t = data->textures[ray->side];
+	ratio[_x] = (double)start.x / (double)SCREEN_WIDTH;
+	ratio[_y] = (double)start.y / (double)SCREEN_HEIGHT;
+	text_pix.x = t.size[_x] * ratio[_x];
+	while (start.y <= end.y)
+	{
+		text_pix.y = t.size[_y] * ratio[_y];
+		color = get_texture_pix(&t, text_pix);
+		my_mlx_pixel_put(data->img, start.x, start.y, color);
+		start.y++
+	}
+}
+
+void	draw_line_textured(t_data *data, t_point start, t_point end, int line_height, t_rayponse *ray)
+{
+	t_point	up_line;
+	t_point	down_line;
+
+	up_line.x = start.x;
+	up_line.y = 0;
+	down_line.x = start.x;
+	down_line.y = SCREEN_HEIGHT;
+	draw_line(data, &up_line, &start, data->image->ceiling_color);
+	draw_texture(data, &start, &end, line_height, ray);
+	draw_line(data, &end, &down_line, data->image->floor_color);
+}
+
+void	draw_wall_textured(t_data *data, int i_ray)
+{
+	t_rayponse	ray;
+
+	ray = data->cam->arRay[i_ray];
+	start.x = i_ray * LINE_WIDTH;
+	end.x = i_ray * LINE_WIDTH;
+	line_height = LINE_HEIGHT / ray.dist_from_plan;
+	if (line_height > SCREEN_HEIGHT)
+		line_height = (int)SCREEN_HEIGHT;
+	start.y = (int)SCREEN_HEIGHT / 2 - line_height / 2;
+	end.y = (int)SCREEN_HEIGHT / 2 + line_height / 2;
+	loop = 0;
+	while (loop < LINE_WIDTH)
+	{
+		draw_line_textured(data, start, end, line_height, &ray);
+		start.x++;
+		end.x++;
+		loop++;
+	}
+}
 
 void	draw_wall_line(t_data *data, int i)
 {
@@ -27,7 +92,7 @@ void	draw_wall_line(t_data *data, int i)
 	int		color;
 	int		line_width = SCREEN_WIDTH / CAM_QUALITY;
 	int		loop;
-	double	good_ratio;
+	double	LINE_HEIGHT;
 	(void)color;
 	ray = data->cam->arRay[i];
 	good_ratio = (double)SCREEN_HEIGHT * (double)UNITS_PER_BOX;

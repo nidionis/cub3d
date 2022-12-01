@@ -146,7 +146,7 @@ typedef struct s_data
 
 enum x_or_y { _x, _y };
 enum log_type { DATA, PARAM, CAM, PLAYER, MAP };
-enum e_identifiers { NO, SO, WE, EA, F, C };
+enum e_identifiers { NO, SO, EA, WE, F, C };
 enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
 enum e_cardinal { NORTH, SOUTH, EAST, WEST };
 enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };

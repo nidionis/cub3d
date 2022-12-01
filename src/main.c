@@ -89,10 +89,10 @@ int	main(int argc, char *argv[])
 	{
 
 		data = malloc_data();
-		parse_file(argv[1],  data);
 		data->window = malloc(sizeof(t_window));
 		init_key_status(data);
 		window_init(data);
+		parse_file(argv[1],  data);
 		cub3d_render(data);
 		clean_exit(data, 0);
 	}
