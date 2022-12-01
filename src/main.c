@@ -6,7 +6,7 @@
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/12/01 17:56:36 by supersko         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:48:48 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,7 @@ int	main(int argc, char *argv[])
 	(void)argc;
 	(void)img;
 	data = NULL;
-	t_texture	t;
 
-	t.path = argv[1];
-	set_texture_size(&t);
-	printf("%d %d\n", t.size[0], t.size[1]);
-		/*
 	if (argc != 2)
 	{
 		error_msg("Needs a path to the map file only");
@@ -96,11 +91,9 @@ int	main(int argc, char *argv[])
 		data = malloc_data();
 		parse_file(argv[1],  data);
 		data->window = malloc(sizeof(t_window));
-		// load_player(data);
 		init_key_status(data);
 		window_init(data);
 		cub3d_render(data);
 		clean_exit(data, 0);
 	}
-		*/
 }

@@ -86,7 +86,7 @@ t_obstacle	*add_obstacle(t_data *data, t_rayponse r, char m_case, t_obstacle **l
 void	convert_pos_and_dir_to_line(t_point pos, t_vector vec, t_vector line[2]);
 t_obstacle	*add_obstacle(t_data *data, t_rayponse r, char m_case, t_obstacle **ls);
 t_obstacle	*sort_obstacles(t_obstacle **ls);
-void	set_texture_size(t_texture *texture);
+void	set_texture_size(t_texture *texture, char *path);
 
 t_obstacle	*add_sprites_to_obstacles_ls(t_data *data, t_rayponse *rayponse, t_obstacle **obstacles_ls);
 int	get_side_hit(t_data *data, int index_closest);

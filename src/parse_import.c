@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/11/24 15:38:17 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/01 19:18:30 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,25 @@ void	check_param_not_missing(t_data *data)
 		exit_msg(data, "[check_param_not_missing] map is missing", -1);
 }
 
+void	import_textures(t_data *data)
+{
+	int			i;
+	char		*fname;
+	t_texture	t;
+
+	i = 0;
+	while (i < NB_TEXTURES)
+	{
+		fname = data->image->texture_path[i];
+		set_texture_size(&t, fname);
+		t.img = mlx_xpm_file_to_image(data->window->mlx, fname, &t.size[_x], &t.size[_y]);
+		if (!t.img)
+			exit_msg(data, "[import_textures] Pb loading xpm file", 1);
+		data->wall_textures[i] = t;
+		i++;
+	}
+}
+
 void	parse_file(char *fname, t_data *data)
 {
 	int		fd;
@@ -109,6 +128,7 @@ void	parse_file(char *fname, t_data *data)
 	}
 	close(fd);
 	check_param_not_missing(data);
+	import_textures(data);
 	if (map_parse == -1)
 		exit_msg(data, "[parse_file] pb loading map", -1);
 	format_map(data);

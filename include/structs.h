@@ -113,9 +113,7 @@ typedef struct s_img_data
 
 typedef struct s_texture
 {
-	char		*path;
-	t_img_data	*img_data;
-	int		is_sprite;
+	t_img_data	*img;
 	int		size[2];
 }	t_texture;
 
@@ -141,7 +139,7 @@ typedef struct s_data
 	t_window		*window;
 	char			**map;
 	int				map_size_in_units[2];
-	t_img_data		wall_textures[4];
+	t_texture		wall_textures[NB_TEXTURES];
 	t_img_data		*img;
 	t_key_status	*key_status;
 }	t_data;
