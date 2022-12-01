@@ -1,4 +1,10 @@
 #include "cub3d.h"
+
+typedef struct  s_list {
+    void            *content;
+    struct s_list   *next;
+}   t_list;
+
 typedef struct s_vector
 {
 	double	x;
@@ -105,6 +111,14 @@ typedef struct s_img_data
 	int endian;
 }	t_img_data;
 
+typedef struct s_texture
+{
+	char		*path;
+	t_img_data	*img_data;
+	int		is_sprite;
+	int		size;
+}	t_texture;
+
 typedef struct s_key_status
 {
 	unsigned int	w;
@@ -139,3 +153,4 @@ enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
 enum e_cardinal { NORTH, SOUTH, EAST, WEST };
 enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };
 enum e_sprite {SPRITE = -1};
+enum e_others {LINE_WIDTH = SCREEN_WIDTH / CAM_QUALITY, LINE_HEIGTH_SCALE = SCREEN_HEIGHT * UNITS_PER_BOX};

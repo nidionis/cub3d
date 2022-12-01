@@ -99,6 +99,17 @@ int	len_overflow(int len);
 void	set_beam(t_data *data, t_obstacle **obstacles_ls);
 double get_dist_from_plan(t_data *data, t_rayponse *rayponse);
 t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position);
+
+	/* list */
+int	    ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+
 //duarte functions
 int	window_init(t_data *data);
 int	render_map_2d(t_data *data);
