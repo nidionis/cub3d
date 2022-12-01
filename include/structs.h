@@ -116,7 +116,7 @@ typedef struct s_texture
 	char		*path;
 	t_img_data	*img_data;
 	int		is_sprite;
-	int		size;
+	int		size[2];
 }	t_texture;
 
 typedef struct s_key_status
@@ -131,17 +131,17 @@ typedef struct s_key_status
 
 typedef struct s_data
 {
-	char		*line;
-	char		**line_split;
-	char		*blocks;
-	char		*map_cases;
-	t_image		*image;
-	t_player	*player;
-	t_cam		*cam;
-	t_window	*window;
-	char		**map;
-	int			map_size_in_units[2];
-	t_img_data *textures;
+	char			*line;
+	char			**line_split;
+	char			*blocks;
+	char			*map_cases;
+	t_image			*image;
+	t_player		*player;
+	t_cam			*cam;
+	t_window		*window;
+	char			**map;
+	int				map_size_in_units[2];
+	t_img_data		wall_textures[4];
 	t_img_data		*img;
 	t_key_status	*key_status;
 }	t_data;

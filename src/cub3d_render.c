@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/28 15:15:50 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/01 17:17:35 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ int	graphics_render(t_data *data)
 	while (i < CAM_QUALITY)
 	{
 		draw_wall_line(data, i);
-		ft_lstclear(&data->cam->arRay[i].obstacles_ls);
+		//ft_lstclear(&data->cam->arRay[i].obstacles_ls);
+
 		i++;
 	}
 	if (data->key_status->w == 1)

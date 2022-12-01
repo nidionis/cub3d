@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 16:10:30 by supersko         ###   ########.fr       */
+/*   Updated: 2022/12/01 17:19:43 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	clean_exit(t_data *data, int exit_code)
 				free(data->cam->beam);
 			i = 0;
 			while (i < CAM_QUALITY)
-				ft_lstclear(&data->cam->arRay[i++].obstacles_ls);
+			//	ft_lstclear(&data->cam->arRay[i++].obstacles_ls);
 			free(data->cam);
 		}
 		if (data->image)

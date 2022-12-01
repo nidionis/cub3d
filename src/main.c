@@ -6,7 +6,7 @@
 /*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/10/26 17:33:57 by suplayerko         ###   ########.fr       */
+/*   Updated: 2022/12/01 17:56:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,6 @@
 	if (!data->cam->beam)
 		clean_exit(data, -1);
 	return (data);
-}
-
-void	test_function(t_data *data)
-{
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
-	move_player(data, LEFT);
-	redir_debug_file_logs(data, DEBUG_LOG_FILENAME, PLAYER);
 }
 
 void load_player(t_data *data)
@@ -83,8 +76,15 @@ int	main(int argc, char *argv[])
 	t_image		img;
 	t_data		*data;
 	(void)argv;
+	(void)argc;
 	(void)img;
 	data = NULL;
+	t_texture	t;
+
+	t.path = argv[1];
+	set_texture_size(&t);
+	printf("%d %d\n", t.size[0], t.size[1]);
+		/*
 	if (argc != 2)
 	{
 		error_msg("Needs a path to the map file only");
@@ -92,6 +92,7 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
+
 		data = malloc_data();
 		parse_file(argv[1],  data);
 		data->window = malloc(sizeof(t_window));
@@ -101,4 +102,5 @@ int	main(int argc, char *argv[])
 		cub3d_render(data);
 		clean_exit(data, 0);
 	}
+		*/
 }

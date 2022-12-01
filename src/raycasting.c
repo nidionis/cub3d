@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
-/*   Updated: 2022/11/28 12:39:37 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/01 17:56:02 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	beam(t_data *data, t_rayponse *rayponse)
 	rayponse->side = get_side_hit(data, index_closest);
 	rayponse->dist_from_plan = get_dist_from_plan(data, rayponse);
 	//add_sprites_to_obstacles_ls(data, rayponse, &obstacles_ls);
-	rayponse->obstacles_ls = sort_obstacles(&obstacles_ls);
+	//rayponse->obstacles_ls = sort_obstacles(&obstacles_ls);
 }
 
 void	set_arRay(t_data *data)
