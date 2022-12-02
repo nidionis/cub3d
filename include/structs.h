@@ -30,7 +30,6 @@ typedef struct s_player
 	t_point		pos_in_pix;
 	t_vector	map_pos;
 	t_vector	direction;
-	
 	int			angle;
 }	t_player;
 
@@ -38,7 +37,6 @@ typedef struct	s_sprite
 {
 	//texture
 	t_point	pos;
-
 	struct s_sprite	*next;
 }	t_sprite;
 
@@ -46,23 +44,23 @@ typedef struct s_image
 {
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
-	char			*texture_path[NB_TEXTURES];
-	//char			*minimap_texture[NB_MINIMAP_TEXTURES]
-	int				line_len;
-	t_sprite		*sprite_ls;
-	int				sprite_half_size;
+	char		*texture_path[NB_TEXTURES];
+	//char		*minimap_texture[NB_MINIMAP_TEXTURES]
+	int		line_len;
+	t_sprite	*sprite_ls;
+	int		sprite_half_size;
 }	t_image;
 
 typedef struct	s_obstacle
 {
-	char				type;
-	double				len;
+	char			type;
+	double			len;
 	// if type is IS_BLOCK
-	t_point				hit_point;
-	int					side;
+	t_point			hit_point;
+	int			side;
 	// if type is SPRITE
-	double				sprite_hit; //distance from sprite_point to ray
-	t_sprite			*sprite_pointer;
+	double			sprite_hit; //distance from sprite_point to ray
+	t_sprite		*sprite_pointer;
 	struct s_obstacle	*next;
 }	t_obstacle;
 
@@ -70,7 +68,7 @@ typedef struct	s_rayponse
 {
 	double		len;
 	double		dist_from_plan;
-	int			side;
+	int		side;
 	t_point		hit_point;
 	t_obstacle	*obstacles_ls;
 }	t_rayponse;
@@ -98,8 +96,8 @@ typedef struct s_window
 {
 	void	*mlx;
 	void	*init;
-	int		width;
-	int		height;
+	int	width;
+	int	height;
 }	t_window;
 
 typedef struct s_img_data
@@ -129,18 +127,18 @@ typedef struct s_key_status
 
 typedef struct s_data
 {
-	char			*line;
-	char			**line_split;
-	char			*blocks;
-	char			*map_cases;
-	t_image			*image;
-	t_player		*player;
-	t_cam			*cam;
-	t_window		*window;
-	char			**map;
-	int				map_size_in_units[2];
-	t_texture		wall_textures[NB_TEXTURES];
-	t_img_data		*img;
+	char		*line;
+	char		**line_split;
+	char		*blocks;
+	char		*map_cases;
+	t_image		*image;
+	t_player	*player;
+	t_cam		*cam;
+	t_window	*window;
+	char		**map;
+	int		map_size_in_units[2];
+	t_texture	wall_textures[NB_TEXTURES];
+	t_img_data	*img;
 	t_key_status	*key_status;
 }	t_data;
 
@@ -151,4 +149,4 @@ enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
 enum e_cardinal { NORTH, SOUTH, EAST, WEST };
 enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };
 enum e_sprite {SPRITE = -1};
-enum e_others {LINE_WIDTH = SCREEN_WIDTH / CAM_QUALITY, LINE_HEIGTH_SCALE = SCREEN_HEIGHT * UNITS_PER_BOX};
+enum e_others {LINE_WIDTH = SCREEN_WIDTH / CAM_QUALITY, LINE_HEIGHT = SCREEN_HEIGHT * UNITS_PER_BOX};

@@ -17,28 +17,28 @@ int	get_texture_pix(t_texture *t, t_point pix)
 	int addr;
 	int color;
 
-	addr = pix.y * t->size[_x] + pix.x * (t->img.bpp / 8);
-	color = (int)((void)t->img[addr]);
+	addr = pix.y * t->size[_x] + pix.x * (t->img->bpp / 8);
+	color = *(int *)(t->img->img + addr);
 	return (color);
 }
 
-void	draw_texture(t_data *data, t_point start, t_point end, int line_height, t_rayponse *ray)
+void	draw_texture(t_data *data, t_point *start, t_point *end, int line_height, t_rayponse *ray)
 {
 	double		ratio[2];
 	t_point		text_pix;
 	int		color;
 	t_texture	t;
 
-	t = data->textures[ray->side];
-	ratio[_x] = (double)start.x / (double)SCREEN_WIDTH;
-	ratio[_y] = (double)start.y / (double)SCREEN_HEIGHT;
+	t = data->wall_textures[ray->side];
+	ratio[_x] = (double)start->x / (double)SCREEN_WIDTH;
 	text_pix.x = t.size[_x] * ratio[_x];
-	while (start.y <= end.y)
+	while (start->y <= end->y)
 	{
+		ratio[_y] = 1.0 - (double)(end->y - start->y) / (double)line_height;
 		text_pix.y = t.size[_y] * ratio[_y];
 		color = get_texture_pix(&t, text_pix);
-		my_mlx_pixel_put(data->img, start.x, start.y, color);
-		start.y++
+		my_mlx_pixel_put(data->img, start->x, start->y, color);
+		start->y++;
 	}
 }
 
@@ -59,6 +59,10 @@ void	draw_line_textured(t_data *data, t_point start, t_point end, int line_heigh
 void	draw_wall_textured(t_data *data, int i_ray)
 {
 	t_rayponse	ray;
+	int		loop;
+	int		line_height;
+	t_point		start;
+	t_point		end;
 
 	ray = data->cam->arRay[i_ray];
 	start.x = i_ray * LINE_WIDTH;
@@ -78,6 +82,7 @@ void	draw_wall_textured(t_data *data, int i_ray)
 	}
 }
 
+/*
 void	draw_wall_line(t_data *data, int i)
 {
 	t_point	start;
@@ -132,7 +137,7 @@ void	draw_wall_line(t_data *data, int i)
 		loop++;
 	}
 }
-
+*/
 /*
 void	draw_obstacle(t_data *data, int i)
 {
