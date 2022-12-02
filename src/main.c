@@ -97,7 +97,6 @@ int	main(int argc, char *argv[])
 		data->window = malloc(sizeof(t_window));
 		init_key_status(data);
 		load_window(data);
-		
 		cub3d_render(data);
 		clean_exit(data, 0);
 	}

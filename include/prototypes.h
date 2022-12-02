@@ -120,3 +120,5 @@ void	load_textures(t_data *data);
 void	draw_cube(t_data *data, int size, int pos_y, int pos_x, int color);
 void	load_menu(t_data *data);
 int		load_images(t_data *data, t_img_data *image, char *path);
+void    render_menu(t_data *data);
+void	draw_image(t_img_data *img1, t_img_data *img2, t_point pos, int color);
