@@ -151,4 +151,4 @@ enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
 enum e_cardinal { NORTH, SOUTH, EAST, WEST };
 enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };
 enum e_sprite {SPRITE = -1};
-enum e_others {LINE_WIDTH = SCREEN_WIDTH / CAM_QUALITY, LINE_HEIGTH_SCALE = SCREEN_HEIGHT * UNITS_PER_BOX};
+enum e_others {LINE_WIDTH = SCREEN_WIDTH / CAM_QUALITY, LINE_HEIGHT = SCREEN_HEIGHT * UNITS_PER_BOX};

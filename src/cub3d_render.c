@@ -92,7 +92,7 @@ int	graphics_render(t_data *data)
 	set_arRay(data);
 	while (i < CAM_QUALITY)
 	{
-		draw_wall_line(data, i);
+		draw_wall_textured(data, i);
 		//ft_lstclear(&data->cam->arRay[i].obstacles_ls);
 
 		i++;

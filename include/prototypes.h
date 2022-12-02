@@ -1,5 +1,7 @@
 #include "cub3d.h"
 void			error_msg(char *msg);
+void	draw_line_textured(t_data *data, t_point start, t_point end, int line_height, t_rayponse *ray);
+void	draw_wall_textured(t_data *data, int i_ray);
 char	**default_map(char	*argv[]);
 char	**ft_append_tab(char **matrix, char *str);
 char	*get_next_line(int fd);
