@@ -100,7 +100,7 @@ void	import_textures(t_data *data)
 	{
 		fname = data->image->texture_path[i];
 		set_texture_size(&t, fname);
-		t.img = mlx_xpm_file_to_image(data->window->mlx, fname, &t.size[_x], &t.size[_y]);
+		t.img = mlx_xpm_file_to_image(data->window->mlx, data->image->texture_path[i], &t.size[_x], &t.size[_y]);
 		if (!t.img)
 			exit_msg(data, "[import_textures] Pb loading xpm file", 1);
 		data->wall_textures[i] = t;

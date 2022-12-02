@@ -46,6 +46,8 @@ void	draw_line_textured(t_data *data, t_point start, t_point end, int line_heigh
 {
 	t_point	up_line;
 	t_point	down_line;
+	(void)up_line;
+	(void)down_line;
 
 	up_line.x = start.x;
 	up_line.y = 0;
@@ -63,17 +65,20 @@ void	draw_wall_textured(t_data *data, int i_ray)
 	int line_height;
 	t_point		start;
 	t_point		end;
+	int	line_width = LINE_WIDTH;
 
+	if (line_width <= 0)
+		line_width = 1;
 	ray = data->cam->arRay[i_ray];
-	start.x = i_ray * LINE_WIDTH;
-	end.x = i_ray * LINE_WIDTH;
-	line_height = LINE_HEIGHT / ray.dist_from_plan;
-	if (line_height > SCREEN_HEIGHT)
+	start.x = i_ray * line_width;
+	end.x = i_ray * line_width;
+	line_height = (int)LINE_HEIGHT / ray.dist_from_plan;
+	if (line_height > (int)SCREEN_HEIGHT)
 		line_height = (int)SCREEN_HEIGHT;
 	start.y = (int)SCREEN_HEIGHT / 2 - line_height / 2;
 	end.y = (int)SCREEN_HEIGHT / 2 + line_height / 2;
 	loop = 0;
-	while (loop < LINE_WIDTH)
+	while (loop < line_width)
 	{
 		draw_line_textured(data, start, end, line_height, &ray);
 		start.x++;

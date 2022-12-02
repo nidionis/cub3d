@@ -1,7 +1,7 @@
-NO
-SO 
-WE
-EA
+NO ./asserts/wall1.xpm
+SO  ./asserts/wall1.xpm
+WE ./asserts/wall1.xpm
+EA ./asserts/wall1.xpm
 F   255,0,255
 C    0,255,255
 

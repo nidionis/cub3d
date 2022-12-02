@@ -138,7 +138,7 @@ typedef struct s_data
 	t_cam			*cam;
 	t_window		*window;
 	char			**map;
-	int				map_size_in_units[2];
+	int			map_size_in_units[2];
 	t_texture		wall_textures[NB_TEXTURES];
 	t_img_data		*img;
 	t_key_status	*key_status;
@@ -151,4 +151,6 @@ enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
 enum e_cardinal { NORTH, SOUTH, EAST, WEST };
 enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };
 enum e_sprite {SPRITE = -1};
-enum e_others {LINE_WIDTH = SCREEN_WIDTH / CAM_QUALITY, LINE_HEIGHT = SCREEN_HEIGHT * UNITS_PER_BOX};
+enum e_others {LINE_WIDTH = (int)SCREEN_WIDTH / (int)CAM_QUALITY, LINE_HEIGHT = (int)SCREEN_HEIGHT * (int)UNITS_PER_BOX};
+//int LINE_WIDTH = (int)SCREEN_WIDTH / (int)CAM_QUALITY;
+//int LINE_HEIGHT = (int)SCREEN_HEIGHT * (int)UNITS_PER_BOX;

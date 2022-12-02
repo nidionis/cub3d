@@ -70,10 +70,10 @@
 /* MAPCASE to consider as a wall */
 # define IS_BLOCK "1 "
 # define NB_TEXTURES 4
-# define SCREEN_WIDTH 290
-# define SCREEN_HEIGHT 200
+# define SCREEN_WIDTH 700
+# define SCREEN_HEIGHT 400
 /* should be eaual to windows width*/
-# define CAM_QUALITY 1900
+# define CAM_QUALITY 700
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 1000
 # define STEPS_PER_BOX 30
