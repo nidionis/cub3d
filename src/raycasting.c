@@ -12,6 +12,25 @@
 
 #include "cub3d.h"
 
+/*
+void	add_obstacle(t_data *data, t_rayponse *ray, char map_case, t_list **lst)
+{
+	t_obstacle	*obst;
+	t_list		*item;
+	(void)map_case;
+
+	obst = malloc(sizeof(t_obstacle));
+	if (!obst)
+		exit_msg(data, "[add_obstacle] pb adding obstacle", 1);
+	obst->side = get_side_hit(data, dir);
+	obst->textureX = get_wallX(ray);
+	item = ft_lstnew((void *)obst);
+	if (!item)
+		exit_msg(data, "[add_obstacle] pb adding obstacle", 2);
+	ft_lstadd_front(lst, item);
+}
+*/
+
 t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 {
 	t_cam			*cam;
@@ -36,7 +55,6 @@ t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 			//else if (is_block(data, map_case) != -1)
 			//{
 			//	add_obstacle(data, rayponse, map_case, obstacles_ls);
-			//	(*obstacles_ls)->side = get_side_hit(data, dir);
 			//}
 		}
 		else

@@ -62,6 +62,15 @@ void	init_vars2(t_point *start, t_point *end, int *line_height, t_rayponse *ray)
 	end->y = (int)SCREEN_HEIGHT / 2 + *line_height / 2;
 }
 
+void   init_vars(t_point *start, t_point *end, int *line_width, int i_ray)
+{
+       *line_width = LINE_WIDTH;
+       if (*line_width <= 0)
+               *line_width = 1;
+       start->x = i_ray * (*line_width);
+       end->x = i_ray * (*line_width);
+}
+
 void	draw_wall_textured(t_data *data, int i_ray)
 {
 	t_rayponse	ray;

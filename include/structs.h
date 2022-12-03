@@ -58,12 +58,9 @@ typedef struct	s_obstacle
 	char				type;
 	double				len;
 	// if type is IS_BLOCK
-	t_point				hit_point;
-	int					side;
-	// if type is SPRITE
-	double				sprite_hit; //distance from sprite_point to ray
+	int				textureX;
+	int				side;
 	t_sprite			*sprite_pointer;
-	struct s_obstacle	*next;
 }	t_obstacle;
 
 typedef struct	s_rayponse
