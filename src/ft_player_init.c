@@ -12,6 +12,7 @@
 
 #include "../include/cub3d.h"
 
+/* probably useless */
 int	player_init(char **map, t_player *player)
 {
 	t_point	pos;

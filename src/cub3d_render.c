@@ -28,61 +28,7 @@ int	render_map_2d(t_data *data)
 	return (0);
 }
 
-int move(t_data *data, int	i)
-{
-	t_player *player;
-	double 		tmpx;
-	double 		tmpy;
-
-	player = data->player;
-	tmpx = player->map_pos.x + player->speed * cos(player->angle) * i;
-	 if (data->map[(int)floor(player->map_pos.x)][(int)floor(tmpx)] == '0')
-	 {
-		player->map_pos.x = tmpx;
-		printf("a");
-	 }
-	tmpy = player->map_pos.y + player->speed * sin(player->angle) * i;
-	 if (data->map[(int)floor(tmpy)][(int)floor(player->map_pos.x)] == '0')
-	 {
-		player->map_pos.y = tmpy;
-	 }
-	 return (0);
-}
-
-// int	update(t_data *data)
-// {
-// 	t_player *player;
-
-// 	player = data->player;
-// 	if (data->key_status->d)
-// 	{
-
-// 	}
-// 	if (data->key_status->a)
-// 	{
-// 		printf("%f____%f\n",floor(player->map_pos.y), floor(player->map_pos.x));
-// 		printf("%d\n", player->angle);
-// 	}
-// 	if (data->key_status->s)
-// 	{
-// 		printf("move down");
-// 		move(data, 1);
-// 	}
-// 	if (data->key_status->w)
-// 	{
-// 		move(data,1);
-// 	}
-// 	if (data->key_status->left)
-// 	{
-// 		player->angle += player->rotate_speed;
-// 	}
-// 	if (data->key_status->right)
-// 	{
-// 		player->angle -= (int)player->rotate_speed;
-// 	}
-// 	return (0);
-// }
-
+/* dirty way to draw ceiling and floor */
 void	draw_ceiling_floor_mandatory(t_data *data)
 {
 	t_point	p;
@@ -103,22 +49,8 @@ void	draw_ceiling_floor_mandatory(t_data *data)
 		p.y++;
 	}
 }
-
-int	graphics_render(t_data *data)
+void	check_keys_status(t_data *data)
 {
-	(void)data;
-	int	i;
-
-	i = 0;
-	set_arRay(data);
-	draw_ceiling_floor_mandatory(data);
-	while (i < CAM_QUALITY)
-	{
-		draw_wall_textured(data, i);
-		//ft_lstclear(&data->cam->arRay[i].obstacles_ls);
-
-		i++;
-	}
 	if (data->key_status->w == 1)
 		move_player(data, FORWARD);
 	if (data->key_status->s == 1)
@@ -131,9 +63,24 @@ int	graphics_render(t_data *data)
 		rotate_player(data->player, LEFT);
 	if (data->key_status->right == 1)
 		rotate_player(data->player, RIGHT);
-	//render_map_2d(data);
+}
+
+int	graphics_render(t_data *data)
+{
+	(void)data;
+	int	i;
+
+	i = 0;
+	set_arRay(data);
+	draw_ceiling_floor_mandatory(data);
+	while (i < CAM_QUALITY)
+	{
+		draw_wall_textured(data, i);
+		i++;
+	}
+	check_keys_status(data);
+	render_map_2d(data);
 	mlx_put_image_to_window(data->window->mlx, data->window->init,data->img->img, 0, 0);
-	// update(data);
 	return (0);
 }
 

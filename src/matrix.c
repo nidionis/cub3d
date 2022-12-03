@@ -12,6 +12,7 @@
 
 #include "cub3d.h"
 
+/* used for importing map */
 char	**ft_append_tab(char **matrix, char *str)
 {
 	int		tab_len;

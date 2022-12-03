@@ -12,6 +12,7 @@
 
 #include "cub3d.h"
 
+/* where all pointers are cleaned, especially in a emergency exit */
 void	clean_exit(t_data *data, int exit_code)
 {
 	int	i;

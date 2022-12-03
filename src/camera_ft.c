@@ -42,6 +42,7 @@ void	set_plane_dir(t_data *data, double plane_size)
 	data->cam->plane_dir = plane_dir_unit;
 }
 
+/* set the point giving the direction for the first ray */
 void	set_plane_origin(t_data *data)
 {
 	t_vector	origin_plane;
@@ -51,6 +52,7 @@ void	set_plane_origin(t_data *data)
 	data->cam->origin_plane = origin_plane;
 }
 
+/* set the vector to apply to "origin plane" for the next mesurement */
 void	init_cam_vector(t_data *data)
 {
 	double		plane_size;

@@ -40,46 +40,10 @@
 	return (data);
 }
 
-void load_player(t_data *data)
-{
-	int i = 0;
-	int j = 0;
-
-	while (data->map[i])
-	{
-		while (data->map[i][j])
-		{
-			if (data->map[i][j] == 'E')
-			{
-				data->player->direction.x = 1;
-				data->player->direction.y = 0;
-				data->player->pos_map.x = j;
-				data->player->pos_map.y = i;
-				data->player->pos_box.x = UNITS_PER_BOX / 2;
-				data->player->pos_box.y = UNITS_PER_BOX / 2;
-				data->player->pos_in_step = update_pos_in_step(data->player);
-				data->player->pos_in_pix = update_pos_in_pix(data->player);
-				data->player->speed = 1;
-				data->player->rotate_speed = 1;
-				data->player->map_pos.x = j;
-				data->player->map_pos.y = i;
-			}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-}
-
 int	main(int argc, char *argv[])
 {
-	t_image		img;
 	t_data		*data;
-	(void)argv;
-	(void)argc;
-	(void)img;
 	data = NULL;
-
 	if (argc != 2)
 	{
 		error_msg("Needs a path to the map file only");
@@ -87,12 +51,11 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-
 		data = malloc_data();
 		data->window = malloc(sizeof(t_window));
 		init_key_status(data);
 		window_init(data);
-		parse_file(argv[1],  data);
+		parse_file(argv[1], data);
 		cub3d_render(data);
 		clean_exit(data, 0);
 	}

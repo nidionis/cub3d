@@ -83,7 +83,7 @@ void	beam(t_data *data, t_rayponse *rayponse)
 		index_closest = _y;
 	*rayponse = rays[index_closest];
 	rayponse->side = get_side_hit(data, index_closest);
-	rayponse->side = get_side_hit(data, index_closest);
+	//rayponse->side = get_side_hit(data, index_closest);
 	rayponse->dist_from_plan = get_dist_from_plan(data, rayponse);
 	//add_sprites_to_obstacles_ls(data, rayponse, &obstacles_ls);
 	//rayponse->obstacles_ls = sort_obstacles(&obstacles_ls);
