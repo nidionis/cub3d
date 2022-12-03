@@ -18,6 +18,7 @@ int	grep_height(char *line)
 	return (ft_atoi(line));
 }
 
+/*
 void	set_texture_size(t_texture *texture, char *path)
 {
 	int	fd;
@@ -43,4 +44,4 @@ void	set_texture_size(t_texture *texture, char *path)
 	//if (!texture->size[0] || !texture->size[1])
 	//	exit_msg(data, "[set_texture_size] problem to grep picture size", 1);
 }
-
+*/

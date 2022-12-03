@@ -93,14 +93,15 @@ void	import_textures(t_data *data)
 {
 	int			i;
 	char		*fname;
-	t_texture	t;
+	t_img_data	t;
 
 	i = 0;
 	while (i < NB_TEXTURES)
 	{
 		fname = data->image->texture_path[i];
-		set_texture_size(&t, fname);
-		t.img = mlx_xpm_file_to_image(data->window->mlx, data->image->texture_path[i], &t.size[_x], &t.size[_y]);
+		//set_texture_size(&t, fname);
+		t.img = mlx_xpm_file_to_image(data->window->mlx, fname, &t.line_len, &t.line_height);
+		t.adress = mlx_get_data_addr(t.img, &t.bpp, &t.line_len, &t.endian);
 		if (!t.img)
 			exit_msg(data, "[import_textures] Pb loading xpm file", 1);
 		data->wall_textures[i] = t;

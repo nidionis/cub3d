@@ -12,13 +12,13 @@
 
 #include "cub3d.h"
 
-int	get_texture_pix(t_texture *t, t_point pix)
+int	get_texture_pix(t_img_data *t, t_point pix)
 {
 	int addr;
 	int color;
 
-	addr = pix.y * t->size[_x] + pix.x * (t->img->bpp / 8);
-	color = (int)(*(int *)(t->img->img + addr));
+	addr = pix.y * t->line_len + pix.x * (t->bpp / 8);
+	color = (int)(*(int *)(t->adress + addr));
 	return (color);
 }
 
@@ -27,15 +27,15 @@ void	draw_texture(t_data *data, t_point start, t_point end, int line_height, t_r
 	double		ratio[2];
 	t_point		text_pix;
 	int		color;
-	t_texture	t;
+	t_img_data	t;
 
 	t = data->wall_textures[ray->side];
 	ratio[_x] = (double)start.x / (double)SCREEN_WIDTH;
-	text_pix.x = t.size[_x] * ratio[_x];
+	text_pix.x = t.line_len * ratio[_x];
 	while (start.y <= end.y)
 	{
 		ratio[_y] = 1.0 - (double)(end.y - start.y) / (double)line_height;
-		text_pix.y = t.size[_y] * ratio[_y];
+		text_pix.y = t.line_height * ratio[_y];
 		color = get_texture_pix(&t, text_pix);
 		my_mlx_pixel_put(data->img, start.x, start.y, color);
 		start.y++;

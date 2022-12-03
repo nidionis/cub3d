@@ -108,14 +108,9 @@ typedef struct s_img_data
 	char *adress;
 	int	bpp;
 	int line_len;
+	int line_height;
 	int endian;
 }	t_img_data;
-
-typedef struct s_texture
-{
-	t_img_data	*img;
-	int		size[2];
-}	t_texture;
 
 typedef struct s_key_status
 {
@@ -139,7 +134,7 @@ typedef struct s_data
 	t_window		*window;
 	char			**map;
 	int			map_size_in_units[2];
-	t_texture		wall_textures[NB_TEXTURES];
+	t_img_data		wall_textures[NB_TEXTURES];
 	t_img_data		*img;
 	t_key_status	*key_status;
 }	t_data;
