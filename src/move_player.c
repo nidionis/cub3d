@@ -136,6 +136,22 @@ int	check_update_box_pos(t_data *data)
 	return (hit_wall);
 }
 
+void	player_smoth_move(t_data *data)
+{
+	if (data->key_status->w == 1)
+		move_player(data, FORWARD);
+	if (data->key_status->s == 1)
+		move_player(data, BACKWARD);
+	if (data->key_status->a == 1)
+		move_player(data, LEFT);
+	if (data->key_status->d == 1)
+		move_player(data, RIGHT);
+	if (data->key_status->left == 1)
+		rotate_player(data->player, LEFT);
+	if (data->key_status->right == 1)
+		rotate_player(data->player, RIGHT);
+}
+
 int	move_player(t_data *data, int move)
 {
 	int			hit_wall;

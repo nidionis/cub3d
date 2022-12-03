@@ -229,13 +229,13 @@ void	draw_wall_line(t_data *data, int i)
 	start.y = (int)SCREEN_HEIGHT / 2 - line_height / 2;
 	end.y = (int)SCREEN_HEIGHT / 2 + line_height / 2;
 	if (ray.side == NORTH)
-		color = rgb_conv(100, 0, 255);
+		color = rgb_conv(100, 0, 100);
 	else if (ray.side == SOUTH)
-		color = rgb_conv(100, 255, 255);
+		color = rgb_conv(100, 100, 100);
 	else if (ray.side == EAST)
 		color = rgb_conv(0, 255, 0);
 	else if (ray.side == WEST)
-		color = rgb_conv(255, 0, 0);
+		color = rgb_conv(100, 0, 0);
 	else
 		color = rgb_conv(20, 20, 20);
 	loop = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/01 17:40:25 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/02 23:03:54 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position)
 	t_point		pos_for_map;
 	double		u;
 	double		wall_size;
-
 	(void)data;
-	u = (double)UNITS_PER_BOX;
+	
+	u = (double)1000;
 	wall_size = (double)WALL_SIZE + 1;
-	pos_for_map.x = wall_size * ((((double)absolute_position.x) / u));
-	pos_for_map.y = wall_size * ((((double)absolute_position.y) / u));
+	pos_for_map.x = wall_size * (((((double)absolute_position.x)) / 5800));
+	pos_for_map.y = wall_size * ((((double)absolute_position.y) / u - 0.02));
 	return (pos_for_map);
 }
 

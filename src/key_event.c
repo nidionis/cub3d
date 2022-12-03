@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:57:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/01 18:23:35 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/02 14:23:31 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,58 @@ void	init_key_status(t_data *data)
 	data->key_status->right = 0;
 }
 
+void menu_key_press(int key, t_data *data)
+{
+	if (key == ENTER)
+	{
+		if (data->menu->start == 1)
+		{
+			data->menu->on = 1;
+			data->menu->off = 0;
+		}
+	}
+	if (key == KEY_W)
+	{
+		if (data->menu->start == 1)
+		{
+			data->menu->quit = 1;
+			data->menu->start = 0;
+		}
+		else if (data->menu->options == 1)
+		{
+			data->menu->start = 1;
+			data->menu->options = 0;
+		}
+		else
+		{
+			data->menu->quit = 0;
+			data->menu->options = 1;
+		}
+	}
+	if (key == KEY_S)
+	{
+		if (data->menu->start == 1)
+		{
+			data->menu->options = 1;
+			data->menu->start = 0;
+		}
+		else if (data->menu->options == 1)
+		{
+			data->menu->options = 0;
+			data->menu->quit = 1;
+		}
+		else
+		{
+			data->menu->quit = 0;
+			data->menu->start = 1;
+		}
+	}
+}
+
 int	key_press(int key, t_data *data)
 {
-	if (key == KEY_W && data->menu->start == 1 && data->menu->off == 1)
-	{
-		data->menu->on = 1;
-		data->menu->off = 0;
-	}
+	if (data->menu->off == 1)
+	menu_key_press(key, data);
 	if (key == KEY_W && data->menu->on == 1)
 		data->key_status->w = 1;
     else if (key == KEY_S && data->menu->on == 1)
@@ -57,6 +102,13 @@ int	key_press(int key, t_data *data)
 		data->key_status->left = 1;
 	else if (key == KEY_ESC)
 		exit_game(data);
+	else if (key == KEY_M)
+	{
+		if (data->menu->menu == 1)
+			data->menu->menu = 0;
+		else
+			data->menu->menu = 1;
+	}
 	return (0);
 }
 /* player_struct modified */

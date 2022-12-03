@@ -124,7 +124,9 @@ typedef struct s_menu
 	unsigned int quit;
 	unsigned int on;
 	unsigned int off;
-	t_img_data		*background[5];
+	unsigned int highlight;
+	unsigned int menu;
+	t_img_data		*background[6];
 } t_menu;
 
 typedef struct s_data

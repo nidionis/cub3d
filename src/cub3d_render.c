@@ -6,13 +6,13 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/02 10:46:26 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/03 04:33:51 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	render_map_2d(t_data *data)
+int	minimap_render(t_data *data)
 {
 	int	a;
 	int	b;
@@ -23,101 +23,42 @@ int	render_map_2d(t_data *data)
 		"assets/wall20x20.xpm", &a, &b);
 	data->image->texture_path[1] = mlx_xpm_file_to_image(data->window->mlx, \
 		"assets/floor.xpm", &a, &b);
-	draw_mini_map(data);
-	draw_player(data);
+	draw_mini_map(data, 15);
 	return (0);
 }
 
-int move(t_data *data, int	i)
+//generate the 3d world with raycast
+void	world_render(t_data *data)
 {
-	t_player *player;
-	double 		tmpx;
-	double 		tmpy;
+	int	i;
 
-	player = data->player;
-	tmpx = player->map_pos.x + player->speed * cos(player->angle) * i;
-	 if (data->map[(int)floor(player->map_pos.x)][(int)floor(tmpx)] == '0')
-	 {
-		player->map_pos.x = tmpx;
-		printf("a");
-	 }
-	tmpy = player->map_pos.y + player->speed * sin(player->angle) * i;
-	 if (data->map[(int)floor(tmpy)][(int)floor(player->map_pos.x)] == '0')
-	 {
-		player->map_pos.y = tmpy;
-	 }
-	 return (0);
+	i = 0;
+	set_arRay(data);
+	while (i < CAM_QUALITY)
+	{	
+		draw_wall_line(data, i);
+		ft_lstclear(&data->cam->arRay[i].obstacles_ls);
+		i++;
+	}
 }
 
-// int	update(t_data *data)
-// {
-// 	t_player *player;
-
-// 	player = data->player;
-// 	if (data->key_status->d)
-// 	{
-
-// 	}
-// 	if (data->key_status->a)
-// 	{
-// 		printf("%f____%f\n",floor(player->map_pos.y), floor(player->map_pos.x));
-// 		printf("%d\n", player->angle);
-// 	}
-// 	if (data->key_status->s)
-// 	{
-// 		printf("move down");
-// 		move(data, 1);
-// 	}
-// 	if (data->key_status->w)
-// 	{
-// 		move(data,1);
-// 	}
-// 	if (data->key_status->left)
-// 	{
-// 		player->angle += player->rotate_speed;
-// 	}
-// 	if (data->key_status->right)
-// 	{
-// 		player->angle -= (int)player->rotate_speed;
-// 	}
-// 	return (0);
-// }
-
+//world_render generate the 3d world with raycast
+//player_smoth detects key pressure to make player move
+//mini_map_render generate the minimap if key M is pressed
 int	graphics_render(t_data *data)
 {
-	
-	int	i;
-	
-	i = 0;
 	if (data->menu->start == 1 && data->menu->on == 1)
 	{
-		set_arRay(data);
-		while (i < CAM_QUALITY)
-		{	
-			draw_wall_line(data, i);
-			ft_lstclear(&data->cam->arRay[i].obstacles_ls);
-			i++;
-		}
-		if (data->key_status->w == 1)
-			move_player(data, FORWARD);
-		if (data->key_status->s == 1)
-			move_player(data, BACKWARD);
-		if (data->key_status->a == 1)
-			move_player(data, LEFT);
-		if (data->key_status->d == 1)
-			move_player(data, RIGHT);
-		if (data->key_status->left == 1)
-			rotate_player(data->player, LEFT);
-		if (data->key_status->right == 1)
-			rotate_player(data->player, RIGHT);
-		// render_map_2d(data);
-		mlx_put_image_to_window(data->window->mlx, data->window->init,data->img->img, 0, 0);
+		world_render(data);
+		player_smoth_move(data);
+		if (data->menu->menu == 1)
+			minimap_render(data);
+		draw_image(data->img, data->menu->background[4], y_x(840, 450), -1);
+		mlx_put_image_to_window(data->window->mlx, data->window->init, \
+			data->img->img, 0, 0);
 	}
 	else
-	{
 		render_menu(data);
-	}
-	
 	return (0);
 }
 

@@ -70,17 +70,21 @@ void	draw_image(t_img_data *img1, t_img_data *img2, t_point pos, int color)
 	{
 		while (img_x < img2->width)
 		{
-			if (img2->address[img_y * img2->width + img_x] == 16777215)
-				img2->address[img_y * img2->width + img_x] = color;
-			else if (img2->address[img_y * img2->width + img_x] == -16777216)
+			if (img2->address[img_y * img2->width + img_x] == -16777216)
 			{
+				
 				img_x++;
 				pos.x++;
 			}
 			else
 			{
-				img1->address[pos.y * img1->line_len / 4 + pos.x] = \
-				img2->address[img_y * img2->width + img_x];
+				if (color != -1)
+				{
+					if (img2->address[img_y * img2->width + img_x] != 0)
+						img1->address[pos.y * img1->line_len / 4 + pos.x] = color;
+				}
+				else
+					img1->address[pos.y * img1->line_len / 4 + pos.x] = img2->address[img_y * img2->width + img_x];
 				img_x++;
 				pos.x++;
 			}
@@ -101,15 +105,21 @@ void load_menu(t_data *data)
 	data->menu->background[1] = malloc(sizeof(t_img_data));
 	data->menu->background[2] = malloc(sizeof(t_img_data));
 	data->menu->background[3] = malloc(sizeof(t_img_data));
+	data->menu->background[4] = malloc(sizeof(t_img_data));
+	data->menu->background[5] = malloc(sizeof(t_img_data));
 
 	load_images(data, data->menu->background[0], "assets/menu/background.xpm");
 	load_images(data,data->menu->background[1], "assets/Menu_Pack_1/MenuButton.xpm");
 	load_images(data,data->menu->background[2], "assets/Menu_Pack_1/PlayButton.xpm");
 	load_images(data,data->menu->background[3], "assets/Menu_Pack_1/ExitButton.xpm");
+	load_images(data,data->menu->background[4], "assets/layout.xpm");
+	load_images(data,data->menu->background[5], "assets/logo.xpm");
 	menu = data->menu;
 	menu->off = 1;
 	menu->on = 0;
 	menu->options = 0;
 	menu->start = 1;
 	menu->quit = 0;
+	menu->highlight = rgb_conv(255,255,255);
+	menu->menu = 0;
 }

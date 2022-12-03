@@ -101,7 +101,7 @@ double get_dist_from_plan(t_data *data, t_rayponse *rayponse);
 t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position);
 //duarte functions
 int	load_window(t_data *data);
-int	render_map_2d(t_data *data);
+int	minimap_render(t_data *data);
 int	player_init(char **map, t_player *player);
 int exit_game(t_data *data);
 int	graphics_render(t_data *data);
@@ -109,7 +109,7 @@ int	cub3d_render(t_data *data);
 
 //___________________draw functions_______________
 void	draw_line(t_data *data, t_point	*start, t_point	*end, int color);
-void	draw_mini_map(t_data *data);
+void	draw_mini_map(t_data *data, int size);
 void	draw_player(t_data *data);
 void	draw_vision_field(t_data *data, t_point minimap_position);
 void    my_mlx_pixel_put(t_img_data *img, int x, int y, int color);
@@ -120,5 +120,7 @@ void	load_textures(t_data *data);
 void	draw_cube(t_data *data, int size, int pos_y, int pos_x, int color);
 void	load_menu(t_data *data);
 int		load_images(t_data *data, t_img_data *image, char *path);
-void    render_menu(t_data *data);
+int    render_menu(t_data *data);
 void	draw_image(t_img_data *img1, t_img_data *img2, t_point pos, int color);
+void	player_smoth_move(t_data *data);
+t_point	y_x(int y, int x);
