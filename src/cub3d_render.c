@@ -109,7 +109,7 @@ int	graphics_render(t_data *data)
 		rotate_player(data->player, LEFT);
 	if (data->key_status->right == 1)
 		rotate_player(data->player, RIGHT);
-	render_map_2d(data);
+	//render_map_2d(data);
 	mlx_put_image_to_window(data->window->mlx, data->window->init,data->img->img, 0, 0);
 	// update(data);
 	return (0);
