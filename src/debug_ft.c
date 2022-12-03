@@ -12,26 +12,37 @@
 
 #include "cub3d.h"
 
-int	get_texture_pix(t_img_data *t, t_point pix)
+unsigned int	get_texture_pix(t_img_data *t, t_point pix)
 {
 	int addr;
-	int color;
+	unsigned int color;
 
 	addr = pix.y * t->line_len + pix.x * (t->bpp / 8);
-	color = (int)(*(int *)(t->adress + addr));
+	color = (unsigned int)(*(int *)(t->adress + addr));
 	return (color);
+}
+
+int	get_wallX(t_rayponse *ray)
+{
+	int	Xhit;
+
+	if (ray->side == NO || ray->side == SO)
+		Xhit = ray->hit_point.x % (int) UNITS_PER_BOX;
+	else
+		Xhit = ray->hit_point.y % (int) UNITS_PER_BOX;
+	return (Xhit);
 }
 
 void	draw_texture(t_data *data, t_point start, t_point end, int line_height, t_rayponse *ray)
 {
 	double		ratio[2];
 	t_point		text_pix;
-	int		color;
+	unsigned int		color;
 	t_img_data	t;
 
 	t = data->wall_textures[ray->side];
-	ratio[_x] = (double)start.x / (double)SCREEN_WIDTH;
-	text_pix.x = t.line_len * ratio[_x];
+	ratio[_x] = get_wallX(ray) / (double) UNITS_PER_BOX;
+	text_pix.x = t.line_len * ratio[_x] / (double)(t.bpp / 8);
 	while (start.y <= end.y)
 	{
 		ratio[_y] = 1.0 - (double)(end.y - start.y) / (double)line_height;

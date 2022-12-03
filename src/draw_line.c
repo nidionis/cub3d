@@ -12,7 +12,7 @@
 
 #include "../include/cub3d.h"
 
-void            my_mlx_pixel_put(t_img_data *img, int x, int y, int color)
+void            my_mlx_pixel_put(t_img_data *img, int x, int y, unsigned int color)
 {
   char    *dst;
 

@@ -1,6 +1,6 @@
-NO ./asserts/wall1.xpm
-SO  ./asserts/wall1.xpm
-WE ./asserts/wall1.xpm
+NO ./asserts/wall_test.xpm
+SO  ./asserts/wall_test.xpm
+WE ./asserts/wall_test.xpm
 EA ./asserts/wall1.xpm
 F   255,0,255
 C    0,255,255

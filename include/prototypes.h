@@ -120,7 +120,7 @@ void	draw_line(t_data *data, t_point	*start, t_point	*end, int color);
 void	draw_mini_map(t_data *data);
 void	draw_player(t_data *data);
 void	draw_vision_field(t_data *data, t_point minimap_position);
-void    my_mlx_pixel_put(t_img_data *img, int x, int y, int color);
+void    my_mlx_pixel_put(t_img_data *img, int x, int y, unsigned int color);
 void	init_key_status(t_data *data);
 int     key_press(int key, t_data *data);
 int     key_realese(int key, t_data *data);
