@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:57:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/02 14:23:31 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/03 18:53:42 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,15 @@ void menu_key_press(int key, t_data *data)
 		{
 			data->menu->on = 1;
 			data->menu->off = 0;
+		}
+		if (data->menu->options == 1)
+		{
+			data->menu->on = 1;
+			data->menu->off = 0;
+		}
+		if (data->menu->quit == 1)
+		{
+			exit_game(data);
 		}
 	}
 	if (key == KEY_W)

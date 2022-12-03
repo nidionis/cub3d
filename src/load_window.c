@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/02 23:03:54 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/03 17:54:06 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	load_window(t_data *data)
 	window = data->window;
 	window->mlx = mlx_init();
 	data->img = malloc(sizeof(t_img_data));
-	load_textures(data);
+	// load_textures(data);
 	data->img->img = mlx_new_image(window->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	window->init = mlx_new_window(window->mlx, \
 		SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3d");

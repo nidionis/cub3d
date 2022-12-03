@@ -6,11 +6,23 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:43:23 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/03 05:04:54 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/03 18:52:42 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+//turn every pixel in image to black
+void	clear_img(t_img_data *img)
+{
+	int	i;
+
+	i = 0;
+	while (i < img->height * img->width)
+	{
+			img->address[i] = 0;
+		i++;
+	}
+}
 
 int	render_menu(t_data *data)
 {
@@ -44,6 +56,14 @@ int	render_menu(t_data *data)
 		draw_image(data->menu->background[0],data->menu->background[3],pos[2],data->menu->highlight);
 	if (data->menu->start == 1)
 		draw_image(data->menu->background[0],data->menu->background[2],pos[1],data->menu->highlight);
+	if (data->menu->options == 1 && data->menu->on == 1)
+	{
+		clear_img(data->menu->background[0]);
+		draw_image(data->menu->background[0],data->menu->background[11],y_x(0,0),-1);
+		draw_image(data->menu->background[0],data->menu->background[8],y_x(100, SCREEN_WIDTH/2 - data->menu->background[7]->width/2),-1);
+		draw_image(data->menu->background[0],data->menu->background[9],y_x(400,SCREEN_WIDTH/2 - data->menu->background[7]->width/2),-1);
+		draw_image(data->menu->background[0],data->menu->background[10],y_x(700,SCREEN_WIDTH/2 - data->menu->background[7]->width/2),-1);
+	}
 	mlx_put_image_to_window(data->window->mlx, data->window->init,data->menu->background[0]->img, 0, 0);
 	return(0);
 }

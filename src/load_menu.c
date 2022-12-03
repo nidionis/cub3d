@@ -107,13 +107,25 @@ void load_menu(t_data *data)
 	data->menu->background[3] = malloc(sizeof(t_img_data));
 	data->menu->background[4] = malloc(sizeof(t_img_data));
 	data->menu->background[5] = malloc(sizeof(t_img_data));
+	data->menu->background[6] = malloc(sizeof(t_img_data));
+	data->menu->background[7] = malloc(sizeof(t_img_data));
+	data->menu->background[8] = malloc(sizeof(t_img_data));
+	data->menu->background[9] = malloc(sizeof(t_img_data));
+	data->menu->background[10] = malloc(sizeof(t_img_data));
+	data->menu->background[11] = malloc(sizeof(t_img_data));
 
 	load_images(data, data->menu->background[0], "assets/menu/background.xpm");
-	load_images(data,data->menu->background[1], "assets/Menu_Pack_1/MenuButton.xpm");
-	load_images(data,data->menu->background[2], "assets/Menu_Pack_1/PlayButton.xpm");
-	load_images(data,data->menu->background[3], "assets/Menu_Pack_1/ExitButton.xpm");
+	load_images(data,data->menu->background[1], "assets/menu/settings.xpm");
+	load_images(data,data->menu->background[2], "assets/menu/new_game.xpm");
+	load_images(data,data->menu->background[3], "assets/menu/exit.xpm");
 	load_images(data,data->menu->background[4], "assets/layout.xpm");
 	load_images(data,data->menu->background[5], "assets/logo.xpm");
+	load_images(data,data->menu->background[6], "assets/menu/settings.xpm");
+	load_images(data,data->menu->background[7], "assets/menu/resolution.xpm");
+	load_images(data,data->menu->background[8], "assets/menu/1900x1080.xpm");
+	load_images(data,data->menu->background[9], "assets/menu/1200x700.xpm");
+	load_images(data,data->menu->background[10], "assets/menu/700x500.xpm");
+	load_images(data, data->menu->background[11], "assets/menu/background.xpm");
 	menu = data->menu;
 	menu->off = 1;
 	menu->on = 0;
