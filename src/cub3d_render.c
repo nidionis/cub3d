@@ -83,6 +83,27 @@ int move(t_data *data, int	i)
 // 	return (0);
 // }
 
+void	draw_ceiling_floor_mandatory(t_data *data)
+{
+	t_point	p;
+
+	p.y = 0;
+	while (p.y < SCREEN_HEIGHT / 2)
+	{
+		p.x = 0;
+		while (p.x < SCREEN_WIDTH)
+			my_mlx_pixel_put(data->img, p.x++, p.y, data->image->ceiling_color);
+		p.y++;
+	}
+	while (p.y < SCREEN_HEIGHT)
+	{
+		p.x = 0;
+		while (p.x < SCREEN_WIDTH)
+			my_mlx_pixel_put(data->img, p.x++, p.y, data->image->floor_color);
+		p.y++;
+	}
+}
+
 int	graphics_render(t_data *data)
 {
 	(void)data;
@@ -90,6 +111,7 @@ int	graphics_render(t_data *data)
 
 	i = 0;
 	set_arRay(data);
+	draw_ceiling_floor_mandatory(data);
 	while (i < CAM_QUALITY)
 	{
 		draw_wall_textured(data, i);

@@ -43,52 +43,21 @@ void	draw_texture(t_data *data, t_point start, t_point end, int line_height, t_r
 	t = data->wall_textures[ray->side];
 	ratio[_x] = get_wallX(ray) / (double) UNITS_PER_BOX;
 	text_pix.x = t.line_len * ratio[_x] / (double)(t.bpp / 8);
-	while (start.y <= end.y)
+	if (start.y < 0)
+		start.y = 0;
+	while (start.y <= end.y && start.y < SCREEN_HEIGHT)
 	{
-		if (start.y >= 0 && start.y < SCREEN_HEIGHT)
-		{
-			ratio[_y] = 1.0 - (double)(end.y - start.y) / (double)line_height;
-			text_pix.y = t.line_height * ratio[_y];
-			color = get_texture_pix(&t, text_pix);
-			my_mlx_pixel_put(data->img, start.x, start.y, color);
-		}
-			start.y++;
+		ratio[_y] = 1.0 - (double)(end.y - start.y) / (double)line_height;
+		text_pix.y = t.line_height * ratio[_y];
+		color = get_texture_pix(&t, text_pix);
+		my_mlx_pixel_put(data->img, start.x, start.y, color);
+		start.y++;
 	}
-}
-
-void	draw_line_textured(t_data *data, t_point start, t_point end, int line_height, t_rayponse *ray)
-{
-	t_point	up_line;
-	t_point	down_line;
-	(void)up_line;
-	(void)down_line;
-
-	up_line.x = start.x;
-	up_line.y = 0;
-	down_line.x = start.x;
-	down_line.y = SCREEN_HEIGHT;
-	//draw_line(data, &up_line, &start, data->image->ceiling_color);
-	draw_texture(data, start, end, line_height, ray);
-	//draw_line(data, &end, &down_line, data->image->floor_color);
-}
-
-void	init_vars(t_point *start, t_point *end, int *line_width, int i_ray)
-{
-	*line_width = LINE_WIDTH;
-	if (*line_width <= 0)
-		*line_width = 1;
-	start->x = i_ray * (*line_width);
-	end->x = i_ray * (*line_width);
 }
 
 void	init_vars2(t_point *start, t_point *end, int *line_height, t_rayponse *ray)
 {
-	//int	line_height_no_overflow;
-
 	*line_height = (int)LINE_HEIGHT / ray->dist_from_plan;
-	//line_height_no_overflow = *line_height;
-	//if (line_height_no_overflow > (int)SCREEN_HEIGHT)
-	//	line_height_no_overflow = (int)SCREEN_HEIGHT;
 	start->y = (int)SCREEN_HEIGHT / 2 - *line_height / 2;
 	end->y = (int)SCREEN_HEIGHT / 2 + *line_height / 2;
 }
@@ -106,7 +75,7 @@ void	draw_wall_textured(t_data *data, int i_ray)
 	init_vars2(&start, &end, &line_height, &ray);
 	while (line_width--)
 	{
-		draw_line_textured(data, start, end, line_height, &ray);
+		draw_texture(data, start, end, line_height, &ray);
 		start.x++;
 		end.x++;
 	}
