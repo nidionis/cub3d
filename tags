@@ -15,6 +15,7 @@ $(OBJ_DIR)/%.o	minilibx_linux/Makefile	/^$(OBJ_DIR)\/%.o: %.c$/;"	t
 ${NAME}	libft/Makefile	/^${NAME}: ${OBJS}$/;"	t
 %.o	libft/Makefile	/^%.o: %.c$/;"	t
 BACKWARD	include/structs.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };$/;"	e	enum:e_player_direction
+BONUS_TEXTURES_SOLIDS	include/bonus.h	/^#define BONUS_TEXTURES_SOLIDS /;"	d
 C	include/structs.h	/^enum e_identifiers { NO, SO, EA, WE, F, C };$/;"	e	enum:e_identifiers
 CAM	include/structs.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/;"	e	enum:log_type
 CAM_ANGLE	include/config.h	/^# define CAM_ANGLE /;"	d
@@ -55,7 +56,6 @@ FLOOR	include/config.h	/^# define FLOOR /;"	d
 FONT_HEIGHT	mlx/mlx_int.h	/^#define	FONT_HEIGHT	/;"	d
 FONT_WIDTH	mlx/mlx_int.h	/^#define FONT_WIDTH	/;"	d
 FORWARD	include/structs.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };$/;"	e	enum:e_player_direction
-GREEN	include/config.h	/^# define GREEN /;"	d
 INC	minilibx_linux/Makefile	/^INC	=%%%%$/;"	m
 IS_BLOCK	include/config.h	/^# define IS_BLOCK /;"	d
 KEY_A	include/config.h	/^#  define KEY_A /;"	d
@@ -80,8 +80,8 @@ LANE	include/config.h	/^# define LANE /;"	d
 LEFT	include/structs.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };$/;"	e	enum:e_player_direction
 LEFT_ARROW	include/config.h	/^# define LEFT_ARROW /;"	d
 LIBFT_H	libft/libft.h	/^# define LIBFT_H$/;"	d
-LINE_HEIGHT	include/structs.h	/^enum e_others {LINE_WIDTH = SCREEN_WIDTH \/ CAM_QUALITY, LINE_HEIGHT = SCREEN_HEIGHT * UNITS_PER/;"	e	enum:e_others
-LINE_WIDTH	include/structs.h	/^enum e_others {LINE_WIDTH = SCREEN_WIDTH \/ CAM_QUALITY, LINE_HEIGHT = SCREEN_HEIGHT * UNITS_PER/;"	e	enum:e_others
+LINE_HEIGHT	include/structs.h	/^enum e_others {LINE_WIDTH = (int)SCREEN_WIDTH \/ (int)CAM_QUALITY, LINE_HEIGHT = (int)SCREEN_HEI/;"	e	enum:e_others
+LINE_WIDTH	include/structs.h	/^enum e_others {LINE_WIDTH = (int)SCREEN_WIDTH \/ (int)CAM_QUALITY, LINE_HEIGHT = (int)SCREEN_HEI/;"	e	enum:e_others
 LOCALHOST	minilibx_linux/mlx_int.h	/^# define LOCALHOST /;"	d
 MAP	include/structs.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/;"	e	enum:log_type
 MAPCASES	include/config.h	/^# define MAPCASES /;"	d
@@ -125,7 +125,6 @@ PLAYER	include/structs.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/;"	
 PLAYER_MAP_ARROW	include/config.h	/^# define PLAYER_MAP_ARROW /;"	d
 PNG_HDR_SIZE	mlx/mlx_png.c	/^#define PNG_HDR_SIZE	/;"	d	file:
 PNG_MAGIC_SIZE	mlx/mlx_png.c	/^#define	PNG_MAGIC_SIZE	/;"	d	file:
-RED	include/config.h	/^# define RED /;"	d
 RETURN	minilibx_linux/mlx_xpm.c	/^#define	RETURN	/;"	d	file:
 RETURN	mlx/mlx_xpm.c	/^#define	RETURN	/;"	d	file:
 RIGHT	include/structs.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };$/;"	e	enum:e_player_direction
@@ -162,6 +161,7 @@ _y	include/structs.h	/^enum x_or_y { _x, _y };$/;"	e	enum:x_or_y
 a	include/structs.h	/^	unsigned int	a;$/;"	m	struct:s_key_status	typeref:typename:unsigned int
 acceptsFirstResponder	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
 add_img_to_ctx	mlx/mlx_new_image.m	/^mlx_img_ctx_t	*add_img_to_ctx(mlx_img_list_t *img, mlx_win_list_t *win)$/;"	f
+add_obstacle	src/raycasting.c	/^void	add_obstacle(t_data *data, t_rayponse *ray, char map_case, int dir, t_list **obstacles_ls)$/;"	f	typeref:typename:void
 adress	include/structs.h	/^	char *adress;$/;"	m	struct:s_img_data	typeref:typename:char *
 all	libft/Makefile	/^all: ${NAME}$/;"	t
 all	minilibx_linux/Makefile	/^all	: $(NAME)$/;"	t
@@ -172,6 +172,7 @@ arRay	include/structs.h	/^	t_rayponse	arRay[CAM_QUALITY];$/;"	m	struct:s_cam	typ
 beam	include/structs.h	/^	t_ray		*beam;$/;"	m	struct:s_cam	typeref:typename:t_ray *
 beam	src/raycasting.c	/^void	beam(t_data *data, t_rayponse *rayponse)$/;"	f	typeref:typename:void
 blocks	include/structs.h	/^	char			*blocks;$/;"	m	struct:s_data	typeref:typename:char *
+bonus_textures	include/structs.h	/^	t_img_data		*bonus_textures;$/;"	m	struct:s_data	typeref:typename:t_img_data *
 bpp	include/structs.h	/^	int	bpp;$/;"	m	struct:s_img_data	typeref:typename:int
 bpp	minilibx_linux/mlx_int.h	/^	int				bpp;$/;"	m	struct:s_img	typeref:typename:int
 bpp	mlx/mlx_png.c	/^  int		bpp;$/;"	m	struct:png_info_s	typeref:typename:int	file:
@@ -184,6 +185,7 @@ carry_negative	libft/ft_itoa.c	/^static char	*carry_negative(int *n, char *n_str
 ceiling_color	include/structs.h	/^	unsigned int	ceiling_color;$/;"	m	struct:s_image	typeref:typename:unsigned int
 check	minilibx_linux/Makefile	/^check: all$/;"	t
 check_closest_box	src/move_to_corner.c	/^int	check_closest_box(t_player *player)$/;"	f	typeref:typename:int
+check_keys_status	src/cub3d_render.c	/^void	check_keys_status(t_data *data)$/;"	f	typeref:typename:void
 check_map	src/parse_check_map.c	/^int	check_map(t_data *data)$/;"	f	typeref:typename:int
 check_map_line	src/parse_check_map.c	/^void	check_map_line(t_data *data, int y, int *nb_player)$/;"	f	typeref:typename:void
 check_param_not_missing	src/parse_import.c	/^void	check_param_not_missing(t_data *data)$/;"	f	typeref:typename:void
@@ -196,6 +198,7 @@ clean_useless_empty_splace	src/parse_format_map.c	/^void	clean_useless_empty_spl
 clearWin	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
 closeNotification:	mlx/mlx_new_window.h	/^- (void) closeNotification:(NSNotification *)note;$/;"	m	interface:NSWindowEvent
 closeNotification:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+closest_in_list	src/raycasting.c	/^t_list	*closest_in_list(t_list **lst)$/;"	f	typeref:typename:t_list *
 cmap	minilibx_linux/mlx_int.h	/^	Colormap	cmap;$/;"	m	struct:s_xvar	typeref:typename:Colormap
 col	minilibx_linux/mlx_int.h	/^	int		col;$/;"	m	struct:s_xpm_col	typeref:typename:int
 col	mlx/mlx_xpm.c	/^  int           col;$/;"	m	struct:s_xpm_col	typeref:typename:int	file:
@@ -232,6 +235,7 @@ direction	include/structs.h	/^	t_vector	direction;$/;"	m	struct:s_ray	typeref:ty
 direction_len	include/structs.h	/^	double		direction_len;$/;"	m	struct:s_ray	typeref:typename:double
 display	minilibx_linux/mlx_int.h	/^	Display		*display;$/;"	m	struct:s_xvar	typeref:typename:Display *
 display_log	mlx/mlx_shaders.c	/^void display_log(GLuint object, void (*param_func)(), void (*getlog_func)())$/;"	f	typeref:typename:void
+dist	include/structs.h	/^	double				dist;$/;"	m	struct:s_obstacle	typeref:typename:double
 dist_from_plan	include/structs.h	/^	double		dist_from_plan;$/;"	m	struct:s_rayponse	typeref:typename:double
 distance_line_to_point	src/vector_ft.c	/^double	distance_line_to_point(t_vector line[2], t_point p)$/;"	f	typeref:typename:double
 distance_point_to_vector	src/vector_ft.c	/^double	distance_point_to_vector(t_point point, t_point v_p1, t_point v_p2)$/;"	f	typeref:typename:double
@@ -239,18 +243,20 @@ distance_points	src/vector_ft.c	/^double	distance_points(t_point p1, t_point p2)
 do_flush	minilibx_linux/mlx_int.h	/^	int			do_flush;$/;"	m	struct:s_xvar	typeref:typename:int
 do_loop_flush	mlx/mlx_init_loop.m	/^void do_loop_flush(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void * info)$/;"	f
 do_loop_hook2	mlx/mlx_init_loop.m	/^void	do_loop_hook2(CFRunLoopTimerRef observer, void * info)$/;"	f
+draw_ceiling_floor_mandatory	src/cub3d_render.c	/^void	draw_ceiling_floor_mandatory(t_data *data)$/;"	f	typeref:typename:void
 draw_cube	src/draw_functions.c	/^void	draw_cube(t_data *data, int size, int pos_y, int pos_x, int color)$/;"	f	typeref:typename:void
 draw_line	src/draw_line.c	/^void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)$/;"	f	typeref:typename:void
-draw_line_textured	src/debug_ft.c	/^void	draw_line_textured(t_data *data, t_point start, t_point end, int line_height, t_rayponse *r/;"	f	typeref:typename:void
 draw_mini_map	src/draw_functions.c	/^void	draw_mini_map(t_data *data)$/;"	f	typeref:typename:void
+draw_obstacle_texture	src/wall_textured.c	/^void	draw_obstacle_texture(t_data *data, t_point start, t_point end, int line_height, t_obstacle/;"	f	typeref:typename:void
+draw_obstacles	src/wall_textured.c	/^void	draw_obstacles(t_data *data, t_point *start, t_point *end, t_list *l_obstacles)$/;"	f	typeref:typename:void
 draw_player	src/draw_functions.c	/^void	draw_player(t_data *data)$/;"	f	typeref:typename:void
-draw_texture	src/debug_ft.c	/^void	draw_texture(t_data *data, t_point start, t_point end, int line_height, t_rayponse *ray)$/;"	f	typeref:typename:void
+draw_texture	src/wall_textured.c	/^void	draw_texture(t_data *data, t_point start, t_point end, int line_height, t_rayponse *ray)$/;"	f	typeref:typename:void
 draw_vision_field	src/draw_functions.c	/^void	draw_vision_field(t_data *data, t_point minimap_position)$/;"	f	typeref:typename:void
-draw_wall_textured	src/debug_ft.c	/^void	draw_wall_textured(t_data *data, int i_ray)$/;"	f	typeref:typename:void
+draw_wall_textured	src/wall_textured.c	/^void	draw_wall_textured(t_data *data, int i_ray)$/;"	f	typeref:typename:void
 e_cardinal	include/structs.h	/^enum e_cardinal { NORTH, SOUTH, EAST, WEST };$/;"	g
 e_direction	include/structs.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };$/;"	g
 e_identifiers	include/structs.h	/^enum e_identifiers { NO, SO, EA, WE, F, C };$/;"	g
-e_others	include/structs.h	/^enum e_others {LINE_WIDTH = SCREEN_WIDTH \/ CAM_QUALITY, LINE_HEIGHT = SCREEN_HEIGHT * UNITS_PER/;"	g
+e_others	include/structs.h	/^enum e_others {LINE_WIDTH = (int)SCREEN_WIDTH \/ (int)CAM_QUALITY, LINE_HEIGHT = (int)SCREEN_HEI/;"	g
 e_player_direction	include/structs.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };$/;"	g
 e_sprite	include/structs.h	/^enum e_sprite {SPRITE = -1};$/;"	g
 east_crossing	src/move_crossing_box.c	/^int	east_crossing(t_data *data)$/;"	f	typeref:typename:int
@@ -346,19 +352,17 @@ get_next_case	src/move_to_corner.c	/^char	get_next_case(char **map, t_point map_
 get_next_line	src/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
 get_side_hit	src/raycasting_utils.c	/^int	get_side_hit(t_data *data, int index_closest)$/;"	f	typeref:typename:int
 get_smallest_index	src/move_to_corner.c	/^int	get_smallest_index(double wall_distance[4])$/;"	f	typeref:typename:int
-get_texture_pix	src/debug_ft.c	/^int	get_texture_pix(t_texture *t, t_point pix)$/;"	f	typeref:typename:int
+get_texture_pix	src/wall_textured.c	/^unsigned int	get_texture_pix(t_img_data *t, t_point pix)$/;"	f	typeref:typename:unsigned int
+get_wallX	src/wall_textured.c	/^int	get_wallX(t_rayponse *ray)$/;"	f	typeref:typename:int
 glsl	mlx/mlx_new_window.h	/^  glsl_info_t		glsl;$/;"	E	interface:MlxWin
 glsl_info_s	mlx/mlx_int.h	/^typedef struct	glsl_info_s$/;"	s
 glsl_info_t	mlx/mlx_int.h	/^} glsl_info_t;$/;"	t	typeref:struct:glsl_info_s
 graphics_render	src/cub3d_render.c	/^int	graphics_render(t_data *data)$/;"	f	typeref:typename:int
-grep_height	src/texture_utils.c	/^int	grep_height(char *line)$/;"	f	typeref:typename:int
-grep_width	src/texture_utils.c	/^int	grep_width(char *line)$/;"	f	typeref:typename:int
 height	include/structs.h	/^	int		height;$/;"	m	struct:s_window	typeref:typename:int
 height	minilibx_linux/mlx_int.h	/^	int				height;$/;"	m	struct:s_img	typeref:typename:int
 height	mlx/font.c	/^  unsigned int 	 height;$/;"	m	struct:__anone97f5d2d0108	typeref:typename:unsigned int	file:
 height	mlx/mlx_int.h	/^  int			height;$/;"	m	struct:mlx_img_list_s	typeref:typename:int
 height	mlx/mlx_png.c	/^  unsigned int	height;$/;"	m	struct:png_info_s	typeref:typename:unsigned int	file:
-hit_point	include/structs.h	/^	t_point				hit_point;$/;"	m	struct:s_obstacle	typeref:typename:t_point
 hit_point	include/structs.h	/^	t_point		hit_point;$/;"	m	struct:s_rayponse	typeref:typename:t_point
 hook	minilibx_linux/mlx_int.h	/^	int		(*hook)();$/;"	m	struct:s_event_list	typeref:typename:int (*)()
 hooks	minilibx_linux/mlx_int.h	/^	t_event_list		hooks[MLX_MAX_EVENT];$/;"	m	struct:s_win_list	typeref:typename:t_event_list[]
@@ -368,11 +372,11 @@ image_fshader	mlx/mlx_int.h	/^  GLuint	image_fshader;$/;"	m	struct:glsl_info_s	t
 image_program	mlx/mlx_int.h	/^  GLuint	image_program;$/;"	m	struct:glsl_info_s	typeref:typename:GLuint
 image_vshader	mlx/mlx_int.h	/^  GLuint	image_vshader;$/;"	m	struct:glsl_info_s	typeref:typename:GLuint
 img	include/structs.h	/^	t_img_data		*img;$/;"	m	struct:s_data	typeref:typename:t_img_data *
-img	include/structs.h	/^	t_img_data	*img;$/;"	m	struct:s_texture	typeref:typename:t_img_data *
 img	include/structs.h	/^	void *img;$/;"	m	struct:s_img_data	typeref:typename:void *
 img	mlx/mlx_int.h	/^  mlx_img_list_t	*img;$/;"	m	struct:mlx_img_ctx_s	typeref:typename:mlx_img_list_t *
 img_list	mlx/mlx_int.h	/^  mlx_img_ctx_t		*img_list;$/;"	m	struct:mlx_win_list_s	typeref:typename:mlx_img_ctx_t *
 img_list	mlx/mlx_int.h	/^  mlx_img_list_t	*img_list;$/;"	m	struct:mlx_ptr_s	typeref:typename:mlx_img_list_t *
+import_bonus_textures	src/bonus_textures.c	/^void	import_bonus_textures(t_data *data)$/;"	f	typeref:typename:void
 import_param	src/parse_import.c	/^void	import_param(t_data *data, int identifier, char *line)$/;"	f	typeref:typename:void
 import_params	src/parse_import.c	/^int	import_params(t_data *data)$/;"	f	typeref:typename:int
 import_texture_path	src/parse_import.c	/^void	import_texture_path(t_data *data, int identifier, char *line)$/;"	f	typeref:typename:void
@@ -382,6 +386,8 @@ initWithContentRect:styleMask:backing:defer:	mlx/mlx_new_window.h	/^- (NSWindowE
 initWithContentRect:styleMask:backing:defer:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
 initWithRect:andTitle:pfaAttrs:	mlx/mlx_new_window.h	/^- (id) initWithRect: (NSRect)rect andTitle: (NSString *)title pfaAttrs: (NSOpenGLPixelFormatAttr/;"	m	interface:MlxWin
 initWithRect:andTitle:pfaAttrs:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+init_Xvar	src/wall_textured.c	/^void   init_Xvar(t_point *start, t_point *end, int *line_width, int i_ray)$/;"	f	typeref:typename:void
+init_Yvar	src/wall_textured.c	/^void	init_Yvar(t_point *start, t_point *end, int *line_height, int distance)$/;"	f	typeref:typename:void
 init_cam_vector	src/camera_ft.c	/^void	init_cam_vector(t_data *data)$/;"	f	typeref:typename:void
 init_f_c_color	src/parse_file_colors.c	/^unsigned int	init_f_c_color(t_data *data, char *line)$/;"	f	typeref:typename:unsigned int
 init_fd	src/parse_init.c	/^void	init_fd(t_data *data, int *fd, char *fname)$/;"	f	typeref:typename:void
@@ -408,14 +414,13 @@ key_status	include/structs.h	/^	t_key_status	*key_status;$/;"	m	struct:s_data	ty
 keyflag	mlx/mlx_new_window.h	/^  int		keyflag;$/;"	E	interface:NSWindowEvent
 keyrepeat	mlx/mlx_new_window.h	/^  int		keyrepeat;$/;"	E	interface:NSWindowEvent
 left	include/structs.h	/^	unsigned int	left;$/;"	m	struct:s_key_status	typeref:typename:unsigned int
-len	include/structs.h	/^	double				len;$/;"	m	struct:s_obstacle	typeref:typename:double
 len	include/structs.h	/^	double		len;$/;"	m	struct:s_rayponse	typeref:typename:double
 len_overflow	src/raycasting_utils.c	/^int	len_overflow(int len)$/;"	f	typeref:typename:int
 line	include/structs.h	/^	char			*line;$/;"	m	struct:s_data	typeref:typename:char *
+line_height	include/structs.h	/^	int line_height;$/;"	m	struct:s_img_data	typeref:typename:int
 line_len	include/structs.h	/^	int				line_len;$/;"	m	struct:s_image	typeref:typename:int
 line_len	include/structs.h	/^	int line_len;$/;"	m	struct:s_img_data	typeref:typename:int
 line_split	include/structs.h	/^	char			**line_split;$/;"	m	struct:s_data	typeref:typename:char **
-load_player	src/main.c	/^void load_player(t_data *data)$/;"	f	typeref:typename:void
 loc_font_atlassize	mlx/mlx_int.h	/^  GLint		loc_font_atlassize;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
 loc_font_color	mlx/mlx_int.h	/^  GLint		loc_font_color;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
 loc_font_posinatlas	mlx/mlx_int.h	/^  GLint		loc_font_posinatlas;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
@@ -599,25 +604,23 @@ mouseMoved:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
 mouseUp:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
 mouse_hook	minilibx_linux/mlx_int.h	/^	int					(*mouse_hook)();$/;"	m	struct:s_win_list	typeref:typename:int (*)()
 mouse_param	minilibx_linux/mlx_int.h	/^	void				*mouse_param;$/;"	m	struct:s_win_list	typeref:typename:void *
-move	src/cub3d_render.c	/^int move(t_data *data, int	i)$/;"	f	typeref:typename:int
 move_player	src/move_player.c	/^int	move_player(t_data *data, int move)$/;"	f	typeref:typename:int
 my_loc	libft/ft_itoa.c	/^static char	*my_loc(int len)$/;"	f	typeref:typename:char *	file:
-my_mlx_pixel_put	src/draw_line.c	/^void            my_mlx_pixel_put(t_img_data *img, int x, int y, int color)$/;"	f	typeref:typename:void
+my_mlx_pixel_put	src/draw_line.c	/^void            my_mlx_pixel_put(t_img_data *img, int x, int y, unsigned int color)$/;"	f	typeref:typename:void
 name	minilibx_linux/mlx_int.h	/^	char	*name;$/;"	m	struct:s_col_name	typeref:typename:char *
 name	minilibx_linux/mlx_int.h	/^	int		name;$/;"	m	struct:s_xpm_col	typeref:typename:int
 name	mlx/mlx_xpm.c	/^  char  *name;$/;"	m	struct:s_col_name	typeref:typename:char *	file:
 name	mlx/mlx_xpm.c	/^  int           name;$/;"	m	struct:s_xpm_col	typeref:typename:int	file:
 nb_flush	mlx/mlx_int.h	/^  int			nb_flush;$/;"	m	struct:mlx_win_list_s	typeref:typename:int
-next	include/structs.h	/^	struct s_obstacle	*next;$/;"	m	struct:s_obstacle	typeref:struct:s_obstacle *
 next	include/structs.h	/^	struct s_sprite	*next;$/;"	m	struct:s_sprite	typeref:struct:s_sprite *
 next	include/structs.h	/^    struct s_list   *next;$/;"	m	struct:s_list	typeref:struct:s_list *
 next	minilibx_linux/mlx_int.h	/^	struct s_win_list	*next;$/;"	m	struct:s_win_list	typeref:struct:s_win_list *
 next	mlx/mlx_int.h	/^  struct mlx_img_ctx_s	*next;$/;"	m	struct:mlx_img_ctx_s	typeref:struct:mlx_img_ctx_s *
 next	mlx/mlx_int.h	/^  struct mlx_img_list_s	*next;$/;"	m	struct:mlx_img_list_s	typeref:struct:mlx_img_list_s *
 next	mlx/mlx_int.h	/^  struct mlx_win_list_s	*next;$/;"	m	struct:mlx_win_list_s	typeref:struct:mlx_win_list_s *
-next_wall_dir	src/raycasting.c	/^t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)$/;"	f	typeref:typename:t_rayponse
+next_wall_dir	src/raycasting.c	/^t_rayponse	next_wall_dir(t_data *data, int dir, t_list **obstacles_ls)$/;"	f	typeref:typename:t_rayponse
 north_crossing	src/move_crossing_box.c	/^int	north_crossing(t_data *data)$/;"	f	typeref:typename:int
-obstacles_ls	include/structs.h	/^	t_obstacle	*obstacles_ls;$/;"	m	struct:s_rayponse	typeref:typename:t_obstacle *
+obstacles_ls	include/structs.h	/^	t_list	*obstacles_ls;$/;"	m	struct:s_rayponse	typeref:typename:t_list *
 openglwin	mlx/mlx_new_window.h	/^  int			openglwin;$/;"	E	interface:MlxWin
 origin_plane	include/structs.h	/^	t_vector	origin_plane;$/;"	m	struct:s_cam	typeref:typename:t_vector
 otherMouseDown:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
@@ -647,6 +650,7 @@ player	include/structs.h	/^	t_player		*player;$/;"	m	struct:s_data	typeref:typen
 player_init	src/ft_player_init.c	/^int	player_init(char **map, t_player *player)$/;"	f	typeref:typename:int
 png_info_s	mlx/mlx_png.c	/^typedef struct png_info_s$/;"	s	file:
 png_info_t	mlx/mlx_png.c	/^} png_info_t;$/;"	t	typeref:struct:png_info_s	file:
+pop_closest	src/raycasting.c	/^void	pop_closest(t_list **lst, t_list *closest)$/;"	f	typeref:typename:void
 pos	include/structs.h	/^	t_point	pos;$/;"	m	struct:s_sprite	typeref:typename:t_point
 pos_box	include/structs.h	/^	t_point		pos_box;$/;"	m	struct:s_player	typeref:typename:t_point
 pos_in_pix	include/structs.h	/^	t_point		pos_in_pix;$/;"	m	struct:s_player	typeref:typename:t_point
@@ -685,7 +689,6 @@ s_point	include/structs.h	/^typedef struct s_point$/;"	s
 s_ray	include/structs.h	/^typedef struct	s_ray$/;"	s
 s_rayponse	include/structs.h	/^typedef struct	s_rayponse$/;"	s
 s_sprite	include/structs.h	/^typedef struct	s_sprite$/;"	s
-s_texture	include/structs.h	/^typedef struct s_texture$/;"	s
 s_vector	include/structs.h	/^typedef struct s_vector$/;"	s
 s_win_list	minilibx_linux/mlx_int.h	/^typedef struct	s_win_list$/;"	s
 s_window	include/structs.h	/^typedef struct s_window$/;"	s
@@ -706,32 +709,27 @@ setKeyRepeat:	mlx/mlx_new_window.h	/^- (void) setKeyRepeat:(int)mode;$/;"	m	inte
 setKeyRepeat:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
 setKeyRepeat:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
 set_arRay	src/raycasting.c	/^void	set_arRay(t_data *data)$/;"	f	typeref:typename:void
-set_beam	src/raycasting_utils.c	/^void	set_beam(t_data *data, t_obstacle **obstacles_ls)$/;"	f	typeref:typename:void
+set_beam	src/raycasting_utils.c	/^void	set_beam(t_data *data, t_list **obstacles_ls)$/;"	f	typeref:typename:void
 set_delta_distance	src/ray_set_distances.c	/^void	set_delta_distance(t_data *data)$/;"	f	typeref:typename:void
 set_plane_dir	src/camera_ft.c	/^void	set_plane_dir(t_data *data, double plane_size)$/;"	f	typeref:typename:void
 set_plane_origin	src/camera_ft.c	/^void	set_plane_origin(t_data *data)$/;"	f	typeref:typename:void
 set_side_distance	src/ray_set_distances.c	/^void	set_side_distance(t_data *data)$/;"	f	typeref:typename:void
-set_texture_size	src/texture_utils.c	/^void	set_texture_size(t_texture *texture, char *path)$/;"	f	typeref:typename:void
 shift_line_left	src/parse_format_map.c	/^void	shift_line_left(char *line)$/;"	f	typeref:typename:void
 shm	minilibx_linux/mlx_int.h	/^	XShmSegmentInfo	shm;$/;"	m	struct:s_img	typeref:typename:XShmSegmentInfo
 shm_att_pb	minilibx_linux/mlx_new_image.c	/^int	shm_att_pb(Display *d,XErrorEvent *ev)$/;"	f	typeref:typename:int
 show	minilibx_linux/Makefile	/^show:$/;"	t
-side	include/structs.h	/^	int					side;$/;"	m	struct:s_obstacle	typeref:typename:int
 side	include/structs.h	/^	int			side;$/;"	m	struct:s_rayponse	typeref:typename:int
 side_distances	include/structs.h	/^	double		side_distances[2];$/;"	m	struct:s_ray	typeref:typename:double[2]
-size	include/structs.h	/^	int		size[2];$/;"	m	struct:s_texture	typeref:typename:int[2]
 size_line	minilibx_linux/mlx_int.h	/^	int				size_line;$/;"	m	struct:s_img	typeref:typename:int
 size_x	mlx/mlx_new_window.h	/^  int			size_x;$/;"	E	interface:MlxWin
 size_x	mlx/mlx_new_window.h	/^  int		size_x;$/;"	E	interface:NSWindowEvent
 size_y	mlx/mlx_new_window.h	/^  int			size_y;$/;"	E	interface:MlxWin
 size_y	mlx/mlx_new_window.h	/^  int		size_y;$/;"	E	interface:NSWindowEvent
 slide_closest_box	src/move_to_corner.c	/^void	slide_closest_box(t_player *p, int closest_box)$/;"	f	typeref:typename:void
+sort_obstacle	src/raycasting.c	/^void	sort_obstacle(t_list **lst)$/;"	f	typeref:typename:void
 south_crossing	src/move_crossing_box.c	/^int	south_crossing(t_data *data)$/;"	f	typeref:typename:int
 speed	include/structs.h	/^	double		speed;$/;"	m	struct:s_player	typeref:typename:double
-sprite_half_size	include/structs.h	/^	int				sprite_half_size;$/;"	m	struct:s_image	typeref:typename:int
-sprite_hit	include/structs.h	/^	double				sprite_hit; \/\/distance from sprite_point to ray$/;"	m	struct:s_obstacle	typeref:typename:double
 sprite_ls	include/structs.h	/^	t_sprite		*sprite_ls;$/;"	m	struct:s_image	typeref:typename:t_sprite *
-sprite_pointer	include/structs.h	/^	t_sprite			*sprite_pointer;$/;"	m	struct:s_obstacle	typeref:typename:t_sprite *
 still_in_map	src/map_ft.c	/^int	still_in_map(t_data *data, t_point pt)$/;"	f	typeref:typename:int
 strlcpy_is_not_posix	minilibx_linux/mlx_xpm.c	/^unsigned int	strlcpy_is_not_posix(char *dest, char *src, unsigned int size)$/;"	f	typeref:typename:unsigned int
 t_cam	include/structs.h	/^}	t_cam;$/;"	t	typeref:struct:s_cam
@@ -748,7 +746,6 @@ t_point	include/structs.h	/^}	t_point;$/;"	t	typeref:struct:s_point
 t_ray	include/structs.h	/^}	t_ray;$/;"	t	typeref:struct:s_ray
 t_rayponse	include/structs.h	/^}	t_rayponse;$/;"	t	typeref:struct:s_rayponse
 t_sprite	include/structs.h	/^}	t_sprite;$/;"	t	typeref:struct:s_sprite
-t_texture	include/structs.h	/^}	t_texture;$/;"	t	typeref:struct:s_texture
 t_vector	include/structs.h	/^}	t_vector;$/;"	t	typeref:struct:s_vector
 t_win_list	minilibx_linux/mlx_int.h	/^}				t_win_list;$/;"	t	typeref:struct:s_win_list
 t_window	include/structs.h	/^}	t_window;$/;"	t	typeref:struct:s_window
@@ -756,12 +753,13 @@ t_xpm_col	minilibx_linux/mlx_int.h	/^}				t_xpm_col;$/;"	t	typeref:struct:s_xpm_
 t_xpm_col	mlx/mlx_xpm.c	/^} t_xpm_col;$/;"	t	typeref:struct:s_xpm_col	file:
 t_xvar	minilibx_linux/mlx_int.h	/^}				t_xvar;$/;"	t	typeref:struct:s_xvar
 test	libft/Makefile	/^test: ctags$/;"	t
+texture	include/structs.h	/^	t_img_data			texture;$/;"	m	struct:s_obstacle	typeref:typename:t_img_data
 texture	mlx/mlx_int.h	/^  GLuint		texture;$/;"	m	struct:mlx_img_ctx_s	typeref:typename:GLuint
+textureX	include/structs.h	/^	int				textureX;$/;"	m	struct:s_obstacle	typeref:typename:int
 texture_path	include/structs.h	/^	char			*texture_path[NB_TEXTURES];$/;"	m	struct:s_image	typeref:typename:char * []
 translate_pt	src/vector_ft.c	/^t_point	translate_pt(t_vector vector, t_point pt)$/;"	f	typeref:typename:t_point
 translate_pt_inplace	src/vector_ft.c	/^t_point	translate_pt_inplace(t_vector vector, t_point *pt)$/;"	f	typeref:typename:t_point
 translate_vector_as_pt	src/vector_ft.c	/^void	translate_vector_as_pt(t_vector vector, t_vector *pt)$/;"	f	typeref:typename:void
-type	include/structs.h	/^	char				type;$/;"	m	struct:s_obstacle	typeref:typename:char
 type	minilibx_linux/mlx_int.h	/^	int				type;$/;"	m	struct:s_img	typeref:typename:int
 units_pos_to_minimap_pos	src/window_init.c	/^t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position)$/;"	f	typeref:typename:t_point
 update_pos_if_wall	src/move_player.c	/^int	update_pos_if_wall(t_data *data, int crossover_direction)$/;"	f	typeref:typename:int
@@ -776,7 +774,7 @@ vertexes	mlx/mlx_int.h	/^  GLfloat		vertexes[8];$/;"	m	struct:mlx_img_list_s	typ
 visual	minilibx_linux/mlx_int.h	/^	Visual		*visual;$/;"	m	struct:s_xvar	typeref:typename:Visual *
 void	mlx/mlx_new_window.h	/^  void		*(event_param[MAX_EVENT]);$/;"	E	interface:NSWindowEvent
 w	include/structs.h	/^	unsigned int	w;$/;"	m	struct:s_key_status	typeref:typename:unsigned int
-wall_textures	include/structs.h	/^	t_texture		wall_textures[NB_TEXTURES];$/;"	m	struct:s_data	typeref:typename:t_texture[]
+wall_textures	include/structs.h	/^	t_img_data		wall_textures[NB_TEXTURES];$/;"	m	struct:s_data	typeref:typename:t_img_data[]
 west_crossing	src/move_crossing_box.c	/^int	west_crossing(t_data *data)$/;"	f	typeref:typename:int
 width	include/structs.h	/^	int		width;$/;"	m	struct:s_window	typeref:typename:int
 width	minilibx_linux/mlx_int.h	/^	int				width;$/;"	m	struct:s_img	typeref:typename:int

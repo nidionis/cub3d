@@ -66,9 +66,9 @@
 # define WEST_CHAR 87
 # define EAST_CHAR 69
 /* for is_available_mapcase : keep directions at the end (see is_available_mapcase function) */
-# define MAPCASES "01 "
+# define MAPCASES "012 "
 /* MAPCASE to consider as a wall */
-# define IS_BLOCK "1 "
+# define IS_BLOCK "12 "
 # define NB_TEXTURES 4
 # define SCREEN_WIDTH 700
 # define SCREEN_HEIGHT 400
@@ -87,7 +87,3 @@
 # define PI 3.141592654
 # define DEFAULT_ROTATION_ANGLE (3.141592654 / 48.000)
 # define PLAYER_MAP_ARROW 20
-
-//COLORS 
-# define RED "\033[1;31m"
-# define GREEN "\033[1;32m"

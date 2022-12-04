@@ -12,26 +12,90 @@
 
 #include "cub3d.h"
 
-/*
-void	add_obstacle(t_data *data, t_rayponse *ray, char map_case, t_list **lst)
+t_list	*closest_in_list(t_list **lst)
+{
+	t_list		*tmp;
+	t_list		*l_closest;
+	double		closest;
+	t_obstacle	*closest_s;
+
+	tmp = *lst;
+	l_closest = tmp;
+	closest_s = (t_obstacle *)(tmp->content);
+	closest = closest_s->dist;
+	while (tmp)
+	{
+		closest_s = (t_obstacle *)(tmp->content);
+		if (closest > closest_s->dist)
+		{
+			closest = closest_s->dist;
+			l_closest = tmp;
+		}
+		tmp = tmp->next;
+	}
+	return (l_closest);
+}
+
+void	pop_closest(t_list **lst, t_list *closest)
+{
+	t_list	*tmp;
+
+	tmp = *lst;
+	if (tmp == closest)
+	{
+		*lst = NULL;
+		return ;
+	}
+	while (tmp)
+	{
+		if (tmp->next == closest)
+		{
+			tmp->next = closest->next;
+			break ;
+		}
+		tmp = tmp->next;
+	}
+}
+
+void	sort_obstacle(t_list **lst)
+{
+	t_list	*sorted_list;
+	t_list	*list;
+	t_list	*closest;
+
+	sorted_list = NULL;
+	list = *lst;
+	while (list)
+	{
+		closest = closest_in_list(&list);
+		pop_closest(&list, closest);
+		ft_lstadd_front(&sorted_list, closest);
+	}
+	*lst = sorted_list;
+}
+
+void	add_obstacle(t_data *data, t_rayponse ray, char map_case, int dir, t_list **obstacles_ls)
 {
 	t_obstacle	*obst;
 	t_list		*item;
+	int		i_texture;
 	(void)map_case;
 
 	obst = malloc(sizeof(t_obstacle));
 	if (!obst)
 		exit_msg(data, "[add_obstacle] pb adding obstacle", 1);
-	obst->side = get_side_hit(data, dir);
-	obst->textureX = get_wallX(ray);
+	ray.side = get_side_hit(data, dir);
+	i_texture = map_case - '2' + ray.side;
+	obst->dist = get_dist_from_plan(data, &ray);
+	obst->textureX = get_wallX(&ray);
+	obst->texture = data->bonus_textures[i_texture];
 	item = ft_lstnew((void *)obst);
 	if (!item)
 		exit_msg(data, "[add_obstacle] pb adding obstacle", 2);
-	ft_lstadd_front(lst, item);
+	ft_lstadd_front(obstacles_ls, item);
 }
-*/
 
-t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
+t_rayponse	next_wall_dir(t_data *data, int dir, t_list **obstacles_ls)
 {
 	t_cam			*cam;
 	t_ray			ray;
@@ -43,6 +107,7 @@ t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 	cam = data->cam;
 	ray = *(cam->beam);
 	rayponse.len = ray.side_distances[dir];
+	rayponse.dist_from_plan = get_dist_from_plan(data, &rayponse);
 	while (!len_overflow(rayponse.len))
 	{
 		vect = vec_scale(ray.direction, rayponse.len / ray.direction_len);
@@ -52,10 +117,10 @@ t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 			map_case =  pix_pos_to_map_case(data, rayponse.hit_point);
 			if (map_case == WALL)
 				break ;
-			//else if (is_block(data, map_case) != -1)
-			//{
-			//	add_obstacle(data, rayponse, map_case, obstacles_ls);
-			//}
+			else if (is_block(data, map_case) != -1)
+			{
+				add_obstacle(data, rayponse, map_case, dir, obstacles_ls);
+			}
 		}
 		else
 		{
@@ -67,13 +132,40 @@ t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 	return (rayponse);
 }
 
+/* must be used in a sorted list
+ * cut the head of the list until the distance is behing the wall
+ * */
+void	clean_obstacle_behind_wall(t_list **list, double distance_max)
+{
+	t_list		*tmp;
+	t_list		*last_tmp;
+	t_list		*list_cpy;
+	double		distance;
 
+	list_cpy = *list;
+	tmp = *list;
+	last_tmp = NULL;
+	while (tmp)
+	{
+		distance = ((t_obstacle *)(tmp->content))->dist;
+		if (distance < distance_max)
+			break ;
+		last_tmp = tmp;
+		tmp = tmp->next;
+	}
+	*list = tmp;
+	if (last_tmp)
+	{
+		last_tmp->next = NULL;
+		ft_lstclear(&list_cpy, free);
+	}
+}
 
 void	beam(t_data *data, t_rayponse *rayponse)
 {
 	t_rayponse	rays[2];
 	int			index_closest;
-	t_obstacle	*obstacles_ls;
+	t_list	*obstacles_ls;
 
 	set_beam(data, &obstacles_ls);
 	rays[_x] = next_wall_dir(data, _x, &obstacles_ls);
@@ -83,10 +175,11 @@ void	beam(t_data *data, t_rayponse *rayponse)
 		index_closest = _y;
 	*rayponse = rays[index_closest];
 	rayponse->side = get_side_hit(data, index_closest);
-	//rayponse->side = get_side_hit(data, index_closest);
 	rayponse->dist_from_plan = get_dist_from_plan(data, rayponse);
 	//add_sprites_to_obstacles_ls(data, rayponse, &obstacles_ls);
-	//rayponse->obstacles_ls = sort_obstacles(&obstacles_ls);
+	sort_obstacle(&obstacles_ls);
+	clean_obstacle_behind_wall(&obstacles_ls, rayponse->dist_from_plan);
+	rayponse->obstacles_ls = obstacles_ls;
 }
 
 void	set_arRay(t_data *data)

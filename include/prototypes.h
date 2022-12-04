@@ -83,20 +83,16 @@ void	set_delta_distance(t_data *data);
 void	set_side_distance(t_data *data);
 t_point	translate_pt(t_vector vector, t_point pt);
 double	distance_points(t_point p1, t_point p2);
-t_obstacle	*add_sprites(t_data *data, t_rayponse *rayturned, t_obstacle **obstacles_ls);
-t_obstacle	*add_obstacle(t_data *data, t_rayponse r, char m_case, t_obstacle **ls);
 void	convert_pos_and_dir_to_line(t_point pos, t_vector vec, t_vector line[2]);
-t_obstacle	*add_obstacle(t_data *data, t_rayponse r, char m_case, t_obstacle **ls);
-t_obstacle	*sort_obstacles(t_obstacle **ls);
 //void	set_texture_size(t_texture *texture, char *path);
 int	get_wallX(t_rayponse *ray);
 
-t_obstacle	*add_sprites_to_obstacles_ls(t_data *data, t_rayponse *rayponse, t_obstacle **obstacles_ls);
 int	get_side_hit(t_data *data, int index_closest);
 int	len_overflow(int len);
-void	set_beam(t_data *data, t_obstacle **obstacles_ls);
+void	set_beam(t_data *data, t_list **obstacles_ls);
 double get_dist_from_plan(t_data *data, t_rayponse *rayponse);
 t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position);
+void	import_bonus_textures(t_data *data);
 
 	/* list */
 int	    ft_lstsize(t_list *lst);

@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	set_beam(t_data *data, t_obstacle **obstacles_ls)
+void	set_beam(t_data *data, t_list **obstacles_ls)
 {
 	set_delta_distance(data);
 	set_side_distance(data);

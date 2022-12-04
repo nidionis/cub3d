@@ -134,4 +134,5 @@ void	parse_file(char *fname, t_data *data)
 		exit_msg(data, "[parse_file] pb loading map", -1);
 	format_map(data);
 	map_parse = check_map(data);
+	import_bonus_textures(data);
 }

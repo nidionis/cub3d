@@ -47,20 +47,25 @@ typedef struct s_image
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
 	char			*texture_path[NB_TEXTURES];
-	//char			*minimap_texture[NB_MINIMAP_TEXTURES]
 	int				line_len;
 	t_sprite		*sprite_ls;
-	int				sprite_half_size;
 }	t_image;
+
+typedef struct s_img_data
+{
+	void *img;
+	char *adress;
+	int	bpp;
+	int line_len;
+	int line_height;
+	int endian;
+}	t_img_data;
 
 typedef struct	s_obstacle
 {
-	char				type;
-	double				len;
-	// if type is IS_BLOCK
+	double				dist;
 	int				textureX;
-	int				side;
-	t_sprite			*sprite_pointer;
+	t_img_data			texture;
 }	t_obstacle;
 
 typedef struct	s_rayponse
@@ -69,7 +74,7 @@ typedef struct	s_rayponse
 	double		dist_from_plan;
 	int			side;
 	t_point		hit_point;
-	t_obstacle	*obstacles_ls;
+	t_list	*obstacles_ls;
 }	t_rayponse;
 
 typedef struct	s_ray
@@ -99,16 +104,6 @@ typedef struct s_window
 	int		height;
 }	t_window;
 
-typedef struct s_img_data
-{
-	void *img;
-	char *adress;
-	int	bpp;
-	int line_len;
-	int line_height;
-	int endian;
-}	t_img_data;
-
 typedef struct s_key_status
 {
 	unsigned int	w;
@@ -132,6 +127,7 @@ typedef struct s_data
 	char			**map;
 	int			map_size_in_units[2];
 	t_img_data		wall_textures[NB_TEXTURES];
+	t_img_data		*bonus_textures;
 	t_img_data		*img;
 	t_key_status	*key_status;
 }	t_data;
@@ -144,5 +140,3 @@ enum e_cardinal { NORTH, SOUTH, EAST, WEST };
 enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };
 enum e_sprite {SPRITE = -1};
 enum e_others {LINE_WIDTH = (int)SCREEN_WIDTH / (int)CAM_QUALITY, LINE_HEIGHT = (int)SCREEN_HEIGHT * (int)UNITS_PER_BOX};
-//int LINE_WIDTH = (int)SCREEN_WIDTH / (int)CAM_QUALITY;
-//int LINE_HEIGHT = (int)SCREEN_HEIGHT * (int)UNITS_PER_BOX;
