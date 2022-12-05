@@ -119,13 +119,32 @@ typedef struct s_key_status
 
 typedef struct s_menu
 {
-	unsigned int start;
-	unsigned int options;
+	//menu
+	unsigned int new_game;
+	unsigned int controls;
+	unsigned int extras;
+	unsigned int settings;
 	unsigned int quit;
-	unsigned int on;
-	unsigned int off;
+	unsigned int menu_state;
+	//settings
+	unsigned int resolution;
+	unsigned int sensivity;
+	unsigned int settings_state;
+	//other
+	unsigned int game_state;
 	unsigned int highlight;
-	unsigned int menu;
+	unsigned int back;
+	unsigned int one;
+	unsigned int two;
+	unsigned int three;
+	unsigned int minimap;
+	//resolution
+	unsigned int low_res;
+	unsigned int mid_res;
+	unsigned int high_res;
+	unsigned int resolution_state;
+	unsigned int controls_state;
+	unsigned int extras_state;
 	t_img_data		*background[20];
 } t_menu;
 

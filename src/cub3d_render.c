@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/03 19:04:38 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/04 14:41:16 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,12 @@ void	world_render(t_data *data)
 //mini_map_render generate the minimap if key M is pressed
 int	graphics_render(t_data *data)
 {
-	if (data->menu->start == 1 && data->menu->on == 1)
+	if (data->menu->game_state == 1)
 	{
 		world_render(data);
 		player_smoth_move(data);
-		if (data->menu->menu == 1)
+		if (data->menu->minimap== 1)
 			minimap_render(data);
-		
 		draw_image(data->img, data->menu->background[4], y_x(SCREEN_HEIGHT /2 + 267,SCREEN_WIDTH/2 - (SCREEN_WIDTH/3)), -1);
 		mlx_put_image_to_window(data->window->mlx, data->window->init, \
 			data->img->img, 0, 0);

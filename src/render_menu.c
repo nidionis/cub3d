@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:43:23 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/03 18:52:42 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/04 16:31:51 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,44 +26,79 @@ void	clear_img(t_img_data *img)
 
 int	render_menu(t_data *data)
 {
-	t_point	pos[4];
 	static int counter;
-	pos[0].x = 600;
-	pos[0].y = 380;
-	pos[1].x = 680;
-	pos[1].y = 50;
-	pos[2].x = 680;
-	pos[2].y = 700;
+	int width;
+	t_img_data **bg;
+
+	bg = data->menu->background;
+	width = data->window->width / 2 - bg[NEW_GAME]->width / 2;
 	counter++;
 	if (counter == 1)
 	{
-		draw_image(data->menu->background[0],data->menu->background[1],pos[0],rgb_conv(rand() % 150,rand() % 150,rand() % 150));
-		draw_image(data->menu->background[0],data->menu->background[2],pos[1],rgb_conv(rand() % 150,rand() % 150,rand() % 150));
-		draw_image(data->menu->background[0],data->menu->background[3],pos[2],rgb_conv(rand() % 150,rand() %150,rand() % 150));
+		if (data->menu->menu_state == 1)
+		{
+			draw_image(bg[BG],bg[NEW_GAME],y_x(30, width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[CONTROLS],y_x(200, width),rgb_conv(rand() % 150,rand() %150,rand() % 150));
+			draw_image(bg[BG],bg[EXTRAS],y_x(370, width),rgb_conv(rand() % 150,rand() %150,rand() % 150));
+			draw_image(bg[BG],bg[SETTINGS],y_x(540,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[EXIT],y_x(710, width),rgb_conv(rand() % 150,rand() %150,rand() % 150));
+		}
+		else if(data->menu->settings_state == 1)
+		{
+			draw_image(bg[BG],bg[RESOLUTION],y_x(30,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[SENSIVITY],y_x(200,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[BACK],y_x(370,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+		}
 	}
 	if (counter == 100)
 	{
-		draw_image(data->menu->background[0],data->menu->background[1],pos[0],rgb_conv(rand() % 150,rand() % 150,rand() % 150));
-		draw_image(data->menu->background[0],data->menu->background[2],pos[1],rgb_conv(rand() % 150,rand() % 150,rand() % 150));
-		draw_image(data->menu->background[0],data->menu->background[3],pos[2],rgb_conv(rand() % 150,rand() % 150,rand() % 150));
-		draw_image(data->menu->background[0], data->menu->background[5],y_x(50, 100), rgb_conv(rand() % 150,rand() % 150,rand() % 150));
-		draw_image(data->menu->background[0], data->menu->background[5],y_x(600, 1400), rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+		if (data->menu->menu_state == 1)
+		{
+			draw_image(bg[BG],bg[NEW_GAME],y_x(30,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[CONTROLS],y_x(200,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[EXTRAS],y_x(370,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[SETTINGS],y_x(540,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[EXIT],y_x(710,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+		}
+		else if (data->menu->settings_state == 1)
+		{
+			draw_image(bg[BG],bg[RESOLUTION],y_x(30,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[SENSIVITY],y_x(200,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[BACK],y_x(370,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+		}
+		else if (data->menu->resolution_state == 1)
+		{
+			draw_image(bg[BG],bg[HIGH_RES],y_x(30,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[MID_RES],y_x(200,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[LOW_RES],y_x(370,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+			draw_image(bg[BG],bg[BACK],y_x(540,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
+		}
 		counter = 0;
 	}
-	if (data->menu->options == 1)
-		draw_image(data->menu->background[0],data->menu->background[1],pos[0],data->menu->highlight);
+	if (data->menu->new_game == 1)
+		draw_image(bg[BG], bg[NEW_GAME],y_x(30,width),data->menu->highlight);
+	if (data->menu->controls == 1)
+		draw_image(bg[BG], bg[CONTROLS],y_x(200,width),data->menu->highlight);
+	if (data->menu->extras == 1)
+		draw_image(bg[BG], bg[EXTRAS],y_x(370,width),data->menu->highlight);
+	if (data->menu->settings == 1)
+		draw_image(bg[BG], bg[SETTINGS],y_x(540,width),data->menu->highlight);
 	if (data->menu->quit == 1)
-		draw_image(data->menu->background[0],data->menu->background[3],pos[2],data->menu->highlight);
-	if (data->menu->start == 1)
-		draw_image(data->menu->background[0],data->menu->background[2],pos[1],data->menu->highlight);
-	if (data->menu->options == 1 && data->menu->on == 1)
-	{
-		clear_img(data->menu->background[0]);
-		draw_image(data->menu->background[0],data->menu->background[11],y_x(0,0),-1);
-		draw_image(data->menu->background[0],data->menu->background[8],y_x(100, SCREEN_WIDTH/2 - data->menu->background[7]->width/2),-1);
-		draw_image(data->menu->background[0],data->menu->background[9],y_x(400,SCREEN_WIDTH/2 - data->menu->background[7]->width/2),-1);
-		draw_image(data->menu->background[0],data->menu->background[10],y_x(700,SCREEN_WIDTH/2 - data->menu->background[7]->width/2),-1);
-	}
+		draw_image(bg[BG], bg[EXIT],y_x(710,width),data->menu->highlight);
+	//seting
+	if (data->menu->resolution == 1)
+		draw_image(bg[BG],bg[RESOLUTION],y_x(30,width),data->menu->highlight);
+	if (data->menu->sensivity == 1)
+		draw_image(bg[BG],bg[SENSIVITY],y_x(200,width),data->menu->highlight);
+	if (data->menu->back == 1)
+		draw_image(bg[BG],bg[BACK],y_x(540,width),data->menu->highlight);
+		//res
+	if (data->menu->high_res == 1)
+		draw_image(bg[BG],bg[HIGH_RES],y_x(30,width),data->menu->highlight);
+	if (data->menu->mid_res == 1)
+		draw_image(bg[BG],bg[MID_RES],y_x(200,width),data->menu->highlight);
+	if (data->menu->low_res == 1)
+		draw_image(bg[BG],bg[LOW_RES],y_x(370,width),data->menu->highlight);
 	mlx_put_image_to_window(data->window->mlx, data->window->init,data->menu->background[0]->img, 0, 0);
 	return(0);
 }

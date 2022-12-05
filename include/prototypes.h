@@ -124,3 +124,5 @@ int    render_menu(t_data *data);
 void	draw_image(t_img_data *img1, t_img_data *img2, t_point pos, int color);
 void	player_smoth_move(t_data *data);
 t_point	y_x(int y, int x);
+void settings_key_press(int key, t_data *data);
+void	clear_img(t_img_data *img);
