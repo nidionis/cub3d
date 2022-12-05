@@ -15,7 +15,7 @@ typedef struct s_player
 {
 	/* in square */
 	t_point		pos_map;
-	double		speed;
+	int		speed;
 	double		rotate_speed;
 	/* in pix or UNITS_PER_BOX*/
 	t_point		pos_box;
@@ -115,6 +115,8 @@ typedef struct s_key_status
 	unsigned int	d;
 	unsigned int	left;
 	unsigned int	right;
+	unsigned int	sprint;
+	unsigned int	config;
 }	t_key_status;
 
 typedef struct s_menu

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_menu.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:43:23 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/04 16:31:51 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:43:04 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	render_menu(t_data *data)
 			draw_image(bg[BG],bg[BACK],y_x(370,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
 		}
 	}
-	if (counter == 100)
+	if (counter == 50)
 	{
 		if (data->menu->menu_state == 1)
 		{

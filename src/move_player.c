@@ -159,7 +159,10 @@ int	move_player(t_data *data, int move)
 	t_vector	scaled_direction;
 
 	p = data->player;
-	scaled_direction = vec_scale(p->direction, (double)(UNITS_PER_BOX / STEPS_PER_BOX));
+	if (data->player->speed == 1)
+		scaled_direction = vec_scale(p->direction, (double)(UNITS_PER_BOX / 30));
+	else
+		scaled_direction = vec_scale(p->direction, (double)(UNITS_PER_BOX / STEPS_PER_BOX));
 	if (move == BACKWARD)
 		rotate_vector(&scaled_direction, degree_to_radian(180));
 	else if (move == RIGHT)

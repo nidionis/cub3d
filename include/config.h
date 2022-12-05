@@ -19,6 +19,10 @@
 #  define KEY_ESC 53
 #  define KEY_IN 69
 #  define KEY_OUT 78
+#  define ENTER 36
+#  define KEY_M 46
+#  define SHIFT 257
+#  define KEY_P 35
 #  include "../mlx/mlx.h"
 
 # else   // LINUX
@@ -79,7 +83,7 @@
 # define CAM_QUALITY 1900
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 1000
-# define STEPS_PER_BOX 30
+# define STEPS_PER_BOX 100
 # define WALL_SIZE 20
 /* in radient 66 = 1.15*/
 /* num of ray_parse for a pic */
