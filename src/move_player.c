@@ -138,6 +138,29 @@ int	check_update_box_pos(t_data *data)
 
 void	player_smoth_move(t_data *data)
 {
+	static int counter;
+	static int counter2;
+
+	if (data->player->speed == 1 && data->player->stamina > 0)
+	{
+		counter++;
+		if (counter == 5)
+		{
+			counter = 0;
+			data->player->stamina--;
+		}
+	}
+	else if (data->player->speed == 0 && data->player->stamina < 100)
+	{
+		counter2++;
+		if (counter2 == 15)
+		{
+			counter2 = 0;
+			data->player->stamina++;
+		}
+	}
+	if (data->player->speed == 1 && data->player->stamina <= 0)
+		data->player->speed = 0;
 	if (data->key_status->w == 1)
 		move_player(data, FORWARD);
 	if (data->key_status->s == 1)

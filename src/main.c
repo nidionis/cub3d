@@ -94,6 +94,7 @@ int	main(int argc, char *argv[])
 	{
 		data = malloc_data();
 		parse_file(argv[1],  data);
+		data->mouse = 0;
 		data->window = malloc(sizeof(t_window));
 		init_key_status(data);
 		load_window(data);

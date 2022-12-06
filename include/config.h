@@ -30,6 +30,7 @@
 #  include "../minilibx_linux/mlx.h"
 #  include "../minilibx_linux/mlx_int.h"
 #  define ENTER 65293
+#  define KEY_P 112
 #  define KEY_Q 113
 #  define KEY_A 97
 #  define KEY_Z 122
@@ -42,7 +43,7 @@
 #  define KEY_R 114
 #  define KEY_F 102
 #  define KEY_M 109
-#  define KEY_SHIFT 65505
+#  define SHIFT 65505
 #  define KEY_RIGHT 65363 
 #  define KEY_LEFT 65361 
 #  define KEY_UP 65362

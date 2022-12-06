@@ -134,7 +134,7 @@ void load_menu(t_data *data)
 	load_images(data, data->menu->background[CONTROLS_KEYS], "assets/menu/control_keys.xpm");
 	load_images(data, data->menu->background[LOW_RES], "assets/menu/700x500.xpm");
 	load_images(data, data->menu->background[MID_RES], "assets/menu/1200x700.xpm");
-	load_images(data, data->menu->background[HIGH_RES], "assets/menu/1900x1080.xpm");
+
 	menu = data->menu;
 	menu->new_game = 1;
 	menu->controls = 0;

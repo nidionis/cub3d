@@ -24,12 +24,18 @@ typedef struct s_player
 	t_point		pos_in_pix;
 	t_vector	map_pos;
 	t_vector	direction;
-	
+	unsigned 	int stamina;
 	int			angle;
 }	t_player;
 
 typedef struct	s_sprite
 {
+	int type;
+	int state;
+	int map;
+	int x;
+	int y;
+	int z;
 	//texture
 	t_point	pos;
 
@@ -152,6 +158,7 @@ typedef struct s_menu
 
 typedef struct s_data
 {
+	t_sprite sprite;
 	char		*line;
 	char		**line_split;
 	char		*blocks;
@@ -166,6 +173,7 @@ typedef struct s_data
 	t_img_data		*img;
 	t_key_status	*key_status;
 	t_menu			*menu;
+	int mouse;
 }	t_data;
 
 enum x_or_y { _x, _y };

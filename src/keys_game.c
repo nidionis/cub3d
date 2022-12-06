@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:28:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/05 15:23:52 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/06 11:14:33 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ int	key_game(int key, t_data *data)
 	}
 	else if (key == SHIFT)
 	{
-		if (data->player->speed == 0)
+		if (data->player->speed == 0 && data->player->stamina > 5)
 			data->player->speed = 1;
 		else
 			data->player->speed = 0;
 	}
 	else if (key == KEY_P)
-		printf("open menu\n");
+		data->map[0][1] = '0';
 	return (0);
 }

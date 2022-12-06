@@ -86,6 +86,7 @@ void	init_player(t_data *data, int x, int y, int *is_player)
 	data->player->pos_in_step = update_pos_in_step(data->player);
 	data->player->pos_in_pix = update_pos_in_pix(data->player);
 	data->player->speed = 0;
+	data->player->stamina = 100;
 	//devine plnan
 	(*is_player)++;
 }

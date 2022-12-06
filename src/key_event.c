@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:57:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/05 14:56:38 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/06 05:23:24 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,7 @@ int	key_realese(int key, t_data *data)
 		data->key_status->right = 0;
 	else if (key == KEY_LEFT && data->menu->game_state == 1)
 		data->key_status->left = 0;
+	else if (key == SHIFT)
+		data->player->speed = 0;
 	return (0);
 }
