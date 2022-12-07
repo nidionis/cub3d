@@ -111,6 +111,8 @@ int	graphics_render(t_data *data)
 		if (data->key_status->right == 1)
 			rotate_player(data->player, RIGHT);
 		// render_map_2d(data);
+		t_point p = map_position_in_front_of_player(data->player);
+		printf("player pos: %d, %d\nnext case : %d, %d\n\n", data->player->pos_map.x, data->player->pos_map.y, p.x, p.y);
 		mlx_put_image_to_window(data->window->mlx, data->window->init,data->img->img, 0, 0);
 	}
 	else

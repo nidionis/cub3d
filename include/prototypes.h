@@ -1,4 +1,6 @@
 #include "cub3d.h"
+int	f_is_box_crossed(t_player *player);
+t_point	map_position_in_front_of_player(t_player *player);
 void			error_msg(char *msg);
 char	**default_map(char	*argv[]);
 char	**ft_append_tab(char **matrix, char *str);
