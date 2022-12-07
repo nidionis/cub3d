@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/11/24 15:38:17 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/07 13:38:47 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,30 @@ void	check_param_not_missing(t_data *data)
 		exit_msg(data, "[check_param_not_missing] map is missing", -1);
 }
 
+void	import_textures(t_data *data)
+{
+	int			i;
+	char		*fname;
+	t_img_data	*t[NB_TEXTURES];
+
+	i = 0;
+	while (i < NB_TEXTURES)
+	{
+		data->wall_textures[i] = malloc(sizeof(t_img_data));
+		i++;
+	}
+	i = 0;
+	while (i < NB_TEXTURES)
+	{
+		t[i] = data->wall_textures[i];
+		fname = data->image->texture_path[i];
+		load_images(data, t[i],fname);
+		if (!t[i]->img)
+			exit_msg(data, "[import_textures] Pb loading xpm file", 1);
+		i++;
+	}
+}
+
 void	parse_file(char *fname, t_data *data)
 {
 	int		fd;
@@ -109,6 +133,7 @@ void	parse_file(char *fname, t_data *data)
 	}
 	close(fd);
 	check_param_not_missing(data);
+	import_textures(data);
 	if (map_parse == -1)
 		exit_msg(data, "[parse_file] pb loading map", -1);
 	format_map(data);

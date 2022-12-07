@@ -28,6 +28,8 @@ int	is_block(t_data *data, char c)
 	return (-1);
 }
 
+/* if player moved in a corner and it is a wall,
+ * his position is set to the next empty mapcase */
 void	slide_closest_box(t_player *p, int closest_box)
 {
 	if (closest_box == NORTH)

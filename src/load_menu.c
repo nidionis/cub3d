@@ -8,14 +8,7 @@ char *remove_char(char *str, char c)
 	i = 0;
 	j = 0;
 
-	while(str[i])
-	{
-		if (str[i + j] != c)
-			i++;
-		else
-			j++;
-	}
-	tmp = malloc(sizeof(char) * i + 1);
+	tmp = malloc(sizeof(char) * 30);
 	i = 0;
 	j = 0;
 	while (str[i])
@@ -32,12 +25,12 @@ char *remove_char(char *str, char c)
 	return (tmp);
 }
 
-int	load_images(t_data *data, t_img_data *image, char *path)
+t_point get_img_size(char *path)
 {
 	int fd;
 	char *buffer;
 	char **tmp;
-
+	t_point size;
 	buffer = NULL;
 	fd = open(path,O_RDWR);
 	buffer = get_next_line(fd);
@@ -49,11 +42,21 @@ int	load_images(t_data *data, t_img_data *image, char *path)
 	buffer = remove_char(buffer, ',');
 	tmp = ft_split(buffer, ' ');
 	close(fd);
-	image->width = atoi(tmp[0]);
-	image->height = atoi(tmp[1]);
-	//free tmp
-   	image->img = mlx_xpm_file_to_image(data->window->mlx, path, &image->width, &image->height);
-   image->address = (int *)mlx_get_data_addr(image->img, &image->bpp, &image->line_len, &image->endian);
+	size.x = atoi(tmp[0]);
+	size.y = atoi(tmp[1]);
+	free (tmp);
+	return (size);
+}
+
+int	load_images(t_data *data, t_img_data *image, char *path)
+{
+	t_point size;
+
+	size = get_img_size(path);
+	image->width = size.x;
+	image->height = size.y;
+   	image->img = mlx_xpm_file_to_image(data->window->mlx, path, &image->line_len, &image->line_height);
+   	image->address = (int *)mlx_get_data_addr(image->img, &image->bpp, &image->line_len, &image->endian);
 	return (0);
 }
 
@@ -72,7 +75,6 @@ void	draw_image(t_img_data *img1, t_img_data *img2, t_point pos, int color)
 		{
 			if (img2->address[img_y * img2->width + img_x] == -16777216)
 			{
-				
 				img_x++;
 				pos.x++;
 			}
@@ -134,7 +136,7 @@ void load_menu(t_data *data)
 	load_images(data, data->menu->background[CONTROLS_KEYS], "assets/menu/control_keys.xpm");
 	load_images(data, data->menu->background[LOW_RES], "assets/menu/700x500.xpm");
 	load_images(data, data->menu->background[MID_RES], "assets/menu/1200x700.xpm");
-
+	load_images(data, data->menu->background[HIGH_RES], "assets/menu/1900x1080.xpm");
 	menu = data->menu;
 	menu->new_game = 1;
 	menu->controls = 0;
@@ -155,4 +157,7 @@ void load_menu(t_data *data)
 	menu->resolution_state = 0;
 	menu->controls_state = 0;
 	menu->extras_state = 0;
+	menu->low_res = 0;
+	menu->mid_res = 0;
+	menu->high_res = 1;
 }

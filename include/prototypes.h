@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/05 14:48:33 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:21:24 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,14 @@ double			distance_line_to_point(t_vector line[2], t_point p);
 void			set_delta_distance(t_data *data);
 void			set_side_distance(t_data *data);
 t_point			translate_pt(t_vector vector, t_point pt);
-void			ft_lstclear(t_obstacle **lst);
-t_obstacle		*ft_lstlast(t_obstacle *lst);
-t_obstacle		*ft_lstnew(t_rayponse content, char c);
-void			ft_lstadd_back(t_obstacle **lst, t_obstacle *new_);
-void			ft_lstadd_front(t_obstacle **lst, t_obstacle *new_);
+int	    ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
 double			distance_points(t_point p1, t_point p2);
 t_obstacle		*add_sprites(t_data *data, t_rayponse *rayturned, t_obstacle **obstacles_ls);
 t_obstacle		*add_obstacle(t_data *data, t_rayponse r, char m_case, t_obstacle **ls);
@@ -125,7 +128,7 @@ void			draw_line(t_data *data, t_point	*start, t_point	*end, int color);
 void			draw_mini_map(t_data *data, int size);
 void			draw_player(t_data *data);
 void			draw_vision_field(t_data *data, t_point minimap_position);
-void    		my_mlx_pixel_put(t_img_data *img, int x, int y, int color);
+void    		my_mlx_pixel_put(t_img_data *img, int x, int y, unsigned int color);
 void			init_key_status(t_data *data);
 int     		key_press(int key, t_data *data);
 int     		key_realese(int key, t_data *data);
@@ -142,4 +145,7 @@ void			clear_img(t_img_data *img);
 int				key_game(int key, t_data *data);
 void			menu_key_press(int key, t_data *data);
 void			resolution_key_press(int key, t_data *data);
+void	draw_line_textured(t_data *data, t_point start, t_point end, int line_height, t_rayponse *ray);
+void	draw_wall_textured(t_data *data, int i_ray);
+void	draw_ceiling_floor_mandatory(t_data *data);
 #endif

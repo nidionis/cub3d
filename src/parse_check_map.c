@@ -34,33 +34,7 @@ int	is_mapcase(t_data *data, char c)
 	return (0);
 }
 
-/*
-int	is_available_mapcase(t_data *data, int x, int y, int *is_player)
-{
-	unsigned int	i;
-	unsigned int	available_mapcase;
-	unsigned int	nb_mapcases;
-	char			*mapcases;
-	char			c;
-
-	c = data->map[y][x];
-	available_mapcase = 0;
-	i = 0;
-	nb_mapcases = ft_strlen(mapcases);
-	while (i < nb_mapcases)
-	{
-		if (c == mapcases[i])
-		{
-			available_mapcase = 1;
-			break ;
-		}
-		i++;
-	}
-	return (available_mapcase);
-}
-*/
-
-/* returns TRUE if it has an empty neighourg box */
+/* returns TRUE if it has an empty neighourg box ('\0', ' ', or if at the begining of the line */
 int	is_border(t_data *data, int x, int y, int matrix_len)
 {
 	int		last_index_in_line;

@@ -6,11 +6,30 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
-/*   Updated: 2022/11/28 12:39:37 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/01 17:56:02 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/*
+void	add_obstacle(t_data *data, t_rayponse *ray, char map_case, t_list **lst)
+{
+	t_obstacle	*obst;
+	t_list		*item;
+	(void)map_case;
+
+	obst = malloc(sizeof(t_obstacle));
+	if (!obst)
+		exit_msg(data, "[add_obstacle] pb adding obstacle", 1);
+	obst->side = get_side_hit(data, dir);
+	obst->textureX = get_wallX(ray);
+	item = ft_lstnew((void *)obst);
+	if (!item)
+		exit_msg(data, "[add_obstacle] pb adding obstacle", 2);
+	ft_lstadd_front(lst, item);
+}
+*/
 
 t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 {
@@ -36,7 +55,6 @@ t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 			//else if (is_block(data, map_case) != -1)
 			//{
 			//	add_obstacle(data, rayponse, map_case, obstacles_ls);
-			//	(*obstacles_ls)->side = get_side_hit(data, dir);
 			//}
 		}
 		else
@@ -65,10 +83,10 @@ void	beam(t_data *data, t_rayponse *rayponse)
 		index_closest = _y;
 	*rayponse = rays[index_closest];
 	rayponse->side = get_side_hit(data, index_closest);
-	rayponse->side = get_side_hit(data, index_closest);
+	//rayponse->side = get_side_hit(data, index_closest);
 	rayponse->dist_from_plan = get_dist_from_plan(data, rayponse);
 	//add_sprites_to_obstacles_ls(data, rayponse, &obstacles_ls);
-	rayponse->obstacles_ls = sort_obstacles(&obstacles_ls);
+	//rayponse->obstacles_ls = sort_obstacles(&obstacles_ls);
 }
 
 void	set_arRay(t_data *data)

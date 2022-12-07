@@ -12,6 +12,7 @@
 
 #include "cub3d.h"
 
+/* the params are converted in int to facilitate parsing */
 char	**get_identifiers_ls(int identifier_len)
 {
 	char	**identifiers;
@@ -24,6 +25,7 @@ char	**get_identifiers_ls(int identifier_len)
 	return (identifiers);
 }
 
+/* return true if is param, used in conv_id_param  */
 static int	refresh_ret_if_is_param(char **identifiers, \
 		int *returned, int *i, char *str)
 {
@@ -68,7 +70,6 @@ int	get_identifier(t_data *data, char *str)
 		identifier_len = ft_strlen_char(str, ' ');
 	if (is_map_line(data, str))
 		return (11);
-	//fprintf(stderr, "%s, len: %d\n", str, identifier_len);
 	if (identifier_len > 2 || identifier_len < 1)
 		exit_msg(data, "[get_identifier] wrong param identifier", -1);
 	return (conv_id_param(data, identifier_len, str));

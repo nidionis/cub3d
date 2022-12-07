@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/06 15:13:30 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/07 12:49:39 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	world_render(t_data *data)
 
 	i = 0;
 	set_arRay(data);
+	draw_ceiling_floor_mandatory(data);
 	while (i < CAM_QUALITY)
 	{	
-		draw_wall_line(data, i);
-		ft_lstclear(&data->cam->arRay[i].obstacles_ls);
+		draw_wall_textured(data, i);
 		i++;
 	}
 }
@@ -116,6 +116,27 @@ int mouse_event(t_data *data)
 	data->mouse = 1;
 	mlx_mouse_hide(data->window->mlx,data->window->init);
 	return (0);
+}
+/* dirty way to draw ceiling and floor */
+void	draw_ceiling_floor_mandatory(t_data *data)
+{
+	t_point	p;
+
+	p.y = 0;
+	while (p.y < SCREEN_HEIGHT / 2)
+	{
+		p.x = 0;
+		while (p.x < SCREEN_WIDTH)
+			my_mlx_pixel_put(data->img, p.x++, p.y, data->image->ceiling_color);
+		p.y++;
+	}
+	while (p.y < SCREEN_HEIGHT)
+	{
+		p.x = 0;
+		while (p.x < SCREEN_WIDTH)
+			my_mlx_pixel_put(data->img, p.x++, p.y, data->image->floor_color);
+		p.y++;
+	}
 }
 
 int	cub3d_render(t_data *data)

@@ -40,6 +40,7 @@ char	pix_pos_to_map_case(t_data *data, t_point absolute_pos)
 	return (c);
 }
 
+/* check if point is not outside */
 int	still_in_map(t_data *data, t_point pt)
 {
 	if (pt.x < 0 || pt.x >= data->map_size_in_units[_x])

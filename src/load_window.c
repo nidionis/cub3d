@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/03 20:30:39 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:45:22 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	load_window(t_data *data)
 	t_window *window;
 
 	window = data->window;
-	window->mlx = mlx_init();
 	data->img = malloc(sizeof(t_img_data));
 	window->height = SCREEN_HEIGHT;
 	window->width = SCREEN_WIDTH;
@@ -73,7 +72,7 @@ int	load_window(t_data *data)
 	window->init = mlx_new_window(window->mlx, \
 		window->width, window->height, "Cub3d");
 	data->img->line_len = data->img->line_len >> 2;
-	data->img->address = (int*)mlx_get_data_addr(data->img->img,&data->img->bpp, &data->img->line_len, &data->img->endian);
+	data->img->address = (int *)mlx_get_data_addr(data->img->img,&data->img->bpp, &data->img->line_len, &data->img->endian);
 	load_menu(data);
 	return (0);
 }
