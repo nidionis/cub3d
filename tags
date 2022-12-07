@@ -1,329 +1,803 @@
-Copyright	minilibx_linux/LICENSE	/^Copyright (c) 2021, Ecole 42$/
-Mconfigure	minilibx_linux/configure	/^main(){$/
-Mmain	src/main.c	/^int	main(int argc, char *argv[])$/
-Window	minilibx_linux/README.md	/^This is the MinilibX, a simple X-Window (X11R6) pr/
-X	minilibx_mac/mlx_new_window.h	/^- (void) pixelPutColor: (int)color X:(int)x Y:(int/
-add_img_to_ctx	minilibx_mac/mlx_new_image.m	/^mlx_img_ctx_t	*add_img_to_ctx(mlx_img_list_t *img,/
-add_obstacle	src/obstacles_utils.c	/^t_obstacle	*add_obstacle(t_data *data, t_rayponse /
-add_sprite	src/obstacles_sprites.c	/^t_obstacle	*add_sprite(t_data *data, t_sprite *spr/
-add_sprites_to_obstacles_ls	src/obstacles_sprites.c	/^t_obstacle	*add_sprites_to_obstacles_ls(t_data *da/
-beam	src/raycasting.c	/^void	beam(t_data *data, t_rayponse *rayponse)$/
-c_to_i	libft/ft_atoi.c	/^static long int	c_to_i(char c)$/
-carry_negative	libft/ft_itoa.c	/^static char	*carry_negative(int *n, char *n_strn, /
-check_closest_box	src/move_to_corner.c	/^int	check_closest_box(t_player *player)$/
-check_map	src/parse_check_map.c	/^int	check_map(t_data *data)$/
-check_map_line	src/parse_check_map.c	/^void	check_map_line(t_data *data, int y, int *nb_p/
-check_param_not_missing	src/parse_import.c	/^void	check_param_not_missing(t_data *data)$/
-check_update_box_pos	src/move_player.c	/^int	check_update_box_pos(t_data *data)$/
-clean	minilibx_linux/configure	/^clean(){$/
-clean_exit	src/exit_ft.c	/^void	clean_exit(t_data *data, int exit_code)$/
-clean_useless_empty_splace	src/parse_format_map.c	/^void	clean_useless_empty_splace(char	**map)$/
-closeNotification	minilibx_mac/mlx_new_window.m	/^- (void) closeNotification:(NSNotification *)note$/
-complete_line_to_width	src/parse_format_map.c	/^void	complete_line_to_width(t_data *data, char **l/
-conv_id_param	src/parse_params.c	/^int	conv_id_param(t_data *data, int identifier_len/
-convert_pos_and_dir_to_line	src/obstacles_utils.c	/^void	convert_pos_and_dir_to_line(t_point pos, t_ve/
-convert_pt_to_vec	src/vector_ft.c	/^t_vector	convert_pt_to_vec(t_point p)$/
-corner_crossing	src/move_to_corner.c	/^int	corner_crossing(t_data *data)$/
-degree_to_radian	src/vector_ft.c	/^double	degree_to_radian(double degree_angle)$/
-delete_first_column	src/parse_format_map.c	/^void	delete_first_column(char **map)$/
-deminiaturizeNotification	minilibx_mac/mlx_new_window.m	/^- (void) deminiaturizeNotification:(NSNotification/
-display_log	minilibx_mac/mlx_shaders.c	/^void display_log(GLuint object, void (*param_func)/
-distance_line_to_point	src/vector_ft.c	/^double	distance_line_to_point(t_vector line[2], t_/
-distance_point_to_vector	src/vector_ft.c	/^double	distance_point_to_vector(t_point point, t_p/
-distance_points	src/vector_ft.c	/^double	distance_points(t_point p1, t_point p2)$/
-do_loop_flush	minilibx_mac/mlx_init_loop.m	/^void do_loop_flush(CFRunLoopObserverRef observer, /
-do_loop_hook2	minilibx_mac/mlx_init_loop.m	/^void	do_loop_hook2(CFRunLoopTimerRef observer, voi/
-draw_cube	src/ft_window_init.c	/^void	draw_cube(t_window *window, int size, int pos/
-draw_line	src/ft_window_init.c	/^void	draw_line(t_data *data, t_point	*start, t_poi/
-draw_mini_map	src/ft_window_init.c	/^void	draw_mini_map(t_data *data)$/
-draw_player	src/ft_window_init.c	/^void	draw_player(t_data *data)$/
-draw_vision_field	src/ft_window_init.c	/^void	draw_vision_field(t_data *data, t_point minim/
-draw_wall_line	src/debug_ft.c	/^void	draw_wall_line(t_data *data, int i)$/
-e_cardinal	include/cub3d.h	/^enum e_cardinal { NORTH, SOUTH, EAST, WEST };$/
-e_direction	include/cub3d.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW/
-e_identifiers	include/cub3d.h	/^enum e_identifiers { NO, SO, WE, EA, F, C };$/
-e_player_directio	include/cub3d.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT,/
-e_sprite	include/cub3d.h	/^enum e_sprite {SPRITE = -1};$/
-east_crossing	src/move_crossing_box.c	/^int	east_crossing(t_data *data)$/
-error_msg	libft/error_msg.c	/^void	error_msg(char *msg)$/
-exit_game	src/ft_key_event.c	/^int exit_game(t_data *data)$/
-exit_msg	src/exit_ft.c	/^void	exit_msg(t_data *data, char *msg, int ret_exi/
-exposeNotification	minilibx_mac/mlx_new_window.m	/^- (void) exposeNotification:(NSNotification *)note/
-f_is_box_crossed	src/move_player.c	/^static int	f_is_box_crossed(t_player *player)$/
-file_extention_available	src/parse_init.c	/^void	file_extention_available(t_data *data, char */
-fix_ang	src/ft_key_event.c	/^int fix_ang(int a)$/
-flagsChanged	minilibx_mac/mlx_new_window.m	/^- (void) flagsChanged:(NSEvent *)theEvent$/
-format_map	src/parse_format_map.c	/^void	format_map(t_data *data)$/
-ft_append_tab	src/matrix.c	/^char	**ft_append_tab(char **matrix, char *str)$/
-ft_atoi	libft/ft_atoi.c	/^int	ft_atoi(const char *str0)$/
-ft_atoi_err	libft/ft_atoi_err.c	/^int	ft_atoi_err(char *str)$/
-ft_bzero	libft/ft_bzero.c	/^void	*ft_bzero(void *s, size_t n)$/
-ft_calloc	libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/
-ft_free_split	libft/ft_free_split.c	/^void	ft_free_split(char ***tab)$/
-ft_get_next_wd	libft/ft_get_next_wd.c	/^char	*ft_get_next_wd(char *sentence, char sep)$/
-ft_intlen	libft/ft_itoa.c	/^static int	ft_intlen(int n)$/
-ft_isalnum	libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/
-ft_isalpha	libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/
-ft_isascii	libft/ft_isascii.c	/^int	ft_isascii(int c)$/
-ft_isdigit	libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/
-ft_isprint	libft/ft_isprint.c	/^int	ft_isprint(int c)$/
-ft_isspace	libft/ft_atoi.c	/^static int	ft_isspace(const char c)$/
-ft_itoa	libft/ft_itoa.c	/^char	*ft_itoa(int n)$/
-ft_lstadd_back	src/list_ft.c	/^void	ft_lstadd_back(t_obstacle **lst, t_obstacle */
-ft_lstadd_front	src/list_ft.c	/^void	ft_lstadd_front(t_obstacle **lst, t_obstacle /
-ft_lstclear	src/list_ft.c	/^void	ft_lstclear(t_obstacle **lst)$/
-ft_lstlast	src/list_ft.c	/^t_obstacle	*ft_lstlast(t_obstacle *lst)$/
-ft_lstlen	src/list_ft.c	/^int	ft_lstlen(t_obstacle *lst)$/
-ft_lstnew	src/list_ft.c	/^t_obstacle	*ft_lstnew(t_rayponse content, char typ/
-ft_matrixlen	src/matrix.c	/^int	ft_matrixlen(char **matrix)$/
-ft_memchr	libft/ft_memchr.c	/^void	*ft_memchr(const void *str0, int c, size_t n)/
-ft_memcmp	libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size/
-ft_memcpy	libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, unsign/
-ft_memmove	libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_/
-ft_memset	libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/
-ft_putchar_fd	libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/
-ft_putendl_fd	libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/
-ft_putnbr_fd	libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/
-ft_putstr_fd	libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/
-ft_realloc_cat	src/get_next_line.c	/^static char	*ft_realloc_cat(char *line, char c, in/
-ft_split	libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/
-ft_strchr	libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int c)$/
-ft_strdup	libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/
-ft_striteri	libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, /
-ft_strjoin	libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/
-ft_strlcat	libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size/
-ft_strlcpy	libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size/
-ft_strlen	libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/
-ft_strlen_char	libft/ft_strlen_char.c	/^size_t	ft_strlen_char(char *str, char sep)$/
-ft_strmapi	libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned/
-ft_strncmp	libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, siz/
-ft_strnlen	libft/ft_strlcat.c	/^static unsigned int	ft_strnlen(char *s, size_t max/
-ft_strnstr	libft/ft_strnstr.c	/^char	*ft_strnstr(const char *str, const char *ndl,/
-ft_strrchr	libft/ft_strrchr.c	/^char	*ft_strrchr(char *s, int c)$/
-ft_strtrim	libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/
-ft_substr	libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start,/
-ft_tolower	libft/ft_tolower.c	/^int	ft_tolower(int c)$/
-ft_toupper	libft/ft_toupper.c	/^int	ft_toupper(int c)$/
-ft_wd_count	libft/ft_wd_count.c	/^int	ft_wd_count(char *str, char sep)$/
-get_dist_from_plan	src/raycasting_utils.c	/^double get_dist_from_plan(t_data *data, t_rayponse/
-get_identifier	src/parse_params.c	/^int	get_identifier(t_data *data, char *str)$/
-get_identifiers_ls	src/parse_params.c	/^char	**get_identifiers_ls(int identifier_len)$/
-get_map_width	src/parse_format_map.c	/^int	get_map_width(char **map)$/
-get_mouse_button	minilibx_mac/mlx_new_window.m	/^int get_mouse_button(NSEventType eventtype)$/
-get_next_case	src/move_to_corner.c	/^char	get_next_case(char **map, t_point map_point, /
-get_next_line	src/get_next_line.c	/^char	*get_next_line(int fd)$/
-get_side_hit	src/raycasting_utils.c	/^int	get_side_hit(t_data *data, int index_closest)$/
-get_smallest_index	src/move_to_corner.c	/^int	get_smallest_index(double wall_distance[4])$/
-get_xlib_include_path	minilibx_linux/configure	/^get_xlib_include_path(){$/
-glsl_info_t	minilibx_mac/mlx_int.h	/^} glsl_info_t;$/
-ifeq	minilibx_linux/Makefile	/^ifeq ($(UNAME),FreeBSD)$/
-import_param	src/parse_import.c	/^void	import_param(t_data *data, int identifier, ch/
-import_params	src/parse_import.c	/^int	import_params(t_data *data)$/
-import_texture_path	src/parse_import.c	/^void	import_texture_path(t_data *data, int identif/
-initWithContentRect	minilibx_mac/mlx_new_window.h	/^- (NSWindowEvent *) initWithContentRect:(NSRect)re/
-init_cam_vector	src/camera_ft.c	/^void	init_cam_vector(t_data *data)$/
-init_f_c_color	src/parse_file_colors.c	/^unsigned int	init_f_c_color(t_data *data, char *li/
-init_fd	src/parse_init.c	/^void	init_fd(t_data *data, int *fd, char *fname)$/
-init_null	src/parse_init.c	/^void	init_null(t_data *data, int *map_parse)$/
-init_player	src/parse_init.c	/^void	init_player(t_data *data, int x, int y, int */
-insert_sort_obstacle	src/obstacles_utils.c	/^t_obstacle	*insert_sort_obstacle(t_obstacle **ls, /
-int	minilibx_mac/mlx_int.h	/^typedef int (*func_t)();$/
-is_NSEW	src/parse_check_map.c	/^int	is_NSEW(char c)$/
-is_blank_char	src/str_ft.c	/^int	is_blank_char(char c)$/
-is_blank_line	src/str_ft.c	/^int	is_blank_line(char *line)$/
-is_block	src/move_to_corner.c	/^int	is_block(t_data *data, char c)$/
-is_border	src/parse_check_map.c	/^int	is_border(t_data *data, int x, int y, int matr/
-is_first_column_empty	src/parse_format_map.c	/^int	is_first_column_empty(char **map)$/
-is_map_line	src/str_ft.c	/^int	is_map_line(t_data *data, char *str)$/
-is_mapcase	src/parse_check_map.c	/^int	is_mapcase(t_data *data, char c)$/
-is_trimable	libft/ft_strtrim.c	/^static int	is_trimable(char c, char *trimset)$/
-keyDown	minilibx_mac/mlx_new_window.m	/^- (void) keyDown:(NSEvent *)theEvent$/
-keyUp	minilibx_mac/mlx_new_window.m	/^- (void) keyUp:(NSEvent *)theEvent$/
-key_event	src/ft_key_event.c	/^int	key_event(int key, t_data *data)$/
-len_overflow	src/raycasting_utils.c	/^int	len_overflow(int len)$/
-log_error	minilibx_linux/configure	/^log_error(){$/
-log_info	minilibx_linux/configure	/^log_info(){$/
-log_type	include/cub3d.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/
-logging	minilibx_linux/configure	/^logging(){$/
-make_point	src/vector_ft.c	/^t_point	make_point(int x, int y)$/
-make_str	libft/ft_itoa.c	/^static void	make_str(int *n, char *n_str, int i)$/
-make_tab	libft/ft_split.c	/^static char	**make_tab(char **returned, char const/
-malloc_data	src/main.c	/^ t_data	*malloc_data(void)$/
-mipng_crc	minilibx_mac/mlx_png.c	/^int	mipng_crc(unsigned char *ptr, int len)$/
-mipng_data	minilibx_mac/mlx_png.c	/^int	mipng_data(mlx_img_list_t *img, unsigned char /
-mipng_defilter_average	minilibx_mac/mlx_png.c	/^unsigned char mipng_defilter_average(unsigned char/
-mipng_defilter_none	minilibx_mac/mlx_png.c	/^unsigned char mipng_defilter_none(unsigned char *b/
-mipng_defilter_paeth	minilibx_mac/mlx_png.c	/^unsigned char mipng_defilter_paeth(unsigned char */
-mipng_defilter_sub	minilibx_mac/mlx_png.c	/^unsigned char mipng_defilter_sub(unsigned char *bu/
-mipng_defilter_up	minilibx_mac/mlx_png.c	/^unsigned char mipng_defilter_up(unsigned char *buf/
-mipng_fill_img	minilibx_mac/mlx_png.c	/^int	mipng_fill_img(mlx_img_list_t *img, unsigned c/
-mipng_is_type	minilibx_mac/mlx_png.c	/^int	mipng_is_type(unsigned char *ptr, char *type)$/
-mipng_magic	minilibx_mac/mlx_png.c	/^int	mipng_magic(unsigned char *ptr, int size)$/
-mipng_structure	minilibx_mac/mlx_png.c	/^int	mipng_structure(unsigned char *ptr, int size, /
-mipng_verif_hdr	minilibx_mac/mlx_png.c	/^int	mipng_verif_hdr(unsigned char *hdr, png_info_t/
-mlx_clear_window	minilibx_linux/mlx_clear_window.c	/^int		mlx_clear_window(t_xvar *xvar,t_win_list *win/
-mlx_destroy_display	minilibx_linux/mlx_destroy_display.c	/^int	mlx_destroy_display(t_xvar *xvar)$/
-mlx_destroy_image	minilibx_linux/mlx_destroy_image.c	/^int	mlx_destroy_image(t_xvar *xvar, t_img *img)$/
-mlx_destroy_window	minilibx_linux/mlx_destroy_window.c	/^int	mlx_destroy_window(t_xvar *xvar,t_win_list *wi/
-mlx_do_key_autorepeatoff	minilibx_linux/mlx_hook.c	/^int	mlx_do_key_autorepeatoff(t_xvar *xvar)$/
-mlx_do_key_autorepeaton	minilibx_linux/mlx_hook.c	/^int	mlx_do_key_autorepeaton(t_xvar *xvar)$/
-mlx_do_sync	minilibx_linux/mlx_hook.c	/^int	mlx_do_sync(t_xvar *xvar)$/
-mlx_expose_hook	minilibx_linux/mlx_expose_hook.c	/^int		mlx_expose_hook(t_win_list *win,int (*funct)(/
-mlx_ext_fullscreen	minilibx_linux/mlx_ext_randr.c	/^int			mlx_ext_fullscreen(t_xvar *xvar, t_win_list /
-mlx_flush_event	minilibx_linux/mlx_flush_event.c	/^int	mlx_flush_event(t_xvar *xvar)$/
-mlx_get_color_value	minilibx_linux/mlx_get_color_value.c	/^int             mlx_get_color_value(t_xvar *xvar,i/
-mlx_get_data_addr	minilibx_linux/mlx_get_data_addr.c	/^char	*mlx_get_data_addr(t_img *img,int *bits_per_p/
-mlx_get_screen_size	minilibx_linux/mlx_screen_size.c	/^int		mlx_get_screen_size(void *mlx_ptr, int *sizex/
-mlx_gl_draw_font	minilibx_mac/mlx_new_window.m	/^- (void) mlx_gl_draw_font:(mlx_img_list_t *)img an/
-mlx_gl_draw_img	minilibx_mac/mlx_new_window.m	/^- (void) mlx_gl_draw_img:(mlx_img_list_t *)img and/
-mlx_hook	minilibx_linux/mlx_hook.c	/^int	mlx_hook(t_win_list *win, int x_event, int x_m/
-mlx_img_ctx_t	minilibx_mac/mlx_int.h	/^} mlx_img_ctx_t;$/
-mlx_img_list_t	minilibx_mac/mlx_int.h	/^} mlx_img_list_t;$/
-mlx_init	minilibx_linux/mlx_init.c	/^void	*mlx_init()$/
-mlx_int_anti_resize_win	minilibx_linux/mlx_int_anti_resize_win.c	/^int	mlx_int_anti_resize_win(t_xvar *xvar,Window wi/
-mlx_int_deal_shm	minilibx_linux/mlx_init.c	/^int		mlx_int_deal_shm(t_xvar *xvar)$/
-mlx_int_do_nothing	minilibx_linux/mlx_int_do_nothing.c	/^int	mlx_int_do_nothing(void *param)$/
-mlx_int_egal_img	minilibx_linux/mlx_lib_xpm.c	/^int	mlx_int_egal_img(XImage *img1,XImage *img2)$/
-mlx_int_file_get_rid_comment	minilibx_linux/mlx_xpm.c	/^int	mlx_int_file_get_rid_comment(char *ptr, int si/
-mlx_int_get_col_name	minilibx_linux/mlx_xpm.c	/^int	mlx_int_get_col_name(char *str,int size)$/
-mlx_int_get_good_color	minilibx_linux/mlx_get_color_value.c	/^int		mlx_int_get_good_color(t_xvar *xvar,int color/
-mlx_int_get_line	minilibx_linux/mlx_xpm.c	/^char	*mlx_int_get_line(char *ptr,int *pos,int size/
-mlx_int_get_text_rgb	minilibx_linux/mlx_xpm.c	/^int	mlx_int_get_text_rgb(char *name, char *end)$/
-mlx_int_get_visual	minilibx_linux/mlx_int_get_visual.c	/^int		mlx_int_get_visual(t_xvar *xvar)$/
-mlx_int_loop_once	minilibx_mac/mlx_init_loop.m	/^void	mlx_int_loop_once()$/
-mlx_int_new_image	minilibx_linux/mlx_new_image.c	/^void	*mlx_int_new_image(t_xvar *xvar,int width, in/
-mlx_int_new_xshm_image	minilibx_linux/mlx_new_image.c	/^void	*mlx_int_new_xshm_image(t_xvar *xvar,int widt/
-mlx_int_param_ButtonPress	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_ButtonPress(t_xvar *xvar, XEvent/
-mlx_int_param_ButtonRelease	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_ButtonRelease(t_xvar *xvar, XEve/
-mlx_int_param_Expose	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_Expose(t_xvar *xvar, XEvent *ev,/
-mlx_int_param_KeyPress	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_KeyPress(t_xvar *xvar, XEvent *e/
-mlx_int_param_KeyRelease	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_KeyRelease(t_xvar *xvar, XEvent /
-mlx_int_param_MotionNotify	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_MotionNotify(t_xvar *xvar, XEven/
-mlx_int_param_generic	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_generic(t_xvar *xvar, XEvent *ev/
-mlx_int_param_undef	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_undef()$/
-mlx_int_parse_png	minilibx_mac/mlx_png.c	/^mlx_img_list_t	*mlx_int_parse_png(mlx_ptr_t *xvar,/
-mlx_int_parse_xpm	minilibx_linux/mlx_xpm.c	/^void	*mlx_int_parse_xpm(t_xvar *xvar,void *info,in/
-mlx_int_rgb_conversion	minilibx_linux/mlx_init.c	/^int		mlx_int_rgb_conversion(t_xvar *xvar)$/
-mlx_int_set_win_event_mask	minilibx_linux/mlx_int_set_win_event_mask.c	/^int	mlx_int_set_win_event_mask(t_xvar *xvar)$/
-mlx_int_static_line	minilibx_linux/mlx_xpm.c	/^char	*mlx_int_static_line(char **xpm_data,int *pos/
-mlx_int_str_str	minilibx_linux/mlx_int_str_to_wordtab.c	/^int	mlx_int_str_str(char *str,char *find,int len)$/
-mlx_int_str_str_cote	minilibx_linux/mlx_int_str_to_wordtab.c	/^int	mlx_int_str_str_cote(char *str,char *find,int /
-mlx_int_str_to_wordtab	minilibx_linux/mlx_int_str_to_wordtab.c	/^char	**mlx_int_str_to_wordtab(char *str)$/
-mlx_int_wait_first_expose	minilibx_linux/mlx_int_wait_first_expose.c	/^int	mlx_int_wait_first_expose(t_xvar *xvar,Window /
-mlx_int_xpm_f_image	minilibx_linux/mlx_lib_xpm.c	/^void		*mlx_int_xpm_f_image(t_xvar *xvar,int *width/
-mlx_int_xpm_set_pointel	minilibx_linux/mlx_xpm.c	/^int	mlx_int_xpm_set_pointel(t_img *img, char *data/
-mlx_key_hook	minilibx_linux/mlx_key_hook.c	/^int		mlx_key_hook(t_win_list *win,int (*funct)(),v/
-mlx_loop	minilibx_linux/mlx_loop.c	/^int			mlx_loop(t_xvar *xvar)$/
-mlx_loop_end	minilibx_linux/mlx_loop.c	/^int			mlx_loop_end(t_xvar *xvar)$/
-mlx_loop_hook	minilibx_linux/mlx_loop_hook.c	/^int	mlx_loop_hook(t_xvar *xvar,int (*funct)(),void/
-mlx_mouse_get_pos	minilibx_linux/mlx_mouse.c	/^int		mlx_mouse_get_pos(t_xvar *xvar, t_win_list *w/
-mlx_mouse_hide	minilibx_linux/mlx_mouse.c	/^int		mlx_mouse_hide(t_xvar *xvar, t_win_list *win)/
-mlx_mouse_hook	minilibx_linux/mlx_mouse_hook.c	/^int		mlx_mouse_hook(t_win_list *win,int (*funct)()/
-mlx_mouse_move	minilibx_linux/mlx_mouse.c	/^int		mlx_mouse_move(t_xvar *xvar, t_win_list *win,/
-mlx_mouse_show	minilibx_linux/mlx_mouse.c	/^int		mlx_mouse_show(t_xvar *xvar, t_win_list *win)/
-mlx_new_image	minilibx_linux/mlx_new_image.c	/^void	*mlx_new_image(t_xvar *xvar,int width, int he/
-mlx_new_image2	minilibx_linux/mlx_new_image.c	/^void	*mlx_new_image2(t_xvar *xvar,int width, int h/
-mlx_new_opengl_window	minilibx_mac/mlx_opengl.m	/^void	*mlx_new_opengl_window(mlx_ptr_t *mlx_ptr, in/
-mlx_new_window	minilibx_linux/mlx_new_window.c	/^void	*mlx_new_window(t_xvar *xvar,int size_x,int s/
-mlx_opengl_swap_buffers	minilibx_mac/mlx_opengl.m	/^int	mlx_opengl_swap_buffers(mlx_win_list_t *win_pt/
-mlx_opengl_window_set_context	minilibx_mac/mlx_opengl.m	/^int	mlx_opengl_window_set_context(mlx_win_list_t */
-mlx_pixel_put	minilibx_linux/mlx_pixel_put.c	/^int		mlx_pixel_put(t_xvar *xvar,t_win_list *win,$/
-mlx_png_file_to_image	minilibx_mac/mlx_png.c	/^void	*mlx_png_file_to_image(mlx_ptr_t *xvar, char /
-mlx_ptr_t	minilibx_mac/mlx_int.h	/^} mlx_ptr_t;$/
-mlx_put_image_to_window	minilibx_linux/mlx_put_image_to_window.c	/^int	mlx_put_image_to_window(t_xvar *xvar,t_win_lis/
-mlx_set_font	minilibx_linux/mlx_set_font.c	/^void	mlx_set_font(t_xvar *xvar, t_win_list *win, c/
-mlx_shaders	minilibx_mac/mlx_shaders.c	/^int mlx_shaders(glsl_info_t *glsl)$/
-mlx_shaders_font	minilibx_mac/mlx_shaders.c	/^int mlx_shaders_font(glsl_info_t *glsl)$/
-mlx_shaders_image	minilibx_mac/mlx_shaders.c	/^int mlx_shaders_image(glsl_info_t *glsl)$/
-mlx_shaders_pixel	minilibx_mac/mlx_shaders.c	/^int mlx_shaders_pixel(glsl_info_t *glsl)$/
-mlx_string_put	minilibx_linux/mlx_string_put.c	/^int		mlx_string_put(t_xvar *xvar,t_win_list *win,$/
-mlx_win_list_t	minilibx_mac/mlx_int.h	/^} mlx_win_list_t;$/
-mlx_xpm_file_to_image	minilibx_linux/mlx_lib_xpm.c	/^void	*mlx_xpm_file_to_image(t_xvar *xvar,char *fil/
-mlx_xpm_to_image	minilibx_linux/mlx_lib_xpm.c	/^void	*mlx_xpm_to_image(t_xvar *xvar,char **data,in/
-mouseDown	minilibx_mac/mlx_new_window.m	/^- (void) mouseDown:(NSEvent *)theEvent$/
-mouseDragged	minilibx_mac/mlx_new_window.m	/^- (void) mouseDragged:(NSEvent *)theEvent$/
-mouseMoved	minilibx_mac/mlx_new_window.m	/^- (void) mouseMoved:(NSEvent *)theEvent$/
-mouseUp	minilibx_mac/mlx_new_window.m	/^- (void) mouseUp:(NSEvent *)theEvent$/
-move_player	src/move_player.c	/^int	move_player(t_data *data, int move)$/
-my_loc	libft/ft_itoa.c	/^static char	*my_loc(int len)$/
-next_wall_dir	src/raycasting.c	/^t_rayponse	next_wall_dir(t_data *data, int dir, t_/
-north_crossing	src/move_crossing_box.c	/^int	north_crossing(t_data *data)$/
-not_behind	src/obstacles_sprites.c	/^int	not_behind(t_point origin, t_vector origin_dir/
-otherMouseDown	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseDown:(NSEvent *)theEvent$/
-otherMouseDragged	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseDragged:(NSEvent *)theEvent$/
-otherMouseUp	minilibx_mac/mlx_new_window.m	/^- (void) otherMouseUp:(NSEvent *)theEvent$/
-parse_args	minilibx_linux/configure	/^parse_args(){$/
-parse_file	src/parse_import.c	/^void	parse_file(char *fname, t_data *data)$/
-parsing_loop	src/parse_import.c	/^int	parsing_loop(t_data *data, int *map_parse)$/
-pix_pos_to_map_case	src/map_ft.c	/^char	pix_pos_to_map_case(t_data *data, t_point abs/
-pix_pos_to_map_pos	src/map_ft.c	/^t_point	pix_pos_to_map_pos(t_point absolute_pos)$/
-player_init	src/ft_player_init.c	/^int	player_init(char **map, t_player *player)$/
-png_info_t	minilibx_mac/mlx_png.c	/^} png_info_t;$/
-print_cam	src/debug_ft.c	/^void	print_cam(t_data *data, int fd)$/
-print_data	src/debug_ft.c	/^void	print_data(t_data *data, int fd)$/
-print_map	src/debug_ft.c	/^void	print_map(t_data *data, int fd)$/
-print_params	src/debug_ft.c	/^void	print_params(t_data *data, int fd)$/
-print_player	src/debug_ft.c	/^void	print_player(t_data *data, int fd)$/
-ray_cast	src/ft_window_init.c	/^int	ray_cast(t_data *data)$/
-ray_cross_sprite	src/obstacles_sprites.c	/^double	ray_cross_sprite(t_data *data, t_sprite *sp/
-rectangle_map	src/parse_format_map.c	/^void	rectangle_map(t_data *data, char **map)$/
-redir_debug_file_logs	src/debug_ft.c	/^void	redir_debug_file_logs(t_data *data, char *fna/
-redir_debug_file_msg	src/debug_ft.c	/^void	redir_debug_file_msg(char *fname, char *msg)$/
-refresh_ret_if_is_param	src/parse_params.c	/^static int	refresh_ret_if_is_param(char **identifi/
-render_map_2d	src/ft_window_init.c	/^int	render_map_2d(t_data *data)$/
-rgb_conv	src/parse_file_colors.c	/^unsigned int	rgb_conv(int R, int G, int B)$/
-rightMouseDown	minilibx_mac/mlx_new_window.m	/^- (void) rightMouseDown:(NSEvent *)theEvent$/
-rightMouseDragged	minilibx_mac/mlx_new_window.m	/^- (void) rightMouseDragged:(NSEvent *)theEvent$/
-rightMouseUp	minilibx_mac/mlx_new_window.m	/^- (void) rightMouseUp:(NSEvent *)theEvent$/
-rotate_player	src/rotate_player.c	/^void   rotate_player(t_player *player, int move)$/
-rotate_vector	src/vector_ft.c	/^void	rotate_vector(t_vector *vector, double radian/
-scrollWheel	minilibx_mac/mlx_new_window.m	/^- (void) scrollWheel:(NSEvent *)theEvent$/
-setEvent	minilibx_mac/mlx_new_window.m	/^- (void) setEvent:(int)event andFunc:(func_t)func /
-setKeyRepeat	minilibx_mac/mlx_new_window.m	/^- (void) setKeyRepeat:(int)mode$/
-set_arRay	src/raycasting.c	/^void	set_arRay(t_data *data)$/
-set_beam	src/raycasting_utils.c	/^void	set_beam(t_data *data, t_obstacle **obstacles/
-set_delta_distance	src/ray_set_distances.c	/^void	set_delta_distance(t_data *data)$/
-set_plane_dir	src/camera_ft.c	/^void	set_plane_dir(t_data *data, double plane_size/
-set_plane_origin	src/camera_ft.c	/^void	set_plane_origin(t_data *data)$/
-set_side_distance	src/ray_set_distances.c	/^void	set_side_distance(t_data *data)$/
-shift_line_left	src/parse_format_map.c	/^void	shift_line_left(char *line)$/
-shm_att_pb	minilibx_linux/mlx_new_image.c	/^int	shm_att_pb(Display *d,XErrorEvent *ev)$/
-show_help	minilibx_linux/configure	/^show_help(){$/
-slide_closest_box	src/move_to_corner.c	/^void	slide_closest_box(t_player *p, int closest_bo/
-sort_obstacles	src/obstacles_utils.c	/^t_obstacle	*sort_obstacles(t_obstacle **ls)$/
-south_crossing	src/move_crossing_box.c	/^int	south_crossing(t_data *data)$/
-still_in_map	src/map_ft.c	/^int	still_in_map(t_data  *data, t_point pt)$/
-strlcpy_is_not_posix	minilibx_linux/mlx_xpm.c	/^unsigned int	strlcpy_is_not_posix(char *dest, char/
-t_cam	include/cub3d.h	/^}	t_cam;$/
-t_data	include/cub3d.h	/^}	t_data;$/
-t_event_list	minilibx_linux/mlx_int.h	/^}				t_event_list;$/
-t_image	include/cub3d.h	/^}	t_image;$/
-t_img	minilibx_linux/mlx_int.h	/^}				t_img;$/
-t_obstacle	include/cub3d.h	/^}	t_obstacle;$/
-t_player	include/cub3d.h	/^}	t_player;$/
-t_point	include/cub3d.h	/^}	t_point;$/
-t_ray	include/cub3d.h	/^}	t_ray;$/
-t_rayponse	include/cub3d.h	/^}	t_rayponse;$/
-t_sprite	include/cub3d.h	/^}	t_sprite;$/
-t_vector	include/cub3d.h	/^}	t_vector;$/
-t_win_list	minilibx_linux/mlx_int.h	/^}				t_win_list;$/
-t_window	include/cub3d.h	/^}	t_window;$/
-t_xpm_col	minilibx_linux/mlx_int.h	/^}				t_xpm_col;$/
-t_xvar	minilibx_linux/mlx_int.h	/^}				t_xvar;$/
-test_function	src/main.c	/^void	test_function(t_data *data)$/
-translate_pt	src/vector_ft.c	/^t_point	translate_pt(t_vector vector, t_point pt)$/
-translate_pt_inplace	src/vector_ft.c	/^t_point	translate_pt_inplace(t_vector vector, t_po/
-translate_vector_as_pt	src/vector_ft.c	/^void	translate_vector_as_pt(t_vector vector, t_vec/
-units_pos_to_minimap_pos	src/ft_window_init.c	/^t_point	units_pos_to_minimap_pos(t_data *data, t_p/
-update_pos_if_wall	src/move_player.c	/^int	update_pos_if_wall(t_data *data, int crossover/
-update_pos_in_pix	src/pos_update.c	/^t_point	update_pos_in_pix(t_player *player)$/
-update_pos_in_step	src/pos_update.c	/^t_point	update_pos_in_step(t_player *player)$/
-vec_len	src/vector_ft.c	/^double	vec_len(t_vector vector)$/
-vec_scale	src/vector_ft.c	/^t_vector	vec_scale(t_vector vector, double scale)$/
-vector_dot_product	src/vector_ft.c	/^double	vector_dot_product(t_vector v1, t_vector v2/
-west_crossing	src/move_crossing_box.c	/^int	west_crossing(t_data *data)$/
-while	minilibx_linux/rgb2c.pl	/^while (<RGB>)$/
-win_count	minilibx_linux/mlx_loop.c	/^static int	win_count(t_xvar *xvar)$/
-window_init	src/ft_window_init.c	/^int	window_init(t_window *window)$/
-wrong_color	src/parse_file_colors.c	/^void	wrong_color(t_data *data, char *color_strimed/
-x_or_y	include/cub3d.h	/^enum x_or_y { _x, _y };$/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/dusseche/cub3d/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20220828.0/
+$(NAME)	minilibx_linux/Makefile	/^$(NAME)	: $(OBJ)$/;"	t
+$(NOM)	mlx/Makefile	/^$(NOM):	$(OBJ)$/;"	t
+$(OBJ_DIR)/%.o	minilibx_linux/Makefile	/^$(OBJ_DIR)\/%.o: %.c$/;"	t
+${NAME}	libft/Makefile	/^${NAME}: ${OBJS}$/;"	t
+%.o	libft/Makefile	/^%.o: %.c$/;"	t
+BACKWARD	include/structs.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };$/;"	e	enum:e_player_direction
+C	include/structs.h	/^enum e_identifiers { NO, SO, EA, WE, F, C };$/;"	e	enum:e_identifiers
+CAM	include/structs.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/;"	e	enum:log_type
+CAM_ANGLE	include/config.h	/^# define CAM_ANGLE /;"	d
+CAM_QUALITY	include/config.h	/^# define CAM_QUALITY /;"	d
+CC	libft/Makefile	/^CC = gcc$/;"	m
+CC	minilibx_linux/Makefile	/^	CC = clang$/;"	m
+CC	minilibx_linux/Makefile	/^CC	= gcc$/;"	m
+CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	minilibx_linux/Makefile	/^CFLAGS	= -O3 -I$(INC)$/;"	m
+CLIC	include/config.h	/^# define CLIC /;"	d
+CUB3D_H	include/cub3d.h	/^# define CUB3D_H$/;"	d
+DATA	include/structs.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/;"	e	enum:log_type
+DEBUG_LOG_FILENAME	include/config.h	/^# define DEBUG_LOG_FILENAME /;"	d
+DEFAULT_ROTATION_ANGLE	include/config.h	/^# define DEFAULT_ROTATION_ANGLE /;"	d
+DOWN_ARROW	include/config.h	/^# define DOWN_ARROW /;"	d
+E	include/structs.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };$/;"	e	enum:e_direction
+EA	include/structs.h	/^enum e_identifiers { NO, SO, EA, WE, F, C };$/;"	e	enum:e_identifiers
+EAST	include/structs.h	/^enum e_cardinal { NORTH, SOUTH, EAST, WEST };$/;"	e	enum:e_cardinal
+EAST_CHAR	include/config.h	/^# define EAST_CHAR /;"	d
+EMPTY	include/config.h	/^# define EMPTY /;"	d
+ENV_DISPLAY	minilibx_linux/mlx_int.h	/^# define ENV_DISPLAY /;"	d
+ERR_DATA_FILTER	mlx/mlx_png.c	/^#define	ERR_DATA_FILTER	/;"	d	file:
+ERR_DATA_MISMATCH	mlx/mlx_png.c	/^#define	ERR_DATA_MISMATCH	/;"	d	file:
+ERR_MAGIC_SIZE	mlx/mlx_png.c	/^#define	ERR_MAGIC_SIZE	/;"	d	file:
+ERR_MAGIC_WRONG	mlx/mlx_png.c	/^#define	ERR_MAGIC_WRONG	/;"	d	file:
+ERR_NO_TRUECOLOR	minilibx_linux/mlx_int.h	/^# define ERR_NO_TRUECOLOR /;"	d
+ERR_STRUCT_CRC	mlx/mlx_png.c	/^#define	ERR_STRUCT_CRC	/;"	d	file:
+ERR_STRUCT_DAT	mlx/mlx_png.c	/^#define	ERR_STRUCT_DAT	/;"	d	file:
+ERR_STRUCT_END	mlx/mlx_png.c	/^#define	ERR_STRUCT_END	/;"	d	file:
+ERR_STRUCT_HDR	mlx/mlx_png.c	/^#define	ERR_STRUCT_HDR	/;"	d	file:
+ERR_STRUCT_INCIMPL	mlx/mlx_png.c	/^#define	ERR_STRUCT_INCIMPL /;"	d	file:
+ERR_STRUCT_INCOMPLETE	mlx/mlx_png.c	/^#define	ERR_STRUCT_INCOMPLETE	/;"	d	file:
+ERR_STRUCT_MISSCHK	mlx/mlx_png.c	/^#define	ERR_STRUCT_MISSCHK	/;"	d	file:
+ERR_ZLIB	mlx/mlx_png.c	/^#define	ERR_ZLIB	/;"	d	file:
+EXPOSE_X	include/config.h	/^#  define EXPOSE_X /;"	d
+F	include/structs.h	/^enum e_identifiers { NO, SO, EA, WE, F, C };$/;"	e	enum:e_identifiers
+FLOOR	include/config.h	/^# define FLOOR /;"	d
+FONT_HEIGHT	mlx/mlx_int.h	/^#define	FONT_HEIGHT	/;"	d
+FONT_WIDTH	mlx/mlx_int.h	/^#define FONT_WIDTH	/;"	d
+FORWARD	include/structs.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };$/;"	e	enum:e_player_direction
+GREEN	include/config.h	/^# define GREEN /;"	d
+INC	minilibx_linux/Makefile	/^INC	=%%%%$/;"	m
+IS_BLOCK	include/config.h	/^# define IS_BLOCK /;"	d
+KEY_A	include/config.h	/^#  define KEY_A /;"	d
+KEY_C	include/config.h	/^#  define KEY_C /;"	d
+KEY_D	include/config.h	/^#  define KEY_D /;"	d
+KEY_DOWN	include/config.h	/^#  define KEY_DOWN /;"	d
+KEY_E	include/config.h	/^#  define KEY_E /;"	d
+KEY_ESC	include/config.h	/^#  define KEY_ESC /;"	d
+KEY_F	include/config.h	/^#  define KEY_F /;"	d
+KEY_IN	include/config.h	/^#  define KEY_IN /;"	d
+KEY_LEFT	include/config.h	/^#  define KEY_LEFT /;"	d
+KEY_OUT	include/config.h	/^#  define KEY_OUT /;"	d
+KEY_Q	include/config.h	/^#  define KEY_Q /;"	d
+KEY_R	include/config.h	/^#  define KEY_R /;"	d
+KEY_RIGHT	include/config.h	/^#  define KEY_RIGHT /;"	d
+KEY_S	include/config.h	/^#  define KEY_S /;"	d
+KEY_UP	include/config.h	/^#  define KEY_UP /;"	d
+KEY_W	include/config.h	/^#  define KEY_W /;"	d
+KEY_X	include/config.h	/^#  define KEY_X /;"	d
+KEY_Z	include/config.h	/^#  define KEY_Z /;"	d
+LANE	include/config.h	/^# define LANE /;"	d
+LEFT	include/structs.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };$/;"	e	enum:e_player_direction
+LEFT_ARROW	include/config.h	/^# define LEFT_ARROW /;"	d
+LIBFT_H	libft/libft.h	/^# define LIBFT_H$/;"	d
+LINE_HEIGHT	include/structs.h	/^enum e_others {LINE_WIDTH = SCREEN_WIDTH \/ CAM_QUALITY, LINE_HEIGHT = SCREEN_HEIGHT * UNITS_PER/;"	e	enum:e_others
+LINE_WIDTH	include/structs.h	/^enum e_others {LINE_WIDTH = SCREEN_WIDTH \/ CAM_QUALITY, LINE_HEIGHT = SCREEN_HEIGHT * UNITS_PER/;"	e	enum:e_others
+LOCALHOST	minilibx_linux/mlx_int.h	/^# define LOCALHOST /;"	d
+MAP	include/structs.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/;"	e	enum:log_type
+MAPCASES	include/config.h	/^# define MAPCASES /;"	d
+MAX_EVENT	mlx/mlx_int.h	/^#define	MAX_EVENT	/;"	d
+MAX_PIXEL_NB	mlx/mlx_int.h	/^#define MAX_PIXEL_NB	/;"	d
+MLX_H	minilibx_linux/mlx.h	/^#define	MLX_H$/;"	d
+MLX_H	mlx/mlx.h	/^#define	MLX_H$/;"	d
+MLX_INT_H	minilibx_linux/mlx_int.h	/^# define MLX_INT_H$/;"	d
+MLX_MAX_EVENT	minilibx_linux/mlx_int.h	/^# define MLX_MAX_EVENT /;"	d
+MLX_TYPE_SHM	minilibx_linux/mlx_int.h	/^# define MLX_TYPE_SHM /;"	d
+MLX_TYPE_SHM_PIXMAP	minilibx_linux/mlx_int.h	/^# define MLX_TYPE_SHM_PIXMAP /;"	d
+MLX_TYPE_XIMAGE	minilibx_linux/mlx_int.h	/^# define MLX_TYPE_XIMAGE /;"	d
+MlxWin	mlx/mlx_new_window.h	/^@interface MlxWin : NSOpenGLView$/;"	i
+MlxWin	mlx/mlx_new_window.m	/^@implementation MlxWin$/;"	I
+N	include/structs.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };$/;"	e	enum:e_direction
+NAME	libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	minilibx_linux/Makefile	/^NAME		= libmlx.a$/;"	m
+NAME_UNAME	minilibx_linux/Makefile	/^NAME_UNAME	= libmlx_$(UNAME).a$/;"	m
+NB_DIRECTION	include/structs.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };$/;"	e	enum:e_player_direction
+NB_TEXTURES	include/config.h	/^# define NB_TEXTURES /;"	d
+NE	include/structs.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };$/;"	e	enum:e_direction
+NO	include/structs.h	/^enum e_identifiers { NO, SO, EA, WE, F, C };$/;"	e	enum:e_identifiers
+NOM	mlx/Makefile	/^NOM=libmlx.a$/;"	m
+NORTH	include/structs.h	/^enum e_cardinal { NORTH, SOUTH, EAST, WEST };$/;"	e	enum:e_cardinal
+NORTH_CHAR	include/config.h	/^# define NORTH_CHAR /;"	d
+NSWindowEvent	mlx/mlx_new_window.h	/^@interface NSWindowEvent : NSWindow$/;"	i
+NSWindowEvent	mlx/mlx_new_window.m	/^@implementation NSWindowEvent$/;"	I
+NW	include/structs.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };$/;"	e	enum:e_direction
+OBJ	minilibx_linux/Makefile	/^OBJ	= $(addprefix $(OBJ_DIR)\/,$(SRC:%.c=%.o))$/;"	m
+OBJ	mlx/Makefile	/^OBJ=$(OBJ1:.m=.o)$/;"	m
+OBJ1	mlx/Makefile	/^OBJ1=$(SRC:.c=.o)$/;"	m
+OBJS	libft/Makefile	/^OBJS := ${SRCS:c=o}$/;"	m
+OBJ_DIR	minilibx_linux/Makefile	/^OBJ_DIR = obj$/;"	m
+ON_DESTROY	include/config.h	/^#  define ON_DESTROY /;"	d
+ON_MOUSEDOWN	include/config.h	/^# define ON_MOUSEDOWN /;"	d
+ON_MOUSEUP	include/config.h	/^# define ON_MOUSEUP /;"	d
+ORIGIN_PLANE_SCALE	include/config.h	/^# define ORIGIN_PLANE_SCALE /;"	d
+PARAM	include/structs.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/;"	e	enum:log_type
+PI	include/config.h	/^# define PI /;"	d
+PLAYER	include/structs.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/;"	e	enum:log_type
+PLAYER_MAP_ARROW	include/config.h	/^# define PLAYER_MAP_ARROW /;"	d
+PNG_HDR_SIZE	mlx/mlx_png.c	/^#define PNG_HDR_SIZE	/;"	d	file:
+PNG_MAGIC_SIZE	mlx/mlx_png.c	/^#define	PNG_MAGIC_SIZE	/;"	d	file:
+RED	include/config.h	/^# define RED /;"	d
+RETURN	minilibx_linux/mlx_xpm.c	/^#define	RETURN	/;"	d	file:
+RETURN	mlx/mlx_xpm.c	/^#define	RETURN	/;"	d	file:
+RIGHT	include/structs.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };$/;"	e	enum:e_player_direction
+RIGH_ARROW	include/config.h	/^# define RIGH_ARROW /;"	d
+S	include/structs.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };$/;"	e	enum:e_direction
+SCREEN_HEIGHT	include/config.h	/^# define SCREEN_HEIGHT /;"	d
+SCREEN_WIDTH	include/config.h	/^# define SCREEN_WIDTH /;"	d
+SE	include/structs.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };$/;"	e	enum:e_direction
+SO	include/structs.h	/^enum e_identifiers { NO, SO, EA, WE, F, C };$/;"	e	enum:e_identifiers
+SOUTH	include/structs.h	/^enum e_cardinal { NORTH, SOUTH, EAST, WEST };$/;"	e	enum:e_cardinal
+SOUTH_CHAR	include/config.h	/^# define SOUTH_CHAR /;"	d
+SPRITE	include/structs.h	/^enum e_sprite {SPRITE = -1};$/;"	e	enum:e_sprite
+SRC	minilibx_linux/Makefile	/^SRC	= mlx_init.c mlx_new_window.c mlx_pixel_put.c mlx_loop.c \\$/;"	m
+SRC	mlx/Makefile	/^SRC= mlx_shaders.c mlx_new_window.m mlx_init_loop.m mlx_new_image.m mlx_xpm.c mlx_int_str_to_wor/;"	m
+SRCS	libft/Makefile	/^SRCS = error_msg.c ft_atoi.c ft_atoi_err.c ft_bzero.c ft_calloc.c \\$/;"	m
+STEPS_PER_BOX	include/config.h	/^# define STEPS_PER_BOX /;"	d
+SW	include/structs.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };$/;"	e	enum:e_direction
+UNAME	minilibx_linux/Makefile	/^UNAME = $(shell uname)$/;"	m
+UNIQ_BPP	mlx/mlx_int.h	/^#define UNIQ_BPP	/;"	d
+UNITS_PER_BOX	include/config.h	/^# define UNITS_PER_BOX /;"	d
+UP_ARROW	include/config.h	/^# define UP_ARROW /;"	d
+W	include/structs.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };$/;"	e	enum:e_direction
+WALL	include/config.h	/^# define WALL /;"	d
+WALL_SIZE	include/config.h	/^# define WALL_SIZE /;"	d
+WARN_SHM_ATTACH	minilibx_linux/mlx_int.h	/^# define WARN_SHM_ATTACH /;"	d
+WE	include/structs.h	/^enum e_identifiers { NO, SO, EA, WE, F, C };$/;"	e	enum:e_identifiers
+WEST	include/structs.h	/^enum e_cardinal { NORTH, SOUTH, EAST, WEST };$/;"	e	enum:e_cardinal
+WEST_CHAR	include/config.h	/^# define WEST_CHAR /;"	d
+X_ShmAttach	minilibx_linux/mlx_new_image.c	/^#define	X_ShmAttach	/;"	d	file:
+Z_CHUNK	mlx/mlx_png.c	/^#define	Z_CHUNK	/;"	d	file:
+__anone97f5d2d0108	mlx/font.c	/^static const struct {$/;"	s	file:
+_x	include/structs.h	/^enum x_or_y { _x, _y };$/;"	e	enum:x_or_y
+_y	include/structs.h	/^enum x_or_y { _x, _y };$/;"	e	enum:x_or_y
+a	include/structs.h	/^	unsigned int	a;$/;"	m	struct:s_key_status	typeref:typename:unsigned int
+acceptsFirstResponder	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+add_img_to_ctx	mlx/mlx_new_image.m	/^mlx_img_ctx_t	*add_img_to_ctx(mlx_img_list_t *img, mlx_win_list_t *win)$/;"	f
+adress	include/structs.h	/^	char *adress;$/;"	m	struct:s_img_data	typeref:typename:char *
+all	libft/Makefile	/^all: ${NAME}$/;"	t
+all	minilibx_linux/Makefile	/^all	: $(NAME)$/;"	t
+all	mlx/Makefile	/^all: $(NOM)$/;"	t
+angle	include/structs.h	/^	int			angle;$/;"	m	struct:s_player	typeref:typename:int
+appid	mlx/mlx_int.h	/^  void			*appid;$/;"	m	struct:mlx_ptr_s	typeref:typename:void *
+arRay	include/structs.h	/^	t_rayponse	arRay[CAM_QUALITY];$/;"	m	struct:s_cam	typeref:typename:t_rayponse[]
+beam	include/structs.h	/^	t_ray		*beam;$/;"	m	struct:s_cam	typeref:typename:t_ray *
+beam	src/raycasting.c	/^void	beam(t_data *data, t_rayponse *rayponse)$/;"	f	typeref:typename:void
+blocks	include/structs.h	/^	char			*blocks;$/;"	m	struct:s_data	typeref:typename:char *
+bpp	include/structs.h	/^	int	bpp;$/;"	m	struct:s_img_data	typeref:typename:int
+bpp	minilibx_linux/mlx_int.h	/^	int				bpp;$/;"	m	struct:s_img	typeref:typename:int
+bpp	mlx/mlx_png.c	/^  int		bpp;$/;"	m	struct:png_info_s	typeref:typename:int	file:
+buffer	mlx/mlx_int.h	/^  char			*buffer;$/;"	m	struct:mlx_img_list_s	typeref:typename:char *
+bytes_per_pixel	mlx/font.c	/^  unsigned int 	 bytes_per_pixel; \/* 2:RGB16, 3:RGB, 4:RGBA *\/ $/;"	m	struct:__anone97f5d2d0108	typeref:typename:unsigned int	file:
+c_to_i	libft/ft_atoi.c	/^static long int	c_to_i(char c)$/;"	f	typeref:typename:long int	file:
+c_to_i	libft/ft_atoi_err.c	/^static long int	c_to_i(char c)$/;"	f	typeref:typename:long int	file:
+cam	include/structs.h	/^	t_cam			*cam;$/;"	m	struct:s_data	typeref:typename:t_cam *
+carry_negative	libft/ft_itoa.c	/^static char	*carry_negative(int *n, char *n_strn, int *len)$/;"	f	typeref:typename:char *	file:
+ceiling_color	include/structs.h	/^	unsigned int	ceiling_color;$/;"	m	struct:s_image	typeref:typename:unsigned int
+check	minilibx_linux/Makefile	/^check: all$/;"	t
+check_closest_box	src/move_to_corner.c	/^int	check_closest_box(t_player *player)$/;"	f	typeref:typename:int
+check_map	src/parse_check_map.c	/^int	check_map(t_data *data)$/;"	f	typeref:typename:int
+check_map_line	src/parse_check_map.c	/^void	check_map_line(t_data *data, int y, int *nb_player)$/;"	f	typeref:typename:void
+check_param_not_missing	src/parse_import.c	/^void	check_param_not_missing(t_data *data)$/;"	f	typeref:typename:void
+check_update_box_pos	src/move_player.c	/^int	check_update_box_pos(t_data *data)$/;"	f	typeref:typename:int
+clean	libft/Makefile	/^clean:$/;"	t
+clean	minilibx_linux/Makefile	/^clean	:$/;"	t
+clean	mlx/Makefile	/^clean:$/;"	t
+clean_exit	src/exit_ft.c	/^void	clean_exit(t_data *data, int exit_code)$/;"	f	typeref:typename:void
+clean_useless_empty_splace	src/parse_format_map.c	/^void	clean_useless_empty_splace(char	**map)$/;"	f	typeref:typename:void
+clearWin	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+closeNotification:	mlx/mlx_new_window.h	/^- (void) closeNotification:(NSNotification *)note;$/;"	m	interface:NSWindowEvent
+closeNotification:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+cmap	minilibx_linux/mlx_int.h	/^	Colormap	cmap;$/;"	m	struct:s_xvar	typeref:typename:Colormap
+col	minilibx_linux/mlx_int.h	/^	int		col;$/;"	m	struct:s_xpm_col	typeref:typename:int
+col	mlx/mlx_xpm.c	/^  int           col;$/;"	m	struct:s_xpm_col	typeref:typename:int	file:
+color	minilibx_linux/mlx_int.h	/^	int		color;$/;"	m	struct:s_col_name	typeref:typename:int
+color	mlx/mlx_png.c	/^  int		color;$/;"	m	struct:png_info_s	typeref:typename:int	file:
+color	mlx/mlx_xpm.c	/^  int   color;$/;"	m	struct:s_col_name	typeref:typename:int	file:
+complete_line_to_width	src/parse_format_map.c	/^void	complete_line_to_width(t_data *data, char **line, int len)$/;"	f	typeref:typename:void
+content	include/structs.h	/^    void            *content;$/;"	m	struct:s_list	typeref:typename:void *
+conv_id_param	src/parse_params.c	/^int	conv_id_param(t_data *data, int identifier_len, char *str)$/;"	f	typeref:typename:int
+convert_pt_to_vec	src/vector_ft.c	/^t_vector	convert_pt_to_vec(t_point p)$/;"	f	typeref:typename:t_vector
+corner_crossing	src/move_to_corner.c	/^int	corner_crossing(t_data *data)$/;"	f	typeref:typename:int
+crc_table	mlx/mlx_png.c	/^unsigned long crc_table[256] = { 0, 0x77073096, 0xee0e612c, 0x990951ba, 0x76dc419, 0x706af48f, 0/;"	v	typeref:typename:unsigned long[256]
+ctags	libft/Makefile	/^ctags:$/;"	t
+ctx	mlx/mlx_new_window.h	/^  NSOpenGLContext	*ctx;$/;"	E	interface:MlxWin
+ctx	mlx/mlx_new_window.h	/^- (NSOpenGLContext *) ctx;$/;"	m	interface:MlxWin
+ctx	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+ctxNeedsUpdate	mlx/mlx_new_window.h	/^- (void) ctxNeedsUpdate;$/;"	m	interface:MlxWin
+ctxNeedsUpdate	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+cub3d_render	src/cub3d_render.c	/^int	cub3d_render(t_data *data)$/;"	f	typeref:typename:int
+d	include/structs.h	/^	unsigned int	d;$/;"	m	struct:s_key_status	typeref:typename:unsigned int
+data	minilibx_linux/mlx_int.h	/^	char			*data;$/;"	m	struct:s_img	typeref:typename:char *
+debug	libft/Makefile	/^debug: ctags$/;"	t
+decrgb	minilibx_linux/mlx_int.h	/^	int			decrgb[6];$/;"	m	struct:s_xvar	typeref:typename:int[6]
+degree_to_radian	src/vector_ft.c	/^double	degree_to_radian(double degree_angle)$/;"	f	typeref:typename:double
+delete_first_column	src/parse_format_map.c	/^void	delete_first_column(char **map)$/;"	f	typeref:typename:void
+delta_distances	include/structs.h	/^	double		delta_distances[2];$/;"	m	struct:s_ray	typeref:typename:double[2]
+deminiaturizeNotification:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+depth	minilibx_linux/mlx_int.h	/^	int			depth;$/;"	m	struct:s_xvar	typeref:typename:int
+depth	mlx/mlx_png.c	/^  int		depth;$/;"	m	struct:png_info_s	typeref:typename:int	file:
+destroyMe	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+destroyPixelManagement	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+direction	include/structs.h	/^	t_vector	direction;$/;"	m	struct:s_player	typeref:typename:t_vector
+direction	include/structs.h	/^	t_vector	direction;$/;"	m	struct:s_ray	typeref:typename:t_vector
+direction_len	include/structs.h	/^	double		direction_len;$/;"	m	struct:s_ray	typeref:typename:double
+display	minilibx_linux/mlx_int.h	/^	Display		*display;$/;"	m	struct:s_xvar	typeref:typename:Display *
+display_log	mlx/mlx_shaders.c	/^void display_log(GLuint object, void (*param_func)(), void (*getlog_func)())$/;"	f	typeref:typename:void
+dist_from_plan	include/structs.h	/^	double		dist_from_plan;$/;"	m	struct:s_rayponse	typeref:typename:double
+distance_line_to_point	src/vector_ft.c	/^double	distance_line_to_point(t_vector line[2], t_point p)$/;"	f	typeref:typename:double
+distance_point_to_vector	src/vector_ft.c	/^double	distance_point_to_vector(t_point point, t_point v_p1, t_point v_p2)$/;"	f	typeref:typename:double
+distance_points	src/vector_ft.c	/^double	distance_points(t_point p1, t_point p2)$/;"	f	typeref:typename:double
+do_flush	minilibx_linux/mlx_int.h	/^	int			do_flush;$/;"	m	struct:s_xvar	typeref:typename:int
+do_loop_flush	mlx/mlx_init_loop.m	/^void do_loop_flush(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void * info)$/;"	f
+do_loop_hook2	mlx/mlx_init_loop.m	/^void	do_loop_hook2(CFRunLoopTimerRef observer, void * info)$/;"	f
+draw_cube	src/draw_functions.c	/^void	draw_cube(t_data *data, int size, int pos_y, int pos_x, int color)$/;"	f	typeref:typename:void
+draw_line	src/draw_line.c	/^void	draw_line(t_data *data, t_point	*start, t_point	*end, int color)$/;"	f	typeref:typename:void
+draw_line_textured	src/debug_ft.c	/^void	draw_line_textured(t_data *data, t_point start, t_point end, int line_height, t_rayponse *r/;"	f	typeref:typename:void
+draw_mini_map	src/draw_functions.c	/^void	draw_mini_map(t_data *data)$/;"	f	typeref:typename:void
+draw_player	src/draw_functions.c	/^void	draw_player(t_data *data)$/;"	f	typeref:typename:void
+draw_texture	src/debug_ft.c	/^void	draw_texture(t_data *data, t_point start, t_point end, int line_height, t_rayponse *ray)$/;"	f	typeref:typename:void
+draw_vision_field	src/draw_functions.c	/^void	draw_vision_field(t_data *data, t_point minimap_position)$/;"	f	typeref:typename:void
+draw_wall_textured	src/debug_ft.c	/^void	draw_wall_textured(t_data *data, int i_ray)$/;"	f	typeref:typename:void
+e_cardinal	include/structs.h	/^enum e_cardinal { NORTH, SOUTH, EAST, WEST };$/;"	g
+e_direction	include/structs.h	/^enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };$/;"	g
+e_identifiers	include/structs.h	/^enum e_identifiers { NO, SO, EA, WE, F, C };$/;"	g
+e_others	include/structs.h	/^enum e_others {LINE_WIDTH = SCREEN_WIDTH \/ CAM_QUALITY, LINE_HEIGHT = SCREEN_HEIGHT * UNITS_PER/;"	g
+e_player_direction	include/structs.h	/^enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };$/;"	g
+e_sprite	include/structs.h	/^enum e_sprite {SPRITE = -1};$/;"	g
+east_crossing	src/move_crossing_box.c	/^int	east_crossing(t_data *data)$/;"	f	typeref:typename:int
+end_loop	minilibx_linux/mlx_int.h	/^	int 		end_loop;$/;"	m	struct:s_xvar	typeref:typename:int
+endian	include/structs.h	/^	int endian;$/;"	m	struct:s_img_data	typeref:typename:int
+error_msg	libft/error_msg.c	/^void	error_msg(char *msg)$/;"	f	typeref:typename:void
+event_funct	mlx/mlx_new_window.h	/^  func_t	event_funct[MAX_EVENT];$/;"	E	interface:NSWindowEvent
+exit_game	src/key_event.c	/^int exit_game(t_data *data)$/;"	f	typeref:typename:int
+exit_msg	src/exit_ft.c	/^void	exit_msg(t_data *data, char *msg, int ret_exit)$/;"	f	typeref:typename:void
+exposeNotification:	mlx/mlx_new_window.h	/^- (void) exposeNotification:(NSNotification *)note;$/;"	m	interface:NSWindowEvent
+exposeNotification:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+expose_hook	minilibx_linux/mlx_int.h	/^	int					(*expose_hook)();$/;"	m	struct:s_win_list	typeref:typename:int (*)()
+expose_param	minilibx_linux/mlx_int.h	/^	void				*expose_param;$/;"	m	struct:s_win_list	typeref:typename:void *
+f_is_box_crossed	src/move_player.c	/^static int	f_is_box_crossed(t_player *player)$/;"	f	typeref:typename:int	file:
+fclean	libft/Makefile	/^fclean: clean$/;"	t
+file_extention_available	src/parse_init.c	/^void	file_extention_available(t_data *data, char *fname)$/;"	f	typeref:typename:void
+fix_ang	src/key_event.c	/^int fix_ang(int a)$/;"	f	typeref:typename:int
+flagsChanged:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+floor_color	include/structs.h	/^	unsigned int	floor_color;$/;"	m	struct:s_image	typeref:typename:unsigned int
+flushGLContext	mlx/mlx_new_window.h	/^- (void) flushGLContext;$/;"	m	interface:MlxWin
+flushGLContext	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+font	mlx/mlx_int.h	/^  mlx_img_list_t	*font;$/;"	m	struct:mlx_ptr_s	typeref:typename:mlx_img_list_t *
+font_atlas	mlx/font.c	/^} font_atlas = {$/;"	v	typeref:typename:const struct __anone97f5d2d0108
+font_fshader	mlx/mlx_int.h	/^  GLuint	font_fshader;$/;"	m	struct:glsl_info_s	typeref:typename:GLuint
+font_program	mlx/mlx_int.h	/^  GLuint	font_program;$/;"	m	struct:glsl_info_s	typeref:typename:GLuint
+font_vshader	mlx/mlx_int.h	/^  GLuint	font_vshader;$/;"	m	struct:glsl_info_s	typeref:typename:GLuint
+format	minilibx_linux/mlx_int.h	/^	int				format;$/;"	m	struct:s_img	typeref:typename:int
+format_map	src/parse_format_map.c	/^void	format_map(t_data *data)$/;"	f	typeref:typename:void
+ft_append_tab	src/matrix.c	/^char	**ft_append_tab(char **matrix, char *str)$/;"	f	typeref:typename:char **
+ft_atoi	libft/ft_atoi.c	/^int	ft_atoi(const char *str0)$/;"	f	typeref:typename:int
+ft_atoi_err	libft/ft_atoi_err.c	/^int	ft_atoi_err(char *str)$/;"	f	typeref:typename:int
+ft_bzero	libft/ft_bzero.c	/^void	*ft_bzero(void *s, size_t n)$/;"	f	typeref:typename:void *
+ft_calloc	libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f	typeref:typename:void *
+ft_free_split	libft/ft_free_split.c	/^void	ft_free_split(char ***tab)$/;"	f	typeref:typename:void
+ft_get_next_wd	libft/ft_get_next_wd.c	/^char	*ft_get_next_wd(char *sentence, char sep)$/;"	f	typeref:typename:char *
+ft_intlen	libft/ft_itoa.c	/^static int	ft_intlen(int n)$/;"	f	typeref:typename:int	file:
+ft_isalnum	libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f	typeref:typename:int
+ft_isalpha	libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f	typeref:typename:int
+ft_isascii	libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f	typeref:typename:int
+ft_isdigit	libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f	typeref:typename:int
+ft_isprint	libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f	typeref:typename:int
+ft_isspace	libft/ft_atoi.c	/^static int	ft_isspace(const char c)$/;"	f	typeref:typename:int	file:
+ft_isspace	libft/ft_atoi_err.c	/^static int	ft_isspace(const char c)$/;"	f	typeref:typename:int	file:
+ft_itoa	libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f	typeref:typename:char *
+ft_lstadd_back	src/ft_list.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f	typeref:typename:void
+ft_lstadd_front	src/ft_list.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f	typeref:typename:void
+ft_lstclear	src/ft_list.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f	typeref:typename:void
+ft_lstdelone	src/ft_list.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f	typeref:typename:void
+ft_lstiter	src/ft_list.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f	typeref:typename:void
+ft_lstlast	src/ft_list.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f	typeref:typename:t_list *
+ft_lstmap	src/ft_list.c	/^	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *))$/;"	f	typeref:typename:t_list *
+ft_lstnew	src/ft_list.c	/^t_list	*ft_lstnew(void *content)$/;"	f	typeref:typename:t_list *
+ft_lstsize	src/ft_list.c	/^int	ft_lstsize(t_list *lst)$/;"	f	typeref:typename:int
+ft_matrixlen	src/matrix.c	/^int	ft_matrixlen(char **matrix)$/;"	f	typeref:typename:int
+ft_memchr	libft/ft_memchr.c	/^void	*ft_memchr(const void *str0, int c, size_t n)$/;"	f	typeref:typename:void *
+ft_memcmp	libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f	typeref:typename:int
+ft_memcpy	libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, unsigned int len)$/;"	f	typeref:typename:void *
+ft_memmove	libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f	typeref:typename:void *
+ft_memset	libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f	typeref:typename:void *
+ft_putchar_fd	libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f	typeref:typename:void
+ft_putendl_fd	libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f	typeref:typename:void
+ft_putnbr_fd	libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f	typeref:typename:void
+ft_putstr_fd	libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f	typeref:typename:void
+ft_realloc_cat	src/get_next_line.c	/^static char	*ft_realloc_cat(char *line, char c, int *len)$/;"	f	typeref:typename:char *	file:
+ft_split	libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f	typeref:typename:char **
+ft_strchr	libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int c)$/;"	f	typeref:typename:char *
+ft_strdup	libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f	typeref:typename:char *
+ft_striteri	libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f	typeref:typename:void
+ft_strjoin	libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f	typeref:typename:char *
+ft_strlcat	libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)$/;"	f	typeref:typename:size_t
+ft_strlcpy	libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)$/;"	f	typeref:typename:size_t
+ft_strlen	libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f	typeref:typename:size_t
+ft_strlen_char	libft/ft_strlen_char.c	/^size_t	ft_strlen_char(char *str, char sep)$/;"	f	typeref:typename:size_t
+ft_strmapi	libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f	typeref:typename:char *
+ft_strncmp	libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f	typeref:typename:int
+ft_strnlen	libft/ft_strlcat.c	/^static unsigned int	ft_strnlen(char *s, size_t max)$/;"	f	typeref:typename:unsigned int	file:
+ft_strnstr	libft/ft_strnstr.c	/^char	*ft_strnstr(const char *str, const char *ndl, size_t len)$/;"	f	typeref:typename:char *
+ft_strrchr	libft/ft_strrchr.c	/^char	*ft_strrchr(char *s, int c)$/;"	f	typeref:typename:char *
+ft_strtrim	libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f	typeref:typename:char *
+ft_substr	libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f	typeref:typename:char *
+ft_tolower	libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f	typeref:typename:int
+ft_toupper	libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f	typeref:typename:int
+ft_wd_count	libft/ft_wd_count.c	/^int	ft_wd_count(char *str, char sep)$/;"	f	typeref:typename:int
+func_t	mlx/mlx_int.h	/^typedef int (*func_t)();$/;"	t	typeref:typename:int (*)()
+gc	minilibx_linux/mlx_int.h	/^	GC					gc;$/;"	m	struct:s_win_list	typeref:typename:GC
+gc	minilibx_linux/mlx_int.h	/^	GC				gc;$/;"	m	struct:s_img	typeref:typename:GC
+get_dist_from_plan	src/raycasting_utils.c	/^double	get_dist_from_plan(t_data *data, t_rayponse *rayponse)$/;"	f	typeref:typename:double
+get_identifier	src/parse_params.c	/^int	get_identifier(t_data *data, char *str)$/;"	f	typeref:typename:int
+get_identifiers_ls	src/parse_params.c	/^char	**get_identifiers_ls(int identifier_len)$/;"	f	typeref:typename:char **
+get_map_width	src/parse_format_map.c	/^int	get_map_width(char **map)$/;"	f	typeref:typename:int
+get_mouse_button	mlx/mlx_new_window.m	/^int get_mouse_button(NSEventType eventtype)$/;"	f
+get_next_case	src/move_to_corner.c	/^char	get_next_case(char **map, t_point map_point, int direction)$/;"	f	typeref:typename:char
+get_next_line	src/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
+get_side_hit	src/raycasting_utils.c	/^int	get_side_hit(t_data *data, int index_closest)$/;"	f	typeref:typename:int
+get_smallest_index	src/move_to_corner.c	/^int	get_smallest_index(double wall_distance[4])$/;"	f	typeref:typename:int
+get_texture_pix	src/debug_ft.c	/^int	get_texture_pix(t_texture *t, t_point pix)$/;"	f	typeref:typename:int
+glsl	mlx/mlx_new_window.h	/^  glsl_info_t		glsl;$/;"	E	interface:MlxWin
+glsl_info_s	mlx/mlx_int.h	/^typedef struct	glsl_info_s$/;"	s
+glsl_info_t	mlx/mlx_int.h	/^} glsl_info_t;$/;"	t	typeref:struct:glsl_info_s
+graphics_render	src/cub3d_render.c	/^int	graphics_render(t_data *data)$/;"	f	typeref:typename:int
+grep_height	src/texture_utils.c	/^int	grep_height(char *line)$/;"	f	typeref:typename:int
+grep_width	src/texture_utils.c	/^int	grep_width(char *line)$/;"	f	typeref:typename:int
+height	include/structs.h	/^	int		height;$/;"	m	struct:s_window	typeref:typename:int
+height	minilibx_linux/mlx_int.h	/^	int				height;$/;"	m	struct:s_img	typeref:typename:int
+height	mlx/font.c	/^  unsigned int 	 height;$/;"	m	struct:__anone97f5d2d0108	typeref:typename:unsigned int	file:
+height	mlx/mlx_int.h	/^  int			height;$/;"	m	struct:mlx_img_list_s	typeref:typename:int
+height	mlx/mlx_png.c	/^  unsigned int	height;$/;"	m	struct:png_info_s	typeref:typename:unsigned int	file:
+hit_point	include/structs.h	/^	t_point				hit_point;$/;"	m	struct:s_obstacle	typeref:typename:t_point
+hit_point	include/structs.h	/^	t_point		hit_point;$/;"	m	struct:s_rayponse	typeref:typename:t_point
+hook	minilibx_linux/mlx_int.h	/^	int		(*hook)();$/;"	m	struct:s_event_list	typeref:typename:int (*)()
+hooks	minilibx_linux/mlx_int.h	/^	t_event_list		hooks[MLX_MAX_EVENT];$/;"	m	struct:s_win_list	typeref:typename:t_event_list[]
+image	include/structs.h	/^	t_image			*image;$/;"	m	struct:s_data	typeref:typename:t_image *
+image	minilibx_linux/mlx_int.h	/^	XImage			*image;$/;"	m	struct:s_img	typeref:typename:XImage *
+image_fshader	mlx/mlx_int.h	/^  GLuint	image_fshader;$/;"	m	struct:glsl_info_s	typeref:typename:GLuint
+image_program	mlx/mlx_int.h	/^  GLuint	image_program;$/;"	m	struct:glsl_info_s	typeref:typename:GLuint
+image_vshader	mlx/mlx_int.h	/^  GLuint	image_vshader;$/;"	m	struct:glsl_info_s	typeref:typename:GLuint
+img	include/structs.h	/^	t_img_data		*img;$/;"	m	struct:s_data	typeref:typename:t_img_data *
+img	include/structs.h	/^	t_img_data	*img;$/;"	m	struct:s_texture	typeref:typename:t_img_data *
+img	include/structs.h	/^	void *img;$/;"	m	struct:s_img_data	typeref:typename:void *
+img	mlx/mlx_int.h	/^  mlx_img_list_t	*img;$/;"	m	struct:mlx_img_ctx_s	typeref:typename:mlx_img_list_t *
+img_list	mlx/mlx_int.h	/^  mlx_img_ctx_t		*img_list;$/;"	m	struct:mlx_win_list_s	typeref:typename:mlx_img_ctx_t *
+img_list	mlx/mlx_int.h	/^  mlx_img_list_t	*img_list;$/;"	m	struct:mlx_ptr_s	typeref:typename:mlx_img_list_t *
+import_param	src/parse_import.c	/^void	import_param(t_data *data, int identifier, char *line)$/;"	f	typeref:typename:void
+import_params	src/parse_import.c	/^int	import_params(t_data *data)$/;"	f	typeref:typename:int
+import_texture_path	src/parse_import.c	/^void	import_texture_path(t_data *data, int identifier, char *line)$/;"	f	typeref:typename:void
+import_textures	src/parse_import.c	/^void	import_textures(t_data *data)$/;"	f	typeref:typename:void
+init	include/structs.h	/^	void	*init;$/;"	m	struct:s_window	typeref:typename:void *
+initWithContentRect:styleMask:backing:defer:	mlx/mlx_new_window.h	/^- (NSWindowEvent *) initWithContentRect:(NSRect)rect styleMask:(NSUInteger)winstyle backing:(NSB/;"	m	interface:NSWindowEvent
+initWithContentRect:styleMask:backing:defer:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+initWithRect:andTitle:pfaAttrs:	mlx/mlx_new_window.h	/^- (id) initWithRect: (NSRect)rect andTitle: (NSString *)title pfaAttrs: (NSOpenGLPixelFormatAttr/;"	m	interface:MlxWin
+initWithRect:andTitle:pfaAttrs:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+init_cam_vector	src/camera_ft.c	/^void	init_cam_vector(t_data *data)$/;"	f	typeref:typename:void
+init_f_c_color	src/parse_file_colors.c	/^unsigned int	init_f_c_color(t_data *data, char *line)$/;"	f	typeref:typename:unsigned int
+init_fd	src/parse_init.c	/^void	init_fd(t_data *data, int *fd, char *fname)$/;"	f	typeref:typename:void
+init_key_status	src/key_event.c	/^void	init_key_status(t_data *data)$/;"	f	typeref:typename:void
+init_null	src/parse_init.c	/^void	init_null(t_data *data, int *map_parse)$/;"	f	typeref:typename:void
+init_player	src/parse_init.c	/^void	init_player(t_data *data, int x, int y, int *is_player)$/;"	f	typeref:typename:void
+interlace	mlx/mlx_png.c	/^  int		interlace;$/;"	m	struct:png_info_s	typeref:typename:int	file:
+is_NSEW	src/parse_check_map.c	/^int	is_NSEW(char c)$/;"	f	typeref:typename:int
+is_blank_char	src/str_ft.c	/^int	is_blank_char(char c)$/;"	f	typeref:typename:int
+is_blank_line	src/str_ft.c	/^int	is_blank_line(char *line)$/;"	f	typeref:typename:int
+is_block	src/move_to_corner.c	/^int	is_block(t_data *data, char c)$/;"	f	typeref:typename:int
+is_border	src/parse_check_map.c	/^int	is_border(t_data *data, int x, int y, int matrix_len)$/;"	f	typeref:typename:int
+is_first_column_empty	src/parse_format_map.c	/^int	is_first_column_empty(char **map)$/;"	f	typeref:typename:int
+is_map_line	src/str_ft.c	/^int	is_map_line(t_data *data, char *str)$/;"	f	typeref:typename:int
+is_mapcase	src/parse_check_map.c	/^int	is_mapcase(t_data *data, char c)$/;"	f	typeref:typename:int
+is_trimable	libft/ft_strtrim.c	/^static int	is_trimable(char c, char *trimset)$/;"	f	typeref:typename:int	file:
+keyDown:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+keyUp:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+key_hook	minilibx_linux/mlx_int.h	/^	int					(*key_hook)();$/;"	m	struct:s_win_list	typeref:typename:int (*)()
+key_param	minilibx_linux/mlx_int.h	/^	void				*key_param;$/;"	m	struct:s_win_list	typeref:typename:void *
+key_press	src/key_event.c	/^int	key_press(int key, t_data *data)$/;"	f	typeref:typename:int
+key_realese	src/key_event.c	/^int	key_realese(int key, t_data *data)$/;"	f	typeref:typename:int
+key_status	include/structs.h	/^	t_key_status	*key_status;$/;"	m	struct:s_data	typeref:typename:t_key_status *
+keyflag	mlx/mlx_new_window.h	/^  int		keyflag;$/;"	E	interface:NSWindowEvent
+keyrepeat	mlx/mlx_new_window.h	/^  int		keyrepeat;$/;"	E	interface:NSWindowEvent
+left	include/structs.h	/^	unsigned int	left;$/;"	m	struct:s_key_status	typeref:typename:unsigned int
+len	include/structs.h	/^	double				len;$/;"	m	struct:s_obstacle	typeref:typename:double
+len	include/structs.h	/^	double		len;$/;"	m	struct:s_rayponse	typeref:typename:double
+len_overflow	src/raycasting_utils.c	/^int	len_overflow(int len)$/;"	f	typeref:typename:int
+line	include/structs.h	/^	char			*line;$/;"	m	struct:s_data	typeref:typename:char *
+line_len	include/structs.h	/^	int				line_len;$/;"	m	struct:s_image	typeref:typename:int
+line_len	include/structs.h	/^	int line_len;$/;"	m	struct:s_img_data	typeref:typename:int
+line_split	include/structs.h	/^	char			**line_split;$/;"	m	struct:s_data	typeref:typename:char **
+load_player	src/main.c	/^void load_player(t_data *data)$/;"	f	typeref:typename:void
+loc_font_atlassize	mlx/mlx_int.h	/^  GLint		loc_font_atlassize;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_font_color	mlx/mlx_int.h	/^  GLint		loc_font_color;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_font_posinatlas	mlx/mlx_int.h	/^  GLint		loc_font_posinatlas;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_font_posinwin	mlx/mlx_int.h	/^  GLint		loc_font_posinwin;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_font_position	mlx/mlx_int.h	/^  GLint		loc_font_position;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_font_texture	mlx/mlx_int.h	/^  GLint		loc_font_texture;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_font_winhalfsize	mlx/mlx_int.h	/^  GLint		loc_font_winhalfsize;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_image_pos	mlx/mlx_int.h	/^  GLint		loc_image_pos;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_image_position	mlx/mlx_int.h	/^  GLint		loc_image_position;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_image_size	mlx/mlx_int.h	/^  GLint		loc_image_size;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_image_texture	mlx/mlx_int.h	/^  GLint		loc_image_texture;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_image_winhalfsize	mlx/mlx_int.h	/^  GLint		loc_image_winhalfsize;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_pixel_position	mlx/mlx_int.h	/^  GLint		loc_pixel_position;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_pixel_texture	mlx/mlx_int.h	/^  GLint		loc_pixel_texture;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+loc_pixel_winhalfsize	mlx/mlx_int.h	/^  GLint		loc_pixel_winhalfsize;$/;"	m	struct:glsl_info_s	typeref:typename:GLint
+log_type	include/structs.h	/^enum log_type { DATA, PARAM, CAM, PLAYER, MAP };$/;"	g
+loop_hook	minilibx_linux/mlx_int.h	/^	int			(*loop_hook)();$/;"	m	struct:s_xvar	typeref:typename:int (*)()
+loop_hook	mlx/mlx_int.h	/^  void			(*loop_hook)(void *);$/;"	m	struct:mlx_ptr_s	typeref:typename:void (*)(void *)
+loop_hook_data	mlx/mlx_int.h	/^  void			*loop_hook_data;$/;"	m	struct:mlx_ptr_s	typeref:typename:void *
+loop_param	minilibx_linux/mlx_int.h	/^	void		*loop_param;$/;"	m	struct:s_xvar	typeref:typename:void *
+loop_timer	mlx/mlx_int.h	/^  void			*loop_timer;$/;"	m	struct:mlx_ptr_s	typeref:typename:void *
+magic	mlx/mlx_png.c	/^unsigned char magic[PNG_MAGIC_SIZE] = {137, 80, 78, 71, 13, 10, 26, 10};$/;"	v	typeref:typename:unsigned char[]
+main	src/main.c	/^int	main(int argc, char *argv[])$/;"	f	typeref:typename:int
+main_loop_active	mlx/mlx_int.h	/^  int			main_loop_active;$/;"	m	struct:mlx_ptr_s	typeref:typename:int
+make_point	src/vector_ft.c	/^t_point	make_point(int x, int y)$/;"	f	typeref:typename:t_point
+make_str	libft/ft_itoa.c	/^static void	make_str(int *n, char *n_str, int i)$/;"	f	typeref:typename:void	file:
+make_tab	libft/ft_split.c	/^static char	**make_tab(char **returned, char const *s, char c, unsigned int nb_wd)$/;"	f	typeref:typename:char **	file:
+malloc_data	src/main.c	/^ t_data	*malloc_data(void)$/;"	f	typeref:typename:t_data *
+map	include/structs.h	/^	char			**map;$/;"	m	struct:s_data	typeref:typename:char **
+map_cases	include/structs.h	/^	char			*map_cases;$/;"	m	struct:s_data	typeref:typename:char *
+map_pos	include/structs.h	/^	t_vector	map_pos;$/;"	m	struct:s_player	typeref:typename:t_vector
+map_size_in_units	include/structs.h	/^	int			map_size_in_units[2];$/;"	m	struct:s_data	typeref:typename:int[2]
+mask	minilibx_linux/mlx_int.h	/^	int		mask;$/;"	m	struct:s_event_list	typeref:typename:int
+mipng_crc	mlx/mlx_png.c	/^int	mipng_crc(unsigned char *ptr, int len)$/;"	f	typeref:typename:int
+mipng_data	mlx/mlx_png.c	/^int	mipng_data(mlx_img_list_t *img, unsigned char *dat, png_info_t *pi)$/;"	f	typeref:typename:int
+mipng_defilter	mlx/mlx_png.c	/^unsigned char (*(mipng_defilter[]))(unsigned char *buff, int pos, int a, int b, int c) =$/;"	v	typeref:typename:unsigned char (* ([]))(unsigned char * buff,int pos,int a,int b,int c)
+mipng_defilter_average	mlx/mlx_png.c	/^unsigned char mipng_defilter_average(unsigned char *buff, int pos, int a, int b, int c)$/;"	f	typeref:typename:unsigned char
+mipng_defilter_none	mlx/mlx_png.c	/^unsigned char mipng_defilter_none(unsigned char *buff, int pos, int a, int b, int c)$/;"	f	typeref:typename:unsigned char
+mipng_defilter_paeth	mlx/mlx_png.c	/^unsigned char mipng_defilter_paeth(unsigned char *buff, int pos, int a, int b, int c)$/;"	f	typeref:typename:unsigned char
+mipng_defilter_sub	mlx/mlx_png.c	/^unsigned char mipng_defilter_sub(unsigned char *buff, int pos, int a, int b, int c)$/;"	f	typeref:typename:unsigned char
+mipng_defilter_up	mlx/mlx_png.c	/^unsigned char mipng_defilter_up(unsigned char *buff, int pos, int a, int b, int c)$/;"	f	typeref:typename:unsigned char
+mipng_err	mlx/mlx_png.c	/^char *(mipng_err[]) =$/;"	v	typeref:typename:char * ([])
+mipng_fill_img	mlx/mlx_png.c	/^int	mipng_fill_img(mlx_img_list_t *img, unsigned char *buf, png_info_t *pi)$/;"	f	typeref:typename:int
+mipng_is_type	mlx/mlx_png.c	/^int	mipng_is_type(unsigned char *ptr, char *type)$/;"	f	typeref:typename:int
+mipng_magic	mlx/mlx_png.c	/^int	mipng_magic(unsigned char *ptr, int size)$/;"	f	typeref:typename:int
+mipng_structure	mlx/mlx_png.c	/^int	mipng_structure(unsigned char *ptr, int size, unsigned char **hdr, unsigned char **dat)$/;"	f	typeref:typename:int
+mipng_verif_hdr	mlx/mlx_png.c	/^int	mipng_verif_hdr(unsigned char *hdr, png_info_t *pi)$/;"	f	typeref:typename:int
+mlx	include/structs.h	/^	void	*mlx;$/;"	m	struct:s_window	typeref:typename:void *
+mlx_X_error	minilibx_linux/mlx_new_image.c	/^int	mlx_X_error;$/;"	v	typeref:typename:int
+mlx_clear_window	minilibx_linux/mlx_clear_window.c	/^int		mlx_clear_window(t_xvar *xvar,t_win_list *win)$/;"	f	typeref:typename:int
+mlx_clear_window	mlx/mlx_new_window.m	/^void mlx_clear_window(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr)$/;"	f
+mlx_col_name	minilibx_linux/mlx_rgb.c	/^struct s_col_name mlx_col_name[] =$/;"	v	typeref:struct:s_col_name[]
+mlx_col_name	mlx/mlx_rgb.c	/^struct s_col_name mlx_col_name[] =$/;"	v	typeref:struct:s_col_name[]
+mlx_destroy_display	minilibx_linux/mlx_destroy_display.c	/^int	mlx_destroy_display(t_xvar *xvar)$/;"	f	typeref:typename:int
+mlx_destroy_image	minilibx_linux/mlx_destroy_image.c	/^int	mlx_destroy_image(t_xvar *xvar, t_img *img)$/;"	f	typeref:typename:int
+mlx_destroy_image	mlx/mlx_new_image.m	/^int     mlx_destroy_image(mlx_ptr_t *mlx_ptr, mlx_img_list_t *img_todel)$/;"	f
+mlx_destroy_window	minilibx_linux/mlx_destroy_window.c	/^int	mlx_destroy_window(t_xvar *xvar,t_win_list *win)$/;"	f	typeref:typename:int
+mlx_destroy_window	mlx/mlx_new_window.m	/^int     mlx_destroy_window(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_to_del)$/;"	f
+mlx_do_key_autorepeatoff	minilibx_linux/mlx_hook.c	/^int	mlx_do_key_autorepeatoff(t_xvar *xvar)$/;"	f	typeref:typename:int
+mlx_do_key_autorepeatoff	mlx/mlx_new_window.m	/^int     mlx_do_key_autorepeatoff(mlx_ptr_t *mlx_ptr)$/;"	f
+mlx_do_key_autorepeaton	minilibx_linux/mlx_hook.c	/^int	mlx_do_key_autorepeaton(t_xvar *xvar)$/;"	f	typeref:typename:int
+mlx_do_key_autorepeaton	mlx/mlx_new_window.m	/^int     mlx_do_key_autorepeaton(mlx_ptr_t *mlx_ptr)$/;"	f
+mlx_do_sync	minilibx_linux/mlx_hook.c	/^int	mlx_do_sync(t_xvar *xvar)$/;"	f	typeref:typename:int
+mlx_do_sync	mlx/mlx_init_loop.m	/^int     mlx_do_sync(mlx_ptr_t *mlx_ptr)$/;"	f
+mlx_expose_hook	minilibx_linux/mlx_expose_hook.c	/^int		mlx_expose_hook(t_win_list *win,int (*funct)(),void *param)$/;"	f	typeref:typename:int
+mlx_expose_hook	mlx/mlx_new_window.m	/^void mlx_expose_hook(mlx_win_list_t *win_ptr, int (*funct_ptr)(), void *param)$/;"	f
+mlx_ext_fullscreen	minilibx_linux/mlx_ext_randr.c	/^int			mlx_ext_fullscreen(t_xvar *xvar, t_win_list *win, int fullscreen)$/;"	f	typeref:typename:int
+mlx_flush_event	minilibx_linux/mlx_flush_event.c	/^int	mlx_flush_event(t_xvar *xvar)$/;"	f	typeref:typename:int
+mlx_get_color_value	minilibx_linux/mlx_get_color_value.c	/^int             mlx_get_color_value(t_xvar *xvar,int color)$/;"	f	typeref:typename:int
+mlx_get_color_value	mlx/mlx_new_image.m	/^unsigned int    mlx_get_color_value(mlx_ptr_t *mlx_ptr, int color)$/;"	f
+mlx_get_data_addr	minilibx_linux/mlx_get_data_addr.c	/^char	*mlx_get_data_addr(t_img *img,int *bits_per_pixel,$/;"	f	typeref:typename:char *
+mlx_get_data_addr	mlx/mlx_new_image.m	/^char    *mlx_get_data_addr(mlx_img_list_t *img_ptr, int *bits_per_pixel, int *size_line, int *en/;"	f
+mlx_get_screen_size	minilibx_linux/mlx_screen_size.c	/^int		mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey)$/;"	f	typeref:typename:int
+mlx_gl_draw	mlx/mlx_new_window.h	/^- (void) mlx_gl_draw;$/;"	m	interface:MlxWin
+mlx_gl_draw	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+mlx_gl_draw_font:andCtx:andX:andY:andColor:glyphX:glyphY:	mlx/mlx_new_window.h	/^- (void) mlx_gl_draw_font:(mlx_img_list_t *)img andCtx:(mlx_img_ctx_t *)imgctx andX:(int)x andY:/;"	m	interface:MlxWin
+mlx_gl_draw_font:andCtx:andX:andY:andColor:glyphX:glyphY:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+mlx_gl_draw_img:andCtx:andX:andY:	mlx/mlx_new_window.h	/^- (void) mlx_gl_draw_img:(mlx_img_list_t *)img andCtx:(mlx_img_ctx_t *)imgctx andX:(int)x andY:(/;"	m	interface:MlxWin
+mlx_gl_draw_img:andCtx:andX:andY:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+mlx_hook	minilibx_linux/mlx_hook.c	/^int	mlx_hook(t_win_list *win, int x_event, int x_mask, $/;"	f	typeref:typename:int
+mlx_hook	mlx/mlx_new_window.m	/^void mlx_hook(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*funct_ptr)(), void *param)$/;"	f
+mlx_img_ctx_s	mlx/mlx_int.h	/^typedef struct	mlx_img_ctx_s$/;"	s
+mlx_img_ctx_t	mlx/mlx_int.h	/^} mlx_img_ctx_t;$/;"	t	typeref:struct:mlx_img_ctx_s
+mlx_img_list_s	mlx/mlx_int.h	/^typedef struct	mlx_img_list_s$/;"	s
+mlx_img_list_t	mlx/mlx_int.h	/^} mlx_img_list_t;$/;"	t	typeref:struct:mlx_img_list_s
+mlx_init	minilibx_linux/mlx_init.c	/^void	*mlx_init()$/;"	f	typeref:typename:void *
+mlx_init	mlx/mlx_init_loop.m	/^void *mlx_init()$/;"	f
+mlx_int_anti_resize_win	minilibx_linux/mlx_int_anti_resize_win.c	/^int	mlx_int_anti_resize_win(t_xvar *xvar,Window win,int w,int h)$/;"	f	typeref:typename:int
+mlx_int_deal_shm	minilibx_linux/mlx_init.c	/^int		mlx_int_deal_shm(t_xvar *xvar)$/;"	f	typeref:typename:int
+mlx_int_do_nothing	minilibx_linux/mlx_int_do_nothing.c	/^int	mlx_int_do_nothing(void *param)$/;"	f	typeref:typename:int
+mlx_int_egal_img	minilibx_linux/mlx_lib_xpm.c	/^int	mlx_int_egal_img(XImage *img1,XImage *img2)$/;"	f	typeref:typename:int
+mlx_int_file_get_rid_comment	minilibx_linux/mlx_xpm.c	/^int	mlx_int_file_get_rid_comment(char *ptr, int size)$/;"	f	typeref:typename:int
+mlx_int_file_get_rid_comment	mlx/mlx_xpm.c	/^void	mlx_int_file_get_rid_comment(char *ptr, int size)$/;"	f	typeref:typename:void
+mlx_int_get_col_name	minilibx_linux/mlx_xpm.c	/^int	mlx_int_get_col_name(char *str,int size)$/;"	f	typeref:typename:int
+mlx_int_get_col_name	mlx/mlx_xpm.c	/^int	mlx_int_get_col_name(char *str,int size)$/;"	f	typeref:typename:int
+mlx_int_get_good_color	minilibx_linux/mlx_get_color_value.c	/^int		mlx_int_get_good_color(t_xvar *xvar,int color)$/;"	f	typeref:typename:int
+mlx_int_get_line	minilibx_linux/mlx_xpm.c	/^char	*mlx_int_get_line(char *ptr,int *pos,int size)$/;"	f	typeref:typename:char *
+mlx_int_get_line	mlx/mlx_xpm.c	/^char	*mlx_int_get_line(char *ptr,int *pos,int size)$/;"	f	typeref:typename:char *
+mlx_int_get_text_rgb	minilibx_linux/mlx_xpm.c	/^int	mlx_int_get_text_rgb(char *name, char *end)$/;"	f	typeref:typename:int
+mlx_int_get_text_rgb	mlx/mlx_xpm.c	/^int	mlx_int_get_text_rgb(char *name, char *end)$/;"	f	typeref:typename:int
+mlx_int_get_visual	minilibx_linux/mlx_int_get_visual.c	/^int		mlx_int_get_visual(t_xvar *xvar)$/;"	f	typeref:typename:int
+mlx_int_loop_once	mlx/mlx_init_loop.m	/^void	mlx_int_loop_once()$/;"	f
+mlx_int_new_image	minilibx_linux/mlx_new_image.c	/^void	*mlx_int_new_image(t_xvar *xvar,int width, int height,int format)$/;"	f	typeref:typename:void *
+mlx_int_new_xshm_image	minilibx_linux/mlx_new_image.c	/^void	*mlx_int_new_xshm_image(t_xvar *xvar,int width,int height,int format)$/;"	f	typeref:typename:void *
+mlx_int_param_ButtonPress	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_ButtonPress(t_xvar *xvar, XEvent *ev, t_win_list *win)$/;"	f	typeref:typename:int
+mlx_int_param_ButtonRelease	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_ButtonRelease(t_xvar *xvar, XEvent *ev, t_win_list *win)$/;"	f	typeref:typename:int
+mlx_int_param_Expose	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_Expose(t_xvar *xvar, XEvent *ev, t_win_list *win)$/;"	f	typeref:typename:int
+mlx_int_param_KeyPress	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_KeyPress(t_xvar *xvar, XEvent *ev, t_win_list *win)$/;"	f	typeref:typename:int
+mlx_int_param_KeyRelease	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_KeyRelease(t_xvar *xvar, XEvent *ev, t_win_list *win)$/;"	f	typeref:typename:int
+mlx_int_param_MotionNotify	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_MotionNotify(t_xvar *xvar, XEvent *ev, t_win_list *win)$/;"	f	typeref:typename:int
+mlx_int_param_event	minilibx_linux/mlx_int_param_event.c	/^int	(*(mlx_int_param_event[]))() =$/;"	v	typeref:typename:int (* ([]))()
+mlx_int_param_generic	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_generic(t_xvar *xvar, XEvent *ev, t_win_list *win)$/;"	f	typeref:typename:int
+mlx_int_param_undef	minilibx_linux/mlx_int_param_event.c	/^int	mlx_int_param_undef()$/;"	f	typeref:typename:int
+mlx_int_parse_png	mlx/mlx_png.c	/^mlx_img_list_t	*mlx_int_parse_png(mlx_ptr_t *xvar, unsigned char *fptr, int size)$/;"	f	typeref:typename:mlx_img_list_t *
+mlx_int_parse_xpm	minilibx_linux/mlx_xpm.c	/^void	*mlx_int_parse_xpm(t_xvar *xvar,void *info,int info_size,char *(*f)())$/;"	f	typeref:typename:void *
+mlx_int_parse_xpm	mlx/mlx_xpm.c	/^void	*mlx_int_parse_xpm(mlx_ptr_t *xvar,void *info,int info_size,char *(*f)())$/;"	f	typeref:typename:void *
+mlx_int_rgb_conversion	minilibx_linux/mlx_init.c	/^int		mlx_int_rgb_conversion(t_xvar *xvar)$/;"	f	typeref:typename:int
+mlx_int_set_win_event_mask	minilibx_linux/mlx_int_set_win_event_mask.c	/^int	mlx_int_set_win_event_mask(t_xvar *xvar)$/;"	f	typeref:typename:int
+mlx_int_static_line	minilibx_linux/mlx_xpm.c	/^char	*mlx_int_static_line(char **xpm_data,int *pos,int size)$/;"	f	typeref:typename:char *
+mlx_int_static_line	mlx/mlx_xpm.c	/^char	*mlx_int_static_line(char **xpm_data,int *pos,int size)$/;"	f	typeref:typename:char *
+mlx_int_str_str	minilibx_linux/mlx_int_str_to_wordtab.c	/^int	mlx_int_str_str(char *str,char *find,int len)$/;"	f	typeref:typename:int
+mlx_int_str_str	mlx/mlx_int_str_to_wordtab.c	/^int	mlx_int_str_str(char *str,char *find,int len)$/;"	f	typeref:typename:int
+mlx_int_str_str_cote	minilibx_linux/mlx_int_str_to_wordtab.c	/^int	mlx_int_str_str_cote(char *str,char *find,int len)$/;"	f	typeref:typename:int
+mlx_int_str_str_cote	mlx/mlx_int_str_to_wordtab.c	/^int	mlx_int_str_str_cote(char *str,char *find,int len)$/;"	f	typeref:typename:int
+mlx_int_str_to_wordtab	minilibx_linux/mlx_int_str_to_wordtab.c	/^char	**mlx_int_str_to_wordtab(char *str)$/;"	f	typeref:typename:char **
+mlx_int_str_to_wordtab	mlx/mlx_int_str_to_wordtab.c	/^char	**mlx_int_str_to_wordtab(char *str)$/;"	f	typeref:typename:char **
+mlx_int_wait_first_expose	minilibx_linux/mlx_int_wait_first_expose.c	/^int	mlx_int_wait_first_expose(t_xvar *xvar,Window win)$/;"	f	typeref:typename:int
+mlx_int_xpm_f_image	minilibx_linux/mlx_lib_xpm.c	/^void		*mlx_int_xpm_f_image(t_xvar *xvar,int *width,int *height,$/;"	f	typeref:typename:void *
+mlx_int_xpm_set_pixel	mlx/mlx_xpm.c	/^void	mlx_int_xpm_set_pixel(mlx_img_list_t *img, char *data, int opp, int col, int x)$/;"	f	typeref:typename:void
+mlx_int_xpm_set_pointel	minilibx_linux/mlx_xpm.c	/^int	mlx_int_xpm_set_pointel(t_img *img, char *data, int opp, int col, int x)$/;"	f	typeref:typename:int
+mlx_key_hook	minilibx_linux/mlx_key_hook.c	/^int		mlx_key_hook(t_win_list *win,int (*funct)(),void *param)$/;"	f	typeref:typename:int
+mlx_key_hook	mlx/mlx_new_window.m	/^void mlx_key_hook(mlx_win_list_t *win_ptr, int (*funct_ptr)(), void *param)$/;"	f
+mlx_loop	minilibx_linux/mlx_loop.c	/^int			mlx_loop(t_xvar *xvar)$/;"	f	typeref:typename:int
+mlx_loop	mlx/mlx_init_loop.m	/^void mlx_loop(mlx_ptr_t *mlx_ptr)$/;"	f
+mlx_loop_end	minilibx_linux/mlx_loop.c	/^int			mlx_loop_end(t_xvar *xvar)$/;"	f	typeref:typename:int
+mlx_loop_hook	minilibx_linux/mlx_loop_hook.c	/^int	mlx_loop_hook(t_xvar *xvar,int (*funct)(),void *param)$/;"	f	typeref:typename:int
+mlx_loop_hook	mlx/mlx_init_loop.m	/^int mlx_loop_hook(mlx_ptr_t *mlx_ptr, void (*fct)(void *), void *param)$/;"	f
+mlx_mouse_get_pos	minilibx_linux/mlx_mouse.c	/^int		mlx_mouse_get_pos(t_xvar *xvar, t_win_list *win, \\$/;"	f	typeref:typename:int
+mlx_mouse_get_pos	mlx/mlx_mouse.m	/^int	mlx_mouse_get_pos(mlx_win_list_t *win, int *x, int *y)$/;"	f
+mlx_mouse_hide	minilibx_linux/mlx_mouse.c	/^int		mlx_mouse_hide(t_xvar *xvar, t_win_list *win)$/;"	f	typeref:typename:int
+mlx_mouse_hide	mlx/mlx_mouse.m	/^int	mlx_mouse_hide()$/;"	f
+mlx_mouse_hook	minilibx_linux/mlx_mouse_hook.c	/^int		mlx_mouse_hook(t_win_list *win,int (*funct)(),void *param)$/;"	f	typeref:typename:int
+mlx_mouse_hook	mlx/mlx_new_window.m	/^void mlx_mouse_hook(mlx_win_list_t *win_ptr, int (*funct_ptr)(), void *param)$/;"	f
+mlx_mouse_move	minilibx_linux/mlx_mouse.c	/^int		mlx_mouse_move(t_xvar *xvar, t_win_list *win, int x, int y)$/;"	f	typeref:typename:int
+mlx_mouse_move	mlx/mlx_mouse.m	/^int	mlx_mouse_move(mlx_win_list_t *win, int x, int y)$/;"	f
+mlx_mouse_show	minilibx_linux/mlx_mouse.c	/^int		mlx_mouse_show(t_xvar *xvar, t_win_list *win)$/;"	f	typeref:typename:int
+mlx_mouse_show	mlx/mlx_mouse.m	/^int	mlx_mouse_show()$/;"	f
+mlx_new_image	minilibx_linux/mlx_new_image.c	/^void	*mlx_new_image(t_xvar *xvar,int width, int height)$/;"	f	typeref:typename:void *
+mlx_new_image	mlx/mlx_new_image.m	/^void    *mlx_new_image(mlx_ptr_t *mlx_ptr, int width, int height)$/;"	f
+mlx_new_image2	minilibx_linux/mlx_new_image.c	/^void	*mlx_new_image2(t_xvar *xvar,int width, int height)$/;"	f	typeref:typename:void *
+mlx_new_opengl_window	mlx/mlx_opengl.m	/^void	*mlx_new_opengl_window(mlx_ptr_t *mlx_ptr, int size_x, int size_y, char *title)$/;"	f
+mlx_new_window	minilibx_linux/mlx_new_window.c	/^void	*mlx_new_window(t_xvar *xvar,int size_x,int size_y,char *title)$/;"	f	typeref:typename:void *
+mlx_new_window	mlx/mlx_new_window.m	/^void *mlx_new_window(mlx_ptr_t *mlx_ptr, int size_x, int size_y, char *title)$/;"	f
+mlx_opengl_swap_buffers	mlx/mlx_opengl.m	/^int	mlx_opengl_swap_buffers(mlx_win_list_t *win_ptr)$/;"	f
+mlx_opengl_window_set_context	mlx/mlx_opengl.m	/^int	mlx_opengl_window_set_context(mlx_win_list_t *win_ptr)$/;"	f
+mlx_pixel_put	minilibx_linux/mlx_pixel_put.c	/^int		mlx_pixel_put(t_xvar *xvar,t_win_list *win,$/;"	f	typeref:typename:int
+mlx_pixel_put	mlx/mlx_init_loop.m	/^void mlx_pixel_put(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, int x, int y, int color)$/;"	f
+mlx_png_file_to_image	mlx/mlx_png.c	/^void	*mlx_png_file_to_image(mlx_ptr_t *xvar, char *file, int *width, int *height)$/;"	f	typeref:typename:void *
+mlx_ptr_s	mlx/mlx_int.h	/^typedef struct		mlx_ptr_s$/;"	s
+mlx_ptr_t	mlx/mlx_int.h	/^} mlx_ptr_t;$/;"	t	typeref:struct:mlx_ptr_s
+mlx_put_image_to_window	minilibx_linux/mlx_put_image_to_window.c	/^int	mlx_put_image_to_window(t_xvar *xvar,t_win_list *win,t_img *img,$/;"	f	typeref:typename:int
+mlx_put_image_to_window	mlx/mlx_new_image.m	/^void    mlx_put_image_to_window(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, mlx_img_list_t *img/;"	f
+mlx_set_font	minilibx_linux/mlx_set_font.c	/^void	mlx_set_font(t_xvar *xvar, t_win_list *win, char *name)$/;"	f	typeref:typename:void
+mlx_shaders	mlx/mlx_shaders.c	/^int mlx_shaders(glsl_info_t *glsl)$/;"	f	typeref:typename:int
+mlx_shaders_font	mlx/mlx_shaders.c	/^int mlx_shaders_font(glsl_info_t *glsl)$/;"	f	typeref:typename:int
+mlx_shaders_image	mlx/mlx_shaders.c	/^int mlx_shaders_image(glsl_info_t *glsl)$/;"	f	typeref:typename:int
+mlx_shaders_pixel	mlx/mlx_shaders.c	/^int mlx_shaders_pixel(glsl_info_t *glsl)$/;"	f	typeref:typename:int
+mlx_string_put	minilibx_linux/mlx_string_put.c	/^int		mlx_string_put(t_xvar *xvar,t_win_list *win,$/;"	f	typeref:typename:int
+mlx_string_put	mlx/mlx_new_image.m	/^int mlx_string_put(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, int x, int y, int color, unsigne/;"	f
+mlx_win_list_s	mlx/mlx_int.h	/^typedef struct	mlx_win_list_s$/;"	s
+mlx_win_list_t	mlx/mlx_int.h	/^} mlx_win_list_t;$/;"	t	typeref:struct:mlx_win_list_s
+mlx_xpm_file_to_image	minilibx_linux/mlx_lib_xpm.c	/^void	*mlx_xpm_file_to_image(t_xvar *xvar,char *filename,$/;"	f	typeref:typename:void *
+mlx_xpm_file_to_image	minilibx_linux/mlx_xpm.c	/^void	*mlx_xpm_file_to_image(t_xvar *xvar,char *file,int *width,int *height)$/;"	f	typeref:typename:void *
+mlx_xpm_file_to_image	mlx/mlx_xpm.c	/^void	*mlx_xpm_file_to_image(mlx_ptr_t *xvar,char *file,int *width,int *height)$/;"	f	typeref:typename:void *
+mlx_xpm_to_image	minilibx_linux/mlx_lib_xpm.c	/^void	*mlx_xpm_to_image(t_xvar *xvar,char **data,int *width,int *height)$/;"	f	typeref:typename:void *
+mlx_xpm_to_image	minilibx_linux/mlx_xpm.c	/^void	*mlx_xpm_to_image(t_xvar *xvar,char **xpm_data,int *width,int *height)$/;"	f	typeref:typename:void *
+mlx_xpm_to_image	mlx/mlx_xpm.c	/^void	*mlx_xpm_to_image(mlx_ptr_t *xvar,char **xpm_data,int *width,int *height)$/;"	f	typeref:typename:void *
+mouseDown:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+mouseDragged:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+mouseMoved:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+mouseUp:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+mouse_hook	minilibx_linux/mlx_int.h	/^	int					(*mouse_hook)();$/;"	m	struct:s_win_list	typeref:typename:int (*)()
+mouse_param	minilibx_linux/mlx_int.h	/^	void				*mouse_param;$/;"	m	struct:s_win_list	typeref:typename:void *
+move	src/cub3d_render.c	/^int move(t_data *data, int	i)$/;"	f	typeref:typename:int
+move_player	src/move_player.c	/^int	move_player(t_data *data, int move)$/;"	f	typeref:typename:int
+my_loc	libft/ft_itoa.c	/^static char	*my_loc(int len)$/;"	f	typeref:typename:char *	file:
+my_mlx_pixel_put	src/draw_line.c	/^void            my_mlx_pixel_put(t_img_data *img, int x, int y, int color)$/;"	f	typeref:typename:void
+name	minilibx_linux/mlx_int.h	/^	char	*name;$/;"	m	struct:s_col_name	typeref:typename:char *
+name	minilibx_linux/mlx_int.h	/^	int		name;$/;"	m	struct:s_xpm_col	typeref:typename:int
+name	mlx/mlx_xpm.c	/^  char  *name;$/;"	m	struct:s_col_name	typeref:typename:char *	file:
+name	mlx/mlx_xpm.c	/^  int           name;$/;"	m	struct:s_xpm_col	typeref:typename:int	file:
+nb_flush	mlx/mlx_int.h	/^  int			nb_flush;$/;"	m	struct:mlx_win_list_s	typeref:typename:int
+next	include/structs.h	/^	struct s_obstacle	*next;$/;"	m	struct:s_obstacle	typeref:struct:s_obstacle *
+next	include/structs.h	/^	struct s_sprite	*next;$/;"	m	struct:s_sprite	typeref:struct:s_sprite *
+next	include/structs.h	/^    struct s_list   *next;$/;"	m	struct:s_list	typeref:struct:s_list *
+next	minilibx_linux/mlx_int.h	/^	struct s_win_list	*next;$/;"	m	struct:s_win_list	typeref:struct:s_win_list *
+next	mlx/mlx_int.h	/^  struct mlx_img_ctx_s	*next;$/;"	m	struct:mlx_img_ctx_s	typeref:struct:mlx_img_ctx_s *
+next	mlx/mlx_int.h	/^  struct mlx_img_list_s	*next;$/;"	m	struct:mlx_img_list_s	typeref:struct:mlx_img_list_s *
+next	mlx/mlx_int.h	/^  struct mlx_win_list_s	*next;$/;"	m	struct:mlx_win_list_s	typeref:struct:mlx_win_list_s *
+next_wall_dir	src/raycasting.c	/^t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)$/;"	f	typeref:typename:t_rayponse
+north_crossing	src/move_crossing_box.c	/^int	north_crossing(t_data *data)$/;"	f	typeref:typename:int
+obstacles_ls	include/structs.h	/^	t_obstacle	*obstacles_ls;$/;"	m	struct:s_rayponse	typeref:typename:t_obstacle *
+openglwin	mlx/mlx_new_window.h	/^  int			openglwin;$/;"	E	interface:MlxWin
+origin_plane	include/structs.h	/^	t_vector	origin_plane;$/;"	m	struct:s_cam	typeref:typename:t_vector
+otherMouseDown:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+otherMouseDragged:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+otherMouseUp:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+param	minilibx_linux/mlx_int.h	/^	void	*param;$/;"	m	struct:s_event_list	typeref:typename:void *
+parse_file	src/parse_import.c	/^void	parse_file(char *fname, t_data *data)$/;"	f	typeref:typename:void
+parsing_loop	src/parse_import.c	/^int	parsing_loop(t_data *data, int *map_parse)$/;"	f	typeref:typename:int
+pix	minilibx_linux/mlx_int.h	/^	Pixmap			pix;$/;"	m	struct:s_img	typeref:typename:Pixmap
+pix_pos_to_map_case	src/map_ft.c	/^char	pix_pos_to_map_case(t_data *data, t_point absolute_pos)$/;"	f	typeref:typename:char
+pix_pos_to_map_pos	src/map_ft.c	/^t_point	pix_pos_to_map_pos(t_point absolute_pos)$/;"	f	typeref:typename:t_point
+pixelPutColor:X:Y:	mlx/mlx_new_window.h	/^- (void) pixelPutColor: (int)color X:(int)x Y:(int)y;$/;"	m	interface:MlxWin
+pixelPutColor:X:Y:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+pixel_data	mlx/font.c	/^  unsigned char	 pixel_data[1140 * 20 * 4 + 1];$/;"	m	struct:__anone97f5d2d0108	typeref:typename:unsigned char[]	file:
+pixel_fshader	mlx/mlx_int.h	/^  GLuint	pixel_fshader;$/;"	m	struct:glsl_info_s	typeref:typename:GLuint
+pixel_management	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+pixel_nb	mlx/mlx_new_window.h	/^  int			pixel_nb;$/;"	E	interface:MlxWin
+pixel_program	mlx/mlx_int.h	/^  GLuint	pixel_program;$/;"	m	struct:glsl_info_s	typeref:typename:GLuint
+pixel_texture	mlx/mlx_new_window.h	/^  GLuint		pixel_texture;$/;"	E	interface:MlxWin
+pixel_vbuffer	mlx/mlx_new_window.h	/^  GLuint		pixel_vbuffer;$/;"	E	interface:MlxWin
+pixel_vshader	mlx/mlx_int.h	/^  GLuint	pixel_vshader;$/;"	m	struct:glsl_info_s	typeref:typename:GLuint
+pixmgt	mlx/mlx_int.h	/^  int			pixmgt;$/;"	m	struct:mlx_win_list_s	typeref:typename:int
+pixtexbuff	mlx/mlx_new_window.h	/^  unsigned int		*pixtexbuff;$/;"	E	interface:MlxWin
+plane_dir	include/structs.h	/^	t_vector	plane_dir;$/;"	m	struct:s_cam	typeref:typename:t_vector
+plane_size	include/structs.h	/^	double		plane_size;$/;"	m	struct:s_cam	typeref:typename:double
+player	include/structs.h	/^	t_player		*player;$/;"	m	struct:s_data	typeref:typename:t_player *
+player_init	src/ft_player_init.c	/^int	player_init(char **map, t_player *player)$/;"	f	typeref:typename:int
+png_info_s	mlx/mlx_png.c	/^typedef struct png_info_s$/;"	s	file:
+png_info_t	mlx/mlx_png.c	/^} png_info_t;$/;"	t	typeref:struct:png_info_s	file:
+pos	include/structs.h	/^	t_point	pos;$/;"	m	struct:s_sprite	typeref:typename:t_point
+pos_box	include/structs.h	/^	t_point		pos_box;$/;"	m	struct:s_player	typeref:typename:t_point
+pos_in_pix	include/structs.h	/^	t_point		pos_in_pix;$/;"	m	struct:s_player	typeref:typename:t_point
+pos_in_step	include/structs.h	/^	t_point		pos_in_step;$/;"	m	struct:s_player	typeref:typename:t_point
+pos_map	include/structs.h	/^	t_point		pos_map;$/;"	m	struct:s_player	typeref:typename:t_point
+private_cmap	minilibx_linux/mlx_int.h	/^	int			private_cmap;$/;"	m	struct:s_xvar	typeref:typename:int
+pshm_format	minilibx_linux/mlx_int.h	/^	int			pshm_format;$/;"	m	struct:s_xvar	typeref:typename:int
+re	libft/Makefile	/^re: fclean all$/;"	t
+re	mlx/Makefile	/^re: clean all$/;"	t
+rectangle_map	src/parse_format_map.c	/^void	rectangle_map(t_data *data, char **map)$/;"	f	typeref:typename:void
+refresh_ret_if_is_param	src/parse_params.c	/^static int	refresh_ret_if_is_param(char **identifiers, \\$/;"	f	typeref:typename:int	file:
+render_map_2d	src/cub3d_render.c	/^int	render_map_2d(t_data *data)$/;"	f	typeref:typename:int
+rgb_conv	src/parse_file_colors.c	/^unsigned int	rgb_conv(int R, int G, int B)$/;"	f	typeref:typename:unsigned int
+right	include/structs.h	/^	unsigned int	right;$/;"	m	struct:s_key_status	typeref:typename:unsigned int
+rightMouseDown:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+rightMouseDragged:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+rightMouseUp:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+root	minilibx_linux/mlx_int.h	/^	Window		root;$/;"	m	struct:s_xvar	typeref:typename:Window
+rotate_player	src/rotate_player.c	/^void	rotate_player(t_player *player, int move)$/;"	f	typeref:typename:void
+rotate_speed	include/structs.h	/^	double		rotate_speed;$/;"	m	struct:s_player	typeref:typename:double
+rotate_vector	src/vector_ft.c	/^void	rotate_vector(t_vector *vector, double radian_angle)$/;"	f	typeref:typename:void
+s	include/structs.h	/^	unsigned int	s;$/;"	m	struct:s_key_status	typeref:typename:unsigned int
+s_cam	include/structs.h	/^typedef struct	s_cam$/;"	s
+s_col_name	minilibx_linux/mlx_int.h	/^struct	s_col_name$/;"	s
+s_col_name	mlx/mlx_xpm.c	/^struct  s_col_name$/;"	s	file:
+s_data	include/structs.h	/^typedef struct s_data$/;"	s
+s_event_list	minilibx_linux/mlx_int.h	/^typedef struct	s_event_list$/;"	s
+s_image	include/structs.h	/^typedef struct s_image$/;"	s
+s_img	minilibx_linux/mlx_int.h	/^typedef struct	s_img$/;"	s
+s_img_data	include/structs.h	/^typedef struct s_img_data$/;"	s
+s_key_status	include/structs.h	/^typedef struct s_key_status$/;"	s
+s_list	include/structs.h	/^typedef struct  s_list {$/;"	s
+s_obstacle	include/structs.h	/^typedef struct	s_obstacle$/;"	s
+s_player	include/structs.h	/^typedef struct s_player$/;"	s
+s_point	include/structs.h	/^typedef struct s_point$/;"	s
+s_ray	include/structs.h	/^typedef struct	s_ray$/;"	s
+s_rayponse	include/structs.h	/^typedef struct	s_rayponse$/;"	s
+s_sprite	include/structs.h	/^typedef struct	s_sprite$/;"	s
+s_texture	include/structs.h	/^typedef struct s_texture$/;"	s
+s_vector	include/structs.h	/^typedef struct s_vector$/;"	s
+s_win_list	minilibx_linux/mlx_int.h	/^typedef struct	s_win_list$/;"	s
+s_window	include/structs.h	/^typedef struct s_window$/;"	s
+s_xpm_col	minilibx_linux/mlx_int.h	/^typedef	struct	s_xpm_col$/;"	s
+s_xpm_col	mlx/mlx_xpm.c	/^typedef struct  s_xpm_col$/;"	s	file:
+s_xvar	minilibx_linux/mlx_int.h	/^typedef struct	s_xvar$/;"	s
+saved_mode	minilibx_linux/mlx_ext_randr.c	/^RRMode	saved_mode = 0;$/;"	v	typeref:typename:RRMode
+screen	minilibx_linux/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar	typeref:typename:int
+scrollWheel:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+selectGLContext	mlx/mlx_new_window.h	/^- (void) selectGLContext;$/;"	m	interface:MlxWin
+selectGLContext	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+setEvent:andFunc:andParam:	mlx/mlx_new_window.h	/^- (void) setEvent:(int)event andFunc:(func_t)func andParam:(void *)param;$/;"	m	interface:MlxWin
+setEvent:andFunc:andParam:	mlx/mlx_new_window.h	/^- (void) setEvent:(int)event andFunc:(func_t)func andParam:(void *)param;$/;"	m	interface:NSWindowEvent
+setEvent:andFunc:andParam:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+setEvent:andFunc:andParam:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+setKeyRepeat:	mlx/mlx_new_window.h	/^- (void) setKeyRepeat:(int)mode;$/;"	m	interface:MlxWin
+setKeyRepeat:	mlx/mlx_new_window.h	/^- (void) setKeyRepeat:(int)mode;$/;"	m	interface:NSWindowEvent
+setKeyRepeat:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+setKeyRepeat:	mlx/mlx_new_window.m	/^{$/;"	m	implementation:NSWindowEvent
+set_arRay	src/raycasting.c	/^void	set_arRay(t_data *data)$/;"	f	typeref:typename:void
+set_beam	src/raycasting_utils.c	/^void	set_beam(t_data *data, t_obstacle **obstacles_ls)$/;"	f	typeref:typename:void
+set_delta_distance	src/ray_set_distances.c	/^void	set_delta_distance(t_data *data)$/;"	f	typeref:typename:void
+set_plane_dir	src/camera_ft.c	/^void	set_plane_dir(t_data *data, double plane_size)$/;"	f	typeref:typename:void
+set_plane_origin	src/camera_ft.c	/^void	set_plane_origin(t_data *data)$/;"	f	typeref:typename:void
+set_side_distance	src/ray_set_distances.c	/^void	set_side_distance(t_data *data)$/;"	f	typeref:typename:void
+set_texture_size	src/texture_utils.c	/^void	set_texture_size(t_texture *texture, char *path)$/;"	f	typeref:typename:void
+shift_line_left	src/parse_format_map.c	/^void	shift_line_left(char *line)$/;"	f	typeref:typename:void
+shm	minilibx_linux/mlx_int.h	/^	XShmSegmentInfo	shm;$/;"	m	struct:s_img	typeref:typename:XShmSegmentInfo
+shm_att_pb	minilibx_linux/mlx_new_image.c	/^int	shm_att_pb(Display *d,XErrorEvent *ev)$/;"	f	typeref:typename:int
+show	minilibx_linux/Makefile	/^show:$/;"	t
+side	include/structs.h	/^	int					side;$/;"	m	struct:s_obstacle	typeref:typename:int
+side	include/structs.h	/^	int			side;$/;"	m	struct:s_rayponse	typeref:typename:int
+side_distances	include/structs.h	/^	double		side_distances[2];$/;"	m	struct:s_ray	typeref:typename:double[2]
+size	include/structs.h	/^	int		size[2];$/;"	m	struct:s_texture	typeref:typename:int[2]
+size_line	minilibx_linux/mlx_int.h	/^	int				size_line;$/;"	m	struct:s_img	typeref:typename:int
+size_x	mlx/mlx_new_window.h	/^  int			size_x;$/;"	E	interface:MlxWin
+size_x	mlx/mlx_new_window.h	/^  int		size_x;$/;"	E	interface:NSWindowEvent
+size_y	mlx/mlx_new_window.h	/^  int			size_y;$/;"	E	interface:MlxWin
+size_y	mlx/mlx_new_window.h	/^  int		size_y;$/;"	E	interface:NSWindowEvent
+slide_closest_box	src/move_to_corner.c	/^void	slide_closest_box(t_player *p, int closest_box)$/;"	f	typeref:typename:void
+south_crossing	src/move_crossing_box.c	/^int	south_crossing(t_data *data)$/;"	f	typeref:typename:int
+speed	include/structs.h	/^	double		speed;$/;"	m	struct:s_player	typeref:typename:double
+sprite_half_size	include/structs.h	/^	int				sprite_half_size;$/;"	m	struct:s_image	typeref:typename:int
+sprite_hit	include/structs.h	/^	double				sprite_hit; \/\/distance from sprite_point to ray$/;"	m	struct:s_obstacle	typeref:typename:double
+sprite_ls	include/structs.h	/^	t_sprite		*sprite_ls;$/;"	m	struct:s_image	typeref:typename:t_sprite *
+sprite_pointer	include/structs.h	/^	t_sprite			*sprite_pointer;$/;"	m	struct:s_obstacle	typeref:typename:t_sprite *
+still_in_map	src/map_ft.c	/^int	still_in_map(t_data *data, t_point pt)$/;"	f	typeref:typename:int
+strlcpy_is_not_posix	minilibx_linux/mlx_xpm.c	/^unsigned int	strlcpy_is_not_posix(char *dest, char *src, unsigned int size)$/;"	f	typeref:typename:unsigned int
+t_cam	include/structs.h	/^}	t_cam;$/;"	t	typeref:struct:s_cam
+t_data	include/structs.h	/^}	t_data;$/;"	t	typeref:struct:s_data
+t_event_list	minilibx_linux/mlx_int.h	/^}				t_event_list;$/;"	t	typeref:struct:s_event_list
+t_image	include/structs.h	/^}	t_image;$/;"	t	typeref:struct:s_image
+t_img	minilibx_linux/mlx_int.h	/^}				t_img;$/;"	t	typeref:struct:s_img
+t_img_data	include/structs.h	/^}	t_img_data;$/;"	t	typeref:struct:s_img_data
+t_key_status	include/structs.h	/^}	t_key_status;$/;"	t	typeref:struct:s_key_status
+t_list	include/structs.h	/^}   t_list;$/;"	t	typeref:struct:s_list
+t_obstacle	include/structs.h	/^}	t_obstacle;$/;"	t	typeref:struct:s_obstacle
+t_player	include/structs.h	/^}	t_player;$/;"	t	typeref:struct:s_player
+t_point	include/structs.h	/^}	t_point;$/;"	t	typeref:struct:s_point
+t_ray	include/structs.h	/^}	t_ray;$/;"	t	typeref:struct:s_ray
+t_rayponse	include/structs.h	/^}	t_rayponse;$/;"	t	typeref:struct:s_rayponse
+t_sprite	include/structs.h	/^}	t_sprite;$/;"	t	typeref:struct:s_sprite
+t_texture	include/structs.h	/^}	t_texture;$/;"	t	typeref:struct:s_texture
+t_vector	include/structs.h	/^}	t_vector;$/;"	t	typeref:struct:s_vector
+t_win_list	minilibx_linux/mlx_int.h	/^}				t_win_list;$/;"	t	typeref:struct:s_win_list
+t_window	include/structs.h	/^}	t_window;$/;"	t	typeref:struct:s_window
+t_xpm_col	minilibx_linux/mlx_int.h	/^}				t_xpm_col;$/;"	t	typeref:struct:s_xpm_col
+t_xpm_col	mlx/mlx_xpm.c	/^} t_xpm_col;$/;"	t	typeref:struct:s_xpm_col	file:
+t_xvar	minilibx_linux/mlx_int.h	/^}				t_xvar;$/;"	t	typeref:struct:s_xvar
+test	libft/Makefile	/^test: ctags$/;"	t
+texture	mlx/mlx_int.h	/^  GLuint		texture;$/;"	m	struct:mlx_img_ctx_s	typeref:typename:GLuint
+texture_path	include/structs.h	/^	char			*texture_path[NB_TEXTURES];$/;"	m	struct:s_image	typeref:typename:char * []
+translate_pt	src/vector_ft.c	/^t_point	translate_pt(t_vector vector, t_point pt)$/;"	f	typeref:typename:t_point
+translate_pt_inplace	src/vector_ft.c	/^t_point	translate_pt_inplace(t_vector vector, t_point *pt)$/;"	f	typeref:typename:t_point
+translate_vector_as_pt	src/vector_ft.c	/^void	translate_vector_as_pt(t_vector vector, t_vector *pt)$/;"	f	typeref:typename:void
+type	include/structs.h	/^	char				type;$/;"	m	struct:s_obstacle	typeref:typename:char
+type	minilibx_linux/mlx_int.h	/^	int				type;$/;"	m	struct:s_img	typeref:typename:int
+units_pos_to_minimap_pos	src/window_init.c	/^t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position)$/;"	f	typeref:typename:t_point
+update_pos_if_wall	src/move_player.c	/^int	update_pos_if_wall(t_data *data, int crossover_direction)$/;"	f	typeref:typename:int
+update_pos_in_pix	src/pos_update.c	/^t_point	update_pos_in_pix(t_player *player)$/;"	f	typeref:typename:t_point
+update_pos_in_step	src/pos_update.c	/^t_point	update_pos_in_step(t_player *player)$/;"	f	typeref:typename:t_point
+use_xshm	minilibx_linux/mlx_int.h	/^	int			use_xshm;$/;"	m	struct:s_xvar	typeref:typename:int
+vbuffer	mlx/mlx_int.h	/^  GLuint		vbuffer;$/;"	m	struct:mlx_img_ctx_s	typeref:typename:GLuint
+vec_len	src/vector_ft.c	/^double	vec_len(t_vector vector)$/;"	f	typeref:typename:double
+vec_scale	src/vector_ft.c	/^t_vector	vec_scale(t_vector vector, double scale)$/;"	f	typeref:typename:t_vector
+vector_dot_product	src/vector_ft.c	/^double	vector_dot_product(t_vector v1, t_vector v2)$/;"	f	typeref:typename:double
+vertexes	mlx/mlx_int.h	/^  GLfloat		vertexes[8];$/;"	m	struct:mlx_img_list_s	typeref:typename:GLfloat[8]
+visual	minilibx_linux/mlx_int.h	/^	Visual		*visual;$/;"	m	struct:s_xvar	typeref:typename:Visual *
+void	mlx/mlx_new_window.h	/^  void		*(event_param[MAX_EVENT]);$/;"	E	interface:NSWindowEvent
+w	include/structs.h	/^	unsigned int	w;$/;"	m	struct:s_key_status	typeref:typename:unsigned int
+wall_textures	include/structs.h	/^	t_texture		wall_textures[NB_TEXTURES];$/;"	m	struct:s_data	typeref:typename:t_texture[]
+west_crossing	src/move_crossing_box.c	/^int	west_crossing(t_data *data)$/;"	f	typeref:typename:int
+width	include/structs.h	/^	int		width;$/;"	m	struct:s_window	typeref:typename:int
+width	minilibx_linux/mlx_int.h	/^	int				width;$/;"	m	struct:s_img	typeref:typename:int
+width	mlx/font.c	/^  unsigned int 	 width;$/;"	m	struct:__anone97f5d2d0108	typeref:typename:unsigned int	file:
+width	mlx/mlx_int.h	/^  int			width;$/;"	m	struct:mlx_img_list_s	typeref:typename:int
+width	mlx/mlx_png.c	/^  unsigned int	width;$/;"	m	struct:png_info_s	typeref:typename:unsigned int	file:
+win	mlx/mlx_new_window.h	/^  NSWindowEvent		*win;$/;"	E	interface:MlxWin
+win	mlx/mlx_new_window.h	/^- (NSWindowEvent *) win;$/;"	m	interface:MlxWin
+win	mlx/mlx_new_window.m	/^{$/;"	m	implementation:MlxWin
+win_count	minilibx_linux/mlx_loop.c	/^static int	win_count(t_xvar *xvar)$/;"	f	typeref:typename:int	file:
+win_list	minilibx_linux/mlx_int.h	/^	t_win_list	*win_list;$/;"	m	struct:s_xvar	typeref:typename:t_win_list *
+win_list	mlx/mlx_int.h	/^  mlx_win_list_t	*win_list;$/;"	m	struct:mlx_ptr_s	typeref:typename:mlx_win_list_t *
+window	include/structs.h	/^	t_window		*window;$/;"	m	struct:s_data	typeref:typename:t_window *
+window	minilibx_linux/mlx_int.h	/^	Window				window;$/;"	m	struct:s_win_list	typeref:typename:Window
+window_init	src/window_init.c	/^int	window_init(t_data *data)$/;"	f	typeref:typename:int
+winid	mlx/mlx_int.h	/^  void			*winid;$/;"	m	struct:mlx_win_list_s	typeref:typename:void *
+wm_delete_window	minilibx_linux/mlx_int.h	/^	Atom		wm_delete_window;$/;"	m	struct:s_xvar	typeref:typename:Atom
+wm_protocols	minilibx_linux/mlx_int.h	/^	Atom		wm_protocols;$/;"	m	struct:s_xvar	typeref:typename:Atom
+wrong_color	src/parse_file_colors.c	/^void	wrong_color(t_data *data, char *color_strimed)$/;"	f	typeref:typename:void
+x	include/structs.h	/^	double	x;$/;"	m	struct:s_vector	typeref:typename:double
+x	include/structs.h	/^	int	x;$/;"	m	struct:s_point	typeref:typename:int
+x_or_y	include/structs.h	/^enum x_or_y { _x, _y };$/;"	g
+y	include/structs.h	/^	double	y;$/;"	m	struct:s_vector	typeref:typename:double
+y	include/structs.h	/^	int	y;$/;"	m	struct:s_point	typeref:typename:int

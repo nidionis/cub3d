@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exit_ft.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/10/26 16:10:30 by supersko         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:07:52 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/* where all pointers are cleaned, especially in a emergency exit */
 void	clean_exit(t_data *data, int exit_code)
 {
 	int	i;
@@ -36,7 +37,7 @@ void	clean_exit(t_data *data, int exit_code)
 				free(data->cam->beam);
 			i = 0;
 			while (i < CAM_QUALITY)
-				ft_lstclear(&data->cam->arRay[i++].obstacles_ls);
+			//	ft_lstclear(&data->cam->arRay[i++].obstacles_ls);
 			free(data->cam);
 		}
 		if (data->image)
@@ -59,4 +60,10 @@ void	exit_msg(t_data *data, char *msg, int ret_exit)
 {
 	error_msg(msg);
 	clean_exit(data, ret_exit);
+}
+
+int	exit_game(t_data *data)
+{
+	clean_exit(data, 0);
+	return (0);
 }

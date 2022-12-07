@@ -17,6 +17,7 @@ unsigned int	rgb_conv(int R, int G, int B)
 	return ((unsigned int) R * 65536 + (unsigned int) G * 256 + B);
 }
 
+/* convert lines containing ceiling and floor color to the value */
 unsigned int	init_f_c_color(t_data *data, char *line)
 {
 	int		colors[3];
@@ -32,11 +33,9 @@ unsigned int	init_f_c_color(t_data *data, char *line)
 	while (data->line_split[i])
 	{
 		color_strimed = ft_strtrim(data->line_split[i], " \t\n");
-		//printf("[color[i] trimed = %s\n", color_strimed);
 		if (ft_strlen(color_strimed) > 3 || !ft_strlen(color_strimed))
 			wrong_color(data, color_strimed);
 		colors[i] = ft_atoi(color_strimed);
-		//printf("[color[i] = %d\n", colors[i]);
 		if (colors[i] > 255 || colors[i] < 0)
 			wrong_color(data, color_strimed);
 		free(color_strimed);

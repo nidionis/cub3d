@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/01 17:40:25 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:45:22 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position)
 	t_point		pos_for_map;
 	double		u;
 	double		wall_size;
-
 	(void)data;
-	u = (double)UNITS_PER_BOX;
+	
+	u = (double)1000;
 	wall_size = (double)WALL_SIZE + 1;
-	pos_for_map.x = wall_size * ((((double)absolute_position.x) / u));
-	pos_for_map.y = wall_size * ((((double)absolute_position.y) / u));
+	pos_for_map.x = wall_size * (((((double)absolute_position.x)) / 5800));
+	pos_for_map.y = wall_size * ((((double)absolute_position.y) / u - 0.02));
 	return (pos_for_map);
 }
 
@@ -65,14 +65,14 @@ int	load_window(t_data *data)
 	t_window *window;
 
 	window = data->window;
-	window->mlx = mlx_init();
 	data->img = malloc(sizeof(t_img_data));
-	load_textures(data);
-	data->img->img = mlx_new_image(window->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	window->height = SCREEN_HEIGHT;
+	window->width = SCREEN_WIDTH;
+	data->img->img = mlx_new_image(window->mlx, window->width, window->height);
 	window->init = mlx_new_window(window->mlx, \
-		SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3d");
+		window->width, window->height, "Cub3d");
 	data->img->line_len = data->img->line_len >> 2;
-	data->img->address = (int*)mlx_get_data_addr(data->img->img,&data->img->bpp, &data->img->line_len, &data->img->endian);
+	data->img->address = (int *)mlx_get_data_addr(data->img->img,&data->img->bpp, &data->img->line_len, &data->img->endian);
 	load_menu(data);
 	return (0);
 }

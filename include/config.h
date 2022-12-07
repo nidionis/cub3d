@@ -19,12 +19,18 @@
 #  define KEY_ESC 53
 #  define KEY_IN 69
 #  define KEY_OUT 78
+#  define ENTER 36
+#  define KEY_M 46
+#  define SHIFT 257
+#  define KEY_P 35
 #  include "../mlx/mlx.h"
 
 # else   // LINUX
 #  include <X11/keysym.h>   // 
 #  include "../minilibx_linux/mlx.h"
 #  include "../minilibx_linux/mlx_int.h"
+#  define ENTER 65293
+#  define KEY_P 112
 #  define KEY_Q 113
 #  define KEY_A 97
 #  define KEY_Z 122
@@ -36,6 +42,8 @@
 #  define KEY_C 99
 #  define KEY_R 114
 #  define KEY_F 102
+#  define KEY_M 109
+#  define SHIFT 65505
 #  define KEY_RIGHT 65363 
 #  define KEY_LEFT 65361 
 #  define KEY_UP 65362
@@ -76,7 +84,7 @@
 # define CAM_QUALITY 1900
 # define NB_TEXTURES 4
 # define UNITS_PER_BOX 1000
-# define STEPS_PER_BOX 30
+# define STEPS_PER_BOX 100
 # define WALL_SIZE 20
 /* in radient 66 = 1.15*/
 /* num of ray_parse for a pic */
@@ -91,3 +99,20 @@
 //COLORS 
 # define RED "\033[1;31m"
 # define GREEN "\033[1;32m"
+//macro for img indexes
+# define BG 0
+# define SETTINGS 1
+# define NEW_GAME 2
+# define EXIT 3
+# define LAYOUT 4
+# define LOGO 5
+# define RESOLUTION 7
+# define SENSIVITY 8
+# define CONTROLS 9
+# define BACK 10
+# define NEW_BG 11
+# define EXTRAS 12
+# define CONTROLS_KEYS 13
+# define LOW_RES 14
+# define MID_RES 15
+# define HIGH_RES 16

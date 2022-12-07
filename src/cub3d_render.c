@@ -6,13 +6,13 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/02 10:46:26 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/07 12:49:39 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	render_map_2d(t_data *data)
+int	minimap_render(t_data *data)
 {
 	int	a;
 	int	b;
@@ -23,104 +23,120 @@ int	render_map_2d(t_data *data)
 		"assets/wall20x20.xpm", &a, &b);
 	data->image->texture_path[1] = mlx_xpm_file_to_image(data->window->mlx, \
 		"assets/floor.xpm", &a, &b);
-	draw_mini_map(data);
-	draw_player(data);
+	draw_mini_map(data, 15);
 	return (0);
 }
 
-int move(t_data *data, int	i)
+//generate the 3d world with raycast
+void	world_render(t_data *data)
 {
-	t_player *player;
-	double 		tmpx;
-	double 		tmpy;
+	int	i;
 
-	player = data->player;
-	tmpx = player->map_pos.x + player->speed * cos(player->angle) * i;
-	 if (data->map[(int)floor(player->map_pos.x)][(int)floor(tmpx)] == '0')
-	 {
-		player->map_pos.x = tmpx;
-		printf("a");
-	 }
-	tmpy = player->map_pos.y + player->speed * sin(player->angle) * i;
-	 if (data->map[(int)floor(tmpy)][(int)floor(player->map_pos.x)] == '0')
-	 {
-		player->map_pos.y = tmpy;
-	 }
-	 return (0);
+	i = 0;
+	set_arRay(data);
+	draw_ceiling_floor_mandatory(data);
+	while (i < CAM_QUALITY)
+	{	
+		draw_wall_textured(data, i);
+		i++;
+	}
 }
+void	draw_stamina_hud(t_data *data)
+{
+	int x;
+	int y;
+	int red;
 
-// int	update(t_data *data)
-// {
-// 	t_player *player;
+	red = rgb_conv(200, 0, 0);
+	unsigned int a;
+	a = 0;
+	
+	x = 40;
+	y = 980;
+	while (a < data->player->stamina * 3)
+	{
+		if (data->player->stamina > 30)
+		{
+			draw_cube(data, 5, y, x + (a),rgb_conv(200,200,200));
+			draw_cube(data, 5, y + 4, x + (a),rgb_conv(200,200,200));
+			draw_cube(data, 5, y + 8, x + (a),rgb_conv(200,200,200));
+		}
+		else
+		{
+			draw_cube(data, 5, y, x + (a),red);
+			draw_cube(data, 5, y + 4, x + (a),red);
+			draw_cube(data, 5, y + 8, x + (a),red);
+		}
+		
+		a+=4;
+	}
 
-// 	player = data->player;
-// 	if (data->key_status->d)
-// 	{
+}
+void		mouse_rotate(t_data *data)
+{
+	t_point		pos;
+	t_point		delta;
 
-// 	}
-// 	if (data->key_status->a)
-// 	{
-// 		printf("%f____%f\n",floor(player->map_pos.y), floor(player->map_pos.x));
-// 		printf("%d\n", player->angle);
-// 	}
-// 	if (data->key_status->s)
-// 	{
-// 		printf("move down");
-// 		move(data, 1);
-// 	}
-// 	if (data->key_status->w)
-// 	{
-// 		move(data,1);
-// 	}
-// 	if (data->key_status->left)
-// 	{
-// 		player->angle += player->rotate_speed;
-// 	}
-// 	if (data->key_status->right)
-// 	{
-// 		player->angle -= (int)player->rotate_speed;
-// 	}
-// 	return (0);
-// }
-
+	if (data->mouse == 0)
+		return ;
+	mlx_mouse_get_pos(data->window->mlx,data->window->init, &pos.x, &pos.y);
+	delta.x = pos.x - SCREEN_WIDTH/2;
+	delta.y = pos.y - SCREEN_HEIGHT/2;
+	if (delta.x < 0)
+		rotate_player(data->player,LEFT);
+	else if (delta.x > 0)
+		rotate_player(data->player,RIGHT);
+	mlx_mouse_move(data->window->mlx, data->window->init, SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+}
+//world_render generate the 3d world with raycast
+//player_smoth detects key pressure to make player move
+//mini_map_render generate the minimap if key M is pressed
 int	graphics_render(t_data *data)
 {
-	
-	int	i;
-	
-	i = 0;
-	if (data->menu->start == 1 && data->menu->on == 1)
+	if (data->menu->game_state == 1)
 	{
-		set_arRay(data);
-		while (i < CAM_QUALITY)
-		{	
-			draw_wall_line(data, i);
-			ft_lstclear(&data->cam->arRay[i].obstacles_ls);
-			i++;
-		}
-		if (data->key_status->w == 1)
-			move_player(data, FORWARD);
-		if (data->key_status->s == 1)
-			move_player(data, BACKWARD);
-		if (data->key_status->a == 1)
-			move_player(data, LEFT);
-		if (data->key_status->d == 1)
-			move_player(data, RIGHT);
-		if (data->key_status->left == 1)
-			rotate_player(data->player, LEFT);
-		if (data->key_status->right == 1)
-			rotate_player(data->player, RIGHT);
-		// render_map_2d(data);
-		t_point p = map_position_in_front_of_player(data->player);
-		printf("player pos: %d, %d\nnext case : %d, %d\n\n", data->player->pos_map.x, data->player->pos_map.y, p.x, p.y);
-		mlx_put_image_to_window(data->window->mlx, data->window->init,data->img->img, 0, 0);
+		world_render(data);
+		if (data->mouse == 1)
+			mouse_rotate(data);
+		player_smoth_move(data);
+		if (data->menu->minimap== 1)
+			minimap_render(data);
+		draw_image(data->img, data->menu->background[4], y_x(SCREEN_HEIGHT /2 + 267,SCREEN_WIDTH/2 - (SCREEN_WIDTH/3)), -1);
+		draw_stamina_hud(data);
+		mlx_put_image_to_window(data->window->mlx, data->window->init, \
+			data->img->img, 0, 0);
 	}
 	else
-	{
 		render_menu(data);
-	}
-	
 	return (0);
+}
+
+int mouse_event(t_data *data)
+{
+	data->mouse = 1;
+	mlx_mouse_hide(data->window->mlx,data->window->init);
+	return (0);
+}
+/* dirty way to draw ceiling and floor */
+void	draw_ceiling_floor_mandatory(t_data *data)
+{
+	t_point	p;
+
+	p.y = 0;
+	while (p.y < SCREEN_HEIGHT / 2)
+	{
+		p.x = 0;
+		while (p.x < SCREEN_WIDTH)
+			my_mlx_pixel_put(data->img, p.x++, p.y, data->image->ceiling_color);
+		p.y++;
+	}
+	while (p.y < SCREEN_HEIGHT)
+	{
+		p.x = 0;
+		while (p.x < SCREEN_WIDTH)
+			my_mlx_pixel_put(data->img, p.x++, p.y, data->image->floor_color);
+		p.y++;
+	}
 }
 
 int	cub3d_render(t_data *data)
@@ -128,6 +144,7 @@ int	cub3d_render(t_data *data)
 	mlx_hook(data->window->init, 2, 1L << 0, key_press, data);
 	mlx_hook(data->window->init, 3, 1L << 1, key_realese, data);
 	mlx_loop_hook(data->window->mlx, graphics_render, data);
+	mlx_hook(data->window->init,12, 1L<<15, mouse_event,data);
 	mlx_hook(data->window->init, 17, 1L << 17, &exit_game, data);
 	mlx_loop(data->window->mlx);
 	return (0);

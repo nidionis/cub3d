@@ -1,4 +1,10 @@
 #include "cub3d.h"
+
+typedef struct  s_list {
+    void            *content;
+    struct s_list   *next;
+}   t_list;
+
 typedef struct s_vector
 {
 	double	x;
@@ -15,7 +21,7 @@ typedef struct s_player
 {
 	/* in square */
 	t_point		pos_map;
-	double		speed;
+	int		speed;
 	double		rotate_speed;
 	/* in pix or UNITS_PER_BOX*/
 	t_point		pos_box;
@@ -24,12 +30,18 @@ typedef struct s_player
 	t_point		pos_in_pix;
 	t_vector	map_pos;
 	t_vector	direction;
-	
+	unsigned 	int stamina;
 	int			angle;
 }	t_player;
 
 typedef struct	s_sprite
 {
+	int type;
+	int state;
+	int map;
+	int x;
+	int y;
+	int z;
 	//texture
 	t_point	pos;
 
@@ -41,7 +53,6 @@ typedef struct s_image
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
 	char			*texture_path[NB_TEXTURES];
-	//char			*minimap_texture[NB_MINIMAP_TEXTURES]
 	int				line_len;
 	t_sprite		*sprite_ls;
 	int				sprite_half_size;
@@ -52,12 +63,9 @@ typedef struct	s_obstacle
 	char				type;
 	double				len;
 	// if type is IS_BLOCK
-	t_point				hit_point;
-	int					side;
-	// if type is SPRITE
-	double				sprite_hit; //distance from sprite_point to ray
+	int				textureX;
+	int				side;
 	t_sprite			*sprite_pointer;
-	struct s_obstacle	*next;
 }	t_obstacle;
 
 typedef struct	s_rayponse
@@ -100,8 +108,10 @@ typedef struct s_img_data
 {
 	void *img;
 	int *address;
+	char *adress;
 	int	bpp;
 	int line_len;
+	int line_height;
 	int endian;
 	int width;
 	int height;
@@ -115,40 +125,67 @@ typedef struct s_key_status
 	unsigned int	d;
 	unsigned int	left;
 	unsigned int	right;
+	unsigned int	sprint;
+	unsigned int	config;
 }	t_key_status;
 
 typedef struct s_menu
 {
-	unsigned int start;
-	unsigned int options;
+	//menu
+	unsigned int new_game;
+	unsigned int controls;
+	unsigned int extras;
+	unsigned int settings;
 	unsigned int quit;
-	unsigned int on;
-	unsigned int off;
-	t_img_data		*background[5];
+	unsigned int menu_state;
+	//settings
+	unsigned int resolution;
+	unsigned int sensivity;
+	unsigned int settings_state;
+	//other
+	unsigned int game_state;
+	unsigned int highlight;
+	unsigned int back;
+	unsigned int one;
+	unsigned int two;
+	unsigned int three;
+	unsigned int minimap;
+	//resolution
+	unsigned int low_res;
+	unsigned int mid_res;
+	unsigned int high_res;
+	unsigned int resolution_state;
+	unsigned int controls_state;
+	unsigned int extras_state;
+	t_img_data		*background[20];
 } t_menu;
 
 typedef struct s_data
 {
-	char		*line;
-	char		**line_split;
-	char		*blocks;
-	char		*map_cases;
-	t_image		*image;
-	t_player	*player;
-	t_cam		*cam;
-	t_window	*window;
-	char		**map;
+	char			*line;
+	char			**line_split;
+	char			*blocks;
+	char			*map_cases;
+	t_image			*image;
+	t_player		*player;
+	t_cam			*cam;
+	t_window		*window;
+	char			**map;
 	int			map_size_in_units[2];
-	t_img_data *textures;
+	t_img_data		*wall_textures[NB_TEXTURES];
 	t_img_data		*img;
 	t_key_status	*key_status;
 	t_menu			*menu;
+	int mouse;
 }	t_data;
 
 enum x_or_y { _x, _y };
 enum log_type { DATA, PARAM, CAM, PLAYER, MAP };
-enum e_identifiers { NO, SO, WE, EA, F, C };
+enum e_identifiers { NO, SO, EA, WE, F, C };
 enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
 enum e_cardinal { NORTH, SOUTH, EAST, WEST };
 enum e_player_direction{ FORWARD, BACKWARD, RIGHT, LEFT, NB_DIRECTION };
 enum e_sprite {SPRITE = -1};
+enum e_others {LINE_WIDTH = (int)SCREEN_WIDTH / (int)CAM_QUALITY, LINE_HEIGHT = (int)SCREEN_HEIGHT * (int)UNITS_PER_BOX};
+//int LINE_WIDTH = (int)SCREEN_WIDTH / (int)CAM_QUALITY;
+//int LINE_HEIGHT = (int)SCREEN_HEIGHT * (int)UNITS_PER_BOX;

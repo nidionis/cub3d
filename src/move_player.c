@@ -136,6 +136,45 @@ int	check_update_box_pos(t_data *data)
 	return (hit_wall);
 }
 
+void	player_smoth_move(t_data *data)
+{
+	static int counter;
+	static int counter2;
+
+	if (data->player->speed == 1 && data->player->stamina > 0)
+	{
+		counter++;
+		if (counter == 5)
+		{
+			counter = 0;
+			data->player->stamina--;
+		}
+	}
+	else if (data->player->speed == 0 && data->player->stamina < 100)
+	{
+		counter2++;
+		if (counter2 == 15)
+		{
+			counter2 = 0;
+			data->player->stamina++;
+		}
+	}
+	if (data->player->speed == 1 && data->player->stamina <= 0)
+		data->player->speed = 0;
+	if (data->key_status->w == 1)
+		move_player(data, FORWARD);
+	if (data->key_status->s == 1)
+		move_player(data, BACKWARD);
+	if (data->key_status->a == 1)
+		move_player(data, LEFT);
+	if (data->key_status->d == 1)
+		move_player(data, RIGHT);
+	if (data->key_status->left == 1)
+		rotate_player(data->player, LEFT);
+	if (data->key_status->right == 1)
+		rotate_player(data->player, RIGHT);
+}
+
 int	move_player(t_data *data, int move)
 {
 	int			hit_wall;
@@ -143,7 +182,10 @@ int	move_player(t_data *data, int move)
 	t_vector	scaled_direction;
 
 	p = data->player;
-	scaled_direction = vec_scale(p->direction, (double)(UNITS_PER_BOX / STEPS_PER_BOX));
+	if (data->player->speed == 1)
+		scaled_direction = vec_scale(p->direction, (double)(UNITS_PER_BOX / 30));
+	else
+		scaled_direction = vec_scale(p->direction, (double)(UNITS_PER_BOX / STEPS_PER_BOX));
 	if (move == BACKWARD)
 		rotate_vector(&scaled_direction, degree_to_radian(180));
 	else if (move == RIGHT)
@@ -152,7 +194,6 @@ int	move_player(t_data *data, int move)
 		rotate_vector(&scaled_direction, degree_to_radian(-90));
 	else if (move != FORWARD)
 		error_msg("[move_player] wrong move instruction");
-//	fprintf(stderr, "[move_player] scale_dir (%5lf,%5lf)\n", scaled_direction.x, scaled_direction.y);
 	translate_pt_inplace(scaled_direction, &p->pos_box);
 	hit_wall = check_update_box_pos(data);
 	update_pos_in_step(p);
