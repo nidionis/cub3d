@@ -6,19 +6,19 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:57:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/11/28 13:22:29 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:47:07 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int fix_ang(int a)
+int	fix_ang(int a)
 {
-	if(a > 359)
+	if (a > 359)
 	{
 		a -= 360;
 	}
-	if(a < 0)
+	if (a < 0)
 	{
 		a += 360;
 	}
@@ -34,50 +34,57 @@ void	init_key_status(t_data *data)
 	data->key_status->s = 0;
 	data->key_status->left = 0;
 	data->key_status->right = 0;
+	data->key_status->sprint = 0;
+	data->key_status->config = 0;
+}
+
+void	control_key_press(int key, t_data *data)
+{
+	if (key == ENTER)
+	{
+		if (data->menu->back == 1)
+		{
+			data->menu->back = 0;
+			data->menu->controls_state = 0;
+			data->menu->menu_state = 1;
+			data->menu->controls = 1;
+			clear_img(data->menu->background[BG]);
+		}
+	}
 }
 
 int	key_press(int key, t_data *data)
 {
-	if (key == KEY_W)
-		data->key_status->w = 1;
-    else if (key == KEY_S)
-		data->key_status->s = 1;
-    else if (key == KEY_A)
-		data->key_status->a = 1;
-    else if (key == KEY_D)
-		data->key_status->d = 1;
-    else if (key == KEY_RIGHT)
-		data->key_status->right = 1;
-	else if (key ==KEY_LEFT)
-		data->key_status->left = 1;
-	else if (key == KEY_ESC)
+	if (data->menu->controls_state == 1)
+		control_key_press(key, data);
+	else if (data->menu->menu_state == 1)
+		menu_key_press(key, data);
+	else if (data->menu->settings_state == 1)
+		settings_key_press(key, data);
+	else if (data->menu->resolution_state == 1)
+		resolution_key_press(key, data);
+	if (data->menu->game_state == 1)
+		key_game(key, data);
+	if (key == KEY_ESC)
 		exit_game(data);
 	return (0);
 }
-/* player_struct modified */
+
 int	key_realese(int key, t_data *data)
 {
-	if (key == KEY_W)
+	if (key == KEY_W && data->menu->game_state == 1)
 		data->key_status->w = 0;
-    else if (key == KEY_S)
+	else if (key == KEY_S && data->menu->game_state == 1)
 		data->key_status->s = 0;
-    else if (key == KEY_A)
+	else if (key == KEY_A && data->menu->game_state == 1)
 		data->key_status->a = 0;
-    else if (key == KEY_D)
+	else if (key == KEY_D && data->menu->game_state == 1)
 		data->key_status->d = 0;
-    else if (key == KEY_RIGHT)
+	else if (key == KEY_RIGHT && data->menu->game_state == 1)
 		data->key_status->right = 0;
-	else if (key ==KEY_LEFT)
+	else if (key == KEY_LEFT && data->menu->game_state == 1)
 		data->key_status->left = 0;
+	else if (key == SHIFT)
+		data->player->speed = 0;
 	return (0);
 }
-
-
-int exit_game(t_data *data)
-{
-    //free
-    (void)data;
-    clean_exit(data, 0);
-	return (0);
-}
-

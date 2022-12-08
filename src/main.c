@@ -53,9 +53,11 @@ int	main(int argc, char *argv[])
 	{
 		data = malloc_data();
 		data->window = malloc(sizeof(t_window));
+		data->window->mlx = mlx_init();
+		parse_file(argv[1],  data);
+		data->mouse = 0;
 		init_key_status(data);
-		window_init(data);
-		parse_file(argv[1], data);
+		load_window(data);
 		cub3d_render(data);
 		clean_exit(data, 0);
 	}

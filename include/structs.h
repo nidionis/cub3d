@@ -21,7 +21,7 @@ typedef struct s_player
 {
 	/* in square */
 	t_point		pos_map;
-	double		speed;
+	int		speed;
 	double		rotate_speed;
 	/* in pix or UNITS_PER_BOX*/
 	t_point		pos_box;
@@ -30,12 +30,18 @@ typedef struct s_player
 	t_point		pos_in_pix;
 	t_vector	map_pos;
 	t_vector	direction;
-	
+	unsigned 	int stamina;
 	int			angle;
 }	t_player;
 
 typedef struct	s_sprite
 {
+	int type;
+	int state;
+	int map;
+	int x;
+	int y;
+	int z;
 	//texture
 	t_point	pos;
 
@@ -51,6 +57,7 @@ typedef struct s_image
 	t_sprite		*sprite_ls;
 }	t_image;
 
+/*
 typedef struct s_img_data
 {
 	void *img;
@@ -60,13 +67,7 @@ typedef struct s_img_data
 	int line_height;
 	int endian;
 }	t_img_data;
-
-typedef struct	s_obstacle
-{
-	double				dist;
-	int				textureX;
-	t_img_data			texture;
-}	t_obstacle;
+*/
 
 typedef struct	s_rayponse
 {
@@ -104,6 +105,26 @@ typedef struct s_window
 	int		height;
 }	t_window;
 
+typedef struct s_img_data
+{
+	void *img;
+	int *address;
+	char *adress;
+	int	bpp;
+	int line_len;
+	int line_height;
+	int endian;
+	int width;
+	int height;
+}	t_img_data;
+
+typedef struct	s_obstacle
+{
+	double				dist;
+	int				textureX;
+	t_img_data			texture;
+}	t_obstacle;
+
 typedef struct s_key_status
 {
 	unsigned int	w;
@@ -112,7 +133,40 @@ typedef struct s_key_status
 	unsigned int	d;
 	unsigned int	left;
 	unsigned int	right;
+	unsigned int	sprint;
+	unsigned int	config;
 }	t_key_status;
+
+typedef struct s_menu
+{
+	//menu
+	unsigned int new_game;
+	unsigned int controls;
+	unsigned int extras;
+	unsigned int settings;
+	unsigned int quit;
+	unsigned int menu_state;
+	//settings
+	unsigned int resolution;
+	unsigned int sensivity;
+	unsigned int settings_state;
+	//other
+	unsigned int game_state;
+	unsigned int highlight;
+	unsigned int back;
+	unsigned int one;
+	unsigned int two;
+	unsigned int three;
+	unsigned int minimap;
+	//resolution
+	unsigned int low_res;
+	unsigned int mid_res;
+	unsigned int high_res;
+	unsigned int resolution_state;
+	unsigned int controls_state;
+	unsigned int extras_state;
+	t_img_data		*background[20];
+} t_menu;
 
 typedef struct s_data
 {
@@ -126,10 +180,12 @@ typedef struct s_data
 	t_window		*window;
 	char			**map;
 	int			map_size_in_units[2];
-	t_img_data		wall_textures[NB_TEXTURES];
+	t_img_data		*wall_textures[NB_TEXTURES];
 	t_img_data		*bonus_textures;
 	t_img_data		*img;
 	t_key_status	*key_status;
+	t_menu			*menu;
+	int mouse;
 }	t_data;
 
 enum x_or_y { _x, _y };

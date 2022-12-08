@@ -17,9 +17,9 @@ unsigned int	get_texture_pix(t_img_data *t, t_point pix)
 {
 	int addr;
 	unsigned int color;
+	addr = pix.y * t->width + pix.x;
 
-	addr = pix.y * t->line_len + pix.x * (t->bpp / 8);
-	color = (unsigned int)(*(int *)(t->adress + addr));
+	color = t->address[addr];
 	return (color);
 }
 
@@ -41,18 +41,19 @@ void	draw_texture(t_data *data, t_point start, t_point end, int line_height, t_r
 	double		ratio[2];
 	t_point		text_pix;
 	unsigned int		color;
-	t_img_data	t;
-
+	t_img_data	*t;
+(void)color;
+(void) text_pix;
 	t = data->wall_textures[ray->side];
 	ratio[_x] = get_wallX(ray) / (double) UNITS_PER_BOX;
-	text_pix.x = t.line_len * ratio[_x] / (double)(t.bpp / 8);
+	text_pix.x = t->line_len * ratio[_x] / (double)(t->bpp / 8);
 	if (start.y < 0)
 		start.y = 0;
 	while (start.y <= end.y && start.y < SCREEN_HEIGHT)
 	{
 		ratio[_y] = 1.0 - (double)(end.y - start.y) / (double)line_height;
-		text_pix.y = t.line_height * ratio[_y];
-		color = get_texture_pix(&t, text_pix);
+		text_pix.y = t->line_height * ratio[_y];
+		color = get_texture_pix(t, text_pix);
 		my_mlx_pixel_put(data->img, start.x, start.y, color);
 		start.y++;
 	}

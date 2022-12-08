@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/01 19:18:30 by supersko         ###   ########.fr       */
+/*   Updated: 2022/12/07 13:38:47 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,18 +93,22 @@ void	import_textures(t_data *data)
 {
 	int			i;
 	char		*fname;
-	t_img_data	t;
+	t_img_data	*t[NB_TEXTURES];
 
 	i = 0;
 	while (i < NB_TEXTURES)
 	{
+		data->wall_textures[i] = malloc(sizeof(t_img_data));
+		i++;
+	}
+	i = 0;
+	while (i < NB_TEXTURES)
+	{
+		t[i] = data->wall_textures[i];
 		fname = data->image->texture_path[i];
-		//set_texture_size(&t, fname);
-		t.img = mlx_xpm_file_to_image(data->window->mlx, fname, &t.line_len, &t.line_height);
-		t.adress = mlx_get_data_addr(t.img, &t.bpp, &t.line_len, &t.endian);
-		if (!t.img)
+		load_images(data, t[i],fname);
+		if (!t[i]->img)
 			exit_msg(data, "[import_textures] Pb loading xpm file", 1);
-		data->wall_textures[i] = t;
 		i++;
 	}
 }

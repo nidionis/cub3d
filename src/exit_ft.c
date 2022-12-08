@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_ft.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/01 17:19:43 by supersko         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:07:52 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,10 @@ void	exit_msg(t_data *data, char *msg, int ret_exit)
 {
 	error_msg(msg);
 	clean_exit(data, ret_exit);
+}
+
+int	exit_game(t_data *data)
+{
+	clean_exit(data, 0);
+	return (0);
 }
