@@ -161,6 +161,28 @@ void	clean_obstacle_behind_wall(t_list **list, double distance_max)
 	}
 }
 
+/*
+void add_sprites_to_obstacles_ls(t_data *data, t_rayponse *rayponse, t_list **obstacle_ls)
+{
+	t_list *sprite;
+
+	sprite = ?;
+	while (sprite)
+	{
+		// check if sprite is in front side
+		// get_distance ray/sprite
+		// if < UNIT_PER_BOX
+		// 	get distance sprite/cam_plan
+		// 	get textureX (probablement UNIT_PER_BOX / dist sprite/cam_plan)
+		// 	ajouter a la liste l'obstacle avec les donneees :
+		// 		dist
+		// 		texture_x
+		// 		texture
+		sprite = sprite->next;
+	}	
+}
+*/
+
 void	beam(t_data *data, t_rayponse *rayponse)
 {
 	t_rayponse	rays[2];
