@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/01 17:56:02 by supersko         ###   ########.fr       */
+/*   Updated: 2022/12/09 00:58:55 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 		if (still_in_map(data, rayponse.hit_point))
 		{
 			map_case =  pix_pos_to_map_case(data, rayponse.hit_point);
-			if (map_case == WALL)
+			if (map_case == WALL || map_case == 'P')
 				break ;
 			//else if (is_block(data, map_case) != -1)
 			//{

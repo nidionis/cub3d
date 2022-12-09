@@ -10,6 +10,9 @@ Parsing:
 		(if is_border, must be a WALL)
 		contains char in MAPCASE and N, S, E, W
 
-
+2 door
+3 green switch
+4 red switch
+5 minimap
 	
 

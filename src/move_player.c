@@ -85,7 +85,7 @@ Find the closest adjacent box and arrive at $
 */
 
 /* check if it steps out of a box */
-static int	f_is_box_crossed(t_player *player)
+int	f_is_box_crossed(t_player *player)
 {
 	int	direction;
 

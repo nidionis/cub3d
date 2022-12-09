@@ -25,4 +25,5 @@
 # include "config.h"
 # include "structs.h"
 # include "prototypes.h"
+#include <time.h>
 #endif

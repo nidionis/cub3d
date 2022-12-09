@@ -73,6 +73,11 @@
 # define SOUTH_CHAR 83
 # define WEST_CHAR 87
 # define EAST_CHAR 69
+# define DOOR '2'
+# define RED_SWITCH '3'
+# define GREEN_SWITCH '4'
+# define MINIMAP '5'
+# define KEY '6'
 /* for is_available_mapcase : keep directions at the end (see is_available_mapcase function) */
 # define MAPCASES "01 "
 /* MAPCASE to consider as a wall */
@@ -83,8 +88,8 @@
 /* should be eaual to windows width*/
 # define CAM_QUALITY 1900
 # define NB_TEXTURES 4
-# define UNITS_PER_BOX 1000
-# define STEPS_PER_BOX 100
+# define UNITS_PER_BOX 100
+# define STEPS_PER_BOX 30
 # define WALL_SIZE 20
 /* in radient 66 = 1.15*/
 /* num of ray_parse for a pic */

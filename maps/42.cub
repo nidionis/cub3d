@@ -1,8 +1,8 @@
-NO 	 ./treuc	
-SO ./d 
-WE       ee
-EA  d
-F    255,0,255
+NO ./assets/black_wall.xpm
+SO  ./assets/black_wall.xpm
+WE  ./assets/textures/wall.xpm
+EA  ./assets/textures/wall.xpm
+F   255,0,255
 C    0,255,255
 
 

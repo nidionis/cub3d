@@ -176,7 +176,11 @@ typedef struct s_data
 	t_img_data		*img;
 	t_key_status	*key_status;
 	t_menu			*menu;
-	int mouse;
+	time_t			timer;
+	int				time_state;
+	int				mouse;
+	int				map_width;
+	int				map_height;
 }	t_data;
 
 enum x_or_y { _x, _y };

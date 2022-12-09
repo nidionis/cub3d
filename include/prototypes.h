@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-#include "cub3d.h"
-int	f_is_box_crossed(t_player *player);
-t_point	map_position_in_front_of_player(t_player *player);
-=======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -11,7 +6,7 @@ t_point	map_position_in_front_of_player(t_player *player);
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/07 09:21:24 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:16:49 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +14,6 @@ t_point	map_position_in_front_of_player(t_player *player);
 # define PROTOTYPES_H
 # include "cub3d.h"
 
->>>>>>> 8caff8d2e0912afc8dd92ed6877dffde2fa43253
 void			error_msg(char *msg);
 char			**default_map(char	*argv[]);
 char			**ft_append_tab(char **matrix, char *str);
@@ -130,24 +124,8 @@ int				graphics_render(t_data *data);
 int				cub3d_render(t_data *data);
 
 //___________________draw functions_______________
-<<<<<<< HEAD
-void	draw_line(t_data *data, t_point	*start, t_point	*end, int color);
-void	draw_mini_map(t_data *data);
-void	draw_player(t_data *data);
-void	draw_vision_field(t_data *data, t_point minimap_position);
-void    my_mlx_pixel_put(t_img_data *img, int x, int y, int color);
-void	init_key_status(t_data *data);
-int     key_press(int key, t_data *data);
-int     key_realese(int key, t_data *data);
-void	load_textures(t_data *data);
-void	draw_cube(t_data *data, int size, int pos_y, int pos_x, int color);
-void	load_menu(t_data *data);
-int		load_images(t_data *data, t_img_data *image, char *path);
-void    render_menu(t_data *data);
-void	draw_image(t_img_data *img1, t_img_data *img2, t_point pos, int color);
-=======
 void			draw_line(t_data *data, t_point	*start, t_point	*end, int color);
-void			draw_mini_map(t_data *data, int size);
+void			draw_mini_map(t_data *data);
 void			draw_player(t_data *data);
 void			draw_vision_field(t_data *data, t_point minimap_position);
 void    		my_mlx_pixel_put(t_img_data *img, int x, int y, unsigned int color);
@@ -170,5 +148,9 @@ void			resolution_key_press(int key, t_data *data);
 void	draw_line_textured(t_data *data, t_point start, t_point end, int line_height, t_rayponse *ray);
 void	draw_wall_textured(t_data *data, int i_ray);
 void	draw_ceiling_floor_mandatory(t_data *data);
+int	f_is_box_crossed(t_player *player);
+t_point	map_position_in_front_of_player(t_player *player);
+void    generate_map_content(t_data *data, char c);
+int	check_path(t_data *data, int row, int col);
+int	generate_map(t_data *data);
 #endif
->>>>>>> 8caff8d2e0912afc8dd92ed6877dffde2fa43253

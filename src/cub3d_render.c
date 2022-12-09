@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/07 12:49:39 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:16:44 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	minimap_render(t_data *data)
 		"assets/wall20x20.xpm", &a, &b);
 	data->image->texture_path[1] = mlx_xpm_file_to_image(data->window->mlx, \
 		"assets/floor.xpm", &a, &b);
-	draw_mini_map(data, 15);
+	draw_mini_map(data);
 	return (0);
 }
 
@@ -91,20 +91,42 @@ void		mouse_rotate(t_data *data)
 //world_render generate the 3d world with raycast
 //player_smoth detects key pressure to make player move
 //mini_map_render generate the minimap if key M is pressed
+
 int	graphics_render(t_data *data)
 {
 	if (data->menu->game_state == 1)
 	{
+		if (data->time_state == 0)
+			data->time_state = 1;
+		else if (data->time_state == 1)
+		{
+			data->timer = time(NULL);
+			data->time_state = 2;
+		}
 		world_render(data);
 		if (data->mouse == 1)
 			mouse_rotate(data);
 		player_smoth_move(data);
 		if (data->menu->minimap== 1)
 			minimap_render(data);
-		draw_image(data->img, data->menu->background[4], y_x(SCREEN_HEIGHT /2 + 267,SCREEN_WIDTH/2 - (SCREEN_WIDTH/3)), -1);
+		draw_image(data->img, data->menu->background[4], y_x(SCREEN_HEIGHT / 2 + 267,SCREEN_WIDTH/2 - (SCREEN_WIDTH/3)), -1);
 		draw_stamina_hud(data);
 		mlx_put_image_to_window(data->window->mlx, data->window->init, \
 			data->img->img, 0, 0);
+		if (data->time_state == 2)
+			mlx_string_put(data->window->mlx,data->window->init,100,100,rgb_conv(255,255,255),ft_itoa(time(NULL) - data->timer));
+		if (data->time_state == 2 && time(NULL) - data->timer > 5)
+		{
+			generate_map(data);
+			printf("generating playable map\n");
+			while(!check_path(data,data->player->pos_map.y, data->player->pos_map.x))
+			{
+				mlx_string_put(data->window->mlx,data->window->init,150,150,rgb_conv(255,255,255),"not playable");
+				generate_map(data);
+			}
+			data->timer = time(NULL);
+		}
+		mlx_string_put(data->window->mlx,data->window->init,150,150,rgb_conv(255,255,255),"playable");
 	}
 	else
 		render_menu(data);
@@ -144,7 +166,7 @@ int	cub3d_render(t_data *data)
 	mlx_hook(data->window->init, 2, 1L << 0, key_press, data);
 	mlx_hook(data->window->init, 3, 1L << 1, key_realese, data);
 	mlx_loop_hook(data->window->mlx, graphics_render, data);
-	mlx_hook(data->window->init,12, 1L<<15, mouse_event,data);
+	mlx_hook(data->window->init,12, 1L<<15, mouse_event, data);
 	mlx_hook(data->window->init, 17, 1L << 17, &exit_game, data);
 	mlx_loop(data->window->mlx);
 	return (0);

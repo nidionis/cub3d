@@ -40,6 +40,51 @@
 	return (data);
 }
 
+void generate_map_content(t_data *data, char c)
+{
+	int y;
+	int x;
+	int wall_side;
+
+
+	wall_side = 0;
+	if (wall_side == 0)
+	{
+		x = rand() % data->map_width;
+		y = 0;
+	}
+	else if (wall_side == 1)
+	{
+		x = rand() % data->map_width;
+		y = data->map_height - 1;
+	}
+	else if (wall_side == 2)
+	{
+		x = 0;
+		y = rand() % data->map_height;
+	}
+	else
+	{
+		x = data->map_width - 1;
+		y = rand() % data->map_height;
+	}
+	if (data->map[y] && data->map[y][x])
+		data->map[y][x] = c;
+}
+
+void get_map_size(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	data->map_width = ft_strlen(data->map[0]);
+	while (data->map[i])
+	{
+		i++;
+	}
+	data->map_height = i;
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data		*data;
@@ -56,8 +101,14 @@ int	main(int argc, char *argv[])
 		data->window->mlx = mlx_init();
 		parse_file(argv[1],  data);
 		data->mouse = 0;
+		data->time_state = 0;
 		init_key_status(data);
 		load_window(data);
+		get_map_size(data);
+		generate_map_content(data, 'P');
+		data->blocks[1] = 'P';
+		data->blocks[2] = '3';
+		printf("%s\n",data->blocks);
 		cub3d_render(data);
 		clean_exit(data, 0);
 	}
