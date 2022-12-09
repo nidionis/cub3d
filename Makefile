@@ -9,6 +9,8 @@ OBJDIR   = obj
 DEBUG_LOG_FILE = debug_file
 
 SOURCES  := $(wildcard $(SRCDIR)/*.c)
+# SOURCES  := srcs/camera_ft.c srcs/cub3d_render.c srcs/debug_ft srcs/draw_functions.c srcs/draw_line.c srcs/exit_ft. \
+# srcs/ft_player_init.c
 INCLUDES := $(wildcard $(SRCDIR)/*.h)
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
@@ -25,8 +27,8 @@ ifeq ($(DESKTOP_SESSION), ubuntu)
 MINILIBX = minilibx_linux
 MLXFLAGS = -I /usr/X11/include -g -Lminilibx_linux -L /usr/lib -Iminilibx_linux -lmlx -lXext -lX11 -lm
 else
-MINILIBX = minilibx_mac
-MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
+MINILIBX = mlx
+MLXFLAGS = -framework OpenGL -framework AppKit
 PROJECT_H += $(MINILIBX)/mlx_new_window.h $(MINILIBX)/mlx.h $(MINILIBX)/mlx_int.h $(MINILIBX)/mlx_new_window.h $(MINILIBX)/mlx_opengl.h $(MINILIBX)/mlx_png.h
 endif
 
