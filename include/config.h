@@ -88,7 +88,7 @@
 /* should be eaual to windows width*/
 # define CAM_QUALITY 1900
 # define NB_TEXTURES 4
-# define BONUS_TEXTURES_SOLIDS "assets/black_wall.xpm,assets/floors.xpm,assets/resolution.xpn,assets/night_sky.xpm"
+# define BONUS_TEXTURES_SOLIDS "assets/black_wall.xpm,assets/floors.xpm,assets/resolution.xpm,assets/night_sky.xpm"
 # define SPRITES_TEXTURES ""
 # define UNITS_PER_BOX 100
 # define STEPS_PER_BOX 30

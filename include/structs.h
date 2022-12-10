@@ -165,8 +165,8 @@ typedef struct s_data
 	char			**map;
 	int			map_size_in_units[2];
 	t_img_data		*wall_textures[NB_TEXTURES];
-	t_img_data		**bonus_textures;
-	t_img_data		**sprite_textures;
+	t_img_data		*bonus_textures;
+	t_img_data		*sprite_textures;
 	t_img_data		*img;
 	t_key_status	*key_status;
 	t_menu			*menu;

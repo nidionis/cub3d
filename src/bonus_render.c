@@ -22,7 +22,6 @@ unsigned int	get_texture_pix(t_img_data *t, t_point pix)
 	color = t->address[addr];
 	return (color);
 }
-
 /* return the position of the ray in the wall (in UNIT_PER_BOX) */
 int	get_wallX(t_rayponse *ray)
 {
@@ -61,7 +60,7 @@ void	draw_texture(t_data *data, t_point start, t_point end, int line_height, t_r
 
 void	init_Yvar(t_point *start, t_point *end, int *line_height, int distance)
 {
-	if (distance == 0)
+	if (distance <= 1)
 		distance = 1;
 	if (distance < 0)
 		distance = 2147483647;
@@ -114,6 +113,7 @@ void	draw_obstacles(t_data *data, t_point *start, t_point *end, t_list *l_obstac
 	{
 		obstacle = (t_obstacle *)tmp->content;
 		init_Yvar(start, end, &line_height, obstacle->dist);
+		fprintf(stderr, "[draw_obstacle]\n");
 		draw_obstacle_texture(data, *start, *end, line_height, obstacle);
 		tmp = tmp->next;
 	}

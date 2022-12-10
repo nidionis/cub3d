@@ -108,8 +108,8 @@ int	main(int argc, char *argv[])
 		get_map_size(data);
 		generate_map_content(data, 'P');
 		data->rain_state = rand() % 5;
-		data->blocks[1] = 'P';
-		data->blocks[2] = '3';
+		//data->blocks[1] = 'P';
+		//data->blocks[2] = '3';
 		printf("%s\n",data->blocks);
 		import_bonus_textures(data);
 		cub3d_render(data);

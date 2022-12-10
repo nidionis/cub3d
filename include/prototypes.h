@@ -150,6 +150,7 @@ void    generate_map_content(t_data *data, char c);
 int	check_path(t_data *data, int row, int col);
 int	generate_map(t_data *data);
 
+t_point get_img_size(char *path);
 
 //proto nico
 
@@ -160,4 +161,5 @@ t_list	*sort_obstacles(t_list **lst);
 void	add_obstacle(t_data *data, t_rayponse ray, char map_case, int dir, t_list **obstacles_ls);
 t_list		*add_sprites_to_obstacles_ls(t_data *data, t_rayponse *rayponse, t_list **obstacles_ls);
 t_list		*add_sprites(t_data *data, t_rayponse *rayturned, t_list **obstacles_ls);
+void	clean_obstacle_behind_wall(t_list **list, double distance_max);
 #endif

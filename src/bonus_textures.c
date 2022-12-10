@@ -3,7 +3,6 @@
 void	import_bonus_textures(t_data *data)
 {
 	int	i;
-	int	fd;
 	char	**fnames;
 	int	nb_textures;
 	t_img_data	*t;
@@ -11,25 +10,19 @@ void	import_bonus_textures(t_data *data)
 	i = 0;
 	fnames = ft_split(BONUS_TEXTURES_SOLIDS, ',');
 	nb_textures = ft_matrixlen(fnames);
-	data->bonus_textures = malloc(sizeof(t_img_data) * nb_textures);
+	data->bonus_textures = malloc(sizeof(t_img_data) * nb_textures + 1);
 	while (i < nb_textures)
 	{
-		t = data->bonus_textures[i];
-		if ((fd = open(fnames[i], O_RDONLY)) == -1)
-			exit_msg(data, "[import_textures] cannot opening file", 1);
-		else
-			close(fd);
-			
-		t->img = mlx_xpm_file_to_image(data->window->mlx, fnames[i], &t->line_len, &t->line_height);
-		t->adress = mlx_get_data_addr(t->img, &t->bpp, &t->line_len, &t->endian);
+		t = &data->bonus_textures[i];
+		load_images(data, t, fnames[i]);
 		if (!t->img)
 			exit_msg(data, "[import_textures] Pb loading xpm file", 1);
-		data->bonus_textures[i] = t;
 		i++;
 	}
 	ft_free_split(&fnames);
 }
 
+/*
 void	import_sprites_textures(t_data *data)
 {
 	int	i;
@@ -53,3 +46,4 @@ void	import_sprites_textures(t_data *data)
 	}
 	ft_free_split(&fnames);
 }
+*/
