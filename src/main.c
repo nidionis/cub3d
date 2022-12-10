@@ -96,6 +96,7 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
+		srand(time(NULL));
 		data = malloc_data();
 		data->window = malloc(sizeof(t_window));
 		data->window->mlx = mlx_init();
@@ -106,6 +107,7 @@ int	main(int argc, char *argv[])
 		load_window(data);
 		get_map_size(data);
 		generate_map_content(data, 'P');
+		data->rain_state = rand() % 5;
 		data->blocks[1] = 'P';
 		data->blocks[2] = '3';
 		printf("%s\n",data->blocks);

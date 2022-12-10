@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/09 15:39:44 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/10 12:56:37 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,24 @@ int	minimap_render(t_data *data)
 		"assets/floor.xpm", &a, &b);
 	draw_mini_map(data);
 	return (0);
+}
+
+void draw_rain(t_data *data, int lines)
+{
+	t_point start;
+	t_point end;
+	int i;
+
+	i = 0;
+	while (i < lines)
+	{
+		start.x = rand() % SCREEN_WIDTH - 1;
+   		start.y = 0;
+		end.x = start.x + (rand() - RAND_MAX / 2) % 50;
+    	end.y = SCREEN_HEIGHT - 1;
+		draw_line(data, &start, &end, rgb_conv(255,255,255));
+		i++;
+	}
 }
 
 //generate the 3d world with raycast
@@ -79,14 +97,14 @@ void		mouse_rotate(t_data *data)
 
 	if (data->mouse == 0)
 		return ;
-	mlx_mouse_get_pos(data->window->init, &pos.x, &pos.y);
+	mlx_mouse_get_pos(data->window->mlx, data->window->init, &pos.x, &pos.y);
 	delta.x = pos.x - SCREEN_WIDTH/2;
 	delta.y = pos.y - SCREEN_HEIGHT/2;
 	if (delta.x < 0)
 		rotate_player(data->player,LEFT);
 	else if (delta.x > 0)
 		rotate_player(data->player,RIGHT);
-	mlx_mouse_move(data->window->init, SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+	mlx_mouse_move(data->window->mlx, data->window->init, SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 }
 //world_render generate the 3d world with raycast
 //player_smoth detects key pressure to make player move
@@ -104,29 +122,24 @@ int	graphics_render(t_data *data)
 			data->time_state = 2;
 		}
 		world_render(data);
+		if (data->rain_state == 0)
+			draw_rain(data, rand() % 20);
 		if (data->mouse == 1)
 			mouse_rotate(data);
 		player_smoth_move(data);
 		if (data->menu->minimap== 1)
 			minimap_render(data);
-		draw_image(data->img, data->menu->background[4], y_x(SCREEN_HEIGHT / 2 + 267,SCREEN_WIDTH/2 - (SCREEN_WIDTH/3)), -1);
+		draw_image(data->img, data->menu->background[4], y_x(SCREEN_HEIGHT / 2 + 267, SCREEN_WIDTH/2 - (SCREEN_WIDTH/3)), -1);
 		draw_stamina_hud(data);
 		mlx_put_image_to_window(data->window->mlx, data->window->init, \
 			data->img->img, 0, 0);
 		if (data->time_state == 2)
 			mlx_string_put(data->window->mlx,data->window->init,100,100,rgb_conv(255,255,255),ft_itoa(time(NULL) - data->timer));
-		if (data->time_state == 2 && time(NULL) - data->timer > 5)
+		if (data->time_state == 2 && time(NULL) - data->timer > 30)
 		{
-			generate_map(data);
-			printf("generating playable map\n");
-			while(!check_path(data,data->player->pos_map.y, data->player->pos_map.x))
-			{
-				mlx_string_put(data->window->mlx,data->window->init,150,150,rgb_conv(255,255,255),"not playable");
-				generate_map(data);
-			}
+			while(generate_map(data) && !check_path(data,data->player->pos_map.y, data->player->pos_map.x));
 			data->timer = time(NULL);
 		}
-		mlx_string_put(data->window->mlx,data->window->init,150,150,rgb_conv(255,255,255),"playable");
 	}
 	else
 		render_menu(data);
@@ -138,27 +151,6 @@ int mouse_event(t_data *data)
 	data->mouse = 1;
 	mlx_mouse_hide(data->window->mlx,data->window->init);
 	return (0);
-}
-/* dirty way to draw ceiling and floor */
-void	draw_ceiling_floor_mandatory(t_data *data)
-{
-	t_point	p;
-
-	p.y = 0;
-	while (p.y < SCREEN_HEIGHT / 2)
-	{
-		p.x = 0;
-		while (p.x < SCREEN_WIDTH)
-			my_mlx_pixel_put(data->img, p.x++, p.y, data->image->ceiling_color);
-		p.y++;
-	}
-	while (p.y < SCREEN_HEIGHT)
-	{
-		p.x = 0;
-		while (p.x < SCREEN_WIDTH)
-			my_mlx_pixel_put(data->img, p.x++, p.y, data->image->floor_color);
-		p.y++;
-	}
 }
 
 int	cub3d_render(t_data *data)

@@ -181,6 +181,7 @@ typedef struct s_data
 	int				mouse;
 	int				map_width;
 	int				map_height;
+		int			rain_state;
 }	t_data;
 
 enum x_or_y { _x, _y };

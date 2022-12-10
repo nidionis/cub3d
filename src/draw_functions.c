@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:03:28 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/08 17:55:24 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/10 11:09:33 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,43 +44,6 @@ void	draw_player(t_data *data)
 
 void	draw_mini_map(t_data *data)
 {
-	// t_point	pos;
-	// int		i;
-	// int		j;
-
-	// j = 0;
-	// i = 0;
-	// if (data->player->pos_map.x - (size / 2) >= 0) 
-	// 	pos.x = data->player->pos_map.x  - (size / 2);
-	// else
-	// 	pos.x = 0;
-	// if (data->player->pos_map.y - (size / 2) >= 0) 
-	// 	pos.y = data->player->pos_map.y - (size / 2);
-	// else
-	// 	pos.y = 0;
-	// while (data->map[pos.y])
-	// {
-	// 	while (data->map[pos.y][pos.x])
-	// 	{
-	// 		if (i >= size)
-	// 			break;
-	// 		if (data->map[pos.y][pos.x] == '1')
-	// 			draw_cube(data, WALL_SIZE, j * WALL_SIZE + (WALL_SIZE / 2), i * WALL_SIZE + (WALL_SIZE / 2), 0xF0F00F);
-	// 		else 
-	// 			draw_cube(data, WALL_SIZE, j * WALL_SIZE + (WALL_SIZE / 2), i * WALL_SIZE + (WALL_SIZE / 2), 0x0FFF0F);
-	// 		i++;
-	// 		pos.x++;
-	// 	}
-	// 	if (j > size)
-	// 		break;
-	// 	j++;
-	// 	i = 0;
-	// 	if (data->player->pos_map.x - (size / 2) >= 0) 
-	// 		pos.x = data->player->pos_map.x  - (size / 2);
-	// 	else
-	// 		pos.x = 0;
-	// 	pos.y++;
-	// }
 t_point	pos;
 	int		i;
 	int		j;
@@ -137,4 +100,25 @@ void	draw_vision_field(t_data *data, t_point minimap_position)
 	end.x = minimap_position.x + data->player->direction.x * 15;
 	end.y = minimap_position.y + data->player->direction.y * 15;
 	draw_line(data, &minimap_position, &end, rgb_conv(0, 0, 0));
+}
+
+void	draw_ceiling_floor_mandatory(t_data *data)
+{
+	t_point	p;
+
+	p.y = 0;
+	while (p.y < SCREEN_HEIGHT / 2)
+	{
+		p.x = 0;
+		while (p.x < SCREEN_WIDTH)
+			my_mlx_pixel_put(data->img, p.x++, p.y, data->image->ceiling_color);
+		p.y++;
+	}
+	while (p.y < SCREEN_HEIGHT)
+	{
+		p.x = 0;
+		while (p.x < SCREEN_WIDTH)
+			my_mlx_pixel_put(data->img, p.x++, p.y, data->image->floor_color);
+		p.y++;
+	}
 }
