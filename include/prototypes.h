@@ -104,16 +104,12 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 double			distance_points(t_point p1, t_point p2);
-t_obstacle		*add_sprites(t_data *data, t_rayponse *rayturned, t_obstacle **obstacles_ls);
-t_obstacle		*add_obstacle(t_data *data, t_rayponse r, char m_case, t_obstacle **ls);
 void			convert_pos_and_dir_to_line(t_point pos, t_vector vec, t_vector line[2]);
-t_obstacle		*add_obstacle(t_data *data, t_rayponse r, char m_case, t_obstacle **ls);
-t_obstacle		*sort_obstacles(t_obstacle **ls);
-int				ft_lstlen(t_obstacle *lst);
-t_obstacle		*add_sprites_to_obstacles_ls(t_data *data, t_rayponse *rayponse, t_obstacle **obstacles_ls);
+int				ft_lstlen(t_list *lst);
+t_list		*sort_obstacles(t_list **ls);
 int				get_side_hit(t_data *data, int index_closest);
 int				len_overflow(int len);
-void			set_beam(t_data *data, t_obstacle **obstacles_ls);
+void			set_beam(t_data *data, t_list **obstacles_ls);
 double			get_dist_from_plan(t_data *data, t_rayponse *rayponse);
 t_point			units_pos_to_minimap_pos(t_data *data, t_point absolute_position);
 int				load_window(t_data *data);
@@ -153,4 +149,15 @@ t_point	map_position_in_front_of_player(t_player *player);
 void    generate_map_content(t_data *data, char c);
 int	check_path(t_data *data, int row, int col);
 int	generate_map(t_data *data);
+
+
+//proto nico
+
+void	import_bonus_textures(t_data *data);
+void	import_sprites_textures(t_data *data);
+int	get_wallX(t_rayponse *ray);
+t_list	*sort_obstacles(t_list **lst);
+void	add_obstacle(t_data *data, t_rayponse ray, char map_case, int dir, t_list **obstacles_ls);
+t_list		*add_sprites_to_obstacles_ls(t_data *data, t_rayponse *rayponse, t_list **obstacles_ls);
+t_list		*add_sprites(t_data *data, t_rayponse *rayturned, t_list **obstacles_ls);
 #endif

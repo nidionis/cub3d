@@ -17,6 +17,8 @@ typedef struct s_point
 	int	y;
 }	t_point;
 
+typedef struct	s_obstacle t_obstacle;
+
 typedef struct s_player
 {
 	/* in square */
@@ -37,15 +39,7 @@ typedef struct s_player
 typedef struct	s_sprite
 {
 	int type;
-	int state;
-	int map;
-	int x;
-	int y;
-	int z;
-	//texture
 	t_point	pos;
-
-	struct s_sprite	*next;
 }	t_sprite;
 
 typedef struct s_image
@@ -58,23 +52,13 @@ typedef struct s_image
 	int				sprite_half_size;
 }	t_image;
 
-typedef struct	s_obstacle
-{
-	char				type;
-	double				len;
-	// if type is IS_BLOCK
-	int				textureX;
-	int				side;
-	t_sprite			*sprite_pointer;
-}	t_obstacle;
-
 typedef struct	s_rayponse
 {
 	double		len;
 	double		dist_from_plan;
 	int			side;
 	t_point		hit_point;
-	t_obstacle	*obstacles_ls;
+	t_list	*obstacles_ls;
 }	t_rayponse;
 
 typedef struct	s_ray
@@ -116,6 +100,14 @@ typedef struct s_img_data
 	int width;
 	int height;
 }	t_img_data;
+
+typedef struct	s_obstacle
+{
+	char				type;
+	double				dist;
+	int				textureX;
+	t_img_data			*texture;
+}	t_obstacle;
 
 typedef struct s_key_status
 {
@@ -173,6 +165,8 @@ typedef struct s_data
 	char			**map;
 	int			map_size_in_units[2];
 	t_img_data		*wall_textures[NB_TEXTURES];
+	t_img_data		**bonus_textures;
+	t_img_data		**sprite_textures;
 	t_img_data		*img;
 	t_key_status	*key_status;
 	t_menu			*menu;

@@ -79,15 +79,17 @@
 # define MINIMAP '5'
 # define KEY '6'
 /* for is_available_mapcase : keep directions at the end (see is_available_mapcase function) */
-# define MAPCASES "01 "
+# define MAPCASES "012 "
 /* MAPCASE to consider as a wall */
-# define IS_BLOCK "1 "
+# define IS_BLOCK "12 "
 # define NB_TEXTURES 4
 # define SCREEN_WIDTH 1900
 # define SCREEN_HEIGHT 1080
 /* should be eaual to windows width*/
 # define CAM_QUALITY 1900
 # define NB_TEXTURES 4
+# define BONUS_TEXTURES_SOLIDS "assets/black_wall.xpm,assets/floors.xpm,assets/resolution.xpn,assets/night_sky.xpm"
+# define SPRITES_TEXTURES ""
 # define UNITS_PER_BOX 100
 # define STEPS_PER_BOX 30
 # define WALL_SIZE 20

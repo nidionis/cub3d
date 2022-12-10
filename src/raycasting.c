@@ -12,26 +12,28 @@
 
 #include "cub3d.h"
 
-/*
-void	add_obstacle(t_data *data, t_rayponse *ray, char map_case, t_list **lst)
+void	add_obstacle(t_data *data, t_rayponse ray, char map_case, int dir, t_list **obstacles_ls)
 {
 	t_obstacle	*obst;
 	t_list		*item;
+	int		i_texture;
 	(void)map_case;
 
 	obst = malloc(sizeof(t_obstacle));
 	if (!obst)
 		exit_msg(data, "[add_obstacle] pb adding obstacle", 1);
-	obst->side = get_side_hit(data, dir);
-	obst->textureX = get_wallX(ray);
+	ray.side = get_side_hit(data, dir);
+	i_texture = map_case - '2' + ray.side;
+	obst->dist = get_dist_from_plan(data, &ray);
+	obst->textureX = get_wallX(&ray);
+	obst->texture = data->bonus_textures[i_texture];
 	item = ft_lstnew((void *)obst);
 	if (!item)
 		exit_msg(data, "[add_obstacle] pb adding obstacle", 2);
-	ft_lstadd_front(lst, item);
+	ft_lstadd_front(obstacles_ls, item);
 }
-*/
 
-t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
+t_rayponse	next_wall_dir(t_data *data, int dir, t_list **obstacles_ls)
 {
 	t_cam			*cam;
 	t_ray			ray;
@@ -39,7 +41,6 @@ t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 	t_rayponse		rayponse;
 	char			map_case;
 
-	(void)obstacles_ls;
 	cam = data->cam;
 	ray = *(cam->beam);
 	rayponse.len = ray.side_distances[dir];
@@ -50,12 +51,10 @@ t_rayponse	next_wall_dir(t_data *data, int dir, t_obstacle **obstacles_ls)
 		if (still_in_map(data, rayponse.hit_point))
 		{
 			map_case =  pix_pos_to_map_case(data, rayponse.hit_point);
-			if (map_case == WALL || map_case == 'P')
+			if (map_case == WALL)
 				break ;
-			//else if (is_block(data, map_case) != -1)
-			//{
-			//	add_obstacle(data, rayponse, map_case, obstacles_ls);
-			//}
+			else if (is_block(data, map_case) != -1)
+				add_obstacle(data, rayponse, map_case, dir, obstacles_ls);
 		}
 		else
 		{
@@ -73,7 +72,7 @@ void	beam(t_data *data, t_rayponse *rayponse)
 {
 	t_rayponse	rays[2];
 	int			index_closest;
-	t_obstacle	*obstacles_ls;
+	t_list	*obstacles_ls;
 
 	set_beam(data, &obstacles_ls);
 	rays[_x] = next_wall_dir(data, _x, &obstacles_ls);
@@ -86,7 +85,7 @@ void	beam(t_data *data, t_rayponse *rayponse)
 	//rayponse->side = get_side_hit(data, index_closest);
 	rayponse->dist_from_plan = get_dist_from_plan(data, rayponse);
 	//add_sprites_to_obstacles_ls(data, rayponse, &obstacles_ls);
-	//rayponse->obstacles_ls = sort_obstacles(&obstacles_ls);
+	rayponse->obstacles_ls = sort_obstacles(&obstacles_ls);
 }
 
 void	set_arRay(t_data *data)
