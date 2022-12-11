@@ -64,6 +64,8 @@
 # define UP_ARROW 126
 
 //MACROS 
+# define INVISIBLE 0xce00cc
+# define BREAKING_COLOR 0xff00cc
 # define WALL 49
 # define FLOOR 48
 /* EMPTY must be ' ', for the function format_map lets call lane the '0' */
@@ -89,8 +91,8 @@
 # define CAM_QUALITY 1900
 # define NB_TEXTURES 4
 # define BONUS_TEXTURES_SOLIDS "assets/black_wall.xpm,assets/floors.xpm,assets/resolution.xpm,assets/night_sky.xpm"
-# define SPRITES_TEXTURES "assets/logo.xpm"
-# define SPRITE_DENSITY 2
+# define SPRITES_TEXTURES "assets/grass.xpm"
+# define SPRITE_DENSITY 1
 # define UNITS_PER_BOX 100
 # define STEPS_PER_BOX 30
 # define WALL_SIZE 20

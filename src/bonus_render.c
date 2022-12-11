@@ -97,7 +97,10 @@ void	draw_obstacle_texture(t_data *data, t_point start, t_point end, int line_he
 		ratio[_y] = 1.0 - (double)(end.y - start.y) / (double)line_height;
 		text_pix.y = t->line_height * ratio[_y];
 		color = get_texture_pix(t, text_pix);
-		my_mlx_pixel_put(data->img, start.x, start.y, color);
+		if (color == BREAKING_COLOR)
+			break ;
+		if (color != INVISIBLE)
+			my_mlx_pixel_put(data->img, start.x, start.y, color);
 		start.y++;
 	}
 }
@@ -113,7 +116,6 @@ void	draw_obstacles(t_data *data, t_point *start, t_point *end, t_list *l_obstac
 	{
 		obstacle = (t_obstacle *)tmp->content;
 		init_Yvar(start, end, &line_height, obstacle->dist);
-		fprintf(stderr, "[draw_obstacle]\n");
 		draw_obstacle_texture(data, *start, *end, line_height, obstacle);
 		tmp = tmp->next;
 	}

@@ -20,7 +20,6 @@ void	import_bonus_textures(t_data *data)
 		i++;
 	}
 	ft_free_split(&fnames);
-	data->image->sprite_ls = init_random_sprites(data);
 }
 
 void	import_sprites_textures(t_data *data)
@@ -44,4 +43,5 @@ void	import_sprites_textures(t_data *data)
 		i++;
 	}
 	ft_free_split(&fnames);
+	data->image->sprite_ls = init_random_sprites(data);
 }

@@ -112,6 +112,7 @@ int	main(int argc, char *argv[])
 		//data->blocks[2] = '3';
 		printf("%s\n",data->blocks);
 		import_bonus_textures(data);
+		import_sprites_textures(data);
 		cub3d_render(data);
 		clean_exit(data, 0);
 	}
