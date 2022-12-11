@@ -64,13 +64,23 @@ void   add_sprite(t_data *data, t_sprite *sprite, double dist_to_ray, double dis
 }
 */
 
-int	is_in_front_side(t_player *player, t_point p)
+int	is_in_front_side(t_data *data, t_point p)
 {
-	if ((player->pos_in_pix.x - p.x) * player->direction.x < 0)
-		return (1);
-	if ((player->pos_in_pix.y - p.y) * player->direction.y < 0)
-		return (1);
-	return (0);
+	int is_true;
+
+	is_true = 0;
+	// if sprite is on west dide
+	if (data->player->pos_in_pix.x - p.x > 0)
+	{
+	       	if (data->player->direction.x < 0)
+			is_true = 1;
+	}
+	if (data->player->pos_in_pix.y - p.y)
+	{
+	       	if (data->player->direction.y < 0)
+			is_true = 1;
+	}
+	return (is_true);
 }
 
 void add_sprites_to_obstacles_ls(t_data *data, t_list **obstacles_ls)
@@ -85,7 +95,7 @@ void add_sprites_to_obstacles_ls(t_data *data, t_list **obstacles_ls)
        while (sprite)
        {
                // we should check if sprite is in front side, but who carse for grass and flowers
-	       if (!is_in_front_side(data->player, ((t_sprite *)sprite->content)->pos))
+	       if (!is_in_front_side(data, ((t_sprite *)sprite->content)->pos))
 	       {
 		       sprite = sprite->next;
 		       break;
