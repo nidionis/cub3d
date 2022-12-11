@@ -28,7 +28,6 @@ void	add_obstacle(t_data *data, t_rayponse ray, char map_case, int dir, t_list *
 	obst->textureX = get_wallX(&ray);
 	obst->texture = &data->bonus_textures[i_texture];
 	item = ft_lstnew((void *)obst);
-	fprintf(stderr,"[obstacle_added] i:%d\n", i_texture);
 	if (!item)
 		exit_msg(data, "[add_obstacle] pb adding obstacle", 2);
 	ft_lstadd_front(obstacles_ls, item);
@@ -81,9 +80,8 @@ void	beam(t_data *data, t_rayponse *rayponse)
 		index_closest = _y;
 	*rayponse = rays[index_closest];
 	rayponse->side = get_side_hit(data, index_closest);
-	//rayponse->side = get_side_hit(data, index_closest);
 	rayponse->dist_from_plan = get_dist_from_plan(data, rayponse);
-	//add_sprites_to_obstacles_ls(data, rayponse, &obstacles_ls);
+	add_sprites_to_obstacles_ls(data, &obstacles_ls);
 	sort_obstacles(&obstacles_ls);
 	clean_obstacle_behind_wall(&obstacles_ls, rayponse->dist_from_plan);
 	rayponse->obstacles_ls = obstacles_ls;

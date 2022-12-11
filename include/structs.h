@@ -46,10 +46,9 @@ typedef struct s_image
 {
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
-	char			*texture_path[NB_TEXTURES];
-	int				line_len;
-	t_sprite		*sprite_ls;
-	int				sprite_half_size;
+	char		*texture_path[NB_TEXTURES];
+	int		line_len;
+	t_list		*sprite_ls;
 }	t_image;
 
 typedef struct	s_rayponse
