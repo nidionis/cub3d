@@ -151,6 +151,17 @@ typedef struct s_menu
 	unsigned int extras_state;
 	t_img_data		*background[20];
 } t_menu;
+typedef struct s_door
+{
+	int door_side;
+	t_point pos;
+}	t_door;
+
+typedef struct s_switch
+{
+	int state;
+	t_point pos;
+}	t_switch;
 
 typedef struct s_data
 {
@@ -158,6 +169,7 @@ typedef struct s_data
 	char			**line_split;
 	char			*blocks;
 	char			*map_cases;
+	char *textures;
 	t_image			*image;
 	t_player		*player;
 	t_cam			*cam;
@@ -176,6 +188,8 @@ typedef struct s_data
 	int				map_width;
 	int				map_height;
 		int			rain_state;
+		t_door			door;
+	t_switch		switcher;
 }	t_data;
 
 enum x_or_y { _x, _y };

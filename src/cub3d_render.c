@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/10 12:56:37 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:52:25 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,12 +134,12 @@ int	graphics_render(t_data *data)
 		mlx_put_image_to_window(data->window->mlx, data->window->init, \
 			data->img->img, 0, 0);
 		if (data->time_state == 2)
-			mlx_string_put(data->window->mlx,data->window->init,100,100,rgb_conv(255,255,255),ft_itoa(time(NULL) - data->timer));
-		if (data->time_state == 2 && time(NULL) - data->timer > 30)
-		{
-			while(generate_map(data) && !check_path(data,data->player->pos_map.y, data->player->pos_map.x));
-			data->timer = time(NULL);
-		}
+			mlx_string_put(data->window->mlx,data->window->init,data->window->width / 2 - 450,data->window->height - 120,rgb_conv(255,255,255),ft_itoa(time(NULL) - data->timer));
+		// if (data->time_state == 2 && time(NULL) - data->timer > (data->map_height * data->map_height) / 7)
+		// {
+		// 	while(generate_map(data) && !check_path(data,data->player->pos_map.y, data->player->pos_map.x));
+		// 	data->timer = time(NULL);
+		// }
 	}
 	else
 		render_menu(data);

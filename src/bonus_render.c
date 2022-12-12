@@ -18,7 +18,6 @@ unsigned int	get_texture_pix(t_img_data *t, t_point pix)
 	int addr;
 	unsigned int color;
 	addr = pix.y * t->width + pix.x;
-
 	color = t->address[addr];
 	return (color);
 }
@@ -113,7 +112,7 @@ void	draw_obstacles(t_data *data, t_point *start, t_point *end, t_list *l_obstac
 	{
 		obstacle = (t_obstacle *)tmp->content;
 		init_Yvar(start, end, &line_height, obstacle->dist);
-		fprintf(stderr, "[draw_obstacle]\n");
+		// fprintf(stderr, "[draw_obstacle]\n");
 		draw_obstacle_texture(data, *start, *end, line_height, obstacle);
 		tmp = tmp->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/07 13:38:47 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/12 01:39:34 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,4 +138,8 @@ void	parse_file(char *fname, t_data *data)
 		exit_msg(data, "[parse_file] pb loading map", -1);
 	format_map(data);
 	map_parse = check_map(data);
+	get_map_size(data);
+	draw_map_border(data,data->map_height, data->map_width);
+	data->map_size_in_units[_x] = ft_strlen(data->map[0]) * (int)UNITS_PER_BOX;
+	data->map_size_in_units[_y] = ft_matrixlen(data->map) * (int)UNITS_PER_BOX;
 }

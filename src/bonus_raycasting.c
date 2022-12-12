@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   bonus_raycasting.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/01 17:56:02 by supersko         ###   ########.fr       */
+/*   Updated: 2022/12/11 13:50:23 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ t_list	*sort_obstacles(t_list **lst)
 	t_list	*list;
 	t_list	*closest;
 
-	fprintf(stderr, "[sort_obstacle] list=%p", *lst);
+	// fprintf(stderr, "[sort_obstacle] list=%p", *lst);
 	sorted_list = NULL;
 	list = *lst;
 	while (list)
 	{
-		fprintf(stderr, "[sort_obstacle]");
+		// fprintf(stderr, "[sort_obstacle]");
 		closest = closest_in_list(&list);
 		pop_closest(&list, closest);
 		ft_lstadd_front(&sorted_list, closest);

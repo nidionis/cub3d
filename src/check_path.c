@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:54:41 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/09 00:16:52 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:49:42 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	back_track_finder(t_data *data, char **map, int row, int col)
 {
-	if (map[row][col] == 'P')
+	if (map[row][col] == '2')
 		return (1);
-	else if (map[row][col] == '0' || map[row][col] == 'E')
+	else if (map[row][col] == '0' || map[row][col] == 'E' || \
+		map[row][col] == 'N' || map[row][col] == 'W' \
+			|| map[row][col] == 'S')
 	{
 		map[row][col] = 'X';
 		if (row < data->map_height)

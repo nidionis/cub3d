@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/09 15:48:07 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:21:34 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	add_obstacle(t_data *data, t_rayponse ray, char map_case, int dir, t_list *
 	obst->textureX = get_wallX(&ray);
 	obst->texture = &data->bonus_textures[i_texture];
 	item = ft_lstnew((void *)obst);
-	fprintf(stderr,"[obstacle_added] i:%d\n", i_texture);
 	if (!item)
 		exit_msg(data, "[add_obstacle] pb adding obstacle", 2);
 	ft_lstadd_front(obstacles_ls, item);

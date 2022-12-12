@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:28:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/06 11:14:33 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:23:43 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ int	key_game(int key, t_data *data)
 	}
 	else if (key == KEY_P)
 		data->map[0][1] = '0';
+	if (end_game(data) && key == KEY_E)
+		exit(0);
 	return (0);
 }

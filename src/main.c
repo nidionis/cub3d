@@ -40,36 +40,56 @@
 	return (data);
 }
 
+// void	generate_map_border(char **map)
+// {
+// 
+// }
+
 void generate_map_content(t_data *data, char c)
 {
 	int y;
 	int x;
 	int wall_side;
 
-
-	wall_side = 0;
+	if (data->door.pos.x || data->door.pos.y)
+		data->map[data->door.pos.y][data->door.pos.x] = '1';
+	wall_side = rand() % 4;
 	if (wall_side == 0)
 	{
-		x = rand() % data->map_width;
-		y = 0;
+		x = rand() % data->map_width - 2;
+		if (x <= 0)
+			x = 1;
+		y = 1;
+		data->door.door_side = NORTH;
 	}
 	else if (wall_side == 1)
 	{
-		x = rand() % data->map_width;
-		y = data->map_height - 1;
+		x = rand() % data->map_width - 2;
+		if (x <= 0)
+			x = 1;
+		y = data->map_height - 2;
+		data->door.door_side = SOUTH;
 	}
-	else if (wall_side == 2)
+	else if (wall_side == 3)
 	{
-		x = 0;
-		y = rand() % data->map_height;
+		x = 1;
+		y = rand() % data->map_height - 2;
+		if (y <= 0)
+			y = 1;
+		data->door.door_side = WEST;
 	}
 	else
 	{
-		x = data->map_width - 1;
-		y = rand() % data->map_height;
+		x = data->map_width - 2;
+		y = rand() % data->map_height - 2;
+		if (y <= 0)
+			y = 1;
+		data->door.door_side = EAST;
 	}
-	if (data->map[y] && data->map[y][x])
+	if (y < data->map_height && x < data->map_width)
 		data->map[y][x] = c;
+	data->door.pos.x = x;
+	data->door.pos.y = y;
 }
 
 void get_map_size(t_data *data)
@@ -83,6 +103,34 @@ void get_map_size(t_data *data)
 		i++;
 	}
 	data->map_height = i;
+}
+
+void ff_player(char **map, t_player *player)
+{
+	int y;
+	int x;
+
+	y = 0;
+	x = 0;
+	while(map[y])
+	{
+		while(map[y][x])
+		{
+			if (map[y][x] == 'N' || map[y][x] == 'W' || map[y][x] == 'E' || map[y][x] == 'S')
+			{
+				player->pos_map.x = x;
+				player->pos_map.y = y;
+				player->pos_box.x = UNITS_PER_BOX / 2;
+				player->pos_box.y = UNITS_PER_BOX / 2;
+				player->pos_in_step = update_pos_in_step(player);
+				player->pos_in_pix = update_pos_in_pix(player);
+				return ;
+			}
+			x++;
+		}
+		x = 0;
+		y++;
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -103,14 +151,14 @@ int	main(int argc, char *argv[])
 		parse_file(argv[1],  data);
 		data->mouse = 0;
 		data->time_state = 0;
+		ff_player(data->map, data->player);
 		init_key_status(data);
 		load_window(data);
 		get_map_size(data);
-		generate_map_content(data, 'P');
+		while(!check_path(data,data->player->pos_map.y, data->player->pos_map.x))
+			generate_map_content(data, '2');
+		// data->map[2][2] = '3';
 		data->rain_state = rand() % 5;
-		//data->blocks[1] = 'P';
-		//data->blocks[2] = '3';
-		printf("%s\n",data->blocks);
 		import_bonus_textures(data);
 		cub3d_render(data);
 		clean_exit(data, 0);

@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:03:28 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/10 11:09:33 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:46:17 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ t_point	pos;
 
 	j = 0;
 	i = 0;
-	pos.x = 0;
-	pos.y = 0;
-	while (data->map[pos.y])
+	pos.x = 1;
+	pos.y = 1;
+	while (pos.y < data->map_height - 1)
 	{
-		while (data->map[pos.y][pos.x])
+		while (pos.x < data->map_width - 1)
 		{
 			if (data->map[pos.y][pos.x] == '1')
 				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
@@ -62,7 +62,7 @@ t_point	pos;
 				// mlx_put_image_to_window(data->window->mlx, data->window->init, 
 				// 	data->image->texture_path[0], pos.x * WALL_SIZE + i, 
 				// 	pos.y * WALL_SIZE + j);
-			else if (data->map[pos.y][pos.x] == 'P')
+			else if (data->map[pos.y][pos.x] == '2')
 				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
 					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, rgb_conv(67,154,74));
 			else
@@ -76,7 +76,7 @@ t_point	pos;
 		}
 		j++;
 		i = 0;
-		pos.x = 0;
+		pos.x = 1;
 		pos.y++;
 	}
 	draw_player(data);
