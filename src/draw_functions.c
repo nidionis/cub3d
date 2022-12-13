@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:03:28 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/12 10:46:17 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/13 12:41:12 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ t_point	pos;
 			else if (data->map[pos.y][pos.x] == '2')
 				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
 					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, rgb_conv(67,154,74));
+			else if (data->map[pos.y][pos.x] == '3')
+				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
+					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, rgb_conv(67,11,255));
+			else if (data->map[pos.y][pos.x] == '5')
+				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
+					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, rgb_conv(67,15,74));
 			else
 				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
 					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, 0x0FFF0F);

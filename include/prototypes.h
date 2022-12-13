@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/12 01:14:06 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/13 11:27:35 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,8 +146,10 @@ void	draw_wall_textured(t_data *data, int i_ray);
 void	draw_ceiling_floor_mandatory(t_data *data);
 int	f_is_box_crossed(t_player *player);
 t_point	map_position_in_front_of_player(t_player *player);
-void    generate_map_content(t_data *data, char c);
-int	check_path(t_data *data, int row, int col);
+void generate_map_content(t_data *data, t_assets *asset, char c);
+int	check_path_door(t_data *data, int row, int col);
+int	check_path_switch(t_data *data, int row, int col);
+int	check_path_map(t_data *data, int row, int col);
 int	generate_map(t_data *data);
 
 t_point get_img_size(char *path);
@@ -162,7 +164,7 @@ void	add_obstacle(t_data *data, t_rayponse ray, char map_case, int dir, t_list *
 t_list		*add_sprites_to_obstacles_ls(t_data *data, t_rayponse *rayponse, t_list **obstacles_ls);
 t_list		*add_sprites(t_data *data, t_rayponse *rayturned, t_list **obstacles_ls);
 void	clean_obstacle_behind_wall(t_list **list, double distance_max);
-int end_game(t_data *data);
+int	end_game(t_data *data, t_assets *asset);
 void	draw_map_border(t_data *data, int size_y, int size_x);
 void get_map_size(t_data *data);
 #endif

@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:28:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/11 00:23:43 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/13 11:42:43 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,22 @@ int	key_game(int key, t_data *data)
 	}
 	else if (key == KEY_P)
 		data->map[0][1] = '0';
-	if (end_game(data) && key == KEY_E)
-		exit(0);
+	if (end_game(data,&data->door) && key == KEY_E && data->switcher.state == 1)
+	{
+		Mix_HaltChannel(-1);
+			SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+		Mix_Chunk *sound = Mix_LoadWAV("gameover.wav");
+		Mix_PlayChannel(-1, sound, 0);
+		// exit(0);
+	}
+	if (end_game(data,&data->switcher) && key == KEY_E && data->switcher.state == 0)
+	{
+		data->switcher.state = 1;
+	}
+	if (end_game(data,&data->minimap) && key == KEY_E && data->minimap.state == 0)
+	{
+		data->minimap.state = 1;
+	}
 	return (0);
 }

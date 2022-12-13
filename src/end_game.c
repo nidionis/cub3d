@@ -32,29 +32,29 @@ int	map_position_in_front_of_players(t_player *player)
 	return (0);
 }
 
-int	end_game(t_data *data)
+int	end_game(t_data *data, t_assets *asset)
 {
-	if (data->door.door_side == NORTH)
+	if (asset->side == NORTH)
 	{
-		if (data->player->pos_map.x == data->door.pos.x && data->player->pos_map.y - 1 == data->door.pos.y\
+		if (data->player->pos_map.x == asset->pos.x && data->player->pos_map.y - 1 == asset->pos.y\
 				&& map_position_in_front_of_players(data->player) == 1)
 			return (1);
 	}
-	else if (data->door.door_side == SOUTH)
+	else if (asset->side == SOUTH)
 	{
-		if (data->player->pos_map.x == data->door.pos.x && data->player->pos_map.y + 1 == data->door.pos.y\
+		if (data->player->pos_map.x == asset->pos.x && data->player->pos_map.y + 1 == asset->pos.y\
 			   && map_position_in_front_of_players(data->player) == 2)
 			return (1);
 	}
-	else if (data->door.door_side == WEST)
+	else if (asset->side == WEST)
 	{
-		if (data->player->pos_map.x - 1 == data->door.pos.x && data->player->pos_map.y == data->door.pos.y\
+		if (data->player->pos_map.x - 1 == asset->pos.x && data->player->pos_map.y == asset->pos.y\
 				&& map_position_in_front_of_players(data->player) == 3)
 			return (1);
 	}
-	else if (data->door.door_side == EAST)
+	else if (asset->side == EAST)
 	{
-		if (data->player->pos_map.x + 1 == data->door.pos.x && data->player->pos_map.y == data->door.pos.y\
+		if (data->player->pos_map.x + 1 == asset->pos.x && data->player->pos_map.y == asset->pos.y\
 			   && map_position_in_front_of_players(data->player) == 4)
 			return (1);
 	}

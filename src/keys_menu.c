@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_menu.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:42:08 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/05 13:39:05 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:14:47 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,14 @@ void	menu_enter_key(t_data *data)
 		draw_image(data->menu->background[BG],data->menu->background[13], y_x(300, 100),rgb_conv(rand() % 155,rand() % 155,rand() % 155));
 	}
 	if (data->menu->new_game == 1)
+	{
 		data->menu->game_state = 1;
+		Mix_HaltChannel(-1);
+		SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	Mix_Chunk *sound = Mix_LoadWAV("gameplay.wav");
+	Mix_PlayChannel(-1, sound, 0);
+	}
 	if (data->menu->settings == 1)
 	{
 		data->menu->menu_state = 0;

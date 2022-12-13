@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/12 11:21:34 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:16:21 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	add_obstacle(t_data *data, t_rayponse ray, char map_case, int dir, t_list *
 	if (!obst)
 		exit_msg(data, "[add_obstacle] pb adding obstacle", 1);
 	ray.side = get_side_hit(data, dir);
-	i_texture = map_case - '2' + ray.side;
+	i_texture = (map_case - '2') * 4;
 	obst->dist = get_dist_from_plan(data, &ray);
 	obst->textureX = get_wallX(&ray);
 	obst->texture = &data->bonus_textures[i_texture];

@@ -1,5 +1,6 @@
 #include "cub3d.h"
-
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 typedef struct  s_list {
     void            *content;
     struct s_list   *next;
@@ -151,17 +152,13 @@ typedef struct s_menu
 	unsigned int extras_state;
 	t_img_data		*background[20];
 } t_menu;
-typedef struct s_door
+typedef struct s_assets
 {
-	int door_side;
-	t_point pos;
-}	t_door;
-
-typedef struct s_switch
-{
+	int done;
+	int side;
 	int state;
 	t_point pos;
-}	t_switch;
+}	t_assets;
 
 typedef struct s_data
 {
@@ -187,9 +184,12 @@ typedef struct s_data
 	int				mouse;
 	int				map_width;
 	int				map_height;
-		int			rain_state;
-		t_door			door;
-	t_switch		switcher;
+	int				rain_state;
+	t_assets		door;
+	t_assets		switcher;
+	t_assets		minimap;
+	Mix_Chunk		*sounds;
+	Mix_Chunk		*soundtracks[4];
 }	t_data;
 
 enum x_or_y { _x, _y };

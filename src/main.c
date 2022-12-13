@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
  t_data	*malloc_data(void)
 {
 	t_data	*data;
@@ -45,14 +46,15 @@
 // 
 // }
 
-void generate_map_content(t_data *data, char c)
+void generate_map_content(t_data *data, t_assets *asset, char c)
 {
 	int y;
 	int x;
 	int wall_side;
 
-	if (data->door.pos.x || data->door.pos.y)
-		data->map[data->door.pos.y][data->door.pos.x] = '1';
+
+	if (asset->done == 1)
+		data->map[asset->pos.y][asset->pos.x] = '1';
 	wall_side = rand() % 4;
 	if (wall_side == 0)
 	{
@@ -60,7 +62,7 @@ void generate_map_content(t_data *data, char c)
 		if (x <= 0)
 			x = 1;
 		y = 1;
-		data->door.door_side = NORTH;
+		asset->side = NORTH;
 	}
 	else if (wall_side == 1)
 	{
@@ -68,7 +70,7 @@ void generate_map_content(t_data *data, char c)
 		if (x <= 0)
 			x = 1;
 		y = data->map_height - 2;
-		data->door.door_side = SOUTH;
+		asset->side = SOUTH;
 	}
 	else if (wall_side == 3)
 	{
@@ -76,7 +78,7 @@ void generate_map_content(t_data *data, char c)
 		y = rand() % data->map_height - 2;
 		if (y <= 0)
 			y = 1;
-		data->door.door_side = WEST;
+		asset->side = WEST;
 	}
 	else
 	{
@@ -84,12 +86,18 @@ void generate_map_content(t_data *data, char c)
 		y = rand() % data->map_height - 2;
 		if (y <= 0)
 			y = 1;
-		data->door.door_side = EAST;
+		asset->side = EAST;
 	}
 	if (y < data->map_height && x < data->map_width)
-		data->map[y][x] = c;
-	data->door.pos.x = x;
-	data->door.pos.y = y;
+	{
+		if (data->map[y][x] != '2' && data->map[y][x] != '3' && data->map[y][x] != '5')
+		{
+			data->map[y][x] = c;
+			asset->pos.x = x;
+			asset->pos.y = y;
+			asset->done = 1;
+		}
+	}
 }
 
 void get_map_size(t_data *data)
@@ -133,10 +141,34 @@ void ff_player(char **map, t_player *player)
 	}
 }
 
+int load_sounds(t_data *data)
+{
+	(void)data;
+	return (0);
+}
+
+int load_sound_tracks(t_data *data)
+{
+	data->soundtracks[0] = malloc(sizeof(Mix_Chunk));
+	data->soundtracks[1] = malloc(sizeof(Mix_Chunk));
+	data->soundtracks[2] = malloc(sizeof(Mix_Chunk));
+	data->soundtracks[3] = malloc(sizeof(Mix_Chunk));
+	data->soundtracks[0] = Mix_LoadWAV("menu.wav");
+	data->soundtracks[1] = Mix_LoadWAV("gameplay.wav");
+	data->soundtracks[2] = Mix_LoadWAV("gameover.wav");
+	data->soundtracks[3] = Mix_LoadWAV("gameover.wav");
+	return (0);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data		*data;
 	data = NULL;
+	
+	Mix_HaltChannel(-1);
+	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	Mix_Pause(-1);
 	if (argc != 2)
 	{
 		error_msg("Needs a path to the map file only");
@@ -151,13 +183,25 @@ int	main(int argc, char *argv[])
 		parse_file(argv[1],  data);
 		data->mouse = 0;
 		data->time_state = 0;
+		data->door.state = 0;
+		data->switcher.state = 0;
+		data->minimap.state = 0;
 		ff_player(data->map, data->player);
 		init_key_status(data);
 		load_window(data);
+		load_sounds(data);
+		load_sound_tracks(data);
+		Mix_PlayChannel(-1, data->soundtracks[0], 0);
 		get_map_size(data);
-		while(!check_path(data,data->player->pos_map.y, data->player->pos_map.x))
-			generate_map_content(data, '2');
-		// data->map[2][2] = '3';
+		while(!check_path_door(data,data->player->pos_map.y, data->player->pos_map.x) || \
+		!check_path_switch(data,data->player->pos_map.y, data->player->pos_map.x) || \
+		!check_path_map(data,data->player->pos_map.y, data->player->pos_map.x))
+		{
+			generate_map_content(data,&data->minimap,'5');
+			generate_map_content(data,&data->switcher,'3');
+			generate_map_content(data, &data->door,'2');
+		}
+		
 		data->rain_state = rand() % 5;
 		import_bonus_textures(data);
 		cub3d_render(data);
