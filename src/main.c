@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
  t_data	*malloc_data(void)
 {
 	t_data	*data;
@@ -141,34 +139,34 @@ void ff_player(char **map, t_player *player)
 	}
 }
 
-int load_sounds(t_data *data)
-{
-	(void)data;
-	return (0);
-}
+// int load_sounds(t_data *data)
+// {
+// 	(void)data;
+// 	return (0);
+// }
 
-int load_sound_tracks(t_data *data)
-{
-	data->soundtracks[0] = malloc(sizeof(Mix_Chunk));
-	data->soundtracks[1] = malloc(sizeof(Mix_Chunk));
-	data->soundtracks[2] = malloc(sizeof(Mix_Chunk));
-	data->soundtracks[3] = malloc(sizeof(Mix_Chunk));
-	data->soundtracks[0] = Mix_LoadWAV("menu.wav");
-	data->soundtracks[1] = Mix_LoadWAV("gameplay.wav");
-	data->soundtracks[2] = Mix_LoadWAV("gameover.wav");
-	data->soundtracks[3] = Mix_LoadWAV("gameover.wav");
-	return (0);
-}
+// int load_sound_tracks(t_data *data)
+// {
+// 	data->soundtracks[0] = malloc(sizeof(Mix_Chunk));
+// 	data->soundtracks[1] = malloc(sizeof(Mix_Chunk));
+// 	data->soundtracks[2] = malloc(sizeof(Mix_Chunk));
+// 	data->soundtracks[3] = malloc(sizeof(Mix_Chunk));
+// 	data->soundtracks[0] = Mix_LoadWAV("menu.wav");
+// 	data->soundtracks[1] = Mix_LoadWAV("gameplay.wav");
+// 	data->soundtracks[2] = Mix_LoadWAV("gameover.wav");
+// 	data->soundtracks[3] = Mix_LoadWAV("gameover.wav");
+// 	return (0);
+// }
 
 int	main(int argc, char *argv[])
 {
 	t_data		*data;
 	data = NULL;
 	
-	Mix_HaltChannel(-1);
-	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
-	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-	Mix_Pause(-1);
+	// Mix_HaltChannel(-1);
+	// SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+	// Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	// Mix_Pause(-1);
 	if (argc != 2)
 	{
 		error_msg("Needs a path to the map file only");
@@ -189,9 +187,9 @@ int	main(int argc, char *argv[])
 		ff_player(data->map, data->player);
 		init_key_status(data);
 		load_window(data);
-		load_sounds(data);
-		load_sound_tracks(data);
-		Mix_PlayChannel(-1, data->soundtracks[0], 0);
+		// load_sounds(data);
+		// load_sound_tracks(data);
+		// Mix_PlayChannel(-1, data->soundtracks[0], 0);
 		get_map_size(data);
 		while(!check_path_door(data,data->player->pos_map.y, data->player->pos_map.x) || \
 		!check_path_switch(data,data->player->pos_map.y, data->player->pos_map.x) || \

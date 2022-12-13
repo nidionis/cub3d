@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/13 12:56:04 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/13 15:22:56 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,16 @@ void		mouse_rotate(t_data *data)
 
 	if (data->mouse == 0)
 		return ;
-	mlx_mouse_get_pos(data->window->mlx, data->window->init, &pos.x, &pos.y);
+	// mlx_mouse_get_pos(data->window->mlx, data->window->init, &pos.x, &pos.y);linux
+	mlx_mouse_get_pos(data->window->init, &pos.x, &pos.y);
 	delta.x = pos.x - SCREEN_WIDTH/2;
 	delta.y = pos.y - SCREEN_HEIGHT/2;
 	if (delta.x < 0)
 		rotate_player(data->player,LEFT);
 	else if (delta.x > 0)
 		rotate_player(data->player,RIGHT);
-	mlx_mouse_move(data->window->mlx, data->window->init, SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+	// mlx_mouse_move(data->window->mlx, data->window->init, SCREEN_WIDTH/2, SCREEN_HEIGHT/2); linux
+	mlx_mouse_move(data->window->init, SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 }
 //world_render generate the 3d world with raycast
 //player_smoth detects key pressure to make player move
@@ -124,6 +126,8 @@ int set_red_to_max(int color) {
 void change(t_img_data *img)
 {
 	int i;
+
+	i = 0;
 	while(i < 1900 * 1080)
 	{
 		img->address[i] = set_red_to_max(img->address[i]);

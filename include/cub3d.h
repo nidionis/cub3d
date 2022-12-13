@@ -26,7 +26,6 @@
 # include "structs.h"
 # include "prototypes.h"
 #include <time.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
+#include "../SDL-release-2.26.1/include/SDL_audio.h"
 
 #endif

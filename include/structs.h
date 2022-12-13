@@ -1,6 +1,5 @@
 #include "cub3d.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
+#include "../SDL-release-2.26.1/include/SDL_audio.h"
 typedef struct  s_list {
     void            *content;
     struct s_list   *next;
@@ -188,8 +187,8 @@ typedef struct s_data
 	t_assets		door;
 	t_assets		switcher;
 	t_assets		minimap;
-	Mix_Chunk		*sounds;
-	Mix_Chunk		*soundtracks[4];
+	// Mix_Chunk		*sounds;
+	// Mix_Chunk		*soundtracks[4];
 }	t_data;
 
 enum x_or_y { _x, _y };
