@@ -76,7 +76,7 @@ typedef struct	s_cam
 	t_vector	plane_dir;
 	double		plane_size;
 	t_ray		*beam;
-	t_rayponse	arRay[CAM_QUALITY];
+	t_rayponse	array[CAM_QUALITY];
 }	t_cam;
 
 //struct for window

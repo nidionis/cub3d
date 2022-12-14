@@ -23,14 +23,14 @@ LINKER   	= gcc
 CFLAGS		= -Wall -Wextra -Werror -g3
 LIBFT 		= $(LIBFT_DIR)/libft.a
 
-ifeq ($(DESKTOP_SESSION), ubuntu)
+#ifeq ($(DESKTOP_SESSION), ubuntu)
 MINILIBX = minilibx_linux
-MLXFLAGS = -I /usr/X11/include -g -Lminilibx_linux -L /usr/lib -Iminilibx_linux -lmlx -lXext -lX11 -lm -lSDL2 -lSDL2_mixer
-else
-MINILIBX = mlx
-MLXFLAGS = -framework OpenGL -framework AppKit
-PROJECT_H += $(MINILIBX)/mlx_new_window.h $(MINILIBX)/mlx.h $(MINILIBX)/mlx_int.h $(MINILIBX)/mlx_new_window.h $(MINILIBX)/mlx_opengl.h $(MINILIBX)/mlx_png.h
-endif
+MLXFLAGS = -I /usr/X11/include -g -Lminilibx_linux -L /usr/lib -Iminilibx_linux -lmlx -lXext -lX11 -lm 
+#else
+#MINILIBX = mlx
+#MLXFLAGS = -framework OpenGL -framework AppKit
+#PROJECT_H += $(MINILIBX)/mlx_new_window.h $(MINILIBX)/mlx.h $(MINILIBX)/mlx_int.h $(MINILIBX)/mlx_new_window.h $(MINILIBX)/mlx_opengl.h $(MINILIBX)/mlx_png.h
+#endif
 
 all: $(NAME)
 

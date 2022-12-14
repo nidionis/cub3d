@@ -76,10 +76,6 @@ double	degree_to_radian(double degree_angle)
 {
 	double	rad_angle;
 
-	/*
-	if (degree_angle < 0 || degree_angle > 360)
-		degree_angle = float_modulo(degree_angle, 360);
-		*/
 	rad_angle = ((double)PI * degree_angle / (double)180.0);
 	return (rad_angle);
 }

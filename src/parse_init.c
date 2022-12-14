@@ -30,14 +30,14 @@ void	init_null(t_data *data, int *map_parse)
 	data->image->sprite_ls = NULL;
 }
 
-
 //open file
 void	init_fd(t_data *data, int *fd, char *fname)
 {
 	file_extention_available(data, fname);
 	(*fd) = open(fname, O_RDONLY);
 	if ((*fd) == -1)
-		exit_msg(data, "[init_fd] Error opening file (check file name or chmod)", -1);
+		exit_msg(data, "[init_fd] Error opening file \
+			(check file name or chmod)", -1);
 }
 
 //verify extension file
@@ -54,11 +54,8 @@ void	file_extention_available(t_data *data, char *fname)
 	exit_msg(data, "[file_extention_available] only .cub extension", -1);
 }
 
-void	init_player(t_data *data, int x, int y, int *is_player)
+void	init_player_direction(t_data *data, char c)
 {
-	char	c;
-
-	c = data->map[y][x];
 	if (c == NORTH_CHAR)
 	{
 		data->player->direction.x = 0;
@@ -79,6 +76,14 @@ void	init_player(t_data *data, int x, int y, int *is_player)
 		data->player->direction.x = -1;
 		data->player->direction.y = 0;
 	}
+}
+
+void	init_player(t_data *data, int x, int y, int *is_player)
+{
+	char	c;
+
+	c = data->map[y][x];
+	init_player_direction(data, c);
 	data->player->pos_map.x = x;
 	data->player->pos_map.y = y;
 	data->player->pos_box.x = UNITS_PER_BOX / 2;
@@ -87,6 +92,5 @@ void	init_player(t_data *data, int x, int y, int *is_player)
 	data->player->pos_in_pix = update_pos_in_pix(data->player);
 	data->player->speed = 0;
 	data->player->stamina = 100;
-	//devine plnan
 	(*is_player)++;
 }

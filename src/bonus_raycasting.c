@@ -63,12 +63,10 @@ t_list	*sort_obstacles(t_list **lst)
 	t_list	*list;
 	t_list	*closest;
 
-	// fprintf(stderr, "[sort_obstacle] list=%p", *lst);
 	sorted_list = NULL;
 	list = *lst;
 	while (list)
 	{
-		// fprintf(stderr, "[sort_obstacle]");
 		closest = closest_in_list(&list);
 		pop_closest(&list, closest);
 		ft_lstadd_front(&sorted_list, closest);

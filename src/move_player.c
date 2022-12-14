@@ -13,7 +13,8 @@
 #include "cub3d.h"
 
 /*
-The algo check if the final position overjump the size (or under 0 if going to the NORTH or WEST)
+The algo check if the final position overjump
+the size (or under 0 if going to the NORTH or WEST)
 It refreshs the positions values in the map
 
 In theses examples, player's step brings her to *
@@ -50,7 +51,8 @@ L____|____|
 L____|____|
 
 When the next box (NSEW) is a wall, the values
-payers.box_position[x] (or y) are set to 0 (or UNITS_PER_BOX - 1)
+payers.box_position[x] (or y) are set to 0
+(or UNITS_PER_BOX - 1)
 player arrive at $
 
 case 2:
@@ -106,20 +108,25 @@ int	update_pos_if_wall(t_data *data, int crossover_direction)
 	int		hit_wall;
 
 	hit_wall = 0;
-	if (crossover_direction == N || crossover_direction == NE || crossover_direction == NW)
+	if (crossover_direction == N || crossover_direction \
+	== NE || crossover_direction == NW)
 		hit_wall += north_crossing(data);
-	if (crossover_direction == S || crossover_direction == SE || crossover_direction == SW)
+	if (crossover_direction == S || crossover_direction \
+	== SE || crossover_direction == SW)
 		hit_wall += south_crossing(data);
-	if (crossover_direction == E || crossover_direction == SE || crossover_direction == NE)
+	if (crossover_direction == E || crossover_direction == \
+	SE || crossover_direction == NE)
 		hit_wall += east_crossing(data);
-	if (crossover_direction == W || crossover_direction == NW || crossover_direction == SW)
+	if (crossover_direction == W || crossover_direction == \
+	NW || crossover_direction == SW)
 		hit_wall += west_crossing(data);
 	if (!hit_wall)
 	{
-		if (crossover_direction == NE || crossover_direction == SW || crossover_direction == NW || crossover_direction == SE)
+		if (crossover_direction == NE || crossover_direction \
+	== SW || crossover_direction == NW || crossover_direction \
+	== SE)
 			hit_wall = corner_crossing(data);
 	}
-	fprintf(stderr, "update_pos_if_wall: hit_wall = %d\n", hit_wall);
 	return (hit_wall);
 }
 
@@ -138,8 +145,8 @@ int	check_update_box_pos(t_data *data)
 
 void	player_smoth_move(t_data *data)
 {
-	static int counter;
-	static int counter2;
+	static int	counter;
+	static int	counter2;
 
 	if (data->player->speed == 1 && data->player->stamina > 0)
 	{
@@ -185,15 +192,14 @@ int	move_player(t_data *data, int move)
 	if (data->player->speed == 1)
 		scaled_direction = vec_scale(p->direction, (double)(UNITS_PER_BOX / 30));
 	else
-		scaled_direction = vec_scale(p->direction, (double)(UNITS_PER_BOX / STEPS_PER_BOX));
+		scaled_direction = vec_scale(p->direction, \
+(double)(UNITS_PER_BOX / STEPS_PER_BOX));
 	if (move == BACKWARD)
 		rotate_vector(&scaled_direction, degree_to_radian(180));
 	else if (move == RIGHT)
 		rotate_vector(&scaled_direction, degree_to_radian(90));
 	else if (move == LEFT)
 		rotate_vector(&scaled_direction, degree_to_radian(-90));
-	else if (move != FORWARD)
-		error_msg("[move_player] wrong move instruction");
 	translate_pt_inplace(scaled_direction, &p->pos_box);
 	hit_wall = check_update_box_pos(data);
 	update_pos_in_step(p);

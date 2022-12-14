@@ -49,4 +49,3 @@ void	wrong_color(t_data *data, char *color_strimed)
 	free(color_strimed);
 	exit_msg(data, "[wrong_color]", -1);
 }
-

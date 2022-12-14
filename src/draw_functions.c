@@ -99,7 +99,7 @@ void	draw_vision_field(t_data *data, t_point minimap_position)
 	(void)nb_ray;
 	while (i < CAM_QUALITY)
 	{
-		end = units_pos_to_minimap_pos(data, data->cam->arRay[i].hit_point);
+		end = units_pos_to_minimap_pos(data, data->cam->array[i].hit_point);
 		draw_line(data, &minimap_position, &end, rgb_conv(0, 0, 0));
 		i++;
 	}

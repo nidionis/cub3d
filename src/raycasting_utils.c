@@ -61,4 +61,3 @@ int	len_overflow(int len)
 		return (1);
 	return (0);
 }
-

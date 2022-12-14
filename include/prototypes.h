@@ -70,7 +70,7 @@ int				is_available_mapcase(t_data *data, int x, int y, \
 int *is_player);
 int				is_block(t_data *data, char c);
 int				is_mapcase(t_data *data, char c);
-int				is_NSEW(char c);
+int				is_cardinal(char c);
 void			init_cam_vector(t_data *data);
 t_point			get_player_absolute_position(t_player *player);
 void			clean_useless_empty_splace(char	**map);
@@ -89,7 +89,7 @@ void			set_side_distance(t_data *data);
 char			pix_pos_to_map_case(t_data *data, t_point absolute_pos);
 void			draw_wall_line(t_data *data, int i);
 int				ray_cast(t_data *data);
-void			set_arRay(t_data *data);
+void			set_array(t_data *data);
 int				still_in_map(t_data *data, t_point pt);
 double			distance_line_to_point(t_vector line[2], t_point p);
 void			set_delta_distance(t_data *data);
@@ -158,7 +158,7 @@ t_point get_img_size(char *path);
 
 void	import_bonus_textures(t_data *data);
 void	import_sprites_textures(t_data *data);
-int	get_wallX(t_rayponse *ray);
+int	get_wallx(t_rayponse *ray);
 t_list	*sort_obstacles(t_list **lst);
 void	add_obstacle(t_data *data, t_rayponse ray, char map_case, int dir, t_list **obstacles_ls);
 t_list		*add_sprites_to_obstacles_ls(t_data *data, t_rayponse *rayponse, t_list **obstacles_ls);

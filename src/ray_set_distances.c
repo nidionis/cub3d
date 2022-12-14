@@ -29,7 +29,7 @@ void	set_delta_distance(t_data *data)
 		ray->delta_distances[_x] = 1000000000;
 	if (fabs(ray->direction.y) > 0.000000001)
 		ray->delta_distances[_y] = \
-							 ray->direction_len * u / fabs(ray->direction.y);
+		ray->direction_len * u / fabs(ray->direction.y);
 	else
 		ray->delta_distances[_y] = 2147483647;
 }
