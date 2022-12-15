@@ -18,8 +18,6 @@ t_point	pix_pos_to_map_pos(t_point absolute_pos)
 	int		u;
 
 	u = (int)UNITS_PER_BOX;
-	if (absolute_pos.x < 0 || absolute_pos.y < 0)
-		fprintf(stderr, "[pix_pos_to_map_pos] absolute_pos = {%d, %d} but cannot contain negative numbers\n", absolute_pos.x, absolute_pos.y);
 	map_pos.x = absolute_pos.x / u;
 	map_pos.y = absolute_pos.y / u;
 	return (map_pos);
@@ -49,4 +47,3 @@ int	still_in_map(t_data *data, t_point pt)
 		return (0);
 	return (1);
 }
-

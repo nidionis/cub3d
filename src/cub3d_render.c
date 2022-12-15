@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 16:56:29 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:23:11 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	world_render(t_data *data)
 	int	i;
 
 	i = 0;
-	set_arRay(data);
+	set_array(data);
 	draw_ceiling_floor_mandatory(data);
 	while (i < CAM_QUALITY)
 	{	

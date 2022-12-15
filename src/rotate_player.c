@@ -15,7 +15,7 @@
 void	rotate_player(t_player *player, int move)
 {
 	double	radian_angle;
-	double speed;
+	double	speed;
 
 	speed = 0.10000;
 	radian_angle = (double)DEFAULT_ROTATION_ANGLE;
@@ -25,6 +25,5 @@ void	rotate_player(t_player *player, int move)
 		error_msg("[rotate_player] wrong instruction");
 	else
 		radian_angle -= (speed -0.07200);
-
 	rotate_vector(&player->direction, radian_angle);
 }

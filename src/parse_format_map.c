@@ -112,7 +112,8 @@ void	format_map(t_data *data)
 	char	**map;
 
 	if (data->map == NULL)
-		exit_msg(data, "[format_map] map disapear (existed in check_param_missing", -1);
+		exit_msg(data, "[format_map] map disapear \
+		(existed in check_param_missing", -1);
 	map = data->map;
 	clean_useless_empty_splace(map);
 	rectangle_map(data, map);

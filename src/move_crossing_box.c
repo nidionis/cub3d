@@ -14,7 +14,6 @@
 
 /* algo explained in move_player file */
 /* functions returns 1 if a wall is hit */
-
 int	north_crossing(t_data *data)
 {
 	char	**map;

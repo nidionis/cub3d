@@ -25,7 +25,7 @@ LIBFT 		= $(LIBFT_DIR)/libft.a
 
 ifeq ($(DESKTOP_SESSION), ubuntu)
 MINILIBX = minilibx_linux
-MLXFLAGS = -I /usr/X11/include -g -Lminilibx_linux -L /usr/lib -Iminilibx_linux -lmlx -lXext -lX11 -lm -lSDL2 -lSDL2_mixer
+MLXFLAGS = -I /usr/X11/include -g -Lminilibx_linux -L /usr/lib -Iminilibx_linux -lmlx -lXext -lX11 -lm 
 else
 MINILIBX = mlx
 MLXFLAGS = -framework OpenGL -framework AppKit

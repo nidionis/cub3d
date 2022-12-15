@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int	is_NSEW(char c)
+int	is_cardinal(char c)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (1);
@@ -34,7 +34,8 @@ int	is_mapcase(t_data *data, char c)
 	return (0);
 }
 
-/* returns TRUE if it has an empty neighourg box ('\0', ' ', or if at the begining of the line */
+/* returns TRUE if it has an empty neighourg box
+('\0', ' ', or if at the begining of the line */
 int	is_border(t_data *data, int x, int y, int matrix_len)
 {
 	int		last_index_in_line;
@@ -69,9 +70,9 @@ void	check_map_line(t_data *data, int y, int *nb_player)
 		exit_msg(data, "[check_map] map contains blank lines", -10);
 	while (c)
 	{
-		if (!(is_mapcase(data, c) || is_NSEW(c)))
+		if (!(is_mapcase(data, c) || is_cardinal(c)))
 			exit_msg(data, "[check_map] map contains unavailable char.", -10);
-		if (is_NSEW(c))
+		if (is_cardinal(c))
 			init_player(data, x, y, nb_player);
 		if (is_border(data, x, y, map_len) && c != WALL)
 			exit_msg(data, "[check_map] map not surrounded by walls.", -11);

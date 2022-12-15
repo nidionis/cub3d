@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 12:36:58 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:32:40 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int				is_available_mapcase(t_data *data, int x, int y, \
 int *is_player);
 int				is_block(t_data *data, char c);
 int				is_mapcase(t_data *data, char c);
-int				is_NSEW(char c);
+int				is_cardinal(char c);
 void			init_cam_vector(t_data *data);
 t_point			get_player_absolute_position(t_player *player);
 void			clean_useless_empty_splace(char	**map);
@@ -89,7 +89,7 @@ void			set_side_distance(t_data *data);
 char			pix_pos_to_map_case(t_data *data, t_point absolute_pos);
 void			draw_wall_line(t_data *data, int i);
 int				ray_cast(t_data *data);
-void			set_arRay(t_data *data);
+void			set_array(t_data *data);
 int				still_in_map(t_data *data, t_point pt);
 double			distance_line_to_point(t_vector line[2], t_point p);
 void			set_delta_distance(t_data *data);
@@ -101,7 +101,7 @@ t_list	*ft_lstnew(void *content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstdelone(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 double			distance_points(t_point p1, t_point p2);
 void			convert_pos_and_dir_to_line(t_point pos, t_vector vec, t_vector line[2]);
@@ -158,7 +158,7 @@ t_point get_img_size(char *path);
 
 void	import_bonus_textures(t_data *data);
 void	import_sprites_textures(t_data *data);
-int	get_wallX(t_rayponse *ray);
+int	get_wallx(t_rayponse *ray);
 t_list	*sort_obstacles(t_list **lst);
 void	add_obstacle(t_data *data, t_rayponse ray, char map_case, int dir, t_list **obstacles_ls);
 t_list		*add_sprites_to_obstacles_ls(t_data *data, t_rayponse *rayponse, t_list **obstacles_ls);
@@ -178,4 +178,10 @@ void	change(t_data *data, t_img_data *img);
 void	draw_stamina_hud(t_data *data);
 void	init_line_values(t_line *line, t_point	*start, t_point	*end);
 char **alloc_mem(int size_y, int size_x);
+void	draw_texture(t_data *data, t_point pts[2], \
+int line_height, t_rayponse *ray);
+void	initxvar(t_point *start, t_point *end, int *line_width, int i_ray);
+void	inityvar(t_point *start, t_point *end, int *line_height, int distance);
+int	get_wallx(t_rayponse *ray);
+unsigned int	get_texture_pix(t_img_data *t, t_point pix);
 #endif

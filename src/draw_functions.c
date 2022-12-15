@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:03:28 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/14 03:48:10 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:52:22 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,15 @@ t_point	pos;
 			else if (data->map[pos.y][pos.x] == '3')
 				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
 					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, rgb_conv(67,11,255));
+			else if (data->map[pos.y][pos.x] == '4')
+				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
+					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, rgb_conv(67,255,255));
 			else if (data->map[pos.y][pos.x] == '5')
 				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
 					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, rgb_conv(67,15,74));
-			else
-				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
-					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, 0x0FFF0F);
+			// else
+			// 	draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
+			// 		(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, 0x0FFF0F);
 				// mlx_put_image_to_window(data->window->mlx, data->window->init, 
 				// 	data->image->texture_path[1], pos.x * WALL_SIZE + i, 
 				// 	pos.y * WALL_SIZE + j);
@@ -99,7 +102,7 @@ void	draw_vision_field(t_data *data, t_point minimap_position)
 	(void)nb_ray;
 	while (i < CAM_QUALITY)
 	{
-		end = units_pos_to_minimap_pos(data, data->cam->arRay[i].hit_point);
+		end = units_pos_to_minimap_pos(data, data->cam->array[i].hit_point);
 		draw_line(data, &minimap_position, &end, rgb_conv(0, 0, 0));
 		i++;
 	}

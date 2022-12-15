@@ -22,17 +22,12 @@ char	**ft_append_tab(char **matrix, char *str)
 		return (matrix);
 	tab_len = 0;
 	if (matrix && *matrix)
-	{
 		while (matrix[tab_len])
 			tab_len++;
-	}
 	new_tab = malloc((tab_len + 2) * sizeof(char *));
 	tab_len += 1;
 	if (!new_tab)
-	{
-		error_msg("[ft_append_tab] did not malloc");
-		exit(-1);
-	}
+		exit_msg(NULL, "[ft_append_tab] did not malloc", 1);
 	new_tab[tab_len] = NULL;
 	tab_len -= 1;
 	new_tab[tab_len] = str;
@@ -48,7 +43,7 @@ int	ft_matrixlen(char **matrix)
 	int	len;
 
 	len = 0;
-	if (matrix)
+	if (matrix && *matrix)
 	{
 		while (matrix[len])
 			len++;

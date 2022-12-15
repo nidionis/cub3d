@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:28:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 03:39:30 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:41:48 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,13 @@ int	key_game(int key, t_data *data)
 	&& data->switcher.state == 0)
 	{
 		data->switcher.state = 1;
+		data->map[data->switcher.pos.y][data->switcher.pos.x] = '4';
 	}
 	if (end_game(data, &data->minimap) && key == KEY_E && \
 	data->minimap.state == 0)
+	{
 		data->minimap.state = 1;
+		data->map[data->minimap.pos.y][data->minimap.pos.x] = '1';
+	}
 	return (0);
 }

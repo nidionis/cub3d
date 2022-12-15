@@ -3,65 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/12 15:16:21 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:26:22 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	add_obstacle(t_data *data, t_rayponse ray, char map_case, int dir, t_list **obstacles_ls)
+t_list	*make_obstacle(t_data *data, t_rayponse ray, char map_case, int dir)
 {
 	t_obstacle	*obst;
 	t_list		*item;
-	int		i_texture;
-	(void)map_case;
+	int			i_texture;
 
 	obst = malloc(sizeof(t_obstacle));
 	if (!obst)
-		exit_msg(data, "[add_obstacle] pb adding obstacle", 1);
+		exit_msg(data, "[make_obstacle] pb adding obstacle", 1);
 	ray.side = get_side_hit(data, dir);
 	i_texture = (map_case - '2') * 4;
 	obst->dist = get_dist_from_plan(data, &ray);
-	obst->textureX = get_wallX(&ray);
+	obst->textureX = get_wallx(&ray);
 	obst->texture = &data->bonus_textures[i_texture];
 	item = ft_lstnew((void *)obst);
 	if (!item)
-		exit_msg(data, "[add_obstacle] pb adding obstacle", 2);
-	ft_lstadd_front(obstacles_ls, item);
+		exit_msg(data, "[make_obstacle] pb adding obstacle", 2);
+	return (item);
+}
+
+t_point	refresh_hit_point(t_data *data, t_rayponse *rayponse)
+{
+	return (translate_pt(vec_scale(data->cam->beam->direction, \
+			rayponse->len / data->cam->beam->direction_len), \
+				data->player->pos_in_pix));
 }
 
 t_rayponse	next_wall_dir(t_data *data, int dir, t_list **obstacles_ls)
 {
-	t_cam			*cam;
-	t_ray			ray;
-	t_vector		vect;
 	t_rayponse		rayponse;
 	char			map_case;
 
-	cam = data->cam;
-	ray = *(cam->beam);
-	rayponse.len = ray.side_distances[dir];
+	rayponse.len = data->cam->beam->side_distances[dir];
 	while (!len_overflow(rayponse.len))
 	{
-		vect = vec_scale(ray.direction, rayponse.len / ray.direction_len);
-		rayponse.hit_point = translate_pt(vect, data->player->pos_in_pix);
+		rayponse.hit_point = refresh_hit_point(data, &rayponse);
 		if (still_in_map(data, rayponse.hit_point))
 		{
-			map_case =  pix_pos_to_map_case(data, rayponse.hit_point);
+			map_case = pix_pos_to_map_case(data, rayponse.hit_point);
 			if (map_case == WALL)
 				break ;
 			else if (is_block(data, map_case) != -1)
-				add_obstacle(data, rayponse, map_case, dir, obstacles_ls);
+				ft_lstadd_front(obstacles_ls, \
+					make_obstacle(data, rayponse, map_case, dir));
 		}
 		else
 		{
 			rayponse.len = 2147483647;
 			break ;
 		}
-		rayponse.len += ray.delta_distances[dir];
+		rayponse.len += data->cam->beam->delta_distances[dir];
 	}
 	return (rayponse);
 }
@@ -70,7 +71,7 @@ void	beam(t_data *data, t_rayponse *rayponse)
 {
 	t_rayponse	rays[2];
 	int			index_closest;
-	t_list	*obstacles_ls;
+	t_list		*obstacles_ls;
 
 	set_beam(data, &obstacles_ls);
 	rays[_x] = next_wall_dir(data, _x, &obstacles_ls);
@@ -80,15 +81,13 @@ void	beam(t_data *data, t_rayponse *rayponse)
 		index_closest = _y;
 	*rayponse = rays[index_closest];
 	rayponse->side = get_side_hit(data, index_closest);
-	//rayponse->side = get_side_hit(data, index_closest);
 	rayponse->dist_from_plan = get_dist_from_plan(data, rayponse);
-	//add_sprites_to_obstacles_ls(data, rayponse, &obstacles_ls);
 	sort_obstacles(&obstacles_ls);
 	clean_obstacle_behind_wall(&obstacles_ls, rayponse->dist_from_plan);
 	rayponse->obstacles_ls = obstacles_ls;
 }
 
-void	set_arRay(t_data *data)
+void	set_array(t_data *data)
 {
 	t_ray		*ray;
 	t_cam		*cam;
@@ -102,7 +101,7 @@ void	set_arRay(t_data *data)
 	while (i_ray < CAM_QUALITY)
 	{
 		beam(data, &rayponse);
-		cam->arRay[i_ray] = rayponse;
+		cam->array[i_ray] = rayponse;
 		translate_vector_as_pt(cam->plane_dir, &ray->direction);
 		i_ray++;
 	}

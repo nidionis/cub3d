@@ -25,7 +25,8 @@ void	import_texture_path(t_data *data, int identifier, char *line)
 		i++;
 	if (data->image->texture_path[identifier])
 		exit_msg(data, "param identifier must be unique", -1);
-	data->image->texture_path[identifier] = ft_strtrim(data->line_split[i], " \n\t");
+	data->image->texture_path[identifier] = \
+		ft_strtrim(data->line_split[i], " \n\t");
 }
 
 void	import_param(t_data *data, int identifier, char *line)
@@ -49,7 +50,7 @@ int	import_params(t_data *data)
 	while (is_blank_char(*line))
 		line++;
 	identifier = get_identifier(data, line);
-	if (identifier == 11) // copying map matrix
+	if (identifier == 11)
 		return (1);
 	else
 		import_param(data, identifier, line);
@@ -106,7 +107,7 @@ void	import_textures(t_data *data)
 	{
 		t[i] = data->wall_textures[i];
 		fname = data->image->texture_path[i];
-		load_images(data, t[i],fname);
+		load_images(data, t[i], fname);
 		if (!t[i]->img)
 			exit_msg(data, "[import_textures] Pb loading xpm file", 1);
 		i++;
@@ -122,7 +123,6 @@ void	parse_file(char *fname, t_data *data)
 	init_fd(data, &fd, fname);
 	data->line = get_next_line(fd);
 	if (data->line)
-	{
 		while (data->line)
 		{
 			parsing_loop(data, &map_parse);
@@ -130,7 +130,6 @@ void	parse_file(char *fname, t_data *data)
 				break ;
 			data->line = get_next_line(fd);
 		}
-	}
 	close(fd);
 	check_param_not_missing(data);
 	import_textures(data);

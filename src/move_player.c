@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2022/12/15 03:49:30 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:24:54 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,25 @@ int	update_pos_if_wall(t_data *data, int crossover_direction)
 	int		hit_wall;
 
 	hit_wall = 0;
-	if (crossover_direction == N || crossover_direction == NE \
-		|| crossover_direction == NW)
+	if (crossover_direction == N || crossover_direction \
+	== NE || crossover_direction == NW)
 		hit_wall += north_crossing(data);
-	if (crossover_direction == S || crossover_direction == SE \
-		|| crossover_direction == SW)
+	if (crossover_direction == S || crossover_direction \
+	== SE || crossover_direction == SW)
 		hit_wall += south_crossing(data);
-	if (crossover_direction == E || crossover_direction == SE \
-		|| crossover_direction == NE)
+	if (crossover_direction == E || crossover_direction == \
+	SE || crossover_direction == NE)
 		hit_wall += east_crossing(data);
-	if (crossover_direction == W || crossover_direction == NW \
-		|| crossover_direction == SW)
+	if (crossover_direction == W || crossover_direction == \
+	NW || crossover_direction == SW)
 		hit_wall += west_crossing(data);
 	if (!hit_wall)
 	{
-		if (crossover_direction == NE || crossover_direction == SW \
-			|| crossover_direction == NW || crossover_direction == SE)
+		if (crossover_direction == NE || crossover_direction \
+	== SW || crossover_direction == NW || crossover_direction \
+	== SE)
 			hit_wall = corner_crossing(data);
 	}
-	fprintf(stderr, "update_pos_if_wall: hit_wall = %d\n", hit_wall);
 	return (hit_wall);
 }
 
@@ -132,8 +132,6 @@ int	move_player(t_data *data, int move)
 		rotate_vector(&scaled_direction, degree_to_radian(90));
 	else if (move == LEFT)
 		rotate_vector(&scaled_direction, degree_to_radian(-90));
-	else if (move != FORWARD)
-		error_msg("[move_player] wrong move instruction");
 	translate_pt_inplace(scaled_direction, &p->pos_box);
 	hit_wall = check_update_box_pos(data);
 	update_pos_in_step(p);

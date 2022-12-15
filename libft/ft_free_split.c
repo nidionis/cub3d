@@ -17,7 +17,7 @@ void	ft_free_split(char ***tab)
 	int	i;
 
 	i = 0;
-	if (*tab)
+	if (tab && *tab)
 	{
 		while ((*tab)[i])
 		{
@@ -26,6 +26,7 @@ void	ft_free_split(char ***tab)
 			i++;
 		}
 	}
-	free(*tab);
+	if (*tab)
+		free(*tab);
 	*tab = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_to_corner.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2022/12/15 03:50:45 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:25:24 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,14 @@ int	check_closest_box(t_player *player)
 	corner_nw = make_point(0, UNITS_PER_BOX - 1);
 	corner_sw = make_point(UNITS_PER_BOX - 1, UNITS_PER_BOX - 1);
 	corner_se = make_point(UNITS_PER_BOX - 1, 0);
-	wall_distance[NORTH] = fabs(distance_point_to_vector \
-		(player->pos_box, corner_ne, corner_nw));
-	wall_distance[SOUTH] = fabs(distance_point_to_vector \
-		(player->pos_box, corner_se, corner_sw));
-	wall_distance[EAST] = fabs(distance_point_to_vector \
-		(player->pos_box, corner_ne, corner_se));
-	wall_distance[WEST] = fabs(distance_point_to_vector \
-		(player->pos_box, corner_nw, corner_sw));
+	wall_distance[NORTH] = \
+		fabs(distance_point_to_vector(player->pos_box, corner_ne, corner_nw));
+	wall_distance[SOUTH] = \
+		fabs(distance_point_to_vector(player->pos_box, corner_se, corner_sw));
+	wall_distance[EAST] = \
+		fabs(distance_point_to_vector(player->pos_box, corner_ne, corner_se));
+	wall_distance[WEST] = \
+		fabs(distance_point_to_vector(player->pos_box, corner_nw, corner_sw));
 	return (get_smallest_index(wall_distance));
 }
 

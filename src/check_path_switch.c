@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path_switch.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:06:53 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/14 03:48:02 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:39:55 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	back_track_switch(t_data *data, char **map, int row, int col)
 {
-	if (map[row][col] == '3')
+	if (map[row][col] == '3' || map[row][col] == '4')
 		return (1);
 	else if (map[row][col] == '0' || map[row][col] == 'E' || \
 		map[row][col] == 'N' || map[row][col] == 'W' \
