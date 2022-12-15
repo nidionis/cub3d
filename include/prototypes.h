@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/13 11:27:35 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/15 12:36:58 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,4 +167,15 @@ void	clean_obstacle_behind_wall(t_list **list, double distance_max);
 int	end_game(t_data *data, t_assets *asset);
 void	draw_map_border(t_data *data, int size_y, int size_x);
 void get_map_size(t_data *data);
+int	load_soundtrack(t_data *data, t_audio *audio, char *path);
+int	play_soundtrack(t_data *data, t_audio *audio);
+int	stop_soundtrack(t_data *data, t_audio *audio);
+void update_player(char **map, t_player *player);
+void	draw_rain(t_data *data, int lines);
+void	mouse_rotate(t_data *data);
+int	mouse_event(t_data *data);
+void	change(t_data *data, t_img_data *img);
+void	draw_stamina_hud(t_data *data);
+void	init_line_values(t_line *line, t_point	*start, t_point	*end);
+char **alloc_mem(int size_y, int size_x);
 #endif

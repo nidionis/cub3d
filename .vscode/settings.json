@@ -4,6 +4,7 @@
 		"memory": "c",
 		"cub3d.h": "c",
 		"sdl_mixer.h": "c",
-		"time.h": "c"
+		"time.h": "c",
+		"sdl.h": "c"
 	}
 }

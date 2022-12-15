@@ -1,9 +1,39 @@
-#include "cub3d.h"
-#include "../SDL-release-2.26.1/include/SDL_audio.h"
-typedef struct  s_list {
-    void            *content;
-    struct s_list   *next;
-}   t_list;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/14 04:07:18 by dpaulino          #+#    #+#             */
+/*   Updated: 2022/12/14 14:22:08 by dpaulino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef STRUCTS_H
+# define STRUCTS_H
+# include "cub3d.h"
+# include "../SDL-release-2.26.1/include/SDL.h"
+
+typedef struct t_line
+{
+	int	x;
+	int	y;
+	int	dx;
+	int	dy;
+	int	dx1;
+	int	dy1;
+	int	px;
+	int	py;
+	int	xe;
+	int	ye;
+	int	i;
+}	t_line;
+
+typedef struct s_list {
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 typedef struct s_vector
 {
@@ -17,30 +47,19 @@ typedef struct s_point
 	int	y;
 }	t_point;
 
-typedef struct	s_obstacle t_obstacle;
-
 typedef struct s_player
 {
-	/* in square */
-	t_point		pos_map;
-	int		speed;
-	double		rotate_speed;
-	/* in pix or UNITS_PER_BOX*/
-	t_point		pos_box;
-	/* absolute positions */
-	t_point		pos_in_step;
-	t_point		pos_in_pix;
-	t_vector	map_pos;
-	t_vector	direction;
-	unsigned 	int stamina;
-	int			angle;
+	t_point			pos_map;
+	int				speed;
+	double			rotate_speed;
+	t_point			pos_box;
+	t_point			pos_in_step;
+	t_point			pos_in_pix;
+	t_vector		map_pos;
+	t_vector		direction;
+	unsigned int	stamina;
+	int				angle;
 }	t_player;
-
-typedef struct	s_sprite
-{
-	int type;
-	t_point	pos;
-}	t_sprite;
 
 typedef struct s_image
 {
@@ -48,20 +67,19 @@ typedef struct s_image
 	unsigned int	floor_color;
 	char			*texture_path[NB_TEXTURES];
 	int				line_len;
-	t_sprite		*sprite_ls;
 	int				sprite_half_size;
 }	t_image;
 
-typedef struct	s_rayponse
+typedef struct s_rayponse
 {
 	double		len;
 	double		dist_from_plan;
 	int			side;
 	t_point		hit_point;
-	t_list	*obstacles_ls;
+	t_list		*obstacles_ls;
 }	t_rayponse;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	t_vector	direction;
 	double		direction_len;
@@ -70,7 +88,7 @@ typedef struct	s_ray
 }	t_ray;
 
 /* note: origin plane is a POINT using t_vector structure*/
-typedef struct	s_cam
+typedef struct s_cam
 {
 	t_vector	origin_plane;
 	t_vector	plane_dir;
@@ -90,22 +108,22 @@ typedef struct s_window
 
 typedef struct s_img_data
 {
-	void *img;
-	int *address;
-	char *adress;
-	int	bpp;
-	int line_len;
-	int line_height;
-	int endian;
-	int width;
-	int height;
+	void	*img;
+	int		*address;
+	char	*adress;
+	int		bpp;
+	int		line_len;
+	int		line_height;
+	int		endian;
+	int		width;
+	int		height;
 }	t_img_data;
 
 typedef struct	s_obstacle
 {
 	char				type;
 	double				dist;
-	int				textureX;
+	int					textureX;
 	t_img_data			*texture;
 }	t_obstacle;
 
@@ -123,41 +141,45 @@ typedef struct s_key_status
 
 typedef struct s_menu
 {
-	//menu
-	unsigned int new_game;
-	unsigned int controls;
-	unsigned int extras;
-	unsigned int settings;
-	unsigned int quit;
-	unsigned int menu_state;
-	//settings
-	unsigned int resolution;
-	unsigned int sensivity;
-	unsigned int settings_state;
-	//other
-	unsigned int game_state;
-	unsigned int highlight;
-	unsigned int back;
-	unsigned int one;
-	unsigned int two;
-	unsigned int three;
-	unsigned int minimap;
-	//resolution
-	unsigned int low_res;
-	unsigned int mid_res;
-	unsigned int high_res;
-	unsigned int resolution_state;
-	unsigned int controls_state;
-	unsigned int extras_state;
+	unsigned int	new_game;
+	unsigned int	controls;
+	unsigned int	extras;
+	unsigned int	settings;
+	unsigned int	quit;
+	unsigned int	menu_state;
+	unsigned int	resolution;
+	unsigned int	sensivity;
+	unsigned int	settings_state;
+	unsigned int	game_state;
+	unsigned int	highlight;
+	unsigned int	back;
+	unsigned int	one;
+	unsigned int	two;
+	unsigned int	three;
+	unsigned int	minimap;
+	unsigned int	low_res;
+	unsigned int	mid_res;
+	unsigned int	high_res;
+	unsigned int	resolution_state;
+	unsigned int	controls_state;
+	unsigned int	extras_state;
 	t_img_data		*background[20];
-} t_menu;
+}	t_menu;
+
 typedef struct s_assets
 {
-	int done;
-	int side;
-	int state;
-	t_point pos;
+	int		done;
+	int		side;
+	int		state;
+	t_point	pos;
 }	t_assets;
+
+typedef struct s_audio
+{
+	SDL_AudioSpec	wavSpec;
+	Uint32			wavLength;
+	Uint8			*wavBuffer;
+}t_audio;
 
 typedef struct s_data
 {
@@ -187,6 +209,8 @@ typedef struct s_data
 	t_assets		door;
 	t_assets		switcher;
 	t_assets		minimap;
+	SDL_AudioDeviceID audio_dev;
+	t_audio			soundtrack;
 	// Mix_Chunk		*sounds;
 	// Mix_Chunk		*soundtracks[4];
 }	t_data;
@@ -201,3 +225,4 @@ enum e_sprite {SPRITE = -1};
 enum e_others {LINE_WIDTH = (int)SCREEN_WIDTH / (int)CAM_QUALITY, LINE_HEIGHT = (int)SCREEN_HEIGHT * (int)UNITS_PER_BOX};
 //int LINE_WIDTH = (int)SCREEN_WIDTH / (int)CAM_QUALITY;
 //int LINE_HEIGHT = (int)SCREEN_HEIGHT * (int)UNITS_PER_BOX;
+#endif

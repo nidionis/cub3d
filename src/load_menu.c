@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_menu.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/15 03:41:47 by dpaulino          #+#    #+#             */
+/*   Updated: 2022/12/15 11:47:34 by dpaulino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-char *remove_char(char *str, char c)
+char	*remove_char(char *str, char c)
 {
-	int	i;
-	int j;
-	char *tmp;
+	int		i;
+	int		j;
+	char	*tmp;
+
 	i = 0;
 	j = 0;
 
@@ -25,16 +38,17 @@ char *remove_char(char *str, char c)
 	return (tmp);
 }
 
-t_point get_img_size(char *path)
+t_point	get_img_size(char *path)
 {
-	int fd;
-	char *buffer;
-	char **tmp;
-	t_point size;
+	int		fd;
+	char	*buffer;
+	char	**tmp;
+	t_point	size;
+
 	buffer = NULL;
 	fd = open(path,O_RDWR);
 	buffer = get_next_line(fd);
-	while (ft_strncmp(buffer, "\"",1))
+	while (ft_strncmp(buffer, "\"", 1))
 	{
 		buffer = get_next_line(fd);
 	}
@@ -50,13 +64,15 @@ t_point get_img_size(char *path)
 
 int	load_images(t_data *data, t_img_data *image, char *path)
 {
-	t_point size;
+	t_point	size;
 
 	size = get_img_size(path);
 	image->width = size.x;
 	image->height = size.y;
-   	image->img = mlx_xpm_file_to_image(data->window->mlx, path, &image->line_len, &image->line_height);
-   	image->address = (int *)mlx_get_data_addr(image->img, &image->bpp, &image->line_len, &image->endian);
+	image->img = mlx_xpm_file_to_image(data->window->mlx, \
+		path, &image->line_len, &image->line_height);
+	image->address = (int *)mlx_get_data_addr(image->img, \
+		&image->bpp, &image->line_len, &image->endian);
 	return (0);
 }
 
@@ -121,22 +137,22 @@ void load_menu(t_data *data)
 	data->menu->background[MID_RES] = malloc(sizeof(t_img_data));
 	data->menu->background[HIGH_RES] = malloc(sizeof(t_img_data));
 	load_images(data, data->menu->background[BG], "assets/menu/background.xpm");
-	load_images(data,data->menu->background[SETTINGS], "assets/menu/settings.xpm");
-	load_images(data,data->menu->background[NEW_GAME], "assets/menu/new_game.xpm");
-	load_images(data,data->menu->background[EXIT], "assets/menu/exit.xpm");
+	load_images(data,data->menu->background[SETTINGS], "assets/menu2/settings.xpm");
+	load_images(data,data->menu->background[NEW_GAME], "assets/menu2/new_game.xpm");
+	load_images(data,data->menu->background[EXIT], "assets/menu2/exit.xpm");
 	load_images(data,data->menu->background[LAYOUT], "assets/layout.xpm");
 	load_images(data,data->menu->background[LOGO], "assets/logo.xpm");
-	load_images(data,data->menu->background[6], "assets/menu/settings.xpm");
-	load_images(data,data->menu->background[RESOLUTION], "assets/menu/resolution.xpm");
-	load_images(data,data->menu->background[SENSIVITY], "assets/menu/sensivity.xpm");
-	load_images(data,data->menu->background[CONTROLS], "assets/menu/controls.xpm");
-	load_images(data,data->menu->background[BACK], "assets/menu/back.xpm");
+	load_images(data,data->menu->background[6], "assets/menu2/settings.xpm");
+	load_images(data,data->menu->background[RESOLUTION], "assets/menu2/resolution.xpm");
+	load_images(data,data->menu->background[SENSIVITY], "assets/menu2/sensivity.xpm");
+	load_images(data,data->menu->background[CONTROLS], "assets/menu2/controls.xpm");
+	load_images(data,data->menu->background[BACK], "assets/menu2/back.xpm");
 	load_images(data, data->menu->background[NEW_BG], "assets/menu/background.xpm");
-	load_images(data, data->menu->background[EXTRAS], "assets/menu/extras.xpm");
+	load_images(data, data->menu->background[EXTRAS], "assets/menu2/extras.xpm");
 	load_images(data, data->menu->background[CONTROLS_KEYS], "assets/menu/control_keys.xpm");
-	load_images(data, data->menu->background[LOW_RES], "assets/menu/700x500.xpm");
-	load_images(data, data->menu->background[MID_RES], "assets/menu/1200x700.xpm");
-	load_images(data, data->menu->background[HIGH_RES], "assets/menu/1900x1080.xpm");
+	load_images(data, data->menu->background[LOW_RES], "assets/menu2/700x500.xpm");
+	load_images(data, data->menu->background[MID_RES], "assets/menu2/1200x700.xpm");
+	load_images(data, data->menu->background[HIGH_RES], "assets/menu2/1900x1080.xpm");
 	menu = data->menu;
 	menu->new_game = 1;
 	menu->controls = 0;
@@ -159,5 +175,5 @@ void load_menu(t_data *data)
 	menu->extras_state = 0;
 	menu->low_res = 0;
 	menu->mid_res = 0;
-	menu->high_res = 1;
+	menu->high_res = 0;
 }

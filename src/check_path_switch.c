@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:06:53 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/13 10:11:26 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/14 03:48:02 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	check_path_switch(t_data *data, int row, int col)
 
 	x = 0;
 	y = 0;
-	map = malloc(sizeof(char*) * data->map_height + 1);
+	map = malloc(sizeof(char *) * data->map_height + 1);
 	while (data->map[y])
 	{
 		map[y] = malloc(sizeof(char) * data->map_width + 1);

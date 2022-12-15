@@ -15,8 +15,9 @@
 /* return the color in a texture from a pixel point */
 unsigned int	get_texture_pix(t_img_data *t, t_point pix)
 {
-	int addr;
-	unsigned int color;
+	int				addr;
+	unsigned int	color;
+
 	addr = pix.y * t->width + pix.x;
 	color = t->address[addr];
 	return (color);

@@ -27,7 +27,6 @@ void	init_null(t_data *data, int *map_parse)
 	}
 	data->image->floor_color = -1;
 	data->image->ceiling_color = -1;
-	data->image->sprite_ls = NULL;
 }
 
 

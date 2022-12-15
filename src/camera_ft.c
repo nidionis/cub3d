@@ -47,7 +47,8 @@ void	set_plane_origin(t_data *data)
 {
 	t_vector	origin_plane;
 
-	origin_plane = vec_scale(data->player->direction, (double)ORIGIN_PLANE_SCALE);
+	origin_plane = vec_scale(data->player->direction, \
+	(double)ORIGIN_PLANE_SCALE);
 	rotate_vector(&origin_plane, (double)CAM_ANGLE / (double)-2.0);
 	data->cam->origin_plane = origin_plane;
 }
@@ -57,7 +58,8 @@ void	init_cam_vector(t_data *data)
 {
 	double		plane_size;
 
-	plane_size = tan((double)CAM_ANGLE / (double)2.0) * (double)ORIGIN_PLANE_SCALE * (double)2.0;
+	plane_size = tan((double)CAM_ANGLE / (double)2.0) * \
+	(double)ORIGIN_PLANE_SCALE * (double)2.0;
 	set_plane_origin(data);
 	set_plane_dir(data, plane_size);
 	data->cam->beam->direction = data->cam->origin_plane;

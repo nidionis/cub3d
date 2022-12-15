@@ -3,86 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/19 18:54:34 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
+/*   Updated: 2022/12/15 03:49:30 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/*
-The algo check if the final position overjump the size (or under 0 if going to the NORTH or WEST)
-It refreshs the positions values in the map
-
-In theses examples, player's step brings her to *
-case 0:
- ____ ___ 
-|    |    |
-|WALL|    |
-|    |*   |
-L____|____|
-|    |    |
-|    |p   | player : box_position = { 0, 1 }
-|    |    |			 map_position = { 1, 1 }
-L____|____|
-
-No wall:
-	Box_position with UNITS_PER_BOX difference is applyed
-	Map_position is updated
-
-ex : player.box_position.y become -1
-=>  new box position is :
-		player.box_position.y = -1 + (UNITS_PER_BOX - 1)
-Map_position.y decrease (or increase)
-We apply the same concept for east-west axe
-
-case 1:
- ____ ____
-|WALL|    |
-|    |    |
-|    |*   |
-L____|____|
-|  p |$   |
-|    |    |
-|    |    |
-L____|____|
-
-When the next box (NSEW) is a wall, the values
-payers.box_position[x] (or y) are set to 0 (or UNITS_PER_BOX - 1)
-player arrive at $
-
-case 2:
- ____ ____
-|    |WALL|
-|    |    |
-|*   |    |
-L____|____|
-|$   |    |
-|    |p   |
-|    |    |
-L____|____|
-In this case, p want to reach *
-North is a wall, so var is set to 0
-map_case {1, 0} is not a wall, pers can jump out there
-Player arrive at $
-
-case 3:
- ____ ____
-|WALL|    |
-|    |    |
-|   *|$   |
-L____|____|
-|    |    |
-|    |p   |
-|    |    |
-L____|____|
-In this case, p want to reach *
-Player is not blocked buy walls north or west
-The destination is still a wall
-Find the closest adjacent box and arrive at $
-*/
 
 /* check if it steps out of a box */
 int	f_is_box_crossed(t_player *player)
@@ -106,17 +34,22 @@ int	update_pos_if_wall(t_data *data, int crossover_direction)
 	int		hit_wall;
 
 	hit_wall = 0;
-	if (crossover_direction == N || crossover_direction == NE || crossover_direction == NW)
+	if (crossover_direction == N || crossover_direction == NE \
+		|| crossover_direction == NW)
 		hit_wall += north_crossing(data);
-	if (crossover_direction == S || crossover_direction == SE || crossover_direction == SW)
+	if (crossover_direction == S || crossover_direction == SE \
+		|| crossover_direction == SW)
 		hit_wall += south_crossing(data);
-	if (crossover_direction == E || crossover_direction == SE || crossover_direction == NE)
+	if (crossover_direction == E || crossover_direction == SE \
+		|| crossover_direction == NE)
 		hit_wall += east_crossing(data);
-	if (crossover_direction == W || crossover_direction == NW || crossover_direction == SW)
+	if (crossover_direction == W || crossover_direction == NW \
+		|| crossover_direction == SW)
 		hit_wall += west_crossing(data);
 	if (!hit_wall)
 	{
-		if (crossover_direction == NE || crossover_direction == SW || crossover_direction == NW || crossover_direction == SE)
+		if (crossover_direction == NE || crossover_direction == SW \
+			|| crossover_direction == NW || crossover_direction == SE)
 			hit_wall = corner_crossing(data);
 	}
 	fprintf(stderr, "update_pos_if_wall: hit_wall = %d\n", hit_wall);
@@ -136,10 +69,26 @@ int	check_update_box_pos(t_data *data)
 	return (hit_wall);
 }
 
+void	direction_move(t_data *data)
+{
+	if (data->key_status->w == 1)
+		move_player(data, FORWARD);
+	if (data->key_status->s == 1)
+		move_player(data, BACKWARD);
+	if (data->key_status->a == 1)
+		move_player(data, LEFT);
+	if (data->key_status->d == 1)
+		move_player(data, RIGHT);
+	if (data->key_status->left == 1)
+		rotate_player(data->player, LEFT);
+	if (data->key_status->right == 1)
+		rotate_player(data->player, RIGHT);
+}
+
 void	player_smoth_move(t_data *data)
 {
-	static int counter;
-	static int counter2;
+	static int	counter;
+	static int	counter2;
 
 	if (data->player->speed == 1 && data->player->stamina > 0)
 	{
@@ -161,18 +110,7 @@ void	player_smoth_move(t_data *data)
 	}
 	if (data->player->speed == 1 && data->player->stamina <= 0)
 		data->player->speed = 0;
-	if (data->key_status->w == 1)
-		move_player(data, FORWARD);
-	if (data->key_status->s == 1)
-		move_player(data, BACKWARD);
-	if (data->key_status->a == 1)
-		move_player(data, LEFT);
-	if (data->key_status->d == 1)
-		move_player(data, RIGHT);
-	if (data->key_status->left == 1)
-		rotate_player(data->player, LEFT);
-	if (data->key_status->right == 1)
-		rotate_player(data->player, RIGHT);
+	direction_move(data);
 }
 
 int	move_player(t_data *data, int move)
@@ -183,9 +121,11 @@ int	move_player(t_data *data, int move)
 
 	p = data->player;
 	if (data->player->speed == 1)
-		scaled_direction = vec_scale(p->direction, (double)(UNITS_PER_BOX / 30));
+		scaled_direction = vec_scale(p->direction, \
+			(double)(UNITS_PER_BOX / 30));
 	else
-		scaled_direction = vec_scale(p->direction, (double)(UNITS_PER_BOX / STEPS_PER_BOX));
+		scaled_direction = vec_scale(p->direction, \
+			(double)(UNITS_PER_BOX / STEPS_PER_BOX));
 	if (move == BACKWARD)
 		rotate_vector(&scaled_direction, degree_to_radian(180));
 	else if (move == RIGHT)
@@ -199,4 +139,5 @@ int	move_player(t_data *data, int move)
 	update_pos_in_step(p);
 	update_pos_in_pix(p);
 	return (hit_wall);
- }
+}
+
