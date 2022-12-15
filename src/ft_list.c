@@ -35,19 +35,23 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		while (*lst)
 		{
 			next_item = (*lst)->next;
-			ft_lstdelone(*lst, del);
+			ft_lstdelone(&(*lst), del);
 			*lst = next_item;
 		}
 	}
+	*lst = NULL;
 }
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_lstdelone(t_list **lst, void (*del)(void *))
 {
-	if (lst)
+	if (lst && *lst != NULL)
 	{
-		del(lst->content);
-		lst->next = NULL;
-		free(lst);
+		if ((*lst)->content)
+		{
+			del((*lst)->content);
+			(*lst)->content = NULL;
+		}
+		*lst = NULL;
 	}
 }
 

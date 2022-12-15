@@ -37,7 +37,7 @@ void	clean_exit(t_data *data, int exit_code)
 				free(data->cam->beam);
 			i = 0;
 			while (i < CAM_QUALITY)
-			//	ft_lstclear(&data->cam->array[i++].obstacles_ls);
+				ft_lstclear(&data->cam->array[i++].obstacles_ls, free);
 			free(data->cam);
 		}
 		if (data->image)

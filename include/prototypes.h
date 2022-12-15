@@ -101,7 +101,7 @@ t_list	*ft_lstnew(void *content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstdelone(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 double			distance_points(t_point p1, t_point p2);
 void			convert_pos_and_dir_to_line(t_point pos, t_vector vec, t_vector line[2]);

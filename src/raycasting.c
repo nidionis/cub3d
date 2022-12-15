@@ -58,9 +58,10 @@ t_rayponse	next_wall_dir(t_data *data, int dir, t_list **obstacles_ls)
 					make_obstacle(data, rayponse, map_case, dir));
 		}
 		else
+		{
 			rayponse.len = 2147483647;
-		if (rayponse.len == 2147483647)
 			break ;
+		}
 		rayponse.len += data->cam->beam->delta_distances[dir];
 	}
 	return (rayponse);
