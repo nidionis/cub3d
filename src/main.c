@@ -63,12 +63,18 @@ int	main(int argc, char *argv[])
 		data->door.state = 0;
 		data->switcher.state = 0;
 		data->minimap.state = 0;
-		load_soundtrack(data,&data->soundtrack, "gameplay.wav");
-		play_soundtrack(data,&data->soundtrack);
+		// load_soundtrack(data,&data->soundtrack, "gameplay.wav");
+		// play_soundtrack(data,&data->soundtrack);
 		// stop_soundtrack(data,&data->soundtrack);
 		update_player(data->map, data->player);
 		init_key_status(data);
 		load_window(data);
+		int i = 0;
+		while(data->map[i])
+		{
+			printf("%s\n",data->map[i]);
+			i++;
+		}
 		get_map_size(data);
 		while(!check_path_door(data,data->player->pos_map.y, data->player->pos_map.x) || \
 		!check_path_switch(data,data->player->pos_map.y, data->player->pos_map.x) || \

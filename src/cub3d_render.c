@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 12:51:37 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/15 16:56:29 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ int	graphics_render(t_data *data)
 		{
 			if (counter > 100)
 				counter = 0;
-			// if (counter >= 50)
-			// 	change(data->img);
+			if (counter >= 50)
+				change(data, data->img);
 			
 		}
-		// draw_image(data->img, data->menu->background[4], y_x(SCREEN_HEIGHT / 2 + 267, SCREEN_WIDTH/2 - (SCREEN_WIDTH/3)), -1);
-		// draw_stamina_hud(data);
+		draw_image(data->img, data->menu->background[4], y_x(SCREEN_HEIGHT / 2 + 267, SCREEN_WIDTH/2 - (SCREEN_WIDTH/3)), -1);
+		draw_stamina_hud(data);
 		mlx_put_image_to_window(data->window->mlx, data->window->init, \
 			data->img->img, 0, 0);
 		if (data->time_state == 2)

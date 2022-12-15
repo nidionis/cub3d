@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:14:23 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/14 22:34:03 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/15 17:24:56 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,12 @@ void	draw_map_border(t_data *data, int size_y, int size_x)
 			|| new.y == size_y + 1)
 				new_map[new.y][new.x++] = '1';
 			else
-				new_map[new.y][new.x++] = data->map[old.y][old.x++];
+			{
+				if (data->map[old.y][old.x] == ' ')
+					new_map[new.y][new.x++] = '1';
+				else
+					new_map[new.y][new.x++] = data->map[old.y][old.x++];
+			}
 		}
 		new_map[new.y][new.x] = '\0';
 		if (new.y++ != 0 && new.y != size_y + 1)
@@ -72,7 +77,8 @@ void	draw_map_border(t_data *data, int size_y, int size_x)
 		new.x = 0;
 		old.x = 0;
 	}
-	new_map[new.y] = NULL;
+	new_map[new.y - 1] = NULL;
+	ft_free_split(&data->map);
 	data->map = new_map;
 }
 

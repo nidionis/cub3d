@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 04:07:18 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/14 14:22:08 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/15 16:05:53 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,8 +209,8 @@ typedef struct s_data
 	t_assets		door;
 	t_assets		switcher;
 	t_assets		minimap;
-	SDL_AudioDeviceID audio_dev;
-	t_audio			soundtrack;
+	// SDL_AudioDeviceID audio_dev;
+	// t_audio			soundtrack;
 	// Mix_Chunk		*sounds;
 	// Mix_Chunk		*soundtracks[4];
 }	t_data;
