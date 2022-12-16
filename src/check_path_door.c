@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:54:41 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/14 03:47:50 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:53:47 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	check_path_door(t_data *data, int row, int col)
 
 	x = 0;
 	y = 0;
-	map = malloc(sizeof(char *) * data->map_height + 1);
+	map = malloc(sizeof(char *) * data->map_height + 2);
 	while (data->map[y])
 	{
 		map[y] = malloc(sizeof(char) * data->map_width + 1);

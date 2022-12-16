@@ -63,6 +63,11 @@ int	main(int argc, char *argv[])
 		data->door.state = 0;
 		data->switcher.state = 0;
 		data->minimap.state = 0;
+		data->door.done = 0;
+		data->switcher.done = 0;
+		data->minimap.done = 0;
+		data->map_height = 0;
+		data->map_width = 0;
 		// load_soundtrack(data,&data->soundtrack, "gameplay.wav");
 		// play_soundtrack(data,&data->soundtrack);
 		// stop_soundtrack(data,&data->soundtrack);

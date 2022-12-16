@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 18:23:11 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/16 21:44:33 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	world_render(t_data *data)
 	i = 0;
 	set_array(data);
 	draw_ceiling_floor_mandatory(data);
-	while (i < CAM_QUALITY)
+	while (i < data->window->width)
 	{	
 		draw_wall_textured(data, i);
 		i++;
@@ -76,7 +76,7 @@ int	graphics_render(t_data *data)
 				change(data, data->img);
 			
 		}
-		draw_image(data->img, data->menu->background[4], y_x(SCREEN_HEIGHT / 2 + 267, SCREEN_WIDTH/2 - (SCREEN_WIDTH/3)), -1);
+		draw_image(data->img, data->menu->background[LAYOUT], y_x(SCREEN_HEIGHT - 125, SCREEN_WIDTH/2 - 200), -1);
 		draw_stamina_hud(data);
 		mlx_put_image_to_window(data->window->mlx, data->window->init, \
 			data->img->img, 0, 0);

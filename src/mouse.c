@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 04:02:46 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 15:59:47 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/16 16:33:47 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	mouse_rotate(t_data *data)
 
 	if (data->mouse == 0)
 		return ;
-	mlx_mouse_get_pos(data->window->init, &pos.x, &pos.y);
+	mlx_mouse_get_pos(data->window->mlx, data->window->init, &pos.x, &pos.y);
 	delta.x = pos.x - SCREEN_WIDTH / 2;
 	delta.y = pos.y - SCREEN_HEIGHT / 2;
 	if (delta.x < 0)
 		rotate_player(data->player, LEFT);
 	else if (delta.x > 0)
 		rotate_player(data->player, RIGHT);
-	mlx_mouse_move(data->window->init, \
+	mlx_mouse_move(data->window->mlx, data->window->init, \
 	SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 }
 

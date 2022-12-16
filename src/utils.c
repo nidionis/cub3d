@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 04:23:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 12:50:23 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/16 16:44:21 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**alloc_mem(int size_y, int size_x)
 	map = malloc(sizeof(char *) * (size_y));
 	while (i < size_y)
 	{
-		map[i] = malloc(sizeof(char) * (size_x));
+		map[i] = malloc(sizeof(char) * (size_x) + 1);
 		i++;
 	}
 	return (map);

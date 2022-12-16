@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:03:28 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 18:52:22 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/16 16:34:16 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_point	pos;
 				draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
 					(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, rgb_conv(67,15,74));
 			// else
-			// 	draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + \
+			// 	draw_cube(data, WALL_SIZE, pos.y * WALL_SIZE + 
 			// 		(WALL_SIZE / 2) + j, pos.x * WALL_SIZE + (WALL_SIZE / 2) + i, 0x0FFF0F);
 				// mlx_put_image_to_window(data->window->mlx, data->window->init, 
 				// 	data->image->texture_path[1], pos.x * WALL_SIZE + i, 

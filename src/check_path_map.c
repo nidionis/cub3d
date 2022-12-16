@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:08:34 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 18:46:03 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:53:56 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	check_path_map(t_data *data, int row, int col)
 	y = 0;
 	if (data->minimap.state == 1)
 		return (1);
-	map = malloc(sizeof(char *) * data->map_height + 1);
+	map = malloc(sizeof(char *) * data->map_height + 2);
 	while (data->map[y])
 	{
 		map[y] = malloc(sizeof(char) * data->map_width + 1);

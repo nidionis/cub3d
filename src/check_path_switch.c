@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path_switch.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:06:53 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 18:39:55 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:45:18 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	check_path_switch(t_data *data, int row, int col)
 
 	x = 0;
 	y = 0;
-	map = malloc(sizeof(char *) * data->map_height + 1);
+	map = malloc(sizeof(char *) * data->map_height + 2);
 	while (data->map[y])
 	{
 		map[y] = malloc(sizeof(char) * data->map_width + 1);

@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:29:21 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 12:48:26 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/16 21:49:34 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,24 @@ void	res_enter_key(t_data *data)
 		mlx_destroy_window(data->window->mlx, data->window->init);
 		data->window->init = mlx_new_window(data->window->mlx, \
 		1900, 1080, "Cub3d");
+		// data->window->width = 1900;
+		// data->window->height = 1080;
 	}
 	else if (data->menu->mid_res == 1)
 	{
 		mlx_destroy_window(data->window->mlx, data->window->init);
 		data->window->init = mlx_new_window(data->window->mlx, \
 		1200, 700, "Cub3d");
+		// data->window->width = 1200;
+		// data->window->height = 700;
 	}
 	else if (data->menu->low_res == 1)
 	{
 		mlx_destroy_window(data->window->mlx, data->window->init);
 		data->window->init = mlx_new_window(data->window->mlx, \
 		700, 500, "Cub3d");
+		// data->window->width = 700;
+		// data->window->height = 500;
 	}
 	cub3d_render(data);
 }

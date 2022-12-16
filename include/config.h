@@ -83,10 +83,10 @@
 /* MAPCASE to consider as a wall */
 # define IS_BLOCK "12345 "
 # define NB_TEXTURES 4
-# define SCREEN_WIDTH 1900
-# define SCREEN_HEIGHT 1080
+# define SCREEN_WIDTH 1200
+# define SCREEN_HEIGHT 700
 /* should be eaual to windows width*/
-# define CAM_QUALITY 1900
+# define CAM_QUALITY 1200
 # define NB_TEXTURES 4
 # define BONUS_TEXTURES_SOLIDS "assets/official_door.xpm,assets/official_door.xpm,assets/official_door.xpm,assets/official_door.xpm,\
 assets/official_red_switch.xpm,assets/official_red_switch.xpm,assets/official_red_switch.xpm,assets/official_red_switch.xpm,\

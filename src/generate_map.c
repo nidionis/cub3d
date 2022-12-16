@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:14:23 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 17:24:56 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:39:13 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ void	generate_map_content(t_data *data, t_assets *asset, char c)
 	t_point	pos;
 	int		wall_side;
 
+	pos.x = 0;
+	pos.y = 0;
 	if (asset->done == 1)
 		data->map[asset->pos.y][asset->pos.x] = '1';
 	check_content_side(data, &wall_side, asset, &pos);
