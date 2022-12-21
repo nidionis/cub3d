@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 18:32:40 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:41:36 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,4 +184,6 @@ void	initxvar(t_point *start, t_point *end, int *line_width, int i_ray);
 void	inityvar(t_point *start, t_point *end, int *line_height, int distance);
 int	get_wallx(t_rayponse *ray);
 unsigned int	get_texture_pix(t_img_data *t, t_point pix);
+void	free_everything(t_data *data);
+void	free_test(t_data *data);
 #endif

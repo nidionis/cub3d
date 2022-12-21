@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/16 21:44:33 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:16:51 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	graphics_render(t_data *data)
 		world_render(data);
 		if (data->rain_state == 0)
 			draw_rain(data, rand() % 20);
-		if (data->mouse == 1)
-			mouse_rotate(data);
+		// if (data->mouse == 1)
+		// 	mouse_rotate(data);
 		player_smoth_move(data);
 		if (data->menu->minimap == 1 && data->minimap.state == 1)
 		{
@@ -90,10 +90,11 @@ int	graphics_render(t_data *data)
 			printf("generating map\n");
 		}
 	}
-	else
+	else if (data->menu->menu_state == 1)
 		render_menu(data);
+	else if (data->menu->game_state == 2)
+		exit_game(data);
 	return (0);
-	//  if(data->menu->menu_state == 1 && data->menu->game_state == 0)
 }
 
 int	cub3d_render(t_data *data)
@@ -101,7 +102,7 @@ int	cub3d_render(t_data *data)
 	mlx_hook(data->window->init, 2, 1L << 0, key_press, data);
 	mlx_hook(data->window->init, 3, 1L << 1, key_realese, data);
 	mlx_loop_hook(data->window->mlx, graphics_render, data);
-	mlx_hook(data->window->init, 12, 1L << 15, mouse_event, data);
+	// mlx_hook(data->window->init, 12, 1L << 15, mouse_event, data);
 	mlx_hook(data->window->init, 17, 1L << 17, &exit_game, data);
 	mlx_loop(data->window->mlx);
 	return (0);

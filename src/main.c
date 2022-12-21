@@ -40,11 +40,14 @@ t_data	*malloc_data(void)
 	return (data);
 }
 
+int g_status;
+
 int	main(int argc, char *argv[])
 {
 	t_data		*data;
 
 
+	g_status = 0;
 	data = NULL;
 	if (argc != 2)
 	{
@@ -92,7 +95,5 @@ int	main(int argc, char *argv[])
 		data->rain_state = rand() % 5;
 		import_bonus_textures(data);
 		cub3d_render(data);
-		//free
-		clean_exit(data, 0);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 03:41:47 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 11:47:34 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:06:51 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ char	*remove_char(char *str, char c)
 		i++;
 	}
 	tmp[j] = '\0';
-	free(str);
 	return (tmp);
 }
 
@@ -42,23 +41,29 @@ t_point	get_img_size(char *path)
 {
 	int		fd;
 	char	*buffer;
+	char *buffer2;
 	char	**tmp;
 	t_point	size;
 
+	buffer2 = NULL;
 	buffer = NULL;
 	fd = open(path,O_RDWR);
 	buffer = get_next_line(fd);
 	while (ft_strncmp(buffer, "\"", 1))
 	{
+		free(buffer);
 		buffer = get_next_line(fd);
 	}
-	buffer = remove_char(buffer, '\"');
-	buffer = remove_char(buffer, ',');
+	buffer2 = remove_char(buffer, '\"');
+	free(buffer);
+	buffer = remove_char(buffer2, ',');
+	free(buffer2);
 	tmp = ft_split(buffer, ' ');
 	close(fd);
 	size.x = atoi(tmp[0]);
 	size.y = atoi(tmp[1]);
-	free (tmp);
+	ft_free_split(&tmp);
+	free(buffer);
 	return (size);
 }
 

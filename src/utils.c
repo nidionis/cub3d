@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 04:23:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/16 16:44:21 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:55:12 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ char	**alloc_mem(int size_y, int size_x)
 	char	**map;
 
 	i = 0;
-	map = malloc(sizeof(char *) * (size_y));
+	map = ft_calloc((size_y), sizeof(char *) + 1);
 	while (i < size_y)
 	{
-		map[i] = malloc(sizeof(char) * (size_x) + 1);
+		map[i] = ft_calloc((size_x), sizeof(char) + 1);
 		i++;
 	}
 	return (map);

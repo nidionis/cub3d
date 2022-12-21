@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:28:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 18:41:48 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:18:30 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ int	key_game(int key, t_data *data)
 	controls(data, key);
 	if (end_game(data, &data->door) && key == KEY_E && \
 	data->switcher.state == 1)
-	{
-		exit(0);
-	}
+		data->menu->game_state = 2;
 	if (end_game(data, &data->switcher) && key == KEY_E \
 	&& data->switcher.state == 0)
 	{

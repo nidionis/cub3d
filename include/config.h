@@ -27,8 +27,8 @@
 
 # else   // LINUX
 #  include <X11/keysym.h>   // 
-#  include "../minilibx_linux/mlx.h"
-#  include "../minilibx_linux/mlx_int.h"
+#  include "../libmlx/mlx.h"
+// #  include "../minilibx_linux/mlx_int.h"
 #  define ENTER 65293
 #  define KEY_P 112
 #  define KEY_Q 113
@@ -64,6 +64,7 @@
 # define UP_ARROW 126
 
 //MACROS 
+extern int g_status;
 # define WALL 49
 # define FLOOR 48
 /* EMPTY must be ' ', for the function format_map lets call lane the '0' */
@@ -88,6 +89,7 @@
 /* should be eaual to windows width*/
 # define CAM_QUALITY 1200
 # define NB_TEXTURES 4
+# define NB_MENU_IMG 17
 # define BONUS_TEXTURES_SOLIDS "assets/official_door.xpm,assets/official_door.xpm,assets/official_door.xpm,assets/official_door.xpm,\
 assets/official_red_switch.xpm,assets/official_red_switch.xpm,assets/official_red_switch.xpm,assets/official_red_switch.xpm,\
 assets/official_green_switch.xpm,assets/official_green_switch.xpm,assets/official_green_switch.xpm,assets/official_green_switch.xpm,\

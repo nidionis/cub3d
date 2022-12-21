@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/07 09:07:52 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:10:37 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void	exit_msg(t_data *data, char *msg, int ret_exit)
 
 int	exit_game(t_data *data)
 {
-	clean_exit(data, 0);
-	return (0);
+	free_everything(data);
+	exit(0);
 }

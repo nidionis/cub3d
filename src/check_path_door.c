@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:54:41 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/16 17:53:47 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:26:41 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,19 @@ int	check_path_door(t_data *data, int row, int col)
 
 	x = 0;
 	y = 0;
-	map = malloc(sizeof(char *) * data->map_height + 2);
+	map = ft_calloc(data->map_height + 1, sizeof(char *));
 	while (data->map[y])
 	{
-		map[y] = malloc(sizeof(char) * data->map_width + 1);
+		map[y] = ft_calloc(data->map_width + 1, sizeof(char));
 		while (data->map[y][x])
 		{
 			map[y][x] = data->map[y][x];
 			x++;
 		}
-		map[y][x] = '\0';
 		x = 0;
 		y++;
 	}
-	map[y] = NULL;
 	status = back_track_door(data, map, row, col);
-	free(map);
+	ft_free_split(&map);
 	return (status);
 }

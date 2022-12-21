@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:08:34 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/16 18:53:56 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:30:52 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,19 @@ int	check_path_map(t_data *data, int row, int col)
 	y = 0;
 	if (data->minimap.state == 1)
 		return (1);
-	map = malloc(sizeof(char *) * data->map_height + 2);
+	map = ft_calloc(data->map_height + 1, sizeof(char *));
 	while (data->map[y])
 	{
-		map[y] = malloc(sizeof(char) * data->map_width + 1);
+		map[y] = ft_calloc(data->map_width + 1, sizeof(char));
 		while (data->map[y][x])
 		{
 			map[y][x] = data->map[y][x];
 			x++;
 		}
-		map[y][x] = '\0';
 		x = 0;
 		y++;
 	}
-	map[y] = NULL;
 	status = back_track_map(data, map, row, col);
-	free(map);
+	ft_free_split(&map);
 	return (status);
 }

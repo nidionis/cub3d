@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:57:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/07 10:47:07 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:17:41 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,12 @@ int	key_press(int key, t_data *data)
 	if (data->menu->game_state == 1)
 		key_game(key, data);
 	if (key == KEY_ESC)
-		exit_game(data);
+	{
+		if (data->menu->game_state == 1)
+			data->menu->game_state = 2;
+		else
+			exit_game(data);
+	}
 	return (0);
 }
 
