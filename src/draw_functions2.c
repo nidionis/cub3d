@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 03:51:59 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/16 19:09:03 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/22 02:33:17 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ void	draw_rain(t_data *data, int lines)
 	i = 0;
 	while (i < lines)
 	{
-		start.x = rand() % SCREEN_WIDTH - 1;
+		start.x = rand() % data->window->width - 1;
 		start.y = 0;
 		end.x = start.x + (rand() - RAND_MAX / 2) % 50;
-		end.y = SCREEN_HEIGHT - 1;
+		end.y = data->window->height - 1;
 		draw_line(data, &start, &end, rgb_conv(255, 255, 255));
 		i++;
 	}

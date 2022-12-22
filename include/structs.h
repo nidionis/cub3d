@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 04:07:18 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 13:40:42 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/21 19:36:36 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ typedef struct s_data
 	t_key_status	*key_status;
 	t_menu			*menu;
 	time_t			timer;
+	time_t			time_to_lose;
 	int				time_state;
 	int				mouse;
 	int				map_width;
@@ -209,6 +210,7 @@ typedef struct s_data
 	t_assets		door;
 	t_assets		switcher;
 	t_assets		minimap;
+	char *argv;
 	// SDL_AudioDeviceID audio_dev;
 	// t_audio			soundtrack;
 	// Mix_Chunk		*sounds;

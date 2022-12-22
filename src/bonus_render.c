@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug_ft.c                                         :+:      :+:    :+:   */
+/*   bonus_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/12/01 17:19:27 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
+/*   Updated: 2022/12/22 02:40:21 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ line_height, t_obstacle *obstacle)
 	text_pix.x = t->line_len * ratio[_x] / (double)(t->bpp / 8);
 	if (pts[0].y < 0)
 		pts[0].y = 0;
-	while (pts[0].y <= pts[1].y && pts[0].y < SCREEN_HEIGHT)
+	while (pts[0].y <= pts[1].y && pts[0].y < data->window->height)
 	{
 		ratio[_y] = 1.0 - (double)(pts[1].y - pts[0].y) / (double)line_height;
 		text_pix.y = t->line_height * ratio[_y];

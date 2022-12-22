@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 14:41:36 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/22 03:32:11 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,5 +185,9 @@ void	inityvar(t_point *start, t_point *end, int *line_height, int distance);
 int	get_wallx(t_rayponse *ray);
 unsigned int	get_texture_pix(t_img_data *t, t_point pix);
 void	free_everything(t_data *data);
-void	free_test(t_data *data);
+void	change_to_black(t_data *data, t_img_data *img);
+int re_run_game(t_data *data, char *argv);
+int	get_res_height(void);
+int	get_res_width(void);
+void	draw_map(t_data *data);
 #endif

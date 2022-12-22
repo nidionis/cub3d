@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_render2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 18:30:30 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 18:31:49 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/22 02:44:10 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,16 @@ int	get_wallx(t_rayponse *ray)
 
 void	inityvar(t_point *start, t_point *end, int *line_height, int distance)
 {
+	int	height;
+
+	height = get_res_height();
 	if (distance <= 1)
 		distance = 1;
 	if (distance < 0)
 		distance = 2147483647;
 	*line_height = (int)LINE_HEIGHT / distance;
-	start->y = (int)SCREEN_HEIGHT / 2 - *line_height / 2;
-	end->y = (int)SCREEN_HEIGHT / 2 + *line_height / 2;
+	start->y = (int)height / 2 - *line_height / 2;
+	end->y = (int)height / 2 + *line_height / 2;
 }
 
 void	initxvar(t_point *start, t_point *end, int *line_width, int i_ray)
@@ -64,13 +67,15 @@ int line_height, t_rayponse *ray)
 	t_point			text_pix;
 	unsigned int	color;
 	t_img_data		*t;
+	int				height;
 
+	height = get_res_height();
 	t = data->wall_textures[ray->side];
 	ratio[_x] = get_wallx(ray) / (double) UNITS_PER_BOX;
 	text_pix.x = t->line_len * ratio[_x] / (double)(t->bpp / 8);
 	if (pts[0].y < 0)
 		pts[0].y = 0;
-	while (pts[0].y <= pts[1].y && pts[0].y < SCREEN_HEIGHT)
+	while (pts[0].y <= pts[1].y && pts[0].y < height)
 	{
 		ratio[_y] = 1.0 - (double)(pts[1].y - pts[0].y) / (double)line_height;
 		text_pix.y = t->line_height * ratio[_y];

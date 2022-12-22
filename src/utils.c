@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 04:23:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 14:55:12 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:21:04 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,32 @@ void	change(t_data *data, t_img_data *img)
 	while (i < data->window->width * data->window->height - 1)
 	{
 		img->address[i] = set_red_to_max(img->address[i]);
+		i++;
+	}
+}
+
+int	set_black_to_max(int color)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = (color >> 16) & 0xff;
+	g = (color >> 8) & 0xff;
+	b = color & 0xff;
+	r = 0;
+	return ((r << 16) | (g << 8) | b);
+}
+
+void	change_to_black(t_data *data, t_img_data *img)
+{
+	int	i;
+
+	i = 1;
+	(void)data;
+	while (i < data->window->width * data->window->height - 1)
+	{
+		img->address[i] = set_black_to_max(img->address[i]);
 		i++;
 	}
 }

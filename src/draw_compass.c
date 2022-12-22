@@ -6,13 +6,9 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 17:38:43 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 14:08:04 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/22 02:44:47 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-// void draw_compass(t_data *data)
-// {
-    
-// }yzyhz
