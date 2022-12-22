@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:03:28 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/22 03:34:06 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/22 04:35:52 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,29 +82,35 @@ t_point	pos;
 void	draw_mini_map(t_data *data)
 {
 t_point	pos;
-	int		i;
-	int		j;
-	int wall;
+	int		y;
+	int		x;
 
-	wall = data->window->height / data->map_height;
-	j = 0;
-	i = 0;
-	pos.x = 1;
-	pos.y = 1;
-	while (pos.y < data->map_height - 1)
+	x = 0;
+	y = 0;
+	pos.x = data->player->pos_map.x - 5;
+	pos.y = data->player->pos_map.y - 5;
+	if (pos.x < 0)
+		pos.x = 0;
+	if (pos.y < 0)
+		pos.y = 0;
+	while (data->map[pos.y] && pos.y < data->player->pos_map.y + 5)
 	{
-		while (pos.x < data->map_width - 1)
+		while (data->map[pos.y][pos.x] && pos.x < data->player->pos_map.x + 5)
 		{
-			if ((pos.y - data->player->pos_map.y >= 5 && pos.y - data->player->pos_map.y <= 5) && (pos.x - data->player->pos_map.x >= 5 && pos.x - data->player->pos_map.x <= 5))
-				if (data->map[pos.y][pos.x] == '1')
-					draw_cube(data, wall, pos.y * wall + \
-						(wall / 2) + j, pos.x * wall + (wall / 2) + i, rgb_conv(180,10,10));
-			i++;
+			if (data->map[pos.y] && data->map[pos.y][pos.x] && data->map[pos.y][pos.x] == '1')
+				draw_cube(data, WALL_SIZE, y * WALL_SIZE + \
+					(WALL_SIZE / 2), x * WALL_SIZE + (WALL_SIZE / 2), rgb_conv(255,255,255));
+			else
+				draw_cube(data, WALL_SIZE, y * WALL_SIZE + \
+					(WALL_SIZE / 2), x * WALL_SIZE + (WALL_SIZE / 2), rgb_conv(180,180,180));
+			x++;
 			pos.x++;
 		}
-		j++;
-		i = 0;
-		pos.x = 1;
+		y++;
+		x = 0;
+		pos.x = data->player->pos_map.x - 5;
+		if (pos.x < 0)
+		pos.x = 0;
 		pos.y++;
 	}
 }
