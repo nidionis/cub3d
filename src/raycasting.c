@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/15 18:26:22 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/29 11:41:24 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	set_array(t_data *data)
 	cam = data->cam;
 	ray = cam->beam;
 	i_ray = 0;
-	while (i_ray < CAM_QUALITY)
+	while (i_ray < data->window->width)
 	{
 		beam(data, &rayponse);
 		cam->array[i_ray] = rayponse;

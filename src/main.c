@@ -86,7 +86,7 @@ int	main(int argc, char *argv[])
 	t_data		*data;
 
 
-	g_status = 1;
+	g_status = 0;
 	data = NULL;
 	if (argc != 2)
 	{
@@ -130,4 +130,5 @@ int	main(int argc, char *argv[])
 		import_bonus_textures(data);
 		cub3d_render(data);
 	}
+	printf("hello\n");
 }

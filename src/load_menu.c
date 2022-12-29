@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 03:41:47 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 15:06:51 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:47:49 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,22 @@ char	*remove_char(char *str, char c)
 	return (tmp);
 }
 
-t_point	get_img_size(char *path)
+t_point	get_img_size(t_data *data, char *path)
 {
 	int		fd;
 	char	*buffer;
-	char *buffer2;
+	char	*buffer2;
 	char	**tmp;
 	t_point	size;
 
 	buffer2 = NULL;
 	buffer = NULL;
-	fd = open(path,O_RDWR);
+	fd = open(path, O_RDWR);
+	if (fd == -1)
+	{
+		printf("File does not exit\n");
+		exit(0);
+	}
 	buffer = get_next_line(fd);
 	while (ft_strncmp(buffer, "\"", 1))
 	{
@@ -71,13 +76,20 @@ int	load_images(t_data *data, t_img_data *image, char *path)
 {
 	t_point	size;
 
-	size = get_img_size(path);
+	size = get_img_size(data, path);
 	image->width = size.x;
 	image->height = size.y;
 	image->img = mlx_xpm_file_to_image(data->window->mlx, \
 		path, &image->line_len, &image->line_height);
+	if (image->img == NULL)
+	{
+		printf("No image found \n");
+		exit(0);
+	}
 	image->address = (int *)mlx_get_data_addr(image->img, \
 		&image->bpp, &image->line_len, &image->endian);
+	if (image->address == NULL)
+		exit(0);
 	return (0);
 }
 

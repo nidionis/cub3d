@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:03:28 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/22 04:35:52 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/23 10:52:50 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_point	pos;
 	int		j;
 	int wall;
 
-	wall = data->window->height / data->map_height;
+	wall = WALL_SIZE;
 	j = 0;
 	i = 1;
 	pos.x = 1;
@@ -60,14 +60,14 @@ t_point	pos;
 		{
 			if (data->map[pos.y][pos.x] == '0')
 				draw_cube(data, wall, pos.y * wall + \
-					(wall / 2) + j, pos.x * wall + (wall / 2) + i, rgb_conv(0,160,0));
+					(wall / 2), pos.x * wall + (wall / 2), rgb_conv(0,160,0));
 			else if (data->map[pos.y][pos.x] == 'E' || data->map[pos.y][pos.x] \
 			== 'W' || data->map[pos.y][pos.x] == 'S' || data->map[pos.y][pos.x] == 'N')
 				draw_cube(data, wall, pos.y * wall + \
-					(wall / 2) + j, pos.x * wall + (wall / 2) + i, rgb_conv(255,255,255));
+					(wall / 2), pos.x * wall + (wall / 2), rgb_conv(255,255,255));
 			else
 				draw_cube(data, wall, pos.y * wall + \
-					(wall / 2) + j, pos.x * wall + (wall / 2) + i, rgb_conv(180,10,10));
+					(wall / 2), pos.x * wall + (wall / 2), rgb_conv(180,10,10));
 			i++;
 			pos.x++;
 		}
@@ -100,6 +100,9 @@ t_point	pos;
 			if (data->map[pos.y] && data->map[pos.y][pos.x] && data->map[pos.y][pos.x] == '1')
 				draw_cube(data, WALL_SIZE, y * WALL_SIZE + \
 					(WALL_SIZE / 2), x * WALL_SIZE + (WALL_SIZE / 2), rgb_conv(255,255,255));
+			else if (pos.x == data->player->pos_map.x && pos.y == data->player->pos_map.y)
+				draw_cube(data, WALL_SIZE, y * WALL_SIZE + \
+					(WALL_SIZE / 2), x * WALL_SIZE + (WALL_SIZE / 2), rgb_conv(0,0,0));
 			else
 				draw_cube(data, WALL_SIZE, y * WALL_SIZE + \
 					(WALL_SIZE / 2), x * WALL_SIZE + (WALL_SIZE / 2), rgb_conv(180,180,180));

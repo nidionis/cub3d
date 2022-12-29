@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/22 03:32:55 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/29 11:57:56 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,12 @@ void	world_render(t_data *data)
 		draw_wall_textured(data, i);
 		i++;
 	}
+	
 }
 
 //set color red to max value
 int	graphics_render(t_data *data)
 {
-	static int counter;
-	static int count_to_end;
-	counter++;
 	if (data->menu->game_state == 1)
 	{
 		if (data->time_state == 0)
@@ -59,50 +57,15 @@ int	graphics_render(t_data *data)
 			data->time_to_lose = time(NULL);
 			data->time_state = 2;
 		}
-		world_render(data);
-		if (data->rain_state == 0)
-			draw_rain(data, rand() % 20);
-		// if (data->mouse == 1)
-		// 	mouse_rotate(data);
-		player_smoth_move(data);
-		draw_mini_map(data);
-		if (data->menu->minimap == 1 && data->minimap.state == 1)
-		{
-			minimap_render(data);
-		}
-		if (data->time_state == 2 && time(NULL) - data->timer > 7)
-		{
-			if (counter > 100)
-				counter = 0;
-			if (counter >= 50)
-				change(data, data->img);
-			
-		}
-		draw_image(data->img, data->menu->background[LAYOUT], y_x(data->window->height - 125, data->window->width / 2 - 200), -1);
-		draw_stamina_hud(data);
-		mlx_put_image_to_window(data->window->mlx, data->window->init, \
-			data->img->img, 0, 0);
-		if (data->time_state == 2)
-			mlx_string_put(data->window->mlx,data->window->init,data->window->width / 2 - 450,data->window->height - 120,rgb_conv(255,255,255),ft_itoa(time(NULL) - data->time_to_lose));
-		if (data->time_state == 2 && time(NULL) - data->timer > 15)
-		{
-			while(generate_map(data) && (!check_path_door(data,data->player->pos_map.y, data->player->pos_map.x) \
-			|| !check_path_switch(data,data->player->pos_map.y, data->player->pos_map.x) || !check_path_map(data,data->player->pos_map.y, data->player->pos_map.x)));
-			data->timer = time(NULL);
-		}
+		render_game(data);
 	}
 	else if (data->menu->game_state == 0)
-		render_menu(data);
-	else if (data->menu->game_state == 2)
 	{
-		count_to_end++;
-		change_to_black(data,data->img);
-		mlx_put_image_to_window(data->window->mlx, data->window->init, \
-			data->img->img, 0, 0);
-		mlx_string_put(data->window->mlx,data->window->init,data->window->width / 2,data->window->height /2,rgb_conv(255,255,255),"GAMEOVER");
-		if (count_to_end == 400)
-			exit_game(data);
+		render_menu(data);
 	}
+	render_game2(data);
+	if (data->time_state == 2 && time(NULL) - data->time_to_lose > 180)
+		data->menu->game_state = 2;
 	return (0);
 }
 

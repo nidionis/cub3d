@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/22 03:08:54 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/23 10:44:11 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position)
 
 	(void)data;
 	u = (double)UNITS_PER_BOX;
-	wall_size = (double)data->window->height / data->map_height;;
+	wall_size = (double)WALL_SIZE;
 	pos_for_map.x = wall_size * ((((double)absolute_position.x) / u));
 	pos_for_map.y = wall_size * ((((double)absolute_position.y) / u));
 	return (pos_for_map);

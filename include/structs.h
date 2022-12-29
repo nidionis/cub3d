@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 04:07:18 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 19:36:36 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/23 11:38:26 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,6 +210,7 @@ typedef struct s_data
 	t_assets		door;
 	t_assets		switcher;
 	t_assets		minimap;
+	unsigned int score;
 	char *argv;
 	// SDL_AudioDeviceID audio_dev;
 	// t_audio			soundtrack;

@@ -1,7 +1,7 @@
 SHELL      := /bin/sh
 CC         := gcc
 CFLAGS     := -Wall -Wextra -g -O2
-INCLUDE    := -I./include -I./libft/include -I./libmlx -I./libsdl2
+INCLUDE    := -I./include -I./libft/include -I./libmlx -I./libsdl2 -fsanitize=address
 NAME       := cub3D
 LIBFT      := ./libft/libft.a
 LIBMLX     := ./libmlx/libmlx.a
@@ -17,7 +17,7 @@ src/map_ft.c src/parse_file_colors.c src/raycasting.c src/bonus_textures.c src/d
 src/matrix.c src/parse_format_map.c src/raycasting_utils.c src/utils.c src/camera_ft.c src/draw_functions.c src/ft_list.c \
 src/keys_resolution.c src/mouse.c src/parse_import.c src/ray_set_distances.c src/vector_ft.c src/check_path_door.c src/draw_interface.c \
 src/generate_map.c src/keys_settings.c src/move_crossing_box.c src/parse_init.c src/render_menu.c src/check_path_map.c src/draw_line.c \
-src/get_next_line.c src/load_menu.c src/move_player.c src/parse_params.c src/rotate_player.c src/utils2.c
+src/get_next_line.c src/load_menu.c src/move_player.c src/parse_params.c src/rotate_player.c src/utils2.c src/game_event.c
 OBJS       := $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 LGREEN     := \033[1;32m

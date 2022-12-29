@@ -85,7 +85,7 @@ extern int g_status;
 # define IS_BLOCK "12345 "
 # define NB_TEXTURES 4
 # define SCREEN_WIDTH 1900
-# define SCREEN_HEIGHT 1200
+# define SCREEN_HEIGHT 1080
 /* should be eaual to windows width*/
 # define CAM_QUALITY 1900
 # define NB_TEXTURES 4

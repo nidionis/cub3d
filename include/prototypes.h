@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/22 03:32:11 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:45:28 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ int	check_path_switch(t_data *data, int row, int col);
 int	check_path_map(t_data *data, int row, int col);
 int	generate_map(t_data *data);
 
-t_point get_img_size(char *path);
+t_point	get_img_size(t_data *data, char *path);
 
 //proto nico
 
@@ -190,4 +190,9 @@ int re_run_game(t_data *data, char *argv);
 int	get_res_height(void);
 int	get_res_width(void);
 void	draw_map(t_data *data);
+int game_event(t_data *data);
+int	render_game(t_data *data);
+int	render_game2(t_data *data);
+void	draw_string(t_data *data);
+void	world_render(t_data *data);
 #endif

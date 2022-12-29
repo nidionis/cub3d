@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2022/12/15 18:24:54 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/23 11:46:03 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	move_player(t_data *data, int move)
 	p = data->player;
 	if (data->player->speed == 1)
 		scaled_direction = vec_scale(p->direction, \
-			(double)(UNITS_PER_BOX / 30));
+			(double)(UNITS_PER_BOX / 15));
 	else
 		scaled_direction = vec_scale(p->direction, \
 			(double)(UNITS_PER_BOX / STEPS_PER_BOX));
