@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 12:01:17 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/29 14:57:44 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,10 @@
 
 int	render_game(t_data *data)
 {
-	char	*str;
-
 	world_render(data);
-	game_event(data);
 	player_smoth_move(data);
-	draw_mini_map(data);
-	draw_image(data->img, data->menu->background[LAYOUT], \
-	y_x(data->window->height - 125, data->window->width / 2 - 200), -1);
-	draw_stamina_hud(data);
-	if (data->menu->minimap == 1 && data->minimap.state == 1)
-		minimap_render(data);
 	mlx_put_image_to_window(data->window->mlx, data->window->init, \
 		data->img->img, 0, 0);
-	str = ft_itoa(time(NULL) - data->time_to_lose);
-	if (data->time_state == 2)
-		mlx_string_put(data->window->mlx, data->window->init, \
-			data->window->width / 2 - 450, data->window->height - 120, \
-			rgb_conv(255, 255, 255), str);
-	free(str);
 	return (0);
 }
 

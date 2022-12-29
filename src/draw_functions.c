@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:03:28 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/23 10:52:50 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/29 14:42:39 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	draw_vision_field(t_data *data, t_point minimap_position)
 	i = 0;
 	nb_ray = 5;
 	(void)nb_ray;
-	while (i < CAM_QUALITY)
+	while (i < data->window->width)
 	{
 		end = units_pos_to_minimap_pos(data, data->cam->array[i].hit_point);
 		draw_line(data, &minimap_position, &end, rgb_conv(0, 0, 0));

@@ -1,7 +1,7 @@
-NO ./asserts/wall_test.xpm
-SO  ./asserts/wall_test.xpm
-WE ./asserts/wall_test.xpm
-EA ./asserts/wall_test.xpm
+NO ./assets/wall_test.xpm
+SO  ./assets/wall_test.xpm
+WE ./assets/wall_test.xpm
+EA ./assets/wal.xpm
 F   255,0,255
 C    0,255,255
 

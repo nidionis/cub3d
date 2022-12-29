@@ -6,14 +6,13 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 04:07:18 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/23 11:38:26 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/29 17:37:20 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 # include "cub3d.h"
-# include "../SDL-release-2.26.1/include/SDL.h"
 
 typedef struct t_line
 {
@@ -174,12 +173,12 @@ typedef struct s_assets
 	t_point	pos;
 }	t_assets;
 
-typedef struct s_audio
-{
-	SDL_AudioSpec	wavSpec;
-	Uint32			wavLength;
-	Uint8			*wavBuffer;
-}t_audio;
+// typedef struct s_audio
+// {
+// 	SDL_AudioSpec	wavSpec;
+// 	Uint32			wavLength;
+// 	Uint8			*wavBuffer;
+// }t_audio;
 
 typedef struct s_data
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 t_data	*malloc_data(void)
 {
@@ -58,9 +58,6 @@ int re_run_game(t_data *data, char *argv)
 		data->minimap.done = 0;
 		data->map_height = 0;
 		data->map_width = 0;
-		// load_soundtrack(data,&data->soundtrack, "gameplay.wav");
-		// play_soundtrack(data,&data->soundtrack);
-		// stop_soundtrack(data,&data->soundtrack);
 		update_player(data->map, data->player);
 		init_key_status(data);
 		load_window(data);
@@ -111,22 +108,10 @@ int	main(int argc, char *argv[])
 		data->map_height = 0;
 		data->map_width = 0;
 		data->argv = argv[1];
-		// load_soundtrack(data,&data->soundtrack, "gameplay.wav");
-		// play_soundtrack(data,&data->soundtrack);
-		// stop_soundtrack(data,&data->soundtrack);
 		update_player(data->map, data->player);
 		init_key_status(data);
 		load_window(data);
 		get_map_size(data);
-		while(!check_path_door(data,data->player->pos_map.y, data->player->pos_map.x) || \
-		!check_path_switch(data,data->player->pos_map.y, data->player->pos_map.x) || \
-		!check_path_map(data,data->player->pos_map.y, data->player->pos_map.x))
-		{
-			generate_map_content(data,&data->minimap,'5');
-			generate_map_content(data,&data->switcher,'3');
-			generate_map_content(data, &data->door,'2');
-		}
-		data->rain_state = rand() % 5;
 		import_bonus_textures(data);
 		cub3d_render(data);
 	}

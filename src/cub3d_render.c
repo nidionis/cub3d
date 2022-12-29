@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 11:57:56 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/29 14:49:05 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,31 +41,12 @@ void	world_render(t_data *data)
 		draw_wall_textured(data, i);
 		i++;
 	}
-	
 }
 
 //set color red to max value
 int	graphics_render(t_data *data)
 {
-	if (data->menu->game_state == 1)
-	{
-		if (data->time_state == 0)
-			data->time_state = 1;
-		else if (data->time_state == 1)
-		{
-			data->timer = time(NULL);
-			data->time_to_lose = time(NULL);
-			data->time_state = 2;
-		}
-		render_game(data);
-	}
-	else if (data->menu->game_state == 0)
-	{
-		render_menu(data);
-	}
-	render_game2(data);
-	if (data->time_state == 2 && time(NULL) - data->time_to_lose > 180)
-		data->menu->game_state = 2;
+	render_game(data);
 	return (0);
 }
 

@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/21 15:10:37 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/29 17:06:11 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 /* where all pointers are cleaned, especially in a emergency exit */
 void	clean_exit(t_data *data, int exit_code)
@@ -36,7 +36,7 @@ void	clean_exit(t_data *data, int exit_code)
 			if (data->cam->beam)
 				free(data->cam->beam);
 			i = 0;
-			while (i < CAM_QUALITY)
+			while (i < data->window->width)
 				ft_lstclear(&data->cam->array[i++].obstacles_ls, free);
 			free(data->cam);
 		}

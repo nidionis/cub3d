@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/23 10:44:11 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/29 14:45:59 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,5 @@ int	load_window(t_data *data)
 	data->img->line_len = data->img->line_len >> 2;
 	data->img->address = (int *)mlx_get_data_addr(data->img->img, \
 		&data->img->bpp, &data->img->line_len, &data->img->endian);
-	load_menu(data);
 	return (0);
 }

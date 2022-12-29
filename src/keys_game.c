@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:28:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/23 11:38:56 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/29 14:58:38 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,25 +56,5 @@ void controls(t_data *data, int key)
 int	key_game(int key, t_data *data)
 {
 	movement(data, key);
-	controls(data, key);
-	if (end_game(data, &data->door) && key == KEY_E && \
-	data->switcher.state == 1)
-	{
-		data->menu->game_state = 2;
-		data->door.state = 1;
-		data->score = data->map_height * data->map_width / (time(NULL) - data->time_to_lose);
-	}
-	if (end_game(data, &data->switcher) && key == KEY_E \
-	&& data->switcher.state == 0)
-	{
-		data->switcher.state = 1;
-		data->map[data->switcher.pos.y][data->switcher.pos.x] = '4';
-	}
-	if (end_game(data, &data->minimap) && key == KEY_E && \
-	data->minimap.state == 0)
-	{
-		data->minimap.state = 1;
-		data->map[data->minimap.pos.y][data->minimap.pos.x] = '1';
-	}
 	return (0);
 }
