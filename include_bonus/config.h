@@ -90,10 +90,10 @@ extern int g_status;
 # define CAM_QUALITY 1900
 # define NB_TEXTURES 4
 # define NB_MENU_IMG 17
-# define BONUS_TEXTURES_SOLIDS "assets/official_door.xpm,assets/official_door.xpm,assets/official_door.xpm,assets/official_door.xpm,\
-assets/official_red_switch.xpm,assets/official_red_switch.xpm,assets/official_red_switch.xpm,assets/official_red_switch.xpm,\
-assets/official_green_switch.xpm,assets/official_green_switch.xpm,assets/official_green_switch.xpm,assets/official_green_switch.xpm,\
-assets/official_map.xpm,assets/official_map.xpm,assets/official_map.xpm,assets/official_map.xpm"
+# define BONUS_TEXTURES_SOLIDS "assets/door_bin.xpm,assets/door_bin.xpm,assets/door_bin.xpm,assets/door_bin.xpm,\
+assets/button_off.xpm,assets/button_off.xpm,assets/button_off.xpm,assets/button_off.xpm,\
+assets/button_on.xpm,assets/button_on.xpm,assets/button_on.xpm,assets/button_on.xpm,\
+assets/mapper.xpm,assets/mapper.xpm,assets/mapper.xpm,assets/mapper.xpm"
 # define SPRITES_TEXTURES ""
 # define UNITS_PER_BOX 100
 # define STEPS_PER_BOX 30

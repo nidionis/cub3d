@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 17:38:07 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 03:17:07 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,4 +195,5 @@ int	render_game(t_data *data);
 int	render_game2(t_data *data);
 void	draw_string(t_data *data);
 void	world_render(t_data *data);
+void	draw_interface(t_data *data);
 #endif

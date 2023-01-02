@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:43:23 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 19:23:05 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 03:32:26 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,6 @@ int	render_menu(t_data *data)
 			draw_image(bg[BG],bg[SENSIVITY],y_x(pos.y - 100,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
 			draw_image(bg[BG],bg[BACK],y_x(pos.y,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
 		}
-		// else if (data->menu->resolution_state == 1)
-		// {
-		// 	draw_image(bg[BG],bg[HIGH_RES],y_x(30, width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
-		// 	draw_image(bg[BG],bg[MID_RES],y_x(130, width),rgb_conv(rand() % 150,rand() %150,rand() % 150));
-		// 	draw_image(bg[BG],bg[LOW_RES],y_x(230, width),rgb_conv(rand() % 150,rand() %150,rand() % 150));
-		// 	draw_image(bg[BG],bg[BACK],y_x(330,width),rgb_conv(rand() % 150,rand() % 150,rand() % 150));
-		// }
 	}
 	if (counter == 50)
 	{

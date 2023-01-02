@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 04:02:46 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 14:39:37 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 04:02:33 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	mouse_rotate(t_data *data)
 
 int	mouse_event(t_data *data)
 {
-	data->mouse = 1;
-	mlx_mouse_hide(data->window->mlx, data->window->init);
+	if (data->mouse == 0)
+		mlx_mouse_show(data->window->mlx, data->window->init);
+	if (data->mouse == 1)
+		mlx_mouse_hide(data->window->mlx, data->window->init);
 	return (0);
 }

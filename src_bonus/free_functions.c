@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:11:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 17:25:37 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/30 15:35:58 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ void	free_test(t_data *data)
 
 void	free_everything(t_data *data)
 {
-	int i;
+	// int i;
 
-	i = 0;
+	// i = 0;
 	mlx_destroy_image(data->window->mlx, data->img->img);
 	free(data->key_status);
 	free_bonus_textures(data);
@@ -93,15 +93,15 @@ void	free_everything(t_data *data)
 	mlx_destroy_window(data->window->mlx, data->window->init);
 	mlx_destroy_display(data->window->mlx);
 	free(data->window->mlx);
-	if (data->cam)
-	{
-		if (data->cam->beam)
-			free(data->cam->beam);
-		i = 0;
-		while (i < data->window->width)
-			ft_lstclear(&data->cam->array[i++].obstacles_ls, free);
-		free(data->cam);
-	}
+	// if (data->cam)
+	// {
+	// 	if (data->cam->beam)
+	// 		free(data->cam->beam);
+	// 	i = 0;
+	// 	while (i < data->window->width)
+	// 		ft_lstclear(&data->cam->array[i++].obstacles_ls, free);
+	// 	free(data->cam);
+	// }
 	free_data(data);
 	free(data);
 }

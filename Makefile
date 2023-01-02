@@ -2,9 +2,9 @@ SHELL	= /bin/bash
 MAKEFLAGS += --silent
 
 NAME    = cub3D
-NAMEBONUS = cub3d_bonus
+NAMEBONUS = cub3D_bonus
 CC      = gcc
-FLAGS	= -Wall -Wextra -Werror -g -Ofast -march=native -fsanitize=address
+FLAGS	= -Wall -Wextra -Werror -g -Ofast -march=native 
 LFLAGS	= -Llibft -lft
 ###
 SRCDIR	= src/

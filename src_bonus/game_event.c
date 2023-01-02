@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 12:01:17 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 04:15:34 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int	render_game(t_data *data)
 	game_event(data);
 	player_smoth_move(data);
 	draw_mini_map(data);
-	draw_image(data->img, data->menu->background[LAYOUT], \
-	y_x(data->window->height - 125, data->window->width / 2 - 200), -1);
+	// draw_image(data->img, data->menu->background[LAYOUT], 
+	// y_x(data->window->height - 125, data->window->width / 2 - 200), -1);
+	draw_interface(data);
 	draw_stamina_hud(data);
 	if (data->menu->minimap == 1 && data->minimap.state == 1)
 		minimap_render(data);
@@ -97,8 +98,13 @@ int	game_event(t_data *data)
 	counter++;
 	if (data->rain_state == 0)
 		draw_rain(data, rand() % 20);
-	// if (data->mouse == 1)
-		// 	mouse_rotate(data);
+	if (data->mouse == 1)
+	{
+		mlx_mouse_hide(data->window->mlx, data->window->init);
+		mouse_rotate(data);
+	}
+	else
+		mlx_mouse_show(data->window->mlx, data->window->init);
 	if (data->time_state == 2 && time(NULL) - data->timer > 7)
 	{
 		if (counter > 100)

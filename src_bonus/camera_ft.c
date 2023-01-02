@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2022/12/29 13:59:22 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/30 15:41:53 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_plane_dir(t_data *data, double plane_size)
 	double		nonante_deg;
 	double		cam_quality;
 
-	cam_quality = (double)CAM_QUALITY;
+	cam_quality = (double)get_res_width();
 	scale = plane_size / cam_quality;
 	nonante_deg = (double)PI;
 	nonante_deg /= (double)2.0;

@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 03:41:47 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 14:07:13 by dpaulino         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:15:45 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_point	get_img_size(t_data *data, char *path)
 	fd = open(path, O_RDWR);
 	if (fd == -1)
 	{
-		printf("File does not exit\n");
+		printf("%s <-- File does not exit\n", path);
 		exit(0);
 	}
 	buffer = get_next_line(fd);

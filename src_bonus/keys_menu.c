@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:42:08 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 19:20:21 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 03:54:12 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	menu_enter_key(t_data *data)
 	{
 		data->menu->game_state = 1;
 		data->menu->menu_state = 0;
+		data->mouse = 1;
 	}
 	menu_enter_key2(data);
 }
