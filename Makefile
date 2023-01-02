@@ -38,7 +38,7 @@ INCDIR  = include/
 CUBHDR  = $(addprefix $(INCDIR), cub3d.h)
 ###
 INC_BONUSDIR = include_bonus/
-CUB_BONUSHDR  = $(addprefix $(INC_BONUSDIR), cub3d.h)
+CUB_BONUSHDR  = $(addprefix $(INC_BONUSDIR), cub3d_bonus.h)
 LBFOLDER  = .lb
 
 UNAME	= $(shell uname -s)

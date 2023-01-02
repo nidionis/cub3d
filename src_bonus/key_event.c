@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:57:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 14:00:08 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:55:50 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 int	fix_ang(int a)
 {

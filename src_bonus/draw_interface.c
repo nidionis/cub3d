@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 17:15:14 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 10:53:14 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:54:19 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 t_point	get_string_pos(void)
 {

@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:21:34 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/29 14:01:14 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:57:42 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 void	rotate_player(t_player *player, int move)
 {

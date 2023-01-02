@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 # ifdef __APPLE__
 #  define KEY_Q 12

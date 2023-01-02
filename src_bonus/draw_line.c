@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:06:18 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/15 17:28:51 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:54:31 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 void	draw_x_line(t_data *data, t_line *line, int color)
 {

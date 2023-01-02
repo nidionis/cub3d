@@ -6,16 +6,16 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:32:07 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 20:08:14 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:54:25 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 void	my_mlx_pixel_put(t_img_data *img, int x, int y, unsigned int color)
 {
 	int	*dst;
-	int width;
+	int	width;
 
 	width = 0;
 	if (g_status == 0)

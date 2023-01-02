@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 04:02:46 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 04:02:33 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:56:36 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 void	mouse_rotate(t_data *data)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 //init map, textures, sprites as null and ceiling/floor as -1
 void	init_null(t_data *data, int *map_parse)

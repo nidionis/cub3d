@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:28:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/23 11:38:56 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:55:53 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 void	movement(t_data *data, int key)
 {

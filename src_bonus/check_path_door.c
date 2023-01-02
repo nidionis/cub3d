@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:54:41 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 14:26:41 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:53:50 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 int	back_track_door(t_data *data, char **map, int row, int col)
 {

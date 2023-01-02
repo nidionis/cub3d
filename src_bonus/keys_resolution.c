@@ -6,15 +6,15 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:29:21 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 20:27:10 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:56:02 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 void	res_enter_key(t_data *data)
 {
-	char *argv;
+	char	*argv;
 
 	argv = ft_strdup(data->argv);
 	if (data->menu->back == 1)

@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:43:23 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 03:32:26 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:57:37 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 //turn every pixel in image to black
 void	clear_img(t_img_data *img)
 {

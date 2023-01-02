@@ -6,12 +6,12 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 18:30:30 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/30 15:44:06 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:53:32 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 /* return the color in a texture from a pixel point */
 unsigned int	get_texture_pix(t_img_data *t, t_point pix)

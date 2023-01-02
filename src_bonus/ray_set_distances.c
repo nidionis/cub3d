@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:40:25 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/29 14:01:02 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:57:24 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 void	set_delta_distance(t_data *data)
 {

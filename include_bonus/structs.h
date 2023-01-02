@@ -6,13 +6,13 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 04:07:18 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 17:37:02 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:59:25 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
-# include "cub3d.h"
+# include "cub3d_bonus.h"
 
 typedef struct t_line
 {

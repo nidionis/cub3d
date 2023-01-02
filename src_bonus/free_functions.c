@@ -6,13 +6,13 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:11:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/30 15:35:58 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:55:17 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
-void free_data(t_data *data)
+void	free_data(t_data *data)
 {
 	free(data->map_cases);
 	free(data->blocks);
@@ -20,9 +20,10 @@ void free_data(t_data *data)
 	free(data->image);
 	free(data->window);
 }
-void free_wall_textures(t_data *data)
+
+void	free_wall_textures(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < NB_TEXTURES)
@@ -33,9 +34,9 @@ void free_wall_textures(t_data *data)
 	}
 }
 
-void free_texture_path(t_data *data)
+void	free_texture_path(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)

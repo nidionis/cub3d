@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 10:42:57 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:55:35 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	render_game(t_data *data)
 {
-	
-
 	world_render(data);
 	game_event(data);
 	player_smoth_move(data);
@@ -25,15 +23,13 @@ int	render_game(t_data *data)
 		minimap_render(data);
 	mlx_put_image_to_window(data->window->mlx, data->window->init, \
 		data->img->img, 0, 0);
-	
 	draw_interface(data);
-	
 	return (0);
 }
 
 void	draw_string(t_data *data)
 {
-	char *score;
+	char	*score;
 
 	score = ft_itoa(data->score);
 	if (data->door.state == 1)

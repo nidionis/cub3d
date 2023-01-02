@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 03:41:47 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 12:02:43 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:56:14 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 char	*remove_char(char *str, char c)
 {

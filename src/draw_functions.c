@@ -6,27 +6,27 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:03:28 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 14:42:39 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 13:00:34 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
-void	draw_cube(t_data *data, int size, int pos_y, int pos_x, int color)
+void	draw_cube(t_data *data, int size, t_point pos, int color)
 {
 	int	y;
 	int	x;
 
-	x = pos_x - (size / 2);
-	y = pos_y - (size / 2);
-	while (y < pos_y + (size / 2))
+	x = pos.x - (size / 2);
+	y = pos.y - (size / 2);
+	while (y < pos.y + (size / 2))
 	{
-		while (x < pos_x + (size / 2))
+		while (x < pos.x + (size / 2))
 		{
 			my_mlx_pixel_put(data->img, x, y, color);
 			x++;
 		}
-		x = pos_x - (size / 2);
+		x = pos.x - (size / 2);
 		y++;
 	}
 }
@@ -38,7 +38,7 @@ void	draw_player(t_data *data)
 
 	player = data->player;
 	minimap_position = units_pos_to_minimap_pos(data, player->pos_in_pix);
-	draw_cube(data, 5, minimap_position.y, minimap_position.x, 0xFF0F0F);
+	draw_cube(data, 5, y_x(minimap_position.y, minimap_position.x), 0xFF0F0F);
 	draw_vision_field(data, minimap_position);
 }
 
@@ -59,15 +59,15 @@ t_point	pos;
 		while (pos.x < data->map_width - 1)
 		{
 			if (data->map[pos.y][pos.x] == '0')
-				draw_cube(data, wall, pos.y * wall + \
-					(wall / 2), pos.x * wall + (wall / 2), rgb_conv(0,160,0));
+				draw_cube(data, wall, y_x(pos.y * wall + \
+					(wall / 2), pos.x * wall + (wall / 2)), rgb_conv(0,160,0));
 			else if (data->map[pos.y][pos.x] == 'E' || data->map[pos.y][pos.x] \
 			== 'W' || data->map[pos.y][pos.x] == 'S' || data->map[pos.y][pos.x] == 'N')
-				draw_cube(data, wall, pos.y * wall + \
-					(wall / 2), pos.x * wall + (wall / 2), rgb_conv(255,255,255));
+				draw_cube(data, wall, y_x(pos.y * wall + \
+					(wall / 2), pos.x * wall + (wall / 2)), rgb_conv(255,255,255));
 			else
-				draw_cube(data, wall, pos.y * wall + \
-					(wall / 2), pos.x * wall + (wall / 2), rgb_conv(180,10,10));
+				draw_cube(data, wall, y_x(pos.y * wall + \
+					(wall / 2), pos.x * wall + (wall / 2)), rgb_conv(180,10,10));
 			i++;
 			pos.x++;
 		}
@@ -98,14 +98,14 @@ t_point	pos;
 		while (data->map[pos.y][pos.x] && pos.x < data->player->pos_map.x + 5)
 		{
 			if (data->map[pos.y] && data->map[pos.y][pos.x] && data->map[pos.y][pos.x] == '1')
-				draw_cube(data, WALL_SIZE, y * WALL_SIZE + \
-					(WALL_SIZE / 2), x * WALL_SIZE + (WALL_SIZE / 2), rgb_conv(255,255,255));
+				draw_cube(data, WALL_SIZE, y_x(y * WALL_SIZE + \
+					(WALL_SIZE / 2), x * WALL_SIZE + (WALL_SIZE / 2)), rgb_conv(255,255,255));
 			else if (pos.x == data->player->pos_map.x && pos.y == data->player->pos_map.y)
-				draw_cube(data, WALL_SIZE, y * WALL_SIZE + \
-					(WALL_SIZE / 2), x * WALL_SIZE + (WALL_SIZE / 2), rgb_conv(0,0,0));
+				draw_cube(data, WALL_SIZE, y_x(y * WALL_SIZE + \
+					(WALL_SIZE / 2), x * WALL_SIZE + (WALL_SIZE / 2)), rgb_conv(0,0,0));
 			else
-				draw_cube(data, WALL_SIZE, y * WALL_SIZE + \
-					(WALL_SIZE / 2), x * WALL_SIZE + (WALL_SIZE / 2), rgb_conv(180,180,180));
+				draw_cube(data, WALL_SIZE, y_x(y * WALL_SIZE + \
+					(WALL_SIZE / 2), x * WALL_SIZE + (WALL_SIZE / 2)), rgb_conv(180,180,180));
 			x++;
 			pos.x++;
 		}

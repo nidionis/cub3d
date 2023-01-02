@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2022/12/29 14:00:33 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 13:01:32 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,6 @@ int	corner_crossing(t_data *data)
 	mp.y = p->pos_map.y;
 	map = data->map;
 	hit_wall = 0;
-	printf("%c\n", is_block(data, map[mp.y][mp.x]));
 	if (is_block(data, map[mp.y][mp.x]) != -1)
 	{
 		closest_box = check_closest_box(p);

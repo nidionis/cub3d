@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 03:51:59 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/22 02:33:17 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 13:00:14 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 t_point init_stamina_coord(t_data *data)
 {
@@ -47,15 +47,15 @@ void	draw_stamina_hud(t_data *data)
 	{
 		if (data->player->stamina > 30)
 		{
-			draw_cube(data, 5, pos.y, pos.x + (tmp_x), rgb_conv(200, 200, 200));
-			draw_cube(data, 5, pos.y + 4, pos.x + (tmp_x), rgb_conv(200, 200, 200));
-			draw_cube(data, 5, pos.y + 8, pos.x + (tmp_x), rgb_conv(200, 200, 200));
+			draw_cube(data, 5, y_x(pos.y, pos.x + (tmp_x)), rgb_conv(200, 200, 200));
+			draw_cube(data, 5, y_x(pos.y + 4, pos.x + (tmp_x)), rgb_conv(200, 200, 200));
+			draw_cube(data, 5, y_x(pos.y + 8, pos.x + (tmp_x)), rgb_conv(200, 200, 200));
 		}
 		else
 		{
-			draw_cube(data, 5, pos.y, pos.x + (tmp_x), red);
-			draw_cube(data, 5, pos.y + 4, pos.x + (tmp_x), red);
-			draw_cube(data, 5, pos.y + 8, pos.x + (tmp_x), red);
+			draw_cube(data, 5, y_x(pos.y, pos.x + (tmp_x)), red);
+			draw_cube(data, 5, y_x(pos.y + 4, pos.x + (tmp_x)), red);
+			draw_cube(data, 5, y_x(pos.y + 8, pos.x + (tmp_x)), red);
 		}
 		tmp_x += 4;
 	}

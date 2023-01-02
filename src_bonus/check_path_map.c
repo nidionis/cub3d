@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:08:34 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 14:30:52 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:53:55 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 int	back_track_map(t_data *data, char **map, int row, int col)
 {

@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:37:48 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/16 20:55:02 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:56:07 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 void	settings_enter_key(t_data *data)
 {
