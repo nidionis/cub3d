@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:11:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 17:27:44 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:16:30 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	free_everything(t_data *data)
 	free_texture_path(data);
 	free_wall_textures(data);
 	mlx_destroy_window(data->window->mlx, data->window->init);
-	mlx_destroy_display(data->window->mlx);
+	// mlx_destroy_display(data->window->mlx);
 	free(data->window->mlx);
 	if (data->cam)
 	{

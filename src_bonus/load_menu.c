@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_menu.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 03:41:47 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 12:56:14 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 16:11:24 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ void	draw_image(t_img_data *img1, t_img_data *img2, t_point pos, int color)
 	tmp_x = pos.x;
 	img_x = 0;
 	img_y = 0;
+	
+	if (pos.x < 0 || pos.x + img2->width > img1->width || pos.y < 0 || pos.y + img2->height > img1->height)
+		return;
 	while (img_y < img2->height)
 	{
 		while (img_x < img2->width)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_resolution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:29:21 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 12:56:02 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 16:07:28 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	res_enter_key(t_data *data)
 		1900, 1080, "Cub3d");
 		g_status = 1;
 		data->menu->game_state = -1;
-		free_everything(data);
+		// free_everything(data);
 		re_run_game(data, argv);
 	}
 	else if (data->menu->mid_res == 1)
@@ -43,7 +43,7 @@ void	res_enter_key(t_data *data)
 		1200, 700, "Cub3d");
 		g_status = 2;
 		data->menu->game_state = -1;
-		free_everything(data);
+		// free_everything(data);
 		re_run_game(data, argv);
 	}
 	else if (data->menu->low_res == 1)
@@ -53,7 +53,7 @@ void	res_enter_key(t_data *data)
 		700, 500, "Cub3d");
 		g_status = 3;
 		data->menu->game_state = -1;
-		free_everything(data);
+		// free_everything(data);
 		re_run_game(data, argv);
 	}
 }

@@ -1,7 +1,7 @@
-NO ./assets/wall_test.xpm
-SO  ./assets/wall_test.xpm
-WE ./assets/wall_test.xpm
-EA ./assets/wal.xpm
+NO ./assets/logo.xpm
+SO  ./assets/logo.xpm
+WE ./assets/logo.xpm
+EA ./assets/logo.xpm
 F   255,0,255
 C    0,255,255
 

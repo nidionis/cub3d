@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   draw_functions2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 03:51:59 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 12:54:15 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:18:13 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include_bonus/cub3d_bonus.h"
 
-t_point init_stamina_coord(t_data *data)
+t_point	init_stamina_coord(t_data *data)
 {
-	t_point pos;
+	t_point	pos;
 
+	pos.x = 0;
+	pos.y = 0;
 	if (data->window->width == 1900)
 	{
 		pos.y = data->window->height - 100;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 17:15:14 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/17 17:41:07 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:31:35 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_interface(t_data *data)
 
 	x = 0;
 	y = 0;
-	if (g_status == 1)
+	if (g_status == 1 || g_status == 0)
 	{
 		x = 300;
 		y = 195;
