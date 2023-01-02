@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 03:41:47 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/30 16:15:45 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:02:43 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ void load_menu(t_data *data)
 	data->menu->background[LOW_RES] = malloc(sizeof(t_img_data));
 	data->menu->background[MID_RES] = malloc(sizeof(t_img_data));
 	data->menu->background[HIGH_RES] = malloc(sizeof(t_img_data));
+	data->menu->background[17] = malloc(sizeof(t_img_data));
 	load_images(data, data->menu->background[BG], "assets/menu/background.xpm");
 	load_images(data,data->menu->background[SETTINGS], "assets/menu2/settings.xpm");
 	load_images(data,data->menu->background[NEW_GAME], "assets/menu2/new_game.xpm");
@@ -170,6 +171,7 @@ void load_menu(t_data *data)
 	load_images(data, data->menu->background[LOW_RES], "assets/menu2/700x500.xpm");
 	load_images(data, data->menu->background[MID_RES], "assets/menu2/1200x700.xpm");
 	load_images(data, data->menu->background[HIGH_RES], "assets/menu2/1900x1080.xpm");
+	load_images(data, data->menu->background[17], "assets/extra.xpm");
 	menu = data->menu;
 	menu->new_game = 1;
 	menu->controls = 0;

@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:42:08 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 03:54:12 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:03:25 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,32 @@ void	menu_enter_key(t_data *data)
 		data->menu->back = 1;
 		data->menu->controls_state = 1;
 		clear_img(data->menu->background[BG]);
-		draw_image(data->menu->background[BG], data->menu->background[13], \
-		y_x(300, 100), rgb_conv(rand() % 155, rand() % 155, rand() % 155));
+		if (data->window->width == 1900)
+			draw_image(data->menu->background[BG], data->menu->background[CONTROLS_KEYS], \
+				y_x(300, 100), rgb_conv(rand() % 155, rand() % 155, rand() % 155));
+		else if (data->window->width == 1200)
+			draw_image(data->menu->background[BG], data->menu->background[CONTROLS_KEYS], \
+				y_x(50, 300), rgb_conv(rand() % 155, rand() % 155, rand() % 155));
+		else
+			draw_image(data->menu->background[BG], data->menu->background[CONTROLS_KEYS], \
+				y_x(0, 0), rgb_conv(rand() % 155, rand() % 155, rand() % 155));
+	}
+	if (data->menu->extras == 1)
+	{
+		data->menu->extras = 0;
+		data->menu->menu_state = 0;
+		data->menu->back = 1;
+		data->menu->controls_state = 1;
+		clear_img(data->menu->background[BG]);
+		if (data->window->width == 1900)
+			draw_image(data->menu->background[BG], data->menu->background[17], 
+				y_x(300, 100), rgb_conv(rand() % 155, rand() % 155, rand() % 155));
+		else if (data->window->width == 1200)
+			draw_image(data->menu->background[BG], data->menu->background[17], 
+				y_x(50, 300), rgb_conv(rand() % 155, rand() % 155, rand() % 155));
+		else
+			draw_image(data->menu->background[BG], data->menu->background[17], 
+				y_x(0, 0), rgb_conv(rand() % 155, rand() % 155, rand() % 155));
 	}
 	if (data->menu->new_game == 1)
 	{

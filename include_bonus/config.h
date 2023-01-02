@@ -89,7 +89,7 @@ extern int g_status;
 /* should be eaual to windows width*/
 # define CAM_QUALITY 1900
 # define NB_TEXTURES 4
-# define NB_MENU_IMG 17
+# define NB_MENU_IMG 18
 # define BONUS_TEXTURES_SOLIDS "assets/door_bin.xpm,assets/door_bin.xpm,assets/door_bin.xpm,assets/door_bin.xpm,\
 assets/button_off.xpm,assets/button_off.xpm,assets/button_off.xpm,assets/button_off.xpm,\
 assets/button_on.xpm,assets/button_on.xpm,assets/button_on.xpm,assets/button_on.xpm,\

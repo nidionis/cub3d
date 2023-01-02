@@ -6,39 +6,49 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 17:15:14 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 04:20:59 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/02 10:53:14 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	draw_interface(t_data *data)
+t_point	get_string_pos(void)
 {
-	int	y;
-	int	x;
+	t_point	pos;
 
-	x = 0;
-	y = 0;
-	if (g_status == 1)
+	pos.x = 0;
+	pos.y = 0;
+	if (g_status == 2)
 	{
-		x = 300;
-		y = 195;
-	}
-	else if (g_status == 2)
-	{
-		y = 125;
-		x = 200;
+		pos.y = 125;
+		pos.x = 200;
 	}
 	else if (g_status == 3)
 	{
-		x = 200;
-		y = 130;
+		pos.x = 200;
+		pos.y = 130;
 	}
 	else
 	{
-		x = 200;
-		y = 170;
+		pos.x = 200;
+		pos.y = 170;
 	}
+	return (pos);
+}
+
+void	draw_interface(t_data *data)
+{
+	t_point	pos;
+	char	*str;
+
+	pos = get_string_pos();
+	str = ft_itoa(time(NULL) - data->time_to_lose);
+	if (data->time_state == 2)
+		mlx_string_put(data->window->mlx, data->window->init, \
+			data->window->width / 2 - 150, data->window->height - 300 / 2 / 2, \
+			rgb_conv(255, 255, 255), str);
 	draw_image(data->img, data->menu->background[LAYOUT], \
-	y_x(data->window->height - y, data->window->width / 2 - x), -1);
+	y_x(data->window->height - pos.y, data->window->width / 2 - pos.x), -1);
+	mlx_string_put(data->window->mlx, data->window->init, data->window->width / 2 - 50, data->window->height - pos.y / 2, rgb_conv(255, 255, 255), "ACTIVATE THE SWITCH TO OPEN THE DOOR");
+	free(str);
 }

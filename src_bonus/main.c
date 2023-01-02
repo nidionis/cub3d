@@ -130,5 +130,4 @@ int	main(int argc, char *argv[])
 		import_bonus_textures(data);
 		cub3d_render(data);
 	}
-	printf("hello\n");
 }
