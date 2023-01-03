@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 17:15:14 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 14:31:35 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 08:59:36 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

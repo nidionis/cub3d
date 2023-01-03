@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:28:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 12:55:53 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 10:53:07 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	movement(t_data *data, int key)
 		data->key_status->left = 1;
 }
 
-void controls(t_data *data, int key)
+void	controls(t_data *data, int key)
 {
 	if (key == KEY_M)
 	{
@@ -62,7 +62,8 @@ int	key_game(int key, t_data *data)
 	{
 		data->menu->game_state = 2;
 		data->door.state = 1;
-		data->score = data->map_height * data->map_width / (time(NULL) - data->time_to_lose);
+		data->score = data->map_height * data->map_width / \
+		(time(NULL) - data->time_to_lose);
 	}
 	if (end_game(data, &data->switcher) && key == KEY_E \
 	&& data->switcher.state == 0)

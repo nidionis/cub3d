@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game_event.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 14:28:46 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 09:08:20 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 int	render_game(t_data *data)
 {
@@ -21,6 +21,8 @@ int	render_game(t_data *data)
 	draw_stamina_hud(data);
 	if (data->menu->minimap == 1 && data->minimap.state == 1)
 		minimap_render(data);
+	draw_image(data->img->img, data->menu->background[LAYOUT], \
+	y_x(0,0), 1354);
 	mlx_put_image_to_window(data->window->mlx, data->window->init, \
 		data->img->img, 0, 0);
 	draw_interface(data);

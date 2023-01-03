@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prototypes.h                                       :+:      :+:    :+:   */
+/*   prototypes_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 12:59:20 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 11:49:57 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROTOTYPES_H
-# define PROTOTYPES_H
+#ifndef PROTOTYPES_BONUS_H
+# define PROTOTYPES_BONUS_H
 # include "cub3d_bonus.h"
 
 void			error_msg(char *msg);
@@ -157,7 +157,7 @@ int				check_path_door(t_data *data, int row, int col);
 int				check_path_switch(t_data *data, int row, int col);
 int				check_path_map(t_data *data, int row, int col);
 int				generate_map(t_data *data);
-t_point			get_img_size(t_data *data, char *path);
+t_point			get_img_size(char *path);
 //proto nico
 void			import_bonus_textures(t_data *data);
 void			import_sprites_textures(t_data *data);
@@ -204,4 +204,7 @@ int				render_game2(t_data *data);
 void			draw_string(t_data *data);
 void			world_render(t_data *data);
 void			draw_interface(t_data *data);
+void			direction_move(t_data *data);
+void			draw_menu_controls(t_data *data);
+void			draw_menu_extras(t_data *data);
 #endif

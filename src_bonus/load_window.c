@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 12:56:18 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 12:41:13 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ t_point	units_pos_to_minimap_pos(t_data *data, t_point absolute_position)
 	return (pos_for_map);
 }
 
-int	load_window(t_data *data)
+void	init_window_size(t_data *data)
 {
 	t_window	*window;
 
 	window = data->window;
-	data->img = malloc(sizeof(t_img_data));
 	if (g_status == 0)
 	{
 		window->height = SCREEN_HEIGHT;
@@ -52,6 +51,15 @@ int	load_window(t_data *data)
 		window->width = 700;
 		window->height = 500;
 	}
+}
+
+int	load_window(t_data *data)
+{
+	t_window	*window;
+
+	window = data->window;
+	data->img = malloc(sizeof(t_img_data));
+	init_window_size(data);
 	data->img->img = mlx_new_image(window->mlx, window->width, window->height);
 	window->init = mlx_new_window(window->mlx, \
 		window->width, window->height, "Cub3d");

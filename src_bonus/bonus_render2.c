@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_render2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 18:30:30 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 15:38:06 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 09:25:38 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ unsigned int	get_texture_pix(t_img_data *t, t_point pix)
 	unsigned int	color;
 
 	if (pix.x < 0 || pix.x >= t->width || pix.y < 0 || pix.y >= t->height)
-		return 0;
+		return (0);
 	addr = pix.y * t->width + pix.x;
 	color = t->address[addr];
 	return (color);

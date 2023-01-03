@@ -6,9 +6,9 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 17:38:43 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/22 02:44:47 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 09:19:33 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 

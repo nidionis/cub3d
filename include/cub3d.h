@@ -19,7 +19,7 @@
 # include <math.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include <stdio.h> // test
+# include <stdio.h>
 # include <time.h>
 # include <stdint.h>
 # include "config.h"

@@ -42,13 +42,18 @@ t_data	*malloc_data(void)
 
 int re_run_game(t_data *data, char *argv)
 {
+	char *tmp;
+
+	tmp = ft_strdup(argv);
+	free(argv);
+	free_everything(data);
 	srand(time(NULL));
 		data = malloc_data();
+		data->argv = tmp;
 		data->window = malloc(sizeof(t_window));
 		data->window->mlx = mlx_init();
-		parse_file(argv,  data);
+		parse_file(data->argv,  data);
 		data->mouse = 0;
-		free(argv);
 		data->time_state = 0;
 		data->door.state = 0;
 		data->switcher.state = 0;

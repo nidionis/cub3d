@@ -6,11 +6,11 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2023/01/02 10:56:38 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 09:22:19 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include_bonus/cub3d_bonus.h"
 
 /* draw one texture line */
 void	draw_obstacle_texture(t_data *data, t_point pts[2], int \
@@ -22,7 +22,7 @@ line_height, t_obstacle *obstacle)
 	t_img_data		*t;
 
 	t = obstacle->texture;
-	ratio[_x] = obstacle->textureX / (double) UNITS_PER_BOX;
+	ratio[_x] = obstacle->texture_x / (double) UNITS_PER_BOX;
 	text_pix.x = t->line_len * ratio[_x] / (double)(t->bpp / 8);
 	if (pts[0].y < 0)
 		pts[0].y = 0;

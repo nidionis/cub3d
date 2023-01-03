@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 18:19:05 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/13 18:09:34 by supersko         ###   ########.fr       */
+/*   Created: 2022/05/26 18:19:05 by suplayerko        #+#    #+#             */
+/*   Updated: 2023/01/03 09:20:50 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include <stdlib.h>
 # include "../libft/libft.h"
@@ -19,12 +19,12 @@
 # include <math.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include <stdio.h> // test
+# include <stdio.h>
 # include <time.h>
 # include <stdint.h>
-# include "config.h"
-# include "structs.h"
-# include "prototypes.h"
-#include <time.h>
+# include "config_bonus.h"
+# include "structs_bonus.h"
+# include "prototypes_bonus.h"
+# include <time.h>
 
 #endif
