@@ -23,7 +23,7 @@
 #  define KEY_M 46
 #  define SHIFT 257
 #  define KEY_P 35
-#  include "../mlx/mlx.h"
+#  include <mlx.h>
 
 # else   // LINUX
 #  include <X11/keysym.h>   // 

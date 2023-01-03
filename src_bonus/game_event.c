@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_event.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 09:08:20 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 16:34:07 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,7 @@ int	game_event(t_data *data)
 	counter++;
 	if (data->rain_state == 0)
 		draw_rain(data, rand() % 20);
-	// if (data->mouse == 1)
-	// {
-	// 	mlx_mouse_hide(data->window->mlx, data->window->init);
-	// 	mouse_rotate(data);
-	// }
-	// else
-	// 	mlx_mouse_show(data->window->mlx, data->window->init);
+	// mouse_rotate(data);
 	if (data->time_state == 2 && time(NULL) - data->timer > 7)
 	{
 		if (counter > 100)
