@@ -93,7 +93,7 @@ int	main(int argc, char *argv[])
 {
 	t_data		*data;
 
-
+	(void)argv;
 	g_status = 0;
 	data = NULL;
 	if (argc != 2)

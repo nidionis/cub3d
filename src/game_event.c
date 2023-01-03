@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_event.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 14:57:44 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:36:08 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ int	render_game2(t_data *data)
 	static int	count_to_end;
 
 	if (count_to_end == 500)
+	{
 		exit_game(data);
+	}
 	if (data->time_state == 2 && time(NULL) - data->timer > 15)
 	{
 		while (generate_map(data) && (!check_path_door(data, \
@@ -82,8 +84,6 @@ int	game_event(t_data *data)
 	counter++;
 	if (data->rain_state == 0)
 		draw_rain(data, rand() % 20);
-	// if (data->mouse == 1)
-		// 	mouse_rotate(data);
 	if (data->time_state == 2 && time(NULL) - data->timer > 7)
 	{
 		if (counter > 100)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_menu.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 03:41:47 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 12:39:05 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:10:17 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,17 @@ int	load_images(t_data *data, t_img_data *image, char *path)
 void	alloc_menu(t_data *data)
 {
 	data->menu = malloc(sizeof(t_menu));
-	data->menu->background[0] = malloc(sizeof(t_img_data));
-	data->menu->background[1] = malloc(sizeof(t_img_data));
-	data->menu->background[2] = malloc(sizeof(t_img_data));
-	data->menu->background[3] = malloc(sizeof(t_img_data));
-	data->menu->background[4] = malloc(sizeof(t_img_data));
-	data->menu->background[5] = malloc(sizeof(t_img_data));
-	data->menu->background[6] = malloc(sizeof(t_img_data));
-	data->menu->background[7] = malloc(sizeof(t_img_data));
-	data->menu->background[8] = malloc(sizeof(t_img_data));
-	data->menu->background[9] = malloc(sizeof(t_img_data));
-	data->menu->background[10] = malloc(sizeof(t_img_data));
-	data->menu->background[11] = malloc(sizeof(t_img_data));
-	data->menu->background[12] = malloc(sizeof(t_img_data));
+	data->menu->background[BG] = malloc(sizeof(t_img_data));
+	data->menu->background[NEW_GAME] = malloc(sizeof(t_img_data));
+	data->menu->background[EXIT] = malloc(sizeof(t_img_data));
+	data->menu->background[LAYOUT] = malloc(sizeof(t_img_data));
+	data->menu->background[LOGO] = malloc(sizeof(t_img_data));
+	data->menu->background[CONTROLS] = malloc(sizeof(t_img_data));
+	data->menu->background[BACK] = malloc(sizeof(t_img_data));
+	data->menu->background[NEW_BG] = malloc(sizeof(t_img_data));
+	data->menu->background[EXTRAS] = malloc(sizeof(t_img_data));
 	data->menu->background[CONTROLS_KEYS] = malloc(sizeof(t_img_data));
-	data->menu->background[LOW_RES] = malloc(sizeof(t_img_data));
-	data->menu->background[MID_RES] = malloc(sizeof(t_img_data));
-	data->menu->background[HIGH_RES] = malloc(sizeof(t_img_data));
-	data->menu->background[17] = malloc(sizeof(t_img_data));
+	data->menu->background[10] = malloc(sizeof(t_img_data));
 }
 
 void	init_menu_var(t_data *data)
@@ -92,23 +85,16 @@ void	load_menu(t_data *data)
 	alloc_menu(data);
 	m = data->menu;
 	load_images(data, data->menu->background[BG], "assets/menu/background.xpm");
-	load_images(data, m->background[SETTINGS], "assets/menu2/settings.xpm");
 	load_images(data, m->background[NEW_GAME], "assets/menu2/new_game.xpm");
 	load_images(data, m->background[EXIT], "assets/menu2/exit.xpm");
 	load_images(data, m->background[LAYOUT], "assets/layout.xpm");
 	load_images(data, m->background[LOGO], "assets/logo.xpm");
-	load_images(data, m->background[6], "assets/menu2/settings.xpm");
-	load_images(data, m->background[RESOLUTION], "assets/menu2/resolution.xpm");
-	load_images(data, m->background[SENSIVITY], "assets/menu2/sensivity.xpm");
 	load_images(data, m->background[CONTROLS], "assets/menu2/controls.xpm");
 	load_images(data, m->background[BACK], "assets/menu2/back.xpm");
 	load_images(data, m->background[NEW_BG], "assets/menu/background.xpm");
 	load_images(data, m->background[EXTRAS], "assets/menu2/extras.xpm");
 	load_images(data, m->background[CONTROLS_KEYS], \
 	"assets/menu/control_keys.xpm");
-	load_images(data, m->background[LOW_RES], "assets/menu2/700x500.xpm");
-	load_images(data, m->background[MID_RES], "assets/menu2/1200x700.xpm");
-	load_images(data, m->background[HIGH_RES], "assets/menu2/1900x1080.xpm");
-	load_images(data, m->background[17], "assets/extra.xpm");
+	load_images(data, m->background[10], "assets/extra.xpm");
 	init_menu_var(data);
 }

@@ -89,7 +89,7 @@ extern int g_status;
 /* should be eaual to windows width*/
 # define CAM_QUALITY 1900
 # define NB_TEXTURES 4
-# define NB_MENU_IMG 18
+# define NB_MENU_IMG 10
 # define BONUS_TEXTURES_SOLIDS "assets/door_bin.xpm,assets/door_bin.xpm,assets/door_bin.xpm,assets/door_bin.xpm,\
 assets/button_off.xpm,assets/button_off.xpm,assets/button_off.xpm,assets/button_off.xpm,\
 assets/button_on.xpm,assets/button_on.xpm,assets/button_on.xpm,assets/button_on.xpm,\
@@ -113,18 +113,12 @@ assets/mapper.xpm,assets/mapper.xpm,assets/mapper.xpm,assets/mapper.xpm"
 # define GREEN "\033[1;32m"
 //macro for img indexes
 # define BG 0
-# define SETTINGS 1
-# define NEW_GAME 2
-# define EXIT 3
-# define LAYOUT 4
-# define LOGO 5
-# define RESOLUTION 7
-# define SENSIVITY 8
-# define CONTROLS 9
-# define BACK 10
-# define NEW_BG 11
-# define EXTRAS 12
-# define CONTROLS_KEYS 13
-# define LOW_RES 14
-# define MID_RES 15
-# define HIGH_RES 16
+# define NEW_GAME 1
+# define EXIT 2
+# define LAYOUT 3
+# define LOGO 4
+# define CONTROLS 5
+# define BACK 6
+# define NEW_BG 7
+# define EXTRAS 8
+# define CONTROLS_KEYS 9

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_menu.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:42:08 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 10:59:04 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:20:05 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 
 void	menu_enter_key2(t_data *data)
 {
-	if (data->menu->settings == 1)
-	{
-		data->menu->menu_state = 0;
-		data->menu->resolution = 1;
-		data->menu->settings_state = 1;
-		data->menu->settings = 0;
-		clear_img(data->menu->background[BG]);
-	}
 	if (data->menu->quit == 1)
 		exit_game(data);
 	if (data->menu->controls == 1)
@@ -66,11 +58,6 @@ void	menu_w_key(t_data *data)
 		data->menu->quit = 1;
 		data->menu->new_game = 0;
 	}
-	else if (data->menu->settings == 1)
-	{
-		data->menu->extras = 1;
-		data->menu->settings = 0;
-	}
 	else if (data->menu->extras == 1)
 	{
 		data->menu->extras = 0;
@@ -84,7 +71,7 @@ void	menu_w_key(t_data *data)
 	else if (data->menu->quit == 1)
 	{
 		data->menu->quit = 0;
-		data->menu->settings = 1;
+		data->menu->extras = 1;
 	}
 }
 
@@ -95,15 +82,10 @@ void	menu_s_key(t_data *data)
 		data->menu->controls = 1;
 		data->menu->new_game = 0;
 	}
-	else if (data->menu->settings == 1)
-	{
-		data->menu->quit = 1;
-		data->menu->settings = 0;
-	}
 	else if (data->menu->extras == 1)
 	{
 		data->menu->extras = 0;
-		data->menu->settings = 1;
+		data->menu->quit = 1;
 	}
 	else if (data->menu->controls == 1)
 	{
