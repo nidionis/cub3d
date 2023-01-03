@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2023/01/03 09:22:19 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:23:44 by ndionis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	draw_obstacles(t_data *data, t_point pts[2]
 		draw_obstacle_texture(data, pts, line_height, obstacle);
 		tmp = tmp->next;
 	}
+	ft_lstclear(&l_obstacles, free);
 }
 
 /* draw a large line in camera definition is low */
