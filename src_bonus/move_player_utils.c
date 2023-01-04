@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 10:05:09 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 10:05:21 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:23:05 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

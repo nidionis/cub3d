@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 16:34:07 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:05:33 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	render_game(t_data *data)
 	if (data->menu->minimap == 1 && data->minimap.state == 1)
 		minimap_render(data);
 	draw_image(data->img->img, data->menu->background[LAYOUT], \
-	y_x(0,0), 1354);
+	y_x(0, 0), 1354);
 	mlx_put_image_to_window(data->window->mlx, data->window->init, \
 		data->img->img, 0, 0);
 	draw_interface(data);
@@ -69,7 +69,8 @@ int	render_game2(t_data *data)
 			data->player->pos_map.y, data->player->pos_map.x) \
 		|| !check_path_switch(data, data->player->pos_map.y, \
 			data->player->pos_map.x) || !check_path_map(data, \
-			data->player->pos_map.y, data->player->pos_map.x)));
+			data->player->pos_map.y, data->player->pos_map.x)))
+			(void)data;
 		data->timer = time(NULL);
 	}
 	else if (data->menu->game_state == 2)
@@ -90,7 +91,6 @@ int	game_event(t_data *data)
 	counter++;
 	if (data->rain_state == 0)
 		draw_rain(data, rand() % 20);
-	// mouse_rotate(data);
 	if (data->time_state == 2 && time(NULL) - data->timer > 7)
 	{
 		if (counter > 100)

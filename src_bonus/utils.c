@@ -3,36 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 04:23:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 12:57:51 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:37:25 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include_bonus/cub3d_bonus.h"
-
-t_point	y_x(int y, int x)
-{
-	t_point	tmp;
-
-	tmp.x = x;
-	tmp.y = y;
-	return (tmp);
-}
-
-void	get_map_size(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	data->map_width = ft_strlen(data->map[0]);
-	while (data->map[i])
-	{
-		i++;
-	}
-	data->map_height = i;
-}
 
 int	set_red_to_max(int color)
 {

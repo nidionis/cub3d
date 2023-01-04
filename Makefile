@@ -5,7 +5,8 @@ NAME    = cub3D
 NAMEBONUS = cub3D_bonus
 CC      = gcc
 FLAGS	= -Wall -Wextra -Werror -g -Ofast -march=native
-#-fsanitize=address
+# -fsanitize=address
+
 LFLAGS	= -Llibft -lft
 ###
 SRCDIR	= src/
@@ -21,10 +22,10 @@ OBJFILE = $(SRCFILE:.c=.o)
 OBJS	= $(addprefix $(OBJDIR), $(OBJFILE))
 ###
 SRC_BONUSDIR	= src_bonus/
-SRC_BONUSFILE	=	bonus_raycasting.c  check_path_map.c     draw_interface.c   ft_list.c        keys_menu.c        map_ft.c             parse_check_map.c    player_init.c        rotate_player.c \
-bonus_render2.c     check_path_switch.c  draw_line.c        game_event.c     keys_resolution.c  matrix.c             parse_file_colors.c  pos_update.c         soundtracks.c \
+SRC_BONUSFILE	=	bonus_raycasting.c  check_path_map.c   vector_ft_utils2.c vector_ft_utils.c  draw_interface.c   ft_list.c        keys_menu.c        map_ft.c             parse_check_map.c    player_init.c        rotate_player.c \
+bonus_render2.c     check_path_switch.c  draw_line.c        game_event.c     matrix.c             parse_file_colors.c  pos_update.c   free_everything.c   \
 bonus_render.c      cub3d_render.c       draw_line_utils.c  generate_map.c   keys_settings.c    mouse.c              parse_format_map.c   raycasting.c         str_ft.c \
-bonus_textures.c    draw_compass.c       end_game.c         get_next_line.c  load_menu.c        move_crossing_box.c  parse_import.c       raycasting_utils.c   utils2.c \
+bonus_textures.c end_game.c    parse_format_map_utils.c parse_import_utils.c    get_next_line.c  load_menu.c        move_crossing_box.c  parse_import.c       raycasting_utils.c   utils2.c \
 camera_ft.c         draw_functions2.c    exit_ft.c          key_event.c      load_window.c      move_player.c        parse_init.c         ray_set_distances.c  utils.c \
 check_path_door.c   draw_functions.c     free_functions.c   keys_game.c      main.c             move_to_corner.c     parse_params.c       render_menu.c        vector_ft.c 			minimap.c	map.c \
 move_player_utils.c ft_list2.c draw_map_border.c keys_menu_utils.c load_menu_utils.c draw_image.c
