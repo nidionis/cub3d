@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_render2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 18:30:30 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 09:25:38 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:49:44 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../include_bonus/cub3d_bonus.h"
 

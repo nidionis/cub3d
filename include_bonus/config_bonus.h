@@ -64,7 +64,6 @@
 # define UP_ARROW 126
 
 //MACROS 
-extern int g_status;
 # define WALL 49
 # define FLOOR 48
 /* EMPTY must be ' ', for the function format_map lets call lane the '0' */

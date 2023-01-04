@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_interface.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 17:15:14 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 09:05:29 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:06:50 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,8 @@ t_point	get_string_pos(void)
 {
 	t_point	pos;
 
-	pos.x = 0;
-	pos.y = 0;
-	if (g_status == 2)
-	{
-		pos.y = 125;
-		pos.x = 200;
-	}
-	else if (g_status == 3)
-	{
-		pos.x = 200;
-		pos.y = 130;
-	}
-	else
-	{
-		pos.x = 200;
-		pos.y = 170;
-	}
+	pos.y = 125;
+	pos.x = 200;
 	return (pos);
 }
 
@@ -49,6 +34,8 @@ void	draw_interface(t_data *data)
 			rgb_conv(255, 255, 255), str);
 	draw_image(data->img, data->menu->background[LAYOUT], \
 	y_x(data->window->height - pos.y, data->window->width / 2 - pos.x), -1);
-	mlx_string_put(data->window->mlx, data->window->init, data->window->width / 2 - 50, data->window->height - pos.y / 2, rgb_conv(255, 255, 255), "ACTIVATE THE SWITCH TO OPEN THE DOOR");
+	mlx_string_put(data->window->mlx, data->window->init, \
+		data->window->width / 2 - 50, data->window->height - pos.y / 2, \
+		rgb_conv(255, 255, 255), "ACTIVATE THE SWITCH TO OPEN THE DOOR");
 	free(str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 02:44:22 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 13:59:19 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 15:51:53 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,3 @@ void	import_bonus_textures(t_data *data)
 	}
 	ft_free_split(&fnames);
 }
-

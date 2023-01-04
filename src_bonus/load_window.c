@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:45:24 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 12:41:13 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:11:30 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,8 @@ void	init_window_size(t_data *data)
 	t_window	*window;
 
 	window = data->window;
-	if (g_status == 0)
-	{
-		window->height = SCREEN_HEIGHT;
-		window->width = SCREEN_WIDTH;
-	}
-	else if (g_status == 1)
-	{
-		window->width = 1900;
-		window->height = 1080;
-	}
-	else if (g_status == 2)
-	{
-		window->width = 1200;
-		window->height = 700;
-	}
-	else if (g_status == 3)
-	{
-		window->width = 700;
-		window->height = 500;
-	}
+	window->height = SCREEN_HEIGHT;
+	window->width = SCREEN_WIDTH;
 }
 
 int	load_window(t_data *data)

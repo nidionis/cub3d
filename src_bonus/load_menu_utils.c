@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_menu_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:15:30 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 11:48:54 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 15:57:07 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*remove_char(char *str, char c)
 
 	i = 0;
 	j = 0;
-
 	tmp = malloc(sizeof(char) * 30);
 	i = 0;
 	j = 0;

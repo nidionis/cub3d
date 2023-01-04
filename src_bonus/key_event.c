@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:57:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 12:55:50 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:01:47 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ int	key_press(int key, t_data *data)
 		menu_key_press(key, data);
 	else if (data->menu->settings_state == 1)
 		settings_key_press(key, data);
-	else if (data->menu->resolution_state == 1)
-		resolution_key_press(key, data);
 	if (data->menu->game_state == 1)
 		key_game(key, data);
 	if (key == KEY_ESC)

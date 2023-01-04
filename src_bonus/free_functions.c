@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:11:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 18:12:22 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:07:52 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,38 +71,4 @@ void	free_bonus_textures(t_data *data)
 		i++;
 	}
 	free(data->bonus_textures);
-}
-
-void	free_test(t_data *data)
-{
-	ft_free_split(&data->map);
-}
-
-void	free_everything(t_data *data)
-{
-	// int i;
-
-	// i = 0;
-	mlx_destroy_image(data->window->mlx, data->img->img);
-	free(data->key_status);
-	free_bonus_textures(data);
-	free_menu(data);
-	free(data->img);
-	ft_free_split(&data->map);
-	free_texture_path(data);
-	free_wall_textures(data);
-	// mlx_destroy_window(data->window->mlx, data->window->init);
-	// mlx_destroy_display(data->window->mlx, data->window->init);
-	free(data->window->mlx);
-	// if (data->cam)
-	// {
-	// 	if (data->cam->beam)
-	// 		free(data->cam->beam);
-	// 	i = 0;
-	// 	while (i < data->window->width)
-	// 		ft_lstclear(&data->cam->array[i++].obstacles_ls, free);
-	// 	free(data->cam);
-	// }
-	free_data(data);
-	free(data);
 }

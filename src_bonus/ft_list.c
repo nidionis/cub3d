@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 13:59:44 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 10:30:09 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 15:53:19 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,3 @@ void	ft_lstdelone(t_list **lst, void (*del)(void *))
 		*lst = NULL;
 	}
 }
-
