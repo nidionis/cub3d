@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 16:14:04 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:28:51 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,12 @@ int	graphics_render(t_data *data)
 	{
 		render_menu(data);
 	}
-	render_game2(data);
-	if (data->time_state == 2 && time(NULL) - data->time_to_lose > 180)
-		data->menu->game_state = 2;
+	if (data->menu->game_state != 3)
+	{
+		render_game2(data);
+		if (data->time_state == 2 && time(NULL) - data->time_to_lose > 180)
+			data->menu->game_state = 2;
+	}
 	return (0);
 }
 

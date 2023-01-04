@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path_door.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:54:41 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 14:26:41 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:41:58 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

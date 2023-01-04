@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 04:07:18 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 16:27:02 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:54:44 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,13 +173,6 @@ typedef struct s_assets
 	t_point	pos;
 }	t_assets;
 
-// typedef struct s_audio
-// {
-// 	SDL_AudioSpec	wavSpec;
-// 	Uint32			wavLength;
-// 	Uint8			*wavBuffer;
-// }t_audio;
-
 typedef struct s_data
 {
 	char			*line;
@@ -211,10 +204,6 @@ typedef struct s_data
 	t_assets		minimap;
 	unsigned int	score;
 	char			*argv;
-	// SDL_AudioDeviceID audio_dev;
-	// t_audio			soundtrack;
-	// Mix_Chunk		*sounds;
-	// Mix_Chunk		*soundtracks[4];
 }	t_data;
 
 enum e_x_or_y { _x, _y };

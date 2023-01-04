@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/12/01 18:48:48 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
+/*   Updated: 2023/01/04 18:44:03 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,50 +40,39 @@ t_data	*malloc_data(void)
 	return (data);
 }
 
-int re_run_game(t_data *data, char *argv)
+void	init_gameplay_var(t_data *data)
 {
-	srand(time(NULL));
-		data = malloc_data();
-		data->window = malloc(sizeof(t_window));
-		data->window->mlx = mlx_init();
-		parse_file(argv,  data);
-		data->mouse = 0;
-		free(argv);
-		data->time_state = 0;
-		data->door.state = 0;
-		data->switcher.state = 0;
-		data->minimap.state = 0;
-		data->door.done = 0;
-		data->switcher.done = 0;
-		data->minimap.done = 0;
-		data->map_height = 0;
-		data->map_width = 0;
-		update_player(data->map, data->player);
-		init_key_status(data);
-		load_window(data);
-		get_map_size(data);
-		while(!check_path_door(data,data->player->pos_map.y, data->player->pos_map.x) || \
-		!check_path_switch(data,data->player->pos_map.y, data->player->pos_map.x) || \
-		!check_path_map(data,data->player->pos_map.y, data->player->pos_map.x))
-		{
-			generate_map_content(data,&data->minimap,'5');
-			generate_map_content(data,&data->switcher,'3');
-			generate_map_content(data, &data->door,'2');
-		}
-		data->rain_state = rand() % 5;
-		import_bonus_textures(data);
-		cub3d_render(data);
-		return (0);
+	data->mouse = 0;
+	data->time_state = 0;
+	data->door.state = 0;
+	data->switcher.state = 0;
+	data->minimap.state = 0;
+	data->door.done = 0;
+	data->switcher.done = 0;
+	data->minimap.done = 0;
+	data->map_height = 0;
+	data->map_width = 0;
 }
 
-int g_status;
+void	re_generate_map(t_data *data)
+{
+	t_player	*player;
+
+	player = data->player;
+	while (!check_path_door(data, player->pos_map.y, player->pos_map.x) || \
+		!check_path_switch(data, player->pos_map.y, player->pos_map.x) || \
+		!check_path_map(data, player->pos_map.y, player->pos_map.x))
+	{
+		generate_map_content(data, &data->minimap, '5');
+		generate_map_content(data, &data->switcher, '3');
+		generate_map_content(data, &data->door, '2');
+	}
+}
 
 int	main(int argc, char *argv[])
 {
 	t_data		*data;
 
-
-	g_status = 0;
 	data = NULL;
 	if (argc != 2)
 	{
@@ -96,18 +85,7 @@ int	main(int argc, char *argv[])
 		data = malloc_data();
 		data->window = malloc(sizeof(t_window));
 		data->window->mlx = mlx_init();
-		parse_file(argv[1],  data);
-		data->mouse = 0;
-		data->time_state = 0;
-		data->door.state = 0;
-		data->switcher.state = 0;
-		data->minimap.state = 0;
-		data->door.done = 0;
-		data->switcher.done = 0;
-		data->minimap.done = 0;
-		data->map_height = 0;
-		data->map_width = 0;
-		data->argv = argv[1];
+		parse_file(argv[1], data);
 		update_player(data->map, data->player);
 		init_key_status(data);
 		load_window(data);
@@ -115,5 +93,4 @@ int	main(int argc, char *argv[])
 		import_bonus_textures(data);
 		cub3d_render(data);
 	}
-	printf("hello\n");
 }

@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/04 17:05:33 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:36:27 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int	game_event(t_data *data)
 	static int	counter;
 
 	counter++;
+	mouse_rotate(data);
 	if (data->rain_state == 0)
 		draw_rain(data, rand() % 20);
 	if (data->time_state == 2 && time(NULL) - data->timer > 7)

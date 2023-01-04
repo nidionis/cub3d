@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:14:23 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 14:54:44 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:43:01 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,46 +40,6 @@ int	generate_map(t_data *data)
 	return (1);
 }
 
-void	init_new_old_map(t_point *new, t_point *old)
-{
-	new->x = 0;
-	new->y = 0;
-	old->x = 0;
-	old->y = 0;
-}
-
-void	draw_map_border(t_data *data, int size_y, int size_x)
-{
-	char	**new_map;
-	t_point	old;
-	t_point	new;
-
-	init_new_old_map(&new, &old);
-	new_map = alloc_mem(size_y + 2, size_x + 2);
-	while (new.y < size_y + 2)
-	{
-		while (new.x < size_x + 2)
-		{
-			if (new.x == 0 || new.y == 0 || new.x == size_x + 1 \
-			|| new.y == size_y + 1)
-				new_map[new.y][new.x++] = '1';
-			else
-			{
-				if (data->map[old.y][old.x] == ' ')
-					new_map[new.y][new.x++] = '1';
-				else
-					new_map[new.y][new.x++] = data->map[old.y][old.x++];
-			}
-		}
-		if (new.y++ != 0 && new.y != size_y + 1)
-			old.y++;
-		new.x = 0;
-		old.x = 0;
-	}
-	ft_free_split(&data->map);
-	data->map = new_map;
-}
-
 void	check_content_side(t_data *data, int *wall_side, t_assets \
 *asset, t_point *pos)
 {
@@ -110,6 +70,19 @@ void	check_content_side(t_data *data, int *wall_side, t_assets \
 	}
 }
 
+void	check_wall_side(t_data *data, int *wall_side, t_point *pos, \
+t_assets *asset)
+{
+	if ((*wall_side) == 4)
+	{
+		pos->x = data->map_width - 2;
+		pos->y = rand() % data->map_height - 2;
+		if (pos->y <= 0)
+			pos->y = 1;
+		asset->side = EAST;
+	}
+}
+
 void	generate_map_content(t_data *data, t_assets *asset, char c)
 {
 	t_point	pos;
@@ -120,14 +93,7 @@ void	generate_map_content(t_data *data, t_assets *asset, char c)
 	if (asset->done == 1)
 		data->map[asset->pos.y][asset->pos.x] = '1';
 	check_content_side(data, &wall_side, asset, &pos);
-	if (wall_side == 4)
-	{
-		pos.x = data->map_width - 2;
-		pos.y = rand() % data->map_height - 2;
-		if (pos.y <= 0)
-			pos.y = 1;
-		asset->side = EAST;
-	}
+	check_wall_side(data, &wall_side, &pos, asset);
 	if (pos.y < data->map_height && pos.x < data->map_width)
 	{
 		if (data->map[pos.y][pos.x] != '2' && data->map[pos.y][pos.x] \

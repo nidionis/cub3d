@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:28:19 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 16:35:08 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:33:10 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,6 @@ void	controls(t_data *data, int key)
 			data->player->speed = 1;
 		else
 			data->player->speed = 0;
-	}
-	if (key == KEY_P)
-	{
-		if (data->menu->game_state == 1)
-			data->menu->game_state = 0;
-		else
-			data->menu->game_state = 1;
 	}
 }
 

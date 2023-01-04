@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera_ft.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2022/12/29 14:42:22 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:41:56 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_plane_dir(t_data *data, double plane_size)
 	double		nonante_deg;
 	double		cam_quality;
 
-	cam_quality = (double)CAM_QUALITY;
+	cam_quality = (double)get_res_width();
 	scale = plane_size / cam_quality;
 	nonante_deg = (double)PI;
 	nonante_deg /= (double)2.0;

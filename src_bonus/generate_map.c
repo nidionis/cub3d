@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:14:23 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 10:52:41 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:17:35 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	generate_map(t_data *data)
 	{
 		while (data->map[y][x] && x != data->map_width - 2)
 		{
-			random = rand() % 2;
+			random = rand() % 10;
 			if (data->map[y][x] != 'E' && data->map[y][x] != '2')
 			{
 				if (random == 1)

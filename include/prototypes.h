@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 12:44:10 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:46:26 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,8 +146,6 @@ void			clear_img(t_img_data *img);
 int				key_game(int key, t_data *data);
 void			menu_key_press(int key, t_data *data);
 void			resolution_key_press(int key, t_data *data);
-void			draw_line_textured(t_data *data, t_point start, \
-t_point end, int line_height, t_rayponse *ray);
 void			draw_wall_textured(t_data *data, int i_ray);
 void			draw_ceiling_floor_mandatory(t_data *data);
 int				f_is_box_crossed(t_player *player);
@@ -157,14 +155,12 @@ int				check_path_door(t_data *data, int row, int col);
 int				check_path_switch(t_data *data, int row, int col);
 int				check_path_map(t_data *data, int row, int col);
 int				generate_map(t_data *data);
-t_point			get_img_size(t_data *data, char *path);
+t_point			get_img_size(char *path);
 //proto nico
 void			import_bonus_textures(t_data *data);
 void			import_sprites_textures(t_data *data);
 int				get_wallx(t_rayponse *ray);
 t_list			*sort_obstacles(t_list **lst);
-void			add_obstacle(t_data *data, t_rayponse ray, char map_case, \
-int dir, t_list **obstacles_ls);
 t_list			*add_sprites_to_obstacles_ls(t_data *data, \
 t_rayponse *rayponse, t_list **obstacles_ls);
 t_list			*add_sprites(t_data *data, t_rayponse *rayturned, \
@@ -204,4 +200,24 @@ int				render_game2(t_data *data);
 void			draw_string(t_data *data);
 void			world_render(t_data *data);
 void			draw_interface(t_data *data);
+void			direction_move(t_data *data);
+void			draw_menu_controls(t_data *data);
+void			draw_menu_extras(t_data *data);
+int				is_block(t_data *data, char c);
+int				is_first_column_empty(char **map);
+void			delete_first_column(char **map);
+void			shift_line_left(char *line);
+double			vec_len(t_vector vector);
+t_point			make_point(int x, int y);
+t_vector		vec_scale(t_vector vector, double scale);
+t_point			translate_pt(t_vector vector, t_point pt);
+t_point			translate_pt_inplace(t_vector vector, t_point *pt);
+void			translate_vector_as_pt(t_vector vector, t_vector *pt);
+double			degree_to_radian(double degree_angle);
+void			rotate_vector(t_vector *vector, double radian_angle);
+void			free_data(t_data *data);
+void			free_wall_textures(t_data *data);
+void			free_texture_path(t_data *data);
+void			free_menu(t_data *data);
+void			free_bonus_textures(t_data *data);
 #endif

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   player_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:49:59 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/14 03:37:57 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:45:02 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
 
 //Function used to update player after adding the board on map
 void	update_player(char **map, t_player *player)

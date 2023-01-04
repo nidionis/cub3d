@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file_colors.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/29 14:00:40 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:44:16 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

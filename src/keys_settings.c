@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_settings.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:37:48 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/16 20:55:02 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:43:22 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
