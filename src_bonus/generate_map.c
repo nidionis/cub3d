@@ -6,13 +6,26 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:14:23 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 10:52:41 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:49:53 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include_bonus/cub3d_bonus.h"
 
-int	generate_map(t_data *data)
+/*
+static int	rand_index(t_data *data)
+{
+	int		index;
+	double	dist;
+
+	dist = sqrt(pow(data->player->pos_map.x - data->door.pos.x, 2) + pow(data->player->pos_map.y - data->door.pos.y, 2));
+	fprintf(stderr, "[rand_index]: %d\n", dist);
+	index = (int)dist + 2;
+	return (index);
+}
+*/
+
+int	generate_map(t_data *data, int rand_index)
 {
 	int	y;
 	int	x;
@@ -24,7 +37,7 @@ int	generate_map(t_data *data)
 	{
 		while (data->map[y][x] && x != data->map_width - 2)
 		{
-			random = rand() % 2;
+			random = rand() % rand_index;
 			if (data->map[y][x] != 'E' && data->map[y][x] != '2')
 			{
 				if (random == 1)

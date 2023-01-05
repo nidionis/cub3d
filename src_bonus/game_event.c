@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/04 17:05:33 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:21:35 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,25 +57,36 @@ void	draw_string(t_data *data)
 	free(score);
 }
 
+static int map_ok(t_data *data)
+{
+	if (!check_path_door(data, data->player->pos_map.y, data->player->pos_map.x) \
+		|| !check_path_switch(data, data->player->pos_map.y, data->player->pos_map.x)\
+		|| !check_path_map(data, data->player->pos_map.y, data->player->pos_map.x))
+		return (0);
+	return (1);
+}
+
 int	render_game2(t_data *data)
 {
-	static int	count_to_end;
+	int	i_modulo = 2;
 
-	if (count_to_end == 500)
-		exit_game(data);
+
 	if (data->time_state == 2 && time(NULL) - data->timer > 15)
 	{
-		while (generate_map(data) && (!check_path_door(data, \
-			data->player->pos_map.y, data->player->pos_map.x) \
-		|| !check_path_switch(data, data->player->pos_map.y, \
-			data->player->pos_map.x) || !check_path_map(data, \
-			data->player->pos_map.y, data->player->pos_map.x)))
-			(void)data;
+		int	i_map = 0;
+
+		while (generate_map(data, i_modulo) && !map_ok(data))
+			if (i_map < 100)
+				i_map++;
+			else
+			{
+				i_modulo++;
+				i_map = 0;
+			}
 		data->timer = time(NULL);
 	}
 	else if (data->menu->game_state == 2)
 	{
-		count_to_end++;
 		change_to_black(data, data->img);
 		mlx_put_image_to_window(data->window->mlx, data->window->init, \
 			data->img->img, 0, 0);

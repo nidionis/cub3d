@@ -59,7 +59,7 @@ int	render_game2(t_data *data)
 	}
 	if (data->time_state == 2 && time(NULL) - data->timer > 15)
 	{
-		while (generate_map(data) && (!check_path_door(data, \
+		while (generate_map(data, 2) && (!check_path_door(data, \
 			data->player->pos_map.y, data->player->pos_map.x) \
 		|| !check_path_switch(data, data->player->pos_map.y, \
 			data->player->pos_map.x) || !check_path_map(data, \

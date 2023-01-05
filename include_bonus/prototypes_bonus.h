@@ -154,7 +154,7 @@ void			generate_map_content(t_data *data, t_assets *asset, char c);
 int				check_path_door(t_data *data, int row, int col);
 int				check_path_switch(t_data *data, int row, int col);
 int				check_path_map(t_data *data, int row, int col);
-int				generate_map(t_data *data);
+int				generate_map(t_data *data, int i_modulo);
 t_point			get_img_size(char *path);
 //proto nico
 void			import_bonus_textures(t_data *data);

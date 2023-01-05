@@ -6,13 +6,13 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:14:23 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 14:54:44 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 19:44:06 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	generate_map(t_data *data)
+int	generate_map(t_data *data, int rand_modulo)
 {
 	int	y;
 	int	x;
@@ -24,7 +24,7 @@ int	generate_map(t_data *data)
 	{
 		while (data->map[y][x] && x != data->map_width - 2)
 		{
-			random = rand() % 2;
+			random = rand() % rand_modulo;
 			if (data->map[y][x] != 'E' && data->map[y][x] != '2')
 			{
 				if (random == 1)

@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2023/01/04 16:18:19 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 19:31:22 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	re_generate_map(t_data *data)
 		!check_path_switch(data, player->pos_map.y, player->pos_map.x) || \
 		!check_path_map(data, player->pos_map.y, player->pos_map.x))
 	{
-		generate_map_content(data, &data->minimap, '5');
-		generate_map_content(data, &data->switcher, '3');
-		generate_map_content(data, &data->door, '2');
+			generate_map_content(data, &data->minimap, '5');
+			generate_map_content(data, &data->switcher, '3');
+			generate_map_content(data, &data->door, '2');
 	}
 }
 
