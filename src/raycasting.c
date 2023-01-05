@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/29 17:31:38 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:45:15 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_list	*make_obstacle(t_data *data, t_rayponse ray, char map_case, int dir)
 	ray.side = get_side_hit(data, dir);
 	i_texture = (map_case - '2') * 4;
 	obst->dist = get_dist_from_plan(data, &ray);
-	obst->textureX = get_wallx(&ray);
+	obst->texture_x = get_wallx(&ray);
 	obst->texture = &data->bonus_textures[i_texture];
 	item = ft_lstnew((void *)obst);
 	if (!item)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pos_update.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/19 17:45:22 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
+/*   Updated: 2023/01/04 17:45:05 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

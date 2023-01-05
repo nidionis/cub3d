@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   move_to_corner.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2023/01/02 13:01:32 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:44:09 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-int	is_block(t_data *data, char c)
-{
-	int		i;
-	char	*blocks;
-
-	blocks = data->blocks;
-	i = 0;
-	while (blocks[i])
-	{
-		if (c == blocks[i])
-			return (i);
-		i++;
-	}
-	return (-1);
-}
 
 /* if player moved in a corner and it is a wall,
  * his position is set to the next empty mapcase */

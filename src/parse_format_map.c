@@ -3,50 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_format_map.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/19 17:46:41 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
+/*   Updated: 2023/01/04 17:44:24 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-void	shift_line_left(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] && line[i + 1])
-	{
-		line[i] = line[i + 1];
-		i++;
-	}
-	line[i] = '\0';
-}
-
-void	delete_first_column(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		shift_line_left(map[i++]);
-}
-
-int	is_first_column_empty(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		if (!is_blank_char(map[i][0]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 /* delete an a column of EMPTY at left side of map */
 void	clean_useless_empty_splace(char	**map)

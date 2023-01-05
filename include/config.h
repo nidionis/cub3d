@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   config.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/04 18:04:04 by dpaulino          #+#    #+#             */
+/*   Updated: 2023/01/04 18:04:05 by dpaulino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 # ifdef __APPLE__
@@ -23,7 +35,7 @@
 #  define KEY_M 46
 #  define SHIFT 257
 #  define KEY_P 35
-#  include "../mlx/mlx.h"
+#  include <mlx.h>
 
 # else   // LINUX
 #  include <X11/keysym.h>   // 
@@ -64,7 +76,6 @@
 # define UP_ARROW 126
 
 //MACROS 
-extern int g_status;
 # define WALL 49
 # define FLOOR 48
 /* EMPTY must be ' ', for the function format_map lets call lane the '0' */
@@ -89,11 +100,11 @@ extern int g_status;
 /* should be eaual to windows width*/
 # define CAM_QUALITY 1900
 # define NB_TEXTURES 4
-# define NB_MENU_IMG 18
-# define BONUS_TEXTURES_SOLIDS "assets/official_door.xpm,assets/official_door.xpm,assets/official_door.xpm,assets/official_door.xpm,\
-assets/official_red_switch.xpm,assets/official_red_switch.xpm,assets/official_red_switch.xpm,assets/official_red_switch.xpm,\
-assets/official_green_switch.xpm,assets/official_green_switch.xpm,assets/official_green_switch.xpm,assets/official_green_switch.xpm,\
-assets/official_map.xpm,assets/official_map.xpm,assets/official_map.xpm,assets/official_map.xpm"
+# define NB_MENU_IMG 10
+# define BONUS_TEXTURES_SOLIDS "assets/door_bin.xpm,assets/door_bin.xpm,assets/door_bin.xpm,assets/door_bin.xpm,\
+assets/button_off.xpm,assets/button_off.xpm,assets/button_off.xpm,assets/button_off.xpm,\
+assets/button_on.xpm,assets/button_on.xpm,assets/button_on.xpm,assets/button_on.xpm,\
+assets/mapper.xpm,assets/mapper.xpm,assets/mapper.xpm,assets/mapper.xpm"
 # define SPRITES_TEXTURES ""
 # define UNITS_PER_BOX 100
 # define STEPS_PER_BOX 30
@@ -113,18 +124,12 @@ assets/official_map.xpm,assets/official_map.xpm,assets/official_map.xpm,assets/o
 # define GREEN "\033[1;32m"
 //macro for img indexes
 # define BG 0
-# define SETTINGS 1
-# define NEW_GAME 2
-# define EXIT 3
-# define LAYOUT 4
-# define LOGO 5
-# define RESOLUTION 7
-# define SENSIVITY 8
-# define CONTROLS 9
-# define BACK 10
-# define NEW_BG 11
-# define EXTRAS 12
-# define CONTROLS_KEYS 13
-# define LOW_RES 14
-# define MID_RES 15
-# define HIGH_RES 16
+# define NEW_GAME 1
+# define EXIT 2
+# define LAYOUT 3
+# define LOGO 4
+# define CONTROLS 5
+# define BACK 6
+# define NEW_BG 7
+# define EXTRAS 8
+# define CONTROLS_KEYS 9

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_crossing_box.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2022/12/29 14:00:27 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:44:00 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

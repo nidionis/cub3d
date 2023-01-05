@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 18:30:30 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/04 15:48:48 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:41:50 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int line_height, t_rayponse *ray)
 	text_pix.x = t->line_len * ratio[_x] / (double)(t->bpp / 8);
 	if (pts[0].y < 0)
 		pts[0].y = 0;
-	while (pts[0].y <= pts[1].y && pts[0].y < height)
+	while (pts[0].y < pts[1].y && pts[0].y < height)
 	{
 		ratio[_y] = 1.0 - (double)(pts[1].y - pts[0].y) / (double)line_height;
 		text_pix.y = t->line_height * ratio[_y];

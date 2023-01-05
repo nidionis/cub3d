@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:08:38 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 18:36:08 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:41:26 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	world_render(t_data *data)
 	}
 }
 
-//set color red to max value
 int	graphics_render(t_data *data)
 {
 	render_game(data);
@@ -55,7 +54,7 @@ int	cub3d_render(t_data *data)
 	mlx_hook(data->window->init, 2, 1L << 0, key_press, data);
 	mlx_hook(data->window->init, 3, 1L << 1, key_realese, data);
 	mlx_loop_hook(data->window->mlx, graphics_render, data);
-	// mlx_hook(data->window->init, 12, 1L << 15, mouse_event, data);
+	mlx_hook(data->window->init, 12, 1L << 15, mouse_event, data);
 	mlx_hook(data->window->init, 17, 1L << 17, &exit_game, data);
 	mlx_loop(data->window->mlx);
 	return (0);

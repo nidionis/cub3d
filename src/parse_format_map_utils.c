@@ -1,35 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_textures.c                                   :+:      :+:    :+:   */
+/*   parse_format_map_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 02:44:22 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/04 17:41:53 by dpaulino         ###   ########.fr       */
+/*   Created: 2023/01/04 16:27:53 by dpaulino          #+#    #+#             */
+/*   Updated: 2023/01/04 17:44:21 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	import_bonus_textures(t_data *data)
+void	shift_line_left(char *line)
 {
-	int			i;
-	char		**fnames;
-	int			nb_textures;
-	t_img_data	*t;
+	int	i;
 
 	i = 0;
-	fnames = ft_split(BONUS_TEXTURES_SOLIDS, ',');
-	nb_textures = ft_matrixlen(fnames);
-	data->bonus_textures = malloc(sizeof(t_img_data) * nb_textures + 1);
-	while (i < nb_textures)
+	while (line[i] && line[i + 1])
 	{
-		t = &data->bonus_textures[i];
-		load_images(data, t, fnames[i]);
-		if (!t->img)
-			exit_msg(data, "[import_textures] Pb loading xpm file", 1);
+		line[i] = line[i + 1];
 		i++;
 	}
-	ft_free_split(&fnames);
+	line[i] = '\0';
+}
+
+void	delete_first_column(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		shift_line_left(map[i++]);
+}
+
+int	is_first_column_empty(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		if (!is_blank_char(map[i][0]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

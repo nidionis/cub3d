@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 14:57:02 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 15:00:02 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:50:26 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,31 @@ void	init_key_status(t_data *data)
 	data->key_status->config = 0;
 }
 
+void	control_key_press(int key, t_data *data)
+{
+	if (key == ENTER)
+	{
+		if (data->menu->back == 1)
+		{
+			data->menu->back = 0;
+			data->menu->controls_state = 0;
+			data->menu->menu_state = 1;
+			data->menu->controls = 1;
+			clear_img(data->menu->background[BG]);
+		}
+	}
+}
+
 int	key_press(int key, t_data *data)
 {
 	key_game(key, data);
 	if (key == KEY_ESC)
+	{
+		if (data->menu->game_state == 1)
+			data->menu->game_state = 2;
+		else
 			exit_game(data);
+	}
 	return (0);
 }
 

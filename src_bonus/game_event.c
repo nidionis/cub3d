@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/05 16:21:35 by supersko         ###   ########.fr       */
+/*   Updated: 2023/01/05 17:04:51 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,45 @@ static int map_ok(t_data *data)
 	return (1);
 }
 
+char **dup_map(char **map_i)
+{
+	char	**new_matrix;
+
+	new_matrix = NULL;
+	while (*map_i && **map_i)
+	{
+		new_matrix = ft_append_tab(new_matrix, ft_strdup(*map_i));
+		map_i++;
+	}
+	return (new_matrix);
+}
+
+void	make_new_map(t_data *data)
+{
+	char	**previous_map;
+	char	**tmp;
+
+	tmp = data->map;
+	data->map = dup_map(data->map_original);
+	ft_free_split(&tmp);
+	previous_map = NULL;
+	if (!data->map)
+		exit_game(data);
+	while (generate_map(data) && map_ok(data))
+	{
+		ft_free_split(&previous_map);
+		previous_map = data->map;
+		data->map = dup_map(data->map);
+	}
+	ft_free_split(&data->map);
+	data->map = previous_map;
+}
+
 int	render_game2(t_data *data)
 {
-	int	i_modulo = 2;
-
-
 	if (data->time_state == 2 && time(NULL) - data->timer > 15)
 	{
-		int	i_map = 0;
-
-		while (generate_map(data, i_modulo) && !map_ok(data))
-			if (i_map < 100)
-				i_map++;
-			else
-			{
-				i_modulo++;
-				i_map = 0;
-			}
+		make_new_map(data);
 		data->timer = time(NULL);
 	}
 	else if (data->menu->game_state == 2)
@@ -100,6 +122,7 @@ int	game_event(t_data *data)
 	static int	counter;
 
 	counter++;
+	mouse_rotate(data);
 	if (data->rain_state == 0)
 		draw_rain(data, rand() % 20);
 	if (data->time_state == 2 && time(NULL) - data->timer > 7)

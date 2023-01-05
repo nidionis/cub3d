@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_check_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suplayerko <suplayerko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 15:17:56 by suplayerko          #+#    #+#             */
-/*   Updated: 2022/11/19 17:48:55 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
+/*   Updated: 2023/01/04 17:44:12 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

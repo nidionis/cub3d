@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2023/01/04 16:23:10 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:39:23 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,6 @@
 
 void	player_smoth_move(t_data *data)
 {
-	static int	counter;
-	static int	counter2;
-
-	if (data->player->speed == 1 && data->player->stamina > 0)
-	{
-		counter++;
-		if (counter == 5)
-		{
-			counter = 0;
-			data->player->stamina--;
-		}
-	}
-	else if (data->player->speed == 0 && data->player->stamina < 100)
-	{
-		counter2++;
-		if (counter2 == 15)
-		{
-			counter2 = 0;
-			data->player->stamina++;
-		}
-	}
-	if (data->player->speed == 1 && data->player->stamina <= 0)
-		data->player->speed = 0;
 	direction_move(data);
 }
 

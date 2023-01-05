@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2023/01/04 19:31:22 by supersko         ###   ########.fr       */
+/*   Updated: 2023/01/05 17:04:28 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	re_generate_map(t_data *data)
 			generate_map_content(data, &data->switcher, '3');
 			generate_map_content(data, &data->door, '2');
 	}
+	data->map_original = dup_map(data->map);
 }
 
 int	main(int argc, char *argv[])

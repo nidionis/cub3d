@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:32:07 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/02 16:37:33 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:42:28 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,10 @@
 void	my_mlx_pixel_put(t_img_data *img, int x, int y, unsigned int color)
 {
 	int	*dst;
-	int width;
+	int	width;
 
-	width = 0;
-	if (g_status == 0)
-		width = SCREEN_WIDTH;
-	else if (g_status == 1)
-		width = 1900;
-	else if (g_status == 2)
-		width = 1200;
-	else if (g_status == 3)
-		width = 700;
-	if (x < 0 || x >= width || y < 0 || y >= 1080)
+	width = SCREEN_WIDTH;
+	if (x < 0 || x >= width || y < 0 || y >= SCREEN_HEIGHT)
 	{
 		dst = img->address;
 		*(unsigned int *)dst = color;

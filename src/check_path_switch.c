@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path_switch.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:06:53 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/21 14:28:55 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:42:04 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

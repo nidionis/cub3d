@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_raycasting.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:25:15 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/29 13:59:06 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:41:40 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

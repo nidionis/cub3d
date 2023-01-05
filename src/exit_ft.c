@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_ft.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/12/29 17:06:11 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:42:42 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,14 @@
 /* where all pointers are cleaned, especially in a emergency exit */
 void	clean_exit(t_data *data, int exit_code)
 {
-	int	i;
-
 	if (data)
 	{
-		if (data->line)
-			free(data->line);
-		if (data->line_split)
-			ft_free_split(&data->line_split);
-		if (data->map)
-			ft_free_split(&data->map);
+		if (data->image)
+			free(data->image);
 		if (data->player)
 			free(data->player);
+		if (data->map)
+			ft_free_split(&data->map);
 		if (data->blocks)
 			free(data->blocks);
 		if (data->map_cases)
@@ -35,21 +31,7 @@ void	clean_exit(t_data *data, int exit_code)
 		{
 			if (data->cam->beam)
 				free(data->cam->beam);
-			i = 0;
-			while (i < data->window->width)
-				ft_lstclear(&data->cam->array[i++].obstacles_ls, free);
 			free(data->cam);
-		}
-		if (data->image)
-		{
-			i = 0;
-			while (i < NB_TEXTURES)
-			{
-				if (data->image->texture_path[i])
-					free(data->image->texture_path[i]);
-				i++;
-			}
-			free(data->image);
 		}
 		free(data);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 04:07:18 by dpaulino          #+#    #+#             */
-/*   Updated: 2022/12/29 17:37:20 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:47:51 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,11 +118,11 @@ typedef struct s_img_data
 	int		height;
 }	t_img_data;
 
-typedef struct	s_obstacle
+typedef struct s_obstacle
 {
 	char				type;
 	double				dist;
-	int					textureX;
+	int					texture_x;
 	t_img_data			*texture;
 }	t_obstacle;
 
@@ -173,26 +173,19 @@ typedef struct s_assets
 	t_point	pos;
 }	t_assets;
 
-// typedef struct s_audio
-// {
-// 	SDL_AudioSpec	wavSpec;
-// 	Uint32			wavLength;
-// 	Uint8			*wavBuffer;
-// }t_audio;
-
 typedef struct s_data
 {
 	char			*line;
 	char			**line_split;
 	char			*blocks;
 	char			*map_cases;
-	char *textures;
+	char			*textures;
 	t_image			*image;
 	t_player		*player;
 	t_cam			*cam;
 	t_window		*window;
 	char			**map;
-	int			map_size_in_units[2];
+	int				map_size_in_units[2];
 	t_img_data		*wall_textures[NB_TEXTURES];
 	t_img_data		*bonus_textures;
 	t_img_data		*sprite_textures;
@@ -209,16 +202,12 @@ typedef struct s_data
 	t_assets		door;
 	t_assets		switcher;
 	t_assets		minimap;
-	unsigned int score;
-	char *argv;
-	// SDL_AudioDeviceID audio_dev;
-	// t_audio			soundtrack;
-	// Mix_Chunk		*sounds;
-	// Mix_Chunk		*soundtracks[4];
+	unsigned int	score;
+	char			*argv;
 }	t_data;
 
-enum x_or_y { _x, _y };
-enum log_type { DATA, PARAM, CAM, PLAYER, MAP };
+enum e_x_or_y { _x, _y };
+enum e_log_type { DATA, PARAM, CAM, PLAYER, MAP};
 enum e_identifiers { NO, SO, EA, WE, F, C };
 enum e_direction { N=1, S=2, W=10, E=20, NW=11, SW=12, SE=22, NE=21 };
 enum e_cardinal { NORTH, SOUTH, EAST, WEST };

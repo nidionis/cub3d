@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 18:36:08 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:41:26 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	render_game(t_data *data)
 
 void	draw_string(t_data *data)
 {
-	char *score;
+	char	*score;
 
 	score = ft_itoa(data->score);
 	if (data->door.state == 1)
@@ -54,16 +54,15 @@ int	render_game2(t_data *data)
 	static int	count_to_end;
 
 	if (count_to_end == 500)
-	{
 		exit_game(data);
-	}
 	if (data->time_state == 2 && time(NULL) - data->timer > 15)
 	{
-		while (generate_map(data, 2) && (!check_path_door(data, \
+		while (generate_map(data) && (!check_path_door(data, \
 			data->player->pos_map.y, data->player->pos_map.x) \
 		|| !check_path_switch(data, data->player->pos_map.y, \
 			data->player->pos_map.x) || !check_path_map(data, \
-			data->player->pos_map.y, data->player->pos_map.x)));
+			data->player->pos_map.y, data->player->pos_map.x)))
+			(void)data;
 		data->timer = time(NULL);
 	}
 	else if (data->menu->game_state == 2)
@@ -82,6 +81,7 @@ int	game_event(t_data *data)
 	static int	counter;
 
 	counter++;
+	mouse_rotate(data);
 	if (data->rain_state == 0)
 		draw_rain(data, rand() % 20);
 	if (data->time_state == 2 && time(NULL) - data->timer > 7)
