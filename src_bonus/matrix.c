@@ -43,7 +43,7 @@ int	ft_matrixlen(char **matrix)
 	int	len;
 
 	len = 0;
-	if (matrix && *matrix)
+	if (matrix)
 	{
 		while (matrix[len])
 			len++;

@@ -30,6 +30,7 @@ int	generate_map(t_data *data)
 	int	y;
 	int	x;
 	int	random;
+	int	a;
 
 	x = 2;
 	y = 2;
@@ -37,7 +38,10 @@ int	generate_map(t_data *data)
 	{
 		while (data->map[y][x] && x != data->map_width - 2)
 		{
-			random = rand() % (data->map_width * data->map_height / 200);
+			a = data->map_width * data->map_height / 200;
+			if (a == 0)
+				a = 1;
+			random = rand() % a;
 			if (data->map[y][x] != 'E' && data->map[y][x] != '2')
 			{
 				if (random == 1)

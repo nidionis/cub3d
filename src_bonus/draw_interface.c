@@ -32,8 +32,11 @@ void	draw_interface(t_data *data)
 		mlx_string_put(data->window->mlx, data->window->init, \
 			data->window->width / 2 - 150, data->window->height - 300 / 2 / 2, \
 			rgb_conv(255, 255, 255), str);
+	//fprintf(stderr, "[draw interface] height:%d width:%d, pos:%p\n", data->window->height, data->window->width, &pos);
+	t_point	i_prompt;
+	i_prompt = y_x(data->window->height - pos.y, data->window->width / 2 - pos.x); 
 	draw_image(data->img, data->menu->background[LAYOUT], \
-	y_x(data->window->height - pos.y, data->window->width / 2 - pos.x), -1);
+	i_prompt, -1);
 	mlx_string_put(data->window->mlx, data->window->init, \
 		data->window->width / 2 - 50, data->window->height - pos.y / 2, \
 		rgb_conv(255, 255, 255), "ACTIVATE THE SWITCH TO OPEN THE DOOR");

@@ -74,6 +74,7 @@ static void	set_map(t_data *data)
 	check_map(data);
 	get_map_size(data);
 	draw_map_border(data, data->map_height, data->map_width);
+	get_map_size(data);
 	data->map_size_in_units[_x] = ft_strlen(data->map[0]) * (int)UNITS_PER_BOX;
 	data->map_size_in_units[_y] = ft_matrixlen(data->map) * (int)UNITS_PER_BOX;
 }

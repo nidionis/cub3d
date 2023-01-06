@@ -71,11 +71,12 @@ char	**alloc_mem(int size_y, int size_x)
 	char	**map;
 
 	i = 0;
-	map = ft_calloc((size_y), sizeof(char *) + 1);
+	map = ft_calloc((size_y + 1), sizeof(char *));
 	while (i < size_y)
 	{
-		map[i] = ft_calloc((size_x), sizeof(char) + 1);
+		map[i] = ft_calloc((size_x + 1), sizeof(char));
 		i++;
 	}
+	map[i] = NULL;
 	return (map);
 }
