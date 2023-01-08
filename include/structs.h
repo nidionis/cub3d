@@ -204,6 +204,7 @@ typedef struct s_data
 	t_assets		minimap;
 	unsigned int	score;
 	char			*argv;
+	int				game_state;
 }	t_data;
 
 enum e_x_or_y { _x, _y };

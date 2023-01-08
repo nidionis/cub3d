@@ -45,7 +45,13 @@ void	world_render(t_data *data)
 
 int	graphics_render(t_data *data)
 {
-	render_game(data);
+	if (data->game_state == 1)
+		render_game(data);
+	else
+	{
+		exit (0);
+		printf("exit");
+	}
 	return (0);
 }
 

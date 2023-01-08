@@ -20,6 +20,7 @@ void	free_everything(t_data *data)
 	free_menu(data);
 	free(data->img);
 	ft_free_split(&data->map);
+	ft_free_split(&data->cpy_map);
 	free_texture_path(data);
 	free_wall_textures(data);
 	mlx_destroy_window(data->window->mlx, data->window->init);

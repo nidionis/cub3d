@@ -14,6 +14,8 @@
 
 void	free_data(t_data *data)
 {
+	free(data->cam->beam);
+	free(data->cam);
 	free(data->map_cases);
 	free(data->blocks);
 	free(data->player);

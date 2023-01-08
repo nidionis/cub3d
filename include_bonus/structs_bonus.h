@@ -185,6 +185,7 @@ typedef struct s_data
 	t_cam			*cam;
 	t_window		*window;
 	char			**map;
+	char			**cpy_map;
 	int				map_size_in_units[2];
 	t_img_data		*wall_textures[NB_TEXTURES];
 	t_img_data		*bonus_textures;

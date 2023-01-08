@@ -19,14 +19,14 @@ void	mouse_rotate(t_data *data)
 
 	if (data->mouse == 0)
 		return ;
-	mlx_mouse_get_pos(data->window->init, &pos.x, &pos.y);
+	mlx_mouse_get_pos(data->window->mlx, data->window->init, &pos.x, &pos.y);
 	delta.x = pos.x - data->window->width / 2;
 	delta.y = pos.y - data->window->height / 2;
 	if (delta.x < 0)
 		rotate_player(data->player, LEFT);
 	else if (delta.x > 0)
 		rotate_player(data->player, RIGHT);
-	mlx_mouse_move(data->window->init, \
+	mlx_mouse_move(data->window->mlx, data->window->init, \
 	data->window->width / 2, data->window->height / 2);
 }
 

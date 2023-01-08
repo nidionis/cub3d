@@ -12,19 +12,36 @@
 
 #include "../include_bonus/cub3d_bonus.h"
 
-int	generate_map(t_data *data)
+int gen_value(t_data *data, int count)
+{
+	static int i;
+
+	if (i < 2)
+		i = 2;
+	(void)data;
+	if (count == 0)
+		i = 2;
+	if (count > 100)
+	{
+		data->map = copy_map(data, data->cpy_map);
+	}
+		i++;
+	return (i);
+}
+
+int	generate_map(t_data *data, int count)
 {
 	int	y;
 	int	x;
 	int	random;
-
+	(void)count;
 	x = 2;
 	y = 2;
 	while (data->map[y] && y != data->map_height - 2)
 	{
 		while (data->map[y][x] && x != data->map_width - 2)
 		{
-			random = rand() % 10;
+			random = rand() % count;
 			if (data->map[y][x] != 'E' && data->map[y][x] != '2')
 			{
 				if (random == 1)

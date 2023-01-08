@@ -60,17 +60,32 @@ void	draw_string(t_data *data)
 int	render_game2(t_data *data)
 {
 	static int	count_to_end;
+	int count;
+	int test;
 
+	count = 2;
+	test = 0;
 	if (count_to_end == 500)
 		exit_game(data);
 	if (data->time_state == 2 && time(NULL) - data->timer > 15)
 	{
-		while (generate_map(data) && (!check_path_door(data, \
+		while (generate_map(data, count) && (!check_path_door(data, \
 			data->player->pos_map.y, data->player->pos_map.x) \
 		|| !check_path_switch(data, data->player->pos_map.y, \
 			data->player->pos_map.x) || !check_path_map(data, \
 			data->player->pos_map.y, data->player->pos_map.x)))
-			(void)data;
+			{
+				test++;
+				if (test >= 1000)
+				{
+					ft_free_split(&data->map);
+					data->map = copy_map(data, data->cpy_map);
+					if (count > 1000)
+						break;
+					count++; 
+					test = 0;
+				}
+			}
 		data->timer = time(NULL);
 	}
 	else if (data->menu->game_state == 2)
@@ -90,6 +105,12 @@ int	game_event(t_data *data)
 
 	counter++;
 	mouse_rotate(data);
+	if (data->player->speed == 1 && data->player->stamina > 0)
+		data->player->stamina--;
+	else if (data->player->speed == 0 && data->player->stamina < 100)
+		data->player->stamina++;
+	if (data->player->stamina < 5)
+		data->player->speed = 0;
 	if (data->rain_state == 0)
 		draw_rain(data, rand() % 20);
 	if (data->time_state == 2 && time(NULL) - data->timer > 7)

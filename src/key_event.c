@@ -36,6 +36,7 @@ void	init_key_status(t_data *data)
 	data->key_status->right = 0;
 	data->key_status->sprint = 0;
 	data->key_status->config = 0;
+	data->game_state = 1;
 }
 
 void	control_key_press(int key, t_data *data)
@@ -58,8 +59,8 @@ int	key_press(int key, t_data *data)
 	key_game(key, data);
 	if (key == KEY_ESC)
 	{
-		if (data->menu->game_state == 1)
-			data->menu->game_state = 2;
+		if (data->game_state == 1)
+			data->game_state = 2;
 		else
 			exit_game(data);
 	}

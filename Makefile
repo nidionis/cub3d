@@ -4,7 +4,7 @@ MAKEFLAGS += --silent
 NAME    = cub3D
 NAMEBONUS = cub3D_bonus
 CC      = gcc
-FLAGS	= -Wall -Wextra -Werror -g -Ofast -march=native
+FLAGS	= -Wall -Wextra -Werror -g -Ofast -march=native 
 # -fsanitize=address
 
 LFLAGS	= -Llibft -lft

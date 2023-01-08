@@ -69,6 +69,21 @@ void	re_generate_map(t_data *data)
 	}
 }
 
+char **copy_map(t_data *data, char **map)
+{
+	char **cpy_map;
+	int i;
+
+	i = 0;
+	cpy_map = ft_calloc(data->map_height + 1, sizeof(char *));
+	while(map[i])
+	{
+		cpy_map[i] = ft_strdup(map[i]);
+		i++;
+	}
+	return (cpy_map);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data		*data;
@@ -92,6 +107,7 @@ int	main(int argc, char *argv[])
 		load_window(data);
 		get_map_size(data);
 		re_generate_map(data);
+		data->cpy_map = copy_map(data, data->map);
 		data->rain_state = rand() % 5;
 		import_bonus_textures(data);
 		cub3d_render(data);

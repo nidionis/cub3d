@@ -39,7 +39,7 @@ void	controls(t_data *data, int key)
 	}
 	if (key == SHIFT)
 	{
-		if (data->player->speed == 0 && data->player->stamina > 5)
+		if (data->player->stamina > 15)
 			data->player->speed = 1;
 		else
 			data->player->speed = 0;
