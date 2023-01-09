@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:51:45 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 12:25:49 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/09 15:02:13 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../include_bonus/cub3d_bonus.h"
 
 int	g_color;
 

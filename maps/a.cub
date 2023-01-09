@@ -3,8 +3,8 @@ SO ./assets/test.xpm
 WE ./assets/test.xpm
 EA ./assets/test.xpm
 
-F 220,100,0
-C 225,30,0
+F 42,42,42
+C 42,42,42
 
 11111
 10001

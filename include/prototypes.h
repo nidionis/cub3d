@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/04 17:46:26 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/09 15:25:29 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,4 +220,5 @@ void			free_wall_textures(t_data *data);
 void			free_texture_path(t_data *data);
 void			free_menu(t_data *data);
 void			free_bonus_textures(t_data *data);
+void			set_content_right_values(t_data *data, char **map);
 #endif

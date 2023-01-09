@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 03:41:47 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 17:10:17 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/09 14:38:48 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	alloc_menu(t_data *data)
 	data->menu->background[EXTRAS] = malloc(sizeof(t_img_data));
 	data->menu->background[CONTROLS_KEYS] = malloc(sizeof(t_img_data));
 	data->menu->background[10] = malloc(sizeof(t_img_data));
+	data->menu->background[11] = malloc(sizeof(t_img_data));
 }
 
 void	init_menu_var(t_data *data)
@@ -96,5 +97,6 @@ void	load_menu(t_data *data)
 	load_images(data, m->background[CONTROLS_KEYS], \
 	"assets/menu/control_keys.xpm");
 	load_images(data, m->background[10], "assets/extra.xpm");
+	load_images(data, m->background[11], "assets/night_sky.xpm");
 	init_menu_var(data);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_event.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/09 11:43:58 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/09 15:21:45 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	render_game(t_data *data)
 	world_render(data);
 	game_event(data);
 	player_smoth_move(data);
-	draw_mini_map(data);
+	if (data->menu->minimap == 0)
+		draw_mini_map(data);
 	draw_stamina_hud(data);
 	if (data->menu->minimap == 1 && data->minimap.state == 1)
 		minimap_render(data);
@@ -55,36 +56,42 @@ void	draw_string(t_data *data)
 	free(score);
 }
 
-int	render_game2(t_data *data)
+void	render_game2_helper(t_data *data)
 {
-	static int	count_to_end;
 	int			count;
 	int			test;
 
 	count = 2;
 	test = 0;
-	if (count_to_end == 500)
-		exit_game(data);
-	if (data->time_state == 2 && time(NULL) - data->timer > 15)
-	{
-		while (generate_map(data, count) && (!check_path_door(data, \
+	while (generate_map(data, count) && (!check_path_door(data, \
 			data->player->pos_map.y, data->player->pos_map.x) \
 		|| !check_path_switch(data, data->player->pos_map.y, \
 			data->player->pos_map.x) || !check_path_map(data, \
 			data->player->pos_map.y, data->player->pos_map.x)))
+	{
+		test++;
+		if (test >= 1000)
 		{
-			test++;
-			if (test >= 1000)
-			{
-				ft_free_split(&data->map);
-				data->map = copy_map(data, data->cpy_map);
-				set_content_right_values(data, data->map);
-				if (count > 1000)
-					break ;
-				count++;
-				test = 0;
-			}
+			ft_free_split(&data->map);
+			data->map = copy_map(data, data->cpy_map);
+			set_content_right_values(data, data->map);
+			if (count > 1000)
+				break ;
+			count++;
+			test = 0;
 		}
+	}
+}
+
+int	render_game2(t_data *data)
+{
+	static int	count_to_end;
+
+	if (count_to_end == 500)
+		exit_game(data);
+	if (data->time_state == 2 && time(NULL) - data->timer > 15)
+	{
+		render_game2_helper(data);
 		data->timer = time(NULL);
 	}
 	else if (data->menu->game_state == 2)

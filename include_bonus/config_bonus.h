@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 17:54:37 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/09 11:22:58 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/09 14:38:37 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@
 /* should be eaual to windows width*/
 # define CAM_QUALITY 1900
 # define NB_TEXTURES 4
-# define NB_MENU_IMG 11
+# define NB_MENU_IMG 12
 # define BONUS_TEXTURES_SOLIDS "assets/door_bin.xpm,assets/door_bin.xpm,assets/door_bin.xpm,assets/door_bin.xpm,\
 assets/button_off.xpm,assets/button_off.xpm,assets/button_off.xpm,assets/button_off.xpm,\
 assets/button_on.xpm,assets/button_on.xpm,assets/button_on.xpm,assets/button_on.xpm,\
