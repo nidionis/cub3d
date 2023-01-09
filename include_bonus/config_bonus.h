@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 17:54:37 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/04 17:54:39 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:22:58 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ assets/mapper.xpm,assets/mapper.xpm,assets/mapper.xpm,assets/mapper.xpm"
 # define SPRITES_TEXTURES ""
 # define UNITS_PER_BOX 100
 # define STEPS_PER_BOX 30
-# define WALL_SIZE 20
+# define WALL_SIZE 11
+# define WALL_SIZE2 19
 /* in radient 66 = 1.15*/
 /* num of ray_parse for a pic */
 # define CAM_ANGLE 1.15

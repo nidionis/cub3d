@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_event.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:49:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/04 17:36:27 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:43:58 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	render_game(t_data *data)
 	draw_stamina_hud(data);
 	if (data->menu->minimap == 1 && data->minimap.state == 1)
 		minimap_render(data);
-	draw_image(data->img->img, data->menu->background[LAYOUT], \
-	y_x(0, 0), 1354);
 	mlx_put_image_to_window(data->window->mlx, data->window->init, \
 		data->img->img, 0, 0);
 	draw_interface(data);
@@ -60,8 +58,8 @@ void	draw_string(t_data *data)
 int	render_game2(t_data *data)
 {
 	static int	count_to_end;
-	int count;
-	int test;
+	int			count;
+	int			test;
 
 	count = 2;
 	test = 0;
@@ -74,18 +72,19 @@ int	render_game2(t_data *data)
 		|| !check_path_switch(data, data->player->pos_map.y, \
 			data->player->pos_map.x) || !check_path_map(data, \
 			data->player->pos_map.y, data->player->pos_map.x)))
+		{
+			test++;
+			if (test >= 1000)
 			{
-				test++;
-				if (test >= 1000)
-				{
-					ft_free_split(&data->map);
-					data->map = copy_map(data, data->cpy_map);
-					if (count > 1000)
-						break;
-					count++; 
-					test = 0;
-				}
+				ft_free_split(&data->map);
+				data->map = copy_map(data, data->cpy_map);
+				set_content_right_values(data, data->map);
+				if (count > 1000)
+					break ;
+				count++;
+				test = 0;
 			}
+		}
 		data->timer = time(NULL);
 	}
 	else if (data->menu->game_state == 2)

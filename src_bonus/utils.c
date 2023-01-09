@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 04:23:36 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/04 16:37:25 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:21:04 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	set_red_to_max(int color)
 	r = (color >> 16) & 0xff;
 	g = (color >> 8) & 0xff;
 	b = color & 0xff;
-	r = 255;
+	r = 240;
 	return ((r << 16) | (g << 8) | b);
 }
 

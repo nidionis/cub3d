@@ -6,7 +6,7 @@
 /*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 09:30:16 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/03 10:03:27 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/09 10:59:20 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void	put_cube_minimap(t_data *data, t_point pos, t_point pos2)
 {
 	if (data->map[pos.y] && data->map[pos.y][pos.x] && \
 			data->map[pos.y][pos.x] == '1')
-		draw_cube(data, WALL_SIZE, y_x(pos2.y * WALL_SIZE + \
-			(WALL_SIZE / 2), pos2.x * WALL_SIZE + (WALL_SIZE / 2)), \
+		draw_cube(data, WALL_SIZE2, y_x(pos2.y * WALL_SIZE2 + \
+			(WALL_SIZE2 / 2), pos2.x * WALL_SIZE2 + (WALL_SIZE2 / 2)), \
 			rgb_conv(255, 255, 255));
 	else if (pos.x == data->player->pos_map.x && pos.y == \
 		data->player->pos_map.y)
-		draw_cube(data, WALL_SIZE, y_x(pos2.y * WALL_SIZE + \
-			(WALL_SIZE / 2), pos2.x * WALL_SIZE + (WALL_SIZE / 2)), \
+		draw_cube(data, WALL_SIZE2, y_x(pos2.y * WALL_SIZE2 + \
+			(WALL_SIZE2 / 2), pos2.x * WALL_SIZE2 + (WALL_SIZE2 / 2)), \
 			rgb_conv(0, 0, 0));
 	else
-		draw_cube(data, WALL_SIZE, y_x(pos2.y * WALL_SIZE + \
-			(WALL_SIZE / 2), pos2.x * WALL_SIZE + (WALL_SIZE / 2)), \
+		draw_cube(data, WALL_SIZE2, y_x(pos2.y * WALL_SIZE2 + \
+			(WALL_SIZE2 / 2), pos2.x * WALL_SIZE2 + (WALL_SIZE2 / 2)), \
 			rgb_conv(180, 180, 180));
 }
 

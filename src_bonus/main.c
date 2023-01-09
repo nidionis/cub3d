@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by suplayerko        #+#    #+#             */
-/*   Updated: 2023/01/04 18:47:31 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:06:22 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,17 @@ void	re_generate_map(t_data *data)
 		generate_map_content(data, &data->switcher, '3');
 		generate_map_content(data, &data->door, '2');
 	}
+	data->cpy_map = copy_map(data, data->map);
 }
 
-char **copy_map(t_data *data, char **map)
+char	**copy_map(t_data *data, char **map)
 {
-	char **cpy_map;
-	int i;
+	char	**cpy_map;
+	int		i;
 
 	i = 0;
 	cpy_map = ft_calloc(data->map_height + 1, sizeof(char *));
-	while(map[i])
+	while (map[i])
 	{
 		cpy_map[i] = ft_strdup(map[i]);
 		i++;
@@ -107,7 +108,6 @@ int	main(int argc, char *argv[])
 		load_window(data);
 		get_map_size(data);
 		re_generate_map(data);
-		data->cpy_map = copy_map(data, data->map);
 		data->rain_state = rand() % 5;
 		import_bonus_textures(data);
 		cub3d_render(data);

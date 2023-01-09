@@ -31,7 +31,7 @@ mouse.c parse_format_map.c   raycasting.c         str_ft.c 	bonus_textures.c end
 load_menu.c        move_crossing_box.c  parse_import.c       raycasting_utils.c   utils2.c camera_ft.c         draw_functions2.c    exit_ft.c   key_event.c  \
 load_window.c      move_player.c        parse_init.c         ray_set_distances.c  utils.c check_path_door.c   draw_functions.c     free_functions.c   keys_game.c \
 main.c             move_to_corner.c     parse_params.c       render_menu.c        vector_ft.c minimap.c	map.c move_player_utils.c ft_list2.c draw_map_border.c \
-keys_menu_utils.c load_menu_utils.c draw_image.c
+keys_menu_utils.c load_menu_utils.c draw_image.c utils3.c
 
 SRCS_BONUS	= $(addprefix $(SRC_BONUSDIR), $(SRC_BONUSFILE))
 OBJ_BONUSDIR	= obj_bonus/
@@ -122,6 +122,8 @@ fclean: clean_proj_files
 	@echo -e '\033[1;31m'$(NAME) "deleted."'\033[0m'
 
 re: fclean all
+
+re_bonus: fclean bonus
 
 set_bonus_count:
 	$(eval FILES_COUNT := $(words $(SRCS_BONUS)))

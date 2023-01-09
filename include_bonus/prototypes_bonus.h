@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:41:57 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/04 17:09:39 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/09 10:29:31 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,5 +220,6 @@ void			free_wall_textures(t_data *data);
 void			free_texture_path(t_data *data);
 void			free_menu(t_data *data);
 void			free_bonus_textures(t_data *data);
-char **copy_map(t_data *data, char **map);
+char			**copy_map(t_data *data, char **map);
+void			set_content_right_values(t_data *data, char **map);
 #endif

@@ -3,38 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   generate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpaulino <dpaulino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpaulino <dpaulino@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:14:23 by dpaulino          #+#    #+#             */
-/*   Updated: 2023/01/04 18:17:35 by dpaulino         ###   ########.fr       */
+/*   Updated: 2023/01/09 10:33:02 by dpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include_bonus/cub3d_bonus.h"
-
-int gen_value(t_data *data, int count)
-{
-	static int i;
-
-	if (i < 2)
-		i = 2;
-	(void)data;
-	if (count == 0)
-		i = 2;
-	if (count > 100)
-	{
-		data->map = copy_map(data, data->cpy_map);
-	}
-		i++;
-	return (i);
-}
 
 int	generate_map(t_data *data, int count)
 {
 	int	y;
 	int	x;
 	int	random;
-	(void)count;
+
 	x = 2;
 	y = 2;
 	while (data->map[y] && y != data->map_height - 2)
